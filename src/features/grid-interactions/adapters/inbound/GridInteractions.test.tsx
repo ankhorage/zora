@@ -6,6 +6,7 @@ import { Window } from 'happy-dom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import type { GridInteractionIntent } from '../../../../types/grid-interactions';
 import type { GridInteractions as GridInteractionsComponent } from './GridInteractions';
 
 const webDistRoot = join(import.meta.dir, '../../../../../web-dist');
@@ -103,6 +104,66 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
   }
 });
 
+test('bridges a held Space key into web responder drag intent and clears it after release or blur', async () => {
+  const browser = new Window();
+  const restore = installBrowserGlobals(browser);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const root = createRoot(host);
+  const { GridInteractions } = await loadGridInteractions();
+  const intents: GridInteractionIntent[] = [];
+
+  try {
+    await renderGridInteractions(
+      root,
+      <GridInteractions
+        items={[]}
+        onIntent={(intent) => intents.push(intent)}
+        testID="grid-interactions"
+        viewport={{
+          height: 100,
+          offsetX: 0,
+          offsetY: 0,
+          pixelsPerUnitX: 2,
+          pixelsPerUnitY: 4,
+          width: 100,
+        }}
+      >
+        <span>nested target</span>
+      </GridInteractions>,
+    );
+    const keyboard = host.querySelector<HTMLElement>(
+      '[aria-label="Grid interaction keyboard controls"]',
+    );
+    const surface = host.querySelector<HTMLElement>('[data-testid="grid-interactions"]');
+    if (!keyboard || !surface) throw new Error('Missing web grid interaction boundary');
+
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keydown', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keyup', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keydown', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await dispatch(keyboard, new browser.FocusEvent('focusout', { bubbles: true }));
+    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+
+    expect(intents.map((intent) => intent.type)).toEqual(['pan', 'marquee']);
+  } finally {
+    await act(() => Promise.resolve().then(() => root.unmount()));
+    host.remove();
+    browser.close();
+    restore();
+  }
+});
+
 /*** Installs the DOM globals that the independently bundled RNW adapter requires. */
 function installBrowserGlobals(browser: Window): () => void {
   const keys = [
@@ -140,4 +201,40 @@ function renderGridInteractions(root: ReturnType<typeof createRoot>, component: 
 /*** Dispatches one browser input event through React's RNW adapter boundary. */
 function dispatch(target: HTMLElement, event: Event) {
   return act(() => Promise.resolve().then(() => target.dispatchEvent(event)));
+}
+
+/*** Runs one browser mouse drag through the RNW responder boundary. */
+async function drag(
+  browser: Window,
+  target: HTMLElement,
+  start: { readonly x: number; readonly y: number },
+  end: { readonly x: number; readonly y: number },
+) {
+  await dispatch(
+    target,
+    new browser.MouseEvent('mousedown', {
+      bubbles: true,
+      button: 0,
+      clientX: start.x,
+      clientY: start.y,
+    }),
+  );
+  await dispatch(
+    target,
+    new browser.MouseEvent('mousemove', {
+      bubbles: true,
+      button: 0,
+      clientX: end.x,
+      clientY: end.y,
+    }),
+  );
+  await dispatch(
+    target,
+    new browser.MouseEvent('mouseup', {
+      bubbles: true,
+      button: 0,
+      clientX: end.x,
+      clientY: end.y,
+    }),
+  );
 }
