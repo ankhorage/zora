@@ -25,16 +25,29 @@ export function GridInteractions({
     createGridInteractionsController(controllerProps),
   );
   const surfaceRef = React.useRef<View>(null);
+  const pendingPointersRef = React.useRef<GridInteractionPointerWork[]>([]);
+  const measuringPointerRef = React.useRef(false);
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
   const withPointer = (
     event: Parameters<typeof resolveGridInteractionPointer>[0],
     handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void,
   ) => {
+    pendingPointersRef.current.push({
+      event: { nativeEvent: { ...event.nativeEvent } },
+      handlePointer,
+    });
+    processNextPointer();
+  };
+  const processNextPointer = () => {
+    if (measuringPointerRef.current) return;
+    const pointerWork = pendingPointersRef.current.shift();
     const surface = surfaceRef.current;
-    if (!surface) return;
-    const snapshot = { nativeEvent: { ...event.nativeEvent } };
+    if (!pointerWork || !surface) return;
+    measuringPointerRef.current = true;
     measureSurfaceOrigin(surface, (origin) => {
-      handlePointer(resolveGridInteractionPointer(snapshot, origin));
+      pointerWork.handlePointer(resolveGridInteractionPointer(pointerWork.event, origin));
+      measuringPointerRef.current = false;
+      processNextPointer();
     });
   };
   const enabled = interactionPolicy !== 'passive';
@@ -64,6 +77,11 @@ export function GridInteractions({
       </GridInteractionsKeyboardProxy>
     </View>
   );
+}
+
+interface GridInteractionPointerWork {
+  readonly event: Parameters<typeof resolveGridInteractionPointer>[0];
+  readonly handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void;
 }
 
 /*** Measures the root surface for every responder event so page coordinates cannot become stale. */
