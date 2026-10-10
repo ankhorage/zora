@@ -64,6 +64,7 @@ export function GridView({
   const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
   const pinchMeasurementRef = React.useRef(0);
+  const pinchSessionRef = React.useRef(0);
   const viewportOriginRef = React.useRef<ViewportOrigin>({ x: 0, y: 0 });
   const focusRevealProposalRef = React.useRef<FocusRevealProposal | undefined>(undefined);
   const [isPinching, setIsPinching] = React.useState(false);
@@ -125,11 +126,17 @@ export function GridView({
   }, []);
 
   const measurePinchGesture = React.useCallback(
-    (touches: readonly PinchTouch[], onMeasured: (pinch: PinchGesture | undefined) => void) => {
+    (
+      touches: readonly PinchTouch[],
+      session: number,
+      onMeasured: (pinch: PinchGesture | undefined) => void,
+    ) => {
       const measurement = pinchMeasurementRef.current + 1;
       pinchMeasurementRef.current = measurement;
       gridRef.current?.measureInWindow((x, y) => {
-        if (measurement !== pinchMeasurementRef.current) return;
+        if (measurement !== pinchMeasurementRef.current || session !== pinchSessionRef.current) {
+          return;
+        }
         viewportOriginRef.current = { x, y };
         onMeasured(getPinchGesture(touches, width, height, { x, y }));
       });
@@ -140,6 +147,14 @@ export function GridView({
   React.useLayoutEffect(() => {
     refreshViewportOrigin();
   }, [height, refreshViewportOrigin, width]);
+
+  React.useEffect(
+    () => () => {
+      pinchMeasurementRef.current += 1;
+      pinchSessionRef.current += 1;
+    },
+    [],
+  );
 
   React.useEffect(() => {
     if (!onVisibleItemIdsChange) return;
@@ -210,13 +225,23 @@ export function GridView({
       onLayout={refreshViewportOrigin}
       onTouchEnd={() => {
         const wasPinching = pinchGestureRef.current !== undefined;
+        pinchMeasurementRef.current += 1;
+        pinchSessionRef.current += 1;
+        pinchGestureRef.current = undefined;
+        setIsPinching(false);
+        if (wasPinching) syncScrollPosition();
+      }}
+      onTouchCancel={() => {
+        const wasPinching = pinchGestureRef.current !== undefined;
+        pinchMeasurementRef.current += 1;
+        pinchSessionRef.current += 1;
         pinchGestureRef.current = undefined;
         setIsPinching(false);
         if (wasPinching) syncScrollPosition();
       }}
       onTouchMove={(event) => {
         if (!interactive) return;
-        measurePinchGesture([...event.nativeEvent.touches], (pinch) => {
+        measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {
           const previous = pinchGestureRef.current;
           pinchGestureRef.current = pinch;
           setIsPinching(pinch !== undefined);
@@ -225,7 +250,9 @@ export function GridView({
         });
       }}
       onTouchStart={(event) => {
-        measurePinchGesture([...event.nativeEvent.touches], (pinch) => {
+        const session = pinchSessionRef.current + 1;
+        pinchSessionRef.current = session;
+        measurePinchGesture([...event.nativeEvent.touches], session, (pinch) => {
           pinchGestureRef.current = pinch;
           setIsPinching(pinch !== undefined);
         });

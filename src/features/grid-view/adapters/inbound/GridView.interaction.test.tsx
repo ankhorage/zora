@@ -401,6 +401,125 @@ test('waits for the newest asynchronous viewport measurement before continuous p
   });
 });
 
+test('invalidates delayed pinch measurements after touch lifecycle completion', async () => {
+  const { GridView } = (await load()) as { GridView: typeof GridViewComponent };
+  await withBrowserAsync(async (browserWindow, host) => {
+    const changes: GridViewport[] = [];
+    const measurements: ((x: number, y: number) => void)[] = [];
+    const root = createRoot(host);
+    try {
+      await interactAsync(() =>
+        root.render(
+          <GridView
+            contentHeight={1000}
+            contentWidth={1000}
+            height={100}
+            items={items}
+            onViewportChange={(viewport) => changes.push(viewport)}
+            renderItem={(item) => <span>{item.id}</span>}
+            testID="grid"
+            viewportConstraints={constraints}
+            width={100}
+          />,
+        ),
+      );
+      const grid = host.querySelector<HTMLElement>('[data-testid="grid"]');
+      const horizontal = host.querySelector<HTMLElement>('[data-testid="grid-horizontal-scroll"]');
+      const vertical = host.querySelector<HTMLElement>('[data-testid="grid-vertical-scroll"]');
+      if (!grid || !horizontal || !vertical) throw new Error('Missing grid scroll surfaces');
+      Object.defineProperty(grid, 'measureInWindow', {
+        value: (callback: (x: number, y: number) => void) => measurements.push(callback),
+      });
+
+      await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
+        { pageX: 10, pageY: 50 },
+        { pageX: 90, pageY: 50 },
+      ]);
+      await dispatchTouchesAsync(browserWindow, grid, 'touchend', []);
+      await interactAsync(() => measurements[0]?.(200, 150));
+      expect(changes).toHaveLength(0);
+      expect(horizontal.style.overflowX).not.toBe('hidden');
+      expect(vertical.style.overflowY).not.toBe('hidden');
+
+      horizontal.scrollLeft = 20;
+      await interactAsync(() =>
+        horizontal.dispatchEvent(new browserWindow.Event('scroll', { bubbles: true })),
+      );
+      expect(changes).toHaveLength(1);
+
+      await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
+        { pageX: 10, pageY: 50 },
+        { pageX: 90, pageY: 50 },
+      ]);
+      await dispatchTouchesAsync(browserWindow, grid, 'touchcancel', []);
+      await interactAsync(() => measurements[1]?.(200, 150));
+      expect(changes).toHaveLength(1);
+      expect(horizontal.style.overflowX).not.toBe('hidden');
+      expect(vertical.style.overflowY).not.toBe('hidden');
+
+      await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
+        { pageX: 10, pageY: 50 },
+        { pageX: 90, pageY: 50 },
+      ]);
+      await dispatchTouchesAsync(browserWindow, grid, 'touchend', []);
+      await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
+        { pageX: 10, pageY: 50 },
+        { pageX: 90, pageY: 50 },
+      ]);
+      await interactAsync(() => measurements[2]?.(200, 150));
+      await dispatchTouchesAsync(browserWindow, grid, 'touchend', []);
+      await interactAsync(() => measurements[3]?.(200, 150));
+      expect(changes).toHaveLength(1);
+      expect(horizontal.style.overflowX).not.toBe('hidden');
+      expect(vertical.style.overflowY).not.toBe('hidden');
+    } finally {
+      await interactAsync(() => root.unmount());
+    }
+  });
+});
+
+test('invalidates a pending pinch update when GridView unmounts', async () => {
+  const { GridView } = (await load()) as { GridView: typeof GridViewComponent };
+  await withBrowserAsync(async (browserWindow, host) => {
+    const changes: GridViewport[] = [];
+    const measurements: ((x: number, y: number) => void)[] = [];
+    const root = createRoot(host);
+    await interactAsync(() =>
+      root.render(
+        <GridView
+          contentHeight={1000}
+          contentWidth={1000}
+          height={100}
+          items={items}
+          onViewportChange={(viewport) => changes.push(viewport)}
+          renderItem={(item) => <span>{item.id}</span>}
+          testID="grid"
+          viewportConstraints={constraints}
+          width={100}
+        />,
+      ),
+    );
+    const grid = host.querySelector<HTMLElement>('[data-testid="grid"]');
+    if (!grid) throw new Error('Missing grid viewport');
+    Object.defineProperty(grid, 'measureInWindow', {
+      value: (callback: (x: number, y: number) => void) => measurements.push(callback),
+    });
+
+    await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
+      { pageX: 10, pageY: 50 },
+      { pageX: 90, pageY: 50 },
+    ]);
+    await interactAsync(() => measurements[0]?.(0, 0));
+    await dispatchTouchesAsync(browserWindow, grid, 'touchmove', [
+      { pageX: 0, pageY: 50 },
+      { pageX: 100, pageY: 50 },
+    ]);
+    await interactAsync(() => root.unmount());
+    await interactAsync(() => measurements[1]?.(0, 0));
+    expect(changes).toHaveLength(0);
+  });
+});
+
 /*** Provides a stable controlled viewport for component interaction tests. */
 function createViewport(overrides: Partial<GridViewport> = {}): GridViewport {
   return {
@@ -452,7 +571,7 @@ async function withBrowserAsync(
 function dispatchTouchesAsync(
   browserWindow: Window,
   target: HTMLElement,
-  type: 'touchstart' | 'touchmove',
+  type: 'touchcancel' | 'touchend' | 'touchstart' | 'touchmove',
   touches: readonly Readonly<{
     locationX?: number;
     locationY?: number;
