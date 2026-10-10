@@ -101,3 +101,26 @@ test('preserves the executable action semantics of ZORA provider capabilities', 
     true,
   );
 });
+
+test('built public capability entrypoint imports under Node ESM', async () => {
+  const subprocess = Bun.spawn(
+    [
+      'node',
+      '--input-type=module',
+      '-e',
+      "import('./dist/capabilities/index.js').then(({ CAPABILITIES }) => { if (!Array.isArray(CAPABILITIES)) process.exit(1); });",
+    ],
+    {
+      cwd: process.cwd(),
+      stderr: 'pipe',
+      stdout: 'pipe',
+    },
+  );
+  const [exitCode, stderr] = await Promise.all([
+    subprocess.exited,
+    new Response(subprocess.stderr).text(),
+  ]);
+
+  expect(stderr).toBe('');
+  expect(exitCode).toBe(0);
+});
