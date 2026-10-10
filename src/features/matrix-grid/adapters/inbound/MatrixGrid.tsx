@@ -3,9 +3,9 @@ import {
   type GridMatrixCellPlacement,
   type GridViewport,
 } from '@ankhorage/grid-view';
-import { Pressable } from '@ankhorage/surface';
+import { isRecord } from '@ankhorage/utility/object';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, Pressable as NativePressable, StyleSheet, View } from 'react-native';
 
 import type { MatrixGridProps } from '../../../../types/matrix-grid';
 import { GridView } from '../../../grid-view/public';
@@ -14,6 +14,8 @@ import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThem
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { resolveMatrixGridContentSize } from '../../application/resolveMatrixGridContentSize';
 import { resolveMatrixGridSelection } from '../../application/resolveMatrixGridSelection';
+import { MatrixGridKeyboardProxy } from './MatrixGridKeyboardProxy';
+import { useMatrixGridKeyboardFocus } from './useMatrixGridKeyboardFocus';
 
 /*** Compose the canonical GridView around released sparse matrix placement and culling geometry. */
 function MatrixGridInner({
@@ -42,14 +44,28 @@ function MatrixGridInner({
   );
   const [uncontrolledViewport, setUncontrolledViewport] = React.useState(initialViewport);
   const viewport = controlledViewport ?? uncontrolledViewport;
-  const visibleCells = React.useMemo(
-    () => getVisibleMatrixCells(layout, cells, viewport, overscanPixels),
-    [cells, layout, overscanPixels, viewport],
+  const cellPlacements = React.useMemo(
+    () =>
+      getVisibleMatrixCells(
+        layout,
+        cells,
+        {
+          height: contentSize.height,
+          offsetX: 0,
+          offsetY: 0,
+          pixelsPerUnitX: 1,
+          pixelsPerUnitY: 1,
+          width: contentSize.width,
+        },
+        overscanPixels,
+      ),
+    [cells, contentSize.height, contentSize.width, layout, overscanPixels],
   );
-
-  const visibleCellById = React.useMemo(
-    () => new Map(visibleCells.map((cell) => [cell.id, cell])),
-    [visibleCells],
+  const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
+  const anchorId = React.useRef<string | null>(null);
+  const cellById = React.useMemo(
+    () => new Map(cellPlacements.map((cell) => [cell.id, cell])),
+    [cellPlacements],
   );
 
   const handleViewportChange = React.useCallback(
@@ -63,13 +79,35 @@ function MatrixGridInner({
   const activateCell = React.useCallback(
     (cell: GridMatrixCellPlacement, event: unknown) => {
       if (interactionPolicy === 'passive') return;
-      const intent = resolveSelectionEventIntent(event, 'pointer');
+      const intent = isRangeSelectionEvent(event)
+        ? 'range'
+        : resolveSelectionEventIntent(event, 'pointer');
       onSelectionChange?.(
-        resolveMatrixGridSelection(selectedCellIds, cell.id, intent, selectionMode),
+        resolveMatrixGridSelection(
+          cellPlacements,
+          selectedCellIds,
+          cell.id,
+          anchorId.current,
+          intent,
+          selectionMode,
+        ),
       );
+      if (intent !== 'range') anchorId.current = cell.id;
     },
-    [interactionPolicy, onSelectionChange, selectedCellIds, selectionMode],
+    [cellPlacements, interactionPolicy, onSelectionChange, selectedCellIds, selectionMode],
   );
+  const keyboard = useMatrixGridKeyboardFocus(
+    cellPlacements,
+    interactionPolicy === 'passive',
+    visibleIds,
+    (targetId, originId, shiftKey) => {
+      anchorId.current ??= originId;
+      if (!shiftKey) return;
+      const cell = cellPlacements.find((candidate) => candidate.id === targetId);
+      if (cell) activateCell(cell, { shiftKey: true });
+    },
+  );
+
   return (
     <View accessibilityLabel={accessibilityLabel}>
       <GridView
@@ -77,10 +115,12 @@ function MatrixGridInner({
         contentWidth={contentSize.width}
         height={height}
         interactionPolicy={interactionPolicy}
-        items={visibleCells}
+        items={cellPlacements}
+        focusedItemId={keyboard.focusedId ?? undefined}
         overscanPixels={0}
+        onVisibleItemIdsChange={setVisibleIds}
         renderItem={(item) => {
-          const cell = visibleCellById.get(item.id);
+          const cell = cellById.get(item.id);
           if (!cell) return null;
           return renderMatrixCell(
             cell,
@@ -89,6 +129,7 @@ function MatrixGridInner({
             theme.colors.primary,
             renderCell,
             activateCell,
+            keyboard,
             testID,
           );
         }}
@@ -109,28 +150,54 @@ function renderMatrixCell(
   selectedColor: string,
   renderCell: MatrixGridProps['renderCell'],
   activateCell: (cell: GridMatrixCellPlacement, event: unknown) => void,
+  keyboard: ReturnType<typeof useMatrixGridKeyboardFocus>,
   testID: string | undefined,
 ) {
   const selected = selectedCellIds.includes(cell.id);
+  const canInteract = keyboard.tabStopId === cell.id;
   return (
-    <Pressable
-      key={cell.id}
-      accessibilityLabel={`Cell ${cell.id}`}
-      accessibilityRole="button"
-      accessibilityState={{ selected }}
-      style={[
-        styles.cell,
-        {
-          borderColor: selected ? selectedColor : dividerColor,
-          height: '100%',
-          width: '100%',
-        },
-      ]}
-      testID={testID === undefined ? undefined : `${testID}-cell-${cell.id}`}
-      onPress={(event) => activateCell(cell, event)}
+    <MatrixGridKeyboardProxy
+      onKeyDown={(event) => {
+        if (keyboard.onKeyDown(cell.id, event.key, event.shiftKey)) return true;
+        if (!['Enter', ' '].includes(event.key)) return false;
+        activateCell(cell, event);
+        return true;
+      }}
     >
-      {renderCell(cell)}
-    </Pressable>
+      <NativePressable
+        key={cell.id}
+        accessibilityActions={[{ name: 'activate' }]}
+        accessibilityLabel={`Cell ${cell.id}`}
+        accessibilityRole="button"
+        accessibilityState={{ selected }}
+        focusable={Platform.OS !== 'web' || canInteract}
+        style={[
+          styles.cell,
+          {
+            borderColor: selected || keyboard.focusedId === cell.id ? selectedColor : dividerColor,
+            height: '100%',
+            width: '100%',
+          },
+        ]}
+        testID={testID === undefined ? undefined : `${testID}-cell-${cell.id}`}
+        onAccessibilityAction={() => activateCell(cell, {})}
+        onFocus={() => keyboard.onFocus(cell.id)}
+        onPress={(event) => activateCell(cell, event)}
+        ref={(node) => keyboard.registerCell(cell.id, node)}
+      >
+        {renderCell(cell)}
+      </NativePressable>
+    </MatrixGridKeyboardProxy>
+  );
+}
+
+/*** Recognize range intent without changing the shared replace-or-toggle selection contract. */
+function isRangeSelectionEvent(event: unknown): boolean {
+  if (!isRecord(event)) return false;
+  if (event.shiftKey === true) return true;
+  return (
+    (isRecord(event.nativeEvent) && event.nativeEvent.shiftKey === true) ||
+    (isRecord(event.originalEvent) && event.originalEvent.shiftKey === true)
   );
 }
 

@@ -127,8 +127,8 @@ test('mounts only visible sparse cells with independent axis zoom and preserves 
       expect(mountedCells.length).toBeLessThan(100);
       const target = host.querySelector('[data-testid="matrix-cell-row-1-column-1"]');
       expect(target).not.toBeNull();
-      expect(target?.parentElement?.getAttribute('style')).toContain('left: 20px');
-      expect(target?.parentElement?.getAttribute('style')).toContain('top: 24px');
+      expect(target?.parentElement?.parentElement?.getAttribute('style')).toContain('left: 20px');
+      expect(target?.parentElement?.parentElement?.getAttribute('style')).toContain('top: 24px');
       void act(() => target?.dispatchEvent(new browser.MouseEvent('click', { bubbles: true })));
       expect(selected).toEqual([['row-1-column-1']]);
     } finally {
@@ -225,6 +225,93 @@ test('proposes an uncontrolled horizontal pan in world units while retaining ind
           width: 120,
         },
       ]);
+    } finally {
+      act(() => root.unmount());
+    }
+  });
+});
+
+test('navigates sparse cells by keyboard and applies range and modifier selection intents', async () => {
+  await withMatrixDom(async (host, browser) => {
+    const selections: (readonly string[])[] = [];
+    const root = createRoot(host);
+    const { MatrixGrid } = (await load('components/matrix-grid/MatrixGrid.js')) as {
+      MatrixGrid: MatrixGridComponent;
+    };
+    const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
+      ZoraProvider: ZoraProviderComponent;
+    };
+    const sparseLayout = {
+      columns: [
+        { id: 'column-0', size: 20 },
+        { id: 'column-1', size: 20 },
+        { id: 'column-2', size: 20 },
+      ],
+      rows: [
+        { id: 'row-0', size: 20 },
+        { id: 'row-1', size: 20 },
+        { id: 'row-2', size: 20 },
+      ],
+    };
+    const sparseCells = [
+      { columnId: 'column-0', id: 'a1', rowId: 'row-0' },
+      { columnId: 'column-2', id: 'c1', rowId: 'row-0' },
+      { columnId: 'column-0', id: 'a3', rowId: 'row-2' },
+      { columnId: 'column-2', id: 'c3', rowId: 'row-2' },
+    ];
+
+    function KeyboardMatrix() {
+      const [selectedIds, setSelectedIds] = React.useState<readonly string[]>(['a1']);
+      return (
+        <ZoraProvider>
+          <MatrixGrid
+            cells={sparseCells}
+            height={80}
+            layout={sparseLayout}
+            selectedCellIds={selectedIds}
+            selectionMode="multi"
+            testID="keyboard-matrix"
+            width={80}
+            onSelectionChange={(ids) => {
+              selections.push(ids);
+              setSelectedIds(ids);
+            }}
+            renderCell={(cell) => <span>{cell.id}</span>}
+          />
+        </ZoraProvider>
+      );
+    }
+
+    try {
+      act(() => root.render(<KeyboardMatrix />));
+      const a1 = host.querySelector<HTMLElement>('[data-testid="keyboard-matrix-cell-a1"]');
+      if (!a1) throw new Error('Missing initial sparse matrix cell.');
+      act(() => a1.focus());
+      act(() => {
+        void a1.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowRight' }),
+        );
+      });
+      const c1 = host.querySelector<HTMLElement>('[data-testid="keyboard-matrix-cell-c1"]');
+      expect(c1).not.toBeNull();
+      expect(document.activeElement).toBe(c1);
+      act(() => {
+        void c1?.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowDown', shiftKey: true }),
+        );
+      });
+      expect(selections).toEqual([['a1', 'c1', 'a3', 'c3']]);
+      const c3 = host.querySelector<HTMLElement>('[data-testid="keyboard-matrix-cell-c3"]');
+      act(() => {
+        void c3?.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, ctrlKey: true, key: 'Enter' }),
+        );
+      });
+      expect(selections.at(-1)).toEqual(['a1', 'c1', 'a3']);
+      act(() => {
+        void c3?.dispatchEvent(new browser.KeyboardEvent('keydown', { bubbles: true, key: ' ' }));
+      });
+      expect(selections.at(-1)).toEqual(['c3']);
     } finally {
       act(() => root.unmount());
     }
