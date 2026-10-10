@@ -3359,6 +3359,38 @@ Export paths: `src/index.ts`
 | themeId | `string \| undefined` | no | — |  |
 | width | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no | — |  |
 
+## SpatialGrid
+
+Source: `src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx:9:1`
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| contentHeight | `number` | yes | — |  |
+| contentWidth | `number` | yes | — |  |
+| disabled | `boolean \| undefined` | no | `false` |  |
+| focusedItemId | `string \| undefined` | no | — |  |
+| height | `number` | yes | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| inverted | `boolean \| undefined` | no | — |  |
+| items | `readonly SpatialGridItem[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onActivation | `(id: string) => void \| undefined` | no | — |  |
+| onFocusChange | `(id: string) => void \| undefined` | no | — |  |
+| onSelectionChange | `(id: string) => void \| undefined` | no | — |  |
+| onViewportChange | `(viewport: GridViewport) => void \| undefined` | no | — |  |
+| onVisibleItemIdsChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
+| overscanPixels | `number \| undefined` | no | — |  |
+| readOnly | `boolean \| undefined` | no | `false` |  |
+| renderItem | `(item: SpatialGridItem, state: SpatialGridItemState) => React.ReactNode` | yes | — |  |
+| revealPaddingPixels | `number \| undefined` | no | — |  |
+| selectedItemId | `string \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `ZoraThemeId \| undefined` | no | — |  |
+| width | `number` | yes | — |  |
+| zoom | `number \| undefined` | no | — |  |
+
 ## Surface
 
 Source: `src/features/surface/adapters/inbound/Surface.tsx:8:14`

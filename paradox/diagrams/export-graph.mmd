@@ -361,6 +361,10 @@ graph LR
   module_src_features_skeleton_adapters_inbound_SkeletonText_tsx["src/features/skeleton/adapters/inbound/SkeletonText.tsx"]
   module_src_features_skeleton_public_ts["src/features/skeleton/public.ts"]
   module_src_features_skeleton_skeletonMeta_ts["src/features/skeleton/skeletonMeta.ts"]
+  module_src_features_spatial_grid_adapters_inbound_SpatialGrid_tsx["src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx"]
+  module_src_features_spatial_grid_application_sortSpatialGridItems_ts["src/features/spatial-grid/application/sortSpatialGridItems.ts"]
+  module_src_features_spatial_grid_meta_ts["src/features/spatial-grid/meta.ts"]
+  module_src_features_spatial_grid_public_ts["src/features/spatial-grid/public.ts"]
   module_src_features_surface_adapters_inbound_Surface_tsx["src/features/surface/adapters/inbound/Surface.tsx"]
   module_src_features_surface_public_ts["src/features/surface/public.ts"]
   module_src_features_surface_surfaceMeta_ts["src/features/surface/surfaceMeta.ts"]
@@ -530,6 +534,7 @@ graph LR
   module_src_types_select_ts["src/types/select.ts"]
   module_src_types_selection_ts["src/types/selection.ts"]
   module_src_types_skeleton_ts["src/types/skeleton.ts"]
+  module_src_types_spatial_grid_ts["src/types/spatial-grid.ts"]
   module_src_types_surface_ts["src/types/surface.ts"]
   module_src_types_switch_ts["src/types/switch.ts"]
   module_src_types_tabletop_ts["src/types/tabletop.ts"]
@@ -1537,6 +1542,18 @@ graph LR
   export_SkeletonTextProps["SkeletonTextProps"]
   module_src_types_skeleton_ts --> export_SkeletonTextProps
   export_SkeletonTextProps -.-> export_ZoraThemeMode
+  export_SpatialGrid["SpatialGrid"]
+  module_src_features_spatial_grid_adapters_inbound_SpatialGrid_tsx --> export_SpatialGrid
+  export_SpatialGrid -.-> export_SpatialGridProps
+  export_SpatialGridItem["SpatialGridItem"]
+  module_src_types_spatial_grid_ts --> export_SpatialGridItem
+  export_SpatialGridItemState["SpatialGridItemState"]
+  module_src_types_spatial_grid_ts --> export_SpatialGridItemState
+  export_SpatialGridProps["SpatialGridProps"]
+  module_src_types_spatial_grid_ts --> export_SpatialGridProps
+  export_SpatialGridProps -.-> export_SpatialGridItem
+  export_SpatialGridProps -.-> export_SpatialGridItemState
+  export_SpatialGridProps -.-> export_ZoraThemeMode
   export_Surface["Surface"]
   module_src_features_surface_adapters_inbound_Surface_tsx --> export_Surface
   export_SurfaceImageSource["SurfaceImageSource"]

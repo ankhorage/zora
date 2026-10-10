@@ -5655,6 +5655,127 @@ Source: `src/types/skeleton.ts:14:1`
 | themeId | property | `string \| undefined` | no |  |
 | width | property | `import("@ankhorage/surface").Responsive<string \| number> \| undefined` | no |  |
 
+## SpatialGrid
+
+Kind: `function`
+Module: `src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx`
+Source: `src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx:9:1`
+
+### Signatures
+
+- `({
+  items,
+  contentWidth,
+  contentHeight,
+  width,
+  height,
+  zoom,
+  overscanPixels,
+  selectedItemId,
+  focusedItemId,
+  revealPaddingPixels,
+  disabled = false,
+  readOnly = false,
+  interactionPolicy,
+  onSelectionChange,
+  onActivation,
+  onFocusChange,
+  onViewportChange,
+  onVisibleItemIdsChange,
+  renderItem,
+  testID,
+}: SpatialGridProps) => React.JSX.Element`
+  - {
+  items,
+  contentWidth,
+  contentHeight,
+  width,
+  height,
+  zoom,
+  overscanPixels,
+  selectedItemId,
+  focusedItemId,
+  revealPaddingPixels,
+  disabled = false,
+  readOnly = false,
+  interactionPolicy,
+  onSelectionChange,
+  onActivation,
+  onFocusChange,
+  onViewportChange,
+  onVisibleItemIdsChange,
+  renderItem,
+  testID,
+}: `SpatialGridProps`
+  - returns: `React.JSX.Element`
+
+## SpatialGridItem
+
+Kind: `type`
+Module: `src/types/spatial-grid.ts`
+Source: `src/types/spatial-grid.ts:7:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| height | property | `number` | yes |  |
+| id | property | `string` | yes |  |
+| width | property | `number` | yes |  |
+| x | property | `number` | yes |  |
+| y | property | `number` | yes |  |
+| zIndex | property | `number \| undefined` | no |  |
+
+## SpatialGridItemState
+
+Kind: `type`
+Module: `src/types/spatial-grid.ts`
+Source: `src/types/spatial-grid.ts:17:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean` | yes |  |
+| focused | property | `boolean` | yes |  |
+| selected | property | `boolean` | yes |  |
+
+## SpatialGridProps
+
+Kind: `type`
+Module: `src/types/spatial-grid.ts`
+Source: `src/types/spatial-grid.ts:24:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| contentHeight | property | `number` | yes |  |
+| contentWidth | property | `number` | yes |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| focusedItemId | property | `string \| undefined` | no |  |
+| height | property | `number` | yes |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| items | property | `readonly SpatialGridItem[]` | yes |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onActivation | property | `((id: string) => void) \| undefined` | no |  |
+| onFocusChange | property | `((id: string) => void) \| undefined` | no |  |
+| onSelectionChange | property | `((id: string) => void) \| undefined` | no |  |
+| onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
+| onVisibleItemIdsChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
+| overscanPixels | property | `number \| undefined` | no |  |
+| readOnly | property | `boolean \| undefined` | no |  |
+| renderItem | property | `(item: SpatialGridItem, state: SpatialGridItemState) => React.ReactNode` | yes |  |
+| revealPaddingPixels | property | `number \| undefined` | no |  |
+| selectedItemId | property | `string \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| width | property | `number` | yes |  |
+| zoom | property | `number \| undefined` | no |  |
+
 ## Surface
 
 Kind: `value`
@@ -7052,13 +7173,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:112:14`
+Source: `src/features/registry/componentMeta.ts:113:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:229:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:231:14`
 
 ## ZORA_EMPHASES
 

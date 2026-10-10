@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.4.0
+
+### Minor Changes
+
+- 1a3af1d: Add a virtualized SpatialGrid for accessible free-placement boards.
+
 ## 25.3.0
 
 ### Minor Changes

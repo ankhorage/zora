@@ -24413,6 +24413,355 @@
     "structuredRows": []
   },
   {
+    "name": "SpatialGrid",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/spatial-grid/adapters/inbound/SpatialGrid.tsx",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SpatialGridProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom,\n  overscanPixels,\n  selectedItemId,\n  focusedItemId,\n  revealPaddingPixels,\n  disabled = false,\n  readOnly = false,\n  interactionPolicy,\n  onSelectionChange,\n  onActivation,\n  onFocusChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: SpatialGridProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom,\n  overscanPixels,\n  selectedItemId,\n  focusedItemId,\n  revealPaddingPixels,\n  disabled = false,\n  readOnly = false,\n  interactionPolicy,\n  onSelectionChange,\n  onActivation,\n  onFocusChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
+            "type": "SpatialGridProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SpatialGridItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/spatial-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/spatial-grid.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "zIndex",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "SpatialGridItemState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/spatial-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/spatial-grid.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "focused",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selected",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "SpatialGridProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/spatial-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/spatial-grid.ts",
+      "line": 24,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SpatialGridItem",
+      "SpatialGridItemState",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "contentHeight",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "contentWidth",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "focusedItemId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly SpatialGridItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onActivation",
+        "kind": "property",
+        "type": "((id: string) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onFocusChange",
+        "kind": "property",
+        "type": "((id: string) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSelectionChange",
+        "kind": "property",
+        "type": "((id: string) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onViewportChange",
+        "kind": "property",
+        "type": "((viewport: GridViewport) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onVisibleItemIdsChange",
+        "kind": "property",
+        "type": "((ids: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overscanPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderItem",
+        "kind": "property",
+        "type": "(item: SpatialGridItem, state: SpatialGridItemState) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "revealPaddingPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedItemId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "zoom",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Surface",
     "title": null,
     "description": "Adapts the themed Surface Surface primitive to ZORA scope and interaction props.",
@@ -30348,7 +30697,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 112,
+      "line": 113,
       "column": 14
     },
     "exportPaths": [
@@ -30370,7 +30719,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 229,
+      "line": 231,
       "column": 14
     },
     "exportPaths": [
