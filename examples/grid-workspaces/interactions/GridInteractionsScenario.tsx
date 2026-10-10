@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const viewport = {
+const initialViewport = {
   height: 320,
   offsetX: 0,
   offsetY: 0,
@@ -47,20 +47,23 @@ function hasGridInteractions(value: object): value is GridInteractionsComponents
 function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInteractionsComponents) {
   const [items, setItems] = React.useState<readonly GridInteractionItem[]>(initialItems);
   const [intent, setIntent] = React.useState<GridInteractionIntent | undefined>();
+  const [viewport, setViewport] = React.useState(initialViewport);
 
   const handleIntent = (nextIntent: GridInteractionIntent) => {
     setIntent(nextIntent);
-    if (nextIntent.rects === undefined) return;
-    setItems((currentItems) =>
-      currentItems.map((item) => nextIntent.rects?.find((rect) => rect.id === item.id) ?? item),
-    );
+    if (nextIntent.rects !== undefined) {
+      setItems((currentItems) =>
+        currentItems.map((item) => nextIntent.rects?.find((rect) => rect.id === item.id) ?? item),
+      );
+    }
+    if (nextIntent.viewport !== undefined) setViewport(nextIntent.viewport);
   };
 
   return (
     <View>
       <Text>
-        Drag an item to move it, drag empty space to marquee-select, or use arrow keys to move the
-        selected item. Hold Alt with arrow keys to resize it.
+        Drag an item to move it, drag empty space to marquee-select, hold Space while dragging to
+        pan, or use arrow keys to move the selected item. Hold Alt with arrow keys to resize it.
       </Text>
       <GridInteractions
         items={items}
@@ -105,6 +108,7 @@ interface GridInteractionsComponents {
 interface GridInteractionIntent {
   readonly itemIds: readonly string[];
   readonly rects?: readonly GridInteractionItem[];
+  readonly viewport?: typeof initialViewport;
 }
 
 interface GridInteractionItem {
@@ -119,6 +123,6 @@ interface GridInteractionsScenarioProps {
   readonly children: React.ReactNode;
   readonly items: readonly GridInteractionItem[];
   readonly selectedIds: readonly string[] | undefined;
-  readonly viewport: typeof viewport;
+  readonly viewport: typeof initialViewport;
   readonly onIntent: (intent: GridInteractionIntent) => void;
 }
