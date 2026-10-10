@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.3.0
+
+### Minor Changes
+
+- 380050f: Add passive, viewport-projected rulers, grid lines, and accessible world-space guides.
+
 ## 25.2.1
 
 ### Patch Changes

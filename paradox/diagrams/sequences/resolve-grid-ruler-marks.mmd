@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_getAxisCategoryTicks as getAxisCategoryTicks
+  participant participant_getAxisTicks as getAxisTicks
+  participant participant_resolveGridRulerMarks as resolveGridRulerMarks
+  participant_resolveGridRulerMarks->>participant_getAxisCategoryTicks: getAxisCategoryTicks()
+  participant_getAxisCategoryTicks-->>participant_resolveGridRulerMarks: return
+  participant_resolveGridRulerMarks->>participant_getAxisTicks: getAxisTicks()
+  participant_getAxisTicks-->>participant_resolveGridRulerMarks: return

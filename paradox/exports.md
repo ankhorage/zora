@@ -2788,6 +2788,51 @@ Source: `src/features/layout/adapters/inbound/Grid.tsx:8:14`
 
 Adapts the themed Surface Grid primitive to ZORA scope and interaction props.
 
+## GridGuide
+
+Kind: `type`
+Module: `src/types/grid-rulers.ts`
+Source: `src/types/grid-rulers.ts:30:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| axis | property | `GridAxisName` | yes |  |
+| id | property | `string` | yes |  |
+| label | property | `string \| undefined` | no |  |
+| position | property | `number` | yes |  |
+
+## GridLineOverlay
+
+Kind: `value`
+Module: `src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx`
+Source: `src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx:123:14`
+
+A reusable passive world-space grid and guide overlay.
+
+## GridLineOverlayProps
+
+Kind: `type`
+Module: `src/types/grid-rulers.ts`
+Source: `src/types/grid-rulers.ts:51:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| direction | property | `"ltr" \| "rtl" \| undefined` | no |  |
+| guides | property | `readonly GridGuide[] \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| viewport | property | `GridViewport` | yes |  |
+| xTickSource | property | `GridRulerTickSource \| undefined` | no |  |
+| yTickSource | property | `GridRulerTickSource \| undefined` | no |  |
+
 ## GridProps
 
 Kind: `type`
@@ -2859,6 +2904,60 @@ Source: `src/types/layout.ts:18:1`
 | width | property | `Responsive<string \| number> \| undefined` | no |  |
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |
+
+## GridRuler
+
+Kind: `value`
+Module: `src/features/grid-rulers/adapters/inbound/GridRuler.tsx`
+Source: `src/features/grid-rulers/adapters/inbound/GridRuler.tsx:96:14`
+
+A reusable passive horizontal or vertical world-space ruler.
+
+## GridRulerMark
+
+Kind: `type`
+Module: `src/types/grid-rulers.ts`
+Source: `src/types/grid-rulers.ts:22:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| categoryId | property | `string \| undefined` | no |  |
+| label | property | `string \| undefined` | no |  |
+| level | property | `"major" \| "minor"` | yes |  |
+| position | property | `number` | yes |  |
+
+## GridRulerProps
+
+Kind: `type`
+Module: `src/types/grid-rulers.ts`
+Source: `src/types/grid-rulers.ts:38:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| axis | property | `GridAxisName` | yes |  |
+| direction | property | `"ltr" \| "rtl" \| undefined` | no |  |
+| formatLabel | property | `((tick: GridAxisTick) => string \| undefined) \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| offset | property | `number \| undefined` | no |  |
+| position | property | `"start" \| "end" \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| thickness | property | `number \| undefined` | no |  |
+| tickSource | property | `GridRulerTickSource` | yes |  |
+| viewport | property | `GridViewport` | yes |  |
+
+## GridRulerTickSource
+
+Kind: `unknown`
+Module: `src/types/grid-rulers.ts`
+Source: `src/types/grid-rulers.ts:13:1`
 
 ## GridView
 
@@ -4731,6 +4830,24 @@ Range may replace or extend a multi-selection, but never affects the underlying 
   - orderedIds: `readonly string[]`
   - targetId: `string`
   - returns: `readonly string[]`
+
+## resolveGridRulerMarks
+
+Kind: `function`
+Module: `src/features/grid-rulers/application/resolveGridRulerMarks.ts`
+Source: `src/features/grid-rulers/application/resolveGridRulerMarks.ts:13:1`
+
+Resolves bounded engine ticks into viewport-pixel ruler marks without changing interaction state.
+
+### Signatures
+
+- `(viewport: GridViewport, axis: GridAxisName, tickSource: GridRulerTickSource, formatLabel?: ((tick: GridAxisTick) => string | undefined) | undefined, direction?: "ltr" | "rtl") => readonly GridRulerMark[]`
+  - axis: `GridAxisName`
+  - direction: `"ltr" | "rtl"` (optional)
+  - formatLabel: `((tick: GridAxisTick) => string | undefined) | undefined` (optional)
+  - tickSource: `GridRulerTickSource`
+  - viewport: `GridViewport`
+  - returns: `readonly GridRulerMark[]`
 
 ## resolveOAuthProviderIcon
 
@@ -6935,13 +7052,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:111:14`
+Source: `src/features/registry/componentMeta.ts:112:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:226:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:229:14`
 
 ## ZORA_EMPHASES
 

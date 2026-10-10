@@ -1060,6 +1060,30 @@ graph TD
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_public_ts["src/features/graph-view/public.ts"]
   package__ankhorage_zora -.-> module_src_features_graph_view_public_ts
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx["src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> module_src_features_grid_rulers_application_projectGridRulerPosition_ts
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> module_src_features_grid_rulers_application_resolveGridRulerMarks_ts
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> module_src_types_grid_rulers_ts
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx["src/features/grid-rulers/adapters/inbound/GridRuler.tsx"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx --> module_src_features_grid_rulers_application_resolveGridRulerMarks_ts
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx --> module_src_types_grid_rulers_ts
+  module_src_features_grid_rulers_application_projectGridRulerPosition_ts["src/features/grid-rulers/application/projectGridRulerPosition.ts"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_application_projectGridRulerPosition_ts
+  module_src_features_grid_rulers_application_resolveGridRulerMarks_ts["src/features/grid-rulers/application/resolveGridRulerMarks.ts"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_application_resolveGridRulerMarks_ts
+  module_src_features_grid_rulers_application_resolveGridRulerMarks_ts --> module_src_features_grid_rulers_application_projectGridRulerPosition_ts
+  module_src_features_grid_rulers_application_resolveGridRulerMarks_ts --> module_src_types_grid_rulers_ts
+  module_src_features_grid_rulers_meta_ts["src/features/grid-rulers/meta.ts"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_meta_ts
+  module_src_features_grid_rulers_meta_ts --> module_src_types_authoring_ts
+  module_src_features_grid_rulers_public_ts["src/features/grid-rulers/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_grid_rulers_public_ts
   module_src_features_grid_view_adapters_inbound_GridView_tsx["src/features/grid-view/adapters/inbound/GridView.tsx"]
   package__ankhorage_zora -.-> module_src_features_grid_view_adapters_inbound_GridView_tsx
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_grid_view_ts
@@ -1441,6 +1465,7 @@ graph TD
   module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_game_meta_gameOverlayMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_gradient_gradientMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_grid_rulers_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_grid_view_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_hero_heroMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_icon_iconMeta_ts
@@ -1537,6 +1562,7 @@ graph TD
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_form_text_input_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_game_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_gradient_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_grid_rulers_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_grid_view_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_hero_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_icon_public_ts
@@ -2210,6 +2236,9 @@ graph TD
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
   package__ankhorage_zora -.-> module_src_types_graphViewRuntime_ts
   module_src_types_graphViewRuntime_ts --> module_src_types_graph_view_ts
+  module_src_types_grid_rulers_ts["src/types/grid-rulers.ts"]
+  package__ankhorage_zora -.-> module_src_types_grid_rulers_ts
+  module_src_types_grid_rulers_ts --> module_src_types_base_ts
   module_src_types_grid_view_ts["src/types/grid-view.ts"]
   package__ankhorage_zora -.-> module_src_types_grid_view_ts
   module_src_types_grid_view_ts --> module_src_types_base_ts

@@ -248,6 +248,12 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts["src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts["src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"]
   module_src_features_graph_view_public_ts["src/features/graph-view/public.ts"]
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx["src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx"]
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx["src/features/grid-rulers/adapters/inbound/GridRuler.tsx"]
+  module_src_features_grid_rulers_application_projectGridRulerPosition_ts["src/features/grid-rulers/application/projectGridRulerPosition.ts"]
+  module_src_features_grid_rulers_application_resolveGridRulerMarks_ts["src/features/grid-rulers/application/resolveGridRulerMarks.ts"]
+  module_src_features_grid_rulers_meta_ts["src/features/grid-rulers/meta.ts"]
+  module_src_features_grid_rulers_public_ts["src/features/grid-rulers/public.ts"]
   module_src_features_grid_view_adapters_inbound_GridView_tsx["src/features/grid-view/adapters/inbound/GridView.tsx"]
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx["src/features/grid-view/adapters/inbound/TileGrid.tsx"]
   module_src_features_grid_view_application_layoutTileGrid_ts["src/features/grid-view/application/layoutTileGrid.ts"]
@@ -492,6 +498,7 @@ graph LR
   module_src_types_graph_view_spacing_ts["src/types/graph-view-spacing.ts"]
   module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
+  module_src_types_grid_rulers_ts["src/types/grid-rulers.ts"]
   module_src_types_grid_view_ts["src/types/grid-view.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
   module_src_types_hero_ts["src/types/hero.ts"]
@@ -1042,9 +1049,28 @@ graph LR
   export_GradientRendererProviderProps -.-> export_GradientRenderer
   export_Grid["Grid"]
   module_src_features_layout_adapters_inbound_Grid_tsx --> export_Grid
+  export_GridGuide["GridGuide"]
+  module_src_types_grid_rulers_ts --> export_GridGuide
+  export_GridLineOverlay["GridLineOverlay"]
+  module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> export_GridLineOverlay
+  export_GridLineOverlayProps["GridLineOverlayProps"]
+  module_src_types_grid_rulers_ts --> export_GridLineOverlayProps
+  export_GridLineOverlayProps -.-> export_GridGuide
+  export_GridLineOverlayProps -.-> export_GridRulerTickSource
+  export_GridLineOverlayProps -.-> export_ZoraThemeMode
   export_GridProps["GridProps"]
   module_src_types_layout_ts --> export_GridProps
   export_GridProps -.-> export_ZoraThemeMode
+  export_GridRuler["GridRuler"]
+  module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx --> export_GridRuler
+  export_GridRulerMark["GridRulerMark"]
+  module_src_types_grid_rulers_ts --> export_GridRulerMark
+  export_GridRulerProps["GridRulerProps"]
+  module_src_types_grid_rulers_ts --> export_GridRulerProps
+  export_GridRulerProps -.-> export_GridRulerTickSource
+  export_GridRulerProps -.-> export_ZoraThemeMode
+  export_GridRulerTickSource["GridRulerTickSource"]
+  module_src_types_grid_rulers_ts --> export_GridRulerTickSource
   export_GridView["GridView"]
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> export_GridView
   export_GridView -.-> export_GridViewProps
@@ -1388,6 +1414,10 @@ graph LR
   export_resolveExplorerSelection["resolveExplorerSelection"]
   module_src_features_explorer_application_resolveExplorerSelection_ts --> export_resolveExplorerSelection
   export_resolveExplorerSelection -.-> export_ExplorerSelectionMode
+  export_resolveGridRulerMarks["resolveGridRulerMarks"]
+  module_src_features_grid_rulers_application_resolveGridRulerMarks_ts --> export_resolveGridRulerMarks
+  export_resolveGridRulerMarks -.-> export_GridRulerMark
+  export_resolveGridRulerMarks -.-> export_GridRulerTickSource
   export_resolveOAuthProviderIcon["resolveOAuthProviderIcon"]
   module_src_features_auth_utils_oauthProviders_ts --> export_resolveOAuthProviderIcon
   export_resolveOAuthProviderLabel["resolveOAuthProviderLabel"]
