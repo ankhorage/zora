@@ -17,4 +17,16 @@ describe('resolveMatrixGridContentSize', () => {
       }),
     ).toEqual({ height: 60, width: 100 });
   });
+
+  test('rejects non-finite cumulative axis geometry through the published grid-view contract', () => {
+    expect(() =>
+      resolveMatrixGridContentSize({
+        columns: [
+          { id: 'left', size: Number.MAX_VALUE },
+          { id: 'right', size: Number.MAX_VALUE },
+        ],
+        rows: [{ id: 'row', size: 1 }],
+      }),
+    ).toThrow('Layout axis cumulative world coordinates must be finite.');
+  });
 });
