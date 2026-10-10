@@ -10,8 +10,6 @@ import {
 } from '@ankhorage/zora';
 import React from 'react';
 
-import { GridRulersScenario } from './GridRulersScenario';
-
 const mediaItems = Array.from({ length: 10000 }, (_, index) => ({
   id: `media-${index}`,
   kind: index % 5 === 0 ? ('video' as const) : ('image' as const),
@@ -73,9 +71,6 @@ export default function App() {
       </ScreenSection>
       <ScreenSection title="File workspace">
         <FileExplorer items={fileItems} selectionMode="multi" />
-      </ScreenSection>
-      <ScreenSection title="Grid rulers">
-        <GridRulersScenario />
       </ScreenSection>
       <ScreenSection title="Uploader">
         <Uploader
