@@ -211,7 +211,7 @@ test('proposes an uncontrolled horizontal pan in world units while retaining ind
       viewport.scrollLeft = 40;
       await act(async () => {
         viewport.dispatchEvent(new browser.Event('scroll', { bubbles: true }));
-        await new Promise<void>((resolve) => browser.setTimeout(resolve, 0));
+        await new Promise<void>((resolve) => browser.setTimeout(resolve, 200));
       });
       expect(proposals).toEqual([
         {
