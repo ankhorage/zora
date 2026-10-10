@@ -63,4 +63,9 @@ describe('src ownership', () => {
       expect(existsSync(path), path).toBe(false);
     }
   });
+
+  test('keeps event capability projection with the registry metadata owner', () => {
+    expect(existsSync('src/features/registry/createEventCapabilities.ts')).toBe(true);
+    expect(existsSync('src/capabilities/createEventCapabilities.ts')).toBe(false);
+  });
 });

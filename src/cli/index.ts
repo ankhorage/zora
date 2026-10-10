@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type { AnkhRuntimeCommandProvider } from '@ankhorage/ankh';
-import type { Capability } from '@ankhorage/contracts/capabilities';
+import type { Capability } from '@ankhorage/contracts/capability';
 
 import { CAPABILITIES } from '../capabilities';
 import { create } from './commands/create';
@@ -19,12 +19,15 @@ const SYNC_COMMAND = {
   capability: 'zora.sync' satisfies Capability['id'],
   summary: 'Regenerate the declared ZORA web materialization.',
 } as const;
+const COMMAND_CAPABILITIES = CAPABILITIES.filter((capability) =>
+  capability.access.includes('invoke'),
+);
 
 const provider = {
   id: '@ankhorage/zora',
   category: 'zora',
   version: readPackageVersion(),
-  capabilities: CAPABILITIES,
+  capabilities: COMMAND_CAPABILITIES,
   commands: [CREATE_COMMAND, SYNC_COMMAND],
   handlers: [
     {

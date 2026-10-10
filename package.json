@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "25.7.0",
+  "version": "25.5.0",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -41,8 +41,9 @@
   },
   "dependencies": {
     "@ankhorage/ankh": "^0.13.0",
+    "@ankhorage/capability": "^0.2.1",
     "@ankhorage/color-theory": "^0.3.1",
-    "@ankhorage/contracts": "^24.2.1",
+    "@ankhorage/contracts": "^25.1.0",
     "@ankhorage/game": "^0.1.2",
     "@ankhorage/grid-view": "^0.5.0",
     "@ankhorage/reader": "^0.1.0",
@@ -132,7 +133,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.3.10",
+    "@ankhorage/devtools": "^2.3.12",
     "@ankhorage/paradox": "^0.3.1",
     "@react-native-vector-icons/fontawesome": "^13.1.4",
     "@react-native-vector-icons/fontawesome5": "^13.1.4",
@@ -251,6 +252,1823 @@
               }
             },
             "additionalProperties": false
+          }
+        }
+      },
+      {
+        "id": "authScreen.modeChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Mode change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "authScreen.oauthProviderPress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "OAuth provider press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "providerId": {
+                "type": "string",
+                "title": "Provider ID"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "authScreen.signInSubmit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sign-in submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "title": "Identifier"
+              },
+              "identifierKind": {
+                "type": "string",
+                "title": "Identifier kind"
+              },
+              "secret": {
+                "type": "string",
+                "title": "Secret"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "authScreen.signUpSubmit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sign-up submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "values": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Values"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bottomSheet.dismiss",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Dismiss",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "bottomSheet.indexChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Index change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "breadcrumbs.itemPress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Item press",
+        "description": "Emitted when a non-current breadcrumb item is pressed.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Item id"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "button.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "description": "Emitted when the button action runs.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "card.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "checkbox.checkedChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Checked change",
+        "description": "Emitted when the checked state changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "checked": {
+                "type": "boolean",
+                "title": "Checked"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chess.invalidMove",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Invalid move",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string",
+                "title": "From"
+              },
+              "to": {
+                "type": "string",
+                "title": "To"
+              },
+              "promotion": {
+                "type": "string",
+                "title": "Promotion"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chess.legalMove",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Legal move",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string",
+                "title": "From"
+              },
+              "to": {
+                "type": "string",
+                "title": "To"
+              },
+              "fen": {
+                "type": "string",
+                "title": "Position"
+              },
+              "san": {
+                "type": "string",
+                "title": "SAN"
+              },
+              "lan": {
+                "type": "string",
+                "title": "LAN"
+              },
+              "promotion": {
+                "type": "string",
+                "title": "Promotion"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chess.moveAttempt",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Move attempt",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string",
+                "title": "From"
+              },
+              "to": {
+                "type": "string",
+                "title": "To"
+              },
+              "promotion": {
+                "type": "string",
+                "title": "Promotion"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chess.openingMovePress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Move press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "san": {
+                "type": "string",
+                "title": "SAN"
+              },
+              "uci": {
+                "type": "string",
+                "title": "UCI"
+              },
+              "fen": {
+                "type": "string",
+                "title": "Position"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chess.squarePress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Square press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "square": {
+                "type": "string",
+                "title": "Square"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "chip.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "chipGroup.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Selection change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "contentRail.controlPress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Control press",
+        "description": "Emitted after a previous or next control requests a target item.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "direction": {
+                "type": "string",
+                "title": "Direction"
+              },
+              "targetIndex": {
+                "type": "number",
+                "title": "Target index"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "contentRail.visibleRangeChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Visible range change",
+        "description": "Emitted when the zero-based visible item range changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstVisibleIndex": {
+                "type": "number",
+                "title": "First visible index"
+              },
+              "lastVisibleIndex": {
+                "type": "number",
+                "title": "Last visible index"
+              },
+              "itemCount": {
+                "type": "number",
+                "title": "Item count"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dataTable.sortChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sort change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "columnId": {
+                "type": "string"
+              },
+              "direction": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "datePicker.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "description": "Emitted when a local calendar date is selected.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dialog.dismiss",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Dismiss",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "explorer.activate",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Activate item",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "explorer.loadMore",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Load more",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "loadedItemCount": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "explorer.requestPermission",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Request permission",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "explorer.selectionChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Selection change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "selectedIds": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "flatList.endReached",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "End reached",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "distanceFromEnd": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "flatList.refresh",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Refresh",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "flatList.visibleItemsChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Visible items change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "keys": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "forgotPasswordForm.signIn",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sign in",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "forgotPasswordForm.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "title": "Identifier"
+              },
+              "identifierKind": {
+                "type": "string",
+                "title": "Identifier kind"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "form.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "description": "Emitted when the form is submitted.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "game.output",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Game output",
+        "description": "Emitted when the platform-neutral game runtime produces an app/domain output.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "iconButton.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "mediaCard.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "metricCard.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "oauthProviderButton.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "providerId": {
+                "type": "string",
+                "title": "Provider ID"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "oauthProviderList.providerPress",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Provider press",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "providerId": {
+                "type": "string",
+                "title": "Provider ID"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "otpForm.resend",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Resend",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "otpForm.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "otp": {
+                "type": "string",
+                "title": "One-time passcode"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pagination.pageChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Page change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "number",
+                "title": "Page"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "productCard.press",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Press",
+        "description": "Emitted when the product card is pressed.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "productCard.primaryAction",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Primary action",
+        "description": "Emitted when the primary product card action is pressed.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "productCard.secondaryAction",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Secondary action",
+        "description": "Emitted when the secondary product card action is pressed.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "radioGroup.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "description": "Emitted when the selected radio value changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "reader.error",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Reader error",
+        "description": "Emitted when the adapter rejects or cannot load a document.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "title": "Error code"
+              },
+              "format": {
+                "type": "string",
+                "title": "Format"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "reader.locationChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Location change",
+        "description": "Emitted by the adapter after the destination has been displayed.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "type": "string",
+                "title": "Format"
+              },
+              "locator": {
+                "type": "string",
+                "title": "Opaque locator"
+              },
+              "page": {
+                "type": "number",
+                "title": "Page"
+              },
+              "pageCount": {
+                "type": "number",
+                "title": "Page count"
+              },
+              "progression": {
+                "type": "number",
+                "title": "Progression"
+              },
+              "chapterId": {
+                "type": "string",
+                "title": "Chapter ID"
+              },
+              "chapterTitle": {
+                "type": "string",
+                "title": "Chapter title"
+              },
+              "trigger": {
+                "type": "string",
+                "title": "Navigation trigger"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "reader.nextPage",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Next page",
+        "description": "Requests navigation to the next page.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "reader.openAppearance",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Open appearance",
+        "description": "Requests the app-owned reader appearance controls.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "reader.openContents",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Open contents",
+        "description": "Requests the app-owned table of contents.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "reader.openExternalLink",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Open external link",
+        "description": "Emitted when publication content requests an external URL.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "reader.previousPage",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Previous page",
+        "description": "Requests navigation to the previous page.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "reader.toggleHighlight",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Toggle highlight",
+        "description": "Requests the app-owned highlight action.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "searchInput.clear",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Clear",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "searchInput.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "searchInput.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "sectionList.endReached",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "End reached",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "distanceFromEnd": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "sectionList.refresh",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Refresh",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "sectionList.visibleItemsChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Visible items change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "keys": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "select.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "description": "Emitted when the selected option value changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "signInForm.forgotPassword",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Forgot password",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "signInForm.signUp",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sign up",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "signInForm.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "title": "Identifier"
+              },
+              "identifierKind": {
+                "type": "string",
+                "title": "Identifier kind"
+              },
+              "secret": {
+                "type": "string",
+                "title": "Secret"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "signUpForm.signIn",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Sign in",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      {
+        "id": "signUpForm.submit",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Submit",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "values": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Values"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "switch.checkedChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Checked change",
+        "description": "Emitted when the checked state changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "checked": {
+                "type": "boolean",
+                "title": "Checked"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "tabs.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "textInput.changeText",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Change text",
+        "description": "Emitted when the input value changes.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "timePicker.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "description": "Emitted when an HH:mm time value is selected.",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "title": "Value"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "uploader.removeRequest",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Remove request",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "uploader.uploadRequest",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Upload request",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "uploader.validationError",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Validation error",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "uploader.valueChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Value change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "object"
+              }
+            }
           }
         }
       }

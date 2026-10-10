@@ -1,4 +1,6 @@
-import type { Capability } from '@ankhorage/contracts/capabilities';
+import type { Capability } from '@ankhorage/contracts/capability';
+
+import { createEventCapabilities } from '../features/registry/createEventCapabilities';
 
 export const CAPABILITIES = [
   {
@@ -60,4 +62,5 @@ export const CAPABILITIES = [
       },
     },
   },
-] as const satisfies readonly Capability[];
+  ...createEventCapabilities(),
+] satisfies readonly Capability[];

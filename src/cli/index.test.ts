@@ -6,7 +6,9 @@ import provider from './index';
 test('publishes ZORA create and sync through the Ankh provider', () => {
   expect(provider.id).toBe('@ankhorage/zora');
   expect(provider.category).toBe('zora');
-  expect(provider.capabilities).toBe(CAPABILITIES);
+  expect(provider.capabilities).toEqual(
+    CAPABILITIES.filter((capability) => capability.access.includes('invoke')),
+  );
   expect(provider.commands).toEqual([
     {
       path: ['create'],
@@ -24,9 +26,9 @@ test('publishes ZORA create and sync through the Ankh provider', () => {
   expect(provider.handlers[1]?.path).toEqual(['sync']);
 });
 
-test('maps every provider command to one canonical capability independent of catalog order', () => {
+test('maps every provider command to one executable canonical capability independent of catalog order', () => {
   const commandCapabilityIds = provider.commands.map((command) => command.capability);
-  const capabilityIds = CAPABILITIES.map((capability) => capability.id);
+  const capabilityIds = provider.capabilities.map((capability) => capability.id);
 
   expect(new Set(commandCapabilityIds).size).toBe(commandCapabilityIds.length);
   expect(new Set(commandCapabilityIds)).toEqual(new Set(capabilityIds));
