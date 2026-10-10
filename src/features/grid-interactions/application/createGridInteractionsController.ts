@@ -2,6 +2,7 @@ import {
   type GridPoint,
   type GridRect,
   type GridResizeHandle,
+  type GridViewport,
   hitTestWorldRects,
   moveWorldRects,
   panViewport,
@@ -21,12 +22,19 @@ import type {
 
 type InteractionState =
   | { readonly kind: 'idle' }
-  | { readonly kind: 'marquee'; readonly start: GridPoint }
-  | { readonly kind: 'pan'; readonly start: GridPoint }
-  | { readonly kind: 'move'; readonly start: GridPoint; readonly itemIds: readonly string[] }
+  | { readonly kind: 'marquee'; readonly start: GridPoint; readonly viewport: GridViewport }
+  | { readonly kind: 'pan'; readonly start: GridPoint; readonly viewport: GridViewport }
+  | {
+      readonly kind: 'move';
+      readonly start: GridPoint;
+      readonly viewport: GridViewport;
+      readonly itemIds: readonly string[];
+      readonly items: readonly GridInteractionItem[];
+    }
   | {
       readonly kind: 'resize';
       readonly start: GridPoint;
+      readonly viewport: GridViewport;
       readonly item: GridInteractionItem;
       readonly handle: GridResizeHandle;
     };
@@ -38,9 +46,9 @@ export function createGridInteractionsController(
   let currentProps = props;
   let state: InteractionState = { kind: 'idle' };
   let previousIntent: GridInteractionIntent | undefined;
-  const point = (pointer: GridInteractionPointer) =>
+  const point = (pointer: GridInteractionPointer, viewport = currentProps.viewport) =>
     Number.isFinite(pointer.x) && Number.isFinite(pointer.y)
-      ? viewportToWorld(pointer, currentProps.viewport)
+      ? viewportToWorld(pointer, viewport)
       : undefined;
   const emit = (intent: GridInteractionIntent) => {
     if (JSON.stringify(previousIntent) === JSON.stringify(intent)) return;
@@ -54,27 +62,33 @@ export function createGridInteractionsController(
       const start = point(pointer);
       if (start === undefined) return;
       if (pointer.spaceKey === true || pointer.altKey === true) {
-        state = { kind: 'pan', start };
+        state = { kind: 'pan', start, viewport: currentProps.viewport };
         return;
       }
       const target = hitTestWorldRects(currentProps.items, start);
       if (target === undefined || isProtected(target)) {
-        state = { kind: 'marquee', start };
+        state = { kind: 'marquee', start, viewport: currentProps.viewport };
         return;
       }
       if (handle !== undefined && target.resizable !== false) {
-        state = { kind: 'resize', start, item: target, handle };
+        state = { kind: 'resize', start, viewport: currentProps.viewport, item: target, handle };
         return;
       }
       const itemIds =
         currentProps.selectedIds?.includes(target.id) === true
           ? currentProps.selectedIds
           : [target.id];
-      state = { kind: 'move', start, itemIds };
+      state = {
+        kind: 'move',
+        start,
+        viewport: currentProps.viewport,
+        itemIds,
+        items: currentProps.items.filter((item) => itemIds.includes(item.id)),
+      };
     },
     move: (pointer) => {
       if (!canEdit(currentProps)) return;
-      const current = point(pointer);
+      const current = point(pointer, viewportForState(state, currentProps.viewport));
       if (current !== undefined) emitPreview(state, current, currentProps, emit);
     },
     end: (pointer) => {
@@ -82,7 +96,7 @@ export function createGridInteractionsController(
         state = { kind: 'idle' };
         return;
       }
-      const current = point(pointer);
+      const current = point(pointer, viewportForState(state, currentProps.viewport));
       if (current !== undefined) emitPreview(state, current, currentProps, emit);
       state = { kind: 'idle' };
     },
@@ -131,7 +145,7 @@ function emitPreview(
     emit({
       type: 'pan',
       itemIds: [],
-      viewport: panViewport(props.viewport, {
+      viewport: panViewport(state.viewport, {
         x: state.start.x - current.x,
         y: state.start.y - current.y,
       }),
@@ -151,8 +165,7 @@ function emitPreview(
   }
   const delta = resolveSnapDelta(state, current, props);
   if (state.kind === 'move') {
-    const selected = props.items.filter((item) => state.itemIds.includes(item.id));
-    emit({ type: 'move', itemIds: state.itemIds, rects: moveWorldRects(selected, delta) });
+    emit({ type: 'move', itemIds: state.itemIds, rects: moveWorldRects(state.items, delta) });
     return;
   }
   emit({
@@ -173,8 +186,7 @@ function resolveSnapDelta(
   }
   const raw = { x: current.x - state.start.x, y: current.y - state.start.y };
   if (props.snap?.enabled !== true) return raw;
-  const anchor =
-    state.kind === 'resize' ? state.item : props.items.find((item) => item.id === state.itemIds[0]);
+  const anchor = state.kind === 'resize' ? state.item : state.items.at(0);
   if (anchor === undefined) return raw;
   const options = {
     enabled: true,
@@ -193,6 +205,11 @@ function resolveSnapDelta(
         pixelsPerUnit: props.viewport.pixelsPerUnitY,
       }) - anchor.y,
   };
+}
+
+/*** Keep pointer coordinates in the original gesture coordinate space across controlled updates. */
+function viewportForState(state: InteractionState, fallback: GridViewport): GridViewport {
+  return state.kind === 'idle' ? fallback : state.viewport;
 }
 
 /*** Keep all caller-declared protected items out of selection and edit intents. */

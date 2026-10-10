@@ -112,4 +112,118 @@ describe('createGridInteractionsController', () => {
       { type: 'resize', itemIds: ['a'], rects: [{ id: 'a', x: 1, y: 1, width: 5, height: 4 }] },
     ]);
   });
+
+  test('does not compound controlled move previews or reapply the release endpoint', () => {
+    const intents: unknown[] = [];
+    const initialItems = [{ id: 'a', x: 40, y: 40, width: 20, height: 20 }];
+    const controller = createGridInteractionsController({
+      viewport,
+      items: initialItems,
+      onIntent: (intent) => intents.push(intent),
+    });
+
+    controller.begin({ x: 80, y: 160 });
+    controller.move({ x: 100, y: 160 });
+    controller.update({
+      viewport,
+      items: [{ id: 'a', x: 50, y: 40, width: 20, height: 20 }],
+      onIntent: (intent) => intents.push(intent),
+    });
+    controller.move({ x: 120, y: 160 });
+    controller.update({
+      viewport,
+      items: [{ id: 'a', x: 60, y: 40, width: 20, height: 20 }],
+      onIntent: (intent) => intents.push(intent),
+    });
+    controller.end({ x: 120, y: 160 });
+
+    expect(intents).toEqual([
+      { type: 'move', itemIds: ['a'], rects: [{ id: 'a', x: 50, y: 40, width: 20, height: 20 }] },
+      { type: 'move', itemIds: ['a'], rects: [{ id: 'a', x: 60, y: 40, width: 20, height: 20 }] },
+    ]);
+  });
+
+  test('keeps controlled resize, negative multi-item movement, cancel, and pan non-compounding', () => {
+    const resizeIntents: unknown[] = [];
+    const resizeController = createGridInteractionsController({
+      viewport,
+      items: [{ id: 'a', x: 40, y: 40, width: 20, height: 20 }],
+      onIntent: (intent) => resizeIntents.push(intent),
+    });
+
+    resizeController.begin({ x: 120, y: 240 }, 'bottom-right');
+    resizeController.move({ x: 140, y: 280 });
+    resizeController.update({
+      viewport,
+      items: [{ id: 'a', x: 40, y: 40, width: 30, height: 30 }],
+      onIntent: (intent) => resizeIntents.push(intent),
+    });
+    resizeController.move({ x: 160, y: 320 });
+    resizeController.update({
+      viewport,
+      items: [{ id: 'a', x: 40, y: 40, width: 40, height: 40 }],
+      onIntent: (intent) => resizeIntents.push(intent),
+    });
+    resizeController.end({ x: 160, y: 320 });
+
+    const moveIntents: unknown[] = [];
+    const moveController = createGridInteractionsController({
+      viewport,
+      items: [
+        { id: 'a', x: 40, y: 40, width: 20, height: 20 },
+        { id: 'b', x: 80, y: 40, width: 20, height: 20 },
+      ],
+      selectedIds: ['a', 'b'],
+      onIntent: (intent) => moveIntents.push(intent),
+    });
+
+    moveController.begin({ x: 80, y: 160 });
+    moveController.move({ x: 60, y: 120 });
+    moveController.cancel();
+    moveController.end({ x: 40, y: 80 });
+
+    const panIntents: unknown[] = [];
+    const panController = createGridInteractionsController({
+      viewport,
+      items: [],
+      onIntent: (intent) => panIntents.push(intent),
+    });
+
+    panController.begin({ x: 20, y: 40, spaceKey: true });
+    panController.move({ x: 40, y: 80 });
+    panController.update({
+      viewport: { ...viewport, offsetX: 5, offsetY: 2.5 },
+      items: [],
+      onIntent: (intent) => panIntents.push(intent),
+    });
+    panController.move({ x: 60, y: 120 });
+    panController.end({ x: 60, y: 120 });
+
+    expect(resizeIntents).toEqual([
+      { type: 'resize', itemIds: ['a'], rects: [{ id: 'a', x: 40, y: 40, width: 30, height: 30 }] },
+      { type: 'resize', itemIds: ['a'], rects: [{ id: 'a', x: 40, y: 40, width: 40, height: 40 }] },
+    ]);
+    expect(moveIntents).toEqual([
+      {
+        type: 'move',
+        itemIds: ['a', 'b'],
+        rects: [
+          { id: 'a', x: 30, y: 30, width: 20, height: 20 },
+          { id: 'b', x: 70, y: 30, width: 20, height: 20 },
+        ],
+      },
+    ]);
+    expect(panIntents).toEqual([
+      {
+        type: 'pan',
+        itemIds: [],
+        viewport: { ...viewport, offsetX: 5, offsetY: 2.5 },
+      },
+      {
+        type: 'pan',
+        itemIds: [],
+        viewport: { ...viewport, offsetX: 10, offsetY: 5 },
+      },
+    ]);
+  });
 });
