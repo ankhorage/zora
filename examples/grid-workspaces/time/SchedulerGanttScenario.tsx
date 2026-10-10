@@ -8,10 +8,14 @@ import {
 
 const HOUR = 60;
 
-const calendarDays = createCalendarAxis('2026-03-28', '2026-10-26', {
-  '2026-03-29': 23 * HOUR,
-  '2026-10-25': 25 * HOUR,
-});
+const calendarDays = createCalendarAxis(
+  '2026-03-28',
+  '2026-10-26',
+  new Map([
+    ['2026-03-29', 23 * HOUR],
+    ['2026-10-25', 25 * HOUR],
+  ]),
+);
 
 const ganttLanes = [
   { height: 40, id: 'design' },

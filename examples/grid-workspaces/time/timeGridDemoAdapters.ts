@@ -25,17 +25,17 @@ const DEFAULT_DAY_DURATION = 24 * MINUTES_PER_HOUR;
 
 /*** Resolves a DAW bar origin in PPQ coordinates across the actual 4/4 to 7/8 meter transition. */
 export function resolveDawBarStartPpq(bar: number): number {
-  const meterChangeIndex = meterChanges.findLastIndex((change) => change.startBar <= bar);
-  const meterChange = meterChanges[meterChangeIndex];
+  const meterChange = meterChanges.filter((change) => change.startBar <= bar).at(-1);
   if (!meterChange) throw new Error(`No meter signature resolves bar ${bar}.`);
 
-  const precedingChanges = meterChanges.slice(0, meterChangeIndex);
-  const origin = precedingChanges.reduce((total, change, index) => {
-    const nextChange = meterChanges[index + 1];
-    if (!nextChange) throw new Error(`No following meter signature resolves bar ${bar}.`);
-    const barCount = nextChange.startBar - change.startBar;
-    return total + barCount * getMeterBarLengthPpq(change);
-  }, 0);
+  const origin = meterChanges
+    .filter((change) => change.startBar < meterChange.startBar)
+    .reduce((total, change) => {
+      const nextChange = meterChanges.find((candidate) => candidate.startBar > change.startBar);
+      if (!nextChange) throw new Error(`No following meter signature resolves bar ${bar}.`);
+      const barCount = nextChange.startBar - change.startBar;
+      return total + barCount * getMeterBarLengthPpq(change);
+    }, 0);
   return origin + (bar - meterChange.startBar) * getMeterBarLengthPpq(meterChange);
 }
 
@@ -53,7 +53,7 @@ export function secondsToPpqTicks(seconds: number, beatsPerMinute: number): numb
 export function createCalendarAxis(
   firstDayId: string,
   lastDayId: string,
-  dayDurations: Readonly<Record<string, number>>,
+  dayDurations: ReadonlyMap<string, number>,
 ): readonly CalendarDay[] {
   const firstDay = parseIsoDay(firstDayId);
   const lastDay = parseIsoDay(lastDayId);
@@ -65,7 +65,7 @@ export function createCalendarAxis(
     day = new Date(day.getTime() + DEFAULT_DAY_DURATION * MINUTES_PER_HOUR * 1000)
   ) {
     const id = day.toISOString().slice(0, 10);
-    days.push({ duration: dayDurations[id] ?? DEFAULT_DAY_DURATION, id });
+    days.push({ duration: dayDurations.get(id) ?? DEFAULT_DAY_DURATION, id });
   }
 
   return days;

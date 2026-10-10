@@ -24,10 +24,14 @@ describe('TimeGrid demo adapters', () => {
   });
 
   test('retains every calendar day between the March and October DST transitions', () => {
-    const calendarDays = createCalendarAxis('2026-03-28', '2026-10-26', {
-      '2026-03-29': 23 * 60,
-      '2026-10-25': 25 * 60,
-    });
+    const calendarDays = createCalendarAxis(
+      '2026-03-28',
+      '2026-10-26',
+      new Map([
+        ['2026-03-29', 23 * 60],
+        ['2026-10-25', 25 * 60],
+      ]),
+    );
 
     expect(calendarDays).toHaveLength(213);
     expect(calendarDayMinuteToWorld(calendarDays, '2026-10-24', 0)).toBeGreaterThan(200 * 24 * 60);
@@ -35,10 +39,14 @@ describe('TimeGrid demo adapters', () => {
   });
 
   test('preserves 23- and 25-hour local days as external calendar-axis geometry', () => {
-    const calendarDays = createCalendarAxis('2026-03-28', '2026-10-26', {
-      '2026-03-29': 23 * 60,
-      '2026-10-25': 25 * 60,
-    });
+    const calendarDays = createCalendarAxis(
+      '2026-03-28',
+      '2026-10-26',
+      new Map([
+        ['2026-03-29', 23 * 60],
+        ['2026-10-25', 25 * 60],
+      ]),
+    );
 
     expect(
       calendarDayMinuteToWorld(calendarDays, '2026-03-30', 0) -
