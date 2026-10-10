@@ -85,6 +85,7 @@ import {
   skeletonMeta,
   skeletonTextMeta,
 } from '../skeleton/skeletonMeta';
+import { spatialGridMeta } from '../spatial-grid/meta';
 import { surfaceMeta } from '../surface/surfaceMeta';
 import {
   cardBackMeta,
@@ -218,6 +219,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   ScanOverlay: scanOverlayMeta,
   SectionHeader: sectionHeaderMeta,
   SelectableItem: selectableItemMeta,
+  SpatialGrid: spatialGridMeta,
   SelectionProvider: selectionProviderMeta,
   PaletteItem: paletteItemMeta,
   Timeline: timelineMeta,

@@ -66,6 +66,7 @@ import { BarcodeScannerView, CameraPermissionView, ScanOverlay } from '../scanne
 import { ScreenSection, SectionHeader } from '../section/public';
 import { SelectableItem } from '../selection/public';
 import { Skeleton, SkeletonCard, SkeletonList, SkeletonText } from '../skeleton/public';
+import { SpatialGrid } from '../spatial-grid/public';
 import { Surface } from '../surface/public';
 import {
   CardBack,
@@ -215,6 +216,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   ScanOverlay,
   SectionHeader,
   SelectableItem,
+  SpatialGrid,
   PaletteItem,
   CardBack,
   CardHand,
