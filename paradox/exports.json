@@ -6873,6 +6873,45 @@
     "structuredRows": []
   },
   {
+    "name": "createGridInteractionsController",
+    "title": null,
+    "description": "Create a platform-neutral controlled interaction controller using grid-view geometry only.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
+    "sourceLocation": {
+      "filePath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
+      "line": 35,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridInteractionsController",
+      "GridInteractionsControllerProps"
+    ],
+    "signatures": [
+      {
+        "label": "(props: GridInteractionsControllerProps) => GridInteractionsController",
+        "parameters": [
+          {
+            "name": "props",
+            "type": "GridInteractionsControllerProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "GridInteractionsController",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "createOpeningBookColorScheme",
     "title": null,
     "description": "Creates the theme-derived palette used by `OpeningBook`.\n\nUse `createOpeningBookColorScheme` when custom opening-list rows, badges, or\ntrainer panels should match the built-in book surface and selected-move states.",
@@ -11873,6 +11912,536 @@
     "structuredRows": []
   },
   {
+    "name": "GridInteractionIntent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 29,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridInteractionItem"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "itemIds",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "marquee",
+        "kind": "property",
+        "type": "GridRect | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rects",
+        "kind": "property",
+        "type": "readonly GridInteractionItem[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "type",
+        "kind": "property",
+        "type": "\"marquee\" | \"move\" | \"resize\" | \"select\" | \"pan\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "viewport",
+        "kind": "property",
+        "type": "GridViewport | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "locked",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "passive",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "resizable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionPointer",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 54,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "altKey",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "ctrlKey",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "metaKey",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "shiftKey",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "spaceKey",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractions",
+    "title": null,
+    "description": "Adapts native responder and keyboard events to the controlled grid interaction boundary.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridInteractionsProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  children,\n  interactionPolicy,\n  resizeHandle,\n  testID,\n  ...props\n}: GridInteractionsProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  children,\n  interactionPolicy,\n  resizeHandle,\n  testID,\n  ...props\n}",
+            "type": "GridInteractionsProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionsController",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 65,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridInteractionPointer",
+      "GridInteractionsControllerProps"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "begin",
+        "kind": "property",
+        "type": "(pointer: GridInteractionPointer, handle?: GridResizeHandle) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "cancel",
+        "kind": "property",
+        "type": "() => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "end",
+        "kind": "property",
+        "type": "(pointer: GridInteractionPointer) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "keyDown",
+        "kind": "property",
+        "type": "(key: string, pointer?: GridInteractionPointer) => boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "move",
+        "kind": "property",
+        "type": "(pointer: GridInteractionPointer) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "update",
+        "kind": "property",
+        "type": "(props: GridInteractionsControllerProps) => void",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionsControllerProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 51,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionSnap",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 20,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "enabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "priorities",
+        "kind": "property",
+        "type": "readonly import(\"@ankhorage/grid-view\").GridSnapCandidateKind[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tolerancePixels",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "x",
+        "kind": "property",
+        "type": "readonly GridSnapCandidate[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "y",
+        "kind": "property",
+        "type": "readonly GridSnapCandidate[] | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "GridInteractionsProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/grid-interactions.ts",
+    "sourceLocation": {
+      "filePath": "src/types/grid-interactions.ts",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "GridInteractionIntent",
+      "GridInteractionItem",
+      "GridInteractionSnap",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly GridInteractionItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "marqueeMode",
+        "kind": "property",
+        "type": "GridMarqueeSelectionMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onIntent",
+        "kind": "property",
+        "type": "(intent: GridInteractionIntent) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "resizeHandle",
+        "kind": "property",
+        "type": "GridResizeHandle | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "snap",
+        "kind": "property",
+        "type": "GridInteractionSnap | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewport",
+        "kind": "property",
+        "type": "GridViewport",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "GridLineOverlay",
     "title": null,
     "description": "A reusable passive world-space grid and guide overlay.",
@@ -15498,7 +16067,7 @@
     "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
     "sourceLocation": {
       "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-      "line": 142,
+      "line": 232,
       "column": 14
     },
     "exportPaths": [
@@ -15599,6 +16168,13 @@
         "name": "overscanPixels",
         "kind": "property",
         "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readOnly",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -31251,7 +31827,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 115,
+      "line": 116,
       "column": 14
     },
     "exportPaths": [
@@ -31273,7 +31849,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 235,
+      "line": 237,
       "column": 14
     },
     "exportPaths": [

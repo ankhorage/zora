@@ -1542,6 +1542,20 @@ piece colors as the built-in board.
   - theme: `ChessColorThemeShape`
   - returns: `ChessBoardColorScheme`
 
+## createGridInteractionsController
+
+Kind: `function`
+Module: `src/features/grid-interactions/application/createGridInteractionsController.ts`
+Source: `src/features/grid-interactions/application/createGridInteractionsController.ts:35:1`
+
+Create a platform-neutral controlled interaction controller using grid-view geometry only.
+
+### Signatures
+
+- `(props: GridInteractionsControllerProps) => GridInteractionsController`
+  - props: `GridInteractionsControllerProps`
+  - returns: `GridInteractionsController`
+
 ## createOpeningBookColorScheme
 
 Kind: `function`
@@ -2803,6 +2817,150 @@ Source: `src/types/grid-rulers.ts:30:1`
 | label | property | `string \| undefined` | no |  |
 | position | property | `number` | yes |  |
 
+## GridInteractionIntent
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:29:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| itemIds | property | `readonly string[]` | yes |  |
+| marquee | property | `GridRect \| undefined` | no |  |
+| rects | property | `readonly GridInteractionItem[] \| undefined` | no |  |
+| type | property | `"marquee" \| "move" \| "resize" \| "select" \| "pan"` | yes |  |
+| viewport | property | `GridViewport \| undefined` | no |  |
+
+## GridInteractionItem
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:14:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean \| undefined` | no |  |
+| height | property | `number` | yes |  |
+| id | property | `string` | yes |  |
+| locked | property | `boolean \| undefined` | no |  |
+| passive | property | `boolean \| undefined` | no |  |
+| readOnly | property | `boolean \| undefined` | no |  |
+| resizable | property | `boolean \| undefined` | no |  |
+| width | property | `number` | yes |  |
+| x | property | `number` | yes |  |
+| y | property | `number` | yes |  |
+
+## GridInteractionPointer
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:54:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| altKey | property | `boolean \| undefined` | no |  |
+| ctrlKey | property | `boolean \| undefined` | no |  |
+| metaKey | property | `boolean \| undefined` | no |  |
+| shiftKey | property | `boolean \| undefined` | no |  |
+| spaceKey | property | `boolean \| undefined` | no |  |
+| x | property | `number` | yes |  |
+| y | property | `number` | yes |  |
+
+## GridInteractions
+
+Kind: `function`
+Module: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx`
+Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:14:1`
+
+Adapts native responder and keyboard events to the controlled grid interaction boundary.
+
+### Signatures
+
+- `({
+  children,
+  interactionPolicy,
+  resizeHandle,
+  testID,
+  ...props
+}: GridInteractionsProps) => React.JSX.Element`
+  - {
+  children,
+  interactionPolicy,
+  resizeHandle,
+  testID,
+  ...props
+}: `GridInteractionsProps`
+  - returns: `React.JSX.Element`
+
+## GridInteractionsController
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:65:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| begin | property | `(pointer: GridInteractionPointer, handle?: GridResizeHandle) => void` | yes |  |
+| cancel | property | `() => void` | yes |  |
+| end | property | `(pointer: GridInteractionPointer) => void` | yes |  |
+| keyDown | property | `(key: string, pointer?: GridInteractionPointer) => boolean` | yes |  |
+| move | property | `(pointer: GridInteractionPointer) => void` | yes |  |
+| update | property | `(props: GridInteractionsControllerProps) => void` | yes |  |
+
+## GridInteractionsControllerProps
+
+Kind: `unknown`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:51:1`
+
+## GridInteractionSnap
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:20:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| enabled | property | `boolean \| undefined` | no |  |
+| priorities | property | `readonly import("@ankhorage/grid-view").GridSnapCandidateKind[]` | yes |  |
+| tolerancePixels | property | `number` | yes |  |
+| x | property | `readonly GridSnapCandidate[] \| undefined` | no |  |
+| y | property | `readonly GridSnapCandidate[] \| undefined` | no |  |
+
+## GridInteractionsProps
+
+Kind: `type`
+Module: `src/types/grid-interactions.ts`
+Source: `src/types/grid-interactions.ts:38:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| children | property | `React.ReactNode` | yes |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| items | property | `readonly GridInteractionItem[]` | yes |  |
+| marqueeMode | property | `GridMarqueeSelectionMode \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onIntent | property | `(intent: GridInteractionIntent) => void` | yes |  |
+| resizeHandle | property | `GridResizeHandle \| undefined` | no |  |
+| selectedIds | property | `readonly string[] \| undefined` | no |  |
+| snap | property | `GridInteractionSnap \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| viewport | property | `GridViewport` | yes |  |
+
 ## GridLineOverlay
 
 Kind: `value`
@@ -3617,7 +3775,7 @@ Source: `src/types/manifest-list.ts:30:1`
 
 Kind: `value`
 Module: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx`
-Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:142:14`
+Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:232:14`
 
 A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.
 
@@ -3641,6 +3799,7 @@ Source: `src/types/matrix-grid.ts:13:1`
 | onSelectionChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
 | onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
 | overscanPixels | property | `number \| undefined` | no |  |
+| readOnly | property | `boolean \| undefined` | no |  |
 | renderCell | property | `(cell: GridMatrixCellPlacement) => React.ReactNode` | yes |  |
 | selectedCellIds | property | `readonly string[] \| undefined` | no |  |
 | selectionMode | property | `SelectionMode \| undefined` | no |  |
@@ -7348,13 +7507,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:115:14`
+Source: `src/features/registry/componentMeta.ts:116:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:235:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:237:14`
 
 ## ZORA_EMPHASES
 

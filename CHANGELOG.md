@@ -1,5 +1,18 @@
 # Changelog
 
+## 25.8.0
+
+### Minor Changes
+
+- 7ee095f: Add controlled, platform-neutral grid interaction adapters for marquee, move, and resize intents.
+
+### Patch Changes
+
+- 0c6826d: Preserve virtualized sparse MatrixGrid rendering while making keyboard navigation deterministic,
+  focus-revealing, and safe around embedded interactive content.
+- 0d5bf10: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/runtime`.
+- a2e1e81: Restore the release baseline to the highest published ZORA version so pending Changesets produce a new version.
+
 ## 25.6.2
 
 ### Patch Changes

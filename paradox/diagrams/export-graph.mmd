@@ -248,6 +248,15 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts["src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts["src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts"]
   module_src_features_graph_view_public_ts["src/features/graph-view/public.ts"]
+  module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts["src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts"]
+  module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx["src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"]
+  module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_native_tsx["src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.native.tsx"]
+  module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_tsx["src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.tsx"]
+  module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_web_tsx["src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx"]
+  module_src_features_grid_interactions_adapters_inbound_resolveGridInteractionPointer_ts["src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts"]
+  module_src_features_grid_interactions_application_createGridInteractionsController_ts["src/features/grid-interactions/application/createGridInteractionsController.ts"]
+  module_src_features_grid_interactions_meta_ts["src/features/grid-interactions/meta.ts"]
+  module_src_features_grid_interactions_public_ts["src/features/grid-interactions/public.ts"]
   module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx["src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx"]
   module_src_features_grid_rulers_adapters_inbound_GridRuler_tsx["src/features/grid-rulers/adapters/inbound/GridRuler.tsx"]
   module_src_features_grid_rulers_application_projectGridRulerPosition_ts["src/features/grid-rulers/application/projectGridRulerPosition.ts"]
@@ -303,6 +312,12 @@ graph LR
   module_src_features_list_utils_resolveListItemTitleLineCount_ts["src/features/list/utils/resolveListItemTitleLineCount.ts"]
   module_src_features_list_utils_resolveListSeparator_ts["src/features/list/utils/resolveListSeparator.ts"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx["src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"]
+  module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_native_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.native.tsx"]
+  module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.tsx"]
+  module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_web_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.web.tsx"]
+  module_src_features_matrix_grid_adapters_inbound_useMatrixGridKeyboardFocus_ts["src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"]
+  module_src_features_matrix_grid_application_createMatrixGridSparseIndex_ts["src/features/matrix-grid/application/createMatrixGridSparseIndex.ts"]
+  module_src_features_matrix_grid_application_getMatrixGridNextFocusId_ts["src/features/matrix-grid/application/getMatrixGridNextFocusId.ts"]
   module_src_features_matrix_grid_application_resolveMatrixGridContentSize_ts["src/features/matrix-grid/application/resolveMatrixGridContentSize.ts"]
   module_src_features_matrix_grid_application_resolveMatrixGridSelection_ts["src/features/matrix-grid/application/resolveMatrixGridSelection.ts"]
   module_src_features_matrix_grid_meta_ts["src/features/matrix-grid/meta.ts"]
@@ -516,6 +531,7 @@ graph LR
   module_src_types_graph_view_spacing_ts["src/types/graph-view-spacing.ts"]
   module_src_types_graph_view_ts["src/types/graph-view.ts"]
   module_src_types_graphViewRuntime_ts["src/types/graphViewRuntime.ts"]
+  module_src_types_grid_interactions_ts["src/types/grid-interactions.ts"]
   module_src_types_grid_rulers_ts["src/types/grid-rulers.ts"]
   module_src_types_grid_view_ts["src/types/grid-view.ts"]
   module_src_types_heading_ts["src/types/heading.ts"]
@@ -837,6 +853,10 @@ graph LR
   module_src_features_chess_utils_createChessBoardColorScheme_ts --> export_createChessBoardColorScheme
   export_createChessBoardColorScheme -.-> export_ChessBoardColorScheme
   export_createChessBoardColorScheme -.-> export_ChessColorThemeShape
+  export_createGridInteractionsController["createGridInteractionsController"]
+  module_src_features_grid_interactions_application_createGridInteractionsController_ts --> export_createGridInteractionsController
+  export_createGridInteractionsController -.-> export_GridInteractionsController
+  export_createGridInteractionsController -.-> export_GridInteractionsControllerProps
   export_createOpeningBookColorScheme["createOpeningBookColorScheme"]
   module_src_features_chess_utils_createOpeningBookColorScheme_ts --> export_createOpeningBookColorScheme
   export_createOpeningBookColorScheme -.-> export_ChessColorThemeShape
@@ -1072,6 +1092,30 @@ graph LR
   module_src_features_layout_adapters_inbound_Grid_tsx --> export_Grid
   export_GridGuide["GridGuide"]
   module_src_types_grid_rulers_ts --> export_GridGuide
+  export_GridInteractionIntent["GridInteractionIntent"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionIntent
+  export_GridInteractionIntent -.-> export_GridInteractionItem
+  export_GridInteractionItem["GridInteractionItem"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionItem
+  export_GridInteractionPointer["GridInteractionPointer"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionPointer
+  export_GridInteractions["GridInteractions"]
+  module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> export_GridInteractions
+  export_GridInteractions -.-> export_GridInteractionsProps
+  export_GridInteractionsController["GridInteractionsController"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionsController
+  export_GridInteractionsController -.-> export_GridInteractionPointer
+  export_GridInteractionsController -.-> export_GridInteractionsControllerProps
+  export_GridInteractionsControllerProps["GridInteractionsControllerProps"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionsControllerProps
+  export_GridInteractionSnap["GridInteractionSnap"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionSnap
+  export_GridInteractionsProps["GridInteractionsProps"]
+  module_src_types_grid_interactions_ts --> export_GridInteractionsProps
+  export_GridInteractionsProps -.-> export_GridInteractionIntent
+  export_GridInteractionsProps -.-> export_GridInteractionItem
+  export_GridInteractionsProps -.-> export_GridInteractionSnap
+  export_GridInteractionsProps -.-> export_ZoraThemeMode
   export_GridLineOverlay["GridLineOverlay"]
   module_src_features_grid_rulers_adapters_inbound_GridLineOverlay_tsx --> export_GridLineOverlay
   export_GridLineOverlayProps["GridLineOverlayProps"]
