@@ -11,6 +11,8 @@ import {
 import React from 'react';
 
 import { GridRulersScenario } from './GridRulersScenario';
+import { DawArrangerScenario } from './time/DawArrangerScenario';
+import { SchedulerGanttScenario } from './time/SchedulerGanttScenario';
 
 const mediaItems = Array.from({ length: 10000 }, (_, index) => ({
   id: `media-${index}`,
@@ -77,6 +79,8 @@ export default function App() {
       <ScreenSection title="Grid rulers">
         <GridRulersScenario />
       </ScreenSection>
+      <DawArrangerScenario />
+      <SchedulerGanttScenario />
       <ScreenSection title="Uploader">
         <Uploader
           explorerItems={mediaItems.slice(0, 8).map((item) => ({
