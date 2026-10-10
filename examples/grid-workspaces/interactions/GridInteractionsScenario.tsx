@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 const viewport = {
   height: 320,
@@ -10,10 +10,10 @@ const viewport = {
   width: 480,
 };
 
-const items = [
+const initialItems = [
   { height: 80, id: 'first', width: 120, x: 40, y: 40 },
   { height: 80, id: 'second', width: 120, x: 220, y: 140 },
-];
+] as const;
 
 /** Demonstrates composing controlled interactions around any caller-owned item presentation. */
 export function GridInteractionsScenario() {
@@ -45,16 +45,56 @@ function hasGridInteractions(value: object): value is GridInteractionsComponents
 
 /** Renders the scenario through the released public package instead of local repository source. */
 function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInteractionsComponents) {
+  const [items, setItems] = React.useState<readonly GridInteractionItem[]>(initialItems);
   const [intent, setIntent] = React.useState<GridInteractionIntent | undefined>();
+
+  const handleIntent = (nextIntent: GridInteractionIntent) => {
+    setIntent(nextIntent);
+    if (nextIntent.rects === undefined) return;
+    setItems((currentItems) =>
+      currentItems.map((item) => nextIntent.rects?.find((rect) => rect.id === item.id) ?? item),
+    );
+  };
+
   return (
-    <GridInteractions
-      items={items}
-      selectedIds={intent?.itemIds}
-      viewport={viewport}
-      onIntent={setIntent}
-    >
-      <View style={{ height: viewport.height, width: viewport.width }} />
-    </GridInteractions>
+    <View>
+      <Text>
+        Drag an item to move it, drag empty space to marquee-select, or use arrow keys to move the
+        selected item. Hold Alt with arrow keys to resize it.
+      </Text>
+      <GridInteractions
+        items={items}
+        selectedIds={intent?.itemIds}
+        viewport={viewport}
+        onIntent={handleIntent}
+      >
+        <View
+          style={{
+            backgroundColor: '#e2e8f0',
+            height: viewport.height,
+            position: 'relative',
+            width: viewport.width,
+          }}
+        >
+          {items.map((item) => (
+            <View
+              key={item.id}
+              style={{
+                backgroundColor: intent?.itemIds.includes(item.id) ? '#2563eb' : '#64748b',
+                height: item.height,
+                left: item.x,
+                padding: 8,
+                position: 'absolute',
+                top: item.y,
+                width: item.width,
+              }}
+            >
+              <Text style={{ color: '#ffffff' }}>{item.id}</Text>
+            </View>
+          ))}
+        </View>
+      </GridInteractions>
+    </View>
   );
 }
 
@@ -64,11 +104,20 @@ interface GridInteractionsComponents {
 
 interface GridInteractionIntent {
   readonly itemIds: readonly string[];
+  readonly rects?: readonly GridInteractionItem[];
+}
+
+interface GridInteractionItem {
+  readonly height: number;
+  readonly id: string;
+  readonly width: number;
+  readonly x: number;
+  readonly y: number;
 }
 
 interface GridInteractionsScenarioProps {
   readonly children: React.ReactNode;
-  readonly items: readonly (typeof items)[number][];
+  readonly items: readonly GridInteractionItem[];
   readonly selectedIds: readonly string[] | undefined;
   readonly viewport: typeof viewport;
   readonly onIntent: (intent: GridInteractionIntent) => void;
