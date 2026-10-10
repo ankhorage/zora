@@ -68,6 +68,7 @@ import { viewMeta } from '../layout/viewMeta';
 import { flatListMeta } from '../list/flatListMeta';
 import { listItemMeta, listMeta, listSectionMeta } from '../list/meta';
 import { sectionListMeta } from '../list/sectionListMeta';
+import { matrixGridMeta } from '../matrix-grid/meta';
 import { missingElementMeta } from '../missing-element/missingElementMeta';
 import { paginationMeta } from '../pagination/paginationMeta';
 import { paletteItemMeta } from '../palette-item/paletteItemMeta';
@@ -206,6 +207,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   GridView: gridViewMeta,
   TileGrid: tileGridMeta,
   TimeGrid: timeGridMeta,
+  MatrixGrid: matrixGridMeta,
   Hero: heroMeta,
   List: listMeta,
   ListItem: listItemMeta,
