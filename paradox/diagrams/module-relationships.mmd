@@ -302,6 +302,11 @@ graph LR
   module_src_features_list_sectionListMeta_ts["src/features/list/sectionListMeta.ts"]
   module_src_features_list_utils_resolveListItemTitleLineCount_ts["src/features/list/utils/resolveListItemTitleLineCount.ts"]
   module_src_features_list_utils_resolveListSeparator_ts["src/features/list/utils/resolveListSeparator.ts"]
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx["src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"]
+  module_src_features_matrix_grid_application_resolveMatrixGridContentSize_ts["src/features/matrix-grid/application/resolveMatrixGridContentSize.ts"]
+  module_src_features_matrix_grid_application_resolveMatrixGridSelection_ts["src/features/matrix-grid/application/resolveMatrixGridSelection.ts"]
+  module_src_features_matrix_grid_meta_ts["src/features/matrix-grid/meta.ts"]
+  module_src_features_matrix_grid_public_ts["src/features/matrix-grid/public.ts"]
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx["src/features/missing-element/adapters/inbound/MissingElement.tsx"]
   module_src_features_missing_element_missingElementMeta_ts["src/features/missing-element/missingElementMeta.ts"]
   module_src_features_missing_element_public_ts["src/features/missing-element/public.ts"]
@@ -522,6 +527,7 @@ graph LR
   module_src_types_list_ts["src/types/list.ts"]
   module_src_types_manifest_bottom_sheet_ts["src/types/manifest-bottom-sheet.ts"]
   module_src_types_manifest_list_ts["src/types/manifest-list.ts"]
+  module_src_types_matrix_grid_ts["src/types/matrix-grid.ts"]
   module_src_types_media_card_ts["src/types/media-card.ts"]
   module_src_types_metric_card_ts["src/types/metric-card.ts"]
   module_src_types_missing_element_ts["src/types/missing-element.ts"]
@@ -1230,6 +1236,15 @@ graph LR
   module_src_features_list_sectionListMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_features_list_sectionListMeta_ts --> module_src_types_authoring_ts
   module_src_features_list_utils_resolveListSeparator_ts --> module_src_types_list_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_grid_view_public_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_matrix_grid_application_resolveMatrixGridContentSize_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_matrix_grid_application_resolveMatrixGridSelection_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_selection_public_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_types_matrix_grid_ts
+  module_src_features_matrix_grid_application_resolveMatrixGridSelection_ts --> module_src_types_selection_ts
+  module_src_features_matrix_grid_meta_ts --> module_src_types_authoring_ts
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_features_badge_public_ts
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_features_layout_public_ts
   module_src_features_missing_element_adapters_inbound_MissingElement_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -1369,6 +1384,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_list_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_matrix_grid_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_missing_element_missingElementMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_pagination_paginationMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_palette_item_paletteItemMeta_ts
@@ -1449,6 +1465,7 @@ graph LR
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_keyboard_avoiding_view_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_layout_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_list_public_ts
+  module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_matrix_grid_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_missing_element_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_pagination_public_ts
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts --> module_src_features_palette_item_public_ts
@@ -1831,6 +1848,8 @@ graph LR
   module_src_types_list_ts --> module_src_types_base_ts
   module_src_types_manifest_bottom_sheet_ts --> module_src_types_base_ts
   module_src_types_manifest_list_ts --> module_src_types_base_ts
+  module_src_types_matrix_grid_ts --> module_src_types_base_ts
+  module_src_types_matrix_grid_ts --> module_src_types_selection_ts
   module_src_types_media_card_ts --> module_src_types_base_ts
   module_src_types_media_card_ts --> module_src_types_card_ts
   module_src_types_metric_card_ts --> module_src_types_base_ts

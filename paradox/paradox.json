@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.6.0",
+      "value": "v25.7.0",
       "color": "cb3837"
     },
     {
@@ -3835,6 +3835,60 @@
       ]
     },
     {
+      "path": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/grid-view/public.ts",
+        "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts",
+        "src/features/matrix-grid/application/resolveMatrixGridSelection.ts",
+        "src/features/selection/public.ts",
+        "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/types/matrix-grid.ts"
+      ],
+      "exports": [
+        "MatrixGrid"
+      ]
+    },
+    {
+      "path": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "resolveMatrixGridContentSize"
+      ]
+    },
+    {
+      "path": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/selection.ts"
+      ],
+      "exports": [
+        "resolveMatrixGridSelection"
+      ]
+    },
+    {
+      "path": "src/features/matrix-grid/meta.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/authoring.ts"
+      ],
+      "exports": [
+        "matrixGridMeta"
+      ]
+    },
+    {
+      "path": "src/features/matrix-grid/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "MatrixGrid",
+        "MatrixGridProps",
+        "resolveMatrixGridContentSize"
+      ]
+    },
+    {
       "path": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -4260,6 +4314,7 @@
         "src/features/list/flatListMeta.ts",
         "src/features/list/meta.ts",
         "src/features/list/sectionListMeta.ts",
+        "src/features/matrix-grid/meta.ts",
         "src/features/missing-element/missingElementMeta.ts",
         "src/features/pagination/paginationMeta.ts",
         "src/features/palette-item/paletteItemMeta.ts",
@@ -4420,6 +4475,7 @@
         "src/features/keyboard-avoiding-view/public.ts",
         "src/features/layout/public.ts",
         "src/features/list/public.ts",
+        "src/features/matrix-grid/public.ts",
         "src/features/missing-element/public.ts",
         "src/features/pagination/public.ts",
         "src/features/palette-item/public.ts",
@@ -6336,6 +6392,8 @@
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps",
+        "MatrixGrid",
+        "MatrixGridProps",
         "MediaCard",
         "MediaCardImageProps",
         "MediaCardProps",
@@ -7281,6 +7339,17 @@
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps"
+      ]
+    },
+    {
+      "path": "src/types/matrix-grid.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/base.ts",
+        "src/types/selection.ts"
+      ],
+      "exports": [
+        "MatrixGridProps"
       ]
     },
     {
@@ -23270,6 +23339,187 @@
       "structuredRows": []
     },
     {
+      "name": "MatrixGrid",
+      "title": null,
+      "description": "A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "line": 142,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "MatrixGridProps",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/matrix-grid.ts",
+      "sourceLocation": {
+        "filePath": "src/types/matrix-grid.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "SelectionMode",
+        "ZoraThemeMode"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "accessibilityLabel",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "cells",
+          "kind": "property",
+          "type": "readonly GridMatrixCell[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "height",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "layout",
+          "kind": "property",
+          "type": "GridMatrixLayout",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectionChange",
+          "kind": "property",
+          "type": "((ids: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onViewportChange",
+          "kind": "property",
+          "type": "((viewport: GridViewport) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overscanPixels",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderCell",
+          "kind": "property",
+          "type": "(cell: GridMatrixCellPlacement) => React.ReactNode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "selectedCellIds",
+          "kind": "property",
+          "type": "readonly string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "selectionMode",
+          "kind": "property",
+          "type": "SelectionMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewport",
+          "kind": "property",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "width",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "zoomX",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "zoomY",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "MediaCard",
       "title": null,
       "description": "Card layout with an optional media/header region and structured content slots.",
@@ -38852,7 +39102,7 @@
       "modulePath": "src/features/registry/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/componentMeta.ts",
-        "line": 114,
+        "line": 115,
         "column": 14
       },
       "exportPaths": [
@@ -38874,7 +39124,7 @@
       "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-        "line": 233,
+        "line": 235,
         "column": 14
       },
       "exportPaths": [
@@ -50824,6 +51074,138 @@
         {
           "name": "title",
           "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "MatrixGrid",
+      "description": "A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "line": 142,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "props": [
+        {
+          "name": "accessibilityLabel",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "cells",
+          "type": "readonly GridMatrixCell[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "layout",
+          "type": "GridMatrixLayout",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectionChange",
+          "type": "((ids: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onViewportChange",
+          "type": "((viewport: GridViewport) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "overscanPixels",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "renderCell",
+          "type": "(cell: GridMatrixCellPlacement) => React.ReactNode",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "selectedCellIds",
+          "type": "readonly string[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "selectionMode",
+          "type": "SelectionMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewport",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "zoomX",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "zoomY",
+          "type": "number | undefined",
           "required": false,
           "description": null
         }
@@ -65741,6 +66123,50 @@
       }
     },
     {
+      "name": "MatrixGridInner",
+      "description": "Compose the canonical GridView around released sparse matrix placement and culling geometry.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "line": 19,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderMatrixCell",
+      "description": "Render one positioned sparse cell with native/web accessible selection semantics.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "line": 105,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveMatrixGridContentSize",
+      "description": "Resolve total sparse-matrix world extents without expanding its logical cells.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveMatrixGridSelection",
+      "description": "Apply ZORA's canonical selection intent while retaining the configured selection mode.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
       "name": "MissingElementInner",
       "description": "Renders the visible, non-interactive body of a draft missing-element marker.",
       "see": [],
@@ -68929,6 +69355,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/matrix-grid/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/missing-element/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -69441,6 +69872,16 @@
         "fromPath": "src/types/manifest-list.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/manifest-list.ts"
+      },
+      {
+        "fromPath": "src/types/matrix-grid.ts",
+        "toPath": "src/types/base.ts",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromPath": "src/types/matrix-grid.ts",
+        "toPath": "src/types/selection.ts",
+        "sourcePath": "src/types/matrix-grid.ts"
       },
       {
         "fromPath": "src/types/media-card.ts",
@@ -70808,6 +71249,26 @@
         "sourcePath": "src/features/list/sectionListMeta.ts"
       },
       {
+        "fromPath": "src/features/matrix-grid/meta.ts",
+        "toPath": "src/types/authoring.ts",
+        "sourcePath": "src/features/matrix-grid/meta.ts"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/public.ts",
+        "toPath": "src/types/matrix-grid.ts",
+        "sourcePath": "src/features/matrix-grid/public.ts"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/public.ts",
+        "toPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "sourcePath": "src/features/matrix-grid/public.ts"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/public.ts",
+        "toPath": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts",
+        "sourcePath": "src/features/matrix-grid/public.ts"
+      },
+      {
         "fromPath": "src/features/missing-element/missingElementMeta.ts",
         "toPath": "src/types/authoring.ts",
         "sourcePath": "src/features/missing-element/missingElementMeta.ts"
@@ -71299,6 +71760,11 @@
       },
       {
         "fromPath": "src/features/registry/componentMeta.ts",
+        "toPath": "src/features/matrix-grid/meta.ts",
+        "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/features/registry/componentMeta.ts",
         "toPath": "src/features/missing-element/missingElementMeta.ts",
         "sourcePath": "src/features/registry/componentMeta.ts"
       },
@@ -71730,6 +72196,11 @@
       {
         "fromPath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
         "toPath": "src/features/list/public.ts",
+        "sourcePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts"
+      },
+      {
+        "fromPath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
+        "toPath": "src/features/matrix-grid/public.ts",
         "sourcePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts"
       },
       {
@@ -72891,6 +73362,11 @@
         "fromPath": "src/features/list/utils/resolveListSeparator.ts",
         "toPath": "src/types/list.ts",
         "sourcePath": "src/features/list/utils/resolveListSeparator.ts"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts",
+        "toPath": "src/types/selection.ts",
+        "sourcePath": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts"
       },
       {
         "fromPath": "src/features/pagination/utils/resolvePaginationState.ts",
@@ -75166,6 +75642,41 @@
         "fromPath": "src/features/list/application/use-cases/partitionListSections.ts",
         "toPath": "src/types/manifest-list.ts",
         "sourcePath": "src/features/list/application/use-cases/partitionListSections.ts"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/types/matrix-grid.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/grid-view/public.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/selection/public.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toPath": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
       },
       {
         "fromPath": "src/features/missing-element/adapters/inbound/MissingElement.tsx",
@@ -77603,6 +78114,24 @@
         "toSymbol": "projectGridRulerPosition",
         "callExpression": "projectGridRulerPosition",
         "sourcePath": "src/features/grid-rulers/application/resolveGridRulerMarks.ts"
+      },
+      {
+        "fromSymbol": "resolveMatrixGridContentSize",
+        "toSymbol": "getVisibleMatrixCells",
+        "callExpression": "getVisibleMatrixCells",
+        "sourcePath": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts"
+      },
+      {
+        "fromSymbol": "resolveMatrixGridContentSize",
+        "toSymbol": "getMatrixCellPlacement",
+        "callExpression": "getMatrixCellPlacement",
+        "sourcePath": "src/features/matrix-grid/application/resolveMatrixGridContentSize.ts"
+      },
+      {
+        "fromSymbol": "resolveMatrixGridSelection",
+        "toSymbol": "applySelectionIntent",
+        "callExpression": "applySelectionIntent",
+        "sourcePath": "src/features/matrix-grid/application/resolveMatrixGridSelection.ts"
       },
       {
         "fromSymbol": "resolvePaginationState",
@@ -80609,6 +81138,78 @@
         "toSymbol": "useListVisibility",
         "callExpression": "useListVisibility",
         "sourcePath": "src/features/list/adapters/inbound/SectionList.tsx"
+      },
+      {
+        "fromSymbol": "MatrixGridInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "resolveMatrixGridContentSize",
+        "callExpression": "resolveMatrixGridContentSize",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "getVisibleMatrixCells",
+        "callExpression": "getVisibleMatrixCells",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "setUncontrolledViewport",
+        "callExpression": "setUncontrolledViewport",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "onViewportChange",
+        "callExpression": "onViewportChange",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "resolveSelectionEventIntent",
+        "callExpression": "resolveSelectionEventIntent",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "onSelectionChange",
+        "callExpression": "onSelectionChange",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "resolveMatrixGridSelection",
+        "callExpression": "resolveMatrixGridSelection",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "renderMatrixCell",
+        "callExpression": "renderMatrixCell",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "activateCell",
+        "callExpression": "activateCell",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "renderMatrixCell",
+        "toSymbol": "renderCell",
+        "callExpression": "renderCell",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"
       },
       {
         "fromSymbol": "MissingElementInner",
@@ -86940,6 +87541,51 @@
         "fromSymbol": "ListItemsProps",
         "toType": "ZoraThemeMode",
         "sourcePath": "src/types/list.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "GridMatrixCell",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "GridMatrixCellPlacement",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "GridMatrixLayout",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "GridViewport",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "React",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "SelectionMode",
+        "sourcePath": "src/types/matrix-grid.ts"
+      },
+      {
+        "fromSymbol": "MatrixGridProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/matrix-grid.ts"
       },
       {
         "fromSymbol": "MissingElementProps",

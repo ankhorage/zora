@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.7.0
+
+### Minor Changes
+
+- be2da33: Add a virtualized code-first MatrixGrid for sparse variable-size matrix layouts.
+
 ## 25.6.0
 
 ### Minor Changes

@@ -3613,6 +3613,44 @@ Source: `src/types/manifest-list.ts:30:1`
 | themeId | property | `string \| undefined` | no |  |
 | windowSize | property | `number \| undefined` | no |  |
 
+## MatrixGrid
+
+Kind: `value`
+Module: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx`
+Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:142:14`
+
+A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.
+
+## MatrixGridProps
+
+Kind: `type`
+Module: `src/types/matrix-grid.ts`
+Source: `src/types/matrix-grid.ts:13:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | property | `string \| undefined` | no |  |
+| cells | property | `readonly GridMatrixCell[]` | yes |  |
+| height | property | `number` | yes |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| layout | property | `GridMatrixLayout` | yes |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onSelectionChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
+| onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
+| overscanPixels | property | `number \| undefined` | no |  |
+| renderCell | property | `(cell: GridMatrixCellPlacement) => React.ReactNode` | yes |  |
+| selectedCellIds | property | `readonly string[] \| undefined` | no |  |
+| selectionMode | property | `SelectionMode \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| viewport | property | `GridViewport \| undefined` | no |  |
+| width | property | `number` | yes |  |
+| zoomX | property | `number \| undefined` | no |  |
+| zoomY | property | `number \| undefined` | no |  |
+
 ## MediaCard
 
 Kind: `value`
@@ -7310,13 +7348,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:114:14`
+Source: `src/features/registry/componentMeta.ts:115:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:233:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:235:14`
 
 ## ZORA_EMPHASES
 

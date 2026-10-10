@@ -2159,6 +2159,36 @@ Export paths: `src/index.ts`
 | themeId | `string \| undefined` | no | — |  |
 | title | `React.ReactNode` | no | — |  |
 
+## MatrixGrid
+
+Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:142:14`
+
+A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| accessibilityLabel | `string \| undefined` | no | — |  |
+| cells | `readonly GridMatrixCell[]` | yes | — |  |
+| height | `number` | yes | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| inverted | `boolean \| undefined` | no | — |  |
+| layout | `GridMatrixLayout` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSelectionChange | `((ids: readonly string[]) => void) \| undefined` | no | — |  |
+| onViewportChange | `((viewport: GridViewport) => void) \| undefined` | no | — |  |
+| overscanPixels | `number \| undefined` | no | — |  |
+| renderCell | `(cell: GridMatrixCellPlacement) => React.ReactNode` | yes | — |  |
+| selectedCellIds | `readonly string[] \| undefined` | no | — |  |
+| selectionMode | `SelectionMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| viewport | `GridViewport \| undefined` | no | — |  |
+| width | `number` | yes | — |  |
+| zoomX | `number \| undefined` | no | — |  |
+| zoomY | `number \| undefined` | no | — |  |
+
 ## MediaCard
 
 Source: `src/features/card/adapters/inbound/MediaCard.tsx:14:14`

@@ -15488,6 +15488,187 @@
     "structuredRows": []
   },
   {
+    "name": "MatrixGrid",
+    "title": null,
+    "description": "A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
+      "line": 142,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "MatrixGridProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/matrix-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/matrix-grid.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SelectionMode",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "accessibilityLabel",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cells",
+        "kind": "property",
+        "type": "readonly GridMatrixCell[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "layout",
+        "kind": "property",
+        "type": "GridMatrixLayout",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSelectionChange",
+        "kind": "property",
+        "type": "((ids: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onViewportChange",
+        "kind": "property",
+        "type": "((viewport: GridViewport) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overscanPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderCell",
+        "kind": "property",
+        "type": "(cell: GridMatrixCellPlacement) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selectedCellIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectionMode",
+        "kind": "property",
+        "type": "SelectionMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewport",
+        "kind": "property",
+        "type": "GridViewport | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "zoomX",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoomY",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "MediaCard",
     "title": null,
     "description": "Card layout with an optional media/header region and structured content slots.",
@@ -31070,7 +31251,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 114,
+      "line": 115,
       "column": 14
     },
     "exportPaths": [
@@ -31092,7 +31273,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 233,
+      "line": 235,
       "column": 14
     },
     "exportPaths": [
