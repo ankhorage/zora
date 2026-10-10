@@ -26,6 +26,12 @@ type ScrollMapping = Readonly<{
   horizontal: ScrollAxisMapping;
   vertical: ScrollAxisMapping;
 }>;
+type ViewportOrigin = Readonly<{ x: number; y: number }>;
+type FocusRevealProposal = Readonly<{
+  focusedItemId: string;
+  sourceViewport: GridViewport;
+  viewport: GridViewport;
+}>;
 
 /*** Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. */
 export function GridView({
@@ -53,8 +59,11 @@ export function GridView({
   );
   const horizontalScrollRef = React.useRef<NativeScrollView>(null);
   const verticalScrollRef = React.useRef<NativeScrollView>(null);
+  const gridRef = React.useRef<React.ComponentRef<typeof NativeView>>(null);
   const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
+  const viewportOriginRef = React.useRef<ViewportOrigin>({ x: 0, y: 0 });
+  const focusRevealProposalRef = React.useRef<FocusRevealProposal | undefined>(undefined);
   const [isPinching, setIsPinching] = React.useState(false);
   const constraints = React.useMemo(
     () => viewportConstraints ?? createContentConstraints(contentWidth, contentHeight),
@@ -107,6 +116,16 @@ export function GridView({
     viewportRef.current = viewport;
   }, [viewport]);
 
+  const refreshViewportOrigin = React.useCallback(() => {
+    gridRef.current?.measureInWindow((x, y) => {
+      viewportOriginRef.current = { x, y };
+    });
+  }, []);
+
+  React.useLayoutEffect(() => {
+    refreshViewportOrigin();
+  }, [height, refreshViewportOrigin, width]);
+
   React.useEffect(() => {
     if (!onVisibleItemIdsChange) return;
     const previous = previousVisibleIdsRef.current;
@@ -135,14 +154,26 @@ export function GridView({
   React.useEffect(() => {
     const focusedItem = items.find((item) => item.id === focusedItemId);
     if (!focusedItem) return;
-    const revealed = revealWorldRect(
-      viewportRef.current,
-      focusedItem,
-      revealPaddingPixels,
-      constraints,
-    );
+    const sourceViewport = viewportRef.current;
+    const revealed = revealWorldRect(sourceViewport, focusedItem, revealPaddingPixels, constraints);
+    if (
+      isRepeatedControlledFocusRevealProposal({
+        controlled: !uncontrolled,
+        focusedItemId: focusedItem.id,
+        previous: focusRevealProposalRef.current,
+        sourceViewport,
+        viewport: revealed,
+      })
+    ) {
+      return;
+    }
+    focusRevealProposalRef.current = {
+      focusedItemId: focusedItem.id,
+      sourceViewport,
+      viewport: revealed,
+    };
     publish(revealed);
-  }, [constraints, focusedItemId, items, publish, revealPaddingPixels]);
+  }, [constraints, focusedItemId, items, publish, revealPaddingPixels, uncontrolled, viewport]);
 
   const scrollMapping = createScrollMapping(viewport, constraints);
 
@@ -159,7 +190,9 @@ export function GridView({
 
   return (
     <NativeView
+      ref={gridRef}
       accessibilityLabel="Interactive grid viewport"
+      onLayout={refreshViewportOrigin}
       onTouchEnd={() => {
         const wasPinching = pinchGestureRef.current !== undefined;
         pinchGestureRef.current = undefined;
@@ -168,7 +201,13 @@ export function GridView({
       }}
       onTouchMove={(event) => {
         if (!interactive) return;
-        const pinch = getPinchGesture(event.nativeEvent.touches, width, height);
+        refreshViewportOrigin();
+        const pinch = getPinchGesture(
+          event.nativeEvent.touches,
+          width,
+          height,
+          viewportOriginRef.current,
+        );
         const previous = pinchGestureRef.current;
         pinchGestureRef.current = pinch;
         setIsPinching(pinch !== undefined);
@@ -176,7 +215,13 @@ export function GridView({
         zoomAt(pinch.focalPoint, pinch.distance / previous.distance);
       }}
       onTouchStart={(event) => {
-        pinchGestureRef.current = getPinchGesture(event.nativeEvent.touches, width, height);
+        refreshViewportOrigin();
+        pinchGestureRef.current = getPinchGesture(
+          event.nativeEvent.touches,
+          width,
+          height,
+          viewportOriginRef.current,
+        );
         setIsPinching(pinchGestureRef.current !== undefined);
       }}
       style={{ height, overflow: 'hidden', width }}
@@ -399,16 +444,38 @@ function areScrollPositionsEqual(left: ScrollPosition, right: ScrollPosition): b
   return left.x === right.x && left.y === right.y;
 }
 
-/*** Extracts a stable two-finger focal point and distance from native or web touch data. */
+/*** Skips a rejected controlled focus proposal until its focus or incoming viewport changes. */
+function isRepeatedControlledFocusRevealProposal({
+  controlled,
+  focusedItemId,
+  previous,
+  sourceViewport,
+  viewport,
+}: Readonly<{
+  controlled: boolean;
+  focusedItemId: string | undefined;
+  previous: FocusRevealProposal | undefined;
+  sourceViewport: GridViewport;
+  viewport: GridViewport;
+}>): boolean {
+  return (
+    controlled &&
+    focusedItemId !== undefined &&
+    previous?.focusedItemId === focusedItemId &&
+    areViewportsEqual(previous.sourceViewport, sourceViewport) &&
+    areViewportsEqual(previous.viewport, viewport)
+  );
+}
+
+/*** Extracts a stable two-finger focal point in the measured outer viewport coordinate space. */
 function getPinchGesture(
   touches: readonly Readonly<{
     pageX: number;
     pageY: number;
-    locationX?: number;
-    locationY?: number;
   }>[],
   width: number,
   height: number,
+  viewportOrigin: ViewportOrigin,
 ): PinchGesture | undefined {
   const [first, second] = touches;
   if (!first || !second) return undefined;
@@ -419,14 +486,8 @@ function getPinchGesture(
   return {
     distance,
     focalPoint: {
-      x: Math.min(
-        width,
-        Math.max(0, ((first.locationX ?? first.pageX) + (second.locationX ?? second.pageX)) / 2),
-      ),
-      y: Math.min(
-        height,
-        Math.max(0, ((first.locationY ?? first.pageY) + (second.locationY ?? second.pageY)) / 2),
-      ),
+      x: Math.min(width, Math.max(0, (first.pageX + second.pageX) / 2 - viewportOrigin.x)),
+      y: Math.min(height, Math.max(0, (first.pageY + second.pageY) / 2 - viewportOrigin.y)),
     },
   };
 }

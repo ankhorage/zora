@@ -15,6 +15,7 @@ const load = () => import(pathToFileURL(join(webDistRoot, 'components/grid-view/
 const items: readonly GridRectItem[] = [
   { height: 20, id: 'near', width: 20, x: 10, y: 10 },
   { height: 20, id: 'far', width: 20, x: 300, y: 300 },
+  { height: 20, id: 'far-other', width: 20, x: 600, y: 600 },
 ];
 const constraints = { world: { height: 1000, width: 1000, x: 0, y: 0 } };
 
@@ -61,47 +62,13 @@ test('supports accessible pan and zoom controls and native scrolling without fee
   });
 });
 
-test('keeps focus reveal proposal-only and prevents controlled and uncontrolled callback loops', async () => {
+test('deduplicates a controlled focus-reveal veto while allowing accepted movement and focus changes', async () => {
   const { GridView } = (await load()) as { GridView: typeof GridViewComponent };
   await withBrowserAsync(async (_browserWindow, host) => {
     const controlledChanges: GridViewport[] = [];
     const root = createRoot(host);
     const controlledViewport = createViewport();
     try {
-      await interactAsync(() =>
-        root.render(
-          <GridView
-            contentHeight={1000}
-            contentWidth={1000}
-            focusedItemId="near"
-            height={100}
-            items={[...items]}
-            onViewportChange={(viewport) => controlledChanges.push(viewport)}
-            renderItem={(item) => <span>{item.id}</span>}
-            viewport={controlledViewport}
-            viewportConstraints={constraints}
-            width={100}
-          />,
-        ),
-      );
-      await interactAsync(() =>
-        root.render(
-          <GridView
-            contentHeight={1000}
-            contentWidth={1000}
-            focusedItemId="near"
-            height={100}
-            items={[...items]}
-            onViewportChange={(viewport) => controlledChanges.push(viewport)}
-            renderItem={(item) => <span>{item.id}</span>}
-            viewport={{ ...controlledViewport }}
-            viewportConstraints={constraints}
-            width={100}
-          />,
-        ),
-      );
-      expect(controlledChanges).toEqual([]);
-
       await interactAsync(() =>
         root.render(
           <GridView
@@ -118,7 +85,24 @@ test('keeps focus reveal proposal-only and prevents controlled and uncontrolled 
           />,
         ),
       );
+      await interactAsync(() =>
+        root.render(
+          <GridView
+            contentHeight={1000}
+            contentWidth={1000}
+            focusedItemId="far"
+            height={100}
+            items={[...items]}
+            onViewportChange={(viewport) => controlledChanges.push(viewport)}
+            renderItem={(item) => <span>{item.id}</span>}
+            viewport={{ ...controlledViewport }}
+            viewportConstraints={constraints}
+            width={100}
+          />,
+        ),
+      );
       expect(controlledChanges).toHaveLength(1);
+
       await interactAsync(() =>
         root.render(
           <GridView
@@ -136,6 +120,42 @@ test('keeps focus reveal proposal-only and prevents controlled and uncontrolled 
         ),
       );
       expect(controlledChanges).toHaveLength(1);
+
+      await interactAsync(() =>
+        root.render(
+          <GridView
+            contentHeight={1000}
+            contentWidth={1000}
+            focusedItemId="far"
+            height={100}
+            items={[...items]}
+            onViewportChange={(viewport) => controlledChanges.push(viewport)}
+            renderItem={(item) => <span>{item.id}</span>}
+            viewport={controlledViewport}
+            viewportConstraints={constraints}
+            width={100}
+          />,
+        ),
+      );
+      expect(controlledChanges).toHaveLength(2);
+
+      await interactAsync(() =>
+        root.render(
+          <GridView
+            contentHeight={1000}
+            contentWidth={1000}
+            focusedItemId="far-other"
+            height={100}
+            items={[...items]}
+            onViewportChange={(viewport) => controlledChanges.push(viewport)}
+            renderItem={(item) => <span>{item.id}</span>}
+            viewport={controlledChanges.at(-1)}
+            viewportConstraints={constraints}
+            width={100}
+          />,
+        ),
+      );
+      expect(controlledChanges).toHaveLength(3);
 
       const uncontrolledChanges: GridViewport[] = [];
       await interactAsync(() =>
@@ -215,13 +235,16 @@ test('maps centered bounds and overscroll to native positions and preserves a lo
 
       const grid = host.querySelector<HTMLElement>('[data-testid="grid"]');
       if (!grid) throw new Error('Missing grid viewport');
+      Object.defineProperty(grid, 'getBoundingClientRect', {
+        value: () => ({ left: 200, top: 200 }),
+      });
       await dispatchTouchesAsync(browserWindow, grid, 'touchstart', [
-        { locationX: 20, locationY: 50, pageX: 220, pageY: 250 },
-        { locationX: 80, locationY: 50, pageX: 280, pageY: 250 },
+        { locationX: 8, locationY: 12, pageX: 220, pageY: 250 },
+        { locationX: 72, locationY: 88, pageX: 280, pageY: 250 },
       ]);
       await dispatchTouchesAsync(browserWindow, grid, 'touchmove', [
-        { locationX: -10, locationY: 50, pageX: 190, pageY: 250 },
-        { locationX: 110, locationY: 50, pageX: 310, pageY: 250 },
+        { locationX: 1, locationY: 99, pageX: 190, pageY: 250 },
+        { locationX: 99, locationY: 1, pageX: 310, pageY: 250 },
       ]);
       expect(changes.at(-1)?.pixelsPerUnitX).toBe(2);
       expect(changes.at(-1)?.offsetX).toBe(5);
@@ -302,14 +325,14 @@ async function withBrowserAsync(
   }
 }
 
-/*** Dispatches a synthetic RN/RNW touch sequence with page and viewport-local coordinates. */
+/*** Dispatches touches whose target-local values may differ while page coordinates stay global. */
 function dispatchTouchesAsync(
   browserWindow: Window,
   target: HTMLElement,
   type: 'touchstart' | 'touchmove',
   touches: readonly Readonly<{
-    locationX: number;
-    locationY: number;
+    locationX?: number;
+    locationY?: number;
     pageX: number;
     pageY: number;
   }>[],
