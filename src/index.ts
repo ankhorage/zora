@@ -416,6 +416,12 @@ export {
   SkeletonText,
   type SkeletonTextProps,
 } from './features/skeleton/public';
+export type {
+  SpatialGridItem,
+  SpatialGridItemState,
+  SpatialGridProps,
+} from './features/spatial-grid/public';
+export { SpatialGrid } from './features/spatial-grid/public';
 export type { SurfaceProps, SurfaceVariant } from './features/surface/public';
 export { Surface } from './features/surface/public';
 export type {
