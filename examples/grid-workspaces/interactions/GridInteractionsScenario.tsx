@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { worldToViewport } from '@ankhorage/grid-view';
+
 const initialViewport = {
   height: 320,
   offsetX: 0,
@@ -46,11 +48,13 @@ function hasGridInteractions(value: object): value is GridInteractionsComponents
 /** Renders the scenario through the released public package instead of local repository source. */
 function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInteractionsComponents) {
   const [items, setItems] = React.useState<readonly GridInteractionItem[]>(initialItems);
-  const [intent, setIntent] = React.useState<GridInteractionIntent | undefined>();
+  const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([]);
   const [viewport, setViewport] = React.useState(initialViewport);
 
   const handleIntent = (nextIntent: GridInteractionIntent) => {
-    setIntent(nextIntent);
+    if (nextIntent.type === 'select' || nextIntent.type === 'marquee') {
+      setSelectedIds(nextIntent.itemIds);
+    }
     if (nextIntent.rects !== undefined) {
       setItems((currentItems) =>
         currentItems.map((item) => nextIntent.rects?.find((rect) => rect.id === item.id) ?? item),
@@ -67,7 +71,7 @@ function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInter
       </Text>
       <GridInteractions
         items={items}
-        selectedIds={intent?.itemIds}
+        selectedIds={selectedIds}
         viewport={viewport}
         onIntent={handleIntent}
       >
@@ -75,26 +79,31 @@ function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInter
           style={{
             backgroundColor: '#e2e8f0',
             height: viewport.height,
+            overflow: 'hidden',
             position: 'relative',
             width: viewport.width,
           }}
         >
-          {items.map((item) => (
-            <View
-              key={item.id}
-              style={{
-                backgroundColor: intent?.itemIds.includes(item.id) ? '#2563eb' : '#64748b',
-                height: item.height,
-                left: item.x,
-                padding: 8,
-                position: 'absolute',
-                top: item.y,
-                width: item.width,
-              }}
-            >
-              <Text style={{ color: '#ffffff' }}>{item.id}</Text>
-            </View>
-          ))}
+          {items.map((item) => {
+            const position = worldToViewport({ x: item.x, y: item.y }, viewport);
+            return (
+              <View
+                key={item.id}
+                style={{
+                  backgroundColor: selectedIds.includes(item.id) ? '#2563eb' : '#64748b',
+                  height: item.height * viewport.pixelsPerUnitY,
+                  left: position.x,
+                  padding: 8,
+                  position: 'absolute',
+                  top: position.y,
+                  width: item.width * viewport.pixelsPerUnitX,
+                }}
+                testID={`grid-interaction-item-${item.id}`}
+              >
+                <Text style={{ color: '#ffffff' }}>{item.id}</Text>
+              </View>
+            );
+          })}
         </View>
       </GridInteractions>
     </View>
@@ -107,6 +116,7 @@ interface GridInteractionsComponents {
 
 interface GridInteractionIntent {
   readonly itemIds: readonly string[];
+  readonly type: 'marquee' | 'move' | 'pan' | 'resize' | 'select';
   readonly rects?: readonly GridInteractionItem[];
   readonly viewport?: typeof initialViewport;
 }

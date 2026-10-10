@@ -3,6 +3,7 @@ import { Window } from 'happy-dom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 
+const reactNativeWeb = await import('react-native-web');
 const [{ ZoraProvider }, { Button }, { Screen }, { ScreenSection }, { View }] = await Promise.all([
   import('../../../web-dist/runtime/ZoraProvider.js'),
   import('../../../web-dist/components/button/Button.js'),
@@ -11,9 +12,37 @@ const [{ ZoraProvider }, { Button }, { Screen }, { ScreenSection }, { View }] = 
   import('../../../web-dist/components/view/View.js'),
 ]);
 const Empty = () => null;
+const GridInteractions = ({ children, onIntent }: GridInteractionsProps) => (
+  <>
+    {children}
+    <button type="button" onClick={() => onIntent({ itemIds: ['first'], type: 'select' })}>
+      Select first
+    </button>
+    <button
+      type="button"
+      onClick={() =>
+        onIntent({
+          itemIds: [],
+          type: 'pan',
+          viewport: {
+            height: 320,
+            offsetX: 24,
+            offsetY: 16,
+            pixelsPerUnitX: 1,
+            pixelsPerUnitY: 1,
+            width: 480,
+          },
+        })
+      }
+    >
+      Pan viewport
+    </button>
+  </>
+);
 const zora = {
   Button,
   FileExplorer: Empty,
+  GridInteractions,
   MediaExplorer: Empty,
   Screen,
   ScreenSection,
@@ -22,11 +51,9 @@ const zora = {
   ZoraProvider,
 };
 
+mock.module('react-native', () => reactNativeWeb);
 mock.module('@ankhorage/zora', () => zora);
 mock.module('../GridRulersScenario', () => ({ GridRulersScenario: Empty }));
-mock.module('../interactions/GridInteractionsScenario', () => ({
-  GridInteractionsScenario: Empty,
-}));
 mock.module('../matrix/PianoRollMatrixScenario', () => ({ PianoRollMatrixScenario: Empty }));
 mock.module('../matrix/SpreadsheetMatrixScenario', () => ({ SpreadsheetMatrixScenario: Empty }));
 mock.module('../spatial/SpatialGridScenario', () => ({ SpatialGridScenario: Empty }));
@@ -43,7 +70,7 @@ const browserKeys = [
   'ShadowRoot',
   'IS_REACT_ACT_ENVIRONMENT',
 ] as const;
-const scenarioLabels = ['Spreadsheet', 'Spatial canvas', 'Interactions'] as const;
+const scenarioLabels = ['Spreadsheet', 'Spatial canvas'] as const;
 
 /*** Mounts the Grid Workspaces application through React Native Web and restores the ambient DOM. */
 async function withGridWorkspaceDom(
@@ -103,6 +130,38 @@ test('mounts Grid Workspaces in ZoraProvider and keeps runtime context through s
         });
       }
 
+      const interactions = findScenarioButton(host, 'Interactions');
+      expect(interactions).toBeDefined();
+      await act(async () => {
+        interactions?.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+        await Promise.resolve();
+      });
+      const first = host.querySelector<HTMLElement>('[data-testid="grid-interaction-item-first"]');
+      expect(first?.style.left).toBe('40px');
+      expect(first?.style.top).toBe('40px');
+
+      await act(async () => {
+        findAction(host, 'Select first')?.dispatchEvent(
+          new browser.MouseEvent('click', { bubbles: true }),
+        );
+      });
+      const selectedFirst = host.querySelector<HTMLElement>(
+        '[data-testid="grid-interaction-item-first"]',
+      );
+      const selectedClassName = selectedFirst?.className;
+
+      await act(async () => {
+        findAction(host, 'Pan viewport')?.dispatchEvent(
+          new browser.MouseEvent('click', { bubbles: true }),
+        );
+      });
+      const pannedFirst = host.querySelector<HTMLElement>(
+        '[data-testid="grid-interaction-item-first"]',
+      );
+      expect(pannedFirst?.style.left).toBe('16px');
+      expect(pannedFirst?.style.top).toBe('24px');
+      expect(pannedFirst?.className).toBe(selectedClassName);
+
       expect(errors.flat().map(String).join('\n')).not.toContain('must be used within a');
     } finally {
       console.error = consoleError;
@@ -112,3 +171,24 @@ test('mounts Grid Workspaces in ZoraProvider and keeps runtime context through s
     }
   });
 });
+
+/*** Finds a test-rendered action by its visible label. */
+function findAction(host: HTMLElement, label: string) {
+  return Array.from(host.querySelectorAll('button')).find((button) => button.textContent === label);
+}
+
+interface GridInteractionsProps {
+  readonly children: React.ReactNode;
+  readonly onIntent: (intent: {
+    readonly itemIds: readonly string[];
+    readonly type: 'pan' | 'select';
+    readonly viewport?: {
+      readonly height: number;
+      readonly offsetX: number;
+      readonly offsetY: number;
+      readonly pixelsPerUnitX: number;
+      readonly pixelsPerUnitY: number;
+      readonly width: number;
+    };
+  }) => void;
+}
