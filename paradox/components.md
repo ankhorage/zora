@@ -1816,12 +1816,9 @@ Export paths: `src/index.ts`
 
 ## GridView
 
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:18:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:38:1`
 
-Renders world-positioned items on native and web using the canonical viewport/culling engine.
-
-This first renderer uses nested native scroll regions. Only visible items are mounted;
-logical cells and invisible elements are never rendered.
+Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.
 
 Export paths: `src/index.ts`
 
@@ -1829,6 +1826,9 @@ Export paths: `src/index.ts`
 | --- | --- | --- | --- | --- |
 | contentHeight | `number` | yes | — |  |
 | contentWidth | `number` | yes | — |  |
+| defaultViewport | `Partial<
+    Pick<GridViewport, 'offsetX' \| 'offsetY' \| 'pixelsPerUnitX' \| 'pixelsPerUnitY'>
+  > \| undefined` | no | — |  |
 | focusedItemId | `string \| undefined` | no | — |  |
 | height | `number` | yes | — |  |
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
@@ -1842,8 +1842,11 @@ Export paths: `src/index.ts`
 | revealPaddingPixels | `number \| undefined` | no | `8` |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `ZoraThemeId \| undefined` | no | — |  |
+| viewport | `GridViewport \| undefined` | no | — |  |
+| viewportConstraints | `GridViewportConstraints \| undefined` | no | — |  |
 | width | `number` | yes | — |  |
 | zoom | `number \| undefined` | no | `1` |  |
+| zoomLimits | `GridZoomLimits \| undefined` | no | — |  |
 
 ## Heading
 
@@ -3961,7 +3964,7 @@ Export paths: `src/index.ts`
 
 ## TileGrid
 
-Source: `src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1`
+Source: `src/features/grid-view/adapters/inbound/TileGrid.tsx:10:1`
 
 Composes a responsive, virtualized tile presentation over the generic GridView renderer.
 
@@ -3969,6 +3972,9 @@ Export paths: `src/index.ts`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| defaultViewport | `Partial<
+    Pick<GridViewport, 'offsetX' \| 'offsetY' \| 'pixelsPerUnitX' \| 'pixelsPerUnitY'>
+  > \| undefined` | no | — |  |
 | focusedItemId | `string \| undefined` | no | — |  |
 | gap | `number \| undefined` | no | `12` |  |
 | height | `number \| undefined` | no | `440` |  |
@@ -3977,6 +3983,7 @@ Export paths: `src/index.ts`
 | items | `readonly TileGridItem[]` | yes | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onColumnsChange | `(columns: number) => void \| undefined` | no | — |  |
+| onViewportChange | `(viewport: GridViewport) => void \| undefined` | no | — |  |
 | onVisibleItemIdsChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
 | overscanPixels | `number \| undefined` | no | — |  |
 | renderItem | `(item: TileGridItem) => React.ReactNode` | yes | — |  |
@@ -3984,8 +3991,11 @@ Export paths: `src/index.ts`
 | testID | `string \| undefined` | no | — |  |
 | themeId | `ZoraThemeId \| undefined` | no | — |  |
 | tileSize | `number \| undefined` | no | `120` |  |
+| viewport | `GridViewport \| undefined` | no | — |  |
+| viewportConstraints | `GridViewportConstraints \| undefined` | no | — |  |
 | width | `number \| undefined` | no | — |  |
 | zoom | `number \| undefined` | no | `1` |  |
+| zoomLimits | `GridZoomLimits \| undefined` | no | — |  |
 
 ## TimeGrid
 

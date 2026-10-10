@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.5.0",
+      "value": "v25.6.0",
       "color": "cb3837"
     },
     {
@@ -20454,7 +20454,7 @@
     {
       "name": "GridView",
       "title": null,
-      "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+      "description": "Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.",
       "isReadme": false,
       "see": [],
       "security": [],
@@ -20462,7 +20462,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 18,
+        "line": 38,
         "column": 1
       },
       "exportPaths": [
@@ -20473,10 +20473,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
+              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
               "type": "GridViewProps",
               "required": true,
               "description": null
@@ -20500,7 +20500,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 7,
+        "line": 12,
         "column": 1
       },
       "exportPaths": [
@@ -20523,6 +20523,13 @@
           "kind": "property",
           "type": "number",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "defaultViewport",
+          "kind": "property",
+          "type": "Partial<Pick<GridViewport, \"offsetX\" | \"offsetY\" | \"pixelsPerUnitX\" | \"pixelsPerUnitY\">> | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -20617,6 +20624,20 @@
           "description": null
         },
         {
+          "name": "viewport",
+          "kind": "property",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportConstraints",
+          "kind": "property",
+          "type": "GridViewportConstraints | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "width",
           "kind": "property",
           "type": "number",
@@ -20627,6 +20648,13 @@
           "name": "zoom",
           "kind": "property",
           "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "zoomLimits",
+          "kind": "property",
+          "type": "GridZoomLimits | undefined",
           "required": false,
           "description": null
         }
@@ -35703,7 +35731,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
-        "line": 9,
+        "line": 10,
         "column": 1
       },
       "exportPaths": [
@@ -35714,10 +35742,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
+          "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  viewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
+              "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  viewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
               "type": "TileGridProps",
               "required": true,
               "description": null
@@ -35741,7 +35769,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 25,
+        "line": 44,
         "column": 1
       },
       "exportPaths": [
@@ -35771,7 +35799,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 30,
+        "line": 49,
         "column": 1
       },
       "exportPaths": [
@@ -35783,6 +35811,13 @@
       ],
       "signatures": [],
       "members": [
+        {
+          "name": "defaultViewport",
+          "kind": "property",
+          "type": "Partial<Pick<GridViewport, \"offsetX\" | \"offsetY\" | \"pixelsPerUnitX\" | \"pixelsPerUnitY\">> | undefined",
+          "required": false,
+          "description": null
+        },
         {
           "name": "focusedItemId",
           "kind": "property",
@@ -35840,6 +35875,13 @@
           "description": null
         },
         {
+          "name": "onViewportChange",
+          "kind": "property",
+          "type": "((viewport: GridViewport) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onVisibleItemIdsChange",
           "kind": "property",
           "type": "((ids: readonly string[]) => void) | undefined",
@@ -35889,6 +35931,20 @@
           "description": null
         },
         {
+          "name": "viewport",
+          "kind": "property",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportConstraints",
+          "kind": "property",
+          "type": "GridViewportConstraints | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "width",
           "kind": "property",
           "type": "number | undefined",
@@ -35899,6 +35955,13 @@
           "name": "zoom",
           "kind": "property",
           "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "zoomLimits",
+          "kind": "property",
+          "type": "GridZoomLimits | undefined",
           "required": false,
           "description": null
         }
@@ -49205,14 +49268,14 @@
     },
     {
       "name": "GridView",
-      "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+      "description": "Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.",
       "isReadme": false,
       "see": [],
       "security": [],
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 18,
+        "line": 38,
         "column": 1
       },
       "exportPaths": [
@@ -49229,6 +49292,12 @@
           "name": "contentWidth",
           "type": "number",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "defaultViewport",
+          "type": "Partial<\n    Pick<GridViewport, 'offsetX' | 'offsetY' | 'pixelsPerUnitX' | 'pixelsPerUnitY'>\n  > | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -49312,6 +49381,18 @@
           "description": null
         },
         {
+          "name": "viewport",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportConstraints",
+          "type": "GridViewportConstraints | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "width",
           "type": "number",
           "required": true,
@@ -49322,6 +49403,12 @@
           "type": "number | undefined",
           "required": false,
           "defaultValue": "1",
+          "description": null
+        },
+        {
+          "name": "zoomLimits",
+          "type": "GridZoomLimits | undefined",
+          "required": false,
           "description": null
         }
       ]
@@ -59147,13 +59234,19 @@
       "modulePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
-        "line": 9,
+        "line": 10,
         "column": 1
       },
       "exportPaths": [
         "src/index.ts"
       ],
       "props": [
+        {
+          "name": "defaultViewport",
+          "type": "Partial<\n    Pick<GridViewport, 'offsetX' | 'offsetY' | 'pixelsPerUnitX' | 'pixelsPerUnitY'>\n  > | undefined",
+          "required": false,
+          "description": null
+        },
         {
           "name": "focusedItemId",
           "type": "string | undefined",
@@ -59205,6 +59298,12 @@
           "description": null
         },
         {
+          "name": "onViewportChange",
+          "type": "(viewport: GridViewport) => void | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onVisibleItemIdsChange",
           "type": "(ids: readonly string[]) => void | undefined",
           "required": false,
@@ -59248,6 +59347,18 @@
           "description": null
         },
         {
+          "name": "viewport",
+          "type": "GridViewport | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportConstraints",
+          "type": "GridViewportConstraints | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "width",
           "type": "number | undefined",
           "required": false,
@@ -59258,6 +59369,12 @@
           "type": "number | undefined",
           "required": false,
           "defaultValue": "1",
+          "description": null
+        },
+        {
+          "name": "zoomLimits",
+          "type": "GridZoomLimits | undefined",
+          "required": false,
           "description": null
         }
       ]
@@ -65108,12 +65225,133 @@
     },
     {
       "name": "GridView",
-      "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+      "description": "Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 18,
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
+      "name": "pan",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 110,
+        "column": 9
+      }
+    },
+    {
+      "name": "zoomAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 112,
+        "column": 9
+      }
+    },
+    {
+      "name": "syncScrollPosition",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 256,
+        "column": 9
+      }
+    },
+    {
+      "name": "createInitialViewport",
+      "description": "Builds the initial world position and independent scales for uncontrolled rendering.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 422,
+        "column": 1
+      }
+    },
+    {
+      "name": "createContentConstraints",
+      "description": "Uses the rendered content extent as the default finite world boundary.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 439,
+        "column": 1
+      }
+    },
+    {
+      "name": "createScrollMapping",
+      "description": "Maps engine-constrained world offsets to nonnegative native scroll coordinates.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 447,
+        "column": 1
+      }
+    },
+    {
+      "name": "createScrollAxisMapping",
+      "description": "Derives a physical scroll axis from the published engine constraint result.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 494,
+        "column": 1
+      }
+    },
+    {
+      "name": "areViewportsEqual",
+      "description": "Compares canonical viewport fields without treating equal proposals as state changes.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 510,
+        "column": 1
+      }
+    },
+    {
+      "name": "areScrollPositionsEqual",
+      "description": "Avoids requesting native scrolling again when the physical position is already current.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 522,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRepeatedControlledFocusRevealProposal",
+      "description": "Skips a rejected controlled focus proposal until its focus or incoming viewport changes.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 527,
+        "column": 1
+      }
+    },
+    {
+      "name": "getPinchGesture",
+      "description": "Extracts a stable two-finger focal point in the measured outer viewport coordinate space.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 550,
         "column": 1
       }
     },
@@ -65124,7 +65362,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
-        "line": 9,
+        "line": 10,
         "column": 1
       }
     },
@@ -68261,7 +68499,7 @@
       "name": "GridView",
       "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "symbolName": "GridView",
-      "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+      "description": "Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.",
       "isReadme": false
     },
     {
@@ -79936,8 +80174,86 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "createInitialViewport",
+        "callExpression": "createInitialViewport",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "createContentConstraints",
+        "callExpression": "createContentConstraints",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "constrainViewport",
+        "callExpression": "constrainViewport",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toSymbol": "getVisibleGridItems",
         "callExpression": "getVisibleGridItems",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "areViewportsEqual",
+        "callExpression": "areViewportsEqual",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "setUncontrolledViewport",
+        "callExpression": "setUncontrolledViewport",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "onViewportChange",
+        "callExpression": "onViewportChange",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "pan",
+        "toSymbol": "publish",
+        "callExpression": "publish",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "pan",
+        "toSymbol": "panViewport",
+        "callExpression": "panViewport",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "zoomAt",
+        "toSymbol": "publish",
+        "callExpression": "publish",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "zoomAt",
+        "toSymbol": "zoomViewportAt",
+        "callExpression": "zoomViewportAt",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "onMeasured",
+        "callExpression": "onMeasured",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "getPinchGesture",
+        "callExpression": "getPinchGesture",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "refreshViewportOrigin",
+        "callExpression": "refreshViewportOrigin",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -79948,8 +80264,14 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "toSymbol": "onViewportChange",
-        "callExpression": "onViewportChange",
+        "toSymbol": "createScrollMapping",
+        "callExpression": "createScrollMapping",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "areScrollPositionsEqual",
+        "callExpression": "areScrollPositionsEqual",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -79960,14 +80282,50 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "toSymbol": "setScrollX",
-        "callExpression": "setScrollX",
+        "toSymbol": "isRepeatedControlledFocusRevealProposal",
+        "callExpression": "isRepeatedControlledFocusRevealProposal",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "GridView",
+        "toSymbol": "createScrollMapping",
+        "callExpression": "createScrollMapping",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "syncScrollPosition",
+        "toSymbol": "createScrollMapping",
+        "callExpression": "createScrollMapping",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "toSymbol": "setScrollY",
-        "callExpression": "setScrollY",
+        "toSymbol": "setIsPinching",
+        "callExpression": "setIsPinching",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "syncScrollPosition",
+        "callExpression": "syncScrollPosition",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "measurePinchGesture",
+        "callExpression": "measurePinchGesture",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "zoomAt",
+        "callExpression": "zoomAt",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "pan",
+        "callExpression": "pan",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -79983,6 +80341,24 @@
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
+        "fromSymbol": "createScrollMapping",
+        "toSymbol": "constrainViewport",
+        "callExpression": "constrainViewport",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "createScrollMapping",
+        "toSymbol": "createScrollAxisMapping",
+        "callExpression": "createScrollAxisMapping",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "isRepeatedControlledFocusRevealProposal",
+        "toSymbol": "areViewportsEqual",
+        "callExpression": "areViewportsEqual",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
         "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
         "toSymbol": "layoutTileGrid",
         "callExpression": "layoutTileGrid",
@@ -79992,6 +80368,18 @@
         "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
         "toSymbol": "onColumnsChange",
         "callExpression": "onColumnsChange",
+        "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
+        "toSymbol": "setUncontrolledPixelsPerUnitX",
+        "callExpression": "setUncontrolledPixelsPerUnitX",
+        "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
+        "toSymbol": "onViewportChange",
+        "callExpression": "onViewportChange",
         "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
       },
       {
@@ -85750,7 +86138,27 @@
       },
       {
         "fromSymbol": "GridViewProps",
+        "toType": "GridViewportConstraints",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "GridViewProps",
+        "toType": "GridZoomLimits",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "GridViewProps",
         "toType": "InteractionPolicy",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "GridViewProps",
+        "toType": "Partial",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "GridViewProps",
+        "toType": "Pick",
         "sourcePath": "src/types/grid-view.ts"
       },
       {
@@ -85770,7 +86178,32 @@
       },
       {
         "fromSymbol": "TileGridProps",
+        "toType": "GridViewport",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "TileGridProps",
+        "toType": "GridViewportConstraints",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "TileGridProps",
+        "toType": "GridZoomLimits",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "TileGridProps",
         "toType": "InteractionPolicy",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "TileGridProps",
+        "toType": "Partial",
+        "sourcePath": "src/types/grid-view.ts"
+      },
+      {
+        "fromSymbol": "TileGridProps",
+        "toType": "Pick",
         "sourcePath": "src/types/grid-view.ts"
       },
       {
@@ -88365,26 +88798,80 @@
       },
       {
         "fromComponent": "GridView",
-        "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n      ref={horizontalScrollRef}\n      horizontal\n      scrollEnabled={interactionPolicy !== 'passive'}\n      scrollEventThrottle={32}\n      showsHorizontalScrollIndicator\n      style={{ width, height }}\n      testID={testID}\n      onScroll={(event) => setScrollX(event.nativeEvent.contentOffset.x)}\n    >",
+        "toComponent": "NativeView",
+        "jsxElement": "<NativeView\n      ref={gridRef}\n      accessibilityLabel=\"Interactive grid viewport\"\n      onLayout={refreshViewportOrigin}\n      onTouchEnd={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchCancel={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchMove={(event) => {\n        if (!interactive) return;\n        measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {\n          const previous = pinchGestureRef.current;\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n          if (!pinch || !previous) return;\n          zoomAt(pinch.focalPoint, pinch.distance / previous.distance);\n        });\n      }}\n      onTouchStart={(event) => {\n        const session = pinchSessionRef.current + 1;\n        pinchSessionRef.current = session;\n        measurePinchGesture([...event.nativeEvent.touches], session, (pinch) => {\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n        });\n      }}\n      style={{ height, overflow: 'hidden', width }}\n      testID={testID}\n    >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n        ref={verticalScrollRef}\n        scrollEnabled={interactionPolicy !== 'passive'}\n        scrollEventThrottle={32}\n        showsVerticalScrollIndicator\n        style={{ width: contentWidth * scale, height }}\n        onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}\n      >",
+        "jsxElement": "<NativeScrollView\n        ref={horizontalScrollRef}\n        testID={testID ? `${testID}-horizontal-scroll` : undefined}\n        horizontal\n        scrollEnabled={interactive && !isPinching}\n        scrollEventThrottle={16}\n        showsHorizontalScrollIndicator\n        style={{ height, width }}\n        onScroll={(event) => {\n          if (pinchGestureRef.current) return;\n          const { x } = event.nativeEvent.contentOffset;\n          const displacement = x - scrollPositionRef.current.x;\n          scrollPositionRef.current = { ...scrollPositionRef.current, x };\n          if (displacement !== 0) pan({ x: -displacement, y: 0 });\n        }}\n      >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativeScrollView",
+        "jsxElement": "<NativeScrollView\n          ref={verticalScrollRef}\n          testID={testID ? `${testID}-vertical-scroll` : undefined}\n          scrollEnabled={interactive && !isPinching}\n          scrollEventThrottle={16}\n          showsVerticalScrollIndicator\n          style={{ height, width: scrollMapping.horizontal.contentSize }}\n          onScroll={(event) => {\n            if (pinchGestureRef.current) return;\n            const { y } = event.nativeEvent.contentOffset;\n            const displacement = y - scrollPositionRef.current.y;\n            scrollPositionRef.current = { ...scrollPositionRef.current, y };\n            if (displacement !== 0) pan({ x: 0, y: -displacement });\n          }}\n        >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeView",
-        "jsxElement": "<NativeView style={{ width: contentWidth * scale, height: contentHeight * scale }}>",
+        "jsxElement": "<NativeView\n            style={{\n              height: scrollMapping.vertical.contentSize,\n              width: scrollMapping.horizontal.contentSize,\n            }}\n          >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeView",
-        "jsxElement": "<NativeView\n                key={item.id}\n                style={{\n                  position: 'absolute',\n                  left: position.x,\n                  top: position.y,\n                  width: item.width * scale,\n                  height: item.height * scale,\n                }}\n              >",
+        "jsxElement": "<NativeView\n                  key={item.id}\n                  style={{\n                    height: item.height * viewport.pixelsPerUnitY,\n                    left: position.x + scrollMapping.horizontal.origin,\n                    position: 'absolute',\n                    top: position.y + scrollMapping.vertical.origin,\n                    width: item.width * viewport.pixelsPerUnitX,\n                  }}\n                >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativeView",
+        "jsxElement": "<NativeView accessibilityLabel=\"Viewport controls\" style={controlsStyle}>",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Pan left\"\n            accessibilityRole=\"button\"\n            onPress={() => pan({ x: 48, y: 0 })}\n          >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativeText",
+        "jsxElement": "<NativeText>",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Pan right\"\n            accessibilityRole=\"button\"\n            onPress={() => pan({ x: -48, y: 0 })}\n          >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Pan up\"\n            accessibilityRole=\"button\"\n            onPress={() => pan({ x: 0, y: 48 })}\n          >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Pan down\"\n            accessibilityRole=\"button\"\n            onPress={() => pan({ x: 0, y: -48 })}\n          >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Zoom in\"\n            accessibilityRole=\"button\"\n            onPress={() => zoomAt({ x: width / 2, y: height / 2 }, 1.2)}\n          >",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromComponent": "GridView",
+        "toComponent": "NativePressable",
+        "jsxElement": "<NativePressable\n            accessibilityLabel=\"Zoom out\"\n            accessibilityRole=\"button\"\n            onPress={() => zoomAt({ x: width / 2, y: height / 2 }, 1 / 1.2)}\n          >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -88420,7 +88907,7 @@
       {
         "fromComponent": "TileGrid",
         "toComponent": "GridView",
-        "jsxElement": "<GridView\n          contentHeight={layout.height}\n          contentWidth={Math.max(resolvedWidth / zoom, layout.width)}\n          height={height}\n          focusedItemId={focusedItemId}\n          interactionPolicy={interactionPolicy}\n          items={layout.items}\n          onVisibleItemIdsChange={onVisibleItemIdsChange}\n          overscanPixels={overscanPixels}\n          renderItem={(item) => {\n            const source = itemLookup.get(item.id);\n            return source ? renderItem(source) : null;\n          }}\n          revealPaddingPixels={revealPaddingPixels}\n          width={resolvedWidth}\n          zoom={zoom}\n        />",
+        "jsxElement": "<GridView\n          contentHeight={layout.height}\n          contentWidth={Math.max(resolvedWidth / pixelsPerUnitX, layout.width)}\n          defaultViewport={defaultViewport}\n          height={height}\n          focusedItemId={focusedItemId}\n          interactionPolicy={interactionPolicy}\n          items={layout.items}\n          onVisibleItemIdsChange={onVisibleItemIdsChange}\n          onViewportChange={handleViewportChange}\n          overscanPixels={overscanPixels}\n          renderItem={(item) => {\n            const source = itemLookup.get(item.id);\n            return source ? renderItem(source) : null;\n          }}\n          revealPaddingPixels={revealPaddingPixels}\n          width={resolvedWidth}\n          viewport={viewport}\n          viewportConstraints={viewportConstraints}\n          zoomLimits={zoomLimits}\n          zoom={zoom}\n        />",
         "sourcePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx"
       },
       {

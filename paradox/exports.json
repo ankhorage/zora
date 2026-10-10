@@ -12672,7 +12672,7 @@
   {
     "name": "GridView",
     "title": null,
-    "description": "Renders world-positioned items on native and web using the canonical viewport/culling engine.\n\nThis first renderer uses nested native scroll regions. Only visible items are mounted;\nlogical cells and invisible elements are never rendered.",
+    "description": "Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.",
     "isReadme": false,
     "see": [],
     "security": [],
@@ -12680,7 +12680,7 @@
     "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
     "sourceLocation": {
       "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-      "line": 18,
+      "line": 38,
       "column": 1
     },
     "exportPaths": [
@@ -12691,10 +12691,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
+            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
             "type": "GridViewProps",
             "required": true,
             "description": null
@@ -12718,7 +12718,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 7,
+      "line": 12,
       "column": 1
     },
     "exportPaths": [
@@ -12741,6 +12741,13 @@
         "kind": "property",
         "type": "number",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "defaultViewport",
+        "kind": "property",
+        "type": "Partial<Pick<GridViewport, \"offsetX\" | \"offsetY\" | \"pixelsPerUnitX\" | \"pixelsPerUnitY\">> | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -12835,6 +12842,20 @@
         "description": null
       },
       {
+        "name": "viewport",
+        "kind": "property",
+        "type": "GridViewport | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewportConstraints",
+        "kind": "property",
+        "type": "GridViewportConstraints | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "width",
         "kind": "property",
         "type": "number",
@@ -12845,6 +12866,13 @@
         "name": "zoom",
         "kind": "property",
         "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoomLimits",
+        "kind": "property",
+        "type": "GridZoomLimits | undefined",
         "required": false,
         "description": null
       }
@@ -27921,7 +27949,7 @@
     "modulePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
     "sourceLocation": {
       "filePath": "src/features/grid-view/adapters/inbound/TileGrid.tsx",
-      "line": 9,
+      "line": 10,
       "column": 1
     },
     "exportPaths": [
@@ -27932,10 +27960,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
+        "label": "({\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  viewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}: TileGridProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
+            "name": "{\n  items,\n  width,\n  height = 440,\n  tileSize = 120,\n  gap = 12,\n  zoom = 1,\n  viewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  overscanPixels,\n  focusedItemId,\n  revealPaddingPixels,\n  onColumnsChange,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  interactionPolicy,\n  testID,\n}",
             "type": "TileGridProps",
             "required": true,
             "description": null
@@ -27959,7 +27987,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 25,
+      "line": 44,
       "column": 1
     },
     "exportPaths": [
@@ -27989,7 +28017,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 30,
+      "line": 49,
       "column": 1
     },
     "exportPaths": [
@@ -28001,6 +28029,13 @@
     ],
     "signatures": [],
     "members": [
+      {
+        "name": "defaultViewport",
+        "kind": "property",
+        "type": "Partial<Pick<GridViewport, \"offsetX\" | \"offsetY\" | \"pixelsPerUnitX\" | \"pixelsPerUnitY\">> | undefined",
+        "required": false,
+        "description": null
+      },
       {
         "name": "focusedItemId",
         "kind": "property",
@@ -28058,6 +28093,13 @@
         "description": null
       },
       {
+        "name": "onViewportChange",
+        "kind": "property",
+        "type": "((viewport: GridViewport) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "onVisibleItemIdsChange",
         "kind": "property",
         "type": "((ids: readonly string[]) => void) | undefined",
@@ -28107,6 +28149,20 @@
         "description": null
       },
       {
+        "name": "viewport",
+        "kind": "property",
+        "type": "GridViewport | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewportConstraints",
+        "kind": "property",
+        "type": "GridViewportConstraints | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "width",
         "kind": "property",
         "type": "number | undefined",
@@ -28117,6 +28173,13 @@
         "name": "zoom",
         "kind": "property",
         "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "zoomLimits",
+        "kind": "property",
+        "type": "GridZoomLimits | undefined",
         "required": false,
         "description": null
       }

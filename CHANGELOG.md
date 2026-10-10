@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.6.0
+
+### Minor Changes
+
+- b3bd629: Add controlled and bounded two-dimensional GridView and TileGrid viewport interaction for React Native and React Native Web.
+
 ## 25.5.0
 
 ### Minor Changes

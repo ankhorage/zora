@@ -904,7 +904,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/grid-view/adapters/inbound/GridView.tsx">
       src/features/grid-view/adapters/inbound/GridView.tsx
-      <small>1 function</small>
+      <small>12 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/grid-view/adapters/inbound/TileGrid.tsx">
@@ -6436,14 +6436,11 @@ Native hosts can inject another compatible implementation.</p>
             </section>
             <section>
               <h3>src/features/grid-view/adapters/inbound/GridView.tsx</h3>
-              <article class="item" id="symbol-gridview" data-search="GridView  function src/features/grid-view/adapters/inbound/GridView.tsx Renders world-positioned items on native and web using the canonical viewport/culling engine.&#10;&#10;This first renderer uses nested native scroll regions. Only visible items are mounted;&#10;logical cells and invisible elements are never rendered. GridViewProps ({&#10;  items,&#10;  contentWidth,&#10;  contentHeight,&#10;  width,&#10;  height,&#10;  zoom = 1,&#10;  overscanPixels = 160,&#10;  focusedItemId,&#10;  revealPaddingPixels = 8,&#10;  interactionPolicy,&#10;  onViewportChange,&#10;  onVisibleItemIdsChange,&#10;  renderItem,&#10;  testID,&#10;}: GridViewProps) =&gt; React.JSX.Element">
+              <article class="item" id="symbol-gridview" data-search="GridView  function src/features/grid-view/adapters/inbound/GridView.tsx Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. GridViewProps ({&#10;  items,&#10;  contentWidth,&#10;  contentHeight,&#10;  width,&#10;  height,&#10;  viewport: controlledViewport,&#10;  defaultViewport,&#10;  viewportConstraints,&#10;  zoomLimits,&#10;  zoom = 1,&#10;  overscanPixels = 160,&#10;  focusedItemId,&#10;  revealPaddingPixels = 8,&#10;  interactionPolicy,&#10;  onViewportChange,&#10;  onVisibleItemIdsChange,&#10;  renderItem,&#10;  testID,&#10;}: GridViewProps) =&gt; React.JSX.Element">
     <h4>GridView</h4>
     
-    <p class="muted">function • <code>src/features/grid-view/adapters/inbound/GridView.tsx:18:1</code></p>
-    <p>Renders world-positioned items on native and web using the canonical viewport/culling engine.
-
-This first renderer uses nested native scroll regions. Only visible items are mounted;
-logical cells and invisible elements are never rendered.</p>
+    <p class="muted">function • <code>src/features/grid-view/adapters/inbound/GridView.tsx:38:1</code></p>
+    <p>Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">GridViewProps</li></ul></div>
@@ -6455,6 +6452,10 @@ logical cells and invisible elements are never rendered.</p>
   contentHeight,
   width,
   height,
+  viewport: controlledViewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   zoom = 1,
   overscanPixels = 160,
   focusedItemId,
@@ -6475,6 +6476,10 @@ logical cells and invisible elements are never rendered.</p>
   contentHeight,
   width,
   height,
+  viewport: controlledViewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   zoom = 1,
   overscanPixels = 160,
   focusedItemId,
@@ -6498,10 +6503,10 @@ logical cells and invisible elements are never rendered.</p>
             </section>
             <section>
               <h3>src/features/grid-view/adapters/inbound/TileGrid.tsx</h3>
-              <article class="item" id="symbol-tilegrid" data-search="TileGrid  function src/features/grid-view/adapters/inbound/TileGrid.tsx Composes a responsive, virtualized tile presentation over the generic GridView renderer. TileGridProps ({&#10;  items,&#10;  width,&#10;  height = 440,&#10;  tileSize = 120,&#10;  gap = 12,&#10;  zoom = 1,&#10;  overscanPixels,&#10;  focusedItemId,&#10;  revealPaddingPixels,&#10;  onColumnsChange,&#10;  onVisibleItemIdsChange,&#10;  renderItem,&#10;  interactionPolicy,&#10;  testID,&#10;}: TileGridProps) =&gt; React.JSX.Element">
+              <article class="item" id="symbol-tilegrid" data-search="TileGrid  function src/features/grid-view/adapters/inbound/TileGrid.tsx Composes a responsive, virtualized tile presentation over the generic GridView renderer. TileGridProps ({&#10;  items,&#10;  width,&#10;  height = 440,&#10;  tileSize = 120,&#10;  gap = 12,&#10;  zoom = 1,&#10;  viewport,&#10;  defaultViewport,&#10;  viewportConstraints,&#10;  zoomLimits,&#10;  overscanPixels,&#10;  focusedItemId,&#10;  revealPaddingPixels,&#10;  onColumnsChange,&#10;  onViewportChange,&#10;  onVisibleItemIdsChange,&#10;  renderItem,&#10;  interactionPolicy,&#10;  testID,&#10;}: TileGridProps) =&gt; React.JSX.Element">
     <h4>TileGrid</h4>
     
-    <p class="muted">function • <code>src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1</code></p>
+    <p class="muted">function • <code>src/features/grid-view/adapters/inbound/TileGrid.tsx:10:1</code></p>
     <p>Composes a responsive, virtualized tile presentation over the generic GridView renderer.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -6515,10 +6520,15 @@ logical cells and invisible elements are never rendered.</p>
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
@@ -6535,10 +6545,15 @@ logical cells and invisible elements are never rendered.</p>
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
@@ -17152,7 +17167,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
               <article class="item" id="symbol-gridviewprops" data-search="GridViewProps  type src/types/grid-view.ts  ZoraThemeMode">
     <h4>GridViewProps</h4>
     
-    <p class="muted">type • <code>src/types/grid-view.ts:7:1</code></p>
+    <p class="muted">type • <code>src/types/grid-view.ts:12:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -17172,6 +17187,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>property</td>
             <td><code>number</code></td>
             <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>defaultViewport</code></td>
+            <td>property</td>
+            <td><code>Partial&lt;Pick&lt;GridViewport, &quot;offsetX&quot; | &quot;offsetY&quot; | &quot;pixelsPerUnitX&quot; | &quot;pixelsPerUnitY&quot;&gt;&gt; | undefined</code></td>
+            <td>no</td>
             <td></td>
           </tr><tr>
             <td><code>focusedItemId</code></td>
@@ -17252,6 +17273,18 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>viewport</code></td>
+            <td>property</td>
+            <td><code>GridViewport | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>viewportConstraints</code></td>
+            <td>property</td>
+            <td><code>GridViewportConstraints | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>width</code></td>
             <td>property</td>
             <td><code>number</code></td>
@@ -17263,13 +17296,19 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>number | undefined</code></td>
             <td>no</td>
             <td></td>
+          </tr><tr>
+            <td><code>zoomLimits</code></td>
+            <td>property</td>
+            <td><code>GridZoomLimits | undefined</code></td>
+            <td>no</td>
+            <td></td>
           </tr>
     </tbody>
   </table>
   </article><article class="item" id="symbol-tilegriditem" data-search="TileGridItem  type src/types/grid-view.ts ">
     <h4>TileGridItem</h4>
     
-    <p class="muted">type • <code>src/types/grid-view.ts:25:1</code></p>
+    <p class="muted">type • <code>src/types/grid-view.ts:44:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -17290,7 +17329,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
   </article><article class="item" id="symbol-tilegridprops" data-search="TileGridProps  type src/types/grid-view.ts  TileGridItem ZoraThemeMode">
     <h4>TileGridProps</h4>
     
-    <p class="muted">type • <code>src/types/grid-view.ts:30:1</code></p>
+    <p class="muted">type • <code>src/types/grid-view.ts:49:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -17300,6 +17339,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
     <tbody>
       <tr>
+            <td><code>defaultViewport</code></td>
+            <td>property</td>
+            <td><code>Partial&lt;Pick&lt;GridViewport, &quot;offsetX&quot; | &quot;offsetY&quot; | &quot;pixelsPerUnitX&quot; | &quot;pixelsPerUnitY&quot;&gt;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>focusedItemId</code></td>
             <td>property</td>
             <td><code>string | undefined</code></td>
@@ -17348,6 +17393,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>onViewportChange</code></td>
+            <td>property</td>
+            <td><code>((viewport: GridViewport) =&gt; void) | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>onVisibleItemIdsChange</code></td>
             <td>property</td>
             <td><code>((ids: readonly string[]) =&gt; void) | undefined</code></td>
@@ -17390,6 +17441,18 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>no</td>
             <td></td>
           </tr><tr>
+            <td><code>viewport</code></td>
+            <td>property</td>
+            <td><code>GridViewport | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>viewportConstraints</code></td>
+            <td>property</td>
+            <td><code>GridViewportConstraints | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>width</code></td>
             <td>property</td>
             <td><code>number | undefined</code></td>
@@ -17399,6 +17462,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>zoom</code></td>
             <td>property</td>
             <td><code>number | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>zoomLimits</code></td>
+            <td>property</td>
+            <td><code>GridZoomLimits | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr>
@@ -36920,13 +36989,10 @@ Native hosts can inject another compatible implementation.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-gridview" data-search="GridView src/features/grid-view/adapters/inbound/GridView.tsx Renders world-positioned items on native and web using the canonical viewport/culling engine.&#10;&#10;This first renderer uses nested native scroll regions. Only visible items are mounted;&#10;logical cells and invisible elements are never rendered. contentHeight number contentWidth number focusedItemId string | undefined height number interactionPolicy InteractionPolicy | undefined inverted boolean | undefined items readonly GridRectItem[] mode ZoraThemeMode | undefined onViewportChange (viewport: GridViewport) =&gt; void | undefined onVisibleItemIdsChange (ids: readonly string[]) =&gt; void | undefined overscanPixels number | undefined renderItem (item: GridRectItem) =&gt; React.ReactNode revealPaddingPixels number | undefined testID string | undefined themeId ZoraThemeId | undefined width number zoom number | undefined">
+  </article><article class="item" id="component-gridview" data-search="GridView src/features/grid-view/adapters/inbound/GridView.tsx Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. contentHeight number contentWidth number defaultViewport Partial&lt;&#10;    Pick&lt;GridViewport, &#39;offsetX&#39; | &#39;offsetY&#39; | &#39;pixelsPerUnitX&#39; | &#39;pixelsPerUnitY&#39;&gt;&#10;  &gt; | undefined focusedItemId string | undefined height number interactionPolicy InteractionPolicy | undefined inverted boolean | undefined items readonly GridRectItem[] mode ZoraThemeMode | undefined onViewportChange (viewport: GridViewport) =&gt; void | undefined onVisibleItemIdsChange (ids: readonly string[]) =&gt; void | undefined overscanPixels number | undefined renderItem (item: GridRectItem) =&gt; React.ReactNode revealPaddingPixels number | undefined testID string | undefined themeId ZoraThemeId | undefined viewport GridViewport | undefined viewportConstraints GridViewportConstraints | undefined width number zoom number | undefined zoomLimits GridZoomLimits | undefined">
     <h3>GridView</h3>
-    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:18:1</code></p>
-    <p>Renders world-positioned items on native and web using the canonical viewport/culling engine.
-
-This first renderer uses nested native scroll regions. Only visible items are mounted;
-logical cells and invisible elements are never rendered.</p>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:38:1</code></p>
+    <p>Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
     <table>
@@ -36941,6 +37007,13 @@ logical cells and invisible elements are never rendered.</p>
               <td><code>contentWidth</code></td>
               <td><code>number</code></td>
               <td>yes</td>
+              <td></td>
+            </tr><tr>
+              <td><code>defaultViewport</code></td>
+              <td><code>Partial&lt;
+    Pick&lt;GridViewport, &#39;offsetX&#39; | &#39;offsetY&#39; | &#39;pixelsPerUnitX&#39; | &#39;pixelsPerUnitY&#39;&gt;
+  &gt; | undefined</code></td>
+              <td>no</td>
               <td></td>
             </tr><tr>
               <td><code>focusedItemId</code></td>
@@ -37008,6 +37081,16 @@ logical cells and invisible elements are never rendered.</p>
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>viewport</code></td>
+              <td><code>GridViewport | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>viewportConstraints</code></td>
+              <td><code>GridViewportConstraints | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>width</code></td>
               <td><code>number</code></td>
               <td>yes</td>
@@ -37015,6 +37098,11 @@ logical cells and invisible elements are never rendered.</p>
             </tr><tr>
               <td><code>zoom</code></td>
               <td><code>number | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>zoomLimits</code></td>
+              <td><code>GridZoomLimits | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr>
@@ -45040,9 +45128,9 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-tilegrid" data-search="TileGrid src/features/grid-view/adapters/inbound/TileGrid.tsx Composes a responsive, virtualized tile presentation over the generic GridView renderer. focusedItemId string | undefined gap number | undefined height number | undefined interactionPolicy InteractionPolicy | undefined inverted boolean | undefined items readonly TileGridItem[] mode ZoraThemeMode | undefined onColumnsChange (columns: number) =&gt; void | undefined onVisibleItemIdsChange (ids: readonly string[]) =&gt; void | undefined overscanPixels number | undefined renderItem (item: TileGridItem) =&gt; React.ReactNode revealPaddingPixels number | undefined testID string | undefined themeId ZoraThemeId | undefined tileSize number | undefined width number | undefined zoom number | undefined">
+  </article><article class="item" id="component-tilegrid" data-search="TileGrid src/features/grid-view/adapters/inbound/TileGrid.tsx Composes a responsive, virtualized tile presentation over the generic GridView renderer. defaultViewport Partial&lt;&#10;    Pick&lt;GridViewport, &#39;offsetX&#39; | &#39;offsetY&#39; | &#39;pixelsPerUnitX&#39; | &#39;pixelsPerUnitY&#39;&gt;&#10;  &gt; | undefined focusedItemId string | undefined gap number | undefined height number | undefined interactionPolicy InteractionPolicy | undefined inverted boolean | undefined items readonly TileGridItem[] mode ZoraThemeMode | undefined onColumnsChange (columns: number) =&gt; void | undefined onViewportChange (viewport: GridViewport) =&gt; void | undefined onVisibleItemIdsChange (ids: readonly string[]) =&gt; void | undefined overscanPixels number | undefined renderItem (item: TileGridItem) =&gt; React.ReactNode revealPaddingPixels number | undefined testID string | undefined themeId ZoraThemeId | undefined tileSize number | undefined viewport GridViewport | undefined viewportConstraints GridViewportConstraints | undefined width number | undefined zoom number | undefined zoomLimits GridZoomLimits | undefined">
     <h3>TileGrid</h3>
-    <p class="muted"><code>src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1</code></p>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/TileGrid.tsx:10:1</code></p>
     <p>Composes a responsive, virtualized tile presentation over the generic GridView renderer.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -45050,6 +45138,13 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
       <thead><tr><th>Prop</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
       <tbody>
         <tr>
+              <td><code>defaultViewport</code></td>
+              <td><code>Partial&lt;
+    Pick&lt;GridViewport, &#39;offsetX&#39; | &#39;offsetY&#39; | &#39;pixelsPerUnitX&#39; | &#39;pixelsPerUnitY&#39;&gt;
+  &gt; | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>focusedItemId</code></td>
               <td><code>string | undefined</code></td>
               <td>no</td>
@@ -45090,6 +45185,11 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>onViewportChange</code></td>
+              <td><code>(viewport: GridViewport) =&gt; void | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>onVisibleItemIdsChange</code></td>
               <td><code>(ids: readonly string[]) =&gt; void | undefined</code></td>
               <td>no</td>
@@ -45125,6 +45225,16 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
               <td>no</td>
               <td></td>
             </tr><tr>
+              <td><code>viewport</code></td>
+              <td><code>GridViewport | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>viewportConstraints</code></td>
+              <td><code>GridViewportConstraints | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
               <td><code>width</code></td>
               <td><code>number | undefined</code></td>
               <td>no</td>
@@ -45132,6 +45242,11 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
             </tr><tr>
               <td><code>zoom</code></td>
               <td><code>number | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>zoomLimits</code></td>
+              <td><code>GridZoomLimits | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr>
@@ -58928,6 +59043,36 @@ Expansion controls are separate from row selection, including when rendering cus
   participant_createChess--&gt;&gt;participant_getLegalTargets: return
 </pre>
     </details>
+  </article><article class="item" data-search="GridView sequence diagrams/sequences/grid-view.mmd">
+    <h3>GridView sequence</h3>
+    <p class="muted"><code>diagrams/sequences/grid-view.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_constrainViewport as constrainViewport
+  participant participant_createScrollAxisMapping as createScrollAxisMapping
+  participant participant_createScrollMapping as createScrollMapping
+  participant participant_GridView as GridView
+  participant_GridView-&gt;&gt;participant_createScrollMapping: createScrollMapping()
+  participant_createScrollMapping-&gt;&gt;participant_constrainViewport: constrainViewport()
+  participant_constrainViewport--&gt;&gt;participant_createScrollMapping: return
+  participant_createScrollMapping-&gt;&gt;participant_createScrollAxisMapping: createScrollAxisMapping()
+  participant_createScrollAxisMapping--&gt;&gt;participant_createScrollMapping: return
+  participant_createScrollMapping--&gt;&gt;participant_GridView: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
+  participant participant_constrainViewport as constrainViewport
+  participant participant_createScrollAxisMapping as createScrollAxisMapping
+  participant participant_createScrollMapping as createScrollMapping
+  participant participant_GridView as GridView
+  participant_GridView-&gt;&gt;participant_createScrollMapping: createScrollMapping()
+  participant_createScrollMapping-&gt;&gt;participant_constrainViewport: constrainViewport()
+  participant_constrainViewport--&gt;&gt;participant_createScrollMapping: return
+  participant_createScrollMapping-&gt;&gt;participant_createScrollAxisMapping: createScrollAxisMapping()
+  participant_createScrollAxisMapping--&gt;&gt;participant_createScrollMapping: return
+  participant_createScrollMapping--&gt;&gt;participant_GridView: return
+</pre>
+    </details>
   </article><article class="item" data-search="readChessPieces sequence diagrams/sequences/read-chess-pieces.mmd">
     <h3>readChessPieces sequence</h3>
     <p class="muted"><code>diagrams/sequences/read-chess-pieces.mmd</code></p>
@@ -62151,13 +62296,65 @@ per-element selector scans would add avoidable work. Runtime tests cover hover/s
   </section><section id="view-src-features-grid-view-adapters-inbound-gridview-tsx" class="view" data-view="src/features/grid-view/adapters/inbound/GridView.tsx" hidden>
     <section class="panel">
       <h2>src/features/grid-view/adapters/inbound/GridView.tsx</h2>
-      <article class="item" data-search="GridView src/features/grid-view/adapters/inbound/GridView.tsx Renders world-positioned items on native and web using the canonical viewport/culling engine.&#10;&#10;This first renderer uses nested native scroll regions. Only visible items are mounted;&#10;logical cells and invisible elements are never rendered.">
+      <article class="item" data-search="GridView src/features/grid-view/adapters/inbound/GridView.tsx Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.">
     <h3>GridView</h3>
-    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:18:1</code></p>
-    <p>Renders world-positioned items on native and web using the canonical viewport/culling engine.
-
-This first renderer uses nested native scroll regions. Only visible items are mounted;
-logical cells and invisible elements are never rendered.</p>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:38:1</code></p>
+    <p>Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.</p>
+    
+  </article><article class="item" data-search="pan src/features/grid-view/adapters/inbound/GridView.tsx ">
+    <h3>pan</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:110:9</code></p>
+    <p class="empty">No description available.</p>
+    
+  </article><article class="item" data-search="zoomAt src/features/grid-view/adapters/inbound/GridView.tsx ">
+    <h3>zoomAt</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:112:9</code></p>
+    <p class="empty">No description available.</p>
+    
+  </article><article class="item" data-search="syncScrollPosition src/features/grid-view/adapters/inbound/GridView.tsx ">
+    <h3>syncScrollPosition</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:256:9</code></p>
+    <p class="empty">No description available.</p>
+    
+  </article><article class="item" data-search="createInitialViewport src/features/grid-view/adapters/inbound/GridView.tsx Builds the initial world position and independent scales for uncontrolled rendering.">
+    <h3>createInitialViewport</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:422:1</code></p>
+    <p>Builds the initial world position and independent scales for uncontrolled rendering.</p>
+    
+  </article><article class="item" data-search="createContentConstraints src/features/grid-view/adapters/inbound/GridView.tsx Uses the rendered content extent as the default finite world boundary.">
+    <h3>createContentConstraints</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:439:1</code></p>
+    <p>Uses the rendered content extent as the default finite world boundary.</p>
+    
+  </article><article class="item" data-search="createScrollMapping src/features/grid-view/adapters/inbound/GridView.tsx Maps engine-constrained world offsets to nonnegative native scroll coordinates.">
+    <h3>createScrollMapping</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:447:1</code></p>
+    <p>Maps engine-constrained world offsets to nonnegative native scroll coordinates.</p>
+    
+  </article><article class="item" data-search="createScrollAxisMapping src/features/grid-view/adapters/inbound/GridView.tsx Derives a physical scroll axis from the published engine constraint result.">
+    <h3>createScrollAxisMapping</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:494:1</code></p>
+    <p>Derives a physical scroll axis from the published engine constraint result.</p>
+    
+  </article><article class="item" data-search="areViewportsEqual src/features/grid-view/adapters/inbound/GridView.tsx Compares canonical viewport fields without treating equal proposals as state changes.">
+    <h3>areViewportsEqual</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:510:1</code></p>
+    <p>Compares canonical viewport fields without treating equal proposals as state changes.</p>
+    
+  </article><article class="item" data-search="areScrollPositionsEqual src/features/grid-view/adapters/inbound/GridView.tsx Avoids requesting native scrolling again when the physical position is already current.">
+    <h3>areScrollPositionsEqual</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:522:1</code></p>
+    <p>Avoids requesting native scrolling again when the physical position is already current.</p>
+    
+  </article><article class="item" data-search="isRepeatedControlledFocusRevealProposal src/features/grid-view/adapters/inbound/GridView.tsx Skips a rejected controlled focus proposal until its focus or incoming viewport changes.">
+    <h3>isRepeatedControlledFocusRevealProposal</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:527:1</code></p>
+    <p>Skips a rejected controlled focus proposal until its focus or incoming viewport changes.</p>
+    
+  </article><article class="item" data-search="getPinchGesture src/features/grid-view/adapters/inbound/GridView.tsx Extracts a stable two-finger focal point in the measured outer viewport coordinate space.">
+    <h3>getPinchGesture</h3>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/GridView.tsx:550:1</code></p>
+    <p>Extracts a stable two-finger focal point in the measured outer viewport coordinate space.</p>
     
   </article>
     </section>
@@ -62166,7 +62363,7 @@ logical cells and invisible elements are never rendered.</p>
       <h2>src/features/grid-view/adapters/inbound/TileGrid.tsx</h2>
       <article class="item" data-search="TileGrid src/features/grid-view/adapters/inbound/TileGrid.tsx Composes a responsive, virtualized tile presentation over the generic GridView renderer.">
     <h3>TileGrid</h3>
-    <p class="muted"><code>src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1</code></p>
+    <p class="muted"><code>src/features/grid-view/adapters/inbound/TileGrid.tsx:10:1</code></p>
     <p>Composes a responsive, virtualized tile presentation over the generic GridView renderer.</p>
     
   </article>

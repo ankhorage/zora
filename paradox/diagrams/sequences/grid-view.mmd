@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_constrainViewport as constrainViewport
+  participant participant_createScrollAxisMapping as createScrollAxisMapping
+  participant participant_createScrollMapping as createScrollMapping
+  participant participant_GridView as GridView
+  participant_GridView->>participant_createScrollMapping: createScrollMapping()
+  participant_createScrollMapping->>participant_constrainViewport: constrainViewport()
+  participant_constrainViewport-->>participant_createScrollMapping: return
+  participant_createScrollMapping->>participant_createScrollAxisMapping: createScrollAxisMapping()
+  participant_createScrollAxisMapping-->>participant_createScrollMapping: return
+  participant_createScrollMapping-->>participant_GridView: return

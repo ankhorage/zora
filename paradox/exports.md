@@ -2963,12 +2963,9 @@ Source: `src/types/grid-rulers.ts:13:1`
 
 Kind: `function`
 Module: `src/features/grid-view/adapters/inbound/GridView.tsx`
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:18:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:38:1`
 
-Renders world-positioned items on native and web using the canonical viewport/culling engine.
-
-This first renderer uses nested native scroll regions. Only visible items are mounted;
-logical cells and invisible elements are never rendered.
+Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.
 
 ### Signatures
 
@@ -2978,6 +2975,10 @@ logical cells and invisible elements are never rendered.
   contentHeight,
   width,
   height,
+  viewport: controlledViewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   zoom = 1,
   overscanPixels = 160,
   focusedItemId,
@@ -2994,6 +2995,10 @@ logical cells and invisible elements are never rendered.
   contentHeight,
   width,
   height,
+  viewport: controlledViewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   zoom = 1,
   overscanPixels = 160,
   focusedItemId,
@@ -3010,7 +3015,7 @@ logical cells and invisible elements are never rendered.
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:7:1`
+Source: `src/types/grid-view.ts:12:1`
 
 ### Members
 
@@ -3018,6 +3023,7 @@ Source: `src/types/grid-view.ts:7:1`
 | --- | --- | --- | --- | --- |
 | contentHeight | property | `number` | yes |  |
 | contentWidth | property | `number` | yes |  |
+| defaultViewport | property | `Partial<Pick<GridViewport, "offsetX" \| "offsetY" \| "pixelsPerUnitX" \| "pixelsPerUnitY">> \| undefined` | no |  |
 | focusedItemId | property | `string \| undefined` | no |  |
 | height | property | `number` | yes |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
@@ -3031,8 +3037,11 @@ Source: `src/types/grid-view.ts:7:1`
 | revealPaddingPixels | property | `number \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
+| viewport | property | `GridViewport \| undefined` | no |  |
+| viewportConstraints | property | `GridViewportConstraints \| undefined` | no |  |
 | width | property | `number` | yes |  |
 | zoom | property | `number \| undefined` | no |  |
+| zoomLimits | property | `GridZoomLimits \| undefined` | no |  |
 
 ## hasRequiredRule
 
@@ -6431,7 +6440,7 @@ Source: `src/types/theme-mode-toggle.ts:4:1`
 
 Kind: `function`
 Module: `src/features/grid-view/adapters/inbound/TileGrid.tsx`
-Source: `src/features/grid-view/adapters/inbound/TileGrid.tsx:9:1`
+Source: `src/features/grid-view/adapters/inbound/TileGrid.tsx:10:1`
 
 Composes a responsive, virtualized tile presentation over the generic GridView renderer.
 
@@ -6444,10 +6453,15 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
@@ -6460,10 +6474,15 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
@@ -6475,7 +6494,7 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:25:1`
+Source: `src/types/grid-view.ts:44:1`
 
 ### Members
 
@@ -6487,12 +6506,13 @@ Source: `src/types/grid-view.ts:25:1`
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:30:1`
+Source: `src/types/grid-view.ts:49:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| defaultViewport | property | `Partial<Pick<GridViewport, "offsetX" \| "offsetY" \| "pixelsPerUnitX" \| "pixelsPerUnitY">> \| undefined` | no |  |
 | focusedItemId | property | `string \| undefined` | no |  |
 | gap | property | `number \| undefined` | no |  |
 | height | property | `number \| undefined` | no |  |
@@ -6501,6 +6521,7 @@ Source: `src/types/grid-view.ts:30:1`
 | items | property | `readonly TileGridItem[]` | yes |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onColumnsChange | property | `((columns: number) => void) \| undefined` | no |  |
+| onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
 | onVisibleItemIdsChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
 | overscanPixels | property | `number \| undefined` | no |  |
 | renderItem | property | `(item: TileGridItem) => React.ReactNode` | yes |  |
@@ -6508,8 +6529,11 @@ Source: `src/types/grid-view.ts:30:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | tileSize | property | `number \| undefined` | no |  |
+| viewport | property | `GridViewport \| undefined` | no |  |
+| viewportConstraints | property | `GridViewportConstraints \| undefined` | no |  |
 | width | property | `number \| undefined` | no |  |
 | zoom | property | `number \| undefined` | no |  |
+| zoomLimits | property | `GridZoomLimits \| undefined` | no |  |
 
 ## TimeGrid
 
