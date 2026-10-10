@@ -20869,6 +20869,60 @@
     "structuredRows": []
   },
   {
+    "name": "resolveTimeGridVisibleIntervals",
+    "title": null,
+    "description": "Resolves the ordered interval placements visible in both world-space axes.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/time-grid/application/resolveTimeGridVisibleIntervals.ts",
+    "sourceLocation": {
+      "filePath": "src/features/time-grid/application/resolveTimeGridVisibleIntervals.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(lanes: readonly import(\"@ankhorage/grid-view\").GridLane[], intervals: readonly import(\"@ankhorage/grid-view\").GridLaneInterval[], viewport: GridViewport, overscanPixels?: number | undefined) => readonly import(\"@ankhorage/grid-view\").GridLaneIntervalPlacement[]",
+        "parameters": [
+          {
+            "name": "intervals",
+            "type": "readonly import(\"@ankhorage/grid-view\").GridLaneInterval[]",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "lanes",
+            "type": "readonly import(\"@ankhorage/grid-view\").GridLane[]",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "overscanPixels",
+            "type": "number | undefined",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "viewport",
+            "type": "GridViewport",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "readonly import(\"@ankhorage/grid-view\").GridLaneIntervalPlacement[]",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "ScanOverlay",
     "title": null,
     "description": "Camera-agnostic scan frame overlay for barcode and QR scanning flows.\n\n`ScanOverlay` intentionally renders no native camera. Apps provide camera\ncapability separately while ZORA owns the visible scan affordance.",
@@ -28070,6 +28124,262 @@
     "structuredRows": []
   },
   {
+    "name": "TimeGrid",
+    "title": null,
+    "description": "Presents virtualized variable-height interval lanes through ZORA's shared GridView renderer.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/time-grid/adapters/inbound/TimeGrid.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/time-grid/adapters/inbound/TimeGrid.tsx",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimeGridProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  contentWidth,\n  focusedIntervalId,\n  height,\n  interactionPolicy,\n  intervals,\n  lanes,\n  onFocusedIntervalIdChange,\n  onIntervalPress,\n  onViewportChange,\n  onVisibleIntervalIdsChange,\n  overscanPixels,\n  renderInterval,\n  renderLaneLabel,\n  revealPaddingPixels,\n  selectedIntervalIds = [],\n  testID,\n  width,\n  zoom,\n}: TimeGridProps) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  contentWidth,\n  focusedIntervalId,\n  height,\n  interactionPolicy,\n  intervals,\n  lanes,\n  onFocusedIntervalIdChange,\n  onIntervalPress,\n  onViewportChange,\n  onVisibleIntervalIdsChange,\n  overscanPixels,\n  renderInterval,\n  renderLaneLabel,\n  revealPaddingPixels,\n  selectedIntervalIds = [],\n  testID,\n  width,\n  zoom,\n}",
+            "type": "TimeGridProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TimeGridInterval",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/time-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/time-grid.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TimeGridLane",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/time-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/time-grid.ts",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TimeGridProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/time-grid.ts",
+    "sourceLocation": {
+      "filePath": "src/types/time-grid.ts",
+      "line": 16,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimeGridInterval",
+      "TimeGridLane",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "contentWidth",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "focusedIntervalId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "height",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "intervals",
+        "kind": "property",
+        "type": "readonly GridLaneInterval[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "lanes",
+        "kind": "property",
+        "type": "readonly GridLane[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onFocusedIntervalIdChange",
+        "kind": "property",
+        "type": "((id: string) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onIntervalPress",
+        "kind": "property",
+        "type": "((interval: TimeGridInterval) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onViewportChange",
+        "kind": "property",
+        "type": "((viewport: GridViewport) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onVisibleIntervalIdsChange",
+        "kind": "property",
+        "type": "((ids: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "overscanPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderInterval",
+        "kind": "property",
+        "type": "(interval: TimeGridInterval, selected: boolean) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "renderLaneLabel",
+        "kind": "property",
+        "type": "((lane: TimeGridLane) => React.ReactNode) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "revealPaddingPixels",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedIntervalIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "width",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "zoom",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "Timeline",
     "title": null,
     "description": "Timeline pattern for displaying a sequence of events.",
@@ -30697,7 +31007,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 113,
+      "line": 114,
       "column": 14
     },
     "exportPaths": [
@@ -30719,7 +31029,7 @@
     "modulePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_COMPONENT_REGISTRY.ts",
-      "line": 231,
+      "line": 233,
       "column": 14
     },
     "exportPaths": [

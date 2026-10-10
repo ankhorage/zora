@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_getVisibleLaneIntervals as getVisibleLaneIntervals
+  participant participant_resolveTimeGridVisibleIntervals as resolveTimeGridVisibleIntervals
+  participant_resolveTimeGridVisibleIntervals->>participant_getVisibleLaneIntervals: getVisibleLaneIntervals()
+  participant_getVisibleLaneIntervals-->>participant_resolveTimeGridVisibleIntervals: return

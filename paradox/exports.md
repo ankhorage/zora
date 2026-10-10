@@ -4893,6 +4893,23 @@ Source: `src/features/reader/utils/resolveReaderProgress.ts:1:1`
 }: `{ progress?: number; page?: number; pageCount?: number; }`
   - returns: `number`
 
+## resolveTimeGridVisibleIntervals
+
+Kind: `function`
+Module: `src/features/time-grid/application/resolveTimeGridVisibleIntervals.ts`
+Source: `src/features/time-grid/application/resolveTimeGridVisibleIntervals.ts:6:1`
+
+Resolves the ordered interval placements visible in both world-space axes.
+
+### Signatures
+
+- `(lanes: readonly import("@ankhorage/grid-view").GridLane[], intervals: readonly import("@ankhorage/grid-view").GridLaneInterval[], viewport: GridViewport, overscanPixels?: number | undefined) => readonly import("@ankhorage/grid-view").GridLaneIntervalPlacement[]`
+  - intervals: `readonly import("@ankhorage/grid-view").GridLaneInterval[]`
+  - lanes: `readonly import("@ankhorage/grid-view").GridLane[]`
+  - overscanPixels: `number | undefined` (optional)
+  - viewport: `GridViewport`
+  - returns: `readonly import("@ankhorage/grid-view").GridLaneIntervalPlacement[]`
+
 ## ScanOverlay
 
 Kind: `value`
@@ -6494,6 +6511,102 @@ Source: `src/types/grid-view.ts:30:1`
 | width | property | `number \| undefined` | no |  |
 | zoom | property | `number \| undefined` | no |  |
 
+## TimeGrid
+
+Kind: `function`
+Module: `src/features/time-grid/adapters/inbound/TimeGrid.tsx`
+Source: `src/features/time-grid/adapters/inbound/TimeGrid.tsx:12:1`
+
+Presents virtualized variable-height interval lanes through ZORA's shared GridView renderer.
+
+### Signatures
+
+- `({
+  contentWidth,
+  focusedIntervalId,
+  height,
+  interactionPolicy,
+  intervals,
+  lanes,
+  onFocusedIntervalIdChange,
+  onIntervalPress,
+  onViewportChange,
+  onVisibleIntervalIdsChange,
+  overscanPixels,
+  renderInterval,
+  renderLaneLabel,
+  revealPaddingPixels,
+  selectedIntervalIds = [],
+  testID,
+  width,
+  zoom,
+}: TimeGridProps) => React.JSX.Element`
+  - {
+  contentWidth,
+  focusedIntervalId,
+  height,
+  interactionPolicy,
+  intervals,
+  lanes,
+  onFocusedIntervalIdChange,
+  onIntervalPress,
+  onViewportChange,
+  onVisibleIntervalIdsChange,
+  overscanPixels,
+  renderInterval,
+  renderLaneLabel,
+  revealPaddingPixels,
+  selectedIntervalIds = [],
+  testID,
+  width,
+  zoom,
+}: `TimeGridProps`
+  - returns: `React.JSX.Element`
+
+## TimeGridInterval
+
+Kind: `unknown`
+Module: `src/types/time-grid.ts`
+Source: `src/types/time-grid.ts:10:1`
+
+## TimeGridLane
+
+Kind: `unknown`
+Module: `src/types/time-grid.ts`
+Source: `src/types/time-grid.ts:7:1`
+
+## TimeGridProps
+
+Kind: `type`
+Module: `src/types/time-grid.ts`
+Source: `src/types/time-grid.ts:16:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| contentWidth | property | `number` | yes |  |
+| focusedIntervalId | property | `string \| undefined` | no |  |
+| height | property | `number` | yes |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| intervals | property | `readonly GridLaneInterval[]` | yes |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| lanes | property | `readonly GridLane[]` | yes |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onFocusedIntervalIdChange | property | `((id: string) => void) \| undefined` | no |  |
+| onIntervalPress | property | `((interval: TimeGridInterval) => void) \| undefined` | no |  |
+| onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
+| onVisibleIntervalIdsChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
+| overscanPixels | property | `number \| undefined` | no |  |
+| renderInterval | property | `(interval: TimeGridInterval, selected: boolean) => React.ReactNode` | yes |  |
+| renderLaneLabel | property | `((lane: TimeGridLane) => React.ReactNode) \| undefined` | no |  |
+| revealPaddingPixels | property | `number \| undefined` | no |  |
+| selectedIntervalIds | property | `readonly string[] \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| width | property | `number` | yes |  |
+| zoom | property | `number \| undefined` | no |  |
+
 ## Timeline
 
 Kind: `value`
@@ -7173,13 +7286,13 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:113:14`
+Source: `src/features/registry/componentMeta.ts:114:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
 Kind: `value`
 Module: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:231:14`
+Source: `src/features/registry/ZORA_COMPONENT_REGISTRY.ts:233:14`
 
 ## ZORA_EMPHASES
 

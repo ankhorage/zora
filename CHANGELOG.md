@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.5.0
+
+### Minor Changes
+
+- e6b7784: Add virtualized TimeGrid interval lanes for generic timeline, DAW, and scheduler code APIs.
+
 ## 25.4.0
 
 ### Minor Changes

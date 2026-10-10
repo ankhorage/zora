@@ -3,7 +3,7 @@
 
 # @ankhorage/zora
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v25.4.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v25.5.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
 
 Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
 
@@ -71,6 +71,7 @@ This package contains 6 additional examples. See the generated documentation for
 - [resolveGridRulerMarks sequence](././paradox/diagrams/sequences/resolve-grid-ruler-marks.mmd)
 - [resolveOAuthProviderIcon sequence](././paradox/diagrams/sequences/resolve-oauth-provider-icon.mmd)
 - [resolveOAuthProviderLabel sequence](././paradox/diagrams/sequences/resolve-oauth-provider-label.mmd)
+- [resolveTimeGridVisibleIntervals sequence](././paradox/diagrams/sequences/resolve-time-grid-visible-intervals.mmd)
 - [SelectionProvider sequence](././paradox/diagrams/sequences/selection-provider.mmd)
 - [tryMove sequence](././paradox/diagrams/sequences/try-move.mmd)
 - [useZoraTheme sequence](././paradox/diagrams/sequences/use-zora-theme.mmd)

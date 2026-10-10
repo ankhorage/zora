@@ -411,6 +411,14 @@ graph LR
   module_src_features_theme_utils_resolveZoraScopedThemeId_ts["src/features/theme/utils/resolveZoraScopedThemeId.ts"]
   module_src_features_theme_utils_resolveZoraThemeRecipe_ts["src/features/theme/utils/resolveZoraThemeRecipe.ts"]
   module_src_features_theme_zoraDefaultTheme_ts["src/features/theme/zoraDefaultTheme.ts"]
+  module_src_features_time_grid_adapters_inbound_TimeGrid_tsx["src/features/time-grid/adapters/inbound/TimeGrid.tsx"]
+  module_src_features_time_grid_adapters_inbound_TimeGridKeyboardProxy_native_tsx["src/features/time-grid/adapters/inbound/TimeGridKeyboardProxy.native.tsx"]
+  module_src_features_time_grid_adapters_inbound_TimeGridKeyboardProxy_tsx["src/features/time-grid/adapters/inbound/TimeGridKeyboardProxy.tsx"]
+  module_src_features_time_grid_adapters_inbound_TimeGridKeyboardProxy_web_tsx["src/features/time-grid/adapters/inbound/TimeGridKeyboardProxy.web.tsx"]
+  module_src_features_time_grid_application_resolveTimeGridNextFocusId_ts["src/features/time-grid/application/resolveTimeGridNextFocusId.ts"]
+  module_src_features_time_grid_application_resolveTimeGridVisibleIntervals_ts["src/features/time-grid/application/resolveTimeGridVisibleIntervals.ts"]
+  module_src_features_time_grid_meta_ts["src/features/time-grid/meta.ts"]
+  module_src_features_time_grid_public_ts["src/features/time-grid/public.ts"]
   module_src_features_time_picker_adapters_inbound_TimePicker_native_tsx["src/features/time-picker/adapters/inbound/TimePicker.native.tsx"]
   module_src_features_time_picker_adapters_inbound_TimePicker_tsx["src/features/time-picker/adapters/inbound/TimePicker.tsx"]
   module_src_features_time_picker_adapters_inbound_TimePicker_web_tsx["src/features/time-picker/adapters/inbound/TimePicker.web.tsx"]
@@ -544,6 +552,7 @@ graph LR
   module_src_types_theme_mode_toggle_ts["src/types/theme-mode-toggle.ts"]
   module_src_types_theme_recipe_ts["src/types/theme-recipe.ts"]
   module_src_types_theme_ts["src/types/theme.ts"]
+  module_src_types_time_grid_ts["src/types/time-grid.ts"]
   module_src_types_time_picker_ts["src/types/time-picker.ts"]
   module_src_types_timeline_ts["src/types/timeline.ts"]
   module_src_types_toast_ts["src/types/toast.ts"]
@@ -1429,6 +1438,8 @@ graph LR
   module_src_features_auth_utils_oauthProviders_ts --> export_resolveOAuthProviderLabel
   export_resolveReaderProgress["resolveReaderProgress"]
   module_src_features_reader_utils_resolveReaderProgress_ts --> export_resolveReaderProgress
+  export_resolveTimeGridVisibleIntervals["resolveTimeGridVisibleIntervals"]
+  module_src_features_time_grid_application_resolveTimeGridVisibleIntervals_ts --> export_resolveTimeGridVisibleIntervals
   export_ScanOverlay["ScanOverlay"]
   module_src_features_scanner_adapters_inbound_ScanOverlay_tsx --> export_ScanOverlay
   export_ScanOverlayProps["ScanOverlayProps"]
@@ -1661,6 +1672,18 @@ graph LR
   module_src_types_grid_view_ts --> export_TileGridProps
   export_TileGridProps -.-> export_TileGridItem
   export_TileGridProps -.-> export_ZoraThemeMode
+  export_TimeGrid["TimeGrid"]
+  module_src_features_time_grid_adapters_inbound_TimeGrid_tsx --> export_TimeGrid
+  export_TimeGrid -.-> export_TimeGridProps
+  export_TimeGridInterval["TimeGridInterval"]
+  module_src_types_time_grid_ts --> export_TimeGridInterval
+  export_TimeGridLane["TimeGridLane"]
+  module_src_types_time_grid_ts --> export_TimeGridLane
+  export_TimeGridProps["TimeGridProps"]
+  module_src_types_time_grid_ts --> export_TimeGridProps
+  export_TimeGridProps -.-> export_TimeGridInterval
+  export_TimeGridProps -.-> export_TimeGridLane
+  export_TimeGridProps -.-> export_ZoraThemeMode
   export_Timeline["Timeline"]
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> export_Timeline
   export_TimelineItem["TimelineItem"]

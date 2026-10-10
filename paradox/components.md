@@ -3987,6 +3987,38 @@ Export paths: `src/index.ts`
 | width | `number \| undefined` | no | — |  |
 | zoom | `number \| undefined` | no | `1` |  |
 
+## TimeGrid
+
+Source: `src/features/time-grid/adapters/inbound/TimeGrid.tsx:12:1`
+
+Presents virtualized variable-height interval lanes through ZORA's shared GridView renderer.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| contentWidth | `number` | yes | — |  |
+| focusedIntervalId | `string \| undefined` | no | — |  |
+| height | `number` | yes | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| intervals | `readonly TimeGridInterval[]` | yes | — |  |
+| inverted | `boolean \| undefined` | no | — |  |
+| lanes | `readonly TimeGridLane[]` | yes | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onFocusedIntervalIdChange | `(id: string) => void \| undefined` | no | — |  |
+| onIntervalPress | `(interval: TimeGridInterval) => void \| undefined` | no | — |  |
+| onViewportChange | `(viewport: GridViewport) => void \| undefined` | no | — |  |
+| onVisibleIntervalIdsChange | `(ids: readonly string[]) => void \| undefined` | no | — |  |
+| overscanPixels | `number \| undefined` | no | — |  |
+| renderInterval | `(interval: TimeGridInterval, selected: boolean) => React.ReactNode` | yes | — |  |
+| renderLaneLabel | `(lane: TimeGridLane) => React.ReactNode \| undefined` | no | — |  |
+| revealPaddingPixels | `number \| undefined` | no | — |  |
+| selectedIntervalIds | `readonly string[] \| undefined` | no | `[]` |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `ZoraThemeId \| undefined` | no | — |  |
+| width | `number` | yes | — |  |
+| zoom | `number \| undefined` | no | — |  |
+
 ## Timeline
 
 Source: `src/features/timeline/adapters/inbound/Timeline.tsx:127:14`
