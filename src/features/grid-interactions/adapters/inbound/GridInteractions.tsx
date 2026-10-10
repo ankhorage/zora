@@ -28,16 +28,13 @@ export function GridInteractions({
   const surfaceRef = React.useRef<View>(null);
   const [pointerQueue] = React.useState(() => createGridInteractionsPointerQueue());
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
-  React.useLayoutEffect(
-    () => {
-      pointerQueue.activate();
-      return () => {
-        pointerQueue.dispose();
-        controller.cancel();
-      };
-    },
-    [controller, pointerQueue],
-  );
+  React.useLayoutEffect(() => {
+    pointerQueue.activate();
+    return () => {
+      pointerQueue.dispose();
+      controller.cancel();
+    };
+  }, [controller, pointerQueue]);
   const withPointer = (
     event: Parameters<typeof resolveGridInteractionPointer>[0],
     handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void,
