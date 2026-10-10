@@ -47,6 +47,7 @@ import {
   GameOverlay,
 } from '../game/public';
 import { Gradient } from '../gradient/public';
+import { GridInteractions } from '../grid-interactions/public';
 import { GridLineOverlay, GridRuler } from '../grid-rulers/public';
 import { GridView, TileGrid } from '../grid-view/public';
 import { Hero } from '../hero/public';
@@ -200,6 +201,7 @@ const _ZORA_COMPONENT_REGISTRY = {
   FileExplorer,
   GridLineOverlay,
   GridRuler,
+  GridInteractions,
   GridView,
   TileGrid,
   TimeGrid,
