@@ -263,6 +263,17 @@ export type {
   GradientRendererProviderProps,
 } from './features/gradient/public';
 export { Gradient, GradientRendererProvider } from './features/gradient/public';
+export {
+  createGridInteractionsController,
+  type GridInteractionIntent,
+  type GridInteractionItem,
+  type GridInteractionPointer,
+  GridInteractions,
+  type GridInteractionsController,
+  type GridInteractionsControllerProps,
+  type GridInteractionSnap,
+  type GridInteractionsProps,
+} from './features/grid-interactions/public';
 export type {
   GridGuide,
   GridLineOverlayProps,
