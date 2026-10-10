@@ -1,14 +1,17 @@
 import { ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
 
+import {
+  calendarDayMinuteToWorld,
+  createCalendarAxis,
+  resolveCalendarAxisWidth,
+} from './timeGridDemoAdapters';
+
 const HOUR = 60;
 
-const calendarDays = [
-  { duration: 24 * HOUR, id: '2026-03-28' },
-  { duration: 23 * HOUR, id: '2026-03-29' },
-  { duration: 24 * HOUR, id: '2026-03-30' },
-  { duration: 24 * HOUR, id: '2026-10-24' },
-  { duration: 25 * HOUR, id: '2026-10-25' },
-] as const;
+const calendarDays = createCalendarAxis('2026-03-28', '2026-10-26', {
+  '2026-03-29': 23 * HOUR,
+  '2026-10-25': 25 * HOUR,
+});
 
 const ganttLanes = [
   { height: 40, id: 'design' },
@@ -16,39 +19,30 @@ const ganttLanes = [
   { height: 40, id: 'release' },
 ] as const;
 
-/*** Converts an external calendar day and minute offset into the generic numeric TimeGrid world. */
-function calendarDayMinuteToWorld(dayId: string, minute: number) {
-  const precedingDays = calendarDays.slice(
-    0,
-    calendarDays.findIndex((day) => day.id === dayId),
-  );
-  return precedingDays.reduce((total, day) => total + day.duration, 0) + minute;
-}
-
 const ganttIntervals = [
   {
     extent: 12 * HOUR,
     id: 'research',
     laneId: 'design',
-    start: calendarDayMinuteToWorld('2026-03-28', 8 * HOUR),
+    start: calendarDayMinuteToWorld(calendarDays, '2026-03-28', 8 * HOUR),
   },
   {
     extent: 18 * HOUR,
     id: 'implementation',
     laneId: 'engineering',
-    start: calendarDayMinuteToWorld('2026-03-29', 4 * HOUR),
+    start: calendarDayMinuteToWorld(calendarDays, '2026-03-29', 4 * HOUR),
   },
   {
     extent: 10 * HOUR,
     id: 'launch',
     laneId: 'release',
-    start: calendarDayMinuteToWorld('2026-10-25', 9 * HOUR),
+    start: calendarDayMinuteToWorld(calendarDays, '2026-10-25', 9 * HOUR),
   },
 ] as const;
 
 /*** Demonstrates external nonuniform-day and DST adaptation for a generic Gantt interval lane. */
 export function SchedulerGanttScenario() {
-  const contentWidth = calendarDays.reduce((total, day) => total + day.duration, 0);
+  const contentWidth = resolveCalendarAxisWidth(calendarDays);
 
   return (
     <ScreenSection
@@ -56,8 +50,8 @@ export function SchedulerGanttScenario() {
       description="Calendar and DST semantics are mapped into numeric world units before TimeGrid."
     >
       <Text>
-        2026-03-29 is 23 hours and 2026-10-25 is 25 hours; TimeGrid receives only mapped world
-        coordinates.
+        Every local day from March to October is mapped to world minutes. 2026-03-29 is 23 hours and
+        2026-10-25 is 25 hours; TimeGrid receives only mapped world coordinates.
       </Text>
       <TimeGrid
         contentWidth={contentWidth}

@@ -1,8 +1,14 @@
 import { ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
 import React from 'react';
 
-const PPQ = 480;
-const SIXTEENTH_NOTE_TICKS = PPQ / 4;
+import {
+  PPQ,
+  resolveDawBarStartPpq,
+  secondsToPpqTicks,
+  SIXTEENTH_NOTE_TICKS,
+  snapDawPpqTick,
+} from './timeGridDemoAdapters';
+
 const RULER_BEAT_DENSITY = 2;
 
 const arrangerLanes = Array.from({ length: 120 }, (_, index) => ({
@@ -15,17 +21,13 @@ const arrangerClips = arrangerLanes.flatMap((lane, laneIndex) =>
     extent: PPQ * (clipIndex % 3 === 0 ? 3 : 2),
     id: `${lane.id}-clip-${clipIndex + 1}`,
     laneId: lane.id,
-    start:
-      clipIndex * PPQ * 4 +
-      (laneIndex % 7) * SIXTEENTH_NOTE_TICKS +
-      (laneIndex % 3 === 0 ? secondsToPpqTicks(0.25, 120) : 0),
+    start: snapDawPpqTick(
+      resolveDawBarStartPpq(clipIndex) +
+        (laneIndex % 7) * SIXTEENTH_NOTE_TICKS +
+        (laneIndex % 3 === 0 ? secondsToPpqTicks(0.25, 120) : 0),
+    ),
   })),
 );
-
-/*** Maps an optional host tempo adapter input to the PPQ world coordinates consumed by TimeGrid. */
-function secondsToPpqTicks(seconds: number, beatsPerMinute: number) {
-  return seconds * (beatsPerMinute / 60) * PPQ;
-}
 
 /*** Demonstrates 120 variable-height DAW tracks with PPQ clips and fixed 1/16 snapping. */
 export function DawArrangerScenario() {
@@ -43,7 +45,7 @@ export function DawArrangerScenario() {
         The fixed snap resolution does not change when the ruler hides beats, triplets, or bars.
       </Text>
       <TimeGrid
-        contentWidth={PPQ * 48}
+        contentWidth={resolveDawBarStartPpq(12)}
         height={420}
         intervals={arrangerClips}
         lanes={arrangerLanes}
