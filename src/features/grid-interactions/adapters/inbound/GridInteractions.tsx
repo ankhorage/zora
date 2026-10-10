@@ -6,6 +6,7 @@ import type {
   GridInteractionsProps,
 } from '../../../../types/grid-interactions';
 import { createGridInteractionsController } from '../../application/createGridInteractionsController';
+import { createGridInteractionsPointerQueue } from './createGridInteractionsPointerQueue';
 import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy';
 import { resolveGridInteractionPointer } from './resolveGridInteractionPointer';
 
@@ -25,30 +26,28 @@ export function GridInteractions({
     createGridInteractionsController(controllerProps),
   );
   const surfaceRef = React.useRef<View>(null);
-  const pendingPointersRef = React.useRef<GridInteractionPointerWork[]>([]);
-  const measuringPointerRef = React.useRef(false);
+  const [pointerQueue] = React.useState(() => createGridInteractionsPointerQueue());
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
+  React.useLayoutEffect(
+    () => {
+      pointerQueue.activate();
+      return () => {
+        pointerQueue.dispose();
+        controller.cancel();
+      };
+    },
+    [controller, pointerQueue],
+  );
   const withPointer = (
     event: Parameters<typeof resolveGridInteractionPointer>[0],
     handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void,
   ) => {
-    pendingPointersRef.current.push({
-      event: { nativeEvent: { ...event.nativeEvent } },
-      handlePointer,
-    });
-    processNextPointer();
-  };
-  const processNextPointer = () => {
-    if (measuringPointerRef.current) return;
-    const pointerWork = pendingPointersRef.current.shift();
     const surface = surfaceRef.current;
-    if (!pointerWork || !surface) return;
-    measuringPointerRef.current = true;
-    measureSurfaceOrigin(surface, (origin) => {
-      pointerWork.handlePointer(resolveGridInteractionPointer(pointerWork.event, origin));
-      measuringPointerRef.current = false;
-      processNextPointer();
-    });
+    if (!surface) return;
+    const eventSnapshot = { nativeEvent: { ...event.nativeEvent } };
+    pointerQueue.enqueue(surface, (origin) =>
+      handlePointer(resolveGridInteractionPointer(eventSnapshot, origin)),
+    );
   };
   const enabled = interactionPolicy !== 'passive';
 
@@ -64,7 +63,10 @@ export function GridInteractions({
       }
       onResponderMove={(event) => withPointer(event, controller.move)}
       onResponderRelease={(event) => withPointer(event, controller.end)}
-      onResponderTerminate={() => controller.cancel()}
+      onResponderTerminate={() => {
+        pointerQueue.cancel();
+        controller.cancel();
+      }}
       onStartShouldSetResponder={() => enabled}
     >
       <GridInteractionsKeyboardProxy
@@ -77,27 +79,4 @@ export function GridInteractions({
       </GridInteractionsKeyboardProxy>
     </View>
   );
-}
-
-interface GridInteractionPointerWork {
-  readonly event: Parameters<typeof resolveGridInteractionPointer>[0];
-  readonly handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void;
-}
-
-/*** Measures the root surface for every responder event so page coordinates cannot become stale. */
-function measureSurfaceOrigin(
-  surface: View,
-  onOrigin: (origin: { readonly x: number; readonly y: number }) => void,
-) {
-  const element = surface as unknown as { readonly getBoundingClientRect?: () => DOMRect };
-  const rect = element.getBoundingClientRect?.();
-  if (rect) {
-    onOrigin({ x: rect.left, y: rect.top });
-    return;
-  }
-  if (typeof surface.measureInWindow === 'function') {
-    surface.measureInWindow((x, y) => onOrigin({ x, y }));
-    return;
-  }
-  onOrigin({ x: 0, y: 0 });
 }
