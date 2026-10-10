@@ -1,4 +1,4 @@
-import React from 'react';
+import { GridLineOverlay, GridRuler } from '@ankhorage/zora';
 import { View } from 'react-native';
 
 const viewport = {
@@ -27,37 +27,6 @@ const yTickSource = {
 /*** Renders passive, world-projected rulers, grid lines, and named guides from the released ZORA package. */
 export function GridRulersScenario() {
   return (
-    <React.Suspense fallback={null}>
-      <GridRulersScenarioContent />
-    </React.Suspense>
-  );
-}
-
-const GridRulersScenarioContent = React.lazy(async () => {
-  const zora = await import('@ankhorage/zora');
-
-  if (!hasGridRulerComponents(zora)) {
-    throw new Error(
-      'GridRulersScenario requires a released @ankhorage/zora version with grid rulers.',
-    );
-  }
-
-  return { default: () => renderGridRulersScenario(zora) };
-});
-
-/*** Checks the installed public package surface before rendering its current grid-ruler components. */
-function hasGridRulerComponents(value: object): value is GridRulerComponents {
-  return (
-    'GridLineOverlay' in value &&
-    typeof value.GridLineOverlay === 'function' &&
-    'GridRuler' in value &&
-    typeof value.GridRuler === 'function'
-  );
-}
-
-/*** Composes the public passive-ruler surfaces without coupling the example to local package source. */
-function renderGridRulersScenario({ GridLineOverlay, GridRuler }: GridRulerComponents) {
-  return (
     <View style={{ height: viewport.height + 24, position: 'relative', width: viewport.width }}>
       <GridLineOverlay
         guides={[{ axis: 'x', id: 'playhead', label: 'Playhead', position: 80 }]}
@@ -68,9 +37,4 @@ function renderGridRulersScenario({ GridLineOverlay, GridRuler }: GridRulerCompo
       <GridRuler axis="x" tickSource={xTickSource} viewport={viewport} />
     </View>
   );
-}
-
-interface GridRulerComponents {
-  readonly GridLineOverlay: React.ComponentType<Record<string, unknown>>;
-  readonly GridRuler: React.ComponentType<Record<string, unknown>>;
 }
