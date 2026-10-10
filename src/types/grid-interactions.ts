@@ -41,6 +41,8 @@ export interface GridInteractionsProps extends ZoraBaseProps {
   readonly items: readonly GridInteractionItem[];
   readonly selectedIds?: readonly string[];
   readonly marqueeMode?: GridMarqueeSelectionMode;
+  /** Identifies the resize handle represented by this interaction surface. */
+  readonly resizeHandle?: GridResizeHandle;
   readonly snap?: GridInteractionSnap;
   readonly onIntent: (intent: GridInteractionIntent) => void;
 }
@@ -66,4 +68,5 @@ export interface GridInteractionsController {
   readonly end: (pointer: GridInteractionPointer) => void;
   readonly cancel: () => void;
   readonly keyDown: (key: string, pointer?: GridInteractionPointer) => boolean;
+  readonly update: (props: GridInteractionsControllerProps) => void;
 }

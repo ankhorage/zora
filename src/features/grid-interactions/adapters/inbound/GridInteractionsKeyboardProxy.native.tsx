@@ -1,5 +1,7 @@
 import type React from 'react';
 
+import type { GridInteractionPointer } from '../../../../types/grid-interactions';
+
 /*** Leaves native accessibility focus untouched where browser keyboard events are unavailable. */
 export function GridInteractionsKeyboardProxy({ children }: GridInteractionsKeyboardProxyProps) {
   return <>{children}</>;
@@ -7,5 +9,6 @@ export function GridInteractionsKeyboardProxy({ children }: GridInteractionsKeyb
 
 interface GridInteractionsKeyboardProxyProps {
   readonly children: React.ReactNode;
-  readonly onKeyDown: (key: string) => boolean;
+  readonly enabled: boolean;
+  readonly onKeyDown: (key: string, pointer: GridInteractionPointer) => boolean;
 }

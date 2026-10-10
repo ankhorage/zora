@@ -2,30 +2,33 @@ import React from 'react';
 import { View } from 'react-native';
 
 import type {
-  GridInteractionPointer,
+  GridInteractionsController,
   GridInteractionsProps,
 } from '../../../../types/grid-interactions';
 import { createGridInteractionsController } from '../../application/createGridInteractionsController';
 import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy';
+import { resolveGridInteractionPointer } from './resolveGridInteractionPointer';
 
 /*** Adapts native responder and keyboard events to the controlled grid interaction boundary. */
 export function GridInteractions({
   children,
   interactionPolicy,
+  resizeHandle,
   testID,
   ...props
 }: GridInteractionsProps) {
-  const controller = React.useMemo(() => createGridInteractionsController(props), [props]);
-  const pointer = (event: {
-    readonly nativeEvent: NativePointerEvent;
-  }): GridInteractionPointer => ({
-    altKey: event.nativeEvent.altKey,
-    ctrlKey: event.nativeEvent.ctrlKey,
-    metaKey: event.nativeEvent.metaKey,
-    shiftKey: event.nativeEvent.shiftKey,
-    x: event.nativeEvent.locationX,
-    y: event.nativeEvent.locationY,
-  });
+  const controllerProps = React.useMemo(
+    () => ({ ...props, interactionPolicy }),
+    [interactionPolicy, props],
+  );
+  const [controller] = React.useState<GridInteractionsController>(() =>
+    createGridInteractionsController(controllerProps),
+  );
+  const surfaceRef = React.useRef<View>(null);
+  const surfaceOriginRef = React.useRef({ x: 0, y: 0 });
+  React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
+  const pointer = (event: Parameters<typeof resolveGridInteractionPointer>[0]) =>
+    resolveGridInteractionPointer(event, surfaceOriginRef.current);
   const enabled = interactionPolicy !== 'passive';
 
   return (
@@ -33,29 +36,27 @@ export function GridInteractions({
       accessible
       accessibilityLabel="Grid interaction surface"
       accessibilityRole="adjustable"
+      ref={surfaceRef}
       testID={testID}
-      onResponderGrant={(event) => controller.begin(pointer(event))}
+      onLayout={() => {
+        surfaceRef.current?.measureInWindow((x, y) => {
+          surfaceOriginRef.current = { x, y };
+        });
+      }}
+      onResponderGrant={(event) => controller.begin(pointer(event), resizeHandle)}
       onResponderMove={(event) => controller.move(pointer(event))}
       onResponderRelease={(event) => controller.end(pointer(event))}
       onResponderTerminate={() => controller.cancel()}
       onStartShouldSetResponder={() => enabled}
     >
       <GridInteractionsKeyboardProxy
-        onKeyDown={(key) => {
-          return controller.keyDown(key);
+        enabled={enabled}
+        onKeyDown={(key, keyPointer) => {
+          return controller.keyDown(key, keyPointer);
         }}
       >
         {children}
       </GridInteractionsKeyboardProxy>
     </View>
   );
-}
-
-interface NativePointerEvent {
-  readonly altKey?: boolean;
-  readonly ctrlKey?: boolean;
-  readonly locationX: number;
-  readonly locationY: number;
-  readonly metaKey?: boolean;
-  readonly shiftKey?: boolean;
 }

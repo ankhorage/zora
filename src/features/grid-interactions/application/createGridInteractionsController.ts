@@ -35,33 +35,30 @@ type InteractionState =
 export function createGridInteractionsController(
   props: GridInteractionsControllerProps,
 ): GridInteractionsController {
+  let currentProps = props;
   let state: InteractionState = { kind: 'idle' };
   let previousIntent: GridInteractionIntent | undefined;
   const point = (pointer: GridInteractionPointer) =>
     Number.isFinite(pointer.x) && Number.isFinite(pointer.y)
-      ? viewportToWorld(pointer, props.viewport)
+      ? viewportToWorld(pointer, currentProps.viewport)
       : undefined;
-  const protectedItem = (item: GridInteractionItem) =>
-    item.disabled === true ||
-    item.locked === true ||
-    item.readOnly === true ||
-    item.passive === true;
   const emit = (intent: GridInteractionIntent) => {
     if (JSON.stringify(previousIntent) === JSON.stringify(intent)) return;
     previousIntent = intent;
-    props.onIntent(intent);
+    currentProps.onIntent(intent);
   };
 
   return {
     begin: (pointer, handle) => {
+      if (!canEdit(currentProps)) return;
       const start = point(pointer);
       if (start === undefined) return;
       if (pointer.spaceKey === true || pointer.altKey === true) {
         state = { kind: 'pan', start };
         return;
       }
-      const target = hitTestWorldRects(props.items, start);
-      if (target === undefined || protectedItem(target)) {
+      const target = hitTestWorldRects(currentProps.items, start);
+      if (target === undefined || isProtected(target)) {
         state = { kind: 'marquee', start };
         return;
       }
@@ -70,24 +67,32 @@ export function createGridInteractionsController(
         return;
       }
       const itemIds =
-        props.selectedIds?.includes(target.id) === true ? props.selectedIds : [target.id];
+        currentProps.selectedIds?.includes(target.id) === true
+          ? currentProps.selectedIds
+          : [target.id];
       state = { kind: 'move', start, itemIds };
     },
     move: (pointer) => {
+      if (!canEdit(currentProps)) return;
       const current = point(pointer);
-      if (current !== undefined) emitPreview(state, current, props, emit);
+      if (current !== undefined) emitPreview(state, current, currentProps, emit);
     },
     end: (pointer) => {
+      if (!canEdit(currentProps)) {
+        state = { kind: 'idle' };
+        return;
+      }
       const current = point(pointer);
-      if (current !== undefined) emitPreview(state, current, props, emit);
+      if (current !== undefined) emitPreview(state, current, currentProps, emit);
       state = { kind: 'idle' };
     },
     cancel: () => {
       state = { kind: 'idle' };
     },
     keyDown: (key, pointer = { x: 0, y: 0 }) => {
-      const focusedId = props.selectedIds?.at(-1);
-      const focused = props.items.find((item) => item.id === focusedId);
+      if (!canEdit(currentProps)) return false;
+      const focusedId = currentProps.selectedIds?.at(-1);
+      const focused = currentProps.items.find((item) => item.id === focusedId);
       if (!focused || isProtected(focused)) return false;
       const increment = pointer.shiftKey === true ? 10 : 1;
       const delta = keyToDelta(key, increment);
@@ -103,7 +108,15 @@ export function createGridInteractionsController(
       emit({ type: 'move', itemIds: [focused.id], rects: moveWorldRects([focused], delta) });
       return true;
     },
+    update: (nextProps) => {
+      currentProps = nextProps;
+    },
   };
+}
+
+/*** Determines whether the component-wide interaction policy permits edit intents. */
+function canEdit(props: GridInteractionsControllerProps): boolean {
+  return props.interactionPolicy !== 'passive';
 }
 
 /*** Emit one controlled preview/intention without retaining or mutating caller-owned item data. */

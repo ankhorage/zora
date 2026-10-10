@@ -45,4 +45,71 @@ describe('createGridInteractionsController', () => {
       { type: 'marquee', itemIds: ['a'], marquee: { x: 0, y: 0, width: 12, height: 3 } },
     ]);
   });
+
+  test('keeps an active gesture while updating controlled props after a parent rerender', () => {
+    const initialIntents: unknown[] = [];
+    const rerenderedIntents: unknown[] = [];
+    const controller = createGridInteractionsController({
+      viewport,
+      items,
+      onIntent: (intent) => initialIntents.push(intent),
+    });
+
+    controller.begin({ x: 3, y: 5 });
+    controller.update({
+      viewport,
+      items,
+      onIntent: (intent) => rerenderedIntents.push(intent),
+    });
+    controller.end({ x: 7, y: 13 });
+
+    expect(initialIntents).toEqual([]);
+    expect(rerenderedIntents).toEqual([
+      { type: 'move', itemIds: ['a'], rects: [{ id: 'a', x: 3, y: 3, width: 3, height: 2 }] },
+    ]);
+  });
+
+  test('emits keyboard resize and accelerated movement only while interaction is enabled', () => {
+    const intents: unknown[] = [];
+    const controller = createGridInteractionsController({
+      viewport,
+      items,
+      onIntent: (intent) => intents.push(intent),
+      selectedIds: ['a'],
+    });
+
+    expect(controller.keyDown('ArrowRight', { x: 0, y: 0, altKey: true })).toBe(true);
+    expect(controller.keyDown('ArrowDown', { x: 0, y: 0, shiftKey: true })).toBe(true);
+    controller.update({
+      interactionPolicy: 'passive',
+      viewport,
+      items,
+      onIntent: (intent) => intents.push(intent),
+      selectedIds: ['a'],
+    });
+    expect(controller.keyDown('ArrowLeft', { x: 0, y: 0 })).toBe(false);
+    controller.begin({ x: 3, y: 5 });
+    controller.end({ x: 7, y: 13 });
+
+    expect(intents).toEqual([
+      { type: 'resize', itemIds: ['a'], rects: [{ id: 'a', x: 1, y: 1, width: 4, height: 2 }] },
+      { type: 'move', itemIds: ['a'], rects: [{ id: 'a', x: 1, y: 11, width: 3, height: 2 }] },
+    ]);
+  });
+
+  test('emits handle-driven resize intents for a pointer gesture', () => {
+    const intents: unknown[] = [];
+    const controller = createGridInteractionsController({
+      viewport,
+      items,
+      onIntent: (intent) => intents.push(intent),
+    });
+
+    controller.begin({ x: 3, y: 5 }, 'bottom-right');
+    controller.end({ x: 7, y: 13 });
+
+    expect(intents).toEqual([
+      { type: 'resize', itemIds: ['a'], rects: [{ id: 'a', x: 1, y: 1, width: 5, height: 4 }] },
+    ]);
+  });
 });
