@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.6.0
+
+### Minor Changes
+
+- 57cb3b4: Publish direct-manifest UI events as canonical bindable capabilities derived from ZORA metadata.
+
 ## 25.7.0
 
 ### Minor Changes

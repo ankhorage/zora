@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.7.0",
+      "value": "v25.6.0",
       "color": "cb3837"
     },
     {
@@ -187,7 +187,9 @@
     {
       "path": "src/capabilities/index.ts",
       "isEntrypoint": false,
-      "dependencies": [],
+      "dependencies": [
+        "src/features/registry/createEventCapabilities.ts"
+      ],
       "exports": [
         "CAPABILITIES"
       ]
@@ -4350,6 +4352,17 @@
       ],
       "exports": [
         "ZORA_COMPONENT_META"
+      ]
+    },
+    {
+      "path": "src/features/registry/createEventCapabilities.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/registry/componentMeta.ts",
+        "src/types/authoring.ts"
+      ],
+      "exports": [
+        "createEventCapabilities"
       ]
     },
     {
@@ -61135,7 +61148,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/cli/index.ts",
-        "line": 44,
+        "line": 47,
         "column": 1
       }
     },
@@ -66519,6 +66532,83 @@
       }
     },
     {
+      "name": "createEventCapabilities",
+      "description": "Projects direct-manifest ZORA event metadata into unique portable event capabilities.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "addEventCapability",
+      "description": "Adds one namespaced metadata event while rejecting conflicting duplicate identities.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "createEventCapability",
+      "description": "Converts one emitted component event into its serializable canonical descriptor.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 41,
+        "column": 1
+      }
+    },
+    {
+      "name": "createEventPayloadSchema",
+      "description": "Projects the documented event payload fields into an open object schema.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 60,
+        "column": 1
+      }
+    },
+    {
+      "name": "addPayloadField",
+      "description": "Adds one dotted metadata path to an immutable object-schema property map.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 70,
+        "column": 1
+      }
+    },
+    {
+      "name": "addPayloadFieldAtPath",
+      "description": "Recursively embeds a leaf schema below its documented object-property path.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 78,
+        "column": 1
+      }
+    },
+    {
+      "name": "createPayloadFieldSchema",
+      "description": "Maps one authoring payload-field type and annotations to its portable data schema.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/registry/createEventCapabilities.ts",
+        "line": 96,
+        "column": 1
+      }
+    },
+    {
       "name": "createManifestBindings",
       "description": "Derives scalar bindings and normalized events from explicit component authoring schemas.",
       "see": [],
@@ -69504,6 +69594,11 @@
         "sourcePath": "src/index.ts"
       },
       {
+        "fromPath": "src/capabilities/index.ts",
+        "toPath": "src/features/registry/createEventCapabilities.ts",
+        "sourcePath": "src/capabilities/index.ts"
+      },
+      {
         "fromPath": "src/cli/index.ts",
         "toPath": "src/capabilities/index.ts",
         "sourcePath": "src/cli/index.ts"
@@ -71917,6 +72012,16 @@
         "fromPath": "src/features/registry/componentMeta.ts",
         "toPath": "src/features/registry/finalizeFeatureMetadata.ts",
         "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/features/registry/createEventCapabilities.ts",
+        "toPath": "src/types/authoring.ts",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromPath": "src/features/registry/createEventCapabilities.ts",
+        "toPath": "src/features/registry/componentMeta.ts",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
       },
       {
         "fromPath": "src/features/registry/createManifestBindings.ts",
@@ -77426,6 +77531,12 @@
     ],
     "calls": [
       {
+        "fromSymbol": "src/capabilities/index.ts",
+        "toSymbol": "createEventCapabilities",
+        "callExpression": "createEventCapabilities",
+        "sourcePath": "src/capabilities/index.ts"
+      },
+      {
         "fromSymbol": "src/cli/index.ts",
         "toSymbol": "readPackageVersion",
         "callExpression": "readPackageVersion",
@@ -77556,6 +77667,60 @@
         "toSymbol": "finalizeFeatureMetadata",
         "callExpression": "finalizeFeatureMetadata",
         "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromSymbol": "src/features/registry/createEventCapabilities.ts",
+        "toSymbol": "addEventCapability",
+        "callExpression": "addEventCapability",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addEventCapability",
+        "toSymbol": "isCapabilityId",
+        "callExpression": "isCapabilityId",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addEventCapability",
+        "toSymbol": "createEventCapability",
+        "callExpression": "createEventCapability",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addEventCapability",
+        "toSymbol": "areCapabilitiesEqual",
+        "callExpression": "areCapabilitiesEqual",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "createEventCapability",
+        "toSymbol": "isCapabilityId",
+        "callExpression": "isCapabilityId",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "createEventCapability",
+        "toSymbol": "createEventPayloadSchema",
+        "callExpression": "createEventPayloadSchema",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addPayloadField",
+        "toSymbol": "addPayloadFieldAtPath",
+        "callExpression": "addPayloadFieldAtPath",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addPayloadField",
+        "toSymbol": "createPayloadFieldSchema",
+        "callExpression": "createPayloadFieldSchema",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
+      },
+      {
+        "fromSymbol": "addPayloadFieldAtPath",
+        "toSymbol": "addPayloadFieldAtPath",
+        "callExpression": "addPayloadFieldAtPath",
+        "sourcePath": "src/features/registry/createEventCapabilities.ts"
       },
       {
         "fromSymbol": "src/features/registry/finalizeFeatureMetadata.ts",

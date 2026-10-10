@@ -338,6 +338,7 @@ graph LR
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
   module_src_features_registry_bindableComponentMeta_ts["src/features/registry/bindableComponentMeta.ts"]
   module_src_features_registry_componentMeta_ts["src/features/registry/componentMeta.ts"]
+  module_src_features_registry_createEventCapabilities_ts["src/features/registry/createEventCapabilities.ts"]
   module_src_features_registry_createManifestBindings_ts["src/features/registry/createManifestBindings.ts"]
   module_src_features_registry_finalizeFeatureMetadata_ts["src/features/registry/finalizeFeatureMetadata.ts"]
   module_src_features_registry_index_ts["src/features/registry/index.ts"]
@@ -565,6 +566,7 @@ graph LR
   module_src_types_toolbar_ts["src/types/toolbar.ts"]
   module_src_types_tree_view_ts["src/types/tree-view.ts"]
   module_src_types_upload_ts["src/types/upload.ts"]
+  module_src_capabilities_index_ts --> module_src_features_registry_createEventCapabilities_ts
   module_src_cli_commands_create_ts --> module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
   module_src_cli_commands_sync_ts --> module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts
   module_src_cli_index_ts --> module_src_capabilities_index_ts
@@ -1417,6 +1419,8 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_typography_textMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_types_authoring_ts
+  module_src_features_registry_createEventCapabilities_ts --> module_src_features_registry_componentMeta_ts
+  module_src_features_registry_createEventCapabilities_ts --> module_src_types_authoring_ts
   module_src_features_registry_createManifestBindings_ts --> module_src_types_authoring_ts
   module_src_features_registry_finalizeFeatureMetadata_ts --> module_src_constants_authoring_ts
   module_src_features_registry_finalizeFeatureMetadata_ts --> module_src_features_registry_createManifestBindings_ts

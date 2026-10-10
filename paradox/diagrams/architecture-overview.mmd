@@ -4,6 +4,7 @@ graph TD
   package__ankhorage_zora --> entrypoint_src_index_ts
   module_src_capabilities_index_ts["src/capabilities/index.ts"]
   package__ankhorage_zora -.-> module_src_capabilities_index_ts
+  module_src_capabilities_index_ts --> module_src_features_registry_createEventCapabilities_ts
   module_src_cli_commands_create_ts["src/cli/commands/create.ts"]
   package__ankhorage_zora -.-> module_src_cli_commands_create_ts
   module_src_cli_commands_create_ts --> module_src_features_web_component_artifact_composition_createWebDesiredStateWithNodeAsync_ts
@@ -1532,6 +1533,10 @@ graph TD
   module_src_features_registry_componentMeta_ts --> module_src_features_typography_textMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_uploader_uploaderMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_types_authoring_ts
+  module_src_features_registry_createEventCapabilities_ts["src/features/registry/createEventCapabilities.ts"]
+  package__ankhorage_zora -.-> module_src_features_registry_createEventCapabilities_ts
+  module_src_features_registry_createEventCapabilities_ts --> module_src_features_registry_componentMeta_ts
+  module_src_features_registry_createEventCapabilities_ts --> module_src_types_authoring_ts
   module_src_features_registry_createManifestBindings_ts["src/features/registry/createManifestBindings.ts"]
   package__ankhorage_zora -.-> module_src_features_registry_createManifestBindings_ts
   module_src_features_registry_createManifestBindings_ts --> module_src_types_authoring_ts
