@@ -7,6 +7,7 @@ import {
   type UploadAsset,
   Uploader,
   View,
+  ZoraProvider,
 } from '@ankhorage/zora';
 import React from 'react';
 
@@ -65,83 +66,85 @@ export default function App() {
   };
 
   return (
-    <Screen>
-      <ScreenSection
-        title="Grid workspaces"
-        description="Choose one independently exercisable scenario. The active scenario alone is mounted."
-      >
-        <View direction="row" gap="s" style={{ flexWrap: 'wrap' }}>
-          {scenarioOptions.map((scenario) => (
-            <Button key={scenario.id} onPress={() => setActiveScenario(scenario.id)}>
-              {scenario.label}
-            </Button>
-          ))}
-        </View>
-      </ScreenSection>
-      {activeScenario === 'explorer' ? (
-        <>
-          <ScreenSection
-            title="Media workspace"
-            description="10,000 virtualized tiles; use arrow keys and Shift+arrow on web."
-          >
-            <View direction="row" gap="s">
-              <Button onPress={() => setDensity((value) => Math.max(72, value - 24))}>
-                Smaller
+    <ZoraProvider>
+      <Screen>
+        <ScreenSection
+          title="Grid workspaces"
+          description="Choose one independently exercisable scenario. The active scenario alone is mounted."
+        >
+          <View direction="row" gap="s" style={{ flexWrap: 'wrap' }}>
+            {scenarioOptions.map((scenario) => (
+              <Button key={scenario.id} onPress={() => setActiveScenario(scenario.id)}>
+                {scenario.label}
               </Button>
-              <Button onPress={() => setDensity((value) => value + 24)}>Larger</Button>
-              <Button onPress={() => setPermissionStatus('limited')}>Limited access</Button>
-              <Button onPress={() => setPermissionStatus('denied')}>Deny access</Button>
-            </View>
-            <MediaExplorer
-              height={400}
-              hasMore={visibleMediaCount < mediaItems.length}
-              items={visibleMedia}
-              loadingMore={loadingMore}
-              pagingCollectionId="workspace-media"
-              permissionStatus={permissionStatus}
-              onLoadMore={loadNextMediaPage}
-              onRequestPermission={() => setPermissionStatus('granted')}
-              selectedIds={selectedIds}
-              selectionMode="multi"
-              tileSize={density}
-              onSelectionChange={({ selectedIds: next }) => setSelectedIds(next)}
-            />
-          </ScreenSection>
-          <ScreenSection title="File workspace">
-            <FileExplorer items={fileItems} selectionMode="multi" />
-          </ScreenSection>
-          <ScreenSection title="Uploader">
-            <Uploader
-              explorerItems={mediaItems.slice(0, 8).map((item) => ({
-                ...item,
-                uploadAsset: {
-                  kind: 'url' as const,
-                  url: item.thumbnailUri,
-                  fileName: item.name,
-                  contentType: 'image/jpeg',
-                },
-              }))}
-              value={uploadedAsset}
-              type="image"
-              onChange={setUploadedAsset}
-              onRemove={() => setUploadedAsset(null)}
-              onUpload={async (asset, { setProgress }) => {
-                setProgress(0.5);
-                await Promise.resolve();
-                setProgress(1);
-                return asset;
-              }}
-            />
-          </ScreenSection>
-        </>
-      ) : null}
-      {activeScenario === 'rulers' ? <GridRulersScenario /> : null}
-      {activeScenario === 'spreadsheet' ? <SpreadsheetMatrixScenario /> : null}
-      {activeScenario === 'piano-roll' ? <PianoRollMatrixScenario /> : null}
-      {activeScenario === 'daw' ? <DawArrangerScenario /> : null}
-      {activeScenario === 'scheduler' ? <SchedulerGanttScenario /> : null}
-      {activeScenario === 'spatial' ? <SpatialGridScenario /> : null}
-      {activeScenario === 'interactions' ? <GridInteractionsScenario /> : null}
-    </Screen>
+            ))}
+          </View>
+        </ScreenSection>
+        {activeScenario === 'explorer' ? (
+          <>
+            <ScreenSection
+              title="Media workspace"
+              description="10,000 virtualized tiles; use arrow keys and Shift+arrow on web."
+            >
+              <View direction="row" gap="s">
+                <Button onPress={() => setDensity((value) => Math.max(72, value - 24))}>
+                  Smaller
+                </Button>
+                <Button onPress={() => setDensity((value) => value + 24)}>Larger</Button>
+                <Button onPress={() => setPermissionStatus('limited')}>Limited access</Button>
+                <Button onPress={() => setPermissionStatus('denied')}>Deny access</Button>
+              </View>
+              <MediaExplorer
+                height={400}
+                hasMore={visibleMediaCount < mediaItems.length}
+                items={visibleMedia}
+                loadingMore={loadingMore}
+                pagingCollectionId="workspace-media"
+                permissionStatus={permissionStatus}
+                onLoadMore={loadNextMediaPage}
+                onRequestPermission={() => setPermissionStatus('granted')}
+                selectedIds={selectedIds}
+                selectionMode="multi"
+                tileSize={density}
+                onSelectionChange={({ selectedIds: next }) => setSelectedIds(next)}
+              />
+            </ScreenSection>
+            <ScreenSection title="File workspace">
+              <FileExplorer items={fileItems} selectionMode="multi" />
+            </ScreenSection>
+            <ScreenSection title="Uploader">
+              <Uploader
+                explorerItems={mediaItems.slice(0, 8).map((item) => ({
+                  ...item,
+                  uploadAsset: {
+                    kind: 'url' as const,
+                    url: item.thumbnailUri,
+                    fileName: item.name,
+                    contentType: 'image/jpeg',
+                  },
+                }))}
+                value={uploadedAsset}
+                type="image"
+                onChange={setUploadedAsset}
+                onRemove={() => setUploadedAsset(null)}
+                onUpload={async (asset, { setProgress }) => {
+                  setProgress(0.5);
+                  await Promise.resolve();
+                  setProgress(1);
+                  return asset;
+                }}
+              />
+            </ScreenSection>
+          </>
+        ) : null}
+        {activeScenario === 'rulers' ? <GridRulersScenario /> : null}
+        {activeScenario === 'spreadsheet' ? <SpreadsheetMatrixScenario /> : null}
+        {activeScenario === 'piano-roll' ? <PianoRollMatrixScenario /> : null}
+        {activeScenario === 'daw' ? <DawArrangerScenario /> : null}
+        {activeScenario === 'scheduler' ? <SchedulerGanttScenario /> : null}
+        {activeScenario === 'spatial' ? <SpatialGridScenario /> : null}
+        {activeScenario === 'interactions' ? <GridInteractionsScenario /> : null}
+      </Screen>
+    </ZoraProvider>
   );
 }
