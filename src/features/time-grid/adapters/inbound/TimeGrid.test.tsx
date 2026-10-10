@@ -105,22 +105,49 @@ test('keeps mounted interval and virtualized variable-height lane labels synchro
     expect(arrowDown.defaultPrevented).toBe(true);
     expect(focusedIds).toEqual(['strings']);
 
-    const verticalScroller = Array.from(host.querySelectorAll<HTMLElement>('div')).find(
-      (element) =>
-        element.getAttribute('style') === 'width: 200px; height: 30px;' &&
-        Array.from(element.querySelectorAll('div')).some(
-          (child) => child.getAttribute('style') === 'width: 200px; height: 180px;',
-        ),
+    const verticalScroller = host.querySelector<HTMLElement>(
+      '[data-testid="time-grid-viewport-vertical-scroll"]',
     );
     if (!verticalScroller) throw new Error('Missing GridView vertical scroller');
-    Object.defineProperty(verticalScroller, 'scrollTop', { configurable: true, value: 60 });
+    verticalScroller.scrollTop = 60;
     void act(() => verticalScroller.dispatchEvent(new browser.Event('scroll', { bubbles: true })));
 
-    expect(viewportOffsets).toContain(30);
+    expect(viewportOffsets).toEqual([30]);
     expect(host.querySelector('[data-testid="time-grid-lane-label-drums"]')).toBeNull();
     expect(
       host.querySelector('[data-testid="time-grid-lane-label-bass"]')?.getAttribute('style'),
     ).toContain('top: -20px');
+
+    act(() => {
+      root.render(
+        <TimeGrid
+          contentWidth={100}
+          focusedIntervalId="strings"
+          height={30}
+          intervals={[
+            { extent: 10, id: 'drums', laneId: 'drums', start: 0 },
+            { extent: 10, id: 'strings', laneId: 'strings', start: 0 },
+          ]}
+          lanes={[
+            { height: 20, id: 'drums' },
+            { height: 40, id: 'bass' },
+            { height: 30, id: 'strings' },
+          ]}
+          onFocusedIntervalIdChange={(id) => focusedIds.push(id)}
+          onViewportChange={(viewport) => viewportOffsets.push(viewport.offsetY)}
+          overscanPixels={0}
+          renderInterval={(interval, selected) => (
+            <span data-selected={selected}>{interval.id}</span>
+          )}
+          renderLaneLabel={(lane) => <span>{lane.id}</span>}
+          selectedIntervalIds={['strings']}
+          testID="time-grid"
+          width={100}
+          zoom={2}
+        />,
+      );
+    });
+    expect(viewportOffsets).toEqual([30, 56]);
     await new Promise((resolve) => setTimeout(resolve, 100));
   } finally {
     act(() => root.unmount());

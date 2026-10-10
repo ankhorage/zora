@@ -67,6 +67,7 @@ export function GridView({
   const pinchSessionRef = React.useRef(0);
   const viewportOriginRef = React.useRef<ViewportOrigin>({ x: 0, y: 0 });
   const focusRevealProposalRef = React.useRef<FocusRevealProposal | undefined>(undefined);
+  const focusRevealViewportRef = React.useRef<GridViewport | undefined>(undefined);
   const [isPinching, setIsPinching] = React.useState(false);
   const constraints = React.useMemo(
     () => viewportConstraints ?? createContentConstraints(contentWidth, contentHeight),
@@ -86,6 +87,12 @@ export function GridView({
     () => getVisibleGridItems(visibleItems, viewport).map((item) => item.id),
     [viewport, visibleItems],
   );
+  const focusedItem = items.find((item) => item.id === focusedItemId);
+  const focusedItemHeight = focusedItem?.height;
+  const focusedItemIdForReveal = focusedItem?.id;
+  const focusedItemWidth = focusedItem?.width;
+  const focusedItemX = focusedItem?.x;
+  const focusedItemY = focusedItem?.y;
   const previousVisibleIdsRef = React.useRef<readonly string[]>([]);
   const uncontrolled = controlledViewport === undefined;
   const interactive = interactionPolicy !== 'passive';
@@ -99,6 +106,7 @@ export function GridView({
     },
     [onViewportChange, uncontrolled],
   );
+  const publishRef = React.useRef(publish);
   const pan = (displacement: GridPoint) =>
     publish(panViewport(viewportRef.current, displacement, constraints));
   const zoomAt = (focalPoint: GridPoint, factor: number) =>
@@ -118,6 +126,10 @@ export function GridView({
   React.useEffect(() => {
     viewportRef.current = viewport;
   }, [viewport]);
+
+  React.useEffect(() => {
+    publishRef.current = publish;
+  }, [publish]);
 
   const refreshViewportOrigin = React.useCallback(() => {
     gridRef.current?.measureInWindow((x, y) => {
@@ -177,19 +189,41 @@ export function GridView({
     };
     if (areScrollPositionsEqual(scrollPositionRef.current, nextPosition)) return;
     scrollPositionRef.current = nextPosition;
-    horizontalScrollRef.current?.scrollTo({ animated: false, x: nextPosition.x });
-    verticalScrollRef.current?.scrollTo({ animated: false, y: nextPosition.y });
+    const animated =
+      focusRevealViewportRef.current !== undefined &&
+      areViewportsEqual(viewport, focusRevealViewportRef.current);
+    horizontalScrollRef.current?.scrollTo({ animated, x: nextPosition.x });
+    verticalScrollRef.current?.scrollTo({ animated, y: nextPosition.y });
+    if (animated) focusRevealViewportRef.current = undefined;
   }, [constraints, viewport]);
 
   React.useEffect(() => {
-    const focusedItem = items.find((item) => item.id === focusedItemId);
-    if (!focusedItem) return;
+    if (
+      focusedItemHeight === undefined ||
+      focusedItemIdForReveal === undefined ||
+      focusedItemWidth === undefined ||
+      focusedItemX === undefined ||
+      focusedItemY === undefined
+    ) {
+      focusRevealProposalRef.current = undefined;
+      return;
+    }
     const sourceViewport = viewportRef.current;
-    const revealed = revealWorldRect(sourceViewport, focusedItem, revealPaddingPixels, constraints);
+    const revealed = revealWorldRect(
+      sourceViewport,
+      {
+        height: focusedItemHeight,
+        width: focusedItemWidth,
+        x: focusedItemX,
+        y: focusedItemY,
+      },
+      revealPaddingPixels,
+      constraints,
+    );
     if (
       isRepeatedControlledFocusRevealProposal({
         controlled: !uncontrolled,
-        focusedItemId: focusedItem.id,
+        focusedItemId: focusedItemIdForReveal,
         previous: focusRevealProposalRef.current,
         sourceViewport,
         viewport: revealed,
@@ -198,12 +232,24 @@ export function GridView({
       return;
     }
     focusRevealProposalRef.current = {
-      focusedItemId: focusedItem.id,
+      focusedItemId: focusedItemIdForReveal,
       sourceViewport,
       viewport: revealed,
     };
-    publish(revealed);
-  }, [constraints, focusedItemId, items, publish, revealPaddingPixels, uncontrolled, viewport]);
+    focusRevealViewportRef.current = areViewportsEqual(sourceViewport, revealed)
+      ? undefined
+      : revealed;
+    publishRef.current(revealed);
+  }, [
+    constraints,
+    focusedItemHeight,
+    focusedItemIdForReveal,
+    focusedItemWidth,
+    focusedItemX,
+    focusedItemY,
+    revealPaddingPixels,
+    uncontrolled,
+  ]);
 
   const scrollMapping = createScrollMapping(viewport, constraints);
 

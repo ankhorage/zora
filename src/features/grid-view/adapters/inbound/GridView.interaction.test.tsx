@@ -137,7 +137,7 @@ test('deduplicates a controlled focus-reveal veto while allowing accepted moveme
           />,
         ),
       );
-      expect(controlledChanges).toHaveLength(2);
+      expect(controlledChanges).toHaveLength(1);
 
       await interactAsync(() =>
         root.render(
@@ -155,7 +155,7 @@ test('deduplicates a controlled focus-reveal veto while allowing accepted moveme
           />,
         ),
       );
-      expect(controlledChanges).toHaveLength(3);
+      expect(controlledChanges).toHaveLength(2);
 
       const uncontrolledChanges: GridViewport[] = [];
       await interactAsync(() =>
