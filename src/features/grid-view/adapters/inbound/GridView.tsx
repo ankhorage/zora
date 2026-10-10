@@ -1,26 +1,50 @@
 import {
+  constrainViewport,
   getVisibleGridItems,
+  type GridPoint,
   type GridViewport,
+  type GridViewportConstraints,
+  panViewport,
   revealWorldRect,
   worldToViewport,
+  zoomViewportAt,
 } from '@ankhorage/grid-view';
 import React from 'react';
-import { ScrollView as NativeScrollView, View as NativeView } from 'react-native';
+import {
+  Pressable as NativePressable,
+  ScrollView as NativeScrollView,
+  Text as NativeText,
+  View as NativeView,
+} from 'react-native';
 
 import type { GridViewProps } from '../../../../types/grid-view';
 
-/***
- * Renders world-positioned items on native and web using the canonical viewport/culling engine.
- *
- * This first renderer uses nested native scroll regions. Only visible items are mounted;
- * logical cells and invisible elements are never rendered.
- */
+type ScrollPosition = Readonly<{ x: number; y: number }>;
+type PinchGesture = Readonly<{ distance: number; focalPoint: GridPoint }>;
+type ScrollAxisMapping = Readonly<{ contentSize: number; origin: number; position: number }>;
+type ScrollMapping = Readonly<{
+  horizontal: ScrollAxisMapping;
+  vertical: ScrollAxisMapping;
+}>;
+type ViewportOrigin = Readonly<{ x: number; y: number }>;
+type FocusRevealProposal = Readonly<{
+  focusedItemId: string;
+  sourceViewport: GridViewport;
+  viewport: GridViewport;
+}>;
+type PinchTouch = Readonly<{ pageX: number; pageY: number }>;
+
+/*** Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine. */
 export function GridView({
   items,
   contentWidth,
   contentHeight,
   width,
   height,
+  viewport: controlledViewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   zoom = 1,
   overscanPixels = 160,
   focusedItemId,
@@ -31,22 +55,30 @@ export function GridView({
   renderItem,
   testID,
 }: GridViewProps) {
-  const [scrollX, setScrollX] = React.useState(0);
-  const [scrollY, setScrollY] = React.useState(0);
+  const [uncontrolledViewport, setUncontrolledViewport] = React.useState(() =>
+    createInitialViewport(width, height, zoom, defaultViewport),
+  );
   const horizontalScrollRef = React.useRef<NativeScrollView>(null);
   const verticalScrollRef = React.useRef<NativeScrollView>(null);
-  const scale = Math.max(0.01, zoom);
-  const viewport = React.useMemo<GridViewport>(
-    () => ({
-      width,
-      height,
-      offsetX: scrollX / scale,
-      offsetY: scrollY / scale,
-      pixelsPerUnitX: scale,
-      pixelsPerUnitY: scale,
-    }),
-    [height, scale, scrollX, scrollY, width],
+  const gridRef = React.useRef<React.ComponentRef<typeof NativeView>>(null);
+  const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
+  const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
+  const pinchMeasurementRef = React.useRef(0);
+  const pinchSessionRef = React.useRef(0);
+  const viewportOriginRef = React.useRef<ViewportOrigin>({ x: 0, y: 0 });
+  const focusRevealProposalRef = React.useRef<FocusRevealProposal | undefined>(undefined);
+  const focusRevealViewportRef = React.useRef<GridViewport | undefined>(undefined);
+  const [isPinching, setIsPinching] = React.useState(false);
+  const constraints = React.useMemo(
+    () => viewportConstraints ?? createContentConstraints(contentWidth, contentHeight),
+    [contentHeight, contentWidth, viewportConstraints],
   );
+  const sourceViewport = controlledViewport ?? uncontrolledViewport;
+  const viewport = React.useMemo(
+    () => constrainViewport({ ...sourceViewport, height, width }, constraints),
+    [constraints, height, sourceViewport, width],
+  );
+  const viewportRef = React.useRef(viewport);
   const visibleItems = React.useMemo(
     () => getVisibleGridItems(items, viewport, overscanPixels),
     [items, overscanPixels, viewport],
@@ -55,7 +87,86 @@ export function GridView({
     () => getVisibleGridItems(visibleItems, viewport).map((item) => item.id),
     [viewport, visibleItems],
   );
+  const focusedItem = items.find((item) => item.id === focusedItemId);
+  const focusedItemHeight = focusedItem?.height;
+  const focusedItemIdForReveal = focusedItem?.id;
+  const focusedItemWidth = focusedItem?.width;
+  const focusedItemX = focusedItem?.x;
+  const focusedItemY = focusedItem?.y;
   const previousVisibleIdsRef = React.useRef<readonly string[]>([]);
+  const uncontrolled = controlledViewport === undefined;
+  const interactive = interactionPolicy !== 'passive';
+
+  const publish = React.useCallback(
+    (nextViewport: GridViewport) => {
+      if (areViewportsEqual(viewportRef.current, nextViewport)) return;
+      viewportRef.current = nextViewport;
+      if (uncontrolled) setUncontrolledViewport(nextViewport);
+      onViewportChange?.(nextViewport);
+    },
+    [onViewportChange, uncontrolled],
+  );
+  const publishRef = React.useRef(publish);
+  const pan = (displacement: GridPoint) =>
+    publish(panViewport(viewportRef.current, displacement, constraints));
+  const zoomAt = (focalPoint: GridPoint, factor: number) =>
+    publish(
+      zoomViewportAt(
+        viewportRef.current,
+        focalPoint,
+        {
+          pixelsPerUnitX: viewportRef.current.pixelsPerUnitX * factor,
+          pixelsPerUnitY: viewportRef.current.pixelsPerUnitY * factor,
+        },
+        zoomLimits,
+        constraints,
+      ),
+    );
+
+  React.useEffect(() => {
+    viewportRef.current = viewport;
+  }, [viewport]);
+
+  React.useEffect(() => {
+    publishRef.current = publish;
+  }, [publish]);
+
+  const refreshViewportOrigin = React.useCallback(() => {
+    gridRef.current?.measureInWindow((x, y) => {
+      viewportOriginRef.current = { x, y };
+    });
+  }, []);
+
+  const measurePinchGesture = React.useCallback(
+    (
+      touches: readonly PinchTouch[],
+      session: number,
+      onMeasured: (pinch: PinchGesture | undefined) => void,
+    ) => {
+      const measurement = pinchMeasurementRef.current + 1;
+      pinchMeasurementRef.current = measurement;
+      gridRef.current?.measureInWindow((x, y) => {
+        if (measurement !== pinchMeasurementRef.current || session !== pinchSessionRef.current) {
+          return;
+        }
+        viewportOriginRef.current = { x, y };
+        onMeasured(getPinchGesture(touches, width, height, { x, y }));
+      });
+    },
+    [height, width],
+  );
+
+  React.useLayoutEffect(() => {
+    refreshViewportOrigin();
+  }, [height, refreshViewportOrigin, width]);
+
+  React.useEffect(
+    () => () => {
+      pinchMeasurementRef.current += 1;
+      pinchSessionRef.current += 1;
+    },
+    [],
+  );
 
   React.useEffect(() => {
     if (!onVisibleItemIdsChange) return;
@@ -71,73 +182,391 @@ export function GridView({
   }, [onVisibleItemIdsChange, viewportVisibleIds]);
 
   React.useEffect(() => {
-    onViewportChange?.(viewport);
-  }, [onViewportChange, viewport]);
+    const position = createScrollMapping(viewport, constraints);
+    const nextPosition = {
+      x: position.horizontal.position,
+      y: position.vertical.position,
+    };
+    if (areScrollPositionsEqual(scrollPositionRef.current, nextPosition)) return;
+    scrollPositionRef.current = nextPosition;
+    const animated =
+      focusRevealViewportRef.current !== undefined &&
+      areViewportsEqual(viewport, focusRevealViewportRef.current);
+    horizontalScrollRef.current?.scrollTo({ animated, x: nextPosition.x });
+    verticalScrollRef.current?.scrollTo({ animated, y: nextPosition.y });
+    if (animated) focusRevealViewportRef.current = undefined;
+  }, [constraints, viewport]);
 
-  const viewportRef = React.useRef(viewport);
   React.useEffect(() => {
-    viewportRef.current = viewport;
-  }, [viewport]);
+    if (
+      focusedItemHeight === undefined ||
+      focusedItemIdForReveal === undefined ||
+      focusedItemWidth === undefined ||
+      focusedItemX === undefined ||
+      focusedItemY === undefined
+    ) {
+      focusRevealProposalRef.current = undefined;
+      return;
+    }
+    const sourceViewport = viewportRef.current;
+    const revealed = revealWorldRect(
+      sourceViewport,
+      {
+        height: focusedItemHeight,
+        width: focusedItemWidth,
+        x: focusedItemX,
+        y: focusedItemY,
+      },
+      revealPaddingPixels,
+      constraints,
+    );
+    if (
+      isRepeatedControlledFocusRevealProposal({
+        controlled: !uncontrolled,
+        focusedItemId: focusedItemIdForReveal,
+        previous: focusRevealProposalRef.current,
+        sourceViewport,
+        viewport: revealed,
+      })
+    ) {
+      return;
+    }
+    focusRevealProposalRef.current = {
+      focusedItemId: focusedItemIdForReveal,
+      sourceViewport,
+      viewport: revealed,
+    };
+    focusRevealViewportRef.current = areViewportsEqual(sourceViewport, revealed)
+      ? undefined
+      : revealed;
+    publishRef.current(revealed);
+  }, [
+    constraints,
+    focusedItemHeight,
+    focusedItemIdForReveal,
+    focusedItemWidth,
+    focusedItemX,
+    focusedItemY,
+    revealPaddingPixels,
+    uncontrolled,
+  ]);
 
-  React.useEffect(() => {
-    const currentViewport = viewportRef.current;
-    const focusedItem = items.find((item) => item.id === focusedItemId);
-    if (!focusedItem) return;
-    const revealed = revealWorldRect(currentViewport, focusedItem, revealPaddingPixels);
-    if (revealed.offsetX !== currentViewport.offsetX) {
-      horizontalScrollRef.current?.scrollTo({ x: revealed.offsetX * scale, animated: true });
-    }
-    if (revealed.offsetY !== currentViewport.offsetY) {
-      verticalScrollRef.current?.scrollTo({ y: revealed.offsetY * scale, animated: true });
-    }
-  }, [focusedItemId, height, items, revealPaddingPixels, scale, width]);
+  const scrollMapping = createScrollMapping(viewport, constraints);
+
+  const syncScrollPosition = () => {
+    const nextMapping = createScrollMapping(viewportRef.current, constraints);
+    const nextPosition = {
+      x: nextMapping.horizontal.position,
+      y: nextMapping.vertical.position,
+    };
+    scrollPositionRef.current = nextPosition;
+    horizontalScrollRef.current?.scrollTo({ animated: false, x: nextPosition.x });
+    verticalScrollRef.current?.scrollTo({ animated: false, y: nextPosition.y });
+  };
 
   return (
-    <NativeScrollView
-      ref={horizontalScrollRef}
-      horizontal
-      scrollEnabled={interactionPolicy !== 'passive'}
-      scrollEventThrottle={32}
-      showsHorizontalScrollIndicator
-      style={{ width, height }}
+    <NativeView
+      ref={gridRef}
+      accessibilityLabel="Interactive grid viewport"
+      onLayout={refreshViewportOrigin}
+      onTouchEnd={() => {
+        const wasPinching = pinchGestureRef.current !== undefined;
+        pinchMeasurementRef.current += 1;
+        pinchSessionRef.current += 1;
+        pinchGestureRef.current = undefined;
+        setIsPinching(false);
+        if (wasPinching) syncScrollPosition();
+      }}
+      onTouchCancel={() => {
+        const wasPinching = pinchGestureRef.current !== undefined;
+        pinchMeasurementRef.current += 1;
+        pinchSessionRef.current += 1;
+        pinchGestureRef.current = undefined;
+        setIsPinching(false);
+        if (wasPinching) syncScrollPosition();
+      }}
+      onTouchMove={(event) => {
+        if (!interactive) return;
+        measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {
+          const previous = pinchGestureRef.current;
+          pinchGestureRef.current = pinch;
+          setIsPinching(pinch !== undefined);
+          if (!pinch || !previous) return;
+          zoomAt(pinch.focalPoint, pinch.distance / previous.distance);
+        });
+      }}
+      onTouchStart={(event) => {
+        const session = pinchSessionRef.current + 1;
+        pinchSessionRef.current = session;
+        measurePinchGesture([...event.nativeEvent.touches], session, (pinch) => {
+          pinchGestureRef.current = pinch;
+          setIsPinching(pinch !== undefined);
+        });
+      }}
+      style={{ height, overflow: 'hidden', width }}
       testID={testID}
-      onScroll={(event) => setScrollX(event.nativeEvent.contentOffset.x)}
     >
       <NativeScrollView
-        ref={verticalScrollRef}
-        scrollEnabled={interactionPolicy !== 'passive'}
-        scrollEventThrottle={32}
-        showsVerticalScrollIndicator
-        style={{ width: contentWidth * scale, height }}
-        onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
+        ref={horizontalScrollRef}
+        testID={testID ? `${testID}-horizontal-scroll` : undefined}
+        horizontal
+        scrollEnabled={interactive && !isPinching}
+        scrollEventThrottle={16}
+        showsHorizontalScrollIndicator
+        style={{ height, width }}
+        onScroll={(event) => {
+          if (pinchGestureRef.current) return;
+          const { x } = event.nativeEvent.contentOffset;
+          const displacement = x - scrollPositionRef.current.x;
+          scrollPositionRef.current = { ...scrollPositionRef.current, x };
+          if (displacement !== 0) pan({ x: -displacement, y: 0 });
+        }}
       >
-        <NativeView style={{ width: contentWidth * scale, height: contentHeight * scale }}>
-          {visibleItems.map((item) => {
-            const position = worldToViewport(
-              { x: item.x, y: item.y },
-              {
-                ...viewport,
-                offsetX: 0,
-                offsetY: 0,
-              },
-            );
-            return (
-              <NativeView
-                key={item.id}
-                style={{
-                  position: 'absolute',
-                  left: position.x,
-                  top: position.y,
-                  width: item.width * scale,
-                  height: item.height * scale,
-                }}
-              >
-                {renderItem(item)}
-              </NativeView>
-            );
-          })}
-        </NativeView>
+        <NativeScrollView
+          ref={verticalScrollRef}
+          testID={testID ? `${testID}-vertical-scroll` : undefined}
+          scrollEnabled={interactive && !isPinching}
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator
+          style={{ height, width: scrollMapping.horizontal.contentSize }}
+          onScroll={(event) => {
+            if (pinchGestureRef.current) return;
+            const { y } = event.nativeEvent.contentOffset;
+            const displacement = y - scrollPositionRef.current.y;
+            scrollPositionRef.current = { ...scrollPositionRef.current, y };
+            if (displacement !== 0) pan({ x: 0, y: -displacement });
+          }}
+        >
+          <NativeView
+            style={{
+              height: scrollMapping.vertical.contentSize,
+              width: scrollMapping.horizontal.contentSize,
+            }}
+          >
+            {visibleItems.map((item) => {
+              const position = worldToViewport(
+                { x: item.x, y: item.y },
+                { ...viewport, offsetX: 0, offsetY: 0 },
+              );
+              return (
+                <NativeView
+                  key={item.id}
+                  style={{
+                    height: item.height * viewport.pixelsPerUnitY,
+                    left: position.x + scrollMapping.horizontal.origin,
+                    position: 'absolute',
+                    top: position.y + scrollMapping.vertical.origin,
+                    width: item.width * viewport.pixelsPerUnitX,
+                  }}
+                >
+                  {renderItem(item)}
+                </NativeView>
+              );
+            })}
+          </NativeView>
+        </NativeScrollView>
       </NativeScrollView>
-    </NativeScrollView>
+      {interactive ? (
+        <NativeView accessibilityLabel="Viewport controls" style={controlsStyle}>
+          <NativePressable
+            accessibilityLabel="Pan left"
+            accessibilityRole="button"
+            onPress={() => pan({ x: 48, y: 0 })}
+          >
+            <NativeText>←</NativeText>
+          </NativePressable>
+          <NativePressable
+            accessibilityLabel="Pan right"
+            accessibilityRole="button"
+            onPress={() => pan({ x: -48, y: 0 })}
+          >
+            <NativeText>→</NativeText>
+          </NativePressable>
+          <NativePressable
+            accessibilityLabel="Pan up"
+            accessibilityRole="button"
+            onPress={() => pan({ x: 0, y: 48 })}
+          >
+            <NativeText>↑</NativeText>
+          </NativePressable>
+          <NativePressable
+            accessibilityLabel="Pan down"
+            accessibilityRole="button"
+            onPress={() => pan({ x: 0, y: -48 })}
+          >
+            <NativeText>↓</NativeText>
+          </NativePressable>
+          <NativePressable
+            accessibilityLabel="Zoom in"
+            accessibilityRole="button"
+            onPress={() => zoomAt({ x: width / 2, y: height / 2 }, 1.2)}
+          >
+            <NativeText>+</NativeText>
+          </NativePressable>
+          <NativePressable
+            accessibilityLabel="Zoom out"
+            accessibilityRole="button"
+            onPress={() => zoomAt({ x: width / 2, y: height / 2 }, 1 / 1.2)}
+          >
+            <NativeText>−</NativeText>
+          </NativePressable>
+        </NativeView>
+      ) : null}
+    </NativeView>
   );
+}
+
+const controlsStyle = { bottom: 8, gap: 4, position: 'absolute' as const, right: 8 };
+
+/*** Builds the initial world position and independent scales for uncontrolled rendering. */
+function createInitialViewport(
+  width: number,
+  height: number,
+  zoom: number,
+  viewport: GridViewProps['defaultViewport'],
+): GridViewport {
+  return {
+    height,
+    offsetX: viewport?.offsetX ?? 0,
+    offsetY: viewport?.offsetY ?? 0,
+    pixelsPerUnitX: viewport?.pixelsPerUnitX ?? zoom,
+    pixelsPerUnitY: viewport?.pixelsPerUnitY ?? zoom,
+    width,
+  };
+}
+
+/*** Uses the rendered content extent as the default finite world boundary. */
+function createContentConstraints(
+  contentWidth: number,
+  contentHeight: number,
+): GridViewportConstraints {
+  return { world: { height: contentHeight, width: contentWidth, x: 0, y: 0 } };
+}
+
+/*** Maps engine-constrained world offsets to nonnegative native scroll coordinates. */
+function createScrollMapping(
+  viewport: GridViewport,
+  constraints: GridViewportConstraints,
+): ScrollMapping {
+  const horizontalMinimum = constrainViewport(
+    { ...viewport, offsetX: -Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetX;
+  const horizontalMaximum = constrainViewport(
+    { ...viewport, offsetX: Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetX;
+  const verticalMinimum = constrainViewport(
+    { ...viewport, offsetY: -Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetY;
+  const verticalMaximum = constrainViewport(
+    { ...viewport, offsetY: Number.MAX_SAFE_INTEGER },
+    constraints,
+  ).offsetY;
+  return {
+    horizontal: createScrollAxisMapping({
+      maximum: horizontalMaximum,
+      minimum: horizontalMinimum,
+      offset: viewport.offsetX,
+      scale: viewport.pixelsPerUnitX,
+      viewportSize: viewport.width,
+    }),
+    vertical: createScrollAxisMapping({
+      maximum: verticalMaximum,
+      minimum: verticalMinimum,
+      offset: viewport.offsetY,
+      scale: viewport.pixelsPerUnitY,
+      viewportSize: viewport.height,
+    }),
+  };
+}
+
+type ScrollAxisMappingInput = Readonly<{
+  maximum: number;
+  minimum: number;
+  offset: number;
+  scale: number;
+  viewportSize: number;
+}>;
+
+/*** Derives a physical scroll axis from the published engine constraint result. */
+function createScrollAxisMapping({
+  maximum,
+  minimum,
+  offset,
+  scale,
+  viewportSize,
+}: ScrollAxisMappingInput): ScrollAxisMapping {
+  const range = (maximum - minimum) * scale;
+  return {
+    contentSize: viewportSize + range,
+    origin: -minimum * scale,
+    position: (offset - minimum) * scale,
+  };
+}
+
+/*** Compares canonical viewport fields without treating equal proposals as state changes. */
+function areViewportsEqual(left: GridViewport, right: GridViewport): boolean {
+  return (
+    left.width === right.width &&
+    left.height === right.height &&
+    left.offsetX === right.offsetX &&
+    left.offsetY === right.offsetY &&
+    left.pixelsPerUnitX === right.pixelsPerUnitX &&
+    left.pixelsPerUnitY === right.pixelsPerUnitY
+  );
+}
+
+/*** Avoids requesting native scrolling again when the physical position is already current. */
+function areScrollPositionsEqual(left: ScrollPosition, right: ScrollPosition): boolean {
+  return left.x === right.x && left.y === right.y;
+}
+
+/*** Skips a rejected controlled focus proposal until its focus or incoming viewport changes. */
+function isRepeatedControlledFocusRevealProposal({
+  controlled,
+  focusedItemId,
+  previous,
+  sourceViewport,
+  viewport,
+}: Readonly<{
+  controlled: boolean;
+  focusedItemId: string | undefined;
+  previous: FocusRevealProposal | undefined;
+  sourceViewport: GridViewport;
+  viewport: GridViewport;
+}>): boolean {
+  return (
+    controlled &&
+    focusedItemId !== undefined &&
+    previous?.focusedItemId === focusedItemId &&
+    areViewportsEqual(previous.sourceViewport, sourceViewport) &&
+    areViewportsEqual(previous.viewport, viewport)
+  );
+}
+
+/*** Extracts a stable two-finger focal point in the measured outer viewport coordinate space. */
+function getPinchGesture(
+  touches: readonly Readonly<{
+    pageX: number;
+    pageY: number;
+  }>[],
+  width: number,
+  height: number,
+  viewportOrigin: ViewportOrigin,
+): PinchGesture | undefined {
+  const [first, second] = touches;
+  if (!first || !second) return undefined;
+  const deltaX = second.pageX - first.pageX;
+  const deltaY = second.pageY - first.pageY;
+  const distance = Math.hypot(deltaX, deltaY);
+  if (!Number.isFinite(distance) || distance === 0) return undefined;
+  return {
+    distance,
+    focalPoint: {
+      x: Math.min(width, Math.max(0, (first.pageX + second.pageX) / 2 - viewportOrigin.x)),
+      y: Math.min(height, Math.max(0, (first.pageY + second.pageY) / 2 - viewportOrigin.y)),
+    },
+  };
 }

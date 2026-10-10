@@ -1,3 +1,4 @@
+import type { GridViewport } from '@ankhorage/grid-view';
 import React from 'react';
 import { View as NativeView } from 'react-native';
 
@@ -13,26 +14,43 @@ export function TileGrid({
   tileSize = 120,
   gap = 12,
   zoom = 1,
+  viewport,
+  defaultViewport,
+  viewportConstraints,
+  zoomLimits,
   overscanPixels,
   focusedItemId,
   revealPaddingPixels,
   onColumnsChange,
+  onViewportChange,
   onVisibleItemIdsChange,
   renderItem,
   interactionPolicy,
   testID,
 }: TileGridProps) {
   const [measuredWidth, setMeasuredWidth] = React.useState(0);
+  const [uncontrolledPixelsPerUnitX, setUncontrolledPixelsPerUnitX] = React.useState(
+    () => defaultViewport?.pixelsPerUnitX ?? zoom,
+  );
   const resolvedWidth = width ?? measuredWidth;
+  const pixelsPerUnitX = viewport?.pixelsPerUnitX ?? uncontrolledPixelsPerUnitX;
   const layout = React.useMemo(
-    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, zoom),
-    [items, resolvedWidth, tileSize, gap, zoom],
+    () => layoutTileGrid(items, resolvedWidth, tileSize, gap, pixelsPerUnitX),
+    [gap, items, pixelsPerUnitX, resolvedWidth, tileSize],
   );
   const itemLookup = React.useMemo(() => new Map(items.map((item) => [item.id, item])), [items]);
 
   React.useEffect(() => {
     if (resolvedWidth > 0) onColumnsChange?.(layout.columns);
   }, [layout.columns, onColumnsChange, resolvedWidth]);
+
+  const handleViewportChange = React.useCallback(
+    (nextViewport: GridViewport) => {
+      if (viewport === undefined) setUncontrolledPixelsPerUnitX(nextViewport.pixelsPerUnitX);
+      onViewportChange?.(nextViewport);
+    },
+    [onViewportChange, viewport],
+  );
 
   return (
     <NativeView
@@ -43,12 +61,14 @@ export function TileGrid({
       {resolvedWidth > 0 ? (
         <GridView
           contentHeight={layout.height}
-          contentWidth={Math.max(resolvedWidth / zoom, layout.width)}
+          contentWidth={Math.max(resolvedWidth / pixelsPerUnitX, layout.width)}
+          defaultViewport={defaultViewport}
           height={height}
           focusedItemId={focusedItemId}
           interactionPolicy={interactionPolicy}
           items={layout.items}
           onVisibleItemIdsChange={onVisibleItemIdsChange}
+          onViewportChange={handleViewportChange}
           overscanPixels={overscanPixels}
           renderItem={(item) => {
             const source = itemLookup.get(item.id);
@@ -56,6 +76,9 @@ export function TileGrid({
           }}
           revealPaddingPixels={revealPaddingPixels}
           width={resolvedWidth}
+          viewport={viewport}
+          viewportConstraints={viewportConstraints}
+          zoomLimits={zoomLimits}
           zoom={zoom}
         />
       ) : null}
