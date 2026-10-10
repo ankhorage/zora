@@ -3,6 +3,8 @@ export function createGridInteractionsPointerQueue() {
   let active = true;
   let generation = 0;
   let measuring = false;
+  let measurementId = 0;
+  let activeMeasurementId: number | undefined;
   let pending: readonly GridInteractionPointerWork[] = [];
 
   const processNext = () => {
@@ -11,15 +13,19 @@ export function createGridInteractionsPointerQueue() {
     if (pointerWork === undefined) return;
     pending = pending.slice(1);
     measuring = true;
+    const currentMeasurementId = ++measurementId;
+    activeMeasurementId = currentMeasurementId;
     let settled = false;
     measureSurfaceOrigin(pointerWork.surface, (origin) => {
       if (settled) return;
       settled = true;
+      if (activeMeasurementId !== currentMeasurementId) return;
       try {
         if (active && pointerWork.generation === generation) {
           pointerWork.handleOrigin(origin);
         }
       } finally {
+        activeMeasurementId = undefined;
         measuring = false;
         processNext();
       }
@@ -41,11 +47,15 @@ export function createGridInteractionsPointerQueue() {
     cancel: () => {
       generation += 1;
       pending = [];
+      activeMeasurementId = undefined;
+      measuring = false;
     },
     dispose: () => {
       active = false;
       generation += 1;
       pending = [];
+      activeMeasurementId = undefined;
+      measuring = false;
     },
   };
 }

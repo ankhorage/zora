@@ -32,10 +32,32 @@ test('invalidates an active native responder measurement across unmount and remo
   queue.dispose();
   queue.activate();
   queue.enqueue(surface, (origin) => origins.push(origin));
-  callbacks[0]?.(10, 20);
   callbacks[1]?.(30, 40);
+  callbacks[0]?.(10, 20);
 
   expect(origins).toEqual([{ x: 30, y: 40 }]);
+});
+
+test('retires a canceled measurement slot without waiting for its callback', () => {
+  const callbacks: ((x: number, y: number) => void)[] = [];
+  const origins: unknown[] = [];
+  const queue = createGridInteractionsPointerQueue();
+  const surface = {
+    measureInWindow: (callback: (x: number, y: number) => void) => callbacks.push(callback),
+  };
+
+  queue.enqueue(surface, (origin) => origins.push(origin));
+  queue.cancel();
+  queue.enqueue(surface, (origin) => origins.push(origin));
+  callbacks[1]?.(30, 40);
+  queue.enqueue(surface, (origin) => origins.push(origin));
+  callbacks[0]?.(10, 20);
+  callbacks[2]?.(50, 60);
+
+  expect(origins).toEqual([
+    { x: 30, y: 40 },
+    { x: 50, y: 60 },
+  ]);
 });
 
 test('uses the latest RNW surface origin for each serialized pointer', () => {
