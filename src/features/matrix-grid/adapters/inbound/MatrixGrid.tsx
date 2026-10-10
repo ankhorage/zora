@@ -1,4 +1,5 @@
 import {
+  getMatrixCellPlacement,
   getVisibleMatrixCells,
   type GridMatrixCellPlacement,
   type GridViewport,
@@ -12,6 +13,7 @@ import { GridView } from '../../../grid-view/public';
 import { resolveSelectionEventIntent } from '../../../selection/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
+import { createMatrixGridSparseIndex } from '../../application/createMatrixGridSparseIndex';
 import { resolveMatrixGridContentSize } from '../../application/resolveMatrixGridContentSize';
 import { resolveMatrixGridSelection } from '../../application/resolveMatrixGridSelection';
 import { MatrixGridKeyboardProxy } from './MatrixGridKeyboardProxy';
@@ -27,6 +29,7 @@ function MatrixGridInner({
   onSelectionChange,
   onViewportChange,
   overscanPixels = 160,
+  readOnly = false,
   renderCell,
   selectedCellIds = [],
   selectionMode = 'single',
@@ -44,29 +47,16 @@ function MatrixGridInner({
   );
   const [uncontrolledViewport, setUncontrolledViewport] = React.useState(initialViewport);
   const viewport = controlledViewport ?? uncontrolledViewport;
+  const sparseIndex = React.useMemo(
+    () => createMatrixGridSparseIndex(layout, cells),
+    [cells, layout],
+  );
   const cellPlacements = React.useMemo(
-    () =>
-      getVisibleMatrixCells(
-        layout,
-        cells,
-        {
-          height: contentSize.height,
-          offsetX: 0,
-          offsetY: 0,
-          pixelsPerUnitX: 1,
-          pixelsPerUnitY: 1,
-          width: contentSize.width,
-        },
-        overscanPixels,
-      ),
-    [cells, contentSize.height, contentSize.width, layout, overscanPixels],
+    () => getVisibleMatrixCells(layout, cells, viewport, overscanPixels),
+    [cells, layout, overscanPixels, viewport],
   );
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
   const anchorId = React.useRef<string | null>(null);
-  const cellById = React.useMemo(
-    () => new Map(cellPlacements.map((cell) => [cell.id, cell])),
-    [cellPlacements],
-  );
 
   const handleViewportChange = React.useCallback(
     (proposal: GridViewport) => {
@@ -78,13 +68,13 @@ function MatrixGridInner({
 
   const activateCell = React.useCallback(
     (cell: GridMatrixCellPlacement, event: unknown) => {
-      if (interactionPolicy === 'passive') return;
+      if (interactionPolicy === 'passive' || readOnly) return;
       const intent = isRangeSelectionEvent(event)
         ? 'range'
         : resolveSelectionEventIntent(event, 'pointer');
       onSelectionChange?.(
         resolveMatrixGridSelection(
-          cellPlacements,
+          sparseIndex.entries,
           selectedCellIds,
           cell.id,
           anchorId.current,
@@ -94,18 +84,45 @@ function MatrixGridInner({
       );
       if (intent !== 'range') anchorId.current = cell.id;
     },
-    [cellPlacements, interactionPolicy, onSelectionChange, selectedCellIds, selectionMode],
+    [
+      interactionPolicy,
+      onSelectionChange,
+      readOnly,
+      selectedCellIds,
+      selectionMode,
+      sparseIndex.entries,
+    ],
   );
-  const keyboard = useMatrixGridKeyboardFocus(
-    cellPlacements,
-    interactionPolicy === 'passive',
-    visibleIds,
-    (targetId, originId, shiftKey) => {
+  const handleKeyboardNavigation = React.useCallback(
+    (targetId: string, originId: string, shiftKey: boolean) => {
       anchorId.current ??= originId;
       if (!shiftKey) return;
-      const cell = cellPlacements.find((candidate) => candidate.id === targetId);
-      if (cell) activateCell(cell, { shiftKey: true });
+      const cell = sparseIndex.cellById.get(targetId);
+      if (cell) activateCell(getMatrixCellPlacement(layout, cell), { shiftKey: true });
     },
+    [activateCell, layout, sparseIndex],
+  );
+  const keyboard = useMatrixGridKeyboardFocus(
+    sparseIndex,
+    interactionPolicy === 'passive',
+    visibleIds,
+    handleKeyboardNavigation,
+  );
+  const focusedPlacement = React.useMemo(() => {
+    const focusedCell =
+      keyboard.focusedId === null ? undefined : sparseIndex.cellById.get(keyboard.focusedId);
+    return focusedCell ? getMatrixCellPlacement(layout, focusedCell) : undefined;
+  }, [keyboard.focusedId, layout, sparseIndex.cellById]);
+  const gridItems = React.useMemo(
+    () =>
+      focusedPlacement && !cellPlacements.some((cell) => cell.id === focusedPlacement.id)
+        ? [...cellPlacements, focusedPlacement]
+        : cellPlacements,
+    [cellPlacements, focusedPlacement],
+  );
+  const cellById = React.useMemo(
+    () => new Map(gridItems.map((cell) => [cell.id, cell])),
+    [gridItems],
   );
 
   return (
@@ -115,7 +132,7 @@ function MatrixGridInner({
         contentWidth={contentSize.width}
         height={height}
         interactionPolicy={interactionPolicy}
-        items={cellPlacements}
+        items={gridItems}
         focusedItemId={keyboard.focusedId ?? undefined}
         overscanPixels={0}
         onVisibleItemIdsChange={setVisibleIds}
@@ -130,6 +147,8 @@ function MatrixGridInner({
             renderCell,
             activateCell,
             keyboard,
+            interactionPolicy === 'passive',
+            readOnly,
             testID,
           );
         }}
@@ -151,6 +170,8 @@ function renderMatrixCell(
   renderCell: MatrixGridProps['renderCell'],
   activateCell: (cell: GridMatrixCellPlacement, event: unknown) => void,
   keyboard: ReturnType<typeof useMatrixGridKeyboardFocus>,
+  passive: boolean,
+  readOnly: boolean,
   testID: string | undefined,
 ) {
   const selected = selectedCellIds.includes(cell.id);
@@ -160,6 +181,7 @@ function renderMatrixCell(
       onKeyDown={(event) => {
         if (keyboard.onKeyDown(cell.id, event.key, event.shiftKey)) return true;
         if (!['Enter', ' '].includes(event.key)) return false;
+        if (passive || readOnly) return false;
         activateCell(cell, event);
         return true;
       }}
@@ -169,7 +191,8 @@ function renderMatrixCell(
         accessibilityActions={[{ name: 'activate' }]}
         accessibilityLabel={`Cell ${cell.id}`}
         accessibilityRole="button"
-        accessibilityState={{ selected }}
+        accessibilityState={{ disabled: passive, selected }}
+        disabled={passive}
         focusable={Platform.OS !== 'web' || canInteract}
         style={[
           styles.cell,

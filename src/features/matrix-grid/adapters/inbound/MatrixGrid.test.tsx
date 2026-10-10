@@ -63,10 +63,12 @@ const cells = layout.rows.flatMap((row) =>
 type MatrixGridComponent = React.ComponentType<{
   readonly cells: typeof cells;
   readonly height: number;
+  readonly interactionPolicy?: 'passive';
   readonly layout: typeof layout;
   readonly onSelectionChange?: (ids: readonly string[]) => void;
   readonly onViewportChange?: (viewport: unknown) => void;
   readonly renderCell: (cell: { readonly id: string }) => React.ReactNode;
+  readonly readOnly?: boolean;
   readonly selectedCellIds?: readonly string[];
   readonly selectionMode?: 'multi';
   readonly testID: string;
@@ -317,3 +319,192 @@ test('navigates sparse cells by keyboard and applies range and modifier selectio
     }
   });
 });
+
+test('does not capture keyboard input from interactive cell content and respects read-only selection', async () => {
+  await withMatrixDom(async (host, browser) => {
+    const selections: (readonly string[])[] = [];
+    const root = createRoot(host);
+    const { MatrixGrid } = (await load('components/matrix-grid/MatrixGrid.js')) as {
+      MatrixGrid: MatrixGridComponent;
+    };
+    const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
+      ZoraProvider: ZoraProviderComponent;
+    };
+    const oneCellLayout = {
+      columns: [{ id: 'column-0', size: 20 }],
+      rows: [{ id: 'row-0', size: 20 }],
+    };
+    const oneCell = [{ columnId: 'column-0', id: 'a1', rowId: 'row-0' }];
+
+    try {
+      act(() =>
+        root.render(
+          <ZoraProvider>
+            <MatrixGrid
+              cells={oneCell}
+              height={40}
+              layout={oneCellLayout}
+              readOnly
+              testID="interactive-matrix"
+              width={40}
+              onSelectionChange={(ids) => selections.push(ids)}
+              renderCell={() => <input data-testid="matrix-editor" />}
+            />
+          </ZoraProvider>,
+        ),
+      );
+      const editor = host.querySelector<HTMLInputElement>('[data-testid="matrix-editor"]');
+      const cell = host.querySelector<HTMLElement>('[data-testid="interactive-matrix-cell-a1"]');
+      if (!editor) throw new Error('Missing embedded matrix editor.');
+      if (!cell) throw new Error('Missing read-only matrix cell.');
+      act(() => {
+        void cell.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+      });
+      act(() => editor.focus());
+      act(() => {
+        void editor.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowRight' }),
+        );
+        void editor.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'Enter' }),
+        );
+        void editor.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: ' ' }),
+        );
+      });
+      expect(document.activeElement).toBe(editor);
+      expect(selections).toEqual([]);
+    } finally {
+      act(() => root.unmount());
+    }
+  });
+});
+
+test('suppresses selection from passive matrix cells', async () => {
+  await withMatrixDom(async (host, browser) => {
+    const selections: (readonly string[])[] = [];
+    const root = createRoot(host);
+    const { MatrixGrid } = (await load('components/matrix-grid/MatrixGrid.js')) as {
+      MatrixGrid: MatrixGridComponent;
+    };
+    const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
+      ZoraProvider: ZoraProviderComponent;
+    };
+    const oneCellLayout = {
+      columns: [{ id: 'column-0', size: 20 }],
+      rows: [{ id: 'row-0', size: 20 }],
+    };
+    const oneCell = [{ columnId: 'column-0', id: 'a1', rowId: 'row-0' }];
+
+    try {
+      act(() =>
+        root.render(
+          <ZoraProvider>
+            <MatrixGrid
+              cells={oneCell}
+              height={40}
+              interactionPolicy="passive"
+              layout={oneCellLayout}
+              testID="passive-matrix"
+              width={40}
+              onSelectionChange={(ids) => selections.push(ids)}
+              renderCell={(cell) => <span>{cell.id}</span>}
+            />
+          </ZoraProvider>,
+        ),
+      );
+      const cell = host.querySelector<HTMLElement>('[data-testid="passive-matrix-cell-a1"]');
+      if (!cell) throw new Error('Missing passive matrix cell.');
+      act(() => {
+        void cell.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+        void cell.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowRight' }),
+        );
+      });
+      expect(selections).toEqual([]);
+    } finally {
+      act(() => root.unmount());
+    }
+  });
+});
+
+test('reveals an offscreen keyboard target through a controlled viewport with independent axis zoom', async () => {
+  await withMatrixDom(async (host, browser) => {
+    const root = createRoot(host);
+    const { MatrixGrid } = (await load('components/matrix-grid/MatrixGrid.js')) as {
+      MatrixGrid: MatrixGridComponent;
+    };
+    const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
+      ZoraProvider: ZoraProviderComponent;
+    };
+    const sparseLayout = {
+      columns: [
+        { id: 'column-0', size: 20 },
+        { id: 'column-1', size: 20 },
+        { id: 'column-2', size: 20 },
+      ],
+      rows: [{ id: 'row-0', size: 20 }],
+    };
+    const sparseCells = [
+      { columnId: 'column-0', id: 'a1', rowId: 'row-0' },
+      { columnId: 'column-2', id: 'c1', rowId: 'row-0' },
+    ];
+    function ControlledMatrix() {
+      const [viewport, setViewport] = React.useState<MatrixGridViewport>({
+        height: 20,
+        offsetX: 0,
+        offsetY: 0,
+        pixelsPerUnitX: 2,
+        pixelsPerUnitY: 3,
+        width: 20,
+      });
+      return (
+        <MatrixGrid
+          cells={sparseCells}
+          height={20}
+          layout={sparseLayout}
+          overscanPixels={0}
+          testID="controlled-keyboard-matrix"
+          viewport={viewport}
+          width={20}
+          onViewportChange={(proposal) => {
+            const nextViewport = proposal as MatrixGridViewport;
+            setViewport(nextViewport);
+          }}
+          renderCell={(cell) => <span>{cell.id}</span>}
+        />
+      );
+    }
+
+    try {
+      act(() =>
+        root.render(
+          <ZoraProvider>
+            <ControlledMatrix />
+          </ZoraProvider>,
+        ),
+      );
+      const a1 = host.querySelector<HTMLElement>(
+        '[data-testid="controlled-keyboard-matrix-cell-a1"]',
+      );
+      if (!a1) throw new Error('Missing controlled focus origin.');
+      await act(async () => {
+        await new Promise<void>((resolve) => browser.setTimeout(resolve, 0));
+        a1.focus();
+        void a1.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowRight' }),
+        );
+        await new Promise<void>((resolve) => browser.setTimeout(resolve, 20));
+      });
+      const c1 = host.querySelector<HTMLElement>(
+        '[data-testid="controlled-keyboard-matrix-cell-c1"]',
+      );
+      expect(c1).not.toBeNull();
+      expect(document.activeElement).toBe(c1);
+    } finally {
+      act(() => root.unmount());
+    }
+  });
+});
+
+type MatrixGridViewport = NonNullable<React.ComponentProps<MatrixGridComponent>['viewport']>;

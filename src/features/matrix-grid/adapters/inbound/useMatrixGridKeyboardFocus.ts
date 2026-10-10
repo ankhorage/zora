@@ -1,11 +1,11 @@
-import type { GridMatrixCellPlacement } from '@ankhorage/grid-view';
 import React from 'react';
 
+import type { MatrixGridSparseIndex } from '../../application/createMatrixGridSparseIndex';
 import { getMatrixGridNextFocusId } from '../../application/getMatrixGridNextFocusId';
 
 /*** Keep one roving focus target and restore it after GridView virtualizes a sparse cell. */
 export function useMatrixGridKeyboardFocus(
-  cells: readonly GridMatrixCellPlacement[],
+  index: MatrixGridSparseIndex,
   disabled: boolean,
   visibleIds: readonly string[],
   onNavigate: (targetId: string, originId: string, shiftKey: boolean) => void,
@@ -14,12 +14,11 @@ export function useMatrixGridKeyboardFocus(
   const focusedRef = React.useRef<string | null>(null);
   const pendingFocusRef = React.useRef<string | null>(null);
   const cellRefs = React.useRef(new Map<string, FocusableCell>());
-  const allIds = React.useMemo(() => cells.map((cell) => cell.id), [cells]);
   const visibleIdSet = React.useMemo(() => new Set(visibleIds), [visibleIds]);
   const tabStopId =
     focusedId !== null && visibleIdSet.has(focusedId)
       ? focusedId
-      : visibleIds.find((id) => allIds.includes(id));
+      : visibleIds.find((id) => index.positionById.has(id));
 
   const onFocus = React.useCallback((id: string) => {
     pendingFocusRef.current = null;
@@ -45,7 +44,7 @@ export function useMatrixGridKeyboardFocus(
         return false;
       }
       const originId = focusedRef.current ?? id;
-      const nextId = getMatrixGridNextFocusId(cells, originId, key);
+      const nextId = getMatrixGridNextFocusId(index, originId, key);
       if (nextId === null || nextId === originId) return true;
 
       focusedRef.current = nextId;
@@ -60,7 +59,7 @@ export function useMatrixGridKeyboardFocus(
       }
       return true;
     },
-    [cells, disabled, onNavigate],
+    [disabled, index, onNavigate],
   );
 
   return { focusedId, onFocus, onKeyDown, registerCell, tabStopId };

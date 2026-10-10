@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import { createMatrixGridSparseIndex } from './createMatrixGridSparseIndex';
 import { getMatrixGridNextFocusId } from './getMatrixGridNextFocusId';
 
 const cells = [
@@ -49,17 +50,44 @@ const cells = [
   },
 ] as const;
 
+const layout = {
+  columns: [
+    { id: 'a', size: 1 },
+    { id: 'b', size: 1 },
+    { id: 'c', size: 1 },
+  ],
+  rows: [
+    { id: '1', size: 1 },
+    { id: '2', size: 1 },
+    { id: '3', size: 1 },
+  ],
+} as const;
+
+const index = createMatrixGridSparseIndex(layout, cells);
+
 describe('getMatrixGridNextFocusId', () => {
   test('moves over sparse rows and columns without materializing missing cells', () => {
-    expect(getMatrixGridNextFocusId(cells, 'a1', 'ArrowRight')).toBe('c1');
-    expect(getMatrixGridNextFocusId(cells, 'c3', 'ArrowLeft')).toBe('a3');
-    expect(getMatrixGridNextFocusId(cells, 'a1', 'ArrowDown')).toBe('a3');
-    expect(getMatrixGridNextFocusId(cells, 'c3', 'ArrowUp')).toBe('c1');
+    expect(getMatrixGridNextFocusId(index, 'a1', 'ArrowRight')).toBe('c1');
+    expect(getMatrixGridNextFocusId(index, 'c3', 'ArrowLeft')).toBe('a3');
+    expect(getMatrixGridNextFocusId(index, 'a1', 'ArrowDown')).toBe('a3');
+    expect(getMatrixGridNextFocusId(index, 'c3', 'ArrowUp')).toBe('c1');
   });
 
   test('retains focus at a sparse edge and initializes from the first real cell', () => {
-    expect(getMatrixGridNextFocusId(cells, 'a1', 'ArrowLeft')).toBe('a1');
-    expect(getMatrixGridNextFocusId(cells, null, 'ArrowRight')).toBe('a1');
-    expect(getMatrixGridNextFocusId([], null, 'ArrowRight')).toBeNull();
+    expect(getMatrixGridNextFocusId(index, 'a1', 'ArrowLeft')).toBe('a1');
+    expect(getMatrixGridNextFocusId(index, null, 'ArrowRight')).toBe('a1');
+    expect(
+      getMatrixGridNextFocusId(createMatrixGridSparseIndex(layout, []), null, 'ArrowRight'),
+    ).toBeNull();
+  });
+
+  test('chooses geometric neighbours from an intentionally unsorted sparse input', () => {
+    const unsorted = createMatrixGridSparseIndex(layout, [cells[3], cells[1], cells[2], cells[0]]);
+
+    expect(getMatrixGridNextFocusId(unsorted, 'a1', 'ArrowRight')).toBe('c1');
+    expect(getMatrixGridNextFocusId(unsorted, 'c3', 'ArrowLeft')).toBe('a3');
+    expect(getMatrixGridNextFocusId(unsorted, 'a1', 'ArrowDown')).toBe('a3');
+    expect(getMatrixGridNextFocusId(unsorted, 'c3', 'ArrowUp')).toBe('c1');
+    expect(getMatrixGridNextFocusId(unsorted, null, 'ArrowRight')).toBe('a1');
   });
 });

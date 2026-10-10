@@ -1,4 +1,3 @@
-import type { GridMatrixCellPlacement } from '@ankhorage/grid-view';
 import { applySelectionIntent, type SelectionIntent } from '@ankhorage/utility/selection';
 
 import type { SelectionMode } from '../../../types/selection';
@@ -7,7 +6,7 @@ type MatrixGridSelectionIntent = SelectionIntent | 'range';
 
 /*** Apply ZORA's canonical selection intent while retaining the configured selection mode. */
 export function resolveMatrixGridSelection(
-  cells: readonly GridMatrixCellPlacement[],
+  cells: readonly MatrixGridSelectionCell[],
   selectedIds: readonly string[],
   cellId: string,
   anchorId: string | null,
@@ -31,3 +30,9 @@ export function resolveMatrixGridSelection(
     )
     .map((cell) => cell.id);
 }
+
+type MatrixGridSelectionCell = Readonly<{
+  columnIndex: number;
+  id: string;
+  rowIndex: number;
+}>;
