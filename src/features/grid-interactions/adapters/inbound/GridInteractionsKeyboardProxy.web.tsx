@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 
 import type { GridInteractionPointer } from '../../../../types/grid-interactions';
 
@@ -7,12 +7,20 @@ export function GridInteractionsKeyboardProxy({
   children,
   enabled,
   onKeyDown,
+  onSpaceKeyChange,
 }: GridInteractionsKeyboardProxyProps) {
+  React.useEffect(() => {
+    if (!enabled) onSpaceKeyChange(false);
+  }, [enabled, onSpaceKeyChange]);
+  React.useEffect(() => () => onSpaceKeyChange(false), [onSpaceKeyChange]);
+
   return (
     <div
       aria-label="Grid interaction keyboard controls"
+      onBlur={() => onSpaceKeyChange(false)}
       onKeyDown={(event) => {
         if (!enabled) return;
+        if (isSpaceKey(event)) onSpaceKeyChange(true);
         if (
           onKeyDown(event.key, {
             altKey: event.altKey,
@@ -26,6 +34,9 @@ export function GridInteractionsKeyboardProxy({
           event.preventDefault();
         }
       }}
+      onKeyUp={(event) => {
+        if (isSpaceKey(event)) onSpaceKeyChange(false);
+      }}
       style={{ display: 'contents' }}
       tabIndex={enabled ? 0 : -1}
     >
@@ -38,4 +49,10 @@ interface GridInteractionsKeyboardProxyProps {
   readonly children: React.ReactNode;
   readonly enabled: boolean;
   readonly onKeyDown: (key: string, pointer: GridInteractionPointer) => boolean;
+  readonly onSpaceKeyChange: (spaceKey: boolean) => void;
+}
+
+/*** Determines whether a web keyboard event represents the Space modifier. */
+function isSpaceKey(event: React.KeyboardEvent<HTMLDivElement>): boolean {
+  return event.code === 'Space' || event.key === ' ';
 }

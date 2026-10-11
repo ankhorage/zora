@@ -11,4 +11,5 @@ interface GridInteractionsKeyboardProxyProps {
   readonly children: React.ReactNode;
   readonly enabled: boolean;
   readonly onKeyDown: (key: string, pointer: GridInteractionPointer) => boolean;
+  readonly onSpaceKeyChange: (spaceKey: boolean) => void;
 }

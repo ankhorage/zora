@@ -4,6 +4,7 @@ import type { GridInteractionPointer } from '../../../../types/grid-interactions
 export function resolveGridInteractionPointer(
   event: GridInteractionNativePointerEvent,
   surfaceOrigin: GridInteractionSurfaceOrigin,
+  modifierState: GridInteractionModifierState = {},
 ): GridInteractionPointer {
   const { nativeEvent } = event;
   const { pageX, pageY } = nativeEvent;
@@ -21,6 +22,7 @@ export function resolveGridInteractionPointer(
     ctrlKey: nativeEvent.ctrlKey,
     metaKey: nativeEvent.metaKey,
     shiftKey: nativeEvent.shiftKey,
+    spaceKey: modifierState.spaceKey,
     x,
     y,
   };
@@ -42,4 +44,8 @@ interface GridInteractionNativePointerEvent {
 interface GridInteractionSurfaceOrigin {
   readonly x: number;
   readonly y: number;
+}
+
+interface GridInteractionModifierState {
+  readonly spaceKey?: boolean;
 }

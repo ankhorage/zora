@@ -26,15 +26,20 @@ export function GridInteractions({
     createGridInteractionsController(controllerProps),
   );
   const surfaceRef = React.useRef<View>(null);
+  const spaceKeyRef = React.useRef(false);
   const [pointerQueue] = React.useState(() => createGridInteractionsPointerQueue());
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
   React.useLayoutEffect(() => {
     pointerQueue.activate();
     return () => {
+      spaceKeyRef.current = false;
       pointerQueue.dispose();
       controller.cancel();
     };
   }, [controller, pointerQueue]);
+  const setSpaceKey = React.useCallback((spaceKey: boolean) => {
+    spaceKeyRef.current = spaceKey;
+  }, []);
   const withPointer = (
     event: Parameters<typeof resolveGridInteractionPointer>[0],
     handlePointer: (pointer: ReturnType<typeof resolveGridInteractionPointer>) => void,
@@ -42,8 +47,9 @@ export function GridInteractions({
     const surface = surfaceRef.current;
     if (!surface) return;
     const eventSnapshot = { nativeEvent: { ...event.nativeEvent } };
+    const modifierSnapshot = { spaceKey: spaceKeyRef.current };
     pointerQueue.enqueue(surface, (origin) =>
-      handlePointer(resolveGridInteractionPointer(eventSnapshot, origin)),
+      handlePointer(resolveGridInteractionPointer(eventSnapshot, origin, modifierSnapshot)),
     );
   };
   const enabled = interactionPolicy !== 'passive';
@@ -61,6 +67,7 @@ export function GridInteractions({
       onResponderMove={(event) => withPointer(event, controller.move)}
       onResponderRelease={(event) => withPointer(event, controller.end)}
       onResponderTerminate={() => {
+        setSpaceKey(false);
         pointerQueue.cancel();
         controller.cancel();
       }}
@@ -71,6 +78,7 @@ export function GridInteractions({
         onKeyDown={(key, keyPointer) => {
           return controller.keyDown(key, keyPointer);
         }}
+        onSpaceKeyChange={setSpaceKey}
       >
         {children}
       </GridInteractionsKeyboardProxy>

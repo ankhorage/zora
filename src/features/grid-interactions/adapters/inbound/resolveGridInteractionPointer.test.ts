@@ -31,3 +31,18 @@ test('uses responder-local coordinates when page coordinates are unavailable on 
     ),
   ).toEqual({ x: 4, y: 6 });
 });
+
+test('carries a scoped web Space modifier snapshot without changing native event input', () => {
+  expect(
+    resolveGridInteractionPointer(
+      {
+        nativeEvent: {
+          locationX: 4,
+          locationY: 6,
+        },
+      },
+      { x: 120, y: 80 },
+      { spaceKey: true },
+    ),
+  ).toEqual({ spaceKey: true, x: 4, y: 6 });
+});

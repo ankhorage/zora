@@ -6,7 +6,9 @@ import { Window } from 'happy-dom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import type { GridInteractionIntent } from '../../../../types/grid-interactions';
 import type { GridInteractions as GridInteractionsComponent } from './GridInteractions';
+import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy.web';
 
 const webDistRoot = join(import.meta.dir, '../../../../../web-dist');
 
@@ -103,6 +105,110 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
   }
 });
 
+test('bridges a held Space key into web responder pan and clears it for the following marquee drag', async () => {
+  const browser = new Window();
+  const restore = installBrowserGlobals(browser);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const root = createRoot(host);
+  const { GridInteractions } = await loadGridInteractions();
+  const intents: GridInteractionIntent[] = [];
+
+  try {
+    await renderGridInteractions(
+      root,
+      <GridInteractions
+        items={[]}
+        onIntent={(intent) => intents.push(intent)}
+        testID="grid-interactions"
+        viewport={{
+          height: 100,
+          offsetX: 0,
+          offsetY: 0,
+          pixelsPerUnitX: 2,
+          pixelsPerUnitY: 4,
+          width: 100,
+        }}
+      >
+        <span>nested target</span>
+      </GridInteractions>,
+    );
+    const keyboard = host.querySelector<HTMLElement>(
+      '[aria-label="Grid interaction keyboard controls"]',
+    );
+    const surface = host.querySelector<HTMLElement>('[data-testid="grid-interactions"]');
+    if (!keyboard || !surface) throw new Error('Missing web grid interaction boundary');
+
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keydown', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keyup', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await drag(browser, surface, { x: 10, y: 20 }, { x: 30, y: 60 });
+    expect(intents.map((intent) => intent.type)).toEqual(['pan', 'marquee']);
+  } finally {
+    await act(() => Promise.resolve().then(() => root.unmount()));
+    host.remove();
+    browser.close();
+    restore();
+  }
+});
+
+test('clears the web Space modifier on blur, disable, and unmount', async () => {
+  const browser = new Window();
+  const restore = installBrowserGlobals(browser);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const root = createRoot(host);
+  const spaceKeyChanges: boolean[] = [];
+  const onSpaceKeyChange = (spaceKey: boolean) => spaceKeyChanges.push(spaceKey);
+
+  try {
+    await renderGridInteractions(
+      root,
+      <GridInteractionsKeyboardProxy
+        enabled
+        onKeyDown={() => false}
+        onSpaceKeyChange={onSpaceKeyChange}
+      >
+        <span>nested target</span>
+      </GridInteractionsKeyboardProxy>,
+    );
+    const keyboard = host.querySelector<HTMLElement>(
+      '[aria-label="Grid interaction keyboard controls"]',
+    );
+    if (!keyboard) throw new Error('Missing keyboard interaction proxy');
+
+    await dispatch(
+      keyboard,
+      new browser.KeyboardEvent('keydown', { bubbles: true, code: 'Space', key: ' ' }),
+    );
+    await dispatch(keyboard, new browser.FocusEvent('focusout', { bubbles: true }));
+    await renderGridInteractions(
+      root,
+      <GridInteractionsKeyboardProxy
+        enabled={false}
+        onKeyDown={() => false}
+        onSpaceKeyChange={onSpaceKeyChange}
+      >
+        <span>nested target</span>
+      </GridInteractionsKeyboardProxy>,
+    );
+
+    expect(spaceKeyChanges).toEqual([true, false, false]);
+  } finally {
+    await act(() => Promise.resolve().then(() => root.unmount()));
+    expect(spaceKeyChanges.at(-1)).toBe(false);
+    host.remove();
+    browser.close();
+    restore();
+  }
+});
+
 /*** Installs the DOM globals that the independently bundled RNW adapter requires. */
 function installBrowserGlobals(browser: Window): () => void {
   const keys = [
@@ -140,4 +246,44 @@ function renderGridInteractions(root: ReturnType<typeof createRoot>, component: 
 /*** Dispatches one browser input event through React's RNW adapter boundary. */
 function dispatch(target: HTMLElement, event: Event) {
   return act(() => Promise.resolve().then(() => target.dispatchEvent(event)));
+}
+
+/*** Runs one browser touch drag through the RNW responder boundary. */
+async function drag(
+  browser: Window,
+  target: HTMLElement,
+  start: { readonly x: number; readonly y: number },
+  end: { readonly x: number; readonly y: number },
+) {
+  await dispatch(target, createTouchEvent(browser, 'touchstart', target, start, [start]));
+  await dispatch(target, createTouchEvent(browser, 'touchmove', target, end, [end]));
+  await dispatch(target, createTouchEvent(browser, 'touchend', target, end, []));
+}
+
+/*** Creates a browser touch event consumed by the RNW responder implementation. */
+function createTouchEvent(
+  browser: Window,
+  type: 'touchend' | 'touchmove' | 'touchstart',
+  target: HTMLElement,
+  changed: { readonly x: number; readonly y: number },
+  touches: readonly { readonly x: number; readonly y: number }[],
+) {
+  const event = new browser.Event(type, { bubbles: true });
+  Object.defineProperties(event, {
+    changedTouches: { value: [createTouch(target, changed)] },
+    touches: { value: touches.map((touch) => createTouch(target, touch)) },
+  });
+  return event;
+}
+
+/*** Creates one RNW-compatible touch point with page and client coordinates. */
+function createTouch(target: HTMLElement, point: { readonly x: number; readonly y: number }) {
+  return {
+    clientX: point.x,
+    clientY: point.y,
+    identifier: 1,
+    pageX: point.x,
+    pageY: point.y,
+    target,
+  };
 }
