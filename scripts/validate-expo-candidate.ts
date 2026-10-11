@@ -74,7 +74,7 @@ const FIXTURES: readonly CandidateFixture[] = [
     project: 'examples/expo-showcase',
   },
   {
-    doctor: false,
+    doctor: true,
     name: 'grid-workspaces',
     nativeFonts: false,
     nativePrebuild: true,
@@ -288,6 +288,14 @@ function verifyCandidateGraph(
   );
 }
 
+function verifyNpmPeerGraph(fixtureRoot: string, npmFixtureRoot: string): void {
+  copyCleanProject(fixtureRoot, npmFixtureRoot);
+  run(['npm', 'install', '--ignore-scripts'], npmFixtureRoot, {
+    npm_config_cache: join(npmFixtureRoot, 'npm-cache'),
+  });
+  capture(['npm', 'ls', '--all'], npmFixtureRoot);
+}
+
 function collectFiles(root: string, suffix: string): readonly string[] {
   const files: string[] = [];
 
@@ -412,6 +420,10 @@ try {
     verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
     run(['bun', 'run', 'typecheck'], fixtureRoot);
     run(['bun', 'x', 'expo', 'install', '--check'], fixtureRoot);
+
+    if (fixture.name === 'grid-workspaces') {
+      verifyNpmPeerGraph(fixtureRoot, join(temporaryRoot, `${fixture.name}-npm`));
+    }
 
     if (fixture.doctor) {
       run(['bunx', 'expo-doctor@1.20.2'], fixtureRoot);
