@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.2",
+      "value": "v25.8.3",
       "color": "cb3837"
     },
     {
@@ -66462,7 +66462,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 38,
+        "line": 43,
         "column": 9
       }
     },
@@ -66485,6 +66485,17 @@
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
         "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "isSpaceKey",
+      "description": "Determines whether a web keyboard event represents the Space modifier.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
+        "line": 56,
         "column": 1
       }
     },
@@ -82598,6 +82609,12 @@
       },
       {
         "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+        "toSymbol": "setSpaceKey",
+        "callExpression": "setSpaceKey",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
         "toSymbol": "cancel",
         "callExpression": "pointerQueue.cancel",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
@@ -82607,6 +82624,18 @@
         "toSymbol": "keyDown",
         "callExpression": "controller.keyDown",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
+        "toSymbol": "onSpaceKeyChange",
+        "callExpression": "onSpaceKeyChange",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
+        "toSymbol": "isSpaceKey",
+        "callExpression": "isSpaceKey",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx"
       },
       {
         "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
@@ -91630,13 +91659,13 @@
       {
         "fromComponent": "GridInteractions",
         "toComponent": "View",
-        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      accessibilityRole=\"adjustable\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) =>\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle))\n      }\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => withPointer(event, controller.end)}\n      onResponderTerminate={() => {\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onStartShouldSetResponder={() => enabled}\n    >",
+        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      accessibilityRole=\"adjustable\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) =>\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle))\n      }\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => withPointer(event, controller.end)}\n      onResponderTerminate={() => {\n        setSpaceKey(false);\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onStartShouldSetResponder={() => enabled}\n    >",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
         "fromComponent": "GridInteractions",
         "toComponent": "GridInteractionsKeyboardProxy",
-        "jsxElement": "<GridInteractionsKeyboardProxy\n        enabled={enabled}\n        onKeyDown={(key, keyPointer) => {\n          return controller.keyDown(key, keyPointer);\n        }}\n      >",
+        "jsxElement": "<GridInteractionsKeyboardProxy\n        enabled={enabled}\n        onKeyDown={(key, keyPointer) => {\n          return controller.keyDown(key, keyPointer);\n        }}\n        onSpaceKeyChange={setSpaceKey}\n      >",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {

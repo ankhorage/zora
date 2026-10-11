@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.3
+
+### Patch Changes
+
+- 6194188: Propagate the held Space modifier to web grid drag interactions for panning.
+
 ## 25.8.2
 
 ### Patch Changes
