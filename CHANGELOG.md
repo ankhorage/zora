@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.2
+
+### Patch Changes
+
+- ed63654: Reconcile ZORA's published native peer contract with the released Surface Expo SDK 57 tuple.
+
 ## 25.8.1
 
 ### Patch Changes
