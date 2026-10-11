@@ -128,7 +128,7 @@
     "format": "ankhorage-prettier --write .",
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
-    "test": "bun run build && bun test --isolate src examples/grid-workspaces/time",
+    "test": "bun run build && bun test src examples/grid-workspaces/time --isolate",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json",
     "version-packages": "ankhorage-changeset version"
   },
