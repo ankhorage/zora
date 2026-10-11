@@ -1,7 +1,12 @@
 import { expect, mock, test } from 'bun:test';
 import { Window } from 'happy-dom';
-import React, { act } from 'react';
-import { createRoot } from 'react-dom/client';
+import type { ReactNode } from 'react';
+
+const rootReact = await import('../../../node_modules/react/index.js');
+const { act } = rootReact;
+const { createRoot } = await import('../../../node_modules/react-dom/client.js');
+
+mock.module('react', () => rootReact);
 
 const reactNativeWeb = await import('react-native-web');
 const [{ ZoraProvider }, { Button }, { Screen }, { ScreenSection }, { View }] = await Promise.all([
@@ -178,7 +183,7 @@ function findAction(host: HTMLElement, label: string) {
 }
 
 interface GridInteractionsProps {
-  readonly children: React.ReactNode;
+  readonly children: ReactNode;
   readonly onIntent: (intent: {
     readonly itemIds: readonly string[];
     readonly type: 'pan' | 'select';
