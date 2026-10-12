@@ -91,6 +91,60 @@ jobs:
             echo "No Ankh package metadata found; skipping capability materialization."
           fi
 
+      - name: Verify npm release baseline
+        id: release-baseline
+        if: hashFiles('.changeset/config.json') != ''
+        run: |
+          package_name="$(node -p "require('./package.json').name")"
+          current_version="$(node -p "require('./package.json').version")"
+          registry_evidence="${RUNNER_TEMP}/npm-release-versions.json"
+          registry_error="${RUNNER_TEMP}/npm-release-versions.error"
+
+          if npm view "$package_name" versions --json > "$registry_evidence" 2> "$registry_error"; then
+            highest_published_version="$(node -e '
+              const raw = JSON.parse(require("node:fs").readFileSync(process.argv[1], "utf8"));
+              const parse = (value) => /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/u.exec(value)?.slice(1).map(Number);
+              const compare = (left, right) => {
+                const index = left.findIndex((part, candidate) => part !== right[candidate]);
+                return index === -1 ? 0 : left[index] - right[index];
+              };
+              const versions = Array.isArray(raw) ? raw : typeof raw === "string" ? [raw] : undefined;
+              if (versions === undefined || versions.length === 0 || versions.some((value) => typeof value !== "string")) {
+                throw new Error("npm registry returned an invalid version list.");
+              }
+              const stable = versions.filter((value) => parse(value));
+              if (stable.length === 0) throw new Error("npm registry returned no stable published version.");
+              stable.sort((left, right) => compare(parse(left), parse(right)));
+              process.stdout.write(stable.at(-1) ?? "");
+            ' "$registry_evidence")"
+          elif node -e '
+            const { readFileSync } = require("node:fs");
+            const error = readFileSync(process.argv[1], "utf8");
+            const packageNotFound =
+              /^npm error code E404$/mu.test(error) &&
+              /^npm error 404 Not Found - GET https:\/\/registry\.npmjs\.org\/.+ - Not found$/mu.test(error) &&
+              /^npm error 404 .+ is not in this registry\.$/mu.test(error);
+            process.exit(packageNotFound ? 0 : 1);
+          ' "$registry_error"; then
+            highest_published_version=""
+          else
+            echo "::error title=npm release baseline unavailable::Could not determine the highest published version for $package_name. Refusing to version or publish without registry evidence."
+            exit 1
+          fi
+
+          if [ -n "$highest_published_version" ]; then
+            CURRENT_VERSION="$current_version" HIGHEST_PUBLISHED_VERSION="$highest_published_version" node -e '
+              const parse = (value) => value.split(".").map(Number);
+              const current = parse(process.env.CURRENT_VERSION);
+              const highest = parse(process.env.HIGHEST_PUBLISHED_VERSION);
+              const index = current.findIndex((part, candidate) => part !== highest[candidate]);
+              if (index !== -1 && current[index] < highest[index]) {
+                throw new Error(`Package version rollback: ${process.env.CURRENT_VERSION} is lower than published npm version ${process.env.HIGHEST_PUBLISHED_VERSION}. Restore main to the published baseline before applying pending Changesets.`);
+              }
+            '
+          fi
+          echo "highest_published_version=$highest_published_version" >> "$GITHUB_OUTPUT"
+
       - name: Validate release contract
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
@@ -102,6 +156,8 @@ jobs:
       - name: Version packages directly on main
         id: release
         if: hashFiles('.changeset/config.json') != ''
+        env:
+          HIGHEST_PUBLISHED_VERSION: ${{ steps.release-baseline.outputs.highest_published_version }}
         run: |
           if [ -z "$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name README.md -print -quit)" ]; then
             current_version="$(node -p "require('./package.json').version")"
@@ -147,6 +203,18 @@ jobs:
             ./node_modules/.bin/ankhorage-apm-release sync .
           fi
           after_version="$(node -p "require('./package.json').version")"
+
+          if [ -n "$HIGHEST_PUBLISHED_VERSION" ]; then
+            CANDIDATE_VERSION="$after_version" HIGHEST_PUBLISHED_VERSION="$HIGHEST_PUBLISHED_VERSION" node -e '
+              const parse = (value) => value.split(".").map(Number);
+              const candidate = parse(process.env.CANDIDATE_VERSION);
+              const highest = parse(process.env.HIGHEST_PUBLISHED_VERSION);
+              const index = candidate.findIndex((part, candidateIndex) => part !== highest[candidateIndex]);
+              if (index === -1 || candidate[index] < highest[index]) {
+                throw new Error(`Release version ${process.env.CANDIDATE_VERSION} must be strictly greater than published npm version ${process.env.HIGHEST_PUBLISHED_VERSION}. Refusing to create a duplicate or rollback release.`);
+              }
+            '
+          fi
 
           if [ "$before_version" != "$after_version" ]; then
             if node -e "const p=require('./package.json'); process.exit(p.ankh?.structure === undefined ? 1 : 0)"; then
@@ -201,6 +269,7 @@ jobs:
           fi
           printf '{"name":"standalone-consumer","private":true,"version":"0.0.0"}\n' > "$install_dir/package.json"
           package_name="$(node -p "require('./package.json').name")"
+          capability_module_path="$(node --input-type=module -e "import { createRequire } from 'node:module'; console.log(createRequire(import.meta.resolve('@ankhorage/devtools/cli')).resolve('@ankhorage/capability'))")"
           (
             cd "$install_dir"
             bun add "$artifact" --ignore-scripts
@@ -271,9 +340,8 @@ jobs:
           process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
           NODE
 
-            PACKAGE_NAME="$package_name" node --input-type=module - <<'NODE'
+            PACKAGE_NAME="$package_name" CAPABILITY_MODULE_PATH="$capability_module_path" node --input-type=module - <<'NODE'
           import { readFileSync } from 'node:fs';
-          import { createRequire } from 'node:module';
           import { join } from 'node:path';
           import { pathToFileURL } from 'node:url';
           const name = process.env.PACKAGE_NAME;
@@ -284,8 +352,10 @@ jobs:
             typeof manifest.ankh !== 'object' ||
             !Object.hasOwn(manifest.ankh, 'capabilities')
           ) process.exit(0);
-          const requireFromPackage = createRequire(join(packageDir, 'package.json'));
-          const capabilityPath = requireFromPackage.resolve('@ankhorage/capability');
+          const capabilityPath = process.env.CAPABILITY_MODULE_PATH;
+          if (typeof capabilityPath !== 'string' || capabilityPath.length === 0) {
+            throw new Error('The release capability validator module path is required.');
+          }
           const { areCapabilitiesEqual, isCapability, normalizeCapability } = await import(pathToFileURL(capabilityPath).href);
           const { CAPABILITIES } = await import(`${name}/capabilities`);
           const metadata = manifest.ankh.capabilities;

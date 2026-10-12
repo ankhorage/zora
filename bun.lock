@@ -82,7 +82,7 @@
 
     "@ankhorage/grid-view": ["@ankhorage/grid-view@0.5.0", "", {}, "sha512-xTfDJNBkWmkaVHQd6Oe6YiRSG4f6ZN1gPnl143AVhS7gZU/x7Tesc/WLaDQ66Z6qALhWzoFrNzKN4S3XuZ4QLQ=="],
 
-    "@ankhorage/paradox": ["@ankhorage/paradox@0.3.3", "", { "dependencies": { "@ankhorage/ankh": "^0.13.0", "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^25.0.1", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-ioBRWJgzYp3JL97ycym6gm/dOcr62cLIoczQLYUUQxyNqALDMTc3WkKBa7iAhj27kYvioqbQOP6mXWr+VYj+xQ=="],
+    "@ankhorage/paradox": ["@ankhorage/paradox@0.3.4", "", { "dependencies": { "@ankhorage/ankh": "^0.13.1", "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^25.0.1", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-2n8dWETl9GPBhIQFNJVcp09Ybxp+gZDbBdEuAOEmHxmjfaxK1dVI3A1arMyAg+AQyYEDDsc6NkSW+W2vZaiZLQ=="],
 
     "@ankhorage/project-detector": ["@ankhorage/project-detector@0.3.5", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.0.0", "@ankhorage/utility": "^0.8.0", "minimatch": "^10.2.6", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.12.0" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "project-detector": "dist/cli/runAsync.js" } }, "sha512-3cENcse8iLkfWYlAMt5uASGCLpoP0xphlfZmNmjj28skR54KWHmz+HOUdenS8F/H2uxyeaOLtMdlI1BiiZlY7w=="],
 
