@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ankhorage/zora": "25.6.2",
-    "expo": "57.0.27",
+    "expo": "57.0.29",
     "react": "19.3.0",
     "react-native": "0.86.3",
     "react-dom": "19.3.0",
