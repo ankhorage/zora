@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.6
+
+### Patch Changes
+
+- 488da76: Update dependencies: `@ankhorage/paradox`, `@ankhorage/runtime`.
+
 ## 25.8.5
 
 ### Patch Changes
