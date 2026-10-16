@@ -30,3 +30,9 @@ export interface ScreenProps extends ZoraBaseProps {
   scroll?: boolean;
   width?: ZoraContentWidth;
 }
+
+/** Exclusive-gesture coordination between a ZORA scroll container and its descendant surfaces. */
+export interface ScrollGestureLock {
+  /** Suspends scrolling until the returned release function runs; releasing twice is harmless. */
+  readonly acquire: () => () => void;
+}

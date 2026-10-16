@@ -70,3 +70,9 @@ export interface GridInteractionsController {
   readonly keyDown: (key: string, pointer?: GridInteractionPointer) => boolean;
   readonly update: (props: GridInteractionsControllerProps) => void;
 }
+
+/** Gesture-scoped ownership of ancestor scrolling for one interaction surface. */
+export interface GridInteractionScrollLock {
+  readonly acquire: () => void;
+  readonly release: () => void;
+}

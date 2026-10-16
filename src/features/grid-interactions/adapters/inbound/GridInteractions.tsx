@@ -9,6 +9,7 @@ import { createGridInteractionsController } from '../../application/createGridIn
 import { createGridInteractionsPointerQueue } from './createGridInteractionsPointerQueue';
 import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy';
 import { resolveGridInteractionPointer } from './resolveGridInteractionPointer';
+import { useGridInteractionScrollLock } from './useGridInteractionScrollLock';
 
 /*** Adapts native responder and keyboard events to the controlled grid interaction boundary. */
 export function GridInteractions({
@@ -28,6 +29,7 @@ export function GridInteractions({
   const surfaceRef = React.useRef<View>(null);
   const spaceKeyRef = React.useRef(false);
   const [pointerQueue] = React.useState(() => createGridInteractionsPointerQueue());
+  const scrollLock = useGridInteractionScrollLock();
   React.useLayoutEffect(() => controller.update(controllerProps), [controller, controllerProps]);
   React.useLayoutEffect(() => {
     pointerQueue.activate();
@@ -61,16 +63,22 @@ export function GridInteractions({
       accessibilityRole="adjustable"
       ref={surfaceRef}
       testID={testID}
-      onResponderGrant={(event) =>
-        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle))
-      }
+      onResponderGrant={(event) => {
+        scrollLock.acquire();
+        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle));
+      }}
       onResponderMove={(event) => withPointer(event, controller.move)}
-      onResponderRelease={(event) => withPointer(event, controller.end)}
+      onResponderRelease={(event) => {
+        scrollLock.release();
+        withPointer(event, controller.end);
+      }}
       onResponderTerminate={() => {
+        scrollLock.release();
         setSpaceKey(false);
         pointerQueue.cancel();
         controller.cancel();
       }}
+      onResponderTerminationRequest={() => false}
       onStartShouldSetResponder={() => enabled}
     >
       <GridInteractionsKeyboardProxy
