@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.5
+
+### Patch Changes
+
+- 4f367f6: Update Game binding resolution for Runtime 5 and Contracts 26, and align the Surface peer contract.
+
 ## 25.8.4
 
 ### Patch Changes
