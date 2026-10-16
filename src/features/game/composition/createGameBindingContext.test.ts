@@ -1,5 +1,6 @@
+import type { BindingExpression } from '@ankhorage/contracts';
 import type { GameSession } from '@ankhorage/game';
-import { resolveRuntimeBindingValueSync } from '@ankhorage/runtime/bindings';
+import { resolveRuntimeBindingExpressionSync } from '@ankhorage/runtime/bindings';
 import { describe, expect, test } from 'bun:test';
 
 import { createGameBindingContext } from './createGameBindingContext';
@@ -26,30 +27,29 @@ const session: GameSession = {
   sequence: 4,
 };
 
+const playerXExpression = {
+  capability: 'context.game.session.entities.player.state.x',
+} satisfies BindingExpression;
+
+const healthExpression = {
+  capability: 'context.game.session.state.health',
+} satisfies BindingExpression;
+
+const entitiesExpression = {
+  capability: 'context.game.entities',
+} satisfies BindingExpression;
+
 describe('createGameBindingContext', () => {
   test('resolves ordinary Runtime context bindings from the local Game session', () => {
     const context = createGameBindingContext(session);
 
-    expect(
-      resolveRuntimeBindingValueSync(
-        { source: { kind: 'context', path: 'game.session.entities.player.state.x' } },
-        { context },
-      ),
-    ).toBe(42);
-    expect(
-      resolveRuntimeBindingValueSync(
-        { source: { kind: 'context', path: 'game.session.state.health' } },
-        { context },
-      ),
-    ).toBe(80);
+    expect(resolveRuntimeBindingExpressionSync(playerXExpression, { context })).toBe(42);
+    expect(resolveRuntimeBindingExpressionSync(healthExpression, { context })).toBe(80);
   });
 
   test('exposes current entities as a repeatable array with stable ids', () => {
     const context = createGameBindingContext(session);
-    const entities = resolveRuntimeBindingValueSync(
-      { source: { kind: 'context', path: 'game.entities' } },
-      { context },
-    );
+    const entities = resolveRuntimeBindingExpressionSync(entitiesExpression, { context });
 
     expect(Array.isArray(entities)).toBe(true);
     expect(entities).toEqual(Object.values(session.entities));

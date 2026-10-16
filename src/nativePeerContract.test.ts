@@ -48,7 +48,8 @@ test('declares a jointly satisfiable Expo 57 native peer contract with Surface',
     throw new Error('Expected package.json dependency sections to contain objects.');
   }
 
-  expect(dependencies['@ankhorage/surface']).toBe('^9.4.5');
+  const surfaceRange = dependencies['@ankhorage/surface'];
+  expect(typeof surfaceRange).toBe('string');
 
   const surfacePackageJson = JSON.parse(
     await readFile(
@@ -56,9 +57,15 @@ test('declares a jointly satisfiable Expo 57 native peer contract with Surface',
       'utf8',
     ),
   ) as unknown;
-  if (!isRecord(surfacePackageJson) || !isRecord(surfacePackageJson.peerDependencies)) {
+  if (
+    !isRecord(surfacePackageJson) ||
+    !isRecord(surfacePackageJson.peerDependencies) ||
+    typeof surfacePackageJson.version !== 'string'
+  ) {
     throw new Error('Expected Surface to expose peer dependencies.');
   }
+
+  expect(Bun.semver.satisfies(surfacePackageJson.version, surfaceRange as string)).toBe(true);
 
   const zoraPeers = new Map(Object.entries(peerDependencies));
   const surfacePeers = new Map(Object.entries(surfacePackageJson.peerDependencies));
