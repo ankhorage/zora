@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.7
+
+### Patch Changes
+
+- 0f8a763: Update dependencies: `@ankhorage/game`.
+
 ## 25.8.6
 
 ### Patch Changes
