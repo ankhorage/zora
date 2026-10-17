@@ -75,12 +75,33 @@ test('ignores animation frames and the settled echo of a programmatic scroll', (
   expect(userScrolls).toEqual([['y', 30]]);
 });
 
+test('keeps delayed animated frames from becoming user pans after a 120ms quiet period', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 0, y: 200 }, true);
+
+  advance(16);
+  sync.scrolled('y', 40);
+  advance(150);
+  expect(userScrolls).toEqual([]);
+  sync.scrolled('y', 100);
+  advance(150);
+  sync.scrolled('y', 200);
+  advance(400);
+
+  expect(userScrolls).toEqual([]);
+  expect(jest.getTimerCount()).toBe(0);
+  sync.scrolled('y', 230);
+  expect(userScrolls).toEqual([['y', 30]]);
+});
+
 test('keeps the axes independent: settling vertical leaves a pending horizontal scroll alone', () => {
   const { sync, userScrolls } = createRecordedSync();
   sync.request({ x: 300, y: 200 }, true);
 
   sync.scrolled('y', 40);
   advance(150);
+  expect(userScrolls).toEqual([]);
+  sync.scrollEnded('y', 40);
   expect(userScrolls).toEqual([['y', -160]]);
 
   sync.scrolled('x', 100);
@@ -127,13 +148,15 @@ test('adopts the final native offset when an unreachable animation ends short', 
   expect(jest.getTimerCount()).toBe(0);
 });
 
-test('adopts the last frame once an interrupted animation goes quiet', () => {
+test('reconciles a stalled animation at its request deadline instead of the quiet interval', () => {
   const { sync, userScrolls } = createRecordedSync();
   sync.request({ x: 0, y: 200 }, true);
   sync.scrolled('y', 40);
   sync.scrolled('y', 60);
 
-  advance(119);
+  advance(120);
+  expect(userScrolls).toEqual([]);
+  advance(579);
   expect(userScrolls).toEqual([]);
   advance(1);
 
