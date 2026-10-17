@@ -15,6 +15,7 @@ import {
   prepareCandidateProviderCache,
   verifyMaterializedReaderArtifact,
 } from './web-artifacts/verifyCandidateReaderArtifact';
+import { type ReaderVariant, verifyReaderMetroAsync } from './web-artifacts/verifyReaderMetro';
 
 interface CandidateFixture {
   readonly doctor: boolean;
@@ -378,19 +379,27 @@ function prebuildNativeProject(fixtureRoot: string): void {
   );
 }
 
-/*** Create a disposable Router route that makes the packed Reader render a deterministic PDF. */
-function addReaderRoute(fixtureRoot: string): void {
+/*** Create a disposable Router route that makes one Reader boundary render a deterministic PDF. */
+function addReaderRoute(fixtureRoot: string, variant: ReaderVariant): void {
   const document = createReaderAcceptancePdf();
   const source = `data:application/pdf;base64,${Buffer.from(document).toString('base64')}`;
+  const readerImport =
+    variant === 'direct'
+      ? "import { ReaderView } from '@ankhorage/reader';"
+      : "import { Reader } from '../.ankh/zora/web/components/reader/Reader.js';";
+  const readerElement =
+    variant === 'direct'
+      ? '<ReaderView format="pdf" source={source} />'
+      : '<Reader format="pdf" showChrome={false} source={source} />';
   writeFileSync(
     join(fixtureRoot, 'app', 'reader.tsx'),
-    `import { Reader } from '../.ankh/zora/web/components/reader/Reader.js';
+    `${readerImport}
 
 const source = ${JSON.stringify(source)};
 
 export default function ReaderRoute() {
   return (
-    <Reader format="pdf" showChrome={false} source={source} />
+    ${readerElement}
   );
 }
 `,
@@ -422,67 +431,24 @@ function createReaderAcceptancePdf(): string {
   return `${document}trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
 }
 
-/*** Wait until Expo Metro has served the route before asking a real browser to render it. */
-async function waitForMetroAsync(url: string): Promise<void> {
-  const deadline = Date.now() + 90_000;
-  while (Date.now() < deadline) {
-    try {
-      if ((await fetch(url)).ok) return;
-    } catch {
-      // Metro has not opened its listener yet.
-    }
-    await Bun.sleep(500);
-  }
-  throw new Error(`Expo Metro did not serve ${url} within 90 seconds.`);
-}
-
-/*** Render the Reader route in Chrome and require both the PDF canvas and selectable text layer. */
-async function verifyReaderMetroAsync(fixtureRoot: string): Promise<void> {
-  const port = 19057;
-  const debuggerPort = 19058;
-  const url = `http://127.0.0.1:${port}/reader`;
-  const metro = Bun.spawn({
-    cmd: ['bun', 'x', 'expo', 'start', '--web', '--port', String(port)],
-    cwd: fixtureRoot,
-    env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
-    stderr: 'pipe',
-    stdout: 'pipe',
-  });
-  const chromeProfile = mkdtempSync(join(fixtureRoot, '.reader-chrome-'));
-  let chrome: ReturnType<typeof Bun.spawn> | undefined;
-  try {
-    await waitForMetroAsync(url);
-    chrome = Bun.spawn({
-      cmd: [
-        resolveChromeExecutable(),
-        '--headless=new',
-        '--disable-gpu',
-        '--no-first-run',
-        `--remote-debugging-port=${debuggerPort}`,
-        `--user-data-dir=${chromeProfile}`,
-        'about:blank',
-      ],
-      stderr: 'pipe',
-      stdout: 'pipe',
-    });
-    await verifyReaderInChromeAsync(url, debuggerPort);
-  } finally {
-    chrome?.kill();
-    if (chrome !== undefined) await chrome.exited;
-    rmSync(chromeProfile, { force: true, recursive: true });
-    metro.kill();
-    await metro.exited;
-  }
-}
-
 /*** Inspect live Chrome DOM and console signals through the native DevTools protocol. */
-async function verifyReaderInChromeAsync(url: string, debuggerPort: number): Promise<void> {
+async function _verifyReaderInChromeAsync(
+  url: string,
+  debuggerPort: number,
+  variant: ReaderVariant,
+): Promise<void> {
   const target = await waitForChromeTargetAsync(url, debuggerPort);
   const consoleErrors: string[] = [];
-  const session = await openChromeSessionAsync(target.webSocketDebuggerUrl, consoleErrors);
+  const networkUrls: string[] = [];
+  const session = await openChromeSessionAsync(
+    target.webSocketDebuggerUrl,
+    consoleErrors,
+    networkUrls,
+  );
   try {
     await session.command('Runtime.enable');
     await session.command('Log.enable');
+    await session.command('Network.enable');
     await session.command('Page.enable');
     await session.command('Page.navigate', { url });
     const deadline = Date.now() + 30_000;
@@ -505,6 +471,9 @@ async function verifyReaderInChromeAsync(url: string, debuggerPort: number): Pro
         assert(
           !consoleErrors.some((error) => /worker/i.test(error)),
           `Reader browser logged a worker error:\n${consoleErrors.join('\n')}`,
+        );
+        console.log(
+          `Reader ${variant} Metro graph URLs:\n${networkUrls.filter((entry) => /bundle|reader|pdfjs|worker/u.test(entry)).join('\n')}`,
         );
         return;
       }
@@ -562,6 +531,7 @@ async function waitForChromeTargetAsync(
 async function openChromeSessionAsync(
   url: string,
   consoleErrors: string[],
+  networkUrls: string[],
 ): Promise<{
   readonly close: () => void;
   readonly command: (method: string, params?: JsonObject) => Promise<JsonObject>;
@@ -588,6 +558,10 @@ async function openChromeSessionAsync(
       return;
     }
     const text = JSON.stringify(message);
+    if (message.method === 'Network.requestWillBeSent') {
+      const request = isJsonObject(message.params) ? message.params.request : undefined;
+      if (isJsonObject(request) && typeof request.url === 'string') networkUrls.push(request.url);
+    }
     if (
       (message.method === 'Runtime.consoleAPICalled' || message.method === 'Log.entryAdded') &&
       /(?:"type":"error"|"level":"error")/u.test(text)
@@ -608,7 +582,7 @@ async function openChromeSessionAsync(
 }
 
 /*** Resolve Chrome from the CI image or the local macOS application bundle. */
-function resolveChromeExecutable(): string {
+function _resolveChromeExecutable(): string {
   const candidates = [
     process.env.CHROME_PATH,
     Bun.which('google-chrome'),
@@ -631,6 +605,48 @@ function verifyNativeFonts(fixtureRoot: string): void {
 
   for (const fontFile of REQUIRED_NATIVE_FONT_FILES) {
     assert(infoPlist.includes(fontFile), `Generated iOS project does not declare ${fontFile}.`);
+  }
+}
+
+/*** Run direct and materialized Reader routes in fresh, dependency-identical Expo fixtures. */
+async function verifyReaderVariantsAsync(
+  sourceRoot: string,
+  candidatePath: string,
+  readerRange: string,
+  providerCacheRoot: string,
+  candidateVersion: string,
+  expectedSurfaceRange: string,
+  temporaryRoot: string,
+): Promise<void> {
+  const variants: readonly ReaderVariant[] = ['direct', 'materialized'];
+  for (const variant of variants) {
+    const fixtureRoot = join(temporaryRoot, `restaurant-reader-${variant}`);
+    const exportRoot = join(temporaryRoot, `restaurant-reader-${variant}-web`);
+    copyCleanProject(sourceRoot, fixtureRoot);
+    configureCandidateFixture(fixtureRoot, candidatePath, readerRange);
+    run(['bun', 'install'], fixtureRoot);
+    run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
+    rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
+    run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
+    verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
+    if (variant === 'materialized') {
+      materializeReaderArtifact(fixtureRoot, providerCacheRoot);
+      verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
+    }
+    addReaderRoute(fixtureRoot, variant);
+    run(['bun', 'run', 'typecheck'], fixtureRoot);
+    run(
+      ['bun', 'x', 'expo', 'export', '--platform', 'web', '--output-dir', exportRoot, '--clear'],
+      fixtureRoot,
+    );
+    assert(
+      collectFiles(exportRoot, '.html')
+        .map((path) => toStaticRoute(exportRoot, path))
+        .includes('/reader'),
+      `Reader ${variant} route is absent from the static Expo export.`,
+    );
+    await verifyReaderMetroAsync(fixtureRoot, variant);
+    console.log(`Reader ${variant} static and live-browser acceptance passed.`);
   }
 }
 
@@ -708,32 +724,15 @@ try {
 
     if (fixture.expectedWebRoutes) {
       verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
-      materializeReaderArtifact(fixtureRoot, providerCacheRoot);
-      verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
-      addReaderRoute(fixtureRoot);
-      const readerExportRoot = join(temporaryRoot, `${fixture.name}-reader-web`);
-      run(['bun', 'run', 'typecheck'], fixtureRoot);
-      run(
-        [
-          'bun',
-          'x',
-          'expo',
-          'export',
-          '--platform',
-          'web',
-          '--output-dir',
-          readerExportRoot,
-          '--clear',
-        ],
-        fixtureRoot,
+      await verifyReaderVariantsAsync(
+        sourceRoot,
+        candidatePath,
+        readerRange,
+        providerCacheRoot,
+        candidateVersion,
+        expectedSurfaceRange,
+        temporaryRoot,
       );
-      assert(
-        collectFiles(readerExportRoot, '.html')
-          .map((path) => toStaticRoute(readerExportRoot, path))
-          .includes('/reader'),
-        'Reader route is absent from the static Expo export.',
-      );
-      await verifyReaderMetroAsync(fixtureRoot);
     }
 
     if (fixture.nativePrebuild) {

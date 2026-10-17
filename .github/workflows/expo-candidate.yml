@@ -34,3 +34,11 @@ jobs:
 
       - name: Validate packed ZORA in Expo applications
         run: bun run expo:candidate
+
+      - name: Upload retained Expo candidate diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expo-candidate-diagnostics
+          path: ${{ runner.temp }}/zora-expo-candidate-*
+          if-no-files-found: warn
