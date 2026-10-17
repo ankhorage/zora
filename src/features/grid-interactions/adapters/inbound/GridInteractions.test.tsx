@@ -66,7 +66,12 @@ test('keeps a mounted RNW keyboard boundary current across parent rerenders', as
     const keyboard = host.querySelector<HTMLElement>(
       '[aria-label="Grid interaction keyboard controls"]',
     );
-    if (!keyboard) throw new Error('Missing keyboard interaction proxy');
+    const surface = host.querySelector<HTMLElement>('[data-testid="grid-interactions"]');
+    if (!keyboard || !surface) throw new Error('Missing web grid interaction boundary');
+    expect(keyboard.getAttribute('role')).toBe('group');
+    expect(keyboard.getAttribute('tabindex')).toBe('0');
+    expect(keyboard.style.display).toBe('flex');
+    expect(surface.getAttribute('role')).toBeNull();
     const resize = new browser.KeyboardEvent('keydown', {
       altKey: true,
       bubbles: true,
