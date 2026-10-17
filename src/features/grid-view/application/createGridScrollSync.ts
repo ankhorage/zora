@@ -13,6 +13,7 @@ import {
 import { resolveScrollEventSource } from './resolveScrollEventSource';
 
 const AXES: readonly GridScrollAxis[] = ['x', 'y'];
+type EchoTail = { lastOffset: number; target: number };
 
 /***
  * Arbitrates each native scroll axis between programmatic requests and the user,
@@ -28,6 +29,8 @@ export function createGridScrollSync({
   let position: GridScrollPosition = { x: 0, y: 0 };
   const pending = new Map<GridScrollAxis, GridPendingScroll>();
   const inFlight = new Map<GridScrollAxis, number>();
+  // Keep ownership of late frames even after a stalled animation is reconciled.
+  const echoTails = new Map<GridScrollAxis, EchoTail>();
   const timers = new Map<GridScrollAxis, ReturnType<typeof setTimeout>>();
 
   const clearTimer = (axis: GridScrollAxis) => {
@@ -46,11 +49,31 @@ export function createGridScrollSync({
     if (displacement !== 0) onUserScroll(axis, displacement);
   };
   const settle = (axis: GridScrollAxis, finalOffset?: number) => {
+    const pendingScroll = pending.get(axis);
     const offset = finalOffset ?? inFlight.get(axis);
     release(axis);
-    if (offset !== undefined) adopt(axis, offset);
+    if (offset !== undefined) {
+      if (
+        finalOffset === undefined &&
+        pendingScroll?.animated &&
+        !isSameOffset(offset, pendingScroll.target)
+      ) {
+        echoTails.set(axis, { lastOffset: offset, target: pendingScroll.target });
+      } else {
+        echoTails.delete(axis);
+      }
+      adopt(axis, offset);
+    }
   };
   const scrolled = (axis: GridScrollAxis, offset: number) => {
+    const tail = echoTails.get(axis);
+    if (tail) {
+      if (isContinuingProgrammaticEcho(tail, offset)) {
+        tail.lastOffset = offset;
+        return;
+      }
+      echoTails.delete(axis);
+    }
     const pendingScroll = pending.get(axis);
     const source = resolveScrollEventSource(pendingScroll, offset, now());
     if (source === 'in-flight' && pendingScroll) {
@@ -78,23 +101,37 @@ export function createGridScrollSync({
         const target = readAxis(next, axis);
         if (isSameOffset(readAxis(position, axis), target)) continue;
         release(axis);
-        pending.set(axis, { expiresAt, target });
+        pending.set(axis, { animated, expiresAt, target });
         scrollTo(axis, target, animated);
       }
       position = next;
     },
     scrolled,
     dragBegan: (axis, offset) => {
+      const hadTail = echoTails.delete(axis);
       if (pending.has(axis) || inFlight.has(axis)) settle(axis, offset);
+      else if (hadTail) adopt(axis, offset);
     },
     scrollEnded: (axis, offset) => {
+      echoTails.delete(axis);
       scrolled(axis, offset);
       if (pending.has(axis)) settle(axis, offset);
     },
     dispose: () => {
       for (const axis of AXES) release(axis);
+      echoTails.clear();
     },
   };
+}
+
+/*** Suppresses delayed monotonic frames toward the old programmatic target until an actual drag/end. */
+function isContinuingProgrammaticEcho({ lastOffset, target }: EchoTail, offset: number): boolean {
+  const step = offset - lastOffset;
+  if (Math.abs(step) <= SCROLL_POSITION_TOLERANCE) return true;
+  return (
+    Math.sign(step) === Math.sign(target - lastOffset) &&
+    Math.abs(target - offset) <= Math.abs(target - lastOffset) + SCROLL_POSITION_TOLERANCE
+  );
 }
 
 /*** Reads one axis of a physical scroll position. */
