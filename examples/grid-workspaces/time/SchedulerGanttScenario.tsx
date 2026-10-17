@@ -1,4 +1,4 @@
-import { ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
+import { Button, ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
 import React from 'react';
 
 import { ResponsiveWidth } from '../ResponsiveWidth';
@@ -48,6 +48,7 @@ const ganttIntervals = [
 
 /*** Demonstrates external nonuniform-day and DST adaptation for a generic Gantt interval lane. */
 export function SchedulerGanttScenario() {
+  const [focusedIntervalId, setFocusedIntervalId] = React.useState<string>();
   const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([]);
   const contentWidth = resolveCalendarAxisWidth(calendarDays);
 
@@ -61,10 +62,12 @@ export function SchedulerGanttScenario() {
         2026-10-25 is 25 hours; TimeGrid receives only mapped world coordinates.
       </Text>
       <Text>{`Selected interval: ${selectedIds.at(0) ?? 'none'}`}</Text>
+      <Button onPress={() => setFocusedIntervalId('research')}>Show first interval</Button>
       <ResponsiveWidth maxWidth={600}>
         {(width) => (
           <TimeGrid
             contentWidth={contentWidth}
+            focusedIntervalId={focusedIntervalId}
             height={180}
             intervals={ganttIntervals}
             lanes={ganttLanes}
@@ -86,6 +89,7 @@ export function SchedulerGanttScenario() {
             renderLaneLabel={(lane) => <Text>{lane.id}</Text>}
             selectedIntervalIds={selectedIds}
             width={width}
+            onFocusedIntervalIdChange={setFocusedIntervalId}
             onIntervalPress={(interval) => setSelectedIds([interval.id])}
           />
         )}
