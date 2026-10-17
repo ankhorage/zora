@@ -17,9 +17,9 @@ import {
   View as NativeView,
 } from 'react-native';
 
-import type { GridViewProps } from '../../../../types/grid-view';
+import type { GridScrollAxis, GridScrollSync, GridViewProps } from '../../../../types/grid-view';
+import { createGridScrollSync } from '../../application/createGridScrollSync';
 
-type ScrollPosition = Readonly<{ x: number; y: number }>;
 type PinchGesture = Readonly<{ distance: number; focalPoint: GridPoint }>;
 type ScrollAxisMapping = Readonly<{ contentSize: number; origin: number; position: number }>;
 type ScrollMapping = Readonly<{
@@ -61,7 +61,8 @@ export function GridView({
   const horizontalScrollRef = React.useRef<NativeScrollView>(null);
   const verticalScrollRef = React.useRef<NativeScrollView>(null);
   const gridRef = React.useRef<React.ComponentRef<typeof NativeView>>(null);
-  const scrollPositionRef = React.useRef<ScrollPosition>({ x: 0, y: 0 });
+  const panRef = React.useRef<(displacement: GridPoint) => void>(() => undefined);
+  const scrollSyncRef = React.useRef<GridScrollSync | undefined>(undefined);
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
   const pinchMeasurementRef = React.useRef(0);
   const pinchSessionRef = React.useRef(0);
@@ -131,6 +132,34 @@ export function GridView({
     publishRef.current = publish;
   }, [publish]);
 
+  React.useEffect(() => {
+    panRef.current = pan;
+  });
+
+  // Declared before the viewport-sync effect so the arbiter exists when that effect runs.
+  React.useEffect(() => {
+    const scrollSync = createGridScrollSync({
+      onProgrammaticScroll: (axis, displacement) =>
+        panRef.current(axis === 'x' ? { x: -displacement, y: 0 } : { x: 0, y: -displacement }),
+      onUserScroll: (axis, displacement) =>
+        panRef.current(axis === 'x' ? { x: -displacement, y: 0 } : { x: 0, y: -displacement }),
+      scrollTo: (axis, offset, animated) => {
+        if (axis === 'x') horizontalScrollRef.current?.scrollTo({ animated, x: offset });
+        else verticalScrollRef.current?.scrollTo({ animated, y: offset });
+      },
+    });
+    scrollSyncRef.current = scrollSync;
+    return () => {
+      scrollSync.dispose();
+      scrollSyncRef.current = undefined;
+    };
+  }, []);
+
+  /** Routes native scroll events to the arbiter unless a pinch owns the gesture. */
+  const handleNativeScroll = (axis: GridScrollAxis, offset: number) => {
+    if (!pinchGestureRef.current) scrollSyncRef.current?.scrolled(axis, offset);
+  };
+
   const refreshViewportOrigin = React.useCallback(() => {
     gridRef.current?.measureInWindow((x, y) => {
       viewportOriginRef.current = { x, y };
@@ -187,13 +216,11 @@ export function GridView({
       x: position.horizontal.position,
       y: position.vertical.position,
     };
-    if (areScrollPositionsEqual(scrollPositionRef.current, nextPosition)) return;
-    scrollPositionRef.current = nextPosition;
+    if (scrollSyncRef.current?.isCurrent(nextPosition)) return;
     const animated =
       focusRevealViewportRef.current !== undefined &&
       areViewportsEqual(viewport, focusRevealViewportRef.current);
-    horizontalScrollRef.current?.scrollTo({ animated, x: nextPosition.x });
-    verticalScrollRef.current?.scrollTo({ animated, y: nextPosition.y });
+    scrollSyncRef.current?.request(nextPosition, animated);
     if (animated) focusRevealViewportRef.current = undefined;
   }, [constraints, viewport]);
 
@@ -259,9 +286,7 @@ export function GridView({
       x: nextMapping.horizontal.position,
       y: nextMapping.vertical.position,
     };
-    scrollPositionRef.current = nextPosition;
-    horizontalScrollRef.current?.scrollTo({ animated: false, x: nextPosition.x });
-    verticalScrollRef.current?.scrollTo({ animated: false, y: nextPosition.y });
+    scrollSyncRef.current?.request(nextPosition, false);
   };
 
   return (
@@ -314,13 +339,13 @@ export function GridView({
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator
         style={{ height, width }}
-        onScroll={(event) => {
-          if (pinchGestureRef.current) return;
-          const { x } = event.nativeEvent.contentOffset;
-          const displacement = x - scrollPositionRef.current.x;
-          scrollPositionRef.current = { ...scrollPositionRef.current, x };
-          if (displacement !== 0) pan({ x: -displacement, y: 0 });
-        }}
+        onMomentumScrollEnd={(event) =>
+          scrollSyncRef.current?.scrollEnded('x', event.nativeEvent.contentOffset.x)
+        }
+        onScroll={(event) => handleNativeScroll('x', event.nativeEvent.contentOffset.x)}
+        onScrollBeginDrag={(event) =>
+          scrollSyncRef.current?.dragBegan('x', event.nativeEvent.contentOffset.x)
+        }
       >
         <NativeScrollView
           ref={verticalScrollRef}
@@ -329,13 +354,13 @@ export function GridView({
           scrollEventThrottle={16}
           showsVerticalScrollIndicator
           style={{ height, width: scrollMapping.horizontal.contentSize }}
-          onScroll={(event) => {
-            if (pinchGestureRef.current) return;
-            const { y } = event.nativeEvent.contentOffset;
-            const displacement = y - scrollPositionRef.current.y;
-            scrollPositionRef.current = { ...scrollPositionRef.current, y };
-            if (displacement !== 0) pan({ x: 0, y: -displacement });
-          }}
+          onMomentumScrollEnd={(event) =>
+            scrollSyncRef.current?.scrollEnded('y', event.nativeEvent.contentOffset.y)
+          }
+          onScroll={(event) => handleNativeScroll('y', event.nativeEvent.contentOffset.y)}
+          onScrollBeginDrag={(event) =>
+            scrollSyncRef.current?.dragBegan('y', event.nativeEvent.contentOffset.y)
+          }
         >
           <NativeView
             style={{
@@ -516,11 +541,6 @@ function areViewportsEqual(left: GridViewport, right: GridViewport): boolean {
     left.pixelsPerUnitX === right.pixelsPerUnitX &&
     left.pixelsPerUnitY === right.pixelsPerUnitY
   );
-}
-
-/*** Avoids requesting native scrolling again when the physical position is already current. */
-function areScrollPositionsEqual(left: ScrollPosition, right: ScrollPosition): boolean {
-  return left.x === right.x && left.y === right.y;
 }
 
 /*** Skips a rejected controlled focus proposal until its focus or incoming viewport changes. */

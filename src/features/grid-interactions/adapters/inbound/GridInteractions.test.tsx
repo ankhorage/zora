@@ -209,6 +209,70 @@ test('clears the web Space modifier on blur, disable, and unmount', async () => 
   }
 });
 
+test('keeps an active RNW drag when an ancestor scroll container scrolls', async () => {
+  const browser = new Window();
+  const restore = installBrowserGlobals(browser);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const root = createRoot(host);
+  const { GridInteractions } = await loadGridInteractions();
+  const intents: unknown[] = [];
+
+  try {
+    await renderGridInteractions(
+      root,
+      <GridInteractions
+        items={[{ height: 2, id: 'a', width: 3, x: 1, y: 1 }]}
+        onIntent={(intent) => intents.push(intent)}
+        selectedIds={['a']}
+        testID="grid-interactions"
+        viewport={{
+          height: 100,
+          offsetX: 0,
+          offsetY: 0,
+          pixelsPerUnitX: 2,
+          pixelsPerUnitY: 4,
+          width: 100,
+        }}
+      >
+        <span>nested target</span>
+      </GridInteractions>,
+    );
+    const surface = host.querySelector<HTMLElement>('[data-testid="grid-interactions"]');
+    if (!surface) throw new Error('Missing interaction surface');
+
+    await dispatchTouch(browser, surface, 'touchstart', 6);
+    await dispatchTouch(browser, surface, 'touchmove', 30);
+    const intentsBeforeScroll = intents.length;
+    expect(intentsBeforeScroll).toBeGreaterThan(0);
+
+    // A scrolling ancestor must not take the responder from an active drag.
+    await act(() => Promise.resolve().then(() => host.dispatchEvent(new browser.Event('scroll'))));
+    await dispatchTouch(browser, surface, 'touchmove', 60);
+
+    expect(intents.length).toBeGreaterThan(intentsBeforeScroll);
+  } finally {
+    await act(() => Promise.resolve().then(() => root.unmount()));
+    host.remove();
+    browser.close();
+    restore();
+  }
+});
+
+/*** Dispatches one single-finger touch at a fixed horizontal position on the interaction surface. */
+function dispatchTouch(
+  browser: Window,
+  surface: HTMLElement,
+  type: 'touchstart' | 'touchmove',
+  pageY: number,
+) {
+  const touch = { clientX: 5, clientY: pageY, identifier: 0, pageX: 5, pageY, target: surface };
+  const event = new browser.Event(type, { bubbles: true, cancelable: true });
+  Object.defineProperty(event, 'touches', { value: [touch] });
+  Object.defineProperty(event, 'changedTouches', { value: [touch] });
+  return dispatch(surface, event);
+}
+
 /*** Installs the DOM globals that the independently bundled RNW adapter requires. */
 function installBrowserGlobals(browser: Window): () => void {
   const keys = [

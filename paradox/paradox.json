@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.11",
+      "value": "v25.8.12",
       "color": "cb3837"
     },
     {
@@ -3211,6 +3211,7 @@
         "src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts",
         "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.tsx",
         "src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts",
+        "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts",
         "src/features/grid-interactions/application/createGridInteractionsController.ts",
         "src/types/grid-interactions.ts"
       ],
@@ -3257,6 +3258,36 @@
       ]
     },
     {
+      "path": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+        "src/features/layout/public.ts",
+        "src/types/grid-interactions.ts"
+      ],
+      "exports": [
+        "useGridInteractionScrollLock"
+      ]
+    },
+    {
+      "path": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "useGridInteractionScrollLock"
+      ]
+    },
+    {
+      "path": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.web.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/grid-interactions.ts"
+      ],
+      "exports": [
+        "useGridInteractionScrollLock"
+      ]
+    },
+    {
       "path": "src/features/grid-interactions/application/createGridInteractionsController.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -3264,6 +3295,17 @@
       ],
       "exports": [
         "createGridInteractionsController"
+      ]
+    },
+    {
+      "path": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/grid-interactions.ts",
+        "src/types/layout.ts"
+      ],
+      "exports": [
+        "createGridInteractionScrollLock"
       ]
     },
     {
@@ -3368,6 +3410,7 @@
       "path": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/grid-view/application/createGridScrollSync.ts",
         "src/types/grid-view.ts"
       ],
       "exports": [
@@ -3387,6 +3430,18 @@
       ]
     },
     {
+      "path": "src/features/grid-view/application/createGridScrollSync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/grid-view/application/resolveScrollEventSource.ts",
+        "src/features/grid-view/constants/scroll.ts",
+        "src/types/grid-view.ts"
+      ],
+      "exports": [
+        "createGridScrollSync"
+      ]
+    },
+    {
       "path": "src/features/grid-view/application/layoutTileGrid.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -3395,6 +3450,27 @@
       "exports": [
         "layoutTileGrid",
         "TileGridLayout"
+      ]
+    },
+    {
+      "path": "src/features/grid-view/application/resolveScrollEventSource.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/grid-view/constants/scroll.ts",
+        "src/types/grid-view.ts"
+      ],
+      "exports": [
+        "resolveScrollEventSource"
+      ]
+    },
+    {
+      "path": "src/features/grid-view/constants/scroll.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ANIMATED_SCROLL_WINDOW_MS",
+        "IMMEDIATE_SCROLL_WINDOW_MS",
+        "SCROLL_POSITION_TOLERANCE"
       ]
     },
     {
@@ -3616,14 +3692,38 @@
       ]
     },
     {
+      "path": "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/layout.ts"
+      ],
+      "exports": [
+        "ScrollGestureLockContext"
+      ]
+    },
+    {
       "path": "src/features/layout/adapters/inbound/ScrollView.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+        "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "src/features/layout/utils/createScrollGestureLock.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/types/layout.ts"
       ],
       "exports": [
         "ScrollView"
+      ]
+    },
+    {
+      "path": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+        "src/types/layout.ts"
+      ],
+      "exports": [
+        "useScrollGestureLock"
       ]
     },
     {
@@ -3693,8 +3793,10 @@
         "GridProps",
         "Screen",
         "ScreenProps",
+        "ScrollGestureLock",
         "ScrollView",
         "ScrollViewProps",
+        "useScrollGestureLock",
         "View",
         "ViewProps"
       ]
@@ -3720,6 +3822,16 @@
       ],
       "exports": [
         "scrollViewMeta"
+      ]
+    },
+    {
+      "path": "src/features/layout/utils/createScrollGestureLock.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/layout.ts"
+      ],
+      "exports": [
+        "createScrollGestureLock"
       ]
     },
     {
@@ -7372,6 +7484,7 @@
         "GridInteractionPointer",
         "GridInteractionsController",
         "GridInteractionsControllerProps",
+        "GridInteractionScrollLock",
         "GridInteractionSnap",
         "GridInteractionsProps"
       ]
@@ -7397,6 +7510,11 @@
         "src/types/base.ts"
       ],
       "exports": [
+        "GridPendingScroll",
+        "GridScrollAxis",
+        "GridScrollPosition",
+        "GridScrollSync",
+        "GridScrollSyncOptions",
         "GridViewProps",
         "TileGridItem",
         "TileGridProps"
@@ -7493,6 +7611,7 @@
         "DividerProps",
         "GridProps",
         "ScreenProps",
+        "ScrollGestureLock",
         "ScrollViewProps",
         "ViewProps",
         "ZoraContentWidth"
@@ -20192,7 +20311,7 @@
       "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 14,
+        "line": 15,
         "column": 1
       },
       "exportPaths": [
@@ -30086,7 +30205,7 @@
       "modulePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
-        "line": 8,
+        "line": 11,
         "column": 14
       },
       "exportPaths": [
@@ -50109,7 +50228,7 @@
       "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 14,
+        "line": 15,
         "column": 1
       },
       "exportPaths": [
@@ -55122,7 +55241,7 @@
       "modulePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
-        "line": 8,
+        "line": 11,
         "column": 14
       },
       "exportPaths": [
@@ -66451,7 +66570,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 14,
+        "line": 15,
         "column": 1
       }
     },
@@ -66462,7 +66581,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 43,
+        "line": 45,
         "column": 9
       }
     },
@@ -66507,6 +66626,28 @@
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts",
         "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "useGridInteractionScrollLock",
+      "description": "Keeps ancestor ZORA scrolling suspended while one native responder gesture owns the surface.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "useGridInteractionScrollLock",
+      "description": "Leaves browser scrolling to the RNW responder system, which already honors termination requests.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.web.ts",
+        "line": 9,
         "column": 1
       }
     },
@@ -66632,6 +66773,17 @@
       }
     },
     {
+      "name": "createGridInteractionScrollLock",
+      "description": "Holds at most one ancestor scroll lock for the active responder gesture of an interaction surface.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+        "line": 5,
+        "column": 1
+      }
+    },
+    {
       "name": "GridLineOverlayInner",
       "description": "Renders visible world-grid lines and explicit guides without owning viewport interaction.",
       "see": [],
@@ -66715,7 +66867,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 110,
+        "line": 111,
         "column": 9
       }
     },
@@ -66726,7 +66878,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 112,
+        "line": 113,
+        "column": 9
+      }
+    },
+    {
+      "name": "handleNativeScroll",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "line": 159,
         "column": 9
       }
     },
@@ -66737,7 +66900,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 256,
+        "line": 283,
         "column": 9
       }
     },
@@ -66748,7 +66911,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 422,
+        "line": 447,
         "column": 1
       }
     },
@@ -66759,7 +66922,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 439,
+        "line": 464,
         "column": 1
       }
     },
@@ -66770,7 +66933,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 447,
+        "line": 472,
         "column": 1
       }
     },
@@ -66781,7 +66944,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 494,
+        "line": 519,
         "column": 1
       }
     },
@@ -66792,18 +66955,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 510,
-        "column": 1
-      }
-    },
-    {
-      "name": "areScrollPositionsEqual",
-      "description": "Avoids requesting native scrolling again when the physical position is already current.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 522,
+        "line": 535,
         "column": 1
       }
     },
@@ -66814,7 +66966,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 527,
+        "line": 547,
         "column": 1
       }
     },
@@ -66825,7 +66977,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 550,
+        "line": 570,
         "column": 1
       }
     },
@@ -66841,6 +66993,116 @@
       }
     },
     {
+      "name": "createGridScrollSync",
+      "description": "Arbitrates each native scroll axis between programmatic requests and the user,\nso echoes of GridView's own scrollTo calls never become viewport pans.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "clearTimer",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 40,
+        "column": 9
+      }
+    },
+    {
+      "name": "release",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 45,
+        "column": 9
+      }
+    },
+    {
+      "name": "adopt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 50,
+        "column": 9
+      }
+    },
+    {
+      "name": "settle",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 55,
+        "column": 9
+      }
+    },
+    {
+      "name": "scrolled",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 72,
+        "column": 9
+      }
+    },
+    {
+      "name": "isContinuingProgrammaticEcho",
+      "description": "Suppresses delayed monotonic frames toward the old programmatic target until an actual drag/end.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 143,
+        "column": 1
+      }
+    },
+    {
+      "name": "readAxis",
+      "description": "Reads one axis of a physical scroll position.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 153,
+        "column": 1
+      }
+    },
+    {
+      "name": "withAxis",
+      "description": "Replaces one axis of a physical scroll position.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 158,
+        "column": 1
+      }
+    },
+    {
+      "name": "isSameOffset",
+      "description": "Treats offsets within the native positioning tolerance as the same scroll offset.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "line": 167,
+        "column": 1
+      }
+    },
+    {
       "name": "layoutTileGrid",
       "description": "Arrange keyed tiles into responsive rows without constructing placeholder grid cells.",
       "see": [],
@@ -66848,6 +67110,17 @@
       "sourceLocation": {
         "filePath": "src/features/grid-view/application/layoutTileGrid.ts",
         "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveScrollEventSource",
+      "description": "Classifies a native scroll offset as a user gesture, the settled echo of a programmatic scroll, or an in-flight frame of one.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/grid-view/application/resolveScrollEventSource.ts",
+        "line": 5,
         "column": 1
       }
     },
@@ -67007,12 +67280,23 @@
     },
     {
       "name": "ScrollViewInner",
-      "description": "Forwards ZORA scrolling props to the published Surface ScrollView boundary.",
+      "description": "Forwards ZORA scrolling props to the published Surface ScrollView boundary and yields scrolling to active descendant gestures.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/ScrollView.tsx",
-        "line": 11,
+        "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "useScrollGestureLock",
+      "description": "Resolves the nearest ZORA ScrollView lock, or an inert lock when no scroll container exists.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "line": 9,
         "column": 1
       }
     },
@@ -67024,6 +67308,17 @@
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/View.tsx",
         "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "createScrollGestureLock",
+      "description": "Creates a lock that reports each held gesture to its scroll container and also suspends every ancestor container.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/layout/utils/createScrollGestureLock.ts",
+        "line": 4,
         "column": 1
       }
     },
@@ -72585,6 +72880,11 @@
       },
       {
         "fromPath": "src/features/layout/public.ts",
+        "toPath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "sourcePath": "src/features/layout/public.ts"
+      },
+      {
+        "fromPath": "src/features/layout/public.ts",
         "toPath": "src/features/layout/adapters/inbound/View.tsx",
         "sourcePath": "src/features/layout/public.ts"
       },
@@ -74799,6 +75099,16 @@
         "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
       },
       {
+        "fromPath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+        "toPath": "src/types/grid-interactions.ts",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+        "toPath": "src/types/layout.ts",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts"
+      },
+      {
         "fromPath": "src/features/grid-rulers/application/resolveGridRulerMarks.ts",
         "toPath": "src/types/grid-rulers.ts",
         "sourcePath": "src/features/grid-rulers/application/resolveGridRulerMarks.ts"
@@ -74809,14 +75119,44 @@
         "sourcePath": "src/features/grid-rulers/application/resolveGridRulerMarks.ts"
       },
       {
+        "fromPath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toPath": "src/types/grid-view.ts",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromPath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toPath": "src/features/grid-view/constants/scroll.ts",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromPath": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toPath": "src/features/grid-view/application/resolveScrollEventSource.ts",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
         "fromPath": "src/features/grid-view/application/layoutTileGrid.ts",
         "toPath": "src/types/grid-view.ts",
         "sourcePath": "src/features/grid-view/application/layoutTileGrid.ts"
       },
       {
+        "fromPath": "src/features/grid-view/application/resolveScrollEventSource.ts",
+        "toPath": "src/types/grid-view.ts",
+        "sourcePath": "src/features/grid-view/application/resolveScrollEventSource.ts"
+      },
+      {
+        "fromPath": "src/features/grid-view/application/resolveScrollEventSource.ts",
+        "toPath": "src/features/grid-view/constants/scroll.ts",
+        "sourcePath": "src/features/grid-view/application/resolveScrollEventSource.ts"
+      },
+      {
         "fromPath": "src/features/icon/utils/resolveIconSize.ts",
         "toPath": "src/types/control.ts",
         "sourcePath": "src/features/icon/utils/resolveIconSize.ts"
+      },
+      {
+        "fromPath": "src/features/layout/utils/createScrollGestureLock.ts",
+        "toPath": "src/types/layout.ts",
+        "sourcePath": "src/features/layout/utils/createScrollGestureLock.ts"
       },
       {
         "fromPath": "src/features/layout/utils/resolvePageMaxWidth.ts",
@@ -76749,6 +77089,11 @@
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+        "toPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
         "fromPath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.native.tsx",
         "toPath": "src/types/grid-interactions.ts",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.native.tsx"
@@ -76767,6 +77112,31 @@
         "fromPath": "src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts",
         "toPath": "src/types/grid-interactions.ts",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "toPath": "src/types/grid-interactions.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "toPath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts",
+        "toPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.web.ts",
+        "toPath": "src/types/grid-interactions.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.web.ts"
       },
       {
         "fromPath": "src/features/grid-rulers/adapters/inbound/GridLineOverlay.tsx",
@@ -76816,6 +77186,11 @@
       {
         "fromPath": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toPath": "src/types/grid-view.ts",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromPath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toPath": "src/features/grid-view/application/createGridScrollSync.ts",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -76974,6 +77349,11 @@
         "sourcePath": "src/features/layout/adapters/inbound/Screen.tsx"
       },
       {
+        "fromPath": "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+        "toPath": "src/types/layout.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts"
+      },
+      {
         "fromPath": "src/features/layout/adapters/inbound/ScrollView.tsx",
         "toPath": "src/types/layout.ts",
         "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
@@ -76982,6 +77362,31 @@
         "fromPath": "src/features/layout/adapters/inbound/ScrollView.tsx",
         "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromPath": "src/features/layout/adapters/inbound/ScrollView.tsx",
+        "toPath": "src/features/layout/utils/createScrollGestureLock.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromPath": "src/features/layout/adapters/inbound/ScrollView.tsx",
+        "toPath": "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromPath": "src/features/layout/adapters/inbound/ScrollView.tsx",
+        "toPath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromPath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "toPath": "src/types/layout.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts"
+      },
+      {
+        "fromPath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts",
+        "toPath": "src/features/layout/adapters/inbound/ScrollGestureLockContext.ts",
+        "sourcePath": "src/features/layout/adapters/inbound/useScrollGestureLock.ts"
       },
       {
         "fromPath": "src/features/layout/adapters/inbound/View.tsx",
@@ -79866,6 +80271,18 @@
         "sourcePath": "src/features/grid-interactions/application/createGridInteractionsController.ts"
       },
       {
+        "fromSymbol": "acquire",
+        "toSymbol": "acquire",
+        "callExpression": "scrollLock.acquire",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts"
+      },
+      {
+        "fromSymbol": "release",
+        "toSymbol": "releaseScrollLock",
+        "callExpression": "releaseScrollLock",
+        "sourcePath": "src/features/grid-interactions/application/createGridInteractionScrollLock.ts"
+      },
+      {
         "fromSymbol": "projectGridRulerPosition",
         "toSymbol": "worldToViewport",
         "callExpression": "worldToViewport",
@@ -79894,6 +80311,222 @@
         "toSymbol": "projectGridRulerPosition",
         "callExpression": "projectGridRulerPosition",
         "sourcePath": "src/features/grid-rulers/application/resolveGridRulerMarks.ts"
+      },
+      {
+        "fromSymbol": "clearTimer",
+        "toSymbol": "cancel",
+        "callExpression": "cancel",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "release",
+        "toSymbol": "clearTimer",
+        "callExpression": "clearTimer",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "adopt",
+        "toSymbol": "readAxis",
+        "callExpression": "readAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "adopt",
+        "toSymbol": "withAxis",
+        "callExpression": "withAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "adopt",
+        "toSymbol": "onUserScroll",
+        "callExpression": "onUserScroll",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "release",
+        "callExpression": "release",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "isSameOffset",
+        "callExpression": "isSameOffset",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "settle",
+        "toSymbol": "adopt",
+        "callExpression": "adopt",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "isContinuingProgrammaticEcho",
+        "callExpression": "isContinuingProgrammaticEcho",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "readAxis",
+        "callExpression": "readAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "withAxis",
+        "callExpression": "withAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "onProgrammaticScroll",
+        "callExpression": "onProgrammaticScroll",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "isSameOffset",
+        "callExpression": "isSameOffset",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "now",
+        "callExpression": "now",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "resolveScrollEventSource",
+        "callExpression": "resolveScrollEventSource",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "clearTimer",
+        "callExpression": "clearTimer",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "schedule",
+        "callExpression": "schedule",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toSymbol": "settle",
+        "callExpression": "settle",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "release",
+        "callExpression": "release",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrolled",
+        "toSymbol": "adopt",
+        "callExpression": "adopt",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toSymbol": "isSameOffset",
+        "callExpression": "isSameOffset",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/application/createGridScrollSync.ts",
+        "toSymbol": "readAxis",
+        "callExpression": "readAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "now",
+        "callExpression": "now",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "readAxis",
+        "callExpression": "readAxis",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "isSameOffset",
+        "callExpression": "isSameOffset",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "release",
+        "callExpression": "release",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "scrollTo",
+        "callExpression": "scrollTo",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "dragBegan",
+        "toSymbol": "settle",
+        "callExpression": "settle",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "dragBegan",
+        "toSymbol": "adopt",
+        "callExpression": "adopt",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrollEnded",
+        "toSymbol": "scrolled",
+        "callExpression": "scrolled",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "scrollEnded",
+        "toSymbol": "settle",
+        "callExpression": "settle",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "dispose",
+        "toSymbol": "release",
+        "callExpression": "release",
+        "sourcePath": "src/features/grid-view/application/createGridScrollSync.ts"
+      },
+      {
+        "fromSymbol": "acquire",
+        "toSymbol": "acquire",
+        "callExpression": "parent.acquire",
+        "sourcePath": "src/features/layout/utils/createScrollGestureLock.ts"
+      },
+      {
+        "fromSymbol": "acquire",
+        "toSymbol": "onActiveGesturesChange",
+        "callExpression": "onActiveGesturesChange",
+        "sourcePath": "src/features/layout/utils/createScrollGestureLock.ts"
+      },
+      {
+        "fromSymbol": "src/features/layout/utils/createScrollGestureLock.ts",
+        "toSymbol": "onActiveGesturesChange",
+        "callExpression": "onActiveGesturesChange",
+        "sourcePath": "src/features/layout/utils/createScrollGestureLock.ts"
+      },
+      {
+        "fromSymbol": "src/features/layout/utils/createScrollGestureLock.ts",
+        "toSymbol": "releaseParent",
+        "callExpression": "releaseParent",
+        "sourcePath": "src/features/layout/utils/createScrollGestureLock.ts"
       },
       {
         "fromSymbol": "src/features/matrix-grid/application/createMatrixGridSparseIndex.ts",
@@ -82554,6 +83187,12 @@
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
+        "fromSymbol": "GridInteractions",
+        "toSymbol": "useGridInteractionScrollLock",
+        "callExpression": "useGridInteractionScrollLock",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
         "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
         "toSymbol": "update",
         "callExpression": "controller.update",
@@ -82597,6 +83236,12 @@
       },
       {
         "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+        "toSymbol": "acquire",
+        "callExpression": "scrollLock.acquire",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
         "toSymbol": "withPointer",
         "callExpression": "withPointer",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
@@ -82605,6 +83250,12 @@
         "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
         "toSymbol": "begin",
         "callExpression": "controller.begin",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+        "toSymbol": "release",
+        "callExpression": "scrollLock.release",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
@@ -82642,6 +83293,18 @@
         "toSymbol": "onKeyDown",
         "callExpression": "onKeyDown",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "useGridInteractionScrollLock",
+        "toSymbol": "useScrollGestureLock",
+        "callExpression": "useScrollGestureLock",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts"
+      },
+      {
+        "fromSymbol": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts",
+        "toSymbol": "createGridInteractionScrollLock",
+        "callExpression": "createGridInteractionScrollLock",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.native.ts"
       },
       {
         "fromSymbol": "GridLineOverlayInner",
@@ -82765,6 +83428,24 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "createGridScrollSync",
+        "callExpression": "createGridScrollSync",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "dispose",
+        "callExpression": "scrollSync.dispose",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "handleNativeScroll",
+        "toSymbol": "scrolled",
+        "callExpression": "scrollSyncRef.current?.scrolled",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toSymbol": "onMeasured",
         "callExpression": "onMeasured",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
@@ -82795,8 +83476,14 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "toSymbol": "areScrollPositionsEqual",
-        "callExpression": "areScrollPositionsEqual",
+        "toSymbol": "isCurrent",
+        "callExpression": "scrollSyncRef.current?.isCurrent",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "request",
+        "callExpression": "scrollSyncRef.current?.request",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -82821,6 +83508,12 @@
         "fromSymbol": "syncScrollPosition",
         "toSymbol": "createScrollMapping",
         "callExpression": "createScrollMapping",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "syncScrollPosition",
+        "toSymbol": "request",
+        "callExpression": "scrollSyncRef.current?.request",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -82849,8 +83542,20 @@
       },
       {
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "toSymbol": "pan",
-        "callExpression": "pan",
+        "toSymbol": "scrollEnded",
+        "callExpression": "scrollSyncRef.current?.scrollEnded",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "handleNativeScroll",
+        "callExpression": "handleNativeScroll",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "dragBegan",
+        "callExpression": "scrollSyncRef.current?.dragBegan",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -82863,6 +83568,12 @@
         "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toSymbol": "renderItem",
         "callExpression": "renderItem",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toSymbol": "pan",
+        "callExpression": "pan",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -83037,6 +83748,24 @@
         "fromSymbol": "src/features/layout/adapters/inbound/ScrollView.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromSymbol": "ScrollViewInner",
+        "toSymbol": "useScrollGestureLock",
+        "callExpression": "useScrollGestureLock",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/layout/adapters/inbound/ScrollView.tsx",
+        "toSymbol": "createScrollGestureLock",
+        "callExpression": "createScrollGestureLock",
+        "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/layout/adapters/inbound/ScrollView.tsx",
+        "toSymbol": "setActiveGestures",
+        "callExpression": "setActiveGestures",
         "sourcePath": "src/features/layout/adapters/inbound/ScrollView.tsx"
       },
       {
@@ -91659,7 +92388,7 @@
       {
         "fromComponent": "GridInteractions",
         "toComponent": "View",
-        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      accessibilityRole=\"adjustable\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) =>\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle))\n      }\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => withPointer(event, controller.end)}\n      onResponderTerminate={() => {\n        setSpaceKey(false);\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onStartShouldSetResponder={() => enabled}\n    >",
+        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      accessibilityRole=\"adjustable\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) => {\n        scrollLock.acquire();\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle));\n      }}\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => {\n        scrollLock.release();\n        withPointer(event, controller.end);\n      }}\n      onResponderTerminate={() => {\n        scrollLock.release();\n        setSpaceKey(false);\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onResponderTerminationRequest={() => false}\n      onStartShouldSetResponder={() => enabled}\n    >",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
@@ -91677,13 +92406,13 @@
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n        ref={horizontalScrollRef}\n        testID={testID ? `${testID}-horizontal-scroll` : undefined}\n        horizontal\n        scrollEnabled={interactive && !isPinching}\n        scrollEventThrottle={16}\n        showsHorizontalScrollIndicator\n        style={{ height, width }}\n        onScroll={(event) => {\n          if (pinchGestureRef.current) return;\n          const { x } = event.nativeEvent.contentOffset;\n          const displacement = x - scrollPositionRef.current.x;\n          scrollPositionRef.current = { ...scrollPositionRef.current, x };\n          if (displacement !== 0) pan({ x: -displacement, y: 0 });\n        }}\n      >",
+        "jsxElement": "<NativeScrollView\n        ref={horizontalScrollRef}\n        testID={testID ? `${testID}-horizontal-scroll` : undefined}\n        horizontal\n        scrollEnabled={interactive && !isPinching}\n        scrollEventThrottle={16}\n        showsHorizontalScrollIndicator\n        style={{ height, width }}\n        onMomentumScrollEnd={(event) =>\n          scrollSyncRef.current?.scrollEnded('x', event.nativeEvent.contentOffset.x)\n        }\n        onScroll={(event) => handleNativeScroll('x', event.nativeEvent.contentOffset.x)}\n        onScrollBeginDrag={(event) =>\n          scrollSyncRef.current?.dragBegan('x', event.nativeEvent.contentOffset.x)\n        }\n      >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n          ref={verticalScrollRef}\n          testID={testID ? `${testID}-vertical-scroll` : undefined}\n          scrollEnabled={interactive && !isPinching}\n          scrollEventThrottle={16}\n          showsVerticalScrollIndicator\n          style={{ height, width: scrollMapping.horizontal.contentSize }}\n          onScroll={(event) => {\n            if (pinchGestureRef.current) return;\n            const { y } = event.nativeEvent.contentOffset;\n            const displacement = y - scrollPositionRef.current.y;\n            scrollPositionRef.current = { ...scrollPositionRef.current, y };\n            if (displacement !== 0) pan({ x: 0, y: -displacement });\n          }}\n        >",
+        "jsxElement": "<NativeScrollView\n          ref={verticalScrollRef}\n          testID={testID ? `${testID}-vertical-scroll` : undefined}\n          scrollEnabled={interactive && !isPinching}\n          scrollEventThrottle={16}\n          showsVerticalScrollIndicator\n          style={{ height, width: scrollMapping.horizontal.contentSize }}\n          onMomentumScrollEnd={(event) =>\n            scrollSyncRef.current?.scrollEnded('y', event.nativeEvent.contentOffset.y)\n          }\n          onScroll={(event) => handleNativeScroll('y', event.nativeEvent.contentOffset.y)}\n          onScrollBeginDrag={(event) =>\n            scrollSyncRef.current?.dragBegan('y', event.nativeEvent.contentOffset.y)\n          }\n        >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
