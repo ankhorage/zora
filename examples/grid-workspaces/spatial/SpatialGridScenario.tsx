@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { ResponsiveWidth } from '../ResponsiveWidth';
 const spatialItems = Array.from({ length: 10000 }, (_, index) => ({
   accessibilityLabel: `Board item ${index + 1}`,
   height: 48 + (index % 4) * 16,
@@ -18,12 +19,17 @@ export function SpatialGridScenario() {
 
   return (
     <React.Suspense fallback={null}>
-      <SpatialGridScenarioContent
-        focusedItemId={focusedItemId}
-        selectedItemId={selectedItemId}
-        onFocusChange={setFocusedItemId}
-        onSelectionChange={setSelectedItemId}
-      />
+      <ResponsiveWidth maxWidth={720}>
+        {(width) => (
+          <SpatialGridScenarioContent
+            focusedItemId={focusedItemId}
+            selectedItemId={selectedItemId}
+            width={width}
+            onFocusChange={setFocusedItemId}
+            onSelectionChange={setSelectedItemId}
+          />
+        )}
+      </ResponsiveWidth>
     </React.Suspense>
   );
 }
@@ -51,6 +57,7 @@ function renderSpatialGridScenario(
   {
     focusedItemId,
     selectedItemId,
+    width,
     onFocusChange,
     onSelectionChange,
   }: SpatialGridScenarioContentProps,
@@ -63,7 +70,7 @@ function renderSpatialGridScenario(
       height={420}
       items={spatialItems}
       selectedItemId={selectedItemId}
-      width={720}
+      width={width}
       zoom={0.8}
       onFocusChange={onFocusChange}
       onSelectionChange={onSelectionChange}
@@ -77,6 +84,7 @@ function renderSpatialGridScenario(
 }
 
 interface SpatialGridScenarioContentProps {
+  readonly width: number;
   readonly selectedItemId: string | undefined;
   readonly focusedItemId: string | undefined;
   readonly onSelectionChange: (id: string) => void;
