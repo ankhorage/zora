@@ -1769,7 +1769,7 @@ Export paths: `src/index.ts`
 
 ## GridInteractions
 
-Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:14:1`
+Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:15:1`
 
 Adapts native responder and keyboard events to the controlled grid interaction boundary.
 
@@ -2930,7 +2930,7 @@ Export paths: `src/index.ts`
 
 ## ScrollView
 
-Source: `src/features/layout/adapters/inbound/ScrollView.tsx:8:14`
+Source: `src/features/layout/adapters/inbound/ScrollView.tsx:11:14`
 
 Adapts the token-aware Surface ScrollView primitive to ZORA theme scope.
 

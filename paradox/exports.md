@@ -2876,7 +2876,7 @@ Source: `src/types/grid-interactions.ts:54:1`
 
 Kind: `function`
 Module: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx`
-Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:14:1`
+Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:15:1`
 
 Adapts native responder and keyboard events to the controlled grid interaction boundary.
 
@@ -5206,7 +5206,7 @@ Source: `src/types/section.ts:12:1`
 
 Kind: `value`
 Module: `src/features/layout/adapters/inbound/ScrollView.tsx`
-Source: `src/features/layout/adapters/inbound/ScrollView.tsx:8:14`
+Source: `src/features/layout/adapters/inbound/ScrollView.tsx:11:14`
 
 Adapts the token-aware Surface ScrollView primitive to ZORA theme scope.
 

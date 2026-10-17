@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_GridInteractions as GridInteractions
+  participant participant_useGridInteractionScrollLock as useGridInteractionScrollLock
+  participant participant_useScrollGestureLock as useScrollGestureLock
+  participant_GridInteractions->>participant_useGridInteractionScrollLock: useGridInteractionScrollLock()
+  participant_useGridInteractionScrollLock->>participant_useScrollGestureLock: useScrollGestureLock()
+  participant_useScrollGestureLock-->>participant_useGridInteractionScrollLock: return
+  participant_useGridInteractionScrollLock-->>participant_GridInteractions: return
