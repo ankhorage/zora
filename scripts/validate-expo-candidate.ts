@@ -619,35 +619,65 @@ async function verifyReaderVariantsAsync(
   temporaryRoot: string,
 ): Promise<void> {
   const variants: readonly ReaderVariant[] = ['direct', 'materialized'];
+  const failures: unknown[] = [];
   for (const variant of variants) {
-    const fixtureRoot = join(temporaryRoot, `restaurant-reader-${variant}`);
-    const exportRoot = join(temporaryRoot, `restaurant-reader-${variant}-web`);
-    copyCleanProject(sourceRoot, fixtureRoot);
-    configureCandidateFixture(fixtureRoot, candidatePath, readerRange);
-    run(['bun', 'install'], fixtureRoot);
-    run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
-    rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
-    run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
-    verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
-    if (variant === 'materialized') {
-      materializeReaderArtifact(fixtureRoot, providerCacheRoot);
-      verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
+    try {
+      await verifyReaderVariantAsync(
+        variant,
+        sourceRoot,
+        candidatePath,
+        readerRange,
+        providerCacheRoot,
+        candidateVersion,
+        expectedSurfaceRange,
+        temporaryRoot,
+      );
+    } catch (error) {
+      failures.push(error);
+      console.error(`Reader ${variant} acceptance failed; continuing with the other variant.`);
     }
-    addReaderRoute(fixtureRoot, variant);
-    run(['bun', 'run', 'typecheck'], fixtureRoot);
-    run(
-      ['bun', 'x', 'expo', 'export', '--platform', 'web', '--output-dir', exportRoot, '--clear'],
-      fixtureRoot,
-    );
-    assert(
-      collectFiles(exportRoot, '.html')
-        .map((path) => toStaticRoute(exportRoot, path))
-        .includes('/reader'),
-      `Reader ${variant} route is absent from the static Expo export.`,
-    );
-    await verifyReaderMetroAsync(fixtureRoot, variant);
-    console.log(`Reader ${variant} static and live-browser acceptance passed.`);
   }
+  if (failures.length > 0) throw new AggregateError(failures, 'Reader A/B acceptance failed.');
+}
+
+/*** Validate one isolated Reader boundary while the outer matrix collects both variant results. */
+async function verifyReaderVariantAsync(
+  variant: ReaderVariant,
+  sourceRoot: string,
+  candidatePath: string,
+  readerRange: string,
+  providerCacheRoot: string,
+  candidateVersion: string,
+  expectedSurfaceRange: string,
+  temporaryRoot: string,
+): Promise<void> {
+  const fixtureRoot = join(temporaryRoot, `restaurant-reader-${variant}`);
+  const exportRoot = join(temporaryRoot, `restaurant-reader-${variant}-web`);
+  copyCleanProject(sourceRoot, fixtureRoot);
+  configureCandidateFixture(fixtureRoot, candidatePath, readerRange);
+  run(['bun', 'install'], fixtureRoot);
+  run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
+  rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
+  run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
+  verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
+  if (variant === 'materialized') {
+    materializeReaderArtifact(fixtureRoot, providerCacheRoot);
+    verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
+  }
+  addReaderRoute(fixtureRoot, variant);
+  run(['bun', 'run', 'typecheck'], fixtureRoot);
+  run(
+    ['bun', 'x', 'expo', 'export', '--platform', 'web', '--output-dir', exportRoot, '--clear'],
+    fixtureRoot,
+  );
+  assert(
+    collectFiles(exportRoot, '.html')
+      .map((path) => toStaticRoute(exportRoot, path))
+      .includes('/reader'),
+    `Reader ${variant} route is absent from the static Expo export.`,
+  );
+  await verifyReaderMetroAsync(fixtureRoot, variant);
+  console.log(`Reader ${variant} static and live-browser acceptance passed.`);
 }
 
 const temporaryRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-'));
