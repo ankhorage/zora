@@ -13,7 +13,10 @@ import {
 import { resolveScrollEventSource } from './resolveScrollEventSource';
 
 const AXES: readonly GridScrollAxis[] = ['x', 'y'];
-type EchoTail = { lastOffset: number; target: number };
+interface EchoTail {
+  lastOffset: number;
+  target: number;
+}
 
 /***
  * Arbitrates each native scroll axis between programmatic requests and the user,
