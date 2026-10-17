@@ -491,7 +491,11 @@ async function verifyReaderInChromeAsync(url: string, debuggerPort: number): Pro
       };
       const value = evaluation.result?.result?.value;
       const reader = parseReaderRender(value);
-      if (reader?.canvas > 0 && reader.text.includes('ZORA Reader acceptance')) {
+      if (
+        reader !== undefined &&
+        reader.canvas > 0 &&
+        reader.text.includes('ZORA Reader acceptance')
+      ) {
         assert(
           !consoleErrors.some((error) => /worker/i.test(error)),
           `Reader browser logged a worker error:\n${consoleErrors.join('\n')}`,
@@ -580,7 +584,7 @@ async function openChromeSessionAsync(
     const text = JSON.stringify(message);
     if (
       (message.method === 'Runtime.consoleAPICalled' || message.method === 'Log.entryAdded') &&
-      /(?:\"type\":\"error\"|\"level\":\"error\")/u.test(text)
+      /(?:"type":"error"|"level":"error")/u.test(text)
     ) {
       consoleErrors.push(text);
     }
