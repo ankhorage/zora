@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.11
+
+### Patch Changes
+
+- 20184d7: Update dependencies: `@ankhorage/ankh`.
+
 ## 25.8.10
 
 ### Patch Changes
