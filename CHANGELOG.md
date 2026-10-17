@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.8
+
+### Patch Changes
+
+- 34cf744: Update dependencies: `@ankhorage/capability`.
+
 ## 25.8.7
 
 ### Patch Changes
