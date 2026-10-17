@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.13
+
+### Patch Changes
+
+- df79c6e: Fix the web grid interaction keyboard boundary so it is reachable through normal tab navigation in browsers.
+
 ## 25.8.12
 
 ### Patch Changes

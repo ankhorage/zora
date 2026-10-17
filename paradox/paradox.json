@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.12",
+      "value": "v25.8.13",
       "color": "cb3837"
     },
     {
@@ -66614,7 +66614,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.web.tsx",
-        "line": 56,
+        "line": 65,
         "column": 1
       }
     },
@@ -92388,7 +92388,7 @@
       {
         "fromComponent": "GridInteractions",
         "toComponent": "View",
-        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      accessibilityRole=\"adjustable\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) => {\n        scrollLock.acquire();\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle));\n      }}\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => {\n        scrollLock.release();\n        withPointer(event, controller.end);\n      }}\n      onResponderTerminate={() => {\n        scrollLock.release();\n        setSpaceKey(false);\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onResponderTerminationRequest={() => false}\n      onStartShouldSetResponder={() => enabled}\n    >",
+        "jsxElement": "<View\n      accessible\n      accessibilityLabel=\"Grid interaction surface\"\n      ref={surfaceRef}\n      testID={testID}\n      onResponderGrant={(event) => {\n        scrollLock.acquire();\n        withPointer(event, (pointer) => controller.begin(pointer, resizeHandle));\n      }}\n      onResponderMove={(event) => withPointer(event, controller.move)}\n      onResponderRelease={(event) => {\n        scrollLock.release();\n        withPointer(event, controller.end);\n      }}\n      onResponderTerminate={() => {\n        scrollLock.release();\n        setSpaceKey(false);\n        pointerQueue.cancel();\n        controller.cancel();\n      }}\n      onResponderTerminationRequest={() => false}\n      onStartShouldSetResponder={() => enabled}\n    >",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
       {
