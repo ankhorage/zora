@@ -2,7 +2,7 @@ import { expect, test } from 'bun:test';
 
 import { resolveScrollEventSource } from './resolveScrollEventSource';
 
-const pending = { expiresAt: 1000, target: 100 };
+const pending = { animated: true, expiresAt: 1000, target: 100 };
 
 test('treats every offset as user input when no programmatic scroll is pending', () => {
   expect(resolveScrollEventSource(undefined, 40, 0)).toBe('user');
