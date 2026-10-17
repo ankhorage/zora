@@ -17,5 +17,6 @@ export async function synchronizeDeclaredWebComponentsWithNodeAsync(projectRoot:
     outputDirectory: resolve(projectRoot, '.ankh', 'zora', 'web'),
     packageRoot,
     packageVersion: packageJson.version,
+    projectRoot,
   });
 }

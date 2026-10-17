@@ -9,8 +9,13 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve, sep } from 'node:path';
+
+import {
+  prepareCandidateProviderCache,
+  verifyMaterializedReaderArtifact,
+} from './web-artifacts/verifyCandidateReaderArtifact';
+import { type ReaderVariant, verifyReaderMetroAsync } from './web-artifacts/verifyReaderMetro';
 
 interface CandidateFixture {
   readonly doctor: boolean;
@@ -24,6 +29,7 @@ interface CandidateFixture {
 type JsonObject = Record<string, unknown>;
 
 const REPOSITORY_ROOT = resolve(import.meta.dir, '..');
+const TEMPORARY_DIRECTORY = process.env.RUNNER_TEMP ?? '/tmp';
 const IGNORED_COPY_SEGMENTS = new Set(['.expo', 'android', 'dist', 'ios', 'node_modules']);
 const REQUIRED_WEB_FONT_FAMILIES = [
   'FontAwesome',
@@ -184,7 +190,11 @@ function copyCleanProject(source: string, destination: string): void {
   });
 }
 
-function configureCandidateFixture(fixtureRoot: string, candidatePath: string): void {
+function configureCandidateFixture(
+  fixtureRoot: string,
+  candidatePath: string,
+  readerRange: string | undefined,
+): void {
   const packageJsonPath = join(fixtureRoot, 'package.json');
   const packageJson = readJsonObject(packageJsonPath);
   const dependencies = requireObject(packageJson.dependencies, `${packageJsonPath} dependencies`);
@@ -192,6 +202,7 @@ function configureCandidateFixture(fixtureRoot: string, candidatePath: string): 
   // This file: dependency exists only in the disposable acceptance fixture. Committed
   // example manifests continue to reference the latest released ZORA package.
   dependencies['@ankhorage/zora'] = `file:${candidatePath}`;
+  if (readerRange !== undefined) dependencies['@ankhorage/reader'] = readerRange;
   writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
 
   const tsconfigPath = join(fixtureRoot, 'tsconfig.json');
@@ -205,6 +216,13 @@ function configureCandidateFixture(fixtureRoot: string, candidatePath: string): 
   writeFileSync(tsconfigPath, `${JSON.stringify(tsconfig, null, 2)}\n`);
 
   rmSync(join(fixtureRoot, 'bun.lock'), { force: true });
+}
+
+/*** Materialize Reader through Ankh using the packed candidate provider, never a released cache entry. */
+function materializeReaderArtifact(fixtureRoot: string, providerCacheRoot: string): void {
+  const environment = { ANKH_CACHE_DIR: providerCacheRoot };
+  run(['bun', 'x', 'ankh', 'zora', 'create', 'reader', '--web'], fixtureRoot, environment);
+  run(['bun', 'x', 'ankh', 'zora', 'sync', '--web'], fixtureRoot, environment);
 }
 
 function verifyCandidateGraph(
@@ -361,6 +379,223 @@ function prebuildNativeProject(fixtureRoot: string): void {
   );
 }
 
+/*** Create a disposable Router route that makes one Reader boundary render a deterministic PDF. */
+function addReaderRoute(fixtureRoot: string, variant: ReaderVariant): void {
+  const document = createReaderAcceptancePdf();
+  const source = `data:application/pdf;base64,${Buffer.from(document).toString('base64')}`;
+  const readerImport =
+    variant === 'direct'
+      ? "import { ReaderView } from '@ankhorage/reader';"
+      : "import { Reader } from '../.ankh/zora/web/components/reader/Reader.js';";
+  const readerElement =
+    variant === 'direct'
+      ? '<ReaderView format="pdf" sourceUri={source} />'
+      : '<Reader format="pdf" showChrome={false} source={source} />';
+  writeFileSync(
+    join(fixtureRoot, 'app', 'reader.tsx'),
+    `${readerImport}
+
+const source = ${JSON.stringify(source)};
+
+export default function ReaderRoute() {
+  return (
+    ${readerElement}
+  );
+}
+`,
+  );
+}
+
+/*** Build a compact, single-page PDF whose text layer is asserted in the real browser. */
+function createReaderAcceptancePdf(): string {
+  const stream = 'BT /F1 24 Tf 40 80 Td (ZORA Reader acceptance) Tj ET';
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 320 160] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>',
+    `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`,
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+  ];
+  let document = '%PDF-1.4\n';
+  const offsets = [0];
+  for (const [index, object] of objects.entries()) {
+    offsets.push(document.length);
+    document += `${index + 1} 0 obj\n${object}\nendobj\n`;
+  }
+  const xref = document.length;
+  document += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+  document += offsets
+    .slice(1)
+    .map((offset) => `${String(offset).padStart(10, '0')} 00000 n \n`)
+    .join('');
+  return `${document}trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+}
+
+/*** Inspect live Chrome DOM and console signals through the native DevTools protocol. */
+async function _verifyReaderInChromeAsync(
+  url: string,
+  debuggerPort: number,
+  variant: ReaderVariant,
+): Promise<void> {
+  const target = await waitForChromeTargetAsync(url, debuggerPort);
+  const consoleErrors: string[] = [];
+  const networkUrls: string[] = [];
+  const session = await openChromeSessionAsync(
+    target.webSocketDebuggerUrl,
+    consoleErrors,
+    networkUrls,
+  );
+  try {
+    await session.command('Runtime.enable');
+    await session.command('Log.enable');
+    await session.command('Network.enable');
+    await session.command('Page.enable');
+    await session.command('Page.navigate', { url });
+    const deadline = Date.now() + 30_000;
+    while (Date.now() < deadline) {
+      const result = await session.command('Runtime.evaluate', {
+        awaitPromise: true,
+        expression: `JSON.stringify({ canvas: document.querySelectorAll('.reader-pdf-page canvas').length, text: [...document.querySelectorAll('.reader-pdf-text-layer span')].map((element) => element.textContent).join(' ') })`,
+        returnByValue: true,
+      });
+      const evaluation = result as {
+        readonly result?: { readonly result?: { readonly value?: unknown } };
+      };
+      const value = evaluation.result?.result?.value;
+      const reader = parseReaderRender(value);
+      if (
+        reader !== undefined &&
+        reader.canvas > 0 &&
+        reader.text.includes('ZORA Reader acceptance')
+      ) {
+        assert(
+          !consoleErrors.some((error) => /worker/i.test(error)),
+          `Reader browser logged a worker error:\n${consoleErrors.join('\n')}`,
+        );
+        console.log(
+          `Reader ${variant} Metro graph URLs:\n${networkUrls.filter((entry) => /bundle|reader|pdfjs|worker/u.test(entry)).join('\n')}`,
+        );
+        return;
+      }
+      await Bun.sleep(250);
+    }
+    throw new Error(
+      `Reader browser did not render the PDF canvas and text layer. Console errors:\n${consoleErrors.join('\n')}`,
+    );
+  } finally {
+    session.close();
+  }
+}
+
+/*** Decode the DevTools evaluation result without trusting JSON parser output. */
+function parseReaderRender(
+  value: unknown,
+): { readonly canvas: number; readonly text: string } | undefined {
+  if (typeof value !== 'string') return undefined;
+  const parsed: unknown = JSON.parse(value);
+  if (
+    !isJsonObject(parsed) ||
+    typeof parsed.canvas !== 'number' ||
+    typeof parsed.text !== 'string'
+  ) {
+    return undefined;
+  }
+  return { canvas: parsed.canvas, text: parsed.text };
+}
+
+/*** Wait for Chrome's DevTools endpoint and create an isolated page for the Reader route. */
+async function waitForChromeTargetAsync(
+  url: string,
+  debuggerPort: number,
+): Promise<{ readonly webSocketDebuggerUrl: string }> {
+  const endpoint = `http://127.0.0.1:${debuggerPort}/json/new?${encodeURIComponent(url)}`;
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    try {
+      const response = await fetch(endpoint, { method: 'PUT' });
+      if (response.ok) {
+        const target: unknown = await response.json();
+        if (isJsonObject(target) && typeof target.webSocketDebuggerUrl === 'string') {
+          return { webSocketDebuggerUrl: target.webSocketDebuggerUrl };
+        }
+      }
+    } catch {
+      // Chrome has not opened the DevTools listener yet.
+    }
+    await Bun.sleep(250);
+  }
+  throw new Error('Chrome did not expose a DevTools page within 30 seconds.');
+}
+
+/*** Open a minimal DevTools session while retaining browser console and log errors. */
+async function openChromeSessionAsync(
+  url: string,
+  consoleErrors: string[],
+  networkUrls: string[],
+): Promise<{
+  readonly close: () => void;
+  readonly command: (method: string, params?: JsonObject) => Promise<JsonObject>;
+}> {
+  const socket = new WebSocket(url);
+  const pending = new Map<
+    number,
+    { readonly reject: (reason: unknown) => void; readonly resolve: (value: JsonObject) => void }
+  >();
+  let sequence = 0;
+  await new Promise<void>((resolve, reject) => {
+    socket.onerror = () => reject(new Error('Could not connect to Chrome DevTools.'));
+    socket.onopen = () => resolve();
+  });
+  socket.onmessage = ({ data }) => {
+    const message: unknown = JSON.parse(String(data));
+    if (!isJsonObject(message)) return;
+    if (typeof message.id === 'number') {
+      const request = pending.get(message.id);
+      if (request === undefined) return;
+      pending.delete(message.id);
+      if (message.error !== undefined) request.reject(message.error);
+      else request.resolve(message);
+      return;
+    }
+    const text = JSON.stringify(message);
+    if (message.method === 'Network.requestWillBeSent') {
+      const request = isJsonObject(message.params) ? message.params.request : undefined;
+      if (isJsonObject(request) && typeof request.url === 'string') networkUrls.push(request.url);
+    }
+    if (
+      (message.method === 'Runtime.consoleAPICalled' || message.method === 'Log.entryAdded') &&
+      /(?:"type":"error"|"level":"error")/u.test(text)
+    ) {
+      consoleErrors.push(text);
+    }
+  };
+  return {
+    close: () => socket.close(),
+    command: async (method, params = {}) => {
+      const id = ++sequence;
+      socket.send(JSON.stringify({ id, method, params }));
+      return await new Promise<JsonObject>((resolve, reject) =>
+        pending.set(id, { reject, resolve }),
+      );
+    },
+  };
+}
+
+/*** Resolve Chrome from the CI image or the local macOS application bundle. */
+function _resolveChromeExecutable(): string {
+  const candidates = [
+    process.env.CHROME_PATH,
+    Bun.which('google-chrome'),
+    Bun.which('google-chrome-stable'),
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  ].filter((value): value is string => value !== undefined);
+  const chrome = candidates.find((candidate) => existsSync(candidate));
+  if (chrome === undefined) {
+    throw new Error('Google Chrome is required for the Expo Reader browser acceptance gate.');
+  }
+  return chrome;
+}
+
 function verifyNativeFonts(fixtureRoot: string): void {
   const plistFiles = collectFiles(join(fixtureRoot, 'ios'), '.plist');
   const infoPlist = plistFiles
@@ -373,8 +608,83 @@ function verifyNativeFonts(fixtureRoot: string): void {
   }
 }
 
-const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-expo-candidate-'));
+/*** Run direct and materialized Reader routes in fresh, dependency-identical Expo fixtures. */
+async function verifyReaderVariantsAsync(
+  sourceRoot: string,
+  candidatePath: string,
+  readerRange: string,
+  providerCacheRoot: string,
+  candidateVersion: string,
+  expectedSurfaceRange: string,
+  temporaryRoot: string,
+): Promise<void> {
+  const variants: readonly ReaderVariant[] = ['direct', 'materialized'];
+  const failures: unknown[] = [];
+  for (const variant of variants) {
+    try {
+      await verifyReaderVariantAsync(
+        variant,
+        sourceRoot,
+        candidatePath,
+        readerRange,
+        providerCacheRoot,
+        candidateVersion,
+        expectedSurfaceRange,
+        temporaryRoot,
+      );
+    } catch (error) {
+      failures.push(error);
+      console.error(`Reader ${variant} acceptance failed; continuing with the other variant.`);
+    }
+  }
+  if (failures.length > 0) throw new AggregateError(failures, 'Reader A/B acceptance failed.');
+}
+
+/*** Validate one isolated Reader boundary while the outer matrix collects both variant results. */
+async function verifyReaderVariantAsync(
+  variant: ReaderVariant,
+  sourceRoot: string,
+  candidatePath: string,
+  readerRange: string,
+  providerCacheRoot: string,
+  candidateVersion: string,
+  expectedSurfaceRange: string,
+  temporaryRoot: string,
+): Promise<void> {
+  const fixtureRoot = join(temporaryRoot, `restaurant-reader-${variant}`);
+  const exportRoot = join(temporaryRoot, `restaurant-reader-${variant}-web`);
+  copyCleanProject(sourceRoot, fixtureRoot);
+  configureCandidateFixture(fixtureRoot, candidatePath, readerRange);
+  run(['bun', 'install'], fixtureRoot);
+  run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
+  rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
+  run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
+  verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
+  if (variant === 'materialized') {
+    materializeReaderArtifact(fixtureRoot, providerCacheRoot);
+    verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
+  }
+  addReaderRoute(fixtureRoot, variant);
+  run(['bun', 'run', 'typecheck'], fixtureRoot);
+  run(
+    ['bun', 'x', 'expo', 'export', '--platform', 'web', '--output-dir', exportRoot, '--clear'],
+    fixtureRoot,
+  );
+  assert(
+    collectFiles(exportRoot, '.html')
+      .map((path) => toStaticRoute(exportRoot, path))
+      .includes('/reader'),
+    `Reader ${variant} route is absent from the static Expo export.`,
+  );
+  await verifyReaderMetroAsync(fixtureRoot, variant);
+  console.log(`Reader ${variant} static and live-browser acceptance passed.`);
+}
+
+const temporaryRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-'));
+const diagnosticsRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-diagnostics-'));
 const packageRoot = join(temporaryRoot, 'package');
+const providerCacheRoot = join(temporaryRoot, 'ankh-cache');
+process.env.ZORA_EXPO_CANDIDATE_DIAGNOSTICS_DIR = diagnosticsRoot;
 let completed = false;
 
 try {
@@ -400,9 +710,14 @@ try {
     sourceDependencies['@ankhorage/surface'],
     'source package Surface range',
   );
+  const readerRange = requireString(
+    sourceDependencies['@ankhorage/reader'],
+    'source package Reader range',
+  );
 
   console.log(`\nPacked candidate: ${candidatePath}`);
   console.log(`Candidate package version: ${candidateVersion}`);
+  prepareCandidateProviderCache(providerCacheRoot, candidatePath, run);
 
   for (const fixture of FIXTURES) {
     const fixtureRoot = join(temporaryRoot, fixture.name);
@@ -410,7 +725,11 @@ try {
     const exportRoot = join(temporaryRoot, `${fixture.name}-web`);
 
     copyCleanProject(sourceRoot, fixtureRoot);
-    configureCandidateFixture(fixtureRoot, candidatePath);
+    configureCandidateFixture(
+      fixtureRoot,
+      candidatePath,
+      fixture.expectedWebRoutes === undefined ? undefined : readerRange,
+    );
 
     run(['bun', 'install'], fixtureRoot);
     run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
@@ -437,6 +756,15 @@ try {
 
     if (fixture.expectedWebRoutes) {
       verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
+      await verifyReaderVariantsAsync(
+        sourceRoot,
+        candidatePath,
+        readerRange,
+        providerCacheRoot,
+        candidateVersion,
+        expectedSurfaceRange,
+        temporaryRoot,
+      );
     }
 
     if (fixture.nativePrebuild) {
@@ -451,12 +779,45 @@ try {
   }
 
   completed = true;
+} catch (error) {
+  writeFileSync(
+    join(diagnosticsRoot, 'failure.log'),
+    `${sanitizeDiagnosticText(error instanceof Error ? (error.stack ?? error.message) : String(error))}\n`,
+  );
+  throw error;
 } finally {
   if (completed) {
     rmSync(temporaryRoot, { force: true, recursive: true });
+    rmSync(diagnosticsRoot, { force: true, recursive: true });
   } else {
-    console.error(`Candidate fixture retained for diagnosis: ${temporaryRoot}`);
+    retainCandidateConfiguration(temporaryRoot, diagnosticsRoot);
+    console.error(`Retained Expo candidate diagnostics: ${diagnosticsRoot}`);
   }
 }
 
 console.log('\nPacked Expo candidate acceptance passed.');
+
+/*** Retain only inspectable manifest and configuration inputs alongside bounded runtime evidence. */
+function retainCandidateConfiguration(temporaryRoot: string, diagnosticsRoot: string): void {
+  const files = ['package.json', 'bun.lock', 'app.json', 'tsconfig.json', 'metro.config.js'];
+  const roots = [
+    REPOSITORY_ROOT,
+    ...readdirSync(temporaryRoot).map((name) => join(temporaryRoot, name)),
+  ];
+  for (const root of roots) {
+    if (!existsSync(root)) continue;
+    const name = root === REPOSITORY_ROOT ? 'candidate' : basename(root);
+    for (const file of files) {
+      const source = join(root, file);
+      if (!existsSync(source)) continue;
+      const directory = join(diagnosticsRoot, 'configuration', name);
+      mkdirSync(directory, { recursive: true });
+      writeFileSync(join(directory, file), readFileSync(source, 'utf8'));
+    }
+  }
+}
+
+/*** Remove common credential fields from the retained top-level failure summary. */
+function sanitizeDiagnosticText(contents: string): string {
+  return contents.replace(/((?:authorization|cookie|password|token)=)[^&\s]+/giu, '$1<redacted>');
+}

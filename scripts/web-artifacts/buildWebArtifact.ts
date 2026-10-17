@@ -13,6 +13,7 @@ import type {
 
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
+  readonly dependencies: Readonly<Record<string, string>>;
   readonly sourceRoot: string;
   readonly surfacePackageRoot: string;
   readonly webDistRoot: string;
@@ -33,7 +34,10 @@ export async function buildWebArtifact(
   const providerEntry = await writeProviderEntrypointAsync(paths);
   const result = await bundleWebArtifactsAsync([...entries, providerEntry], paths);
   const outputs = result.metafile?.outputs;
-  if (outputs === undefined) throw new Error('ZORA web build did not produce dependency metadata.');
+  const inputs = result.metafile?.inputs;
+  if (outputs === undefined || inputs === undefined) {
+    throw new Error('ZORA web build did not produce dependency metadata.');
+  }
 
   await Promise.all(
     result.outputs
@@ -63,6 +67,13 @@ export async function buildWebArtifact(
           aliasDeclaration,
           ...collectReachableChunks(entry, outputs, paths.webDistRoot),
         ],
+        requiredDependencies: await collectRequiredDependencies(
+          entry,
+          outputs,
+          inputs,
+          paths.webDistRoot,
+          paths.dependencies,
+        ),
         sourceKind: target.sourceKind,
       } satisfies WebArtifactManifestEntry;
     }),
@@ -85,6 +96,72 @@ export async function buildWebArtifact(
     },
     artifacts,
   };
+}
+
+/*** Record direct runtime package dependencies for one materialized artifact. */
+async function collectRequiredDependencies(
+  entry: string,
+  outputs: Bun.BuildMetafile['outputs'],
+  inputs: Bun.BuildMetafile['inputs'],
+  outputRoot: string,
+  dependencies: Readonly<Record<string, string>>,
+): Promise<Readonly<Record<string, string>>> {
+  const pending = [entry];
+  const visited = new Set<string>();
+  const sources = new Set<string>();
+  const externalDependencies = new Set<string>();
+  const runtimeDependencies = new Set<string>();
+  const required = new Map<string, string>();
+  while (pending.length > 0) {
+    const current = pending.pop();
+    if (current === undefined || visited.has(current)) continue;
+    visited.add(current);
+    const output = outputs[`./${current}`];
+    if (output === undefined) throw new Error(`Missing ZORA web build output: ${current}`);
+    Object.keys(output.inputs).forEach((source) => sources.add(source));
+    const javascript = ts.createSourceFile(
+      current,
+      await readFile(join(outputRoot, current), 'utf8'),
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.JS,
+    );
+    collectRuntimeImports(javascript).forEach((specifier) => {
+      runtimeDependencies.add(packageName(specifier));
+    });
+    for (const imported of output.imports) {
+      if (imported.path.startsWith('.')) {
+        const next = relative(outputRoot, resolve(outputRoot, imported.path));
+        if (next.startsWith('..') || next.startsWith(sep)) {
+          throw new Error(`ZORA web chunk escapes output root: ${imported.path}`);
+        }
+        pending.push(toPortablePath(next));
+      }
+    }
+  }
+  for (const source of sources) {
+    const input = inputs[source];
+    if (input === undefined) throw new Error(`Missing ZORA web build input: ${source}`);
+    for (const imported of input.imports) {
+      if (!imported.external) continue;
+      externalDependencies.add(packageName(imported.path));
+    }
+  }
+  for (const dependency of externalDependencies) {
+    const range = dependencies[dependency];
+    if (range !== undefined && runtimeDependencies.has(dependency)) {
+      required.set(dependency, range);
+    }
+  }
+  return Object.fromEntries(
+    [...required.entries()].sort(([left], [right]) => left.localeCompare(right)),
+  );
+}
+
+/*** Reduce an import specifier to its package dependency name. */
+function packageName(specifier: string): string {
+  if (!specifier.startsWith('@')) return specifier.split('/')[0] ?? specifier;
+  return specifier.split('/').slice(0, 2).join('/');
 }
 
 /*** Give each selected component one stable directory import and type entry. */
@@ -165,7 +242,7 @@ async function bundleWebArtifactsAsync(
       asset: 'assets/[name]-[hash].[ext]',
     },
     conditions: ['browser', 'import', 'default'],
-    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    external: ['@ankhorage/reader', 'react', 'react/*', 'react-dom', 'react-dom/*'],
     plugins: createWebBuildPlugins({
       sourceRoot: paths.sourceRoot,
       surfacePackageRoot: paths.surfacePackageRoot,
@@ -233,6 +310,7 @@ async function validateBundle(bundlePath: string): Promise<void> {
   );
   for (const specifier of collectRuntimeImports(javascript)) {
     if (
+      specifier !== '@ankhorage/reader' &&
       specifier !== 'react' &&
       !specifier.startsWith('react/') &&
       specifier !== 'react-dom' &&

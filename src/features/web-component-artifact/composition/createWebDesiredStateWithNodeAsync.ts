@@ -30,6 +30,7 @@ export async function createWebDesiredStateWithNodeAsync(input: {
       outputDirectory: resolve(input.projectRoot, '.ankh', 'zora', 'web'),
       packageRoot,
       packageVersion: packageJson.version,
+      projectRoot: input.projectRoot,
     });
   } catch (error) {
     if (next !== previous) {
