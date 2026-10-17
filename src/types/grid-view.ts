@@ -91,6 +91,8 @@ export interface GridScrollSyncOptions {
   readonly scrollTo: (axis: GridScrollAxis, offset: number, animated: boolean) => void;
   /** Reports a genuine user scroll as the pixel displacement of the native offset. */
   readonly onUserScroll: (axis: GridScrollAxis, displacement: number) => void;
+  /** Reconciles a late programmatic native frame without classifying it as a user pan. */
+  readonly onProgrammaticScroll: (axis: GridScrollAxis, displacement: number) => void;
   readonly now?: () => number;
   readonly schedule?: (callback: () => void, delay: number) => ReturnType<typeof setTimeout>;
   readonly cancel?: (handle: ReturnType<typeof setTimeout>) => void;

@@ -25,6 +25,7 @@ interface EchoTail {
 export function createGridScrollSync({
   scrollTo,
   onUserScroll,
+  onProgrammaticScroll,
   now = Date.now,
   schedule = setTimeout,
   cancel = clearTimeout,
@@ -72,7 +73,9 @@ export function createGridScrollSync({
     const tail = echoTails.get(axis);
     if (tail) {
       if (isContinuingProgrammaticEcho(tail, offset)) {
+        const displacement = offset - readAxis(position, axis);
         position = withAxis(position, axis, offset);
+        if (displacement !== 0) onProgrammaticScroll(axis, displacement);
         if (isSameOffset(offset, tail.target)) echoTails.delete(axis);
         else tail.lastOffset = offset;
         return;

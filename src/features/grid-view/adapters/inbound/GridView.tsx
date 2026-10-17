@@ -139,6 +139,8 @@ export function GridView({
   // Declared before the viewport-sync effect so the arbiter exists when that effect runs.
   React.useEffect(() => {
     const scrollSync = createGridScrollSync({
+      onProgrammaticScroll: (axis, displacement) =>
+        panRef.current(axis === 'x' ? { x: -displacement, y: 0 } : { x: 0, y: -displacement }),
       onUserScroll: (axis, displacement) =>
         panRef.current(axis === 'x' ? { x: -displacement, y: 0 } : { x: 0, y: -displacement }),
       scrollTo: (axis, offset, animated) => {

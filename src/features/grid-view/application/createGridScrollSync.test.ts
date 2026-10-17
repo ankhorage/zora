@@ -25,14 +25,16 @@ function advance(milliseconds: number) {
 
 /*** Creates a controller whose native requests and user scrolls are recorded. */
 function createRecordedSync() {
+  const programmaticScrolls: UserScroll[] = [];
   const requests: ScrollRequest[] = [];
   const userScrolls: UserScroll[] = [];
   const sync = createGridScrollSync({
     now: () => clock,
+    onProgrammaticScroll: (axis, displacement) => programmaticScrolls.push([axis, displacement]),
     onUserScroll: (axis, displacement) => userScrolls.push([axis, displacement]),
     scrollTo: (axis, offset, animated) => requests.push([axis, offset, animated]),
   });
-  return { requests, sync, userScrolls };
+  return { programmaticScrolls, requests, sync, userScrolls };
 }
 
 test('adopts native scrolling as user input when nothing was requested', () => {
@@ -200,7 +202,7 @@ test('suppresses late animation echoes even after fallback reconciles a stalled 
 });
 
 test('converges the logical position when a delayed animation resumes after fallback', () => {
-  const { sync, userScrolls } = createRecordedSync();
+  const { programmaticScrolls, sync, userScrolls } = createRecordedSync();
   sync.request({ x: 0, y: 200 }, true);
   sync.scrolled('y', 40);
 
@@ -211,6 +213,10 @@ test('converges the logical position when a delayed animation resumes after fall
   sync.scrollEnded('y', 200);
 
   expect(userScrolls).toEqual([['y', -160]]);
+  expect(programmaticScrolls).toEqual([
+    ['y', 60],
+    ['y', 100],
+  ]);
 });
 
 test('retargeting discards residual echo ownership from an earlier animation', () => {
