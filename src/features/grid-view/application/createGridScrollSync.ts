@@ -9,7 +9,6 @@ import {
   ANIMATED_SCROLL_WINDOW_MS,
   IMMEDIATE_SCROLL_WINDOW_MS,
   SCROLL_POSITION_TOLERANCE,
-  SCROLL_SETTLE_DELAY_MS,
 } from '../constants/scroll';
 import { resolveScrollEventSource } from './resolveScrollEventSource';
 
@@ -52,13 +51,16 @@ export function createGridScrollSync({
     if (offset !== undefined) adopt(axis, offset);
   };
   const scrolled = (axis: GridScrollAxis, offset: number) => {
-    const source = resolveScrollEventSource(pending.get(axis), offset, now());
-    if (source === 'in-flight') {
+    const pendingScroll = pending.get(axis);
+    const source = resolveScrollEventSource(pendingScroll, offset, now());
+    if (source === 'in-flight' && pendingScroll) {
       clearTimer(axis);
       inFlight.set(axis, offset);
+      // Native animation frames can pause longer than 120ms; only reconcile at the
+      // original request deadline, or earlier on an explicit drag/end/target echo.
       timers.set(
         axis,
-        schedule(() => settle(axis), SCROLL_SETTLE_DELAY_MS),
+        schedule(() => settle(axis), Math.max(0, pendingScroll.expiresAt - now())),
       );
       return;
     }
