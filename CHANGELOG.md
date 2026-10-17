@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.10
+
+### Patch Changes
+
+- ac87e95: Update dependencies: `@ankhorage/reader`.
+
 ## 25.8.9
 
 ### Patch Changes
