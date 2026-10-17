@@ -1,7 +1,7 @@
 name: Expo candidate
 
 on:
-  # Temporarily opt-in until release-owned validation is centralized.
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.4.0'
+          bun-version: '1.4.2'
 
       - name: Setup Node
         uses: actions/setup-node@v4

@@ -130,6 +130,7 @@
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
     "test": "bun run build && bun test src examples/grid-workspaces/time --isolate",
+    "test:consumer": "bun run build && bun scripts/web-artifacts/verifyWebMaterialization.ts --consumer",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json",
     "version-packages": "ankhorage-changeset version"
   },

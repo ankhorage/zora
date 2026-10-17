@@ -1,6 +1,5 @@
 import { strict as assert } from 'node:assert';
 import { chmod, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -12,6 +11,7 @@ import { createWebDesiredStateWithNodeAsync } from '../../src/features/web-compo
 import { discoverWebArtifactTargets } from './discoverWebArtifactTargets';
 
 const packageRoot = join(import.meta.dir, '..', '..');
+const temporaryDirectory = process.env.RUNNER_TEMP ?? '/tmp';
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
 const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
 const publicFeatureTargets = await discoverWebArtifactTargets({
@@ -168,7 +168,34 @@ try {
   );
   assert.match(readerArtifact, /from ['"]@ankhorage\/reader['"]/u);
   assert(!readerArtifact.includes('pdf.worker.mjs'));
-  await verifyPackedReaderMaterializationAsync(packageRoot);
+  const artifactManifest = JSON.parse(
+    await readFile(join(packageRoot, 'web-dist', 'manifest.json'), 'utf8'),
+  ) as {
+    readonly artifacts: readonly {
+      readonly component: string;
+      readonly files: readonly string[];
+    }[];
+  };
+  const readerFiles = artifactManifest.artifacts.find(
+    (artifact) => artifact.component === 'reader',
+  )?.files;
+  assert(readerFiles, 'Web artifact manifest does not describe Reader.');
+  const reachableReaderFiles = await Promise.all(
+    readerFiles.map(
+      async (file) => [file, await readFile(join(packageRoot, 'web-dist', file), 'utf8')] as const,
+    ),
+  );
+  assert(
+    reachableReaderFiles.some(([, source]) => source.includes('@ankhorage/reader')),
+    'Reader artifact graph does not preserve the external Reader import.',
+  );
+  assert(
+    reachableReaderFiles.every(([, source]) => !source.includes('pdf.worker.mjs')),
+    'Reader artifact graph unexpectedly embeds the PDF worker.',
+  );
+  if (process.argv.includes('--consumer')) {
+    await verifyPackedReaderMaterializationAsync(packageRoot);
+  }
 
   function ThemeProbe() {
     const runtime = useZoraTheme();
@@ -281,6 +308,7 @@ try {
 
 async function verifyPackedReaderMaterializationAsync(packageRoot: string): Promise<void> {
   const packageJson = JSON.parse(await readFile(join(packageRoot, 'package.json'), 'utf8')) as {
+    readonly dependencies: Readonly<Record<string, string>>;
     readonly peerDependencies: Readonly<Record<string, string>>;
   };
   const react = packageJson.peerDependencies.react;
@@ -289,7 +317,9 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
   assert(react);
   assert(reactNative);
   assert(reactNativeWeb);
-  const sandbox = await mkdtemp(join(tmpdir(), 'zora-packed-web-reader-'));
+  const reader = packageJson.dependencies['@ankhorage/reader'];
+  assert(reader);
+  const sandbox = await mkdtemp(join(temporaryDirectory, 'zora-packed-web-reader-'));
   const packageDirectory = join(sandbox, 'package');
   const consumerRoot = join(sandbox, 'consumer');
   try {
@@ -298,8 +328,14 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
       mkdir(consumerRoot, { recursive: true }),
     ]);
     const pack = Bun.spawnSync({
-      cmd: ['npm', 'pack', '--silent', '--pack-destination', packageDirectory],
+      // The test suite has already built the candidate. Suppressing lifecycle scripts here
+      // keeps npm pack from replacing the shared fingerprinted web-dist generation mid-test.
+      cmd: ['npm', 'pack', '--ignore-scripts', '--silent', '--pack-destination', packageDirectory],
       cwd: packageRoot,
+      env: {
+        ...process.env,
+        npm_config_cache: join(sandbox, 'npm-cache'),
+      },
       stderr: 'pipe',
       stdout: 'pipe',
     });
@@ -327,13 +363,33 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
         2,
       )}\n`,
     );
+    const consumerPackage = JSON.parse(
+      await readFile(join(consumerRoot, 'package.json'), 'utf8'),
+    ) as { readonly dependencies: Readonly<Record<string, string>> };
+    assert.equal(
+      consumerPackage.dependencies['@ankhorage/reader'],
+      undefined,
+      'The consumer must not declare Reader; packed ZORA owns the direct runtime dependency.',
+    );
     const install = Bun.spawnSync({
-      cmd: ['bun', 'install', '--ignore-scripts'],
+      cmd: [
+        'npm',
+        'install',
+        '--foreground-scripts',
+        '--ignore-scripts',
+        '--install-strategy=linked',
+        '--loglevel=verbose',
+      ],
       cwd: consumerRoot,
-      stderr: 'pipe',
-      stdout: 'pipe',
+      env: {
+        ...process.env,
+        npm_config_cache: join(sandbox, 'npm-cache'),
+      },
+      stderr: 'inherit',
+      stdout: 'inherit',
+      timeout: 120_000,
     });
-    assert.equal(install.exitCode, 0, install.stderr.toString());
+    assert.equal(install.exitCode, 0, 'npm consumer installation failed or timed out.');
     await writeFile(
       join(consumerRoot, 'materialize.mjs'),
       [

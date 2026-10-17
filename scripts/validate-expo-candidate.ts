@@ -9,7 +9,6 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve, sep } from 'node:path';
 
 interface CandidateFixture {
@@ -24,6 +23,7 @@ interface CandidateFixture {
 type JsonObject = Record<string, unknown>;
 
 const REPOSITORY_ROOT = resolve(import.meta.dir, '..');
+const TEMPORARY_DIRECTORY = process.env.RUNNER_TEMP ?? '/tmp';
 const IGNORED_COPY_SEGMENTS = new Set(['.expo', 'android', 'dist', 'ios', 'node_modules']);
 const REQUIRED_WEB_FONT_FAMILIES = [
   'FontAwesome',
@@ -361,6 +361,123 @@ function prebuildNativeProject(fixtureRoot: string): void {
   );
 }
 
+/*** Create a disposable Router route that makes the packed Reader render a deterministic PDF. */
+function addReaderRoute(fixtureRoot: string): void {
+  const document = createReaderAcceptancePdf();
+  const source = `data:application/pdf;base64,${Buffer.from(document).toString('base64')}`;
+  writeFileSync(
+    join(fixtureRoot, 'app', 'reader.tsx'),
+    `import { Reader, View } from '@ankhorage/zora';
+
+const source = ${JSON.stringify(source)};
+
+export default function ReaderRoute() {
+  return (
+    <View flex={1} p="m">
+      <Reader format="pdf" showChrome={false} source={source} />
+    </View>
+  );
+}
+`,
+  );
+}
+
+/*** Build a compact, single-page PDF whose text layer is asserted in the real browser. */
+function createReaderAcceptancePdf(): string {
+  const stream = 'BT /F1 24 Tf 40 80 Td (ZORA Reader acceptance) Tj ET';
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 320 160] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>',
+    `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`,
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+  ];
+  let document = '%PDF-1.4\n';
+  const offsets = [0];
+  for (const [index, object] of objects.entries()) {
+    offsets.push(document.length);
+    document += `${index + 1} 0 obj\n${object}\nendobj\n`;
+  }
+  const xref = document.length;
+  document += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+  document += offsets
+    .slice(1)
+    .map((offset) => `${String(offset).padStart(10, '0')} 00000 n \n`)
+    .join('');
+  return `${document}trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+}
+
+/*** Wait until Expo Metro has served the route before asking a real browser to render it. */
+async function waitForMetroAsync(url: string): Promise<void> {
+  const deadline = Date.now() + 90_000;
+  while (Date.now() < deadline) {
+    try {
+      if ((await fetch(url)).ok) return;
+    } catch {
+      // Metro has not opened its listener yet.
+    }
+    await Bun.sleep(500);
+  }
+  throw new Error(`Expo Metro did not serve ${url} within 90 seconds.`);
+}
+
+/*** Render the Reader route in Chrome and require both the PDF canvas and selectable text layer. */
+async function verifyReaderMetroAsync(fixtureRoot: string): Promise<void> {
+  const port = 19057;
+  const url = `http://127.0.0.1:${port}/reader`;
+  const metro = Bun.spawn({
+    cmd: ['bun', 'x', 'expo', 'start', '--web', '--port', String(port)],
+    cwd: fixtureRoot,
+    env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
+    stderr: 'pipe',
+    stdout: 'pipe',
+  });
+  try {
+    await waitForMetroAsync(url);
+    const chrome = resolveChromeExecutable();
+    const rendered = Bun.spawnSync({
+      cmd: [
+        chrome,
+        '--headless=new',
+        '--disable-gpu',
+        '--no-first-run',
+        '--virtual-time-budget=15000',
+        '--dump-dom',
+        url,
+      ],
+      stderr: 'pipe',
+      stdout: 'pipe',
+      timeout: 45_000,
+    });
+    const output = `${rendered.stdout.toString()}\n${rendered.stderr.toString()}`;
+    assert(rendered.exitCode === 0, output);
+    assert(
+      output.includes('reader-pdf-text-layer'),
+      'Browser did not render the Reader PDF text layer.',
+    );
+    assert(output.includes('<canvas'), 'Browser did not render the Reader PDF canvas.');
+    assert(output.includes('ZORA Reader acceptance'), 'Browser text layer lacks the PDF content.');
+  } finally {
+    metro.kill();
+    await metro.exited;
+  }
+}
+
+/*** Resolve Chrome from the CI image or the local macOS application bundle. */
+function resolveChromeExecutable(): string {
+  const candidates = [
+    process.env.CHROME_PATH,
+    Bun.which('google-chrome'),
+    Bun.which('google-chrome-stable'),
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  ].filter((value): value is string => value !== undefined);
+  const chrome = candidates.find((candidate) => existsSync(candidate));
+  if (chrome === undefined) {
+    throw new Error('Google Chrome is required for the Expo Reader browser acceptance gate.');
+  }
+  return chrome;
+}
+
 function verifyNativeFonts(fixtureRoot: string): void {
   const plistFiles = collectFiles(join(fixtureRoot, 'ios'), '.plist');
   const infoPlist = plistFiles
@@ -373,7 +490,7 @@ function verifyNativeFonts(fixtureRoot: string): void {
   }
 }
 
-const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-expo-candidate-'));
+const temporaryRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-'));
 const packageRoot = join(temporaryRoot, 'package');
 let completed = false;
 
@@ -437,6 +554,30 @@ try {
 
     if (fixture.expectedWebRoutes) {
       verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
+      addReaderRoute(fixtureRoot);
+      const readerExportRoot = join(temporaryRoot, `${fixture.name}-reader-web`);
+      run(['bun', 'run', 'typecheck'], fixtureRoot);
+      run(
+        [
+          'bun',
+          'x',
+          'expo',
+          'export',
+          '--platform',
+          'web',
+          '--output-dir',
+          readerExportRoot,
+          '--clear',
+        ],
+        fixtureRoot,
+      );
+      assert(
+        collectFiles(readerExportRoot, '.html')
+          .map((path) => toStaticRoute(readerExportRoot, path))
+          .includes('/reader'),
+        'Reader route is absent from the static Expo export.',
+      );
+      await verifyReaderMetroAsync(fixtureRoot);
     }
 
     if (fixture.nativePrebuild) {
