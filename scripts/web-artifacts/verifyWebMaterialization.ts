@@ -96,6 +96,7 @@ try {
   ) as {
     readonly files: readonly string[];
     readonly components: readonly string[];
+    readonly requiredDependencies: Readonly<Record<string, string>>;
   };
   const firstEvidence = await readFile(join(outputDirectory, 'materialization.json'), 'utf8');
   assert.equal((await sync({ argv: ['--web'], context })).exitCode, 0);
@@ -104,6 +105,7 @@ try {
     firstEvidence,
   );
   assert.deepEqual(evidence.components, components);
+  assert.deepEqual(evidence.requiredDependencies, { '@ankhorage/reader': readerRange });
   assert(evidence.files.some((file) => file.startsWith('chunks/')));
   for (const component of components) {
     assert(evidence.files.includes(`components/${component}/index.js`));
@@ -175,32 +177,36 @@ try {
     join(outputDirectory, 'components/reader/Reader.js'),
     'utf8',
   );
-  assert.match(readerArtifact, /from ['"]@ankhorage\/reader['"]/u);
-  assert(!readerArtifact.includes('pdf.worker.mjs'));
+  assert(!readerArtifact.includes('import(this.workerSrc)'));
   const artifactManifest = JSON.parse(
     await readFile(join(packageRoot, 'web-dist', 'manifest.json'), 'utf8'),
   ) as {
     readonly artifacts: readonly {
       readonly component: string;
       readonly files: readonly string[];
+      readonly requiredDependencies: Readonly<Record<string, string>>;
     }[];
   };
-  const readerFiles = artifactManifest.artifacts.find(
+  const readerManifest = artifactManifest.artifacts.find(
     (artifact) => artifact.component === 'reader',
-  )?.files;
+  );
+  const readerFiles = readerManifest?.files;
   assert(readerFiles, 'Web artifact manifest does not describe Reader.');
+  assert.deepEqual(readerManifest?.requiredDependencies, { '@ankhorage/reader': readerRange });
+  assert(
+    artifactManifest.artifacts
+      .filter((artifact) => artifact.component !== 'reader')
+      .every((artifact) => artifact.requiredDependencies['@ankhorage/reader'] === undefined),
+    'Non-Reader artifact unexpectedly requires @ankhorage/reader.',
+  );
   const reachableReaderFiles = await Promise.all(
     readerFiles.map(
       async (file) => [file, await readFile(join(packageRoot, 'web-dist', file), 'utf8')] as const,
     ),
   );
   assert(
-    reachableReaderFiles.some(([, source]) => source.includes('@ankhorage/reader')),
-    'Reader artifact graph does not preserve the external Reader import.',
-  );
-  assert(
-    reachableReaderFiles.every(([, source]) => !source.includes('pdf.worker.mjs')),
-    'Reader artifact graph unexpectedly embeds the PDF worker.',
+    reachableReaderFiles.every(([, source]) => !source.includes('import(this.workerSrc)')),
+    'Reader artifact graph contains PDF.js dynamic worker code.',
   );
   if (process.argv.includes('--consumer')) {
     await verifyPackedReaderMaterializationAsync(packageRoot);
