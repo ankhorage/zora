@@ -40,5 +40,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: expo-candidate-diagnostics
-          path: ${{ runner.temp }}/zora-expo-candidate-*
+          path: ${{ runner.temp }}/zora-expo-candidate-diagnostics-*/**
           if-no-files-found: warn

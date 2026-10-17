@@ -389,7 +389,7 @@ function addReaderRoute(fixtureRoot: string, variant: ReaderVariant): void {
       : "import { Reader } from '../.ankh/zora/web/components/reader/Reader.js';";
   const readerElement =
     variant === 'direct'
-      ? '<ReaderView format="pdf" source={source} />'
+      ? '<ReaderView format="pdf" sourceUri={source} />'
       : '<Reader format="pdf" showChrome={false} source={source} />';
   writeFileSync(
     join(fixtureRoot, 'app', 'reader.tsx'),
@@ -651,8 +651,10 @@ async function verifyReaderVariantsAsync(
 }
 
 const temporaryRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-'));
+const diagnosticsRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-diagnostics-'));
 const packageRoot = join(temporaryRoot, 'package');
 const providerCacheRoot = join(temporaryRoot, 'ankh-cache');
+process.env.ZORA_EXPO_CANDIDATE_DIAGNOSTICS_DIR = diagnosticsRoot;
 let completed = false;
 
 try {
@@ -750,9 +752,31 @@ try {
 } finally {
   if (completed) {
     rmSync(temporaryRoot, { force: true, recursive: true });
+    rmSync(diagnosticsRoot, { force: true, recursive: true });
   } else {
-    console.error(`Candidate fixture retained for diagnosis: ${temporaryRoot}`);
+    retainCandidateConfiguration(temporaryRoot, diagnosticsRoot);
+    console.error(`Retained Expo candidate diagnostics: ${diagnosticsRoot}`);
   }
 }
 
 console.log('\nPacked Expo candidate acceptance passed.');
+
+/*** Retain only inspectable manifest and configuration inputs alongside bounded runtime evidence. */
+function retainCandidateConfiguration(temporaryRoot: string, diagnosticsRoot: string): void {
+  const files = ['package.json', 'bun.lock', 'app.json', 'tsconfig.json', 'metro.config.js'];
+  const roots = [
+    REPOSITORY_ROOT,
+    ...readdirSync(temporaryRoot).map((name) => join(temporaryRoot, name)),
+  ];
+  for (const root of roots) {
+    if (!existsSync(root)) continue;
+    const name = root === REPOSITORY_ROOT ? 'candidate' : basename(root);
+    for (const file of files) {
+      const source = join(root, file);
+      if (!existsSync(source)) continue;
+      const directory = join(diagnosticsRoot, 'configuration', name);
+      mkdirSync(directory, { recursive: true });
+      writeFileSync(join(directory, file), readFileSync(source, 'utf8'));
+    }
+  }
+}

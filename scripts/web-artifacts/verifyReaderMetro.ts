@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createServer } from 'node:net';
 import { join, resolve } from 'node:path';
 
@@ -55,7 +55,7 @@ export async function verifyReaderMetroAsync(
       drainProcessStreamAsync(chrome.stdout, `chrome:${variant}:stdout`, chromeOutput),
       drainProcessStreamAsync(chrome.stderr, `chrome:${variant}:stderr`, chromeOutput),
     ];
-    await verifyReaderInChromeAsync(url, debuggerPort, variant);
+    await verifyReaderInChromeAsync(fixtureRoot, url, debuggerPort, variant);
   } finally {
     chrome?.kill();
     if (chrome !== undefined) await chrome.exited;
@@ -64,8 +64,16 @@ export async function verifyReaderMetroAsync(
     metro.kill();
     await metroExited;
     await Promise.all([metroStdout, metroStderr]);
-    console.log(processEvidence(`Chrome ${variant}`, chromeOutput));
-    console.log(processEvidence(`Metro ${variant}`, metroOutput));
+    const chromeEvidence = processEvidence(`Chrome ${variant}`, chromeOutput);
+    const metroEvidence = processEvidence(`Metro ${variant}`, metroOutput);
+    console.log(chromeEvidence);
+    console.log(metroEvidence);
+    writeRetainedDiagnostic(
+      fixtureRoot,
+      variant,
+      'process.log',
+      `${chromeEvidence}\n\n${metroEvidence}\n`,
+    );
   }
 }
 
@@ -189,12 +197,15 @@ function recordReaderDiagnostics(fixtureRoot: string, variant: ReaderVariant): v
     metroConfig: resolveModule('expo/metro-config'),
   };
   const path = join(fixtureRoot, `reader-${variant}-diagnostics.json`);
-  writeFileSync(path, `${JSON.stringify(evidence, null, 2)}\n`);
+  const contents = `${JSON.stringify(evidence, null, 2)}\n`;
+  writeFileSync(path, contents);
+  writeRetainedDiagnostic(fixtureRoot, variant, 'resolver.json', contents);
   console.log(`Reader ${variant} diagnostics:\n${JSON.stringify(evidence, null, 2)}`);
 }
 
 /*** Inspect live Chrome DOM and console signals through the native DevTools protocol. */
 async function verifyReaderInChromeAsync(
+  fixtureRoot: string,
   url: string,
   debuggerPort: number,
   variant: ReaderVariant,
@@ -242,8 +253,44 @@ async function verifyReaderInChromeAsync(
       `Reader browser did not render the PDF canvas and text layer. Console errors:\n${consoleErrors.join('\n')}`,
     );
   } finally {
+    writeRetainedDiagnostic(
+      fixtureRoot,
+      variant,
+      'browser.json',
+      `${JSON.stringify(
+        {
+          consoleErrors,
+          graphUrls: networkUrls.filter((entry) => /bundle|reader|pdfjs|worker/u.test(entry)),
+          workerErrors: consoleErrors.filter((error) => /worker/i.test(error)),
+        },
+        null,
+        2,
+      )}\n`,
+    );
     session.close();
   }
+}
+
+/*** Persist bounded, sanitized browser and resolver evidence outside the disposable fixture. */
+function writeRetainedDiagnostic(
+  fixtureRoot: string,
+  variant: ReaderVariant,
+  name: string,
+  contents: string,
+): void {
+  const root = process.env.ZORA_EXPO_CANDIDATE_DIAGNOSTICS_DIR;
+  if (root === undefined) return;
+  const directory = join(root, variant);
+  mkdirSync(directory, { recursive: true });
+  writeFileSync(join(directory, name), sanitizeDiagnostic(contents, fixtureRoot));
+}
+
+/*** Remove fixture paths, document payloads, and common credential fields from retained evidence. */
+function sanitizeDiagnostic(contents: string, fixtureRoot: string): string {
+  return contents
+    .replaceAll(fixtureRoot, '<fixture>')
+    .replace(/data:application\/pdf;base64,[^"'\s]+/gu, '<pdf-data-uri>')
+    .replace(/((?:authorization|cookie|password|token)=)[^&\s]+/giu, '$1<redacted>');
 }
 
 /*** Decode the DevTools evaluation result without trusting JSON parser output. */
