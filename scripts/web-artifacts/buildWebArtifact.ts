@@ -11,8 +11,6 @@ import type {
   WebArtifactTarget,
 } from './types';
 
-const BUNDLED_ARTIFACT_RUNTIME_DEPENDENCIES = new Set(['@ankhorage/reader']);
-
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
   readonly dependencies: Readonly<Record<string, string>>;
@@ -74,7 +72,6 @@ export async function buildWebArtifact(
           outputs,
           inputs,
           paths.webDistRoot,
-          join(paths.sourceRoot, 'features', target.featurePath),
           paths.dependencies,
         ),
         sourceKind: target.sourceKind,
@@ -107,13 +104,11 @@ async function collectRequiredDependencies(
   outputs: Bun.BuildMetafile['outputs'],
   inputs: Bun.BuildMetafile['inputs'],
   outputRoot: string,
-  featureRoot: string,
   dependencies: Readonly<Record<string, string>>,
 ): Promise<Readonly<Record<string, string>>> {
   const pending = [entry];
   const visited = new Set<string>();
   const sources = new Set<string>();
-  const directDependencies = new Set<string>();
   const externalDependencies = new Set<string>();
   const runtimeDependencies = new Set<string>();
   const required = new Map<string, string>();
@@ -151,18 +146,6 @@ async function collectRequiredDependencies(
       if (!imported.external) continue;
       externalDependencies.add(packageName(imported.path));
     }
-    const sourcePath = resolve(source);
-    if (sourcePath.startsWith(`${featureRoot}${sep}`)) {
-      const sourceFile = ts.createSourceFile(
-        sourcePath,
-        await readFile(sourcePath, 'utf8'),
-        ts.ScriptTarget.Latest,
-        true,
-      );
-      collectValueImportSpecifiers(sourceFile).forEach((specifier) => {
-        directDependencies.add(packageName(specifier));
-      });
-    }
   }
   for (const dependency of externalDependencies) {
     const range = dependencies[dependency];
@@ -170,38 +153,9 @@ async function collectRequiredDependencies(
       required.set(dependency, range);
     }
   }
-  for (const dependency of directDependencies) {
-    const range = dependencies[dependency];
-    if (range !== undefined && BUNDLED_ARTIFACT_RUNTIME_DEPENDENCIES.has(dependency)) {
-      required.set(dependency, range);
-    }
-  }
   return Object.fromEntries(
     [...required.entries()].sort(([left], [right]) => left.localeCompare(right)),
   );
-}
-
-/*** Collect package imports that survive TypeScript's type-only boundary. */
-function collectValueImportSpecifiers(root: ts.SourceFile): readonly string[] {
-  return root.statements.flatMap((statement) => {
-    if (
-      !ts.isImportDeclaration(statement) ||
-      !ts.isStringLiteral(statement.moduleSpecifier) ||
-      statement.importClause?.isTypeOnly
-    ) {
-      return [];
-    }
-    const bindings = statement.importClause?.namedBindings;
-    if (
-      bindings !== undefined &&
-      ts.isNamedImports(bindings) &&
-      bindings.elements.length > 0 &&
-      bindings.elements.every((element) => element.isTypeOnly)
-    ) {
-      return [];
-    }
-    return [statement.moduleSpecifier.text];
-  });
 }
 
 /*** Reduce an import specifier to its package dependency name. */
@@ -288,7 +242,7 @@ async function bundleWebArtifactsAsync(
       asset: 'assets/[name]-[hash].[ext]',
     },
     conditions: ['browser', 'import', 'default'],
-    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    external: ['@ankhorage/reader', 'react', 'react/*', 'react-dom', 'react-dom/*'],
     plugins: createWebBuildPlugins({
       sourceRoot: paths.sourceRoot,
       surfacePackageRoot: paths.surfacePackageRoot,

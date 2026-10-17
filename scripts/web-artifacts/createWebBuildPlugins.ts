@@ -40,39 +40,10 @@ export function createWebBuildPlugins(paths: WebBuildPluginPaths) {
         },
       ],
     }),
-    createPdfJsWorkerPlugin(),
     createEmbeddedFontPlugin(),
     createWebPackageAliasPlugin(),
     createWebPlatformPlugin(),
   ];
-}
-
-/*** Replace PDF.js's Metro-incompatible fake-worker dynamic import in browser artifacts. */
-function createPdfJsWorkerPlugin() {
-  return {
-    name: 'zora-pdfjs-static-fake-worker',
-    setup(
-      build: Parameters<
-        NonNullable<Parameters<typeof Bun.build>[0]['plugins']>[number]['setup']
-      >[0],
-    ) {
-      build.onLoad({ filter: /[/\\]pdfjs-dist[/\\]build[/\\]pdf\.mjs$/u }, async (args) => {
-        const source = await readFile(args.path, 'utf8');
-        const dynamicWorkerImport =
-          /const worker = await import\(\s*\/\*webpackIgnore: true\*\/\s*\/\*@vite-ignore\*\/\s*this\.workerSrc\);\s*return worker\.WorkerMessageHandler;/u;
-        if (!dynamicWorkerImport.test(source)) {
-          throw new Error(`Unsupported PDF.js worker loader: ${args.path}`);
-        }
-        return {
-          contents: source.replace(
-            dynamicWorkerImport,
-            'return globalThis.pdfjsWorker?.WorkerMessageHandler ?? null;',
-          ),
-          loader: 'js' as const,
-        };
-      });
-    },
-  };
 }
 
 interface PackageRootImportPluginOptions {

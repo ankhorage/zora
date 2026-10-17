@@ -177,7 +177,8 @@ try {
     join(outputDirectory, 'components/reader/Reader.js'),
     'utf8',
   );
-  assert(!readerArtifact.includes('import(this.workerSrc)'));
+  assert.match(readerArtifact, /from ['"]@ankhorage\/reader['"]/u);
+  assert(!readerArtifact.includes('pdfjs-dist'));
   const artifactManifest = JSON.parse(
     await readFile(join(packageRoot, 'web-dist', 'manifest.json'), 'utf8'),
   ) as {
@@ -205,8 +206,14 @@ try {
     ),
   );
   assert(
-    reachableReaderFiles.every(([, source]) => !source.includes('import(this.workerSrc)')),
-    'Reader artifact graph contains PDF.js dynamic worker code.',
+    reachableReaderFiles.some(([, source]) =>
+      /from ['"]@ankhorage\/reader['"]/u.test(source),
+    ),
+    'Reader artifact graph does not preserve the external Reader import.',
+  );
+  assert(
+    reachableReaderFiles.every(([, source]) => !source.includes('pdfjs-dist')),
+    'Reader artifact graph unexpectedly bundles PDF.js.',
   );
   if (process.argv.includes('--consumer')) {
     await verifyPackedReaderMaterializationAsync(packageRoot);

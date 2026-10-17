@@ -67,8 +67,12 @@ export function verifyMaterializedReaderArtifact(
     'Ankh materialized Reader content differs from the installed ZORA candidate.',
   );
   assert(
-    !materializedReader.includes('import(this.workerSrc)'),
-    'Materialized Reader retains Metro-incompatible PDF.js worker loading.',
+    /from ['"]@ankhorage\/reader['"]/u.test(materializedReader),
+    'Materialized Reader does not preserve the external Reader import.',
+  );
+  assert(
+    !materializedReader.includes('pdfjs-dist'),
+    'Materialized Reader unexpectedly bundles PDF.js.',
   );
   const evidence = JSON.parse(
     readFileSync(join(fixtureRoot, '.ankh', 'zora', 'web', 'materialization.json'), 'utf8'),
