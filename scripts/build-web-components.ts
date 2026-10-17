@@ -12,6 +12,9 @@ const webDistRoot = join(repositoryRoot, 'web-dist');
 const cacheRoot = join(repositoryRoot, '.cache', 'zora-web-artifacts');
 const require = createRequire(import.meta.url);
 const surfacePackageRoot = dirname(require.resolve('@ankhorage/surface/package.json'));
+const packageDependencies = (await Bun.file(join(repositoryRoot, 'package.json')).json()) as {
+  readonly dependencies: Readonly<Record<string, string>>;
+};
 
 await rm(webDistRoot, { force: true, recursive: true });
 await rm(cacheRoot, { force: true, recursive: true });
@@ -25,6 +28,7 @@ try {
 
   const catalog = await buildWebArtifact(targets, {
     cacheRoot,
+    dependencies: packageDependencies.dependencies,
     sourceRoot,
     surfacePackageRoot,
     webDistRoot,

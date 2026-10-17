@@ -14,6 +14,11 @@ const packageRoot = join(import.meta.dir, '..', '..');
 const temporaryDirectory = process.env.RUNNER_TEMP ?? '/tmp';
 const projectRoot = await mkdtemp(join(packageRoot, 'node_modules', '.zora-web-acceptance-'));
 const outputDirectory = join(projectRoot, '.ankh', 'zora', 'web');
+const ownerPackage = (await Bun.file(join(packageRoot, 'package.json')).json()) as {
+  readonly dependencies: Readonly<Record<string, string>>;
+};
+const readerRange = ownerPackage.dependencies['@ankhorage/reader'];
+assert(readerRange, 'ZORA must declare its Reader runtime dependency.');
 const publicFeatureTargets = await discoverWebArtifactTargets({
   featuresRoot: join(packageRoot, 'src', 'features'),
   repositoryRoot: packageRoot,
@@ -33,6 +38,10 @@ const components = [
 ].sort();
 
 try {
+  await writeFile(
+    join(projectRoot, 'package.json'),
+    `${JSON.stringify({ dependencies: { '@ankhorage/reader': readerRange } }, null, 2)}\n`,
+  );
   const context = {
     cwd: projectRoot,
     writeStdout() {},
@@ -363,14 +372,6 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
         2,
       )}\n`,
     );
-    const consumerPackage = JSON.parse(
-      await readFile(join(consumerRoot, 'package.json'), 'utf8'),
-    ) as { readonly dependencies: Readonly<Record<string, string>> };
-    assert.equal(
-      consumerPackage.dependencies['@ankhorage/reader'],
-      undefined,
-      'The consumer must not declare Reader; packed ZORA owns the direct runtime dependency.',
-    );
     const install = Bun.spawnSync({
       cmd: [
         'npm',
@@ -378,7 +379,6 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
         '--foreground-scripts',
         '--ignore-scripts',
         '--install-strategy=linked',
-        '--loglevel=verbose',
       ],
       cwd: consumerRoot,
       env: {
@@ -397,6 +397,52 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
         "const handler = provider.handlers.find(({ path }) => path.join('/') === 'create')?.handler;",
         "if (handler === undefined) throw new Error('Missing ZORA create handler.');",
         "const result = await handler({ argv: ['reader', '--web'], context: { cwd: process.cwd(), writeStderr(message) { throw new Error(message); }, writeStdout() {} } });",
+        "if (result.exitCode === 0) throw new Error('Reader materialization unexpectedly accepted a missing direct dependency.');",
+        "const sync = provider.handlers.find(({ path }) => path.join('/') === 'sync')?.handler;",
+        "if (sync === undefined) throw new Error('Missing ZORA sync handler.');",
+        "const synchronized = await sync({ argv: ['--web'], context: { cwd: process.cwd(), writeStderr(message) { throw new Error(message); }, writeStdout() {} } });",
+        '',
+      ].join('\n'),
+    );
+    const materialize = Bun.spawnSync({
+      cmd: [process.execPath, 'materialize.mjs'],
+      cwd: consumerRoot,
+      stderr: 'pipe',
+      stdout: 'pipe',
+    });
+    assert.notEqual(
+      materialize.exitCode,
+      0,
+      'Reader materialization unexpectedly accepted a missing dependency.',
+    );
+    assert.match(
+      materialize.stderr.toString(),
+      /requires direct runtime dependency.*@ankhorage\/reader/u,
+    );
+    const consumerPackage = JSON.parse(
+      await readFile(join(consumerRoot, 'package.json'), 'utf8'),
+    ) as { readonly dependencies: Record<string, string> };
+    consumerPackage.dependencies['@ankhorage/reader'] = reader;
+    await writeFile(
+      join(consumerRoot, 'package.json'),
+      `${JSON.stringify(consumerPackage, null, 2)}\n`,
+    );
+    const reinstall = Bun.spawnSync({
+      cmd: ['npm', 'install', '--ignore-scripts', '--install-strategy=linked'],
+      cwd: consumerRoot,
+      env: { ...process.env, npm_config_cache: join(sandbox, 'npm-cache') },
+      stderr: 'pipe',
+      stdout: 'pipe',
+      timeout: 120_000,
+    });
+    assert.equal(reinstall.exitCode, 0, reinstall.stderr.toString());
+    await writeFile(
+      join(consumerRoot, 'materialize.mjs'),
+      [
+        "import provider from '@ankhorage/zora/cli';",
+        "const handler = provider.handlers.find(({ path }) => path.join('/') === 'create')?.handler;",
+        "if (handler === undefined) throw new Error('Missing ZORA create handler.');",
+        "const result = await handler({ argv: ['reader', '--web'], context: { cwd: process.cwd(), writeStderr(message) { throw new Error(message); }, writeStdout() {} } });",
         "if (result.exitCode !== 0) throw new Error('Could not materialize Reader.');",
         "const sync = provider.handlers.find(({ path }) => path.join('/') === 'sync')?.handler;",
         "if (sync === undefined) throw new Error('Missing ZORA sync handler.');",
@@ -407,13 +453,13 @@ async function verifyPackedReaderMaterializationAsync(packageRoot: string): Prom
         '',
       ].join('\n'),
     );
-    const materialize = Bun.spawnSync({
+    const resolved = Bun.spawnSync({
       cmd: [process.execPath, 'materialize.mjs'],
       cwd: consumerRoot,
       stderr: 'pipe',
       stdout: 'pipe',
     });
-    assert.equal(materialize.exitCode, 0, materialize.stderr.toString());
+    assert.equal(resolved.exitCode, 0, resolved.stderr.toString());
   } finally {
     await rm(sandbox, { force: true, recursive: true });
   }

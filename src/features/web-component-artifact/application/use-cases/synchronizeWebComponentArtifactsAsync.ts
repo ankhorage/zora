@@ -4,6 +4,7 @@ import type { WebComponentArtifactFileSystemPort } from '../ports/outbound/WebCo
 
 export interface SynchronizeWebComponentArtifactsInput {
   readonly components: readonly string[];
+  readonly consumerDependencies: Readonly<Record<string, string>>;
   readonly outputDirectory: string;
   readonly packageRoot: string;
   readonly packageVersion: string;
@@ -18,6 +19,7 @@ export interface SynchronizeWebComponentArtifactsResult {
 interface ArtifactDefinition {
   readonly component: string;
   readonly files: readonly string[];
+  readonly requiredDependencies: Readonly<Record<string, string>>;
 }
 
 interface WebArtifactCatalog {
@@ -37,6 +39,7 @@ export async function synchronizeWebComponentArtifactsAsync(
     if (artifact === undefined) throw new Error(`Unsupported ZORA web component: ${component}`);
     return artifact;
   });
+  assertRequiredDependencies(selected, input.consumerDependencies);
   const files = [
     ...new Set([...catalog.runtime.files, ...selected.flatMap(({ files }) => files)]),
   ].sort();
@@ -65,6 +68,7 @@ export async function synchronizeWebComponentArtifactsAsync(
           platform: 'web',
           components,
           files: [...files, 'materialization.json'].sort(),
+          requiredDependencies: requiredDependencies(selected),
         },
         null,
         2,
@@ -104,13 +108,47 @@ async function readArtifactCatalogAsync(
     if (
       !isRecord(artifact) ||
       typeof artifact.component !== 'string' ||
-      !isFileList(artifact.files)
+      !isFileList(artifact.files) ||
+      !isDependencyMap(artifact.requiredDependencies)
     ) {
       throw new Error('Invalid ZORA web artifact manifest entry.');
     }
-    return { component: artifact.component, files: artifact.files };
+    return {
+      component: artifact.component,
+      files: artifact.files,
+      requiredDependencies: artifact.requiredDependencies,
+    };
   });
   return { runtime: { files: parsed.runtime.files }, artifacts };
+}
+
+/*** Reject artifact output whose external runtime package is not owned by the consuming project. */
+function assertRequiredDependencies(
+  artifacts: readonly ArtifactDefinition[],
+  consumerDependencies: Readonly<Record<string, string>>,
+): void {
+  const declaredDependencies = new Set(Object.keys(consumerDependencies));
+  const missing = Object.entries(requiredDependencies(artifacts)).filter(
+    ([dependency]) => !declaredDependencies.has(dependency),
+  );
+  if (missing.length === 0) return;
+  const requirements = missing.map(
+    ([dependency, range]) => `${JSON.stringify(dependency)}: ${JSON.stringify(range)}`,
+  );
+  throw new Error(
+    `Materializing ZORA web component(s) ${artifacts.map(({ component }) => component).join(', ')} requires direct runtime ${missing.length === 1 ? 'dependency' : 'dependencies'} in the consuming project package.json: ${requirements.join(', ')}. Add ${requirements.join(', ')} to dependencies, install it, then run ankh zora sync --web.`,
+  );
+}
+
+/*** Merge artifact runtime requirements into stable materialization evidence. */
+function requiredDependencies(
+  artifacts: readonly ArtifactDefinition[],
+): Readonly<Record<string, string>> {
+  return Object.fromEntries(
+    artifacts
+      .flatMap(({ requiredDependencies: dependencies }) => Object.entries(dependencies))
+      .sort(([left], [right]) => left.localeCompare(right)),
+  );
 }
 
 /*** Accept only known, relative generated file paths. */
@@ -123,6 +161,17 @@ function isFileList(value: unknown): value is readonly string[] {
         typeof entry === 'string' &&
         /^(?:runtime|components|chunks|assets)\/[A-Za-z0-9_./-]+$/u.test(entry) &&
         !entry.split('/').includes('..'),
+    )
+  );
+}
+
+/*** Accept only explicit package-name to semver-range artifact requirements. */
+function isDependencyMap(value: unknown): value is Readonly<Record<string, string>> {
+  return (
+    isRecord(value) &&
+    Object.entries(value).every(
+      ([dependency, range]) =>
+        dependency.length > 0 && typeof range === 'string' && range.length > 0,
     )
   );
 }

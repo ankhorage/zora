@@ -15,6 +15,7 @@ export interface WebArtifactManifestEntry {
   readonly exportName: string;
   readonly featurePath: string;
   readonly files: readonly string[];
+  readonly requiredDependencies: Readonly<Record<string, string>>;
   readonly sourceKind: 'public' | 'web-artifact';
 }
 

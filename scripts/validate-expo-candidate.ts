@@ -184,7 +184,11 @@ function copyCleanProject(source: string, destination: string): void {
   });
 }
 
-function configureCandidateFixture(fixtureRoot: string, candidatePath: string): void {
+function configureCandidateFixture(
+  fixtureRoot: string,
+  candidatePath: string,
+  readerRange: string | undefined,
+): void {
   const packageJsonPath = join(fixtureRoot, 'package.json');
   const packageJson = readJsonObject(packageJsonPath);
   const dependencies = requireObject(packageJson.dependencies, `${packageJsonPath} dependencies`);
@@ -192,6 +196,7 @@ function configureCandidateFixture(fixtureRoot: string, candidatePath: string): 
   // This file: dependency exists only in the disposable acceptance fixture. Committed
   // example manifests continue to reference the latest released ZORA package.
   dependencies['@ankhorage/zora'] = `file:${candidatePath}`;
+  if (readerRange !== undefined) dependencies['@ankhorage/reader'] = readerRange;
   writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
 
   const tsconfigPath = join(fixtureRoot, 'tsconfig.json');
@@ -205,6 +210,12 @@ function configureCandidateFixture(fixtureRoot: string, candidatePath: string): 
   writeFileSync(tsconfigPath, `${JSON.stringify(tsconfig, null, 2)}\n`);
 
   rmSync(join(fixtureRoot, 'bun.lock'), { force: true });
+}
+
+/*** Materialize Reader from the packed ZORA candidate through its public Ankh commands. */
+function materializeReaderArtifact(fixtureRoot: string): void {
+  run(['bun', 'x', 'ankh', 'zora', 'create', 'reader', '--web'], fixtureRoot);
+  run(['bun', 'x', 'ankh', 'zora', 'sync', '--web'], fixtureRoot);
 }
 
 function verifyCandidateGraph(
@@ -367,15 +378,13 @@ function addReaderRoute(fixtureRoot: string): void {
   const source = `data:application/pdf;base64,${Buffer.from(document).toString('base64')}`;
   writeFileSync(
     join(fixtureRoot, 'app', 'reader.tsx'),
-    `import { Reader, View } from '@ankhorage/zora';
+    `import { Reader } from '../.ankh/zora/web/components/reader/Reader.js';
 
 const source = ${JSON.stringify(source)};
 
 export default function ReaderRoute() {
   return (
-    <View flex={1} p="m">
-      <Reader format="pdf" showChrome={false} source={source} />
-    </View>
+    <Reader format="pdf" showChrome={false} source={source} />
   );
 }
 `,
@@ -424,6 +433,7 @@ async function waitForMetroAsync(url: string): Promise<void> {
 /*** Render the Reader route in Chrome and require both the PDF canvas and selectable text layer. */
 async function verifyReaderMetroAsync(fixtureRoot: string): Promise<void> {
   const port = 19057;
+  const debuggerPort = 19058;
   const url = `http://127.0.0.1:${port}/reader`;
   const metro = Bun.spawn({
     cmd: ['bun', 'x', 'expo', 'start', '--web', '--port', String(port)],
@@ -432,35 +442,159 @@ async function verifyReaderMetroAsync(fixtureRoot: string): Promise<void> {
     stderr: 'pipe',
     stdout: 'pipe',
   });
+  const chromeProfile = mkdtempSync(join(fixtureRoot, '.reader-chrome-'));
+  let chrome: ReturnType<typeof Bun.spawn> | undefined;
   try {
     await waitForMetroAsync(url);
-    const chrome = resolveChromeExecutable();
-    const rendered = Bun.spawnSync({
+    chrome = Bun.spawn({
       cmd: [
-        chrome,
+        resolveChromeExecutable(),
         '--headless=new',
         '--disable-gpu',
         '--no-first-run',
-        '--virtual-time-budget=15000',
-        '--dump-dom',
-        url,
+        `--remote-debugging-port=${debuggerPort}`,
+        `--user-data-dir=${chromeProfile}`,
+        'about:blank',
       ],
       stderr: 'pipe',
       stdout: 'pipe',
-      timeout: 45_000,
     });
-    const output = `${rendered.stdout.toString()}\n${rendered.stderr.toString()}`;
-    assert(rendered.exitCode === 0, output);
-    assert(
-      output.includes('reader-pdf-text-layer'),
-      'Browser did not render the Reader PDF text layer.',
-    );
-    assert(output.includes('<canvas'), 'Browser did not render the Reader PDF canvas.');
-    assert(output.includes('ZORA Reader acceptance'), 'Browser text layer lacks the PDF content.');
+    await verifyReaderInChromeAsync(url, debuggerPort);
   } finally {
+    chrome?.kill();
+    if (chrome !== undefined) await chrome.exited;
+    rmSync(chromeProfile, { force: true, recursive: true });
     metro.kill();
     await metro.exited;
   }
+}
+
+/*** Inspect live Chrome DOM and console signals through the native DevTools protocol. */
+async function verifyReaderInChromeAsync(url: string, debuggerPort: number): Promise<void> {
+  const target = await waitForChromeTargetAsync(url, debuggerPort);
+  const consoleErrors: string[] = [];
+  const session = await openChromeSessionAsync(target.webSocketDebuggerUrl, consoleErrors);
+  try {
+    await session.command('Runtime.enable');
+    await session.command('Log.enable');
+    await session.command('Page.enable');
+    await session.command('Page.navigate', { url });
+    const deadline = Date.now() + 30_000;
+    while (Date.now() < deadline) {
+      const result = await session.command('Runtime.evaluate', {
+        awaitPromise: true,
+        expression: `JSON.stringify({ canvas: document.querySelectorAll('.reader-pdf-page canvas').length, text: [...document.querySelectorAll('.reader-pdf-text-layer span')].map((element) => element.textContent).join(' ') })`,
+        returnByValue: true,
+      });
+      const evaluation = result as {
+        readonly result?: { readonly result?: { readonly value?: unknown } };
+      };
+      const value = evaluation.result?.result?.value;
+      const reader = parseReaderRender(value);
+      if (reader?.canvas > 0 && reader.text.includes('ZORA Reader acceptance')) {
+        assert(
+          !consoleErrors.some((error) => /worker/i.test(error)),
+          `Reader browser logged a worker error:\n${consoleErrors.join('\n')}`,
+        );
+        return;
+      }
+      await Bun.sleep(250);
+    }
+    throw new Error(
+      `Reader browser did not render the PDF canvas and text layer. Console errors:\n${consoleErrors.join('\n')}`,
+    );
+  } finally {
+    session.close();
+  }
+}
+
+/*** Decode the DevTools evaluation result without trusting JSON parser output. */
+function parseReaderRender(
+  value: unknown,
+): { readonly canvas: number; readonly text: string } | undefined {
+  if (typeof value !== 'string') return undefined;
+  const parsed: unknown = JSON.parse(value);
+  if (
+    !isJsonObject(parsed) ||
+    typeof parsed.canvas !== 'number' ||
+    typeof parsed.text !== 'string'
+  ) {
+    return undefined;
+  }
+  return { canvas: parsed.canvas, text: parsed.text };
+}
+
+/*** Wait for Chrome's DevTools endpoint and create an isolated page for the Reader route. */
+async function waitForChromeTargetAsync(
+  url: string,
+  debuggerPort: number,
+): Promise<{ readonly webSocketDebuggerUrl: string }> {
+  const endpoint = `http://127.0.0.1:${debuggerPort}/json/new?${encodeURIComponent(url)}`;
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    try {
+      const response = await fetch(endpoint, { method: 'PUT' });
+      if (response.ok) {
+        const target: unknown = await response.json();
+        if (isJsonObject(target) && typeof target.webSocketDebuggerUrl === 'string') {
+          return { webSocketDebuggerUrl: target.webSocketDebuggerUrl };
+        }
+      }
+    } catch {
+      // Chrome has not opened the DevTools listener yet.
+    }
+    await Bun.sleep(250);
+  }
+  throw new Error('Chrome did not expose a DevTools page within 30 seconds.');
+}
+
+/*** Open a minimal DevTools session while retaining browser console and log errors. */
+async function openChromeSessionAsync(
+  url: string,
+  consoleErrors: string[],
+): Promise<{
+  readonly close: () => void;
+  readonly command: (method: string, params?: JsonObject) => Promise<JsonObject>;
+}> {
+  const socket = new WebSocket(url);
+  const pending = new Map<
+    number,
+    { readonly reject: (reason: unknown) => void; readonly resolve: (value: JsonObject) => void }
+  >();
+  let sequence = 0;
+  await new Promise<void>((resolve, reject) => {
+    socket.onerror = () => reject(new Error('Could not connect to Chrome DevTools.'));
+    socket.onopen = () => resolve();
+  });
+  socket.onmessage = ({ data }) => {
+    const message: unknown = JSON.parse(String(data));
+    if (!isJsonObject(message)) return;
+    if (typeof message.id === 'number') {
+      const request = pending.get(message.id);
+      if (request === undefined) return;
+      pending.delete(message.id);
+      if (message.error !== undefined) request.reject(message.error);
+      else request.resolve(message);
+      return;
+    }
+    const text = JSON.stringify(message);
+    if (
+      (message.method === 'Runtime.consoleAPICalled' || message.method === 'Log.entryAdded') &&
+      /(?:\"type\":\"error\"|\"level\":\"error\")/u.test(text)
+    ) {
+      consoleErrors.push(text);
+    }
+  };
+  return {
+    close: () => socket.close(),
+    command: async (method, params = {}) => {
+      const id = ++sequence;
+      socket.send(JSON.stringify({ id, method, params }));
+      return await new Promise<JsonObject>((resolve, reject) =>
+        pending.set(id, { reject, resolve }),
+      );
+    },
+  };
 }
 
 /*** Resolve Chrome from the CI image or the local macOS application bundle. */
@@ -517,6 +651,10 @@ try {
     sourceDependencies['@ankhorage/surface'],
     'source package Surface range',
   );
+  const readerRange = requireString(
+    sourceDependencies['@ankhorage/reader'],
+    'source package Reader range',
+  );
 
   console.log(`\nPacked candidate: ${candidatePath}`);
   console.log(`Candidate package version: ${candidateVersion}`);
@@ -527,7 +665,11 @@ try {
     const exportRoot = join(temporaryRoot, `${fixture.name}-web`);
 
     copyCleanProject(sourceRoot, fixtureRoot);
-    configureCandidateFixture(fixtureRoot, candidatePath);
+    configureCandidateFixture(
+      fixtureRoot,
+      candidatePath,
+      fixture.expectedWebRoutes === undefined ? undefined : readerRange,
+    );
 
     run(['bun', 'install'], fixtureRoot);
     run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
@@ -554,6 +696,7 @@ try {
 
     if (fixture.expectedWebRoutes) {
       verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
+      materializeReaderArtifact(fixtureRoot);
       addReaderRoute(fixtureRoot);
       const readerExportRoot = join(temporaryRoot, `${fixture.name}-reader-web`);
       run(['bun', 'run', 'typecheck'], fixtureRoot);
