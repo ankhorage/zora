@@ -163,6 +163,43 @@ test('reconciles a stalled animation at its request deadline instead of the quie
   expect(userScrolls).toEqual([['y', -140]]);
 });
 
+test('suppresses late animation echoes even after fallback reconciles a stalled axis', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 0, y: 200 }, true);
+  sync.scrolled('y', 40);
+
+  advance(700);
+  expect(userScrolls).toEqual([['y', -160]]);
+
+  // A delayed native animation may resume after the request deadline.
+  sync.scrolled('y', 100);
+  sync.scrolled('y', 200);
+  expect(userScrolls).toEqual([['y', -160]]);
+
+  // A real drag explicitly takes ownership and adopts the current physical offset.
+  sync.dragBegan('y', 200);
+  sync.scrolled('y', 230);
+  expect(userScrolls).toEqual([
+    ['y', -160],
+    ['y', 160],
+    ['y', 30],
+  ]);
+});
+
+test('a genuine reversal after a stalled animation exits residual echo suppression', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 0, y: 200 }, true);
+  sync.scrolled('y', 40);
+  advance(700);
+
+  sync.scrolled('y', 100);
+  sync.scrolled('y', 20);
+  expect(userScrolls).toEqual([
+    ['y', -160],
+    ['y', -20],
+  ]);
+});
+
 test('discards stale in-flight offsets and timers when a scroll is retargeted', () => {
   const { requests, sync, userScrolls } = createRecordedSync();
   sync.request({ x: 0, y: 200 }, true);
