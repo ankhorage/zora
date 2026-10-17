@@ -749,6 +749,12 @@ try {
   }
 
   completed = true;
+} catch (error) {
+  writeFileSync(
+    join(diagnosticsRoot, 'failure.log'),
+    `${sanitizeDiagnosticText(error instanceof Error ? (error.stack ?? error.message) : String(error))}\n`,
+  );
+  throw error;
 } finally {
   if (completed) {
     rmSync(temporaryRoot, { force: true, recursive: true });
@@ -779,4 +785,9 @@ function retainCandidateConfiguration(temporaryRoot: string, diagnosticsRoot: st
       writeFileSync(join(directory, file), readFileSync(source, 'utf8'));
     }
   }
+}
+
+/*** Remove common credential fields from the retained top-level failure summary. */
+function sanitizeDiagnosticText(contents: string): string {
+  return contents.replace(/((?:authorization|cookie|password|token)=)[^&\s]+/giu, '$1<redacted>');
 }
