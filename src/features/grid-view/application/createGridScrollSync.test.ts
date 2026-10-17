@@ -195,9 +195,39 @@ test('suppresses late animation echoes even after fallback reconciles a stalled 
   sync.scrolled('y', 230);
   expect(userScrolls).toEqual([
     ['y', -160],
-    ['y', 160],
     ['y', 30],
   ]);
+});
+
+test('converges the logical position when a delayed animation resumes after fallback', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 0, y: 200 }, true);
+  sync.scrolled('y', 40);
+
+  advance(700);
+  sync.scrolled('y', 100);
+  sync.scrolled('y', 200);
+  expect(sync.isCurrent({ x: 0, y: 200 })).toBe(true);
+  sync.scrollEnded('y', 200);
+
+  expect(userScrolls).toEqual([['y', -160]]);
+});
+
+test('retargeting discards residual echo ownership from an earlier animation', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 0, y: 200 }, true);
+  sync.scrolled('y', 40);
+  advance(700);
+
+  sync.request({ x: 0, y: 400 }, true);
+  sync.scrolled('y', 100);
+  advance(700);
+
+  expect(userScrolls).toEqual([
+    ['y', -160],
+    ['y', -300],
+  ]);
+  expect(sync.isCurrent({ x: 0, y: 100 })).toBe(true);
 });
 
 test('a genuine reversal after a stalled animation exits residual echo suppression', () => {
@@ -210,7 +240,7 @@ test('a genuine reversal after a stalled animation exits residual echo suppressi
   sync.scrolled('y', 20);
   expect(userScrolls).toEqual([
     ['y', -160],
-    ['y', -20],
+    ['y', -80],
   ]);
 });
 

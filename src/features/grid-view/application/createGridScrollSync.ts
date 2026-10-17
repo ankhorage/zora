@@ -72,7 +72,9 @@ export function createGridScrollSync({
     const tail = echoTails.get(axis);
     if (tail) {
       if (isContinuingProgrammaticEcho(tail, offset)) {
-        tail.lastOffset = offset;
+        position = withAxis(position, axis, offset);
+        if (isSameOffset(offset, tail.target)) echoTails.delete(axis);
+        else tail.lastOffset = offset;
         return;
       }
       echoTails.delete(axis);
@@ -110,6 +112,7 @@ export function createGridScrollSync({
         const target = readAxis(next, axis);
         if (isSameOffset(readAxis(position, axis), target)) continue;
         release(axis);
+        echoTails.delete(axis);
         pending.set(axis, { animated, expiresAt, target });
         scrollTo(axis, target, animated);
       }
@@ -122,8 +125,8 @@ export function createGridScrollSync({
       else if (hadTail) adopt(axis, offset);
     },
     scrollEnded: (axis, offset) => {
-      echoTails.delete(axis);
       scrolled(axis, offset);
+      echoTails.delete(axis);
       if (pending.has(axis)) settle(axis, offset);
     },
     dispose: () => {
