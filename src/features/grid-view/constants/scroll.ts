@@ -6,4 +6,3 @@ export const ANIMATED_SCROLL_WINDOW_MS = 700;
 
 /** Upper bound for an immediate `scrollTo` to deliver its settled offset. */
 export const IMMEDIATE_SCROLL_WINDOW_MS = 120;
-
