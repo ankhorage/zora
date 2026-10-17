@@ -165,7 +165,7 @@ async function bundleWebArtifactsAsync(
       asset: 'assets/[name]-[hash].[ext]',
     },
     conditions: ['browser', 'import', 'default'],
-    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    external: ['@ankhorage/reader', 'react', 'react/*', 'react-dom', 'react-dom/*'],
     plugins: createWebBuildPlugins({
       sourceRoot: paths.sourceRoot,
       surfacePackageRoot: paths.surfacePackageRoot,
@@ -233,6 +233,7 @@ async function validateBundle(bundlePath: string): Promise<void> {
   );
   for (const specifier of collectRuntimeImports(javascript)) {
     if (
+      specifier !== '@ankhorage/reader' &&
       specifier !== 'react' &&
       !specifier.startsWith('react/') &&
       specifier !== 'react-dom' &&
