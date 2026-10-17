@@ -80,6 +80,7 @@ export interface GridScrollPosition {
 
 /** A programmatic native scroll request that GridView is still waiting to observe. */
 export interface GridPendingScroll {
+  readonly animated: boolean;
   readonly expiresAt: number;
   readonly target: number;
 }
