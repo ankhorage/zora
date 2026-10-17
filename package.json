@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@ankhorage/ankh": "^0.13.1",
-    "@ankhorage/capability": "^0.2.1",
+    "@ankhorage/capability": "^0.2.2",
     "@ankhorage/color-theory": "^0.3.1",
     "@ankhorage/contracts": "^26.0.0",
     "@ankhorage/game": "^0.1.3",
