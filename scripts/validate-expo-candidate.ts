@@ -11,6 +11,11 @@ import {
 } from 'node:fs';
 import { basename, join, relative, resolve, sep } from 'node:path';
 
+import {
+  prepareCandidateProviderCache,
+  verifyMaterializedReaderArtifact,
+} from './web-artifacts/verifyCandidateReaderArtifact';
+
 interface CandidateFixture {
   readonly doctor: boolean;
   readonly expectedWebRoutes?: readonly string[];
@@ -212,10 +217,11 @@ function configureCandidateFixture(
   rmSync(join(fixtureRoot, 'bun.lock'), { force: true });
 }
 
-/*** Materialize Reader from the packed ZORA candidate through its public Ankh commands. */
-function materializeReaderArtifact(fixtureRoot: string): void {
-  run(['bun', 'x', 'ankh', 'zora', 'create', 'reader', '--web'], fixtureRoot);
-  run(['bun', 'x', 'ankh', 'zora', 'sync', '--web'], fixtureRoot);
+/*** Materialize Reader through Ankh using the packed candidate provider, never a released cache entry. */
+function materializeReaderArtifact(fixtureRoot: string, providerCacheRoot: string): void {
+  const environment = { ANKH_CACHE_DIR: providerCacheRoot };
+  run(['bun', 'x', 'ankh', 'zora', 'create', 'reader', '--web'], fixtureRoot, environment);
+  run(['bun', 'x', 'ankh', 'zora', 'sync', '--web'], fixtureRoot, environment);
 }
 
 function verifyCandidateGraph(
@@ -630,6 +636,7 @@ function verifyNativeFonts(fixtureRoot: string): void {
 
 const temporaryRoot = mkdtempSync(join(TEMPORARY_DIRECTORY, 'zora-expo-candidate-'));
 const packageRoot = join(temporaryRoot, 'package');
+const providerCacheRoot = join(temporaryRoot, 'ankh-cache');
 let completed = false;
 
 try {
@@ -662,6 +669,7 @@ try {
 
   console.log(`\nPacked candidate: ${candidatePath}`);
   console.log(`Candidate package version: ${candidateVersion}`);
+  prepareCandidateProviderCache(providerCacheRoot, candidatePath, run);
 
   for (const fixture of FIXTURES) {
     const fixtureRoot = join(temporaryRoot, fixture.name);
@@ -700,7 +708,8 @@ try {
 
     if (fixture.expectedWebRoutes) {
       verifyRouterRouteSurface(exportRoot, fixture.expectedWebRoutes);
-      materializeReaderArtifact(fixtureRoot);
+      materializeReaderArtifact(fixtureRoot, providerCacheRoot);
+      verifyMaterializedReaderArtifact(fixtureRoot, candidateVersion);
       addReaderRoute(fixtureRoot);
       const readerExportRoot = join(temporaryRoot, `${fixture.name}-reader-web`);
       run(['bun', 'run', 'typecheck'], fixtureRoot);
