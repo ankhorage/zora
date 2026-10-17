@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "ios": {
+      "bundleIdentifier": "com.faebster.zora-grid-workspaces-example"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "enableSceneSupport": true
+          }
+        }
+      ],
+      "./plugins/withRnsvgFiltersDeploymentTarget"
+    ]
+  }
+}

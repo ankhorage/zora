@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.faebster.ankhoragezora"
+  },
+  "ios": {
+    "bundleIdentifier": "com.faebster.ankhoragezora"
+  }
+}

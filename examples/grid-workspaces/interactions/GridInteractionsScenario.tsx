@@ -1,7 +1,8 @@
+import { worldToViewport } from '@ankhorage/grid-view';
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { worldToViewport } from '@ankhorage/grid-view';
+import { ResponsiveWidth } from '../ResponsiveWidth';
 
 const initialViewport = {
   height: 320,
@@ -21,7 +22,9 @@ const initialItems = [
 export function GridInteractionsScenario() {
   return (
     <React.Suspense fallback={null}>
-      <GridInteractionsScenarioContent />
+      <ResponsiveWidth maxWidth={initialViewport.width}>
+        {(width) => <GridInteractionsScenarioContent width={width} />}
+      </ResponsiveWidth>
     </React.Suspense>
   );
 }
@@ -34,8 +37,11 @@ const GridInteractionsScenarioContent = React.lazy(async () => {
     );
   }
   return {
-    default: () => (
-      <GridInteractionsScenarioContentRenderer GridInteractions={zora.GridInteractions} />
+    default: ({ width }: { readonly width: number }) => (
+      <GridInteractionsScenarioContentRenderer
+        GridInteractions={zora.GridInteractions}
+        width={width}
+      />
     ),
   };
 });
@@ -46,13 +52,21 @@ function hasGridInteractions(value: object): value is GridInteractionsComponents
 }
 
 /** Renders the scenario through the released public package instead of local repository source. */
-function GridInteractionsScenarioContentRenderer({ GridInteractions }: GridInteractionsComponents) {
+function GridInteractionsScenarioContentRenderer({
+  GridInteractions,
+  width,
+}: GridInteractionsComponents & { readonly width: number }) {
   const [items, setItems] = React.useState<readonly GridInteractionItem[]>(initialItems);
   const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([]);
-  const [viewport, setViewport] = React.useState(initialViewport);
+  const [viewportState, setViewport] = React.useState(initialViewport);
+  const viewport = React.useMemo(() => ({ ...viewportState, width }), [viewportState, width]);
 
   const handleIntent = (nextIntent: GridInteractionIntent) => {
-    if (nextIntent.type === 'select' || nextIntent.type === 'marquee') {
+    if (
+      nextIntent.type === 'select' ||
+      nextIntent.type === 'marquee' ||
+      nextIntent.type === 'move'
+    ) {
       setSelectedIds(nextIntent.itemIds);
     }
     if (nextIntent.rects !== undefined) {

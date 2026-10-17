@@ -57,6 +57,10 @@ const zora = {
 };
 
 mock.module('react-native', () => reactNativeWeb);
+mock.module('react-native-safe-area-context', () => ({
+  SafeAreaProvider: ({ children }: { children: ReactNode }) => children,
+  useSafeAreaInsets: () => ({ bottom: 0, left: 0, right: 0, top: 0 }),
+}));
 mock.module('@ankhorage/zora', () => zora);
 mock.module('../GridRulersScenario', () => ({ GridRulersScenario: Empty }));
 mock.module('../matrix/PianoRollMatrixScenario', () => ({ PianoRollMatrixScenario: Empty }));
