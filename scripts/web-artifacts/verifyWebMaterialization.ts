@@ -206,9 +206,7 @@ try {
     ),
   );
   assert(
-    reachableReaderFiles.some(([, source]) =>
-      /from ['"]@ankhorage\/reader['"]/u.test(source),
-    ),
+    reachableReaderFiles.some(([, source]) => /from ['"]@ankhorage\/reader['"]/u.test(source)),
     'Reader artifact graph does not preserve the external Reader import.',
   );
   assert(
