@@ -94,6 +94,20 @@ test('keeps delayed animated frames from becoming user pans after a 120ms quiet 
   expect(userScrolls).toEqual([['y', 30]]);
 });
 
+test('ignores a first native animation frame arriving after the initial request deadline', () => {
+  const { sync, userScrolls } = createRecordedSync();
+  sync.request({ x: 300, y: 0 }, true);
+
+  advance(800);
+  sync.scrolled('x', 100);
+  sync.scrolled('x', 299.7);
+
+  expect(userScrolls).toEqual([]);
+  expect(jest.getTimerCount()).toBe(0);
+  sync.scrolled('x', 320);
+  expect(userScrolls).toEqual([['x', 20]]);
+});
+
 test('keeps the axes independent: settling vertical leaves a pending horizontal scroll alone', () => {
   const { sync, userScrolls } = createRecordedSync();
   sync.request({ x: 300, y: 200 }, true);
