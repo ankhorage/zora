@@ -77,7 +77,13 @@ export function createGridScrollSync({
       }
       echoTails.delete(axis);
     }
-    const pendingScroll = pending.get(axis);
+    let pendingScroll = pending.get(axis);
+    if (pendingScroll?.animated && now() > pendingScroll.expiresAt) {
+      // A native scroll may deliver its first frame after the initial deadline.
+      // Without an explicit drag/end, that is still an echo of our scrollTo.
+      pendingScroll = { ...pendingScroll, expiresAt: now() + ANIMATED_SCROLL_WINDOW_MS };
+      pending.set(axis, pendingScroll);
+    }
     const source = resolveScrollEventSource(pendingScroll, offset, now());
     if (source === 'in-flight' && pendingScroll) {
       clearTimer(axis);
