@@ -29,6 +29,7 @@ function MatrixGridInner({
   onSelectionChange,
   onViewportChange,
   overscanPixels = 160,
+  protectedCellIds = [],
   readOnly = false,
   renderCell,
   selectedCellIds = [],
@@ -57,6 +58,11 @@ function MatrixGridInner({
   );
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
   const anchorId = React.useRef<string | null>(null);
+  const protectedCellIdSet = React.useMemo(() => new Set(protectedCellIds), [protectedCellIds]);
+  const isNavigable = React.useCallback(
+    (id: string) => !protectedCellIdSet.has(id),
+    [protectedCellIdSet],
+  );
 
   const handleViewportChange = React.useCallback(
     (proposal: GridViewport) => {
@@ -68,7 +74,7 @@ function MatrixGridInner({
 
   const activateCell = React.useCallback(
     (cell: GridMatrixCellPlacement, event: unknown) => {
-      if (interactionPolicy === 'passive' || readOnly) return;
+      if (interactionPolicy === 'passive' || readOnly || protectedCellIdSet.has(cell.id)) return;
       const intent = isRangeSelectionEvent(event)
         ? 'range'
         : resolveSelectionEventIntent(event, 'pointer');
@@ -80,6 +86,7 @@ function MatrixGridInner({
           anchorId.current,
           intent,
           selectionMode,
+          protectedCellIdSet,
         ),
       );
       if (intent !== 'range') anchorId.current = cell.id;
@@ -91,6 +98,7 @@ function MatrixGridInner({
       selectedCellIds,
       selectionMode,
       sparseIndex.entries,
+      protectedCellIdSet,
     ],
   );
   const handleKeyboardNavigation = React.useCallback(
@@ -106,6 +114,7 @@ function MatrixGridInner({
     sparseIndex,
     interactionPolicy === 'passive',
     visibleIds,
+    isNavigable,
     handleKeyboardNavigation,
   );
   const focusedPlacement = React.useMemo(() => {
@@ -148,6 +157,7 @@ function MatrixGridInner({
             activateCell,
             keyboard,
             interactionPolicy === 'passive',
+            protectedCellIdSet.has(cell.id),
             readOnly,
             testID,
           );
@@ -171,6 +181,7 @@ function renderMatrixCell(
   activateCell: (cell: GridMatrixCellPlacement, event: unknown) => void,
   keyboard: ReturnType<typeof useMatrixGridKeyboardFocus>,
   passive: boolean,
+  protectedCell: boolean,
   readOnly: boolean,
   testID: string | undefined,
 ) {
@@ -181,7 +192,7 @@ function renderMatrixCell(
       onKeyDown={(event) => {
         if (keyboard.onKeyDown(cell.id, event.key, event.shiftKey)) return true;
         if (!['Enter', ' '].includes(event.key)) return false;
-        if (passive || readOnly) return false;
+        if (passive || protectedCell || readOnly) return false;
         activateCell(cell, event);
         return true;
       }}
@@ -191,9 +202,9 @@ function renderMatrixCell(
         accessibilityActions={[{ name: 'activate' }]}
         accessibilityLabel={`Cell ${cell.id}`}
         accessibilityRole="button"
-        accessibilityState={{ disabled: passive, selected }}
-        disabled={passive}
-        focusable={Platform.OS !== 'web' || canInteract}
+        accessibilityState={{ disabled: passive || protectedCell, selected }}
+        disabled={passive || protectedCell}
+        focusable={!protectedCell && (Platform.OS !== 'web' || canInteract)}
         style={[
           styles.cell,
           {
