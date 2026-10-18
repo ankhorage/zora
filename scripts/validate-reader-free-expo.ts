@@ -213,7 +213,9 @@ async function verifyLiveVariantAsync(
       env: {
         ...process.env,
         BUN_INSTALL_CACHE_DIR: bunCacheRoot,
-        CI: '1',
+        // Expo starts an unrelated React Native DevTools Chromium process when CI is set.
+        // The acceptance owns its browser explicitly below, so Metro must stay headless here.
+        CI: '',
         EXPO_HOME: expoHome,
         EXPO_NO_TELEMETRY: '1',
         TMPDIR: temporaryRoot,
