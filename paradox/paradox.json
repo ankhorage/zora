@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.13",
+      "value": "v25.8.14",
       "color": "cb3837"
     },
     {
@@ -24231,7 +24231,7 @@
       "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-        "line": 232,
+        "line": 243,
         "column": 14
       },
       "exportPaths": [
@@ -24332,6 +24332,13 @@
           "name": "overscanPixels",
           "kind": "property",
           "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "protectedCellIds",
+          "kind": "property",
+          "type": "readonly string[] | undefined",
           "required": false,
           "description": null
         },
@@ -52073,7 +52080,7 @@
       "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-        "line": 232,
+        "line": 243,
         "column": 14
       },
       "exportPaths": [
@@ -52137,6 +52144,12 @@
         {
           "name": "overscanPixels",
           "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "protectedCellIds",
+          "type": "readonly string[] | undefined",
           "required": false,
           "description": null
         },
@@ -67527,7 +67540,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-        "line": 165,
+        "line": 175,
         "column": 1
       }
     },
@@ -67538,7 +67551,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-        "line": 218,
+        "line": 229,
         "column": 1
       }
     },
@@ -67616,6 +67629,17 @@
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
         "line": 7,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveNextNavigableId",
+      "description": "Skip protected sparse cells while retaining the nearest deterministic directional navigation.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
+        "line": 80,
         "column": 1
       }
     },
@@ -84015,6 +84039,18 @@
         "sourcePath": "src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.web.tsx"
       },
       {
+        "fromSymbol": "useMatrixGridKeyboardFocus",
+        "toSymbol": "isNavigable",
+        "callExpression": "isNavigable",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
+        "toSymbol": "isNavigable",
+        "callExpression": "isNavigable",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
+      },
+      {
         "fromSymbol": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
         "toSymbol": "setFocusedId",
         "callExpression": "setFocusedId",
@@ -84028,8 +84064,8 @@
       },
       {
         "fromSymbol": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
-        "toSymbol": "getMatrixGridNextFocusId",
-        "callExpression": "getMatrixGridNextFocusId",
+        "toSymbol": "resolveNextNavigableId",
+        "callExpression": "resolveNextNavigableId",
         "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
       },
       {
@@ -84042,6 +84078,18 @@
         "fromSymbol": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts",
         "toSymbol": "focus",
         "callExpression": "mounted.focus",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "resolveNextNavigableId",
+        "toSymbol": "getMatrixGridNextFocusId",
+        "callExpression": "getMatrixGridNextFocusId",
+        "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
+      },
+      {
+        "fromSymbol": "resolveNextNavigableId",
+        "toSymbol": "isNavigable",
+        "callExpression": "isNavigable",
         "sourcePath": "src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts"
       },
       {

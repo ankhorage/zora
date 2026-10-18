@@ -16067,7 +16067,7 @@
     "modulePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
     "sourceLocation": {
       "filePath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
-      "line": 232,
+      "line": 243,
       "column": 14
     },
     "exportPaths": [
@@ -16168,6 +16168,13 @@
         "name": "overscanPixels",
         "kind": "property",
         "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "protectedCellIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
         "required": false,
         "description": null
       },

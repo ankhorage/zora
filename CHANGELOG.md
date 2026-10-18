@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.14
+
+### Patch Changes
+
+- 2ba10d7: Prevent protected MatrixGrid cells from receiving focus or changing selection.
+
 ## 25.8.13
 
 ### Patch Changes

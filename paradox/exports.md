@@ -3775,7 +3775,7 @@ Source: `src/types/manifest-list.ts:30:1`
 
 Kind: `value`
 Module: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx`
-Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:232:14`
+Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:243:14`
 
 A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.
 
@@ -3799,6 +3799,7 @@ Source: `src/types/matrix-grid.ts:13:1`
 | onSelectionChange | property | `((ids: readonly string[]) => void) \| undefined` | no |  |
 | onViewportChange | property | `((viewport: GridViewport) => void) \| undefined` | no |  |
 | overscanPixels | property | `number \| undefined` | no |  |
+| protectedCellIds | property | `readonly string[] \| undefined` | no |  |
 | readOnly | property | `boolean \| undefined` | no |  |
 | renderCell | property | `(cell: GridMatrixCellPlacement) => React.ReactNode` | yes |  |
 | selectedCellIds | property | `readonly string[] \| undefined` | no |  |

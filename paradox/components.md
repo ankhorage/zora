@@ -2185,7 +2185,7 @@ Export paths: `src/index.ts`
 
 ## MatrixGrid
 
-Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:232:14`
+Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:243:14`
 
 A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.
 
@@ -2203,6 +2203,7 @@ Export paths: `src/index.ts`
 | onSelectionChange | `((ids: readonly string[]) => void) \| undefined` | no | — |  |
 | onViewportChange | `((viewport: GridViewport) => void) \| undefined` | no | — |  |
 | overscanPixels | `number \| undefined` | no | — |  |
+| protectedCellIds | `readonly string[] \| undefined` | no | — |  |
 | readOnly | `boolean \| undefined` | no | — |  |
 | renderCell | `(cell: GridMatrixCellPlacement) => React.ReactNode` | yes | — |  |
 | selectedCellIds | `readonly string[] \| undefined` | no | — |  |

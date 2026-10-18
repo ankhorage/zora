@@ -1119,7 +1119,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts">
       src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts
-      <small>1 function</small>
+      <small>2 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/matrix-grid/application/createMatrixGridSparseIndex.ts">
@@ -7184,7 +7184,7 @@ Native hosts can inject another compatible implementation.</p>
               <article class="item" id="symbol-matrixgrid" data-search="MatrixGrid  value src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.">
     <h4>MatrixGrid</h4>
     
-    <p class="muted">value • <code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:232:14</code></p>
+    <p class="muted">value • <code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:243:14</code></p>
     <p>A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -22615,6 +22615,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>overscanPixels</code></td>
             <td>property</td>
             <td><code>number | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>protectedCellIds</code></td>
+            <td>property</td>
+            <td><code>readonly string[] | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -39224,9 +39230,9 @@ responsive sizes, and theme-aware emphasis while preserving header semantics.</p
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-matrixgrid" data-search="MatrixGrid src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx A code-first generic sparse matrix grid; formulas and domain vocabulary remain external. accessibilityLabel string | undefined cells readonly GridMatrixCell[] height number interactionPolicy InteractionPolicy | undefined inverted boolean | undefined layout GridMatrixLayout mode ZoraThemeMode | undefined onSelectionChange ((ids: readonly string[]) =&gt; void) | undefined onViewportChange ((viewport: GridViewport) =&gt; void) | undefined overscanPixels number | undefined readOnly boolean | undefined renderCell (cell: GridMatrixCellPlacement) =&gt; React.ReactNode selectedCellIds readonly string[] | undefined selectionMode SelectionMode | undefined testID string | undefined themeId string | undefined viewport GridViewport | undefined width number zoomX number | undefined zoomY number | undefined">
+  </article><article class="item" id="component-matrixgrid" data-search="MatrixGrid src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx A code-first generic sparse matrix grid; formulas and domain vocabulary remain external. accessibilityLabel string | undefined cells readonly GridMatrixCell[] height number interactionPolicy InteractionPolicy | undefined inverted boolean | undefined layout GridMatrixLayout mode ZoraThemeMode | undefined onSelectionChange ((ids: readonly string[]) =&gt; void) | undefined onViewportChange ((viewport: GridViewport) =&gt; void) | undefined overscanPixels number | undefined protectedCellIds readonly string[] | undefined readOnly boolean | undefined renderCell (cell: GridMatrixCellPlacement) =&gt; React.ReactNode selectedCellIds readonly string[] | undefined selectionMode SelectionMode | undefined testID string | undefined themeId string | undefined viewport GridViewport | undefined width number zoomX number | undefined zoomY number | undefined">
     <h3>MatrixGrid</h3>
-    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:232:14</code></p>
+    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:243:14</code></p>
     <p>A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -39281,6 +39287,11 @@ responsive sizes, and theme-aware emphasis while preserving header semantics.</p
             </tr><tr>
               <td><code>overscanPixels</code></td>
               <td><code>number | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>protectedCellIds</code></td>
+              <td><code>readonly string[] | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -64562,12 +64573,12 @@ so echoes of GridView&#39;s own scrollTo calls never become viewport pans.</p>
     
   </article><article class="item" data-search="renderMatrixCell src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx Render one positioned sparse cell with native/web accessible selection semantics.">
     <h3>renderMatrixCell</h3>
-    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:165:1</code></p>
+    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:175:1</code></p>
     <p>Render one positioned sparse cell with native/web accessible selection semantics.</p>
     
   </article><article class="item" data-search="isRangeSelectionEvent src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx Recognize range intent without changing the shared replace-or-toggle selection contract.">
     <h3>isRangeSelectionEvent</h3>
-    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:218:1</code></p>
+    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:229:1</code></p>
     <p>Recognize range intent without changing the shared replace-or-toggle selection contract.</p>
     
   </article>
@@ -64624,6 +64635,11 @@ so echoes of GridView&#39;s own scrollTo calls never become viewport pans.</p>
     <h3>useMatrixGridKeyboardFocus</h3>
     <p class="muted"><code>src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts:7:1</code></p>
     <p>Keep one roving focus target and restore it after GridView virtualizes a sparse cell.</p>
+    
+  </article><article class="item" data-search="resolveNextNavigableId src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts Skip protected sparse cells while retaining the nearest deterministic directional navigation.">
+    <h3>resolveNextNavigableId</h3>
+    <p class="muted"><code>src/features/matrix-grid/adapters/inbound/useMatrixGridKeyboardFocus.ts:80:1</code></p>
+    <p>Skip protected sparse cells while retaining the nearest deterministic directional navigation.</p>
     
   </article>
     </section>
