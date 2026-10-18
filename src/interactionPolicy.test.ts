@@ -50,7 +50,7 @@ describe('InteractionPolicy declaration', () => {
   });
 
   test('registry contract is compile-time only', () => {
-    const registrySource = readFeature('registry', 'ZORA_COMPONENT_REGISTRY.ts');
+    const registrySource = readFeature('registry', 'ZORA_BASE_COMPONENT_REGISTRY.ts');
 
     expect(registrySource).not.toMatch(/type\s+InteractionPolicy/);
     expect(registrySource).toContain(

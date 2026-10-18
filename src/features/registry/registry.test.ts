@@ -78,9 +78,27 @@ describe('ZORA_COMPONENT_REGISTRY', () => {
     expect(registryEntries).toContain('View');
     expect(registryEntries).toContain('AppHeader');
     expect(source).toContain("export type { ZoraComponentRegistry } from './types/registry';");
-    expect(source).toContain(
-      "export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';",
-    );
+    expect(source).toContain('ZORA_COMPONENT_REGISTRY');
+  });
+
+  test('publishes a Reader-free registry composition boundary', async () => {
+    const [baseSource, packageJson, readerFreeSource] = await Promise.all([
+      Bun.file('src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts').text(),
+      Bun.file('package.json').json() as Promise<{ readonly exports: Record<string, unknown> }>,
+      Bun.file('src/features/registry/readerFreeRegistry.ts').text(),
+    ]);
+
+    expect(baseSource).not.toContain("from '../reader/public'");
+    expect(readerFreeSource).toContain('ZORA_BASE_COMPONENT_REGISTRY');
+    expect(readerFreeSource).toContain('createZoraComponentRegistry');
+    expect(readerFreeSource).not.toContain('ZORA_COMPONENT_REGISTRY');
+    expect(packageJson.exports['./registry']).toEqual({
+      'react-native': './src/features/registry/readerFreeRegistry.ts',
+      browser: './src/features/registry/readerFreeRegistry.ts',
+      types: './dist/features/registry/readerFreeRegistry.d.ts',
+      import: './dist/features/registry/readerFreeRegistry.js',
+      default: './dist/features/registry/readerFreeRegistry.js',
+    });
   });
 
   test('covers every public concrete ZORA component export supported for runtime rendering', async () => {

@@ -391,7 +391,11 @@ export {
   ZORA_THEME_RECIPE_META,
   ZORA_THEME_TOKEN_FAMILIES,
 } from './features/registry';
-export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
+export {
+  createZoraComponentRegistry,
+  ZORA_BASE_COMPONENT_REGISTRY,
+  ZORA_COMPONENT_REGISTRY,
+} from './features/registry/public';
 export type {
   BarcodeScannerViewProps,
   BarcodeScanResult,

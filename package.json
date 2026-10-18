@@ -93,6 +93,13 @@
       "import": "./dist/features/registry/index.js",
       "default": "./dist/features/registry/index.js"
     },
+    "./registry": {
+      "react-native": "./src/features/registry/readerFreeRegistry.ts",
+      "browser": "./src/features/registry/readerFreeRegistry.ts",
+      "types": "./dist/features/registry/readerFreeRegistry.d.ts",
+      "import": "./dist/features/registry/readerFreeRegistry.js",
+      "default": "./dist/features/registry/readerFreeRegistry.js"
+    },
     "./capabilities": {
       "types": "./dist/capabilities/index.d.ts",
       "import": "./dist/capabilities/index.js",
