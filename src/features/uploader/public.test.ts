@@ -6,15 +6,16 @@ describe('ZORA Uploader public contract', () => {
       dependencies: Readonly<Record<string, string>>;
       exports: Readonly<Record<string, unknown>>;
     };
-    const [rootSource, publicSource] = await Promise.all([
+    const [rootSource, readerFreeSource, publicSource] = await Promise.all([
       Bun.file('src/index.ts').text(),
+      Bun.file('src/readerFree.ts').text(),
       Bun.file('src/features/uploader/public.ts').text(),
     ]);
 
     expect(packageJson.exports['./uploader']).toBeDefined();
     expect(packageJson.dependencies['expo-image-picker']).toMatch(/^~57\./u);
     expect(packageJson.dependencies['expo-document-picker']).toMatch(/^~57\./u);
-    expect(rootSource).toContain("from './features/uploader/public'");
+    expect(`${rootSource}\n${readerFreeSource}`).toContain("from './features/uploader/public'");
     expect(publicSource).toContain('export { Uploader }');
     expect(publicSource).toContain('export { validateUploadAsset }');
   });

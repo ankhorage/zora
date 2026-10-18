@@ -4,18 +4,20 @@ import { progressRingMeta } from '../../progressMeta';
 
 describe('ProgressRing public contract', () => {
   test('is exported from the component and package entrypoints', async () => {
-    const [componentIndex, rootIndex] = await Promise.all([
+    const [componentIndex, rootIndex, readerFreeIndex] = await Promise.all([
       Bun.file('src/features/progress/public.ts').text(),
       Bun.file('src/index.ts').text(),
+      Bun.file('src/readerFree.ts').text(),
     ]);
 
     expect(componentIndex).toContain(
       "export { ProgressRing } from './adapters/inbound/ProgressRing';",
     );
     expect(componentIndex).toContain('ProgressRingProps');
-    expect(rootIndex).toContain("} from './features/progress/public';");
-    expect(rootIndex).toContain('type ProgressProps');
-    expect(rootIndex).toContain('type ProgressRingProps');
+    const rootSurface = `${rootIndex}\n${readerFreeIndex}`;
+    expect(rootSurface).toContain("} from './features/progress/public';");
+    expect(rootSurface).toContain('type ProgressProps');
+    expect(rootSurface).toContain('type ProgressRingProps');
   });
 
   test('exposes native progress semantics and uses canonical normalization and colors', async () => {

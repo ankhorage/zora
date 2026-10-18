@@ -232,12 +232,5 @@ const _ZORA_BASE_COMPONENT_REGISTRY = {
   TreeView,
 } as const satisfies ZoraComponentRegistry;
 
-/*** Build a runtime component registry from ZORA's Reader-free base and explicitly selected feature entries. */
-export function createZoraComponentRegistry(
-  extensions: ZoraComponentRegistry = {},
-): ZoraComponentRegistry {
-  return { ..._ZORA_BASE_COMPONENT_REGISTRY, ...extensions };
-}
-
 /*** The core ZORA runtime component registry, excluding separately selected feature entries such as Reader. */
 export const ZORA_BASE_COMPONENT_REGISTRY: ZoraComponentRegistry = _ZORA_BASE_COMPONENT_REGISTRY;

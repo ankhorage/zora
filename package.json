@@ -100,6 +100,13 @@
       "import": "./dist/features/registry/readerFreeRegistry.js",
       "default": "./dist/features/registry/readerFreeRegistry.js"
     },
+    "./reader-free": {
+      "react-native": "./src/readerFree.ts",
+      "browser": "./src/readerFree.ts",
+      "types": "./dist/readerFree.d.ts",
+      "import": "./dist/readerFree.js",
+      "default": "./dist/readerFree.js"
+    },
     "./capabilities": {
       "types": "./dist/capabilities/index.d.ts",
       "import": "./dist/capabilities/index.js",

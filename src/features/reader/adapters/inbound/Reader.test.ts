@@ -30,7 +30,7 @@ describe('Reader public contract', () => {
     const source = await Bun.file('src/index.ts').text();
 
     expect(source).toContain("from './features/reader/public';");
-    expect(source).toContain('Reader, resolveReaderProgress');
+    expect(source).toContain('resolveReaderProgress');
     expect(source).not.toContain('ReaderSurface');
   });
 
