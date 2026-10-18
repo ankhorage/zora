@@ -6,6 +6,7 @@ import { describe, expect, test } from 'bun:test';
 const srcDir = join(import.meta.dir, '../..');
 const publicSource = readFileSync(join(import.meta.dir, 'public.ts'), 'utf8');
 const rootSource = readFileSync(join(srcDir, 'index.ts'), 'utf8');
+const readerFreeSource = readFileSync(join(srcDir, 'readerFree.ts'), 'utf8');
 
 const removedPublicNames = [
   'Box',
@@ -27,7 +28,7 @@ describe('canonical layout boundary', () => {
     }
 
     expect(publicSource).not.toContain('TileGrid');
-    expect(rootSource).toContain(
+    expect(`${rootSource}\n${readerFreeSource}`).toContain(
       "export { GridView, layoutTileGrid, TileGrid } from './features/grid-view/public';",
     );
 

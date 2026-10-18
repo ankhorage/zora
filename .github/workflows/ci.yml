@@ -116,6 +116,18 @@ jobs:
             echo "No typecheck script found; skipping."
           fi
 
+      - name: Validate packed Reader-free Expo consumer
+        if: github.event_name == 'pull_request'
+        run: bun run expo:reader-free
+
+      - name: Upload Reader-free Expo diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reader-free-expo-diagnostics
+          path: ${{ runner.temp }}/zora-reader-free-*/artifacts/*.log
+          if-no-files-found: ignore
+
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: |

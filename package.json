@@ -93,6 +93,20 @@
       "import": "./dist/features/registry/index.js",
       "default": "./dist/features/registry/index.js"
     },
+    "./registry": {
+      "react-native": "./src/features/registry/readerFreeRegistry.ts",
+      "browser": "./src/features/registry/readerFreeRegistry.ts",
+      "types": "./dist/features/registry/readerFreeRegistry.d.ts",
+      "import": "./dist/features/registry/readerFreeRegistry.js",
+      "default": "./dist/features/registry/readerFreeRegistry.js"
+    },
+    "./reader-free": {
+      "react-native": "./src/readerFree.ts",
+      "browser": "./src/readerFree.ts",
+      "types": "./dist/readerFree.d.ts",
+      "import": "./dist/readerFree.js",
+      "default": "./dist/readerFree.js"
+    },
     "./capabilities": {
       "types": "./dist/capabilities/index.d.ts",
       "import": "./dist/capabilities/index.js",
@@ -124,6 +138,7 @@
     "knip:check": "ankhorage-knip",
     "examples:validate": "bun scripts/validate-example-projects.ts",
     "expo:candidate": "bun scripts/validate-expo-candidate.ts",
+    "expo:reader-free": "bun scripts/validate-reader-free-expo.ts",
     "lint": "ankhorage-eslint . --max-warnings=0",
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
     "format": "ankhorage-prettier --write .",

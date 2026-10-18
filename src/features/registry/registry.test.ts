@@ -53,7 +53,7 @@ async function listRuntimeRegistryEntries(): Promise<readonly string[]> {
 }
 
 async function listPublicConcreteComponentExports(): Promise<readonly string[]> {
-  const source = await Bun.file('src/index.ts').text();
+  const source = await Bun.file('src/readerFree.ts').text();
   const componentExports = Array.from(
     source.matchAll(
       /export\s+\{([^}]+)\}\s+from '\.\/(components\/[^']+|features\/[^']+|foundation|layout\/[^']+|patterns\/[^']+)';/g,
@@ -64,7 +64,7 @@ async function listPublicConcreteComponentExports(): Promise<readonly string[]> 
     .filter((name) => /^[A-Z][A-Za-z0-9]+$/.test(name))
     .filter((name) => !NON_RUNTIME_COMPONENT_EXPORTS.has(name));
 
-  return [...componentExports, ...RUNTIME_THEME_COMPONENT_EXPORTS].sort();
+  return [...componentExports, 'Reader', ...RUNTIME_THEME_COMPONENT_EXPORTS].sort();
 }
 
 describe('ZORA_COMPONENT_REGISTRY', () => {
@@ -78,9 +78,40 @@ describe('ZORA_COMPONENT_REGISTRY', () => {
     expect(registryEntries).toContain('View');
     expect(registryEntries).toContain('AppHeader');
     expect(source).toContain("export type { ZoraComponentRegistry } from './types/registry';");
-    expect(source).toContain(
-      "export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';",
-    );
+    expect(source).toContain('ZORA_COMPONENT_REGISTRY');
+  });
+
+  test('publishes Reader-free registry and root-surface composition boundaries', async () => {
+    const [baseSource, compositionSource, packageJson, readerFreeSource, readerFreeRootSource] =
+      await Promise.all([
+        Bun.file('src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts').text(),
+        Bun.file('src/features/registry/createZoraComponentRegistry.ts').text(),
+        Bun.file('package.json').json() as Promise<{ readonly exports: Record<string, unknown> }>,
+        Bun.file('src/features/registry/readerFreeRegistry.ts').text(),
+        Bun.file('src/readerFree.ts').text(),
+      ]);
+
+    expect(baseSource).not.toContain("from '../reader/public'");
+    expect(compositionSource).toContain('ZORA_BASE_COMPONENT_REGISTRY');
+    expect(readerFreeSource).toContain('ZORA_BASE_COMPONENT_REGISTRY');
+    expect(readerFreeSource).toContain('createZoraComponentRegistry');
+    expect(readerFreeSource).not.toContain('ZORA_COMPONENT_REGISTRY');
+    expect(readerFreeRootSource).not.toContain("from './features/reader/public'");
+    expect(readerFreeRootSource).not.toContain('ZORA_COMPONENT_REGISTRY');
+    expect(packageJson.exports['./registry']).toEqual({
+      'react-native': './src/features/registry/readerFreeRegistry.ts',
+      browser: './src/features/registry/readerFreeRegistry.ts',
+      types: './dist/features/registry/readerFreeRegistry.d.ts',
+      import: './dist/features/registry/readerFreeRegistry.js',
+      default: './dist/features/registry/readerFreeRegistry.js',
+    });
+    expect(packageJson.exports['./reader-free']).toEqual({
+      'react-native': './src/readerFree.ts',
+      browser: './src/readerFree.ts',
+      types: './dist/readerFree.d.ts',
+      import: './dist/readerFree.js',
+      default: './dist/readerFree.js',
+    });
   });
 
   test('covers every public concrete ZORA component export supported for runtime rendering', async () => {

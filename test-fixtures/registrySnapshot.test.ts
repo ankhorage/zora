@@ -8,21 +8,32 @@ const sourceRoot = path.resolve(import.meta.dir, '../src');
 
 /*** Reads the canonical runtime registry keys without importing runtime UI modules. */
 function readRegistryKeys(): readonly string[] {
-  const source = readFileSync(
+  const baseSource = readFileSync(
+    path.join(sourceRoot, 'features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts'),
+    'utf8',
+  );
+  const fullSource = readFileSync(
     path.join(sourceRoot, 'features/registry/ZORA_COMPONENT_REGISTRY.ts'),
     'utf8',
   );
-  const registryBody = source.match(
-    /const _ZORA_COMPONENT_REGISTRY = \{([\s\S]*?)\n\} as const satisfies ZoraComponentRegistry;/u,
+  const registryBody = baseSource.match(
+    /const _ZORA_BASE_COMPONENT_REGISTRY = \{([\s\S]*?)\n\} as const satisfies ZoraComponentRegistry;/u,
   )?.[1];
 
   if (!registryBody) {
     throw new Error(
-      'Could not locate _ZORA_COMPONENT_REGISTRY in src/features/registry/ZORA_COMPONENT_REGISTRY.ts.',
+      'Could not locate _ZORA_BASE_COMPONENT_REGISTRY in src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts.',
     );
   }
 
-  return Array.from(registryBody.matchAll(/^\s{2}([A-Z][A-Za-z0-9]+),$/gmu), (match) => match[1])
+  if (!/createZoraComponentRegistry\(\{\s+Reader,\s+\}\)/u.test(fullSource)) {
+    throw new Error('The complete ZORA registry must explicitly compose the Reader entry.');
+  }
+
+  return [
+    ...Array.from(registryBody.matchAll(/^\s{2}([A-Z][A-Za-z0-9]+),$/gmu), (match) => match[1]),
+    'Reader',
+  ]
     .filter((name): name is string => name !== undefined)
     .sort();
 }
