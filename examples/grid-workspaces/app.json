@@ -13,6 +13,9 @@
         }
       ],
       "./plugins/withRnsvgFiltersDeploymentTarget"
-    ]
+    ],
+    "android": {
+      "package": "com.faebster.zoragridworkspacesexample"
+    }
   }
 }
