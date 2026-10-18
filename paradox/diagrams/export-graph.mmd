@@ -365,10 +365,13 @@ graph LR
   module_src_features_registry_componentMeta_ts["src/features/registry/componentMeta.ts"]
   module_src_features_registry_createEventCapabilities_ts["src/features/registry/createEventCapabilities.ts"]
   module_src_features_registry_createManifestBindings_ts["src/features/registry/createManifestBindings.ts"]
+  module_src_features_registry_createZoraComponentRegistry_ts["src/features/registry/createZoraComponentRegistry.ts"]
   module_src_features_registry_finalizeFeatureMetadata_ts["src/features/registry/finalizeFeatureMetadata.ts"]
   module_src_features_registry_index_ts["src/features/registry/index.ts"]
   module_src_features_registry_public_ts["src/features/registry/public.ts"]
+  module_src_features_registry_readerFreeRegistry_ts["src/features/registry/readerFreeRegistry.ts"]
   module_src_features_registry_themeRecipeMeta_ts["src/features/registry/themeRecipeMeta.ts"]
+  module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts["src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts"]
   module_src_features_registry_ZORA_COMPONENT_REGISTRY_ts["src/features/registry/ZORA_COMPONENT_REGISTRY.ts"]
   module_src_features_scanner_adapters_inbound_BarcodeScannerView_tsx["src/features/scanner/adapters/inbound/BarcodeScannerView.tsx"]
   module_src_features_scanner_adapters_inbound_CameraPermissionView_tsx["src/features/scanner/adapters/inbound/CameraPermissionView.tsx"]
@@ -507,6 +510,7 @@ graph LR
   module_src_features_web_component_artifact_composition_synchronizeDeclaredWebComponentsWithNodeAsync_ts["src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"]
   module_src_features_web_component_artifact_composition_synchronizeWebComponentArtifactsWithNodeAsync_ts["src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"]
   module_src_index_ts["src/index.ts"]
+  module_src_readerFree_ts["src/readerFree.ts"]
   module_src_types_accordion_ts["src/types/accordion.ts"]
   module_src_types_activity_indicator_ts["src/types/activity-indicator.ts"]
   module_src_types_app_bar_ts["src/types/app-bar.ts"]
@@ -890,6 +894,8 @@ graph LR
   export_CreateTabletopGameSeatsInput -.-> export_TabletopGameParticipantState
   export_CreateTabletopGameSeatsInput -.-> export_TabletopGameSeatDefinition
   export_CreateTabletopGameSeatsInput -.-> export_TabletopGameSeatPresentation
+  export_createZoraComponentRegistry["createZoraComponentRegistry"]
+  module_src_features_registry_createZoraComponentRegistry_ts --> export_createZoraComponentRegistry
   export_createZoraThemeConfig["createZoraThemeConfig"]
   module_src_features_theme_application_use_cases_createZoraThemeConfig_ts --> export_createZoraThemeConfig
   export_createZoraThemeConfig -.-> export_ZoraTheme
@@ -1878,6 +1884,8 @@ graph LR
   export_ViewProps -.-> export_ZoraThemeMode
   export_withZoraThemeScope["withZoraThemeScope"]
   module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx --> export_withZoraThemeScope
+  export_ZORA_BASE_COMPONENT_REGISTRY["ZORA_BASE_COMPONENT_REGISTRY"]
+  module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> export_ZORA_BASE_COMPONENT_REGISTRY
   export_ZORA_BINDABLE_COMPONENT_META["ZORA_BINDABLE_COMPONENT_META"]
   module_src_features_registry_bindableComponentMeta_ts --> export_ZORA_BINDABLE_COMPONENT_META
   export_ZORA_COLORS["ZORA_COLORS"]

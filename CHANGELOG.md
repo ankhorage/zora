@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.15
+
+### Patch Changes
+
+- 2e249fc: Add a Reader-free registry entrypoint so generated consumers can select Reader only when their manifest requires it.
+
 ## 25.8.14
 
 ### Patch Changes
