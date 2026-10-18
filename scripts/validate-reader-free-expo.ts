@@ -10,6 +10,18 @@ type BundleProbe = {
   readonly response: Response;
   readonly observations: readonly string[];
 };
+type ChromeProtocolMessage = {
+  readonly error?: unknown;
+  readonly id?: number;
+  readonly method?: string;
+  readonly params?: unknown;
+  readonly result?: unknown;
+};
+type NetworkResponse = {
+  readonly requestId: string;
+  readonly status: number;
+  readonly url: string;
+};
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(process.env.RUNNER_TEMP ?? tmpdir(), 'zora-reader-free-'));
@@ -22,6 +34,8 @@ const chromiumCommand =
   (process.platform === 'darwin'
     ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     : 'google-chrome');
+const BROWSER_READY_TIMEOUT_MS = 30_000;
+const BROWSER_RENDER_TIMEOUT_MS = 90_000;
 
 function assert(condition: boolean, message: string): asserts condition {
   if (!condition) throw new Error(message);
@@ -168,6 +182,7 @@ async function dynamicPortAsync(): Promise<number> {
   const server = Bun.serve({ fetch: () => new Response(''), port: 0 });
   const port = server.port;
   server.stop();
+  assert(port !== undefined, 'Bun did not allocate a TCP port.');
   return port;
 }
 
@@ -210,6 +225,221 @@ async function readStreamAsync(
     const next = await reader.read();
     if (next.done) return;
     logs.push(decoder.decode(next.value, { stream: true }));
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function parseChromeProtocolMessage(data: unknown): ChromeProtocolMessage | null {
+  const source =
+    typeof data === 'string'
+      ? data
+      : data instanceof ArrayBuffer
+        ? Buffer.from(data).toString()
+        : '';
+  if (!source) return null;
+  const parsed = JSON.parse(source) as unknown;
+  if (!isRecord(parsed)) return null;
+  return {
+    ...(typeof parsed.id === 'number' ? { id: parsed.id } : {}),
+    ...(typeof parsed.method === 'string' ? { method: parsed.method } : {}),
+    ...('params' in parsed ? { params: parsed.params } : {}),
+    ...('result' in parsed ? { result: parsed.result } : {}),
+    ...('error' in parsed ? { error: parsed.error } : {}),
+  };
+}
+
+async function waitForHttpAsync(url: string, timeoutMs: number): Promise<void> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    try {
+      if ((await fetch(url)).ok) return;
+    } catch {
+      // Chrome may still be starting its debugging endpoint.
+    }
+    await Bun.sleep(100);
+  }
+  throw new Error(`Timed out waiting for Chrome at ${url}.`);
+}
+
+class ChromeSession {
+  readonly consoleErrors: string[] = [];
+  readonly exceptions: string[] = [];
+  readonly failedRequests: string[] = [];
+  readonly responses: NetworkResponse[] = [];
+  private nextId = 1;
+  private readonly pending = new Map<
+    number,
+    { reject: (error: Error) => void; resolve: (value: unknown) => void }
+  >();
+
+  private constructor(
+    private readonly process: ReturnType<typeof Bun.spawn>,
+    private readonly socket: WebSocket,
+  ) {
+    this.socket.onmessage = (event) => this.handleMessage(event.data);
+  }
+
+  static async createAsync(debugPort: number, profileDirectory: string): Promise<ChromeSession> {
+    mkdirSync(profileDirectory, { recursive: true });
+    const process = Bun.spawn(
+      [
+        chromiumCommand,
+        '--headless=new',
+        '--no-sandbox',
+        '--disable-gpu',
+        '--no-first-run',
+        '--no-default-browser-check',
+        '--remote-debugging-address=127.0.0.1',
+        `--remote-debugging-port=${debugPort}`,
+        `--user-data-dir=${profileDirectory}`,
+        'about:blank',
+      ],
+      { stderr: 'pipe', stdout: 'pipe' },
+    );
+    try {
+      await waitForHttpAsync(
+        `http://127.0.0.1:${debugPort}/json/version`,
+        BROWSER_READY_TIMEOUT_MS,
+      );
+      const response = await fetch(`http://127.0.0.1:${debugPort}/json/new?about:blank`, {
+        method: 'PUT',
+      });
+      assert(response.ok, `Chrome page creation returned HTTP ${response.status}.`);
+      const target = (await response.json()) as { readonly webSocketDebuggerUrl?: unknown };
+      assert(
+        typeof target.webSocketDebuggerUrl === 'string',
+        'Chrome page creation returned no debugger URL.',
+      );
+      const socket = new WebSocket(target.webSocketDebuggerUrl);
+      await new Promise<void>((resolve, reject) => {
+        socket.onopen = () => resolve();
+        socket.onerror = () => reject(new Error('Chrome DevTools socket failed to open.'));
+      });
+      const session = new ChromeSession(process, socket);
+      await Promise.all(
+        ['Page.enable', 'Runtime.enable', 'Log.enable', 'Network.enable'].map((method) =>
+          session.sendAsync(method),
+        ),
+      );
+      return session;
+    } catch (error) {
+      process.kill();
+      throw error;
+    }
+  }
+
+  async navigateAsync(url: string): Promise<void> {
+    await this.sendAsync('Page.navigate', { url });
+    await this.waitForDocumentAsync();
+  }
+
+  async waitForTextAsync(expectedText: string): Promise<string> {
+    const deadline = Date.now() + BROWSER_RENDER_TIMEOUT_MS;
+    let text = '';
+    while (Date.now() < deadline) {
+      text = await this.evaluateAsync<string>('document.body?.innerText ?? ""');
+      if (text.includes(expectedText)) return text;
+      await Bun.sleep(250);
+    }
+    throw new Error(
+      `Timed out waiting for browser text ${JSON.stringify(expectedText)}. Last text: ${text.slice(-4_000)}`,
+    );
+  }
+
+  async readBundleAsync(): Promise<{ readonly body: string; readonly response: NetworkResponse }> {
+    const response = this.responses.find((candidate) =>
+      candidate.url.includes('/node_modules/expo-router/entry.bundle'),
+    );
+    assert(
+      response !== undefined,
+      `Chrome did not request an Expo Router entry bundle. Responses: ${JSON.stringify(this.responses)}`,
+    );
+    assert(
+      response.status === 200,
+      `Chrome entry bundle returned HTTP ${response.status}: ${response.url}`,
+    );
+    const result = await this.sendAsync('Network.getResponseBody', {
+      requestId: response.requestId,
+    });
+    assert(
+      isRecord(result) && typeof result.body === 'string',
+      'Chrome could not read the actual entry bundle body.',
+    );
+    return { body: result.body, response };
+  }
+
+  close(): void {
+    this.socket.close();
+    this.process.kill();
+  }
+
+  private async evaluateAsync<T>(expression: string): Promise<T> {
+    const result = await this.sendAsync('Runtime.evaluate', { expression, returnByValue: true });
+    assert(
+      isRecord(result) && isRecord(result.result) && 'value' in result.result,
+      `Chrome evaluation returned no value for ${expression}.`,
+    );
+    return result.result.value as T;
+  }
+
+  private async waitForDocumentAsync(): Promise<void> {
+    const deadline = Date.now() + BROWSER_READY_TIMEOUT_MS;
+    while (Date.now() < deadline) {
+      if ((await this.evaluateAsync<string>('document.readyState')) !== 'loading') return;
+      await Bun.sleep(100);
+    }
+    throw new Error('Timed out waiting for Chrome document readiness.');
+  }
+
+  private handleMessage(data: unknown): void {
+    const message = parseChromeProtocolMessage(data);
+    if (!message) return;
+    if (message.id !== undefined) {
+      const pending = this.pending.get(message.id);
+      if (!pending) return;
+      this.pending.delete(message.id);
+      if (message.error) pending.reject(new Error(JSON.stringify(message.error)));
+      else pending.resolve(message.result);
+      return;
+    }
+    const params = isRecord(message.params) ? message.params : {};
+    if (
+      message.method === 'Network.responseReceived' &&
+      isRecord(params.response) &&
+      typeof params.requestId === 'string' &&
+      typeof params.response.status === 'number' &&
+      typeof params.response.url === 'string'
+    ) {
+      this.responses.push({
+        requestId: params.requestId,
+        status: params.response.status,
+        url: params.response.url,
+      });
+    }
+    if (message.method === 'Network.loadingFailed' && typeof params.errorText === 'string')
+      this.failedRequests.push(params.errorText);
+    if (message.method === 'Runtime.exceptionThrown')
+      this.exceptions.push(JSON.stringify(params.exceptionDetails));
+    if (
+      message.method === 'Log.entryAdded' &&
+      isRecord(params.entry) &&
+      params.entry.level === 'error'
+    )
+      this.consoleErrors.push(String(params.entry.text ?? 'unknown Log error'));
+    if (message.method === 'Runtime.consoleAPICalled' && params.type === 'error')
+      this.consoleErrors.push(JSON.stringify(params.args ?? []));
+  }
+
+  private sendAsync(method: string, params?: Readonly<Record<string, unknown>>): Promise<unknown> {
+    const id = this.nextId++;
+    const response = new Promise<unknown>((resolve, reject) =>
+      this.pending.set(id, { reject, resolve }),
+    );
+    this.socket.send(JSON.stringify(params ? { id, method, params } : { id, method }));
+    return response;
   }
 }
 
@@ -270,30 +500,46 @@ async function verifyLiveVariantAsync(
         !hasPdfWorker,
         `${label} Reader-free Metro bundle reaches the PDF worker graph.\n${evidence}`,
       );
-      const chrome = Bun.spawnSync(
-        [
-          chromiumCommand,
-          '--headless=new',
-          '--no-sandbox',
-          '--disable-gpu',
-          '--enable-logging=stderr',
-          '--v=1',
-          '--dump-dom',
-          rootUrl,
-        ],
-        { cwd: root, stderr: 'pipe', stdout: 'pipe' },
+      const debugPort = await dynamicPortAsync();
+      const browser = await ChromeSession.createAsync(
+        debugPort,
+        join(temporaryRoot, 'chrome-profiles', `${label}-${debugPort}`),
       );
-      const browserOutput = `${chrome.stdout.toString()}\n${chrome.stderr.toString()}`;
-      logs.push(`browser console and network output:\n${browserOutput}\n`);
-      assert(chrome.exitCode === 0, `${label} Chromium failed: ${browserOutput}`);
-      assert(
-        browserOutput.includes('Reader-free runtime acceptance'),
-        `${label} Chromium did not render the root screen.`,
-      );
-      assert(
-        !/pdfjs-dist|pdf\.worker|Error:|TypeError:|ReferenceError:/u.test(browserOutput),
-        `${label} Chromium reported an unexpected error: ${browserOutput}`,
-      );
+      try {
+        await browser.navigateAsync(rootUrl);
+        const renderedText = await browser.waitForTextAsync('Reader-free runtime acceptance');
+        const actualBundle = await browser.readBundleAsync();
+        const actualBundleHasPdfWorker = /pdfjs-dist|pdf\.worker|@ankhorage\/reader/u.test(
+          actualBundle.body,
+        );
+        const browserEvidence = [
+          `rendered text: ${renderedText.slice(0, 1_000)}`,
+          `actual entry bundle: ${actualBundle.response.status} ${actualBundle.response.url}`,
+          `actual entry PDF/Reader graph: ${actualBundleHasPdfWorker ? 'reachable' : 'absent'}`,
+          `browser exceptions: ${JSON.stringify(browser.exceptions)}`,
+          `browser console errors: ${JSON.stringify(browser.consoleErrors)}`,
+          `failed network requests: ${JSON.stringify(browser.failedRequests)}`,
+        ].join('\n');
+        logs.push(`browser CDP evidence:\n${browserEvidence}\n`);
+        assert(
+          !actualBundleHasPdfWorker,
+          `${label} actual browser entry bundle reaches the PDF worker graph.\n${browserEvidence}`,
+        );
+        assert(
+          browser.exceptions.length === 0,
+          `${label} browser threw a runtime exception.\n${browserEvidence}`,
+        );
+        assert(
+          browser.consoleErrors.length === 0,
+          `${label} browser emitted console errors.\n${browserEvidence}`,
+        );
+        assert(
+          browser.failedRequests.length === 0,
+          `${label} browser failed network requests.\n${browserEvidence}`,
+        );
+      } finally {
+        browser.close();
+      }
     } else {
       assert(
         hasPdfWorker || /pdfjs-dist|pdf\.worker/u.test(logs.join('')),
