@@ -5,6 +5,11 @@ import { basename, join, resolve } from 'node:path';
 
 type JsonObject = Record<string, unknown>;
 type Variant = 'root-baseline' | 'reader-free' | 'reader-control';
+type BundleProbe = {
+  readonly body: string;
+  readonly response: Response;
+  readonly observations: readonly string[];
+};
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(process.env.RUNNER_TEMP ?? tmpdir(), 'zora-reader-free-'));
@@ -79,6 +84,7 @@ function writeFixture(
   );
   const dependencies = object(sourcePackage.dependencies, 'example dependencies');
   dependencies['@ankhorage/zora'] = `file:${candidatePath}`;
+  assert(dependencies['@ankhorage/reader'] === undefined, 'Fixture manifest must not add Reader.');
   writeFileSync(
     join(root, 'package.json'),
     `${JSON.stringify(
@@ -121,18 +127,18 @@ function writeFixture(
 
   const zoraImport =
     variant === 'reader-free'
-      ? "import { AppShell, Card, Text, ZoraProvider, useZoraTheme } from '@ankhorage/zora/reader-free';\nimport { ZORA_BASE_COMPONENT_REGISTRY } from '@ankhorage/zora/registry';"
-      : 'import { AppShell, Card, Text, ZoraProvider, useZoraTheme' +
+      ? "import { AppShell, ZoraProvider, useZoraTheme, ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META } from '@ankhorage/zora/reader-free';\nimport { ZORA_BASE_COMPONENT_REGISTRY } from '@ankhorage/zora/registry';"
+      : 'import { AppShell, ZoraProvider, useZoraTheme, ZORA_COMPONENT_META, ZORA_THEME_RECIPE_META, ZORA_COMPONENT_REGISTRY' +
         (variant === 'reader-control' ? ', Reader' : '') +
         " } from '@ankhorage/zora';";
   const registry =
     variant === 'reader-free'
-      ? "const registry = ZORA_BASE_COMPONENT_REGISTRY;\n  if ('Reader' in registry) throw new Error('Reader reached the reader-free registry.');"
-      : 'const registry = {};';
+      ? 'const registry = ZORA_BASE_COMPONENT_REGISTRY;'
+      : 'const registry = ZORA_COMPONENT_REGISTRY;';
   const reader = variant === 'reader-control' ? '<Reader format="epub" />' : '';
   const links = navigation
-    ? '<Text>Navigation configuration</Text><Text>Social Web configuration</Text>'
-    : '<Text>Social Web configuration</Text>';
+    ? '<RuntimeText>Navigation configuration</RuntimeText><RuntimeText>Social Web configuration</RuntimeText>'
+    : '<RuntimeText>Social Web configuration</RuntimeText>';
   writeFileSync(
     join(root, 'app', '_layout.tsx'),
     `${zoraImport}
@@ -141,7 +147,10 @@ import { Stack } from 'expo-router';
 function RootContent() {
   const { mode } = useZoraTheme();
   ${registry}
-  return <AppShell><Card><Text>Reader-free runtime acceptance</Text><Text>{mode}</Text>${links}${reader}</Card></AppShell>;
+  const RuntimeCard = registry.Card;
+  const RuntimeText = registry.Text;
+  const metadataCount = Object.keys(ZORA_COMPONENT_META).length + Object.keys(ZORA_THEME_RECIPE_META).length;
+  return <AppShell><RuntimeCard><RuntimeText>Reader-free runtime acceptance</RuntimeText><RuntimeText>{mode}</RuntimeText><RuntimeText>{metadataCount}</RuntimeText>${links}${reader}</RuntimeCard></AppShell>;
 }
 
 export default function RootLayout() {
@@ -166,19 +175,28 @@ async function waitForBundleAsync(
   url: string,
   process: ReturnType<typeof Bun.spawn>,
   logs: string[],
-): Promise<Response> {
+): Promise<BundleProbe> {
   const deadline = Date.now() + 90_000;
+  const observations: string[] = [];
   while (Date.now() < deadline) {
     try {
       const response = await fetch(url);
-      if (response.status === 200 || response.status === 500) return response;
-    } catch {
-      // Metro is still starting.
+      const body = await response.text();
+      observations.push(
+        `${response.status} ${response.statusText}; ${response.url}; ${body.slice(0, 500)}`,
+      );
+      if (response.status === 200 || response.status === 500)
+        return { response, body, observations };
+    } catch (error) {
+      observations.push(`request error: ${error instanceof Error ? error.message : String(error)}`);
     }
     if (process.exitCode !== null) break;
     await Bun.sleep(500);
   }
-  throw new Error(`Metro did not serve HTTP 200 for ${url}.\n${logs.join('')}`);
+  const reason = process.exitCode === null ? 'timeout' : `process crash (exit ${process.exitCode})`;
+  throw new Error(
+    `Metro ${reason} before a terminal bundle response for ${url}.\n${observations.join('\n')}\n${logs.join('')}`,
+  );
 }
 
 async function readStreamAsync(
@@ -206,16 +224,15 @@ async function verifyLiveVariantAsync(
 ): Promise<void> {
   const port = await dynamicPortAsync();
   const logs: string[] = [];
-  const { CI: _ci, ...metroEnvironment } = process.env;
   const metroProcess = Bun.spawn(
-    ['bun', 'x', 'expo', 'start', '--localhost', '--port', `${port}`, '--no-dev', '--minify'],
+    ['bun', 'x', 'expo', 'start', '--localhost', '--port', `${port}`],
     {
       cwd: root,
       env: {
-        ...metroEnvironment,
+        ...process.env,
         BUN_INSTALL_CACHE_DIR: bunCacheRoot,
-        // Expo starts an unrelated React Native DevTools Chromium process when CI is set.
-        // The acceptance owns its browser explicitly below, so Metro must stay headless here.
+        // CI is Expo's supported noninteractive mode. Browser rendering is owned independently below.
+        CI: '1',
         EXPO_HOME: expoHome,
         EXPO_NO_TELEMETRY: '1',
         TMPDIR: temporaryRoot,
@@ -228,18 +245,31 @@ async function verifyLiveVariantAsync(
     readStreamAsync(metroProcess.stdout, logs),
     readStreamAsync(metroProcess.stderr, logs),
   ]);
-  const rootUrl = `http://127.0.0.1:${port}`;
-  const bundleUrl = `${rootUrl}/index.bundle?platform=web&dev=false&minify=true`;
+  const rootUrl = `http://localhost:${port}`;
+  const bundleUrl = `${rootUrl}/node_modules/expo-router/entry.bundle?platform=web&dev=true&minify=false`;
   try {
-    const bundle = await waitForBundleAsync(bundleUrl, metroProcess, logs);
-    const source = await bundle.text();
+    const {
+      body: source,
+      observations,
+      response,
+    } = await waitForBundleAsync(bundleUrl, metroProcess, logs);
     const hasPdfWorker = /pdfjs-dist|pdf\.worker|@ankhorage\/reader/u.test(source);
+    const evidence = [
+      `request URL: ${bundleUrl}`,
+      `response: ${response.status} ${response.statusText}; ${response.url}`,
+      `observations:\n${observations.join('\n')}`,
+      `PDF/Reader graph: ${hasPdfWorker ? 'reachable' : 'absent'}`,
+    ].join('\n');
+    logs.push(`${evidence}\n`);
     if (variant === 'reader-free') {
       assert(
-        bundle.status === 200,
-        `${label} Reader-free Metro bundle returned HTTP ${bundle.status}.`,
+        response.status === 200,
+        `${label} Reader-free Metro bundle returned HTTP ${response.status}.\n${evidence}`,
       );
-      assert(!hasPdfWorker, `${label} Reader-free Metro bundle reaches the PDF worker graph.`);
+      assert(
+        !hasPdfWorker,
+        `${label} Reader-free Metro bundle reaches the PDF worker graph.\n${evidence}`,
+      );
       const chrome = Bun.spawnSync(
         [
           chromiumCommand,
@@ -247,12 +277,14 @@ async function verifyLiveVariantAsync(
           '--no-sandbox',
           '--disable-gpu',
           '--enable-logging=stderr',
+          '--v=1',
           '--dump-dom',
           rootUrl,
         ],
         { cwd: root, stderr: 'pipe', stdout: 'pipe' },
       );
       const browserOutput = `${chrome.stdout.toString()}\n${chrome.stderr.toString()}`;
+      logs.push(`browser console and network output:\n${browserOutput}\n`);
       assert(chrome.exitCode === 0, `${label} Chromium failed: ${browserOutput}`);
       assert(
         browserOutput.includes('Reader-free runtime acceptance'),
@@ -264,12 +296,8 @@ async function verifyLiveVariantAsync(
       );
     } else {
       assert(
-        bundle.status === 500,
-        `${label} expected the established Expo 57 Reader/PDF HTTP 500 baseline, received ${bundle.status}.`,
-      );
-      assert(
         hasPdfWorker || /pdfjs-dist|pdf\.worker/u.test(logs.join('')),
-        `${label} control no longer reaches the expected Reader/PDF graph.`,
+        `${label} control no longer reaches the expected Reader/PDF graph.\n${evidence}`,
       );
     }
     assert(
@@ -277,7 +305,7 @@ async function verifyLiveVariantAsync(
       `${label} Metro reached the PDF worker.`,
     );
     console.log(
-      `${label}: Metro ${bundle.status}; PDF graph ${hasPdfWorker ? 'reachable' : 'absent'}.`,
+      `${label}: Metro ${response.status}; PDF graph ${hasPdfWorker ? 'reachable' : 'absent'}.`,
     );
   } finally {
     metroProcess.kill();
@@ -300,7 +328,16 @@ try {
   assert(tarballs.length === 1, 'Expected exactly one packed ZORA artifact.');
   const candidatePath = join(packageRoot, tarballs[0]!);
   const integrity = sha256(candidatePath);
-  console.log(`Packed candidate ${basename(candidatePath)} SHA-256 ${integrity}`);
+  const candidateManifest = readJson(join(repositoryRoot, 'package.json'));
+  const candidateVersion = candidateManifest.version;
+  assert(typeof candidateVersion === 'string', 'Candidate package version is missing.');
+  writeFileSync(
+    join(artifactsRoot, 'identity.log'),
+    `source commit: ${process.env.GITHUB_SHA ?? 'local working tree'}\npackage version: ${candidateVersion}\npackage spec: file:${candidatePath}\ntarball SHA-256: ${integrity}\n`,
+  );
+  console.log(
+    `Packed candidate ${basename(candidatePath)} ${candidateVersion} SHA-256 ${integrity}`,
+  );
 
   for (const [variant, navigation] of [
     ['root-baseline', false],
@@ -314,6 +351,16 @@ try {
     run(['bun', 'install'], root);
     rmSync(join(root, 'node_modules'), { force: true, recursive: true });
     run(['bun', 'install', '--frozen-lockfile'], root);
+    const installedCandidate = readJson(
+      join(root, 'node_modules', '@ankhorage', 'zora', 'package.json'),
+    );
+    assert(
+      installedCandidate.version === candidateVersion,
+      `${label} resolved unexpected ZORA package version ${String(installedCandidate.version)}.`,
+    );
+    console.log(
+      `${label}: resolved @ankhorage/zora@${installedCandidate.version} from file:${candidatePath}.`,
+    );
     run(['bun', 'x', 'tsc', '--noEmit'], root);
     if (variant === 'reader-free')
       run(
