@@ -22,6 +22,8 @@ export interface MatrixGridProps extends ZoraBaseProps {
   readonly overscanPixels?: number;
   /** Retains focus navigation while suppressing cell-selection mutations. */
   readonly readOnly?: boolean;
+  /** Cells that remain visible but cannot receive focus or change the controlled selection. */
+  readonly protectedCellIds?: readonly string[];
   readonly selectedCellIds?: readonly string[];
   readonly selectionMode?: SelectionMode;
   readonly onSelectionChange?: (ids: readonly string[]) => void;

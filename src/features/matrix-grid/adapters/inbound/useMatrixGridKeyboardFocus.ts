@@ -8,6 +8,7 @@ export function useMatrixGridKeyboardFocus(
   index: MatrixGridSparseIndex,
   disabled: boolean,
   visibleIds: readonly string[],
+  isNavigable: (id: string) => boolean,
   onNavigate: (targetId: string, originId: string, shiftKey: boolean) => void,
 ) {
   const [focusedId, setFocusedId] = React.useState<string | null>(null);
@@ -18,7 +19,7 @@ export function useMatrixGridKeyboardFocus(
   const tabStopId =
     focusedId !== null && visibleIdSet.has(focusedId)
       ? focusedId
-      : visibleIds.find((id) => index.positionById.has(id));
+      : visibleIds.find((id) => index.positionById.has(id) && isNavigable(id));
 
   const onFocus = React.useCallback((id: string) => {
     pendingFocusRef.current = null;
@@ -44,7 +45,7 @@ export function useMatrixGridKeyboardFocus(
         return false;
       }
       const originId = focusedRef.current ?? id;
-      const nextId = getMatrixGridNextFocusId(index, originId, key);
+      const nextId = resolveNextNavigableId(index, originId, key, isNavigable);
       if (nextId === null || nextId === originId) return true;
 
       focusedRef.current = nextId;
@@ -59,10 +60,24 @@ export function useMatrixGridKeyboardFocus(
       }
       return true;
     },
-    [disabled, index, onNavigate],
+    [disabled, index, isNavigable, onNavigate],
   );
 
   return { focusedId, onFocus, onKeyDown, registerCell, tabStopId };
+}
+
+/*** Skip protected sparse cells while retaining the nearest deterministic directional navigation. */
+function resolveNextNavigableId(
+  index: MatrixGridSparseIndex,
+  originId: string,
+  key: string,
+  isNavigable: (id: string) => boolean,
+): string | null {
+  let candidate = getMatrixGridNextFocusId(index, originId, key);
+  while (candidate !== null && candidate !== originId && !isNavigable(candidate)) {
+    candidate = getMatrixGridNextFocusId(index, candidate, key);
+  }
+  return candidate;
 }
 
 interface FocusableCell {

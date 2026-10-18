@@ -51,21 +51,28 @@ const cells = [
 
 describe('resolveMatrixGridSelection', () => {
   test('preserves the canonical single and multi selection intent rules', () => {
-    expect(resolveMatrixGridSelection(cells, ['a1'], 'b1', 'a1', 'toggle', 'single')).toEqual([
-      'b1',
-    ]);
-    expect(resolveMatrixGridSelection(cells, ['a1'], 'b1', 'a1', 'toggle', 'multi')).toEqual([
-      'a1',
-      'b1',
-    ]);
+    expect(
+      resolveMatrixGridSelection(cells, ['a1'], 'b1', 'a1', 'toggle', 'single', new Set()),
+    ).toEqual(['b1']);
+    expect(
+      resolveMatrixGridSelection(cells, ['a1'], 'b1', 'a1', 'toggle', 'multi', new Set()),
+    ).toEqual(['a1', 'b1']);
   });
 
   test('uses the selection contract for a sparse rectangular shift range', () => {
-    expect(resolveMatrixGridSelection(cells, ['a1'], 'b2', 'a1', 'range', 'multi')).toEqual([
-      'a1',
-      'b1',
-      'a2',
-      'b2',
-    ]);
+    expect(
+      resolveMatrixGridSelection(cells, ['a1'], 'b2', 'a1', 'range', 'multi', new Set()),
+    ).toEqual(['a1', 'b1', 'a2', 'b2']);
+  });
+
+  test('excludes protected cells from direct and range selection proposals', () => {
+    const protectedCellIds = new Set(['b1', 'a2']);
+
+    expect(
+      resolveMatrixGridSelection(cells, ['a1'], 'b1', 'a1', 'replace', 'multi', protectedCellIds),
+    ).toEqual(['a1']);
+    expect(
+      resolveMatrixGridSelection(cells, ['a1'], 'b2', 'a1', 'range', 'multi', protectedCellIds),
+    ).toEqual(['a1', 'b2']);
   });
 });

@@ -67,6 +67,7 @@ type MatrixGridComponent = React.ComponentType<{
   readonly layout: typeof layout;
   readonly onSelectionChange?: (ids: readonly string[]) => void;
   readonly onViewportChange?: (viewport: unknown) => void;
+  readonly protectedCellIds?: readonly string[];
   readonly renderCell: (cell: { readonly id: string }) => React.ReactNode;
   readonly readOnly?: boolean;
   readonly selectedCellIds?: readonly string[];
@@ -314,6 +315,84 @@ test('navigates sparse cells by keyboard and applies range and modifier selectio
         void c3?.dispatchEvent(new browser.KeyboardEvent('keydown', { bubbles: true, key: ' ' }));
       });
       expect(selections.at(-1)).toEqual(['c3']);
+    } finally {
+      act(() => root.unmount());
+    }
+  });
+});
+
+test('keeps protected cells disabled, unselected, and out of keyboard ranges', async () => {
+  await withMatrixDom(async (host, browser) => {
+    const selections: (readonly string[])[] = [];
+    const root = createRoot(host);
+    const { MatrixGrid } = (await load('components/matrix-grid/MatrixGrid.js')) as {
+      MatrixGrid: MatrixGridComponent;
+    };
+    const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
+      ZoraProvider: ZoraProviderComponent;
+    };
+    const protectedLayout = {
+      columns: [
+        { id: 'column-0', size: 20 },
+        { id: 'column-1', size: 20 },
+        { id: 'column-2', size: 20 },
+      ],
+      rows: [{ id: 'row-0', size: 20 }],
+    };
+    const protectedCells = [
+      { columnId: 'column-0', id: 'a1', rowId: 'row-0' },
+      { columnId: 'column-1', id: 'b1', rowId: 'row-0' },
+      { columnId: 'column-2', id: 'c1', rowId: 'row-0' },
+    ];
+
+    function ProtectedMatrix() {
+      const [selectedIds, setSelectedIds] = React.useState<readonly string[]>(['a1']);
+      return (
+        <ZoraProvider>
+          <MatrixGrid
+            cells={protectedCells}
+            height={40}
+            layout={protectedLayout}
+            protectedCellIds={['b1']}
+            selectedCellIds={selectedIds}
+            selectionMode="multi"
+            testID="protected-matrix"
+            width={60}
+            onSelectionChange={(ids) => {
+              selections.push(ids);
+              setSelectedIds(ids);
+            }}
+            renderCell={(cell) => <span>{cell.id}</span>}
+          />
+        </ZoraProvider>
+      );
+    }
+
+    try {
+      act(() => root.render(<ProtectedMatrix />));
+      const a1 = host.querySelector<HTMLElement>('[data-testid="protected-matrix-cell-a1"]');
+      const b1 = host.querySelector<HTMLElement>('[data-testid="protected-matrix-cell-b1"]');
+      if (!a1 || !b1) throw new Error('Missing protected matrix cells.');
+      expect(b1.getAttribute('aria-disabled')).toBe('true');
+      act(() => {
+        void b1.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+        void b1.dispatchEvent(
+          new browser.KeyboardEvent('keydown', { bubbles: true, key: 'Enter' }),
+        );
+        void b1.dispatchEvent(new browser.KeyboardEvent('keydown', { bubbles: true, key: ' ' }));
+        a1.focus();
+        void a1.dispatchEvent(
+          new browser.KeyboardEvent('keydown', {
+            bubbles: true,
+            key: 'ArrowRight',
+            shiftKey: true,
+          }),
+        );
+      });
+      const c1 = host.querySelector<HTMLElement>('[data-testid="protected-matrix-cell-c1"]');
+      expect(c1).not.toBeNull();
+      expect(document.activeElement).toBe(c1);
+      expect(selections).toEqual([['a1', 'c1']]);
     } finally {
       act(() => root.unmount());
     }

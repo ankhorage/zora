@@ -12,7 +12,9 @@ export function resolveMatrixGridSelection(
   anchorId: string | null,
   intent: MatrixGridSelectionIntent,
   mode: SelectionMode,
+  protectedCellIds: ReadonlySet<string>,
 ): readonly string[] {
+  if (protectedCellIds.has(cellId)) return selectedIds;
   if (mode === 'single') return applySelectionIntent(selectedIds, cellId, 'replace');
   if (intent !== 'range') return applySelectionIntent(selectedIds, cellId, intent);
 
@@ -23,6 +25,7 @@ export function resolveMatrixGridSelection(
   return cells
     .filter(
       (cell) =>
+        !protectedCellIds.has(cell.id) &&
         cell.rowIndex >= Math.min(anchor.rowIndex, target.rowIndex) &&
         cell.rowIndex <= Math.max(anchor.rowIndex, target.rowIndex) &&
         cell.columnIndex >= Math.min(anchor.columnIndex, target.columnIndex) &&
