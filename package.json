@@ -138,6 +138,7 @@
     "knip:check": "ankhorage-knip",
     "examples:validate": "bun scripts/validate-example-projects.ts",
     "expo:candidate": "bun scripts/validate-expo-candidate.ts",
+    "expo:reader-free": "bun scripts/validate-reader-free-expo.ts",
     "lint": "ankhorage-eslint . --max-warnings=0",
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
     "format": "ankhorage-prettier --write .",
