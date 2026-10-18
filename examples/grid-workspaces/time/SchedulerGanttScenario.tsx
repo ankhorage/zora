@@ -1,5 +1,7 @@
-import { ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
+import { Button, ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
+import React from 'react';
 
+import { ResponsiveWidth } from '../ResponsiveWidth';
 import {
   calendarDayMinuteToWorld,
   createCalendarAxis,
@@ -46,6 +48,8 @@ const ganttIntervals = [
 
 /*** Demonstrates external nonuniform-day and DST adaptation for a generic Gantt interval lane. */
 export function SchedulerGanttScenario() {
+  const [focusedIntervalId, setFocusedIntervalId] = React.useState<string>();
+  const [selectedIds, setSelectedIds] = React.useState<readonly string[]>([]);
   const contentWidth = resolveCalendarAxisWidth(calendarDays);
 
   return (
@@ -57,27 +61,39 @@ export function SchedulerGanttScenario() {
         Every local day from March to October is mapped to world minutes. 2026-03-29 is 23 hours and
         2026-10-25 is 25 hours; TimeGrid receives only mapped world coordinates.
       </Text>
-      <TimeGrid
-        contentWidth={contentWidth}
-        height={180}
-        intervals={ganttIntervals}
-        lanes={ganttLanes}
-        renderInterval={(interval) => (
-          <View
-            style={{
-              backgroundColor: '#0f766e',
-              borderRadius: 4,
-              flex: 1,
-              justifyContent: 'center',
-              paddingHorizontal: 6,
-            }}
-          >
-            <Text>{interval.id}</Text>
-          </View>
+      <Text>{`Selected interval: ${selectedIds.at(0) ?? 'none'}`}</Text>
+      <Button onPress={() => setFocusedIntervalId('research')}>Show first interval</Button>
+      <ResponsiveWidth maxWidth={600}>
+        {(width) => (
+          <TimeGrid
+            contentWidth={contentWidth}
+            focusedIntervalId={focusedIntervalId}
+            height={180}
+            intervals={ganttIntervals}
+            lanes={ganttLanes}
+            renderInterval={(interval, selected) => (
+              <View
+                style={{
+                  backgroundColor: selected ? '#134e4a' : '#0f766e',
+                  borderColor: selected ? '#facc15' : 'transparent',
+                  borderRadius: 4,
+                  borderWidth: 2,
+                  flex: 1,
+                  justifyContent: 'center',
+                  paddingHorizontal: 6,
+                }}
+              >
+                <Text>{interval.id}</Text>
+              </View>
+            )}
+            renderLaneLabel={(lane) => <Text>{lane.id}</Text>}
+            selectedIntervalIds={selectedIds}
+            width={width}
+            onFocusedIntervalIdChange={setFocusedIntervalId}
+            onIntervalPress={(interval) => setSelectedIds([interval.id])}
+          />
         )}
-        renderLaneLabel={(lane) => <Text>{lane.id}</Text>}
-        width={600}
-      />
+      </ResponsiveWidth>
     </ScreenSection>
   );
 }

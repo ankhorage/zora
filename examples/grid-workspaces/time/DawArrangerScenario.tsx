@@ -1,6 +1,7 @@
 import { ScreenSection, Text, TimeGrid, View } from '@ankhorage/zora';
 import React from 'react';
 
+import { ResponsiveWidth } from '../ResponsiveWidth';
 import {
   PPQ,
   resolveDawBarStartPpq,
@@ -44,29 +45,36 @@ export function DawArrangerScenario() {
       <Text>
         The fixed snap resolution does not change when the ruler hides beats, triplets, or bars.
       </Text>
-      <TimeGrid
-        contentWidth={resolveDawBarStartPpq(12)}
-        height={420}
-        intervals={arrangerClips}
-        lanes={arrangerLanes}
-        renderInterval={(interval, selected) => (
-          <View
-            style={{
-              backgroundColor: selected ? '#1d4ed8' : '#2563eb',
-              borderRadius: 3,
-              flex: 1,
-              justifyContent: 'center',
-              paddingHorizontal: 6,
-            }}
-          >
-            <Text>{interval.id}</Text>
-          </View>
+      <Text>{`Selected clip: ${selectedIds.at(0) ?? 'none'}`}</Text>
+      <ResponsiveWidth maxWidth={720}>
+        {(width) => (
+          <TimeGrid
+            contentWidth={resolveDawBarStartPpq(12)}
+            height={420}
+            intervals={arrangerClips}
+            lanes={arrangerLanes}
+            renderInterval={(interval, selected) => (
+              <View
+                style={{
+                  backgroundColor: selected ? '#1d4ed8' : '#2563eb',
+                  borderColor: selected ? '#facc15' : 'transparent',
+                  borderRadius: 3,
+                  borderWidth: 2,
+                  flex: 1,
+                  justifyContent: 'center',
+                  paddingHorizontal: 6,
+                }}
+              >
+                <Text>{interval.id}</Text>
+              </View>
+            )}
+            renderLaneLabel={(lane) => <Text>{lane.id}</Text>}
+            selectedIntervalIds={selectedIds}
+            width={width}
+            onIntervalPress={(interval) => setSelectedIds([interval.id])}
+          />
         )}
-        renderLaneLabel={(lane) => <Text>{lane.id}</Text>}
-        selectedIntervalIds={selectedIds}
-        width={720}
-        onIntervalPress={(interval) => setSelectedIds([interval.id])}
-      />
+      </ResponsiveWidth>
     </ScreenSection>
   );
 }
