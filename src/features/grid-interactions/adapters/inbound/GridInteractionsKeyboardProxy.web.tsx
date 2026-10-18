@@ -17,6 +17,7 @@ export function GridInteractionsKeyboardProxy({
   return (
     <div
       aria-label="Grid interaction keyboard controls"
+      role="group"
       onBlur={() => onSpaceKeyChange(false)}
       onKeyDown={(event) => {
         if (!enabled) return;
@@ -37,13 +38,21 @@ export function GridInteractionsKeyboardProxy({
       onKeyUp={(event) => {
         if (isSpaceKey(event)) onSpaceKeyChange(false);
       }}
-      style={{ display: 'contents' }}
+      style={keyboardBoundaryStyle}
       tabIndex={enabled ? 0 : -1}
     >
       {children}
     </div>
   );
 }
+
+const keyboardBoundaryStyle = {
+  alignSelf: 'stretch',
+  display: 'flex',
+  flex: 1,
+  minHeight: 0,
+  minWidth: 0,
+} as const;
 
 interface GridInteractionsKeyboardProxyProps {
   readonly children: React.ReactNode;

@@ -60,7 +60,6 @@ export function GridInteractions({
     <View
       accessible
       accessibilityLabel="Grid interaction surface"
-      accessibilityRole="adjustable"
       ref={surfaceRef}
       testID={testID}
       onResponderGrant={(event) => {
