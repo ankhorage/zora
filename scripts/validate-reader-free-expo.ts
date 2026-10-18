@@ -207,7 +207,7 @@ async function verifyLiveVariantAsync(
   const port = await dynamicPortAsync();
   const logs: string[] = [];
   const metroProcess = Bun.spawn(
-    ['bun', 'x', 'expo', 'start', '--web', '--port', `${port}`, '--no-dev', '--minify'],
+    ['bun', 'x', 'expo', 'start', '--localhost', '--port', `${port}`, '--no-dev', '--minify'],
     {
       cwd: root,
       env: {
