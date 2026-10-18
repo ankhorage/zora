@@ -521,6 +521,7 @@ async function verifyLiveVariantAsync(
           `failed network requests: ${JSON.stringify(browser.failedRequests)}`,
         ].join('\n');
         logs.push(`browser CDP evidence:\n${browserEvidence}\n`);
+        console.log(`${label}: browser CDP evidence:\n${sanitizedLog(browserEvidence)}`);
         assert(
           !actualBundleHasPdfWorker,
           `${label} actual browser entry bundle reaches the PDF worker graph.\n${browserEvidence}`,
