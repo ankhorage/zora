@@ -17,9 +17,19 @@ export function useMatrixGridKeyboardFocus(
   const cellRefs = React.useRef(new Map<string, FocusableCell>());
   const visibleIdSet = React.useMemo(() => new Set(visibleIds), [visibleIds]);
   const tabStopId =
-    focusedId !== null && visibleIdSet.has(focusedId)
+    focusedId !== null && visibleIdSet.has(focusedId) && isNavigable(focusedId)
       ? focusedId
       : visibleIds.find((id) => index.positionById.has(id) && isNavigable(id));
+
+  React.useEffect(() => {
+    if (focusedRef.current !== null && !isNavigable(focusedRef.current)) {
+      focusedRef.current = null;
+      setFocusedId(null);
+    }
+    if (pendingFocusRef.current !== null && !isNavigable(pendingFocusRef.current)) {
+      pendingFocusRef.current = null;
+    }
+  }, [isNavigable]);
 
   const onFocus = React.useCallback((id: string) => {
     pendingFocusRef.current = null;
@@ -75,7 +85,9 @@ function resolveNextNavigableId(
 ): string | null {
   let candidate = getMatrixGridNextFocusId(index, originId, key);
   while (candidate !== null && candidate !== originId && !isNavigable(candidate)) {
-    candidate = getMatrixGridNextFocusId(index, candidate, key);
+    const nextCandidate = getMatrixGridNextFocusId(index, candidate, key);
+    if (nextCandidate === candidate) return originId;
+    candidate = nextCandidate;
   }
   return candidate;
 }

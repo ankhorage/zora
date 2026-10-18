@@ -59,6 +59,10 @@ function MatrixGridInner({
   const [visibleIds, setVisibleIds] = React.useState<readonly string[]>([]);
   const anchorId = React.useRef<string | null>(null);
   const protectedCellIdSet = React.useMemo(() => new Set(protectedCellIds), [protectedCellIds]);
+  const isNavigable = React.useCallback(
+    (id: string) => !protectedCellIdSet.has(id),
+    [protectedCellIdSet],
+  );
 
   const handleViewportChange = React.useCallback(
     (proposal: GridViewport) => {
@@ -110,7 +114,7 @@ function MatrixGridInner({
     sparseIndex,
     interactionPolicy === 'passive',
     visibleIds,
-    (id) => !protectedCellIdSet.has(id),
+    isNavigable,
     handleKeyboardNavigation,
   );
   const focusedPlacement = React.useMemo(() => {
