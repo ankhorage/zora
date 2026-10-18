@@ -13,6 +13,7 @@ const cells = Array.from({ length: 2400 }, (_, index) => ({
   id: `cell-${index}`,
   rowId: `row-${Math.floor(index / 24)}`,
 }));
+const protectedCellIds = ['cell-0', 'cell-1'] as const;
 
 /*** Demonstrates a spreadsheet-like grid through the released code-first MatrixGrid API. */
 export function SpreadsheetMatrixScenario() {
@@ -21,6 +22,9 @@ export function SpreadsheetMatrixScenario() {
   return (
     <React.Suspense fallback={null}>
       <Text>{`Selected cells: ${selectedCellIds.length === 0 ? 'none' : selectedCellIds.join(', ')}`}</Text>
+      <Text>
+        Cell-0 and cell-1 are protected: they remain visible but cannot be selected or focused.
+      </Text>
       <ResponsiveWidth maxWidth={640}>
         {(width) => (
           <SpreadsheetMatrixScenarioContent
@@ -63,7 +67,11 @@ function renderSpreadsheetMatrixScenario(
       renderCell={(cell: { id: string }) => (
         <View
           style={{
-            backgroundColor: selectedCellIds.includes(cell.id) ? '#bfdbfe' : 'transparent',
+            backgroundColor: protectedCellIds.some((id) => id === cell.id)
+              ? '#e5e7eb'
+              : selectedCellIds.includes(cell.id)
+                ? '#bfdbfe'
+                : 'transparent',
             flex: 1,
           }}
         >
@@ -72,6 +80,7 @@ function renderSpreadsheetMatrixScenario(
       )}
       selectedCellIds={selectedCellIds}
       selectionMode="multi"
+      protectedCellIds={protectedCellIds}
       width={width}
       onSelectionChange={onSelectionChange}
     />
