@@ -206,16 +206,16 @@ async function verifyLiveVariantAsync(
 ): Promise<void> {
   const port = await dynamicPortAsync();
   const logs: string[] = [];
+  const { CI: _ci, ...metroEnvironment } = process.env;
   const metroProcess = Bun.spawn(
     ['bun', 'x', 'expo', 'start', '--localhost', '--port', `${port}`, '--no-dev', '--minify'],
     {
       cwd: root,
       env: {
-        ...process.env,
+        ...metroEnvironment,
         BUN_INSTALL_CACHE_DIR: bunCacheRoot,
         // Expo starts an unrelated React Native DevTools Chromium process when CI is set.
         // The acceptance owns its browser explicitly below, so Metro must stay headless here.
-        CI: '',
         EXPO_HOME: expoHome,
         EXPO_NO_TELEMETRY: '1',
         TMPDIR: temporaryRoot,
