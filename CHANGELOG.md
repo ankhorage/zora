@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.16
+
+### Patch Changes
+
+- 63c778f: Update dependencies: `@react-native-vector-icons/fontawesome5`, `@react-native-vector-icons/fontawesome6`, `@react-native-vector-icons/fontawesome`, `@react-native-vector-icons/ionicons`, `@react-native-vector-icons/material-design-icons`.
+
 ## 25.8.15
 
 ### Patch Changes
