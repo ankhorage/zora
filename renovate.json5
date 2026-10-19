@@ -42,12 +42,14 @@
     {
       description: 'Keep Metro configuration on the matching React Native 0.86 patch.',
       matchDatasources: ['npm'],
+      matchFileNames: ['examples/grid-workspaces/package.json'],
       matchPackageNames: ['@react-native/metro-config'],
       allowedVersions: '0.86.3',
     },
     {
       description: 'Keep React type declarations on the Expo 57 compatibility line.',
       matchDatasources: ['npm'],
+      matchFileNames: ['examples/grid-workspaces/package.json'],
       matchPackageNames: ['@types/react'],
       allowedVersions: '~19.2.18',
     },
