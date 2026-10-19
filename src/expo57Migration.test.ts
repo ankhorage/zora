@@ -29,6 +29,26 @@ const RNVI_PLUGINS = [
   '@react-native-vector-icons/fontawesome6',
   '@react-native-vector-icons/ionicons',
 ] as const;
+const EXPO_57_GRID_WORKSPACES_CONTRACT = {
+  expo: '~57.0.30',
+  metroConfig: '0.86.3',
+  typesReact: '~19.2.18',
+  zora: '25.8.15',
+} as const;
+const GRID_WORKSPACES_MANIFEST = 'examples/grid-workspaces/package.json';
+
+function readRenovatePackageRule(packageName: string): string {
+  const renovateSource = readFileSync(join(ROOT, 'renovate.json5'), 'utf8');
+  const packageMatcher = `matchPackageNames: ['${packageName}'],`;
+  const ruleStart = renovateSource.lastIndexOf('    {', renovateSource.indexOf(packageMatcher));
+  const ruleEnd = renovateSource.indexOf('\n    },', renovateSource.indexOf(packageMatcher));
+
+  if (ruleStart === -1 || ruleEnd === -1) {
+    throw new Error(`Expected a Renovate rule for ${packageName}.`);
+  }
+
+  return renovateSource.slice(ruleStart, ruleEnd);
+}
 
 function readJson(path: string): Record<string, unknown> {
   const value: unknown = JSON.parse(readFileSync(path, 'utf8'));
@@ -135,6 +155,36 @@ describe('Expo 57 example boundary', () => {
     expect(scaffoldSource).toContain("from 'expo-router/unstable-native-tabs'");
     expect(scaffoldSource).toContain('<GestureHandlerRootView style={{ flex: 1 }}>');
     expect(scaffoldSource).not.toContain('ZoraTabBar');
+  });
+
+  test('pins Grid Workspaces native tooling to the Expo 57 React Native contract', () => {
+    const packageJson = readExamplePackage('examples/grid-workspaces');
+    const dependencies = readRecord(packageJson, 'dependencies');
+    const development = readRecord(packageJson, 'devDependencies');
+
+    expect(dependencies.expo).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.expo);
+    expect(dependencies['@ankhorage/zora']).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.zora);
+    expect(dependencies['@react-native/metro-config']).toBe(
+      EXPO_57_GRID_WORKSPACES_CONTRACT.metroConfig,
+    );
+    expect(development['@types/react']).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.typesReact);
+  });
+
+  test('limits Grid Workspaces native-tooling Renovate constraints to its manifest', () => {
+    const packageJson = readJson(join(ROOT, 'package.json'));
+    const development = readRecord(packageJson, 'devDependencies');
+
+    for (const [packageName, allowedVersion] of [
+      ['@react-native/metro-config', EXPO_57_GRID_WORKSPACES_CONTRACT.metroConfig],
+      ['@types/react', EXPO_57_GRID_WORKSPACES_CONTRACT.typesReact],
+    ]) {
+      const renovateRule = readRenovatePackageRule(packageName);
+
+      expect(renovateRule).toContain(`matchFileNames: ['${GRID_WORKSPACES_MANIFEST}'],`);
+      expect(renovateRule).toContain(`allowedVersions: '${allowedVersion}',`);
+    }
+
+    expect(development['@types/react']).not.toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.typesReact);
   });
 
   test('uses Navigator native tabs in every router example', () => {
