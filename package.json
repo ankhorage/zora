@@ -163,7 +163,7 @@
     "@types/react-native-web": "^0.19.3",
     "cytoscape": "^3.34.4",
     "cytoscape-elk": "^2.3.0",
-    "happy-dom": "^21.0.3",
+    "happy-dom": "^21.0.4",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.3",
