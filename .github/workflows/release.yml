@@ -390,6 +390,15 @@ jobs:
           if (typeof appDir !== 'string' || typeof specifier !== 'string') {
             throw new Error('The platform verification app and package specifier are required.');
           }
+          writeFileSync(
+            join(appDir, 'package.json'),
+            `${JSON.stringify({
+              main: './App.tsx',
+              name: 'packed-platform-verification',
+              private: true,
+              version: '0.0.0',
+            })}\n`,
+          );
           writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
           NODE
                     if (
