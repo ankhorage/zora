@@ -3,6 +3,7 @@ import React from 'react';
 import type { DatePickerProps } from '../../../types/date-picker';
 import { Button } from '../../button/public';
 import { View } from '../../layout/public';
+import { PickerHeader } from '../../picker/composition/PickerHeader';
 import { Text } from '../../typography/public';
 import { formatLocalDate, parseLocalDate } from '../utils/localDate';
 
@@ -59,28 +60,6 @@ interface DatePickerContentProps extends Pick<
 > {
   onDismiss: () => void;
   onSelect: (value: Date) => void;
-}
-
-/*** Renders the shared title block used by picker overlays. */
-function PickerHeader({
-  description,
-  title,
-}: {
-  description: React.ReactNode | undefined;
-  title: React.ReactNode;
-}) {
-  return (
-    <View gap="xxs">
-      <Text align="center" variant="label" weight="semiBold">
-        {title}
-      </Text>
-      {description ? (
-        <Text align="center" emphasis="muted" variant="bodySmall">
-          {description}
-        </Text>
-      ) : null}
-    </View>
-  );
 }
 
 /*** Renders previous and next month controls for the calendar. */

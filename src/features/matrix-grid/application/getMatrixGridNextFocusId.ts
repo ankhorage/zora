@@ -64,40 +64,29 @@ function findDirectionalNeighbour(
 ): MatrixGridSparseIndexEntry | undefined {
   if (!entries) return undefined;
   const coordinate = getAxisCoordinate(current, axis);
-  const insertionIndex = findFirstGreaterOrEqual(entries, coordinate, axis);
+  const insertionIndex = findFirstAtOrAfter(entries, coordinate, axis, false);
   if (direction === -1) return insertionIndex === 0 ? undefined : entries[insertionIndex - 1];
-  return entries[findFirstGreater(entries, coordinate, axis)];
+  return entries[findFirstAtOrAfter(entries, coordinate, axis, true)];
 }
 
-/*** Locate the first entry strictly after a matrix coordinate in a sorted sparse axis. */
-function findFirstGreater(
+/*** Locates the first entry at or after a matrix coordinate in a sorted sparse axis. */
+function findFirstAtOrAfter(
   entries: readonly MatrixGridSparseIndexEntry[],
   coordinate: number,
   axis: 'columnIndex' | 'rowIndex',
+  strictlyAfter: boolean,
 ): number {
   let lower = 0;
   let upper = entries.length;
   while (lower < upper) {
     const middle = Math.floor((lower + upper) / 2);
     const entry = entries.at(middle);
-    if (entry && getAxisCoordinate(entry, axis) <= coordinate) lower = middle + 1;
-    else upper = middle;
-  }
-  return lower;
-}
-
-/*** Locate the first index at or after a matrix coordinate in a sorted sparse axis. */
-function findFirstGreaterOrEqual(
-  entries: readonly MatrixGridSparseIndexEntry[],
-  coordinate: number,
-  axis: 'columnIndex' | 'rowIndex',
-): number {
-  let lower = 0;
-  let upper = entries.length;
-  while (lower < upper) {
-    const middle = Math.floor((lower + upper) / 2);
-    const entry = entries.at(middle);
-    if (entry && getAxisCoordinate(entry, axis) < coordinate) lower = middle + 1;
+    const entryCoordinate = entry ? getAxisCoordinate(entry, axis) : undefined;
+    if (
+      entryCoordinate !== undefined &&
+      (strictlyAfter ? entryCoordinate <= coordinate : entryCoordinate < coordinate)
+    )
+      lower = middle + 1;
     else upper = middle;
   }
   return lower;

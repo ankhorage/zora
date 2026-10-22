@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import type { TimePickerProps } from '../../../types/time-picker';
 import { Button } from '../../button/public';
 import { View } from '../../layout/public';
-import { Text } from '../../typography/public';
+import { PickerHeader } from '../../picker/composition/PickerHeader';
 
 const MINUTES_PER_DAY = 24 * 60;
 const DEFAULT_STEP_MINUTES = 30;
@@ -67,28 +67,6 @@ interface TimePickerContentProps extends Pick<
 > {
   onDismiss: () => void;
   onSelect: (value: string) => void;
-}
-
-/*** Renders the shared title block used by picker overlays. */
-function PickerHeader({
-  description,
-  title,
-}: {
-  description: React.ReactNode | undefined;
-  title: React.ReactNode;
-}) {
-  return (
-    <View gap="xxs">
-      <Text align="center" variant="label" weight="semiBold">
-        {title}
-      </Text>
-      {description ? (
-        <Text align="center" emphasis="muted" variant="bodySmall">
-          {description}
-        </Text>
-      ) : null}
-    </View>
-  );
 }
 
 /*** Renders one accessible selectable time option. */

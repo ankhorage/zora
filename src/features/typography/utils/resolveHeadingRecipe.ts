@@ -1,4 +1,4 @@
-import type { FontWeight, RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
+import type { SurfaceTheme } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
 
 import type {
@@ -10,6 +10,7 @@ import type {
   HeadingWeight,
 } from '../../../types/heading';
 import { resolveHeadingSizeFromLevel } from './resolveHeadingSizeFromLevel';
+import { resolveTypographyStyleTokens } from './resolveTypographyStyleTokens';
 export function resolveHeadingRecipe(
   theme: SurfaceTheme,
   {
@@ -23,15 +24,21 @@ export function resolveHeadingRecipe(
   }: ResolveHeadingRecipeOptions,
 ): TextStyle {
   const recipe = resolveSizeRecipe(theme, size ?? resolveHeadingSizeFromLevel(level));
-  const resolvedWeight = resolveWeight(theme, weight ?? recipe.weight);
+  const tokens = resolveTypographyStyleTokens({
+    theme,
+    color,
+    emphasis,
+    weight: weight ?? recipe.weight,
+    italic,
+  });
 
   return {
-    color: resolveHeadingColor(theme, emphasis, color),
+    color: tokens.color,
     elevation: 0,
-    fontFamily: resolveFontFamily({ theme, weight: resolvedWeight, italic }),
+    fontFamily: tokens.fontFamily,
     fontSize: recipe.fontSize,
     fontStyle: italic ? 'italic' : 'normal',
-    fontWeight: resolvedWeight,
+    fontWeight: tokens.fontWeight,
     lineHeight: recipe.lineHeight,
     textAlign: align,
   };
@@ -88,87 +95,4 @@ function resolveSizeRecipe(theme: SurfaceTheme, size: HeadingSize): HeadingRecip
     lineHeight: heading.lineHeight,
     weight: heading.weight,
   };
-}
-
-function resolveRoleSemantics(theme: SurfaceTheme, color: HeadingColor): RoleSemantics {
-  switch (color) {
-    case 'secondary':
-      return theme.semantics.secondary;
-    case 'tertiary':
-      return theme.semantics.accent;
-    case 'quaternary':
-      return theme.semantics.highlight;
-    case 'neutral':
-      return theme.semantics.action.neutral;
-    case 'error':
-      return theme.semantics.error;
-    case 'info':
-      return theme.semantics.info;
-    case 'danger':
-      return theme.semantics.action.danger;
-    case 'success':
-      return theme.semantics.success;
-    case 'warning':
-      return theme.semantics.warning;
-    case 'primary':
-    default:
-      return theme.semantics.action.primary;
-  }
-}
-
-function resolveHeadingColor(
-  theme: SurfaceTheme,
-  emphasis: HeadingEmphasis,
-  color?: HeadingColor,
-): string {
-  if (color) {
-    const role = resolveRoleSemantics(theme, color);
-    return emphasis === 'inverse' ? role.onSolidText : role.base;
-  }
-
-  switch (emphasis) {
-    case 'muted':
-      return theme.semantics.content.muted;
-    case 'subtle':
-      return theme.semantics.content.subtle;
-    case 'inverse':
-      return theme.semantics.content.inverse;
-    case 'default':
-    default:
-      return theme.semantics.content.default;
-  }
-}
-
-function resolveWeight(theme: SurfaceTheme, weight: HeadingWeight): FontWeight {
-  switch (weight) {
-    case 'medium':
-      return theme.typography.weights.medium;
-    case 'semiBold':
-      return theme.typography.weights.semiBold;
-    case 'bold':
-      return theme.typography.weights.bold;
-    case 'regular':
-    default:
-      return theme.typography.weights.regular;
-  }
-}
-
-function resolveFontFamily({
-  theme,
-  weight,
-  italic,
-}: {
-  theme: SurfaceTheme;
-  weight: FontWeight;
-  italic: boolean;
-}): string | undefined {
-  const fonts = italic ? theme.typography.fonts.italic : theme.typography.fonts.normal;
-
-  for (const [fontWeight, fontFamily] of Object.entries(fonts)) {
-    if (fontWeight === weight) {
-      return fontFamily;
-    }
-  }
-
-  return undefined;
 }

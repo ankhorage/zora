@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
 
+import { assert } from './utils/assert';
+
 type JsonObject = Record<string, unknown>;
 type Variant = 'root-baseline' | 'reader-free' | 'reader-control';
 type BundleProbe = {
@@ -36,10 +38,6 @@ const chromiumCommand =
     : 'google-chrome');
 const BROWSER_READY_TIMEOUT_MS = 30_000;
 const BROWSER_RENDER_TIMEOUT_MS = 90_000;
-
-function assert(condition: boolean, message: string): asserts condition {
-  if (!condition) throw new Error(message);
-}
 
 function readJson(path: string): JsonObject {
   const value: unknown = JSON.parse(readFileSync(path, 'utf8'));

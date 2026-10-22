@@ -1,5 +1,5 @@
 import type { ZoraThemeRecipeMeta } from '../../../types/theme-recipe';
-import { ZORA_COLORS, ZORA_EMPHASES } from '../../theme/colorModel';
+import { typographyThemeRecipeFields } from './typographyThemeRecipeFields';
 
 export const headingThemeRecipeMeta = {
   name: 'Heading',
@@ -11,23 +11,6 @@ export const headingThemeRecipeMeta = {
       label: 'Size',
       options: ['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
     },
-    color: { type: 'choice', label: 'Color', options: ZORA_COLORS },
-    emphasis: {
-      type: 'choice',
-      label: 'Emphasis',
-      options: ZORA_EMPHASES,
-      default: 'default',
-    },
-    align: {
-      type: 'choice',
-      label: 'Align',
-      options: ['auto', 'left', 'right', 'center', 'justify'],
-    },
-    weight: {
-      type: 'choice',
-      label: 'Weight',
-      options: ['regular', 'medium', 'semiBold', 'bold'],
-    },
-    italic: { type: 'boolean', label: 'Italic', default: false },
+    ...typographyThemeRecipeFields,
   },
 } as const satisfies ZoraThemeRecipeMeta;
