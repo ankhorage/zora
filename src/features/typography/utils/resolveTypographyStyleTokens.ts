@@ -1,7 +1,6 @@
 import type { FontWeight, RoleSemantics, SurfaceTheme } from '@ankhorage/surface';
 
-import type { HeadingColor, HeadingEmphasis, HeadingWeight } from '../../../types/heading';
-import type { TextColor, TextEmphasis, TextWeight } from '../../../types/text';
+import type { ZoraColor, ZoraEmphasis } from '../../../types/theme';
 
 /*** Resolves the Surface-derived style tokens shared by Heading and Text. */
 export function resolveTypographyStyleTokens({
@@ -39,9 +38,9 @@ interface ResolveTypographyStyleTokensOutput {
   readonly fontWeight: FontWeight;
 }
 
-type TypographyColor = HeadingColor | TextColor;
-type TypographyEmphasis = HeadingEmphasis | TextEmphasis;
-type TypographyWeight = HeadingWeight | TextWeight;
+type TypographyColor = ZoraColor;
+type TypographyEmphasis = ZoraEmphasis;
+type TypographyWeight = 'regular' | 'medium' | 'semiBold' | 'bold';
 
 function resolveRoleSemantics(theme: SurfaceTheme, color: TypographyColor): RoleSemantics {
   switch (color) {
