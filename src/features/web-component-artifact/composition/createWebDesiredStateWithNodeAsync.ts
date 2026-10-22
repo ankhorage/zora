@@ -1,9 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import { readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import { readWebDesiredStateWithNodeAsync } from '../adapters/outbound/node/readWebDesiredStateWithNodeAsync';
+import { readWebComponentPackageMetadataAsync } from './readWebComponentPackageMetadataAsync';
 import { synchronizeWebComponentArtifactsWithNodeAsync } from './synchronizeWebComponentArtifactsWithNodeAsync';
 
 /*** Add one requested web component and regenerate the complete declared set. */
@@ -13,10 +13,7 @@ export async function createWebDesiredStateWithNodeAsync(input: {
 }) {
   const desired = await readWebDesiredStateWithNodeAsync(input.projectRoot, true);
   const components = [...new Set([...desired.components, input.component])].sort();
-  const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
-  const packageJson = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8')) as {
-    readonly version: string;
-  };
+  const { packageRoot, packageVersion } = await readWebComponentPackageMetadataAsync();
   const desiredPath = resolve(input.projectRoot, 'zora.web.json');
   const previous = await readFile(desiredPath, 'utf8').catch((error: unknown) => {
     if (isMissingFile(error)) return undefined;
@@ -29,7 +26,7 @@ export async function createWebDesiredStateWithNodeAsync(input: {
       components,
       outputDirectory: resolve(input.projectRoot, '.ankh', 'zora', 'web'),
       packageRoot,
-      packageVersion: packageJson.version,
+      packageVersion,
     });
   } catch (error) {
     if (next !== previous) {

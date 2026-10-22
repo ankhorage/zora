@@ -1,9 +1,7 @@
 import {
   type Breakpoint,
-  type FontWeight,
   resolveResponsive,
   type Responsive,
-  type RoleSemantics,
   type SurfaceTheme,
 } from '@ankhorage/surface';
 import type { TextStyle } from 'react-native';
@@ -15,6 +13,7 @@ import type {
   TextVariant,
   TextWeight,
 } from '../../../types/text';
+import { resolveTypographyStyleTokens } from './resolveTypographyStyleTokens';
 /*** Resolves responsive text variants and theme semantics into a native text style. */
 export function resolveTextStyle({
   theme,
@@ -31,23 +30,21 @@ export function resolveTextStyle({
   const resolvedColor = resolveResponsive(color, breakpoint);
   const resolvedAlign = resolveResponsive(align, breakpoint);
   const recipe = resolveVariantRecipe(theme, resolvedVariant, breakpoint);
-  const resolvedWeight = resolveWeight(
+  const tokens = resolveTypographyStyleTokens({
     theme,
-    resolveResponsive(weight, breakpoint) ?? recipe.weight,
-  );
+    color: resolvedColor,
+    emphasis: resolvedEmphasis,
+    weight: resolveResponsive(weight, breakpoint) ?? recipe.weight,
+    italic,
+  });
 
   return {
-    color: resolveTextColor(theme, resolvedEmphasis, resolvedColor),
+    color: tokens.color,
     elevation: 0,
-    fontFamily: resolveFontFamily({
-      theme,
-      variant: resolvedVariant,
-      weight: resolvedWeight,
-      italic,
-    }),
+    fontFamily: resolvedVariant === 'code' ? 'monospace' : tokens.fontFamily,
     fontSize: recipe.fontSize,
     fontStyle: italic ? 'italic' : 'normal',
-    fontWeight: resolvedWeight,
+    fontWeight: tokens.fontWeight,
     letterSpacing: recipe.letterSpacing,
     lineHeight: recipe.lineHeight,
     textAlign: resolvedAlign,
@@ -76,46 +73,6 @@ interface ResolveTextStyleOptions {
 
 function isMediumBreakpointOrLarger(breakpoint: Breakpoint): boolean {
   return breakpoint === 'md' || breakpoint === 'lg' || breakpoint === 'xl';
-}
-
-function resolveWeight(theme: SurfaceTheme, weight: TextWeight): FontWeight {
-  switch (weight) {
-    case 'medium':
-      return theme.typography.weights.medium;
-    case 'semiBold':
-      return theme.typography.weights.semiBold;
-    case 'bold':
-      return theme.typography.weights.bold;
-    case 'regular':
-    default:
-      return theme.typography.weights.regular;
-  }
-}
-
-function resolveFontFamily({
-  theme,
-  variant,
-  weight,
-  italic,
-}: {
-  theme: SurfaceTheme;
-  variant: TextVariant;
-  weight: FontWeight;
-  italic: boolean;
-}): string | undefined {
-  if (variant === 'code') {
-    return 'monospace';
-  }
-
-  const fonts = italic ? theme.typography.fonts.italic : theme.typography.fonts.normal;
-
-  for (const [fontWeight, fontFamily] of Object.entries(fonts)) {
-    if (fontWeight === weight) {
-      return fontFamily;
-    }
-  }
-
-  return undefined;
 }
 
 function resolveVariantRecipe(
@@ -171,50 +128,5 @@ function resolveVariantRecipe(
         lineHeight: 24,
         weight: 'regular',
       };
-  }
-}
-
-function resolveRoleSemantics(theme: SurfaceTheme, color: TextColor): RoleSemantics {
-  switch (color) {
-    case 'secondary':
-      return theme.semantics.secondary;
-    case 'tertiary':
-      return theme.semantics.accent;
-    case 'quaternary':
-      return theme.semantics.highlight;
-    case 'neutral':
-      return theme.semantics.action.neutral;
-    case 'error':
-      return theme.semantics.error;
-    case 'info':
-      return theme.semantics.info;
-    case 'danger':
-      return theme.semantics.action.danger;
-    case 'success':
-      return theme.semantics.success;
-    case 'warning':
-      return theme.semantics.warning;
-    case 'primary':
-    default:
-      return theme.semantics.action.primary;
-  }
-}
-
-function resolveTextColor(theme: SurfaceTheme, emphasis: TextEmphasis, color?: TextColor): string {
-  if (color) {
-    const role = resolveRoleSemantics(theme, color);
-    return emphasis === 'inverse' ? role.onSolidText : role.base;
-  }
-
-  switch (emphasis) {
-    case 'muted':
-      return theme.semantics.content.muted;
-    case 'subtle':
-      return theme.semantics.content.subtle;
-    case 'inverse':
-      return theme.semantics.content.inverse;
-    case 'default':
-    default:
-      return theme.semantics.content.default;
   }
 }

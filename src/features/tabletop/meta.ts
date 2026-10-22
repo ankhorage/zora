@@ -1,5 +1,37 @@
 import type { ZoraComponentMeta } from '../../types/authoring';
 
+const tabletopPresentationProps = {
+  shape: {
+    type: 'enum',
+    category: 'Table',
+    label: 'Shape',
+    enum: ['circle', 'oval', 'rounded'],
+    default: 'oval',
+    authoring: { authority: 'instance' },
+  },
+  cardSize: {
+    type: 'enum',
+    category: 'Cards',
+    label: 'Card size',
+    enum: ['small', 'medium', 'large'],
+    default: 'small',
+    authoring: { authority: 'instance' },
+  },
+  disabled: {
+    type: 'boolean',
+    category: 'State',
+    label: 'Disabled',
+    default: false,
+    authoring: { authority: 'instance' },
+  },
+  accessibilityLabel: {
+    type: 'string',
+    category: 'Accessibility',
+    label: 'Accessibility label',
+    authoring: { authority: 'instance' },
+  },
+} as const;
+
 export const cardBackMeta = {
   name: 'CardBack',
   category: 'component',
@@ -163,14 +195,6 @@ export const tabletopTableMeta = {
       label: 'Center sublabel',
       authoring: { authority: 'instance' },
     },
-    shape: {
-      type: 'enum',
-      category: 'Table',
-      label: 'Shape',
-      enum: ['circle', 'oval', 'rounded'],
-      default: 'oval',
-      authoring: { authority: 'instance' },
-    },
     seatCount: {
       type: 'enum',
       category: 'Players',
@@ -178,27 +202,7 @@ export const tabletopTableMeta = {
       enum: [2, 3, 4, 5, 6, 7, 8, 9, 10],
       authoring: { authority: 'instance' },
     },
-    cardSize: {
-      type: 'enum',
-      category: 'Cards',
-      label: 'Card size',
-      enum: ['small', 'medium', 'large'],
-      default: 'small',
-      authoring: { authority: 'instance' },
-    },
-    disabled: {
-      type: 'boolean',
-      category: 'State',
-      label: 'Disabled',
-      default: false,
-      authoring: { authority: 'instance' },
-    },
-    accessibilityLabel: {
-      type: 'string',
-      category: 'Accessibility',
-      label: 'Accessibility label',
-      authoring: { authority: 'instance' },
-    },
+    ...tabletopPresentationProps,
   },
 } as const satisfies ZoraComponentMeta;
 export const pokerTrainingTableMeta = {
@@ -245,34 +249,6 @@ export const pokerTrainingTableMeta = {
       default: 100,
       authoring: { authority: 'instance' },
     },
-    shape: {
-      type: 'enum',
-      category: 'Table',
-      label: 'Shape',
-      enum: ['circle', 'oval', 'rounded'],
-      default: 'oval',
-      authoring: { authority: 'instance' },
-    },
-    cardSize: {
-      type: 'enum',
-      category: 'Cards',
-      label: 'Card size',
-      enum: ['small', 'medium', 'large'],
-      default: 'small',
-      authoring: { authority: 'instance' },
-    },
-    disabled: {
-      type: 'boolean',
-      category: 'State',
-      label: 'Disabled',
-      default: false,
-      authoring: { authority: 'instance' },
-    },
-    accessibilityLabel: {
-      type: 'string',
-      category: 'Accessibility',
-      label: 'Accessibility label',
-      authoring: { authority: 'instance' },
-    },
+    ...tabletopPresentationProps,
   },
 } as const satisfies ZoraComponentMeta;

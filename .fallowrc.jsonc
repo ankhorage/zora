@@ -1,0 +1,13 @@
+{
+  "$schema": "https://fallow.tools/schema.json",
+  "duplicates": {
+    // Example apps are standalone generated deliverables. Their shared source of truth is the
+    // scaffold script, so cross-example imports would violate their independent-install contract.
+    "ignore": ["examples/**"],
+    "ignoredClones": [
+      // React Native and DOM TreeView rows are separate platform adapters. Their comparable
+      // structure is intentional; framework-neutral policy already lives below the adapter edge.
+      "dup:d53ae50d:2",
+    ],
+  },
+}

@@ -12,6 +12,8 @@ import {
 import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve, sep } from 'node:path';
 
+import { assert } from './utils/assert';
+
 interface CandidateFixture {
   readonly doctor: boolean;
   readonly expectedWebRoutes?: readonly string[];
@@ -118,12 +120,6 @@ function requireString(value: unknown, label: string): string {
   }
 
   return value;
-}
-
-function assert(condition: boolean, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
 }
 
 function run(
