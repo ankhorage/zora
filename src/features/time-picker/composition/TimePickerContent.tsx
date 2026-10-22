@@ -4,7 +4,6 @@ import { ScrollView, StyleSheet } from 'react-native';
 import type { TimePickerProps } from '../../../types/time-picker';
 import { Button } from '../../button/public';
 import { View } from '../../layout/public';
-import { Text } from '../../typography/public';
 import { PickerHeader } from '../../picker/composition/PickerHeader';
 
 const MINUTES_PER_DAY = 24 * 60;
