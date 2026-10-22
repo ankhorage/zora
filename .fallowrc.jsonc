@@ -8,6 +8,35 @@
       // React Native and DOM TreeView rows are separate platform adapters. Their comparable
       // structure is intentional; framework-neutral policy already lives below the adapter edge.
       "dup:d53ae50d:2",
+      // These components share Surface vocabulary only; extracting them would couple unrelated
+      // Chip, Rating, Timeline, and Progress feature ownership.
+      "dup:6e140551:4",
+      // Heading and Text retain independently serializable public authoring contracts.
+      "dup:f5873628:2",
+      // Auth metadata and forms deliberately preserve distinct auth flow events and fields.
+      "dup:212258a7:2",
+      "dup:a1bda44f:2",
+      "dup:3fcfcb1e:2",
+      "dup:5344f212:2",
+      // Radio and Select expose separate option semantics despite similar manifest descriptors.
+      "dup:4aae609b:2",
+      // Game, date/time picker, card, and list clones are feature-local declarations with
+      // different public contracts; a generic metadata or presentation factory would obscure them.
+      "dup:f8c8a93d:2",
+      "dup:63a2a303:2",
+      "dup:2593b9d8:2",
+      "dup:e4e4c125:2",
+      // Explorer and MatrixGrid use framework-specific focus lifecycles behind separate adapters.
+      "dup:a2dfc1db:2",
+      // Reader bindings are feature-owned and registry projection must remain explicit.
+      "dup:ab026d84:2",
+      // Theme recipes keep distinct component defaults and semantics at their feature owners.
+      "dup:72b9dc64:2",
+      // Game animation hooks have distinct lifecycle and value semantics.
+      "dup:c46bd90b:2",
+      // Script assertions are independent executable entrypoints; a shared runtime helper is out
+      // of scope for package source and would add tooling coupling without a reusable contract.
+      "dup:dd1f94e0:2",
     ],
   },
 }
