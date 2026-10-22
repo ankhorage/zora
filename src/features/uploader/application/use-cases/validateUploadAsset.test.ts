@@ -35,8 +35,8 @@ describe('validateUploadAsset', () => {
   });
 
   test('rejects assets above the configured size', () => {
-    expect(validateUploadAsset({ asset: IMAGE_ASSET, maxSizeBytes: 1_000 })).toContain(
-      'File is too large',
+    expect(validateUploadAsset({ asset: IMAGE_ASSET, maxSizeBytes: 1_000 })).toBe(
+      'File is too large (2 KB). Max 1000 B.',
     );
   });
 

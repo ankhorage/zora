@@ -1,3 +1,4 @@
+import { formatBytes } from '@ankhorage/utility/number';
 import React from 'react';
 
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
@@ -444,24 +445,4 @@ function formatUnknownError(error: unknown): string {
   }
 
   return 'Something went wrong.';
-}
-
-/*** Formats an upload byte limit for concise helper text. */
-function formatBytes(value: number): string {
-  if (!Number.isFinite(value) || value <= 0) {
-    return '0 B';
-  }
-
-  const units = ['B', 'KB', 'MB', 'GB'] as const;
-  let size = value;
-  let unitIndex = 0;
-
-  while (size >= 1024 && unitIndex < units.length - 1) {
-    size /= 1024;
-    unitIndex += 1;
-  }
-
-  const unit = units.at(unitIndex) ?? 'B';
-  const rounded = unitIndex === 0 ? Math.round(size) : Math.round(size * 10) / 10;
-  return `${rounded} ${unit}`;
 }
