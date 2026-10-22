@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.17
+
+### Patch Changes
+
+- 355b7e3: Use the shared Utility byte formatter for uploader size feedback.
+
 ## 25.8.16
 
 ### Patch Changes

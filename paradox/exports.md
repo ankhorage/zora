@@ -4380,7 +4380,7 @@ Maps a serializable training task to presentation without running poker or train
 
 Kind: `value`
 Module: `src/features/tabletop/meta.ts`
-Source: `src/features/tabletop/meta.ts:204:14`
+Source: `src/features/tabletop/meta.ts:208:14`
 
 ## PokerTrainingTableProps
 
@@ -6310,7 +6310,7 @@ Renders a responsive table surface and caller-owned seats.
 
 Kind: `value`
 Module: `src/features/tabletop/meta.ts`
-Source: `src/features/tabletop/meta.ts:94:14`
+Source: `src/features/tabletop/meta.ts:126:14`
 
 ## TabletopTableProps
 
@@ -7142,7 +7142,7 @@ Source: `src/types/upload.ts:8:1`
 
 Kind: `value`
 Module: `src/features/uploader/adapters/inbound/Uploader.tsx`
-Source: `src/features/uploader/adapters/inbound/Uploader.tsx:18:14`
+Source: `src/features/uploader/adapters/inbound/Uploader.tsx:19:14`
 
 Picks, validates, uploads, previews, and removes one generic file asset.
 
@@ -7361,7 +7361,7 @@ Source: `src/features/form/utils/validation.ts:61:1`
 
 Kind: `function`
 Module: `src/features/uploader/application/use-cases/validateUploadAsset.ts`
-Source: `src/features/uploader/application/use-cases/validateUploadAsset.ts:4:1`
+Source: `src/features/uploader/application/use-cases/validateUploadAsset.ts:6:1`
 
 Validates a picked upload asset against MIME, extension, size, and caller rules.
 

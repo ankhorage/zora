@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.16",
+      "value": "v25.8.17",
       "color": "cb3837"
     },
     {
@@ -1734,6 +1734,7 @@
         "src/features/button/public.ts",
         "src/features/date-picker/utils/localDate.ts",
         "src/features/layout/public.ts",
+        "src/features/picker/composition/PickerHeader.tsx",
         "src/features/typography/public.ts",
         "src/types/date-picker.ts"
       ],
@@ -1745,8 +1746,7 @@
       "path": "src/features/date-picker/composition/DatePickerField.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
+        "src/features/picker/composition/PickerField.tsx",
         "src/types/date-picker.ts"
       ],
       "exports": [
@@ -4278,6 +4278,28 @@
       ]
     },
     {
+      "path": "src/features/picker/composition/PickerField.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/layout/public.ts",
+        "src/features/typography/public.ts"
+      ],
+      "exports": [
+        "PickerField"
+      ]
+    },
+    {
+      "path": "src/features/picker/composition/PickerHeader.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/layout/public.ts",
+        "src/features/typography/public.ts"
+      ],
+      "exports": [
+        "PickerHeader"
+      ]
+    },
+    {
       "path": "src/features/popover-menu/adapters/inbound/PopoverMenu.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -5850,7 +5872,7 @@
       "dependencies": [
         "src/features/button/public.ts",
         "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
+        "src/features/picker/composition/PickerHeader.tsx",
         "src/types/time-picker.ts"
       ],
       "exports": [
@@ -5861,8 +5883,7 @@
       "path": "src/features/time-picker/composition/TimePickerField.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/layout/public.ts",
-        "src/features/typography/public.ts",
+        "src/features/picker/composition/PickerField.tsx",
         "src/types/time-picker.ts"
       ],
       "exports": [
@@ -6204,7 +6225,7 @@
       "path": "src/features/typography/utils/headingThemeRecipeMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/theme/colorModel.ts",
+        "src/features/typography/utils/typographyThemeRecipeFields.ts",
         "src/types/theme-recipe.ts"
       ],
       "exports": [
@@ -6216,6 +6237,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/typography/utils/resolveHeadingSizeFromLevel.ts",
+        "src/features/typography/utils/resolveTypographyStyleTokens.ts",
         "src/types/heading.ts"
       ],
       "exports": [
@@ -6236,6 +6258,7 @@
       "path": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
         "src/types/heading.ts"
       ],
       "exports": [
@@ -6246,6 +6269,7 @@
       "path": "src/features/typography/utils/resolveTextStyle.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/typography/utils/resolveTypographyStyleTokens.ts",
         "src/types/text.ts"
       ],
       "exports": [
@@ -6256,6 +6280,7 @@
       "path": "src/features/typography/utils/resolveTextThemeRecipe.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
         "src/types/text.ts"
       ],
       "exports": [
@@ -6263,14 +6288,44 @@
       ]
     },
     {
+      "path": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/theme.ts"
+      ],
+      "exports": [
+        "resolveTypographyStyleTokens"
+      ]
+    },
+    {
+      "path": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/theme/colorModel.ts"
+      ],
+      "exports": [
+        "resolveTypographyThemeRecipeFields"
+      ]
+    },
+    {
       "path": "src/features/typography/utils/textThemeRecipeMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/theme/colorModel.ts",
+        "src/features/typography/utils/typographyThemeRecipeFields.ts",
         "src/types/theme-recipe.ts"
       ],
       "exports": [
         "textThemeRecipeMeta"
+      ]
+    },
+    {
+      "path": "src/features/typography/utils/typographyThemeRecipeFields.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/theme/colorModel.ts"
+      ],
+      "exports": [
+        "typographyThemeRecipeFields"
       ]
     },
     {
@@ -6442,6 +6497,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
         "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
       ],
       "exports": [
@@ -6449,10 +6505,19 @@
       ]
     },
     {
+      "path": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "readWebComponentPackageMetadataAsync"
+      ]
+    },
+    {
       "path": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
         "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts"
       ],
       "exports": [
@@ -27250,7 +27315,7 @@
       "modulePath": "src/features/tabletop/meta.ts",
       "sourceLocation": {
         "filePath": "src/features/tabletop/meta.ts",
-        "line": 204,
+        "line": 208,
         "column": 14
       },
       "exportPaths": [
@@ -35827,7 +35892,7 @@
       "modulePath": "src/features/tabletop/meta.ts",
       "sourceLocation": {
         "filePath": "src/features/tabletop/meta.ts",
-        "line": 94,
+        "line": 126,
         "column": 14
       },
       "exportPaths": [
@@ -39110,7 +39175,7 @@
       "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 18,
+        "line": 19,
         "column": 14
       },
       "exportPaths": [
@@ -39898,7 +39963,7 @@
       "modulePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
       "sourceLocation": {
         "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 4,
+        "line": 6,
         "column": 1
       },
       "exportPaths": [
@@ -62071,7 +62136,7 @@
       "modulePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 18,
+        "line": 19,
         "column": 14
       },
       "exportPaths": [
@@ -64621,18 +64686,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 13,
-        "column": 1
-      }
-    },
-    {
-      "name": "PickerHeader",
-      "description": "Renders the shared title block used by picker overlays.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 65,
+        "line": 14,
         "column": 1
       }
     },
@@ -64643,7 +64697,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 87,
+        "line": 66,
         "column": 1
       }
     },
@@ -64654,7 +64708,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 131,
+        "line": 110,
         "column": 1
       }
     },
@@ -64665,7 +64719,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 146,
+        "line": 125,
         "column": 1
       }
     },
@@ -64676,7 +64730,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 189,
+        "line": 168,
         "column": 1
       }
     },
@@ -64687,7 +64741,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 194,
+        "line": 173,
         "column": 1
       }
     },
@@ -64698,7 +64752,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 199,
+        "line": 178,
         "column": 1
       }
     },
@@ -64709,7 +64763,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 204,
+        "line": 183,
         "column": 1
       }
     },
@@ -64720,7 +64774,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 209,
+        "line": 188,
         "column": 1
       }
     },
@@ -64731,7 +64785,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 220,
+        "line": 199,
         "column": 1
       }
     },
@@ -64742,7 +64796,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 225,
+        "line": 204,
         "column": 1
       }
     },
@@ -64753,7 +64807,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 239,
+        "line": 218,
         "column": 1
       }
     },
@@ -64764,7 +64818,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 245,
+        "line": 224,
         "column": 1
       }
     },
@@ -64775,18 +64829,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerField.tsx",
-        "line": 9,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderLabel",
-      "description": "Renders the picker label and optional supporting description.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerField.tsx",
-        "line": 40,
+        "line": 7,
         "column": 1
       }
     },
@@ -68355,24 +68398,13 @@
       }
     },
     {
-      "name": "findFirstGreater",
-      "description": "Locate the first entry strictly after a matrix coordinate in a sorted sparse axis.",
+      "name": "findFirstAtOrAfter",
+      "description": "Locates the first entry at or after a matrix coordinate in a sorted sparse axis.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts",
         "line": 73,
-        "column": 1
-      }
-    },
-    {
-      "name": "findFirstGreaterOrEqual",
-      "description": "Locate the first index at or after a matrix coordinate in a sorted sparse axis.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts",
-        "line": 90,
         "column": 1
       }
     },
@@ -68383,7 +68415,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts",
-        "line": 107,
+        "line": 96,
         "column": 1
       }
     },
@@ -68483,6 +68515,39 @@
       "sourceLocation": {
         "filePath": "src/features/palette-item/adapters/inbound/PaletteItem.tsx",
         "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "PickerField",
+      "description": "Renders the common field frame and label treatment for picker controls.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/picker/composition/PickerField.tsx",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "PickerFieldLabel",
+      "description": "Renders a picker field label and its optional supporting description.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/picker/composition/PickerField.tsx",
+        "line": 42,
+        "column": 1
+      }
+    },
+    {
+      "name": "PickerHeader",
+      "description": "Renders the title block shared by picker overlay content.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/picker/composition/PickerHeader.tsx",
+        "line": 7,
         "column": 1
       }
     },
@@ -70038,24 +70103,13 @@
       }
     },
     {
-      "name": "PickerHeader",
-      "description": "Renders the shared title block used by picker overlays.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 73,
-        "column": 1
-      }
-    },
-    {
       "name": "TimePickerOption",
       "description": "Renders one accessible selectable time option.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 95,
+        "line": 73,
         "column": 1
       }
     },
@@ -70066,7 +70120,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 122,
+        "line": 100,
         "column": 1
       }
     },
@@ -70077,7 +70131,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 134,
+        "line": 112,
         "column": 1
       }
     },
@@ -70088,7 +70142,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 141,
+        "line": 119,
         "column": 1
       }
     },
@@ -70099,7 +70153,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "line": 149,
+        "line": 127,
         "column": 1
       }
     },
@@ -70110,18 +70164,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/time-picker/composition/TimePickerField.tsx",
-        "line": 9,
-        "column": 1
-      }
-    },
-    {
-      "name": "renderLabel",
-      "description": "Renders the picker label and optional supporting description.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/time-picker/composition/TimePickerField.tsx",
-        "line": 40,
+        "line": 7,
         "column": 1
       }
     },
@@ -70440,7 +70483,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 13,
+        "line": 14,
         "column": 1
       }
     },
@@ -70451,7 +70494,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 56,
+        "line": 63,
         "column": 1
       }
     },
@@ -70462,51 +70505,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 73,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveRoleSemantics",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 93,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveHeadingColor",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 119,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveWeight",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 142,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveFontFamily",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingRecipe.ts",
-        "line": 156,
+        "line": 80,
         "column": 1
       }
     },
@@ -70528,7 +70527,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 11,
+        "line": 6,
         "column": 1
       }
     },
@@ -70539,51 +70538,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 24,
-        "column": 1
-      }
-    },
-    {
-      "name": "readColor",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 30,
-        "column": 1
-      }
-    },
-    {
-      "name": "readEmphasis",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 39,
-        "column": 1
-      }
-    },
-    {
-      "name": "readAlign",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 45,
-        "column": 1
-      }
-    },
-    {
-      "name": "readWeight",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
-        "line": 51,
+        "line": 15,
         "column": 1
       }
     },
@@ -70594,7 +70549,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 19,
+        "line": 18,
         "column": 1
       }
     },
@@ -70605,29 +70560,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 77,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveWeight",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 81,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveFontFamily",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 95,
+        "line": 74,
         "column": 1
       }
     },
@@ -70638,29 +70571,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 121,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveRoleSemantics",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 177,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveTextColor",
-      "description": null,
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextStyle.ts",
-        "line": 203,
+        "line": 78,
         "column": 1
       }
     },
@@ -70671,7 +70582,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 11,
+        "line": 6,
         "column": 1
       }
     },
@@ -70682,51 +70593,84 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 22,
+        "line": 13,
         "column": 1
       }
     },
     {
-      "name": "readColor",
-      "description": null,
+      "name": "resolveTypographyStyleTokens",
+      "description": "Resolves the Surface-derived style tokens shared by Heading and Text.",
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 29,
+        "filePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "line": 6,
         "column": 1
       }
     },
     {
-      "name": "readEmphasis",
+      "name": "resolveRoleSemantics",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 38,
+        "filePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "line": 45,
         "column": 1
       }
     },
     {
-      "name": "readAlign",
+      "name": "resolveEmphasisColor",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 44,
+        "filePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "line": 71,
         "column": 1
       }
     },
     {
-      "name": "readWeight",
+      "name": "resolveWeight",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
-        "filePath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
-        "line": 50,
+        "filePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "line": 85,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveFontFamily",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "line": 99,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveTypographyThemeRecipeFields",
+      "description": "Resolves the common scalar presentation fields in Typography theme recipes.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+        "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "readChoice",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+        "line": 21,
         "column": 1
       }
     },
@@ -70737,7 +70681,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 21,
+        "line": 22,
         "column": 1
       }
     },
@@ -70748,7 +70692,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 347,
+        "line": 348,
         "column": 1
       }
     },
@@ -70759,7 +70703,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 380,
+        "line": 381,
         "column": 1
       }
     },
@@ -70770,7 +70714,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 397,
+        "line": 398,
         "column": 1
       }
     },
@@ -70781,7 +70725,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 413,
+        "line": 414,
         "column": 1
       }
     },
@@ -70792,7 +70736,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 428,
+        "line": 429,
         "column": 1
       }
     },
@@ -70803,18 +70747,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 437,
-        "column": 1
-      }
-    },
-    {
-      "name": "formatBytes",
-      "description": "Formats an upload byte limit for concise helper text.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/uploader/adapters/inbound/Uploader.tsx",
-        "line": 450,
+        "line": 438,
         "column": 1
       }
     },
@@ -70869,7 +70802,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 4,
+        "line": 6,
         "column": 1
       }
     },
@@ -70880,7 +70813,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 29,
+        "line": 31,
         "column": 1
       }
     },
@@ -70891,7 +70824,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 57,
+        "line": 59,
         "column": 1
       }
     },
@@ -70902,18 +70835,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 82,
-        "column": 1
-      }
-    },
-    {
-      "name": "formatBytes",
-      "description": "Formats a byte count for concise upload validation feedback.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts",
-        "line": 94,
+        "line": 84,
         "column": 1
       }
     },
@@ -71089,7 +71011,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
-        "line": 50,
+        "line": 47,
         "column": 1
       }
     },
@@ -71100,7 +71022,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
-        "line": 61,
+        "line": 58,
+        "column": 1
+      }
+    },
+    {
+      "name": "readWebComponentPackageMetadataAsync",
+      "description": "Reads the active ZORA package location and version for generated web artifacts.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
+        "line": 6,
         "column": 1
       }
     },
@@ -71111,7 +71044,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
-        "line": 9,
+        "line": 8,
         "column": 1
       }
     },
@@ -75495,6 +75428,11 @@
       },
       {
         "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
+        "toPath": "src/features/picker/composition/PickerHeader.tsx",
+        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
+      },
+      {
+        "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
         "toPath": "src/features/typography/public.ts",
         "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
       },
@@ -75510,12 +75448,7 @@
       },
       {
         "fromPath": "src/features/date-picker/composition/DatePickerField.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/features/date-picker/composition/DatePickerField.tsx"
-      },
-      {
-        "fromPath": "src/features/date-picker/composition/DatePickerField.tsx",
-        "toPath": "src/features/typography/public.ts",
+        "toPath": "src/features/picker/composition/PickerField.tsx",
         "sourcePath": "src/features/date-picker/composition/DatePickerField.tsx"
       },
       {
@@ -75894,6 +75827,26 @@
         "sourcePath": "src/features/pagination/utils/resolvePaginationState.ts"
       },
       {
+        "fromPath": "src/features/picker/composition/PickerField.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/picker/composition/PickerField.tsx"
+      },
+      {
+        "fromPath": "src/features/picker/composition/PickerField.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/picker/composition/PickerField.tsx"
+      },
+      {
+        "fromPath": "src/features/picker/composition/PickerHeader.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/picker/composition/PickerHeader.tsx"
+      },
+      {
+        "fromPath": "src/features/picker/composition/PickerHeader.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/picker/composition/PickerHeader.tsx"
+      },
+      {
         "fromPath": "src/features/reader/composition/useReaderController.ts",
         "toPath": "src/types/reader.ts",
         "sourcePath": "src/features/reader/composition/useReaderController.ts"
@@ -76020,7 +75973,7 @@
       },
       {
         "fromPath": "src/features/time-picker/composition/TimePickerContent.tsx",
-        "toPath": "src/features/typography/public.ts",
+        "toPath": "src/features/picker/composition/PickerHeader.tsx",
         "sourcePath": "src/features/time-picker/composition/TimePickerContent.tsx"
       },
       {
@@ -76030,12 +75983,7 @@
       },
       {
         "fromPath": "src/features/time-picker/composition/TimePickerField.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/features/time-picker/composition/TimePickerField.tsx"
-      },
-      {
-        "fromPath": "src/features/time-picker/composition/TimePickerField.tsx",
-        "toPath": "src/features/typography/public.ts",
+        "toPath": "src/features/picker/composition/PickerField.tsx",
         "sourcePath": "src/features/time-picker/composition/TimePickerField.tsx"
       },
       {
@@ -76055,7 +76003,7 @@
       },
       {
         "fromPath": "src/features/typography/utils/headingThemeRecipeMeta.ts",
-        "toPath": "src/features/theme/colorModel.ts",
+        "toPath": "src/features/typography/utils/typographyThemeRecipeFields.ts",
         "sourcePath": "src/features/typography/utils/headingThemeRecipeMeta.ts"
       },
       {
@@ -76069,6 +76017,11 @@
         "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
       },
       {
+        "fromPath": "src/features/typography/utils/resolveHeadingRecipe.ts",
+        "toPath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
+      },
+      {
         "fromPath": "src/features/typography/utils/resolveHeadingSizeFromLevel.ts",
         "toPath": "src/types/heading.ts",
         "sourcePath": "src/features/typography/utils/resolveHeadingSizeFromLevel.ts"
@@ -76079,8 +76032,18 @@
         "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
       },
       {
+        "fromPath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts",
+        "toPath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+        "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
+      },
+      {
         "fromPath": "src/features/typography/utils/resolveTextStyle.ts",
         "toPath": "src/types/text.ts",
+        "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
+      },
+      {
+        "fromPath": "src/features/typography/utils/resolveTextStyle.ts",
+        "toPath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
         "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
       },
       {
@@ -76089,14 +76052,34 @@
         "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
       },
       {
+        "fromPath": "src/features/typography/utils/resolveTextThemeRecipe.ts",
+        "toPath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+        "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
+      },
+      {
+        "fromPath": "src/features/typography/utils/resolveTypographyStyleTokens.ts",
+        "toPath": "src/types/theme.ts",
+        "sourcePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts"
+      },
+      {
+        "fromPath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts",
+        "toPath": "src/features/theme/colorModel.ts",
+        "sourcePath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts"
+      },
+      {
         "fromPath": "src/features/typography/utils/textThemeRecipeMeta.ts",
         "toPath": "src/types/theme-recipe.ts",
         "sourcePath": "src/features/typography/utils/textThemeRecipeMeta.ts"
       },
       {
         "fromPath": "src/features/typography/utils/textThemeRecipeMeta.ts",
-        "toPath": "src/features/theme/colorModel.ts",
+        "toPath": "src/features/typography/utils/typographyThemeRecipeFields.ts",
         "sourcePath": "src/features/typography/utils/textThemeRecipeMeta.ts"
+      },
+      {
+        "fromPath": "src/features/typography/utils/typographyThemeRecipeFields.ts",
+        "toPath": "src/features/theme/colorModel.ts",
+        "sourcePath": "src/features/typography/utils/typographyThemeRecipeFields.ts"
       },
       {
         "fromPath": "src/features/uploader/composition/createUploadPicker.ts",
@@ -76135,12 +76118,22 @@
       },
       {
         "fromPath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts",
         "toPath": "src/features/web-component-artifact/composition/synchronizeWebComponentArtifactsWithNodeAsync.ts",
         "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       },
       {
         "fromPath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
         "toPath": "src/features/web-component-artifact/adapters/outbound/node/readWebDesiredStateWithNodeAsync.ts",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromPath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts",
+        "toPath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts",
         "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
       },
       {
@@ -80531,12 +80524,6 @@
         "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
       },
       {
-        "fromSymbol": "DatePickerField",
-        "toSymbol": "renderLabel",
-        "callExpression": "renderLabel",
-        "sourcePath": "src/features/date-picker/composition/DatePickerField.tsx"
-      },
-      {
         "fromSymbol": "DatePickerTrigger",
         "toSymbol": "formatDate",
         "callExpression": "formatDate",
@@ -81288,24 +81275,12 @@
       },
       {
         "fromSymbol": "findDirectionalNeighbour",
-        "toSymbol": "findFirstGreaterOrEqual",
-        "callExpression": "findFirstGreaterOrEqual",
+        "toSymbol": "findFirstAtOrAfter",
+        "callExpression": "findFirstAtOrAfter",
         "sourcePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts"
       },
       {
-        "fromSymbol": "findDirectionalNeighbour",
-        "toSymbol": "findFirstGreater",
-        "callExpression": "findFirstGreater",
-        "sourcePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts"
-      },
-      {
-        "fromSymbol": "findFirstGreater",
-        "toSymbol": "getAxisCoordinate",
-        "callExpression": "getAxisCoordinate",
-        "sourcePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts"
-      },
-      {
-        "fromSymbol": "findFirstGreaterOrEqual",
+        "fromSymbol": "findFirstAtOrAfter",
         "toSymbol": "getAxisCoordinate",
         "callExpression": "getAxisCoordinate",
         "sourcePath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts"
@@ -81701,12 +81676,6 @@
         "sourcePath": "src/features/time-picker/composition/TimePickerContent.tsx"
       },
       {
-        "fromSymbol": "TimePickerField",
-        "toSymbol": "renderLabel",
-        "callExpression": "renderLabel",
-        "sourcePath": "src/features/time-picker/composition/TimePickerField.tsx"
-      },
-      {
         "fromSymbol": "TimePickerTrigger",
         "toSymbol": "formatTime",
         "callExpression": "formatTime",
@@ -81726,32 +81695,14 @@
       },
       {
         "fromSymbol": "resolveHeadingRecipe",
-        "toSymbol": "resolveWeight",
-        "callExpression": "resolveWeight",
-        "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingRecipe",
-        "toSymbol": "resolveHeadingColor",
-        "callExpression": "resolveHeadingColor",
-        "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingRecipe",
-        "toSymbol": "resolveFontFamily",
-        "callExpression": "resolveFontFamily",
+        "toSymbol": "resolveTypographyStyleTokens",
+        "callExpression": "resolveTypographyStyleTokens",
         "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
       },
       {
         "fromSymbol": "resolveSizeRecipe",
         "toSymbol": "resolveHeadingLevelFromSize",
         "callExpression": "resolveHeadingLevelFromSize",
-        "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingColor",
-        "toSymbol": "resolveRoleSemantics",
-        "callExpression": "resolveRoleSemantics",
         "sourcePath": "src/features/typography/utils/resolveHeadingRecipe.ts"
       },
       {
@@ -81762,26 +81713,8 @@
       },
       {
         "fromSymbol": "resolveHeadingThemeRecipe",
-        "toSymbol": "readColor",
-        "callExpression": "readColor",
-        "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingThemeRecipe",
-        "toSymbol": "readEmphasis",
-        "callExpression": "readEmphasis",
-        "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingThemeRecipe",
-        "toSymbol": "readAlign",
-        "callExpression": "readAlign",
-        "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
-      },
-      {
-        "fromSymbol": "resolveHeadingThemeRecipe",
-        "toSymbol": "readWeight",
-        "callExpression": "readWeight",
+        "toSymbol": "resolveTypographyThemeRecipeFields",
+        "callExpression": "resolveTypographyThemeRecipeFields",
         "sourcePath": "src/features/typography/utils/resolveHeadingThemeRecipe.ts"
       },
       {
@@ -81798,32 +81731,14 @@
       },
       {
         "fromSymbol": "resolveTextStyle",
-        "toSymbol": "resolveWeight",
-        "callExpression": "resolveWeight",
-        "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
-      },
-      {
-        "fromSymbol": "resolveTextStyle",
-        "toSymbol": "resolveTextColor",
-        "callExpression": "resolveTextColor",
-        "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
-      },
-      {
-        "fromSymbol": "resolveTextStyle",
-        "toSymbol": "resolveFontFamily",
-        "callExpression": "resolveFontFamily",
+        "toSymbol": "resolveTypographyStyleTokens",
+        "callExpression": "resolveTypographyStyleTokens",
         "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
       },
       {
         "fromSymbol": "resolveVariantRecipe",
         "toSymbol": "isMediumBreakpointOrLarger",
         "callExpression": "isMediumBreakpointOrLarger",
-        "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
-      },
-      {
-        "fromSymbol": "resolveTextColor",
-        "toSymbol": "resolveRoleSemantics",
-        "callExpression": "resolveRoleSemantics",
         "sourcePath": "src/features/typography/utils/resolveTextStyle.ts"
       },
       {
@@ -81834,27 +81749,39 @@
       },
       {
         "fromSymbol": "resolveTextThemeRecipe",
-        "toSymbol": "readColor",
-        "callExpression": "readColor",
+        "toSymbol": "resolveTypographyThemeRecipeFields",
+        "callExpression": "resolveTypographyThemeRecipeFields",
         "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
       },
       {
-        "fromSymbol": "resolveTextThemeRecipe",
-        "toSymbol": "readEmphasis",
-        "callExpression": "readEmphasis",
-        "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
+        "fromSymbol": "resolveTypographyStyleTokens",
+        "toSymbol": "resolveRoleSemantics",
+        "callExpression": "resolveRoleSemantics",
+        "sourcePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts"
       },
       {
-        "fromSymbol": "resolveTextThemeRecipe",
-        "toSymbol": "readAlign",
-        "callExpression": "readAlign",
-        "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
+        "fromSymbol": "resolveTypographyStyleTokens",
+        "toSymbol": "resolveWeight",
+        "callExpression": "resolveWeight",
+        "sourcePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts"
       },
       {
-        "fromSymbol": "resolveTextThemeRecipe",
-        "toSymbol": "readWeight",
-        "callExpression": "readWeight",
-        "sourcePath": "src/features/typography/utils/resolveTextThemeRecipe.ts"
+        "fromSymbol": "resolveTypographyStyleTokens",
+        "toSymbol": "resolveEmphasisColor",
+        "callExpression": "resolveEmphasisColor",
+        "sourcePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts"
+      },
+      {
+        "fromSymbol": "resolveTypographyStyleTokens",
+        "toSymbol": "resolveFontFamily",
+        "callExpression": "resolveFontFamily",
+        "sourcePath": "src/features/typography/utils/resolveTypographyStyleTokens.ts"
+      },
+      {
+        "fromSymbol": "resolveTypographyThemeRecipeFields",
+        "toSymbol": "readChoice",
+        "callExpression": "readChoice",
+        "sourcePath": "src/features/typography/utils/resolveTypographyThemeRecipeFields.ts"
       },
       {
         "fromSymbol": "pickAsync",
@@ -81930,20 +81857,14 @@
       },
       {
         "fromSymbol": "createWebDesiredStateWithNodeAsync",
+        "toSymbol": "readWebComponentPackageMetadataAsync",
+        "callExpression": "readWebComponentPackageMetadataAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "createWebDesiredStateWithNodeAsync",
         "toSymbol": "resolve",
         "callExpression": "resolve",
-        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
-      },
-      {
-        "fromSymbol": "createWebDesiredStateWithNodeAsync",
-        "toSymbol": "dirname",
-        "callExpression": "dirname",
-        "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
-      },
-      {
-        "fromSymbol": "createWebDesiredStateWithNodeAsync",
-        "toSymbol": "fileURLToPath",
-        "callExpression": "fileURLToPath",
         "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       },
       {
@@ -82013,6 +81934,30 @@
         "sourcePath": "src/features/web-component-artifact/composition/createWebDesiredStateWithNodeAsync.ts"
       },
       {
+        "fromSymbol": "readWebComponentPackageMetadataAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebComponentPackageMetadataAsync",
+        "toSymbol": "dirname",
+        "callExpression": "dirname",
+        "sourcePath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebComponentPackageMetadataAsync",
+        "toSymbol": "fileURLToPath",
+        "callExpression": "fileURLToPath",
+        "sourcePath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts"
+      },
+      {
+        "fromSymbol": "readWebComponentPackageMetadataAsync",
+        "toSymbol": "readFile",
+        "callExpression": "readFile",
+        "sourcePath": "src/features/web-component-artifact/composition/readWebComponentPackageMetadataAsync.ts"
+      },
+      {
         "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
         "toSymbol": "readWebDesiredStateWithNodeAsync",
         "callExpression": "readWebDesiredStateWithNodeAsync",
@@ -82020,32 +81965,20 @@
       },
       {
         "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
-        "toSymbol": "resolve",
-        "callExpression": "resolve",
-        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
-      },
-      {
-        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
-        "toSymbol": "dirname",
-        "callExpression": "dirname",
-        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
-      },
-      {
-        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
-        "toSymbol": "fileURLToPath",
-        "callExpression": "fileURLToPath",
-        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
-      },
-      {
-        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
-        "toSymbol": "readFile",
-        "callExpression": "readFile",
+        "toSymbol": "readWebComponentPackageMetadataAsync",
+        "callExpression": "readWebComponentPackageMetadataAsync",
         "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
       },
       {
         "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
         "toSymbol": "synchronizeWebComponentArtifactsWithNodeAsync",
         "callExpression": "synchronizeWebComponentArtifactsWithNodeAsync",
+        "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
+      },
+      {
+        "fromSymbol": "synchronizeDeclaredWebComponentsWithNodeAsync",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
         "sourcePath": "src/features/web-component-artifact/composition/synchronizeDeclaredWebComponentsWithNodeAsync.ts"
       },
       {

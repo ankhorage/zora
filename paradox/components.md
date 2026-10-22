@@ -4235,7 +4235,7 @@ Export paths: `src/index.ts`
 
 ## Uploader
 
-Source: `src/features/uploader/adapters/inbound/Uploader.tsx:18:14`
+Source: `src/features/uploader/adapters/inbound/Uploader.tsx:19:14`
 
 Picks, validates, uploads, previews, and removes one generic file asset.
 
