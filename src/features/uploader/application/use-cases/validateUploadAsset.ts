@@ -1,3 +1,5 @@
+import { formatBytes } from '@ankhorage/utility/number';
+
 import type { ValidateUploadAssetInput } from '../../../../types/upload';
 
 /*** Validates a picked upload asset against MIME, extension, size, and caller rules. */
@@ -88,24 +90,4 @@ function parseAccept(accept: string | undefined): readonly string[] {
     .split(',')
     .map((token) => token.trim())
     .filter((token) => token.length > 0);
-}
-
-/*** Formats a byte count for concise upload validation feedback. */
-function formatBytes(value: number): string {
-  if (!Number.isFinite(value) || value <= 0) {
-    return '0 B';
-  }
-
-  const units = ['B', 'KB', 'MB', 'GB'] as const;
-  let size = value;
-  let unitIndex = 0;
-
-  while (size >= 1024 && unitIndex < units.length - 1) {
-    size /= 1024;
-    unitIndex += 1;
-  }
-
-  const unit = units.at(unitIndex) ?? 'B';
-  const rounded = unitIndex === 0 ? Math.round(size) : Math.round(size * 10) / 10;
-  return `${rounded} ${unit}`;
 }
