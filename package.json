@@ -50,7 +50,7 @@
     "@ankhorage/reader": "^0.1.1",
     "@ankhorage/runtime": "^5.0.3",
     "@ankhorage/surface": "^9.4.6",
-    "@ankhorage/utility": "^1.9.85",
+    "@ankhorage/utility": "^1.9.86",
     "chess.js": "^1.4.0",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20"
