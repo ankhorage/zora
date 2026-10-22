@@ -1,5 +1,5 @@
-import React from 'react';
 import { formatBytes } from '@ankhorage/utility/number';
+import React from 'react';
 
 import type { UploadAsset, UploaderProps, UploadType } from '../../../../types/upload';
 import { Button } from '../../../button/public';
