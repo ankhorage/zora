@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.18
+
+### Patch Changes
+
+- 8cce807: Publish SSR-safe `@ankhorage/zora/web/*` component and runtime entrypoints.
+
 ## 25.8.17
 
 ### Patch Changes
