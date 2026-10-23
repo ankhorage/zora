@@ -120,6 +120,16 @@
       "import": "./dist/features/theme/public.js",
       "default": "./dist/features/theme/public.js"
     },
+    "./web/runtime": {
+      "types": "./web-dist/runtime/ZoraProvider.d.ts",
+      "import": "./web-dist/runtime/ZoraProvider.js",
+      "default": "./web-dist/runtime/ZoraProvider.js"
+    },
+    "./web/*": {
+      "types": "./web-dist/components/*/index.d.ts",
+      "import": "./web-dist/components/*/index.js",
+      "default": "./web-dist/components/*/index.js"
+    },
     "./package.json": "./package.json",
     "./cli": {
       "types": "./dist/cli/index.d.ts",
