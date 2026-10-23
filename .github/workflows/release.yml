@@ -150,7 +150,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate .
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.13 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.21 validate .
           fi
 
       - name: Version packages directly on main
@@ -272,7 +272,7 @@ jobs:
           capability_module_path="$(node --input-type=module -e "import { createRequire } from 'node:module'; console.log(createRequire(import.meta.resolve('@ankhorage/devtools/cli')).resolve('@ankhorage/capability'))")"
           (
             cd "$install_dir"
-            bun add "$artifact" react@19.3.1 react-dom@19.3.1 --ignore-scripts
+            bun add "$artifact" --ignore-scripts
 
             PACKAGE_NAME="$package_name" node - <<'NODE' > runtime-entrypoints.txt
           const { readFileSync } = require('node:fs');
@@ -528,6 +528,7 @@ jobs:
     needs: release
     if: needs.release.outputs.versioned == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Setup Node for npm verification
@@ -546,48 +547,29 @@ jobs:
         run: |
           set -euo pipefail
           package_spec="${PUBLISHED_PACKAGE_NAME}@${PUBLISHED_PACKAGE_VERSION}"
-          registry_evidence="${RUNNER_TEMP}/npm-publish-verification.json"
-          artifact="${RUNNER_TEMP}/npm-publish-verification.tgz"
           pack_dir="${RUNNER_TEMP}/npm-pack-verification"
-          max_attempts=60
-          retry_seconds=30
+          pack_log="${RUNNER_TEMP}/npm-pack-verification.log"
+          max_attempts=5
+          retry_seconds=15
           mkdir -p "$pack_dir"
 
-          last_stage="registry-metadata"
           for attempt in $(seq 1 "$max_attempts"); do
             echo "Verifying ${package_spec} on npm (attempt ${attempt}/${max_attempts})..."
-            last_stage="registry-metadata"
-
-            if npm view "$package_spec" version dist.tarball dist.integrity --json > "$registry_evidence"; then
-              resolved_version="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.version==='string'?p.version:'')" "$registry_evidence")"
-              tarball="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.['dist.tarball']==='string'?p['dist.tarball']:'')" "$registry_evidence")"
-              integrity="$(node -e "const raw=require(process.argv[1]); const p=Array.isArray(raw)&&raw.length===1?raw[0]:raw; process.stdout.write(typeof p?.['dist.integrity']==='string'?p['dist.integrity']:'')" "$registry_evidence")"
-
-              if [ "$resolved_version" = "$PUBLISHED_PACKAGE_VERSION" ] && [ -n "$tarball" ] && [ -n "$integrity" ]; then
-                last_stage="tarball-download"
-                if curl --fail --location --silent --show-error --output "$artifact" "$tarball"; then
-                  last_stage="integrity"
-                  if EXPECTED_INTEGRITY="$integrity" ARTIFACT="$artifact" node -e "const { createHash }=require('node:crypto'); const { readFileSync }=require('node:fs'); const actual='sha512-'+createHash('sha512').update(readFileSync(process.env.ARTIFACT)).digest('base64'); if(actual!==process.env.EXPECTED_INTEGRITY){console.error('Downloaded npm tarball integrity mismatch.'); process.exit(1)}"; then
-                    last_stage="npm-pack"
-                    attempt_pack_dir="$pack_dir/attempt-${attempt}"
-                    mkdir -p "$attempt_pack_dir"
-                    if npm pack "$package_spec" --pack-destination "$attempt_pack_dir" >/dev/null; then
-                      echo "Verified ${package_spec}: metadata, integrity, tarball download, and npm pack are available."
-                      exit 0
-                    fi
-                  fi
-                fi
+            if npm pack "$package_spec" --ignore-scripts --prefer-online --pack-destination "$pack_dir" >"$pack_log" 2>&1; then
+              if find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -size +0c -print -quit | grep -q .; then
+                echo "Verified ${package_spec}: public npm package downloaded successfully."
+                exit 0
               fi
+              echo "npm pack succeeded without producing a non-empty tarball."
             fi
 
-            echo "Published npm artifact not ready at stage: ${last_stage}."
+            tail -n 20 "$pack_log" || true
             if [ "$attempt" -lt "$max_attempts" ]; then
               sleep "$retry_seconds"
             fi
           done
 
-          echo "Published npm artifact did not become retrievable after ${max_attempts} attempts; last stage: ${last_stage}."
-          cat "$registry_evidence" 2>/dev/null || true
+          echo "::error title=npm publication not retrievable::${package_spec} could not be downloaded from public npm after ${max_attempts} attempts."
           exit 1
 
   finalize:
@@ -607,7 +589,6 @@ jobs:
           owner: ankhorage
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
-          permission-workflows: write
 
       - name: Checkout exact release commit
         uses: actions/checkout@v4
