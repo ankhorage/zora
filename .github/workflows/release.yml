@@ -272,7 +272,7 @@ jobs:
           capability_module_path="$(node --input-type=module -e "import { createRequire } from 'node:module'; console.log(createRequire(import.meta.resolve('@ankhorage/devtools/cli')).resolve('@ankhorage/capability'))")"
           (
             cd "$install_dir"
-            bun add "$artifact" --ignore-scripts
+            bun add "$artifact" react@19.3.1 react-dom@19.3.1 --ignore-scripts
 
             PACKAGE_NAME="$package_name" node - <<'NODE' > runtime-entrypoints.txt
           const { readFileSync } = require('node:fs');
