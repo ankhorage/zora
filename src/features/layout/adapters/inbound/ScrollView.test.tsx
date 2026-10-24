@@ -273,3 +273,21 @@ test('forwards controlled refresh state and does not simulate a native pull gest
     await mounted.unmount();
   }
 });
+
+test('suppresses pull-to-refresh while the interaction policy is passive', async () => {
+  const mounted = mount();
+  const onRefresh = () => undefined;
+  try {
+    await mounted.render(
+      <ScrollView
+        interactionPolicy="passive"
+        onRefresh={onRefresh}
+        testID="passive-refreshable-scroll-view"
+      />,
+    );
+
+    expect(surfaceScrollViewProps.at(-1)?.onRefresh).toBeUndefined();
+  } finally {
+    await mounted.unmount();
+  }
+});

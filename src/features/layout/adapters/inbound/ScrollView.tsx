@@ -14,8 +14,9 @@ export const ScrollView = withZoraThemeScope(ScrollViewInner);
 function ScrollViewInner({
   themeId: _themeId,
   mode: _mode,
-  interactionPolicy: _interactionPolicy,
+  interactionPolicy,
   scrollEnabled = true,
+  onRefresh,
   ...props
 }: ScrollViewProps) {
   const parentLock = useScrollGestureLock();
@@ -28,7 +29,11 @@ function ScrollViewInner({
 
   return (
     <ScrollGestureLockContext.Provider value={lock}>
-      <SurfaceScrollView {...props} scrollEnabled={scrollEnabled && activeGestures === 0} />
+      <SurfaceScrollView
+        {...props}
+        onRefresh={interactionPolicy === 'passive' ? undefined : onRefresh}
+        scrollEnabled={scrollEnabled && activeGestures === 0}
+      />
     </ScrollGestureLockContext.Provider>
   );
 }
