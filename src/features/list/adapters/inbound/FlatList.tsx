@@ -2,9 +2,9 @@ import React from 'react';
 import { FlatList as NativeFlatList } from 'react-native';
 
 import type { ManifestListProps } from '../../../../types/manifest-list';
-import { LIST_VIRTUALIZATION_DEFAULTS } from '../../constants/virtualization';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
+import { LIST_VIRTUALIZATION_DEFAULTS } from '../../constants/virtualization';
 import { HorizontalListSeparator } from './HorizontalListSeparator';
 import { useListVisibility } from './useListVisibility';
 import { VerticalListSeparator } from './VerticalListSeparator';
