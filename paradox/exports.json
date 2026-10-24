@@ -22988,6 +22988,13 @@
         "description": null
       },
       {
+        "name": "onRefresh",
+        "kind": "property",
+        "type": "(() => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "onResponderEnd",
         "kind": "property",
         "type": "((event: GestureResponderEvent) => void) | undefined",
@@ -23243,6 +23250,13 @@
         "name": "refreshControl",
         "kind": "property",
         "type": "React.ReactElement<RefreshControlProps, string | React.JSXElementConstructor<any>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "refreshing",
+        "kind": "property",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },

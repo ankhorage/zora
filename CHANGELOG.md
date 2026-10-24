@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.23
+
+### Patch Changes
+
+- 26a6613: Update dependencies: `@ankhorage/surface`.
+
 ## 25.8.22
 
 ### Patch Changes

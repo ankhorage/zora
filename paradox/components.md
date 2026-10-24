@@ -3063,6 +3063,7 @@ Export paths: `src/index.ts`
 | onPointerMoveCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
 | onPointerUp | `((event: PointerEvent) => void) \| undefined` | no | — |  |
 | onPointerUpCapture | `((event: PointerEvent) => void) \| undefined` | no | — |  |
+| onRefresh | `(() => void) \| undefined` | no | — |  |
 | onResponderEnd | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | onResponderGrant | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
 | onResponderMove | `((event: GestureResponderEvent) => void) \| undefined` | no | — |  |
@@ -3100,6 +3101,7 @@ Export paths: `src/index.ts`
 | py | `Responsive<SpaceValue> \| undefined` | no | — |  |
 | radius | `Responsive<RadiusValue> \| undefined` | no | — |  |
 | refreshControl | `React.ReactElement<RefreshControlProps, string \| React.JSXElementConstructor<any>> \| undefined` | no | — |  |
+| refreshing | `boolean \| undefined` | no | — |  |
 | removeClippedSubviews | `boolean \| undefined` | no | — |  |
 | renderToHardwareTextureAndroid | `boolean \| undefined` | no | — |  |
 | right | `Responsive<number> \| undefined` | no | — |  |

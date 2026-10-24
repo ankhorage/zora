@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.8.22",
+      "value": "v25.8.23",
       "color": "cb3837"
     },
     {
@@ -31771,6 +31771,13 @@
           "description": null
         },
         {
+          "name": "onRefresh",
+          "kind": "property",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onResponderEnd",
           "kind": "property",
           "type": "((event: GestureResponderEvent) => void) | undefined",
@@ -32026,6 +32033,13 @@
           "name": "refreshControl",
           "kind": "property",
           "type": "React.ReactElement<RefreshControlProps, string | React.JSXElementConstructor<any>> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "refreshing",
+          "kind": "property",
+          "type": "boolean | undefined",
           "required": false,
           "description": null
         },
@@ -56683,6 +56697,12 @@
           "description": null
         },
         {
+          "name": "onRefresh",
+          "type": "(() => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onResponderEnd",
           "type": "((event: GestureResponderEvent) => void) | undefined",
           "required": false,
@@ -56901,6 +56921,12 @@
         {
           "name": "refreshControl",
           "type": "React.ReactElement<RefreshControlProps, string | React.JSXElementConstructor<any>> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "refreshing",
+          "type": "boolean | undefined",
           "required": false,
           "description": null
         },
