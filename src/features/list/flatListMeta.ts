@@ -1,11 +1,12 @@
 import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 import type { ZoraComponentMeta } from '../../types/authoring';
+import { LIST_VIRTUALIZATION_DEFAULTS } from './constants/virtualization';
 
 export const flatListMeta = {
   name: 'FlatList',
   category: 'layout',
   directManifestNode: true,
-  blueprint: { label: 'Flat list' },
+  blueprint: { label: 'Flat list', defaultProps: LIST_VIRTUALIZATION_DEFAULTS },
   allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   description:
     'Virtualized children. Put node.repeat on this list for keyed data and item bindings; bind selection on the child Button/Card press event. Bound the list viewport and avoid nesting in a same-direction ScrollView.',
