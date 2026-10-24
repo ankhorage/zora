@@ -19,7 +19,7 @@ const dstTimedEvent: RootTemporalEvent = {
     excludedDates: ['2026-11-08T01:30:00Z'],
     rules: [{ frequency: 'weekly', until: '2026-11-29T01:30:00Z', weekdays: ['sunday'] }],
   },
-  recurrenceExceptions: [{ recurrenceId: '2026-11-15T01:30:00Z', status: 'cancelled' }],
+  recurrenceExceptions: [{ recurrenceId: '2026-11-22T01:30:00Z', status: 'cancelled' }],
   reminders: [{ id: 'before-start', offset: '-PT15M', reference: 'start' }],
   title: 'DST-aware Sunday stand-up',
 };
@@ -35,6 +35,35 @@ const allDayEvent: ReaderFreeTemporalEvent = {
   recurrenceExceptions: [{ recurrenceId: '2026-11-14', status: 'cancelled' }],
   reminders: [{ id: 'after-end', offset: 'PT15M', reference: 'end' }],
   title: 'All-day Saturday series',
+};
+
+const calendarEvent: RootTemporalEvent = {
+  id: 'review',
+  range: dstTimedEvent.range,
+  title: 'Design review',
+};
+
+const schedulerEvent: RootTemporalEvent = {
+  availability: 'busy',
+  id: 'booking',
+  range: dstTimedEvent.range,
+  resourceIds: ['room-1'],
+  title: 'Room booking',
+};
+
+const plannerItem: RootTemporalEvent = {
+  editable: true,
+  id: 'plan',
+  range: allDayEvent.range,
+  status: 'draft',
+  title: 'Plan release',
+};
+
+const ganttItem: RootTemporalEvent = {
+  id: 'task',
+  metadata: { progress: 0.5 },
+  range: dstTimedEvent.range,
+  title: 'Implement contract',
 };
 
 const typedTimedEvent: TemporalTimedEvent = dstTimedEvent;
@@ -90,12 +119,16 @@ const invalidReminder: TemporalReminder = { id: 'invalid-reminder', offset: '-PT
 
 void [
   allDayEvent,
+  calendarEvent,
   dstTimedEvent,
+  ganttItem,
   invalidAllDayException,
   invalidAllDayUntil,
   invalidReminder,
   invalidTimedDate,
   reminder,
+  plannerItem,
+  schedulerEvent,
   typedAllDayEvent,
   typedTimedEvent,
 ];

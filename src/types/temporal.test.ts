@@ -67,7 +67,7 @@ test('keeps Europe/Zurich DST, all-day and recurrence edge fixtures serializable
         },
       ],
     },
-    recurrenceExceptions: [{ recurrenceId: '2026-11-15T09:00:00Z', status: 'cancelled' }],
+    recurrenceExceptions: [{ recurrenceId: '2026-11-22T09:00:00Z', status: 'cancelled' }],
     reminders: [{ id: 'before-start', offset: '-PT15M', reference: 'start' }],
     title: 'Biweekly review',
   } as const satisfies TemporalEvent;
