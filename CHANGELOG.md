@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.19
+
+### Patch Changes
+
+- 9b11471: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 25.8.18
 
 ### Patch Changes
