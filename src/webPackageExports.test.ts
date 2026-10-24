@@ -71,6 +71,11 @@ test('publishes SSR-safe ordinary UI through canonical web subpaths', async () =
 });
 
 /** Renders the generated public web entrypoints without a native runtime host. */
+test('resolves ThemeModeToggle through the canonical package web subpath', async () => {
+  const { ThemeModeToggle } = await import('@ankhorage/zora/web/theme-mode-toggle');
+  expect(ThemeModeToggle).toBeDefined();
+});
+
 test('SSR-renders ordinary UI from its public web subpaths', async () => {
   const [{ ZoraProvider }, { AppShell }, { Button }, { Screen }, { Text }] = await Promise.all([
     import('@ankhorage/zora/web/runtime'),
