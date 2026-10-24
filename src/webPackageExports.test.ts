@@ -74,6 +74,8 @@ test('publishes SSR-safe ordinary UI through canonical web subpaths', async () =
 test('resolves ThemeModeToggle through the canonical package web subpath', async () => {
   const { ThemeModeToggle } = await import('@ankhorage/zora/web/theme-mode-toggle');
   expect(ThemeModeToggle).toBeDefined();
+  const headlessFacade = await Bun.file('src/features/theme/public.ts').text();
+  expect(headlessFacade).not.toContain('ThemeModeToggle');
 });
 
 test('SSR-renders ordinary UI from its public web subpaths', async () => {
