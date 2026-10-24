@@ -18,6 +18,12 @@ const publicFeatureTargets = await discoverWebArtifactTargets({
   repositoryRoot: packageRoot,
   sourceRoot: join(packageRoot, 'src'),
 });
+assert(
+  publicFeatureTargets.some(
+    (target) => target.component === 'theme-mode-toggle' && target.exportName === 'ThemeModeToggle',
+  ),
+  'ThemeModeToggle must be discoverable through the canonical theme public facade.',
+);
 const components = [
   ...new Set([
     'app-bar',
