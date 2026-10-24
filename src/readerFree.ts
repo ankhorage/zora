@@ -70,6 +70,24 @@ export type { IconButtonProps } from './features/button/public';
 export { Button } from './features/button/public';
 export { ButtonGroup } from './features/button/public';
 export { IconButton } from './features/button/public';
+export type {
+  TemporalAvailability,
+  TemporalDataValue,
+  TemporalDate,
+  TemporalDuration,
+  TemporalEvent,
+  TemporalEventStatus,
+  TemporalInstant,
+  TemporalInteroperabilityData,
+  TemporalParticipant,
+  TemporalRange,
+  TemporalRecurrence,
+  TemporalRecurrenceException,
+  TemporalRecurrenceRule,
+  TemporalReminder,
+  TemporalTimeZone,
+  TemporalTone,
+} from './features/calendar/public';
 export type { CardProps } from './features/card/public';
 export type { MediaCardImageProps, MediaCardProps } from './features/card/public';
 export type { MetricCardProps } from './features/card/public';
