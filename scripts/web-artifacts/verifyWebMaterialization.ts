@@ -94,6 +94,15 @@ try {
     assert(evidence.files.includes(`components/${component}/index.js`));
   }
   assert(!evidence.files.some((file) => file.includes('node_modules')));
+  const bundleSource = (
+    await Promise.all(
+      evidence.files
+        .filter((file) => file.startsWith('chunks/') && file.endsWith('.js'))
+        .map(async (file) => await readFile(join(outputDirectory, file), 'utf8')),
+    )
+  ).join('\n');
+  assert(bundleSource.includes('useSyncExternalStore'));
+  assert(!bundleSource.includes('const { width } = import_react_native.useWindowDimensions();'));
   const graphViewDeclaration = await readFile(
     join(outputDirectory, 'components/graph-view/GraphView.d.ts'),
     'utf8',
