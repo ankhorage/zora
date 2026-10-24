@@ -13,8 +13,6 @@ export type {
   ZoraThemeSwatchRole,
   ZoraThemeValueOrigin,
 } from '../../types/theme';
-export type { ThemeModeToggleProps } from '../../types/theme-mode-toggle';
-export { ThemeModeToggle } from './adapters/inbound/ThemeModeToggle';
 export { compileZoraTheme } from './application/use-cases/compileZoraTheme';
 export { createZoraThemeConfig } from './application/use-cases/createZoraThemeConfig';
 export { zoraDefaultTheme } from './zoraDefaultTheme';
