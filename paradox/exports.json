@@ -9332,7 +9332,7 @@
     "modulePath": "src/features/list/adapters/inbound/FlatList.tsx",
     "sourceLocation": {
       "filePath": "src/features/list/adapters/inbound/FlatList.tsx",
-      "line": 12,
+      "line": 13,
       "column": 14
     },
     "exportPaths": [
@@ -23795,7 +23795,7 @@
     "modulePath": "src/features/list/adapters/inbound/SectionList.tsx",
     "sourceLocation": {
       "filePath": "src/features/list/adapters/inbound/SectionList.tsx",
-      "line": 13,
+      "line": 14,
       "column": 14
     },
     "exportPaths": [

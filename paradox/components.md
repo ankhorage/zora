@@ -1372,7 +1372,7 @@ Export paths: `src/index.ts`
 
 ## FlatList
 
-Source: `src/features/list/adapters/inbound/FlatList.tsx:12:14`
+Source: `src/features/list/adapters/inbound/FlatList.tsx:13:14`
 
 Virtualizes keyed manifest children using React Native FlatList and the Runtime repeat contract.
 
@@ -3188,7 +3188,7 @@ Export paths: `src/index.ts`
 
 ## SectionList
 
-Source: `src/features/list/adapters/inbound/SectionList.tsx:13:14`
+Source: `src/features/list/adapters/inbound/SectionList.tsx:14:14`
 
 Virtualizes manifest children grouped by explicit section identities and child counts.
 

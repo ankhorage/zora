@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.9.2
+
+### Patch Changes
+
+- 49b8fb1: Apply explicit, overrideable native virtualization and pagination defaults to FlatList and SectionList, and publish the same defaults in their authoring blueprints.
+
 ## 25.9.1
 
 ### Patch Changes

@@ -2176,7 +2176,7 @@ File and folder presentation using the exact same TileGrid and selection model.
 
 Kind: `value`
 Module: `src/features/list/adapters/inbound/FlatList.tsx`
-Source: `src/features/list/adapters/inbound/FlatList.tsx:12:14`
+Source: `src/features/list/adapters/inbound/FlatList.tsx:13:14`
 
 Virtualizes keyed manifest children using React Native FlatList and the Runtime repeat contract.
 
@@ -5502,7 +5502,7 @@ Source: `src/types/section.ts:5:1`
 
 Kind: `value`
 Module: `src/features/list/adapters/inbound/SectionList.tsx`
-Source: `src/features/list/adapters/inbound/SectionList.tsx:13:14`
+Source: `src/features/list/adapters/inbound/SectionList.tsx:14:14`
 
 Virtualizes manifest children grouped by explicit section identities and child counts.
 

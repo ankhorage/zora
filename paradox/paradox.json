@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.9.1",
+      "value": "v25.9.2",
       "color": "cb3837"
     },
     {
@@ -3863,6 +3863,7 @@
         "src/features/list/adapters/inbound/HorizontalListSeparator.tsx",
         "src/features/list/adapters/inbound/useListVisibility.ts",
         "src/features/list/adapters/inbound/VerticalListSeparator.tsx",
+        "src/features/list/constants/virtualization.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/typography/public.ts",
         "src/types/manifest-list.ts"
@@ -3932,6 +3933,7 @@
         "src/features/list/adapters/inbound/useListVisibility.ts",
         "src/features/list/adapters/inbound/VerticalListSeparator.tsx",
         "src/features/list/application/use-cases/partitionListSections.ts",
+        "src/features/list/constants/virtualization.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/typography/public.ts",
         "src/types/manifest-list.ts"
@@ -3971,10 +3973,19 @@
       ]
     },
     {
+      "path": "src/features/list/constants/virtualization.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "LIST_VIRTUALIZATION_DEFAULTS"
+      ]
+    },
+    {
       "path": "src/features/list/flatListMeta.ts",
       "isEntrypoint": false,
       "dependencies": [
         "src/constants/authoring.ts",
+        "src/features/list/constants/virtualization.ts",
         "src/types/authoring.ts"
       ],
       "exports": [
@@ -18124,7 +18135,7 @@
       "modulePath": "src/features/list/adapters/inbound/FlatList.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/FlatList.tsx",
-        "line": 12,
+        "line": 13,
         "column": 14
       },
       "exportPaths": [
@@ -32587,7 +32598,7 @@
       "modulePath": "src/features/list/adapters/inbound/SectionList.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/SectionList.tsx",
-        "line": 13,
+        "line": 14,
         "column": 14
       },
       "exportPaths": [
@@ -49261,7 +49272,7 @@
       "modulePath": "src/features/list/adapters/inbound/FlatList.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/FlatList.tsx",
-        "line": 12,
+        "line": 13,
         "column": 14
       },
       "exportPaths": [
@@ -57352,7 +57363,7 @@
       "modulePath": "src/features/list/adapters/inbound/SectionList.tsx",
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/SectionList.tsx",
-        "line": 13,
+        "line": 14,
         "column": 14
       },
       "exportPaths": [
@@ -68043,7 +68054,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/FlatList.tsx",
-        "line": 15,
+        "line": 16,
         "column": 1
       }
     },
@@ -68153,7 +68164,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/SectionList.tsx",
-        "line": 16,
+        "line": 17,
         "column": 1
       }
     },
@@ -73577,6 +73588,11 @@
         "sourcePath": "src/features/list/flatListMeta.ts"
       },
       {
+        "fromPath": "src/features/list/flatListMeta.ts",
+        "toPath": "src/features/list/constants/virtualization.ts",
+        "sourcePath": "src/features/list/flatListMeta.ts"
+      },
+      {
         "fromPath": "src/features/list/meta.ts",
         "toPath": "src/types/authoring.ts",
         "sourcePath": "src/features/list/meta.ts"
@@ -78158,6 +78174,11 @@
       },
       {
         "fromPath": "src/features/list/adapters/inbound/FlatList.tsx",
+        "toPath": "src/features/list/constants/virtualization.ts",
+        "sourcePath": "src/features/list/adapters/inbound/FlatList.tsx"
+      },
+      {
+        "fromPath": "src/features/list/adapters/inbound/FlatList.tsx",
         "toPath": "src/features/list/adapters/inbound/HorizontalListSeparator.tsx",
         "sourcePath": "src/features/list/adapters/inbound/FlatList.tsx"
       },
@@ -78274,6 +78295,11 @@
       {
         "fromPath": "src/features/list/adapters/inbound/SectionList.tsx",
         "toPath": "src/features/list/application/use-cases/partitionListSections.ts",
+        "sourcePath": "src/features/list/adapters/inbound/SectionList.tsx"
+      },
+      {
+        "fromPath": "src/features/list/adapters/inbound/SectionList.tsx",
+        "toPath": "src/features/list/constants/virtualization.ts",
         "sourcePath": "src/features/list/adapters/inbound/SectionList.tsx"
       },
       {

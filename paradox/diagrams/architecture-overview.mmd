@@ -1284,6 +1284,7 @@ graph TD
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_adapters_inbound_HorizontalListSeparator_tsx
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_adapters_inbound_useListVisibility_ts
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_adapters_inbound_VerticalListSeparator_tsx
+  module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_list_constants_virtualization_ts
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_features_typography_public_ts
   module_src_features_list_adapters_inbound_FlatList_tsx --> module_src_types_manifest_list_ts
@@ -1318,6 +1319,7 @@ graph TD
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_list_adapters_inbound_useListVisibility_ts
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_list_adapters_inbound_VerticalListSeparator_tsx
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_list_application_use_cases_partitionListSections_ts
+  module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_list_constants_virtualization_ts
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_features_typography_public_ts
   module_src_features_list_adapters_inbound_SectionList_tsx --> module_src_types_manifest_list_ts
@@ -1330,9 +1332,12 @@ graph TD
   module_src_features_list_application_use_cases_partitionListSections_ts["src/features/list/application/use-cases/partitionListSections.ts"]
   package__ankhorage_zora -.-> module_src_features_list_application_use_cases_partitionListSections_ts
   module_src_features_list_application_use_cases_partitionListSections_ts --> module_src_types_manifest_list_ts
+  module_src_features_list_constants_virtualization_ts["src/features/list/constants/virtualization.ts"]
+  package__ankhorage_zora -.-> module_src_features_list_constants_virtualization_ts
   module_src_features_list_flatListMeta_ts["src/features/list/flatListMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_list_flatListMeta_ts
   module_src_features_list_flatListMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_list_flatListMeta_ts --> module_src_features_list_constants_virtualization_ts
   module_src_features_list_flatListMeta_ts --> module_src_types_authoring_ts
   module_src_features_list_meta_ts["src/features/list/meta.ts"]
   package__ankhorage_zora -.-> module_src_features_list_meta_ts
