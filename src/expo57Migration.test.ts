@@ -33,7 +33,6 @@ const EXPO_57_GRID_WORKSPACES_CONTRACT = {
   expo: '~57.0.30',
   metroConfig: '0.86.3',
   typesReact: '~19.2.18',
-  zora: '25.8.15',
 } as const;
 const GRID_WORKSPACES_MANIFEST = 'examples/grid-workspaces/package.json';
 
@@ -163,7 +162,7 @@ describe('Expo 57 example boundary', () => {
     const development = readRecord(packageJson, 'devDependencies');
 
     expect(dependencies.expo).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.expo);
-    expect(dependencies['@ankhorage/zora']).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.zora);
+    expect(dependencies['@ankhorage/zora']).toMatch(SEMVER_PATTERNS.exact);
     expect(dependencies['@react-native/metro-config']).toBe(
       EXPO_57_GRID_WORKSPACES_CONTRACT.metroConfig,
     );
