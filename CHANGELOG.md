@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.20
+
+### Patch Changes
+
+- 393400c: Update dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+
 ## 25.8.19
 
 ### Patch Changes
