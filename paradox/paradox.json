@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.9.0",
+      "value": "v25.9.1",
       "color": "cb3837"
     },
     {
@@ -5657,6 +5657,15 @@
       "exports": [
         "useZoraThemeRuntime",
         "ZoraThemeRuntimeContext"
+      ]
+    },
+    {
+      "path": "src/features/theme/mode-toggle/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ThemeModeToggle",
+        "ThemeModeToggleProps"
       ]
     },
     {
@@ -75054,16 +75063,6 @@
       },
       {
         "fromPath": "src/features/theme/runtime.ts",
-        "toPath": "src/types/theme-mode-toggle.ts",
-        "sourcePath": "src/features/theme/runtime.ts"
-      },
-      {
-        "fromPath": "src/features/theme/runtime.ts",
-        "toPath": "src/features/theme/adapters/inbound/ThemeModeToggle.tsx",
-        "sourcePath": "src/features/theme/runtime.ts"
-      },
-      {
-        "fromPath": "src/features/theme/runtime.ts",
         "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "sourcePath": "src/features/theme/runtime.ts"
       },
@@ -75080,6 +75079,11 @@
       {
         "fromPath": "src/features/theme/runtime.ts",
         "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/theme/runtime.ts"
+      },
+      {
+        "fromPath": "src/features/theme/runtime.ts",
+        "toPath": "src/features/theme/mode-toggle/public.ts",
         "sourcePath": "src/features/theme/runtime.ts"
       },
       {
@@ -75961,6 +75965,16 @@
         "fromPath": "src/features/theme/composition/ZoraThemeRuntimeContext.tsx",
         "toPath": "src/features/theme/zoraDefaultTheme.ts",
         "sourcePath": "src/features/theme/composition/ZoraThemeRuntimeContext.tsx"
+      },
+      {
+        "fromPath": "src/features/theme/mode-toggle/public.ts",
+        "toPath": "src/types/theme-mode-toggle.ts",
+        "sourcePath": "src/features/theme/mode-toggle/public.ts"
+      },
+      {
+        "fromPath": "src/features/theme/mode-toggle/public.ts",
+        "toPath": "src/features/theme/adapters/inbound/ThemeModeToggle.tsx",
+        "sourcePath": "src/features/theme/mode-toggle/public.ts"
       },
       {
         "fromPath": "src/features/theme/utils/resolveThemeModeToggleState.ts",

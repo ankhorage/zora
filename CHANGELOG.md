@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.9.1
+
+### Patch Changes
+
+- fc3eddf: Expose ThemeModeToggle through the canonical theme feature facade so generic web artifacts and package subpath exports include the public component.
+
 ## 25.9.0
 
 ### Minor Changes
