@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.24
+
+### Patch Changes
+
+- c167e79: fix(web-artifacts): bundle the SSR-safe Surface responsive runtime
+
 ## 25.8.23
 
 ### Patch Changes
