@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.9.0
+
+### Minor Changes
+
+- e62bb33: Add declarative pull-to-refresh state and refresh action metadata to ScrollView.
+
 ## 25.8.24
 
 ### Patch Changes
