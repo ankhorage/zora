@@ -6531,6 +6531,229 @@ Source: `src/types/tabs.ts:10:1`
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |
 
+## TemporalAllDayEvent
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:174:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| attendees | property | `readonly TemporalParticipant[] \| undefined` | no |  |
+| availability | property | `TemporalAvailability \| undefined` | no |  |
+| calendarId | property | `string \| undefined` | no |  |
+| conferenceUrl | property | `string \| undefined` | no |  |
+| description | property | `string \| undefined` | no |  |
+| editable | property | `boolean \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| interoperability | property | `readonly TemporalInteroperabilityData[] \| undefined` | no |  |
+| location | property | `string \| undefined` | no |  |
+| metadata | property | `Readonly<Record<string, TemporalDataValue>> \| undefined` | no |  |
+| organizer | property | `TemporalParticipant \| undefined` | no |  |
+| range | property | `TemporalAllDayRange` | yes |  |
+| recurrence | property | `TemporalRecurrence<`${number}-${number}-${number}`> \| undefined` | no |  |
+| recurrenceExceptions | property | `readonly TemporalRecurrenceException<`${number}-${number}-${number}`, TemporalAllDayRange>[] \| undefined` | no |  |
+| reminders | property | `readonly TemporalReminder[] \| undefined` | no |  |
+| resourceIds | property | `readonly string[] \| undefined` | no |  |
+| status | property | `TemporalEventStatus \| undefined` | no |  |
+| title | property | `string` | yes |  |
+| tone | property | `TemporalTone \| undefined` | no |  |
+
+## TemporalAllDayRange
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:51:1`
+
+## TemporalAvailability
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:69:1`
+
+## TemporalDataValue
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:18:1`
+
+## TemporalDate
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:2:1`
+
+## TemporalDuration
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:11:1`
+
+## TemporalEvent
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:184:1`
+
+## TemporalEventStatus
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:72:1`
+
+## TemporalInstant
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:5:1`
+
+## TemporalInteroperabilityData
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:139:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| format | property | `"icalendar" \| "jcal" \| "provider"` | yes |  |
+| value | property | `TemporalDataValue` | yes |  |
+
+## TemporalParticipant
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:78:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| email | property | `string \| undefined` | no |  |
+| id | property | `string \| undefined` | no |  |
+| name | property | `string \| undefined` | no |  |
+| response | property | `"tentative" \| "accepted" \| "declined" \| "delegated" \| "needs-action" \| undefined` | no |  |
+| role | property | `"optional" \| "organizer" \| "required" \| "resource" \| undefined` | no |  |
+
+## TemporalRange
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:66:1`
+
+## TemporalRecurrence
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:117:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| dates | property | `readonly TValue[] \| undefined` | no |  |
+| excludedDates | property | `readonly TValue[] \| undefined` | no |  |
+| rules | property | `readonly TemporalRecurrenceRule<TValue>[]` | yes |  |
+
+## TemporalRecurrenceException
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:128:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| range | property | `TRange \| undefined` | no |  |
+| recurrenceId | property | `TValue` | yes |  |
+| status | property | `"cancelled" \| "replacement"` | yes |  |
+| title | property | `string \| undefined` | no |  |
+
+## TemporalRecurrenceRule
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:101:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| count | property | `number \| undefined` | no |  |
+| frequency | property | `"daily" \| "monthly" \| "weekly" \| "yearly"` | yes |  |
+| interval | property | `number \| undefined` | no |  |
+| monthDays | property | `readonly number[] \| undefined` | no |  |
+| months | property | `readonly number[] \| undefined` | no |  |
+| until | property | `TValue \| undefined` | no |  |
+| weekdays | property | `readonly ("friday" \| "monday" \| "saturday" \| "sunday" \| "thursday" \| "tuesday" \| "wednesday")[] \| undefined` | no |  |
+
+## TemporalReminder
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:90:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| channel | property | `"email" \| "push" \| "display" \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| offset | property | `string` | yes |  |
+| reference | property | `"start" \| "end"` | yes |  |
+
+## TemporalTimedEvent
+
+Kind: `type`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:164:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| attendees | property | `readonly TemporalParticipant[] \| undefined` | no |  |
+| availability | property | `TemporalAvailability \| undefined` | no |  |
+| calendarId | property | `string \| undefined` | no |  |
+| conferenceUrl | property | `string \| undefined` | no |  |
+| description | property | `string \| undefined` | no |  |
+| editable | property | `boolean \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| interoperability | property | `readonly TemporalInteroperabilityData[] \| undefined` | no |  |
+| location | property | `string \| undefined` | no |  |
+| metadata | property | `Readonly<Record<string, TemporalDataValue>> \| undefined` | no |  |
+| organizer | property | `TemporalParticipant \| undefined` | no |  |
+| range | property | `TemporalTimedRange` | yes |  |
+| recurrence | property | `TemporalRecurrence<`${string}Z`> \| undefined` | no |  |
+| recurrenceExceptions | property | `readonly TemporalRecurrenceException<`${string}Z`, TemporalTimedRange>[] \| undefined` | no |  |
+| reminders | property | `readonly TemporalReminder[] \| undefined` | no |  |
+| resourceIds | property | `readonly string[] \| undefined` | no |  |
+| status | property | `TemporalEventStatus \| undefined` | no |  |
+| title | property | `string` | yes |  |
+| tone | property | `TemporalTone \| undefined` | no |  |
+
+## TemporalTimedRange
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:31:1`
+
+## TemporalTimeZone
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:8:1`
+
+## TemporalTone
+
+Kind: `unknown`
+Module: `src/types/temporal.ts`
+Source: `src/types/temporal.ts:75:1`
+
 ## Text
 
 Kind: `value`

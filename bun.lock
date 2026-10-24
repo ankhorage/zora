@@ -72,7 +72,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@26.0.2", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.10.0" } }, "sha512-VHVzHPJ9gYhCW9Ph/g0Xg2nIVkBo8LjJlq/N6uMaQip9AFGeZK7FsHWmP17TqkOXZTbGhvAorXHchvze3VYD/w=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@26.1.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.10.0" } }, "sha512-9EX8uhq+1BBSpz5xmA8Ewefacmd41TwGVLTiUtzIsxhW5Mn8ZSSpzfK4xxd6YIGCeoj3u4fcUIEi0F8pI0+dpQ=="],
 
     "@ankhorage/data-sources": ["@ankhorage/data-sources@2.1.3", "", { "dependencies": { "@ankhorage/contracts": "^26.0.2" } }, "sha512-2v411YMdcJWOadkdvDkjfDrSRSyZJQBeiPLStkM+PikZPjJnGU1xnYhmnASVMjb8JS0ON6FcJVYU19ycx0vkhw=="],
 

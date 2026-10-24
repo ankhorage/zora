@@ -28298,6 +28298,921 @@
     "structuredRows": []
   },
   {
+    "name": "TemporalAllDayEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 174,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TemporalAllDayRange",
+      "TemporalAvailability",
+      "TemporalDataValue",
+      "TemporalEventStatus",
+      "TemporalInteroperabilityData",
+      "TemporalParticipant",
+      "TemporalRecurrence",
+      "TemporalRecurrenceException",
+      "TemporalReminder",
+      "TemporalTone"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "attendees",
+        "kind": "property",
+        "type": "readonly TemporalParticipant[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "availability",
+        "kind": "property",
+        "type": "TemporalAvailability | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "calendarId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "conferenceUrl",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "editable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interoperability",
+        "kind": "property",
+        "type": "readonly TemporalInteroperabilityData[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "location",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "metadata",
+        "kind": "property",
+        "type": "Readonly<Record<string, TemporalDataValue>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "organizer",
+        "kind": "property",
+        "type": "TemporalParticipant | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "range",
+        "kind": "property",
+        "type": "TemporalAllDayRange",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "recurrence",
+        "kind": "property",
+        "type": "TemporalRecurrence<`${number}-${number}-${number}`> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "recurrenceExceptions",
+        "kind": "property",
+        "type": "readonly TemporalRecurrenceException<`${number}-${number}-${number}`, TemporalAllDayRange>[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "reminders",
+        "kind": "property",
+        "type": "readonly TemporalReminder[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "resourceIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "TemporalEventStatus | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tone",
+        "kind": "property",
+        "type": "TemporalTone | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalAllDayRange",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 51,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalAvailability",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 69,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalDataValue",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 18,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalDate",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 2,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalDuration",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 11,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 184,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalEventStatus",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 72,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalInstant",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalInteroperabilityData",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 139,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TemporalDataValue"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "format",
+        "kind": "property",
+        "type": "\"icalendar\" | \"jcal\" | \"provider\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "TemporalDataValue",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalParticipant",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 78,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "email",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "response",
+        "kind": "property",
+        "type": "\"tentative\" | \"accepted\" | \"declined\" | \"delegated\" | \"needs-action\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "role",
+        "kind": "property",
+        "type": "\"optional\" | \"organizer\" | \"required\" | \"resource\" | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalRange",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 66,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalRecurrence",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 117,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TemporalRecurrenceRule"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "dates",
+        "kind": "property",
+        "type": "readonly TValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "excludedDates",
+        "kind": "property",
+        "type": "readonly TValue[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rules",
+        "kind": "property",
+        "type": "readonly TemporalRecurrenceRule<TValue>[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalRecurrenceException",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 128,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "range",
+        "kind": "property",
+        "type": "TRange | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "recurrenceId",
+        "kind": "property",
+        "type": "TValue",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "\"cancelled\" | \"replacement\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalRecurrenceRule",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 101,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "count",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "frequency",
+        "kind": "property",
+        "type": "\"daily\" | \"monthly\" | \"weekly\" | \"yearly\"",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interval",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "monthDays",
+        "kind": "property",
+        "type": "readonly number[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "months",
+        "kind": "property",
+        "type": "readonly number[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "until",
+        "kind": "property",
+        "type": "TValue | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "weekdays",
+        "kind": "property",
+        "type": "readonly (\"friday\" | \"monday\" | \"saturday\" | \"sunday\" | \"thursday\" | \"tuesday\" | \"wednesday\")[] | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalReminder",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 90,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "channel",
+        "kind": "property",
+        "type": "\"email\" | \"push\" | \"display\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "offset",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "reference",
+        "kind": "property",
+        "type": "\"start\" | \"end\"",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalTimedEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 164,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TemporalAvailability",
+      "TemporalDataValue",
+      "TemporalEventStatus",
+      "TemporalInteroperabilityData",
+      "TemporalParticipant",
+      "TemporalRecurrence",
+      "TemporalRecurrenceException",
+      "TemporalReminder",
+      "TemporalTimedRange",
+      "TemporalTone"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "attendees",
+        "kind": "property",
+        "type": "readonly TemporalParticipant[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "availability",
+        "kind": "property",
+        "type": "TemporalAvailability | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "calendarId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "conferenceUrl",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "editable",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "interoperability",
+        "kind": "property",
+        "type": "readonly TemporalInteroperabilityData[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "location",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "metadata",
+        "kind": "property",
+        "type": "Readonly<Record<string, TemporalDataValue>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "organizer",
+        "kind": "property",
+        "type": "TemporalParticipant | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "range",
+        "kind": "property",
+        "type": "TemporalTimedRange",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "recurrence",
+        "kind": "property",
+        "type": "TemporalRecurrence<`${string}Z`> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "recurrenceExceptions",
+        "kind": "property",
+        "type": "readonly TemporalRecurrenceException<`${string}Z`, TemporalTimedRange>[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "reminders",
+        "kind": "property",
+        "type": "readonly TemporalReminder[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "resourceIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "TemporalEventStatus | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "tone",
+        "kind": "property",
+        "type": "TemporalTone | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalTimedRange",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 31,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalTimeZone",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "TemporalTone",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/temporal.ts",
+    "sourceLocation": {
+      "filePath": "src/types/temporal.ts",
+      "line": 75,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "Text",
     "title": null,
     "description": "Structured copy primitive for theme-aware app text.\n\n`Text` owns normal body, caption, label, code, and supporting-copy variants so\nconsumers do not need to import lower-level Surface typography directly.",

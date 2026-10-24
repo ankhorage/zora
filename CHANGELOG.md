@@ -1,5 +1,12 @@
 # Changelog
 
+## 25.10.0
+
+### Minor Changes
+
+- 83ecdfa: Add the provider-neutral, serializable temporal event contract for future Calendar and Scheduler UI,
+  including type-safe timed and all-day recurrence values.
+
 ## 25.9.2
 
 ### Patch Changes
