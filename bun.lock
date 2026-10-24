@@ -20,7 +20,7 @@
         "expo-image-picker": "~57.0.20",
       },
       "devDependencies": {
-        "@ankhorage/devtools": "^2.3.23",
+        "@ankhorage/devtools": "^2.3.24",
         "@ankhorage/paradox": "^0.3.5",
         "@react-native-vector-icons/fontawesome": "^14.0.0",
         "@react-native-vector-icons/fontawesome5": "^14.0.0",
