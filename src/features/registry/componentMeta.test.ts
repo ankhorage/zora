@@ -101,6 +101,26 @@ describe('ZORA_COMPONENT_META event metadata', () => {
   });
 
   test('owns controlled component events in direct metadata and projects their bindings', () => {
+    expect(ZORA_COMPONENT_META.ScrollView.props.refreshing).toMatchObject({
+      type: 'boolean',
+      category: 'State',
+      default: false,
+    });
+    expect(ZORA_COMPONENT_META.ScrollView.events?.refresh).toMatchObject({
+      eventType: 'scrollView.refresh',
+      payloadFields: [],
+    });
+    expect(ZORA_COMPONENT_META.ScrollView.bindings?.props?.refreshing.value).toEqual({
+      type: 'boolean',
+    });
+    expect(ZORA_COMPONENT_META.ScrollView.bindings?.events?.refresh.payload).toEqual({
+      eventType: 'scrollView.refresh',
+      fields: [],
+    });
+    for (const component of [ZORA_COMPONENT_META.FlatList, ZORA_COMPONENT_META.SectionList]) {
+      expect(component.props.refreshing).toMatchObject({ type: 'boolean', category: 'State' });
+      expect(component.events?.refresh.payloadFields).toEqual([]);
+    }
     expect(ZORA_COMPONENT_META.TextInput.events?.changeText).toMatchObject({
       eventType: 'textInput.changeText',
       payloadFields: [{ path: 'value', type: 'string' }],
