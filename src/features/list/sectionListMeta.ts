@@ -4,7 +4,10 @@ import { flatListMeta } from './flatListMeta';
 export const sectionListMeta = {
   ...flatListMeta,
   name: 'SectionList',
-  blueprint: { label: 'Section list', defaultProps: { sections: [] } },
+  blueprint: {
+    label: 'Section list',
+    defaultProps: { ...flatListMeta.blueprint.defaultProps, sections: [] },
+  },
   description:
     'Virtualized sections of ordered children. Section counts must cover every child exactly once.',
   events: {
