@@ -5,6 +5,7 @@ import type { ManifestSectionListProps } from '../../../../types/manifest-list';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../../../typography/public';
 import { partitionListSections } from '../../application/use-cases/partitionListSections';
+import { LIST_VIRTUALIZATION_DEFAULTS } from '../../constants/virtualization';
 import { HorizontalListSeparator } from './HorizontalListSeparator';
 import { useListVisibility } from './useListVisibility';
 import { VerticalListSeparator } from './VerticalListSeparator';
@@ -21,9 +22,9 @@ function SectionListInner({
   horizontal,
   refreshing = false,
   initialNumToRender,
-  maxToRenderPerBatch,
+  maxToRenderPerBatch = LIST_VIRTUALIZATION_DEFAULTS.maxToRenderPerBatch,
   windowSize,
-  onEndReachedThreshold,
+  onEndReachedThreshold = LIST_VIRTUALIZATION_DEFAULTS.onEndReachedThreshold,
   showsScrollIndicator = true,
   bounces,
   showSeparators,
