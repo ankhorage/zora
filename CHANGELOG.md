@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.21
+
+### Patch Changes
+
+- ed25e60: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 25.8.20
 
 ### Patch Changes
