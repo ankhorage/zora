@@ -71,6 +71,8 @@ export { Button } from './features/button/public';
 export { ButtonGroup } from './features/button/public';
 export { IconButton } from './features/button/public';
 export type {
+  TemporalAllDayEvent,
+  TemporalAllDayRange,
   TemporalAvailability,
   TemporalDataValue,
   TemporalDate,
@@ -85,6 +87,8 @@ export type {
   TemporalRecurrenceException,
   TemporalRecurrenceRule,
   TemporalReminder,
+  TemporalTimedEvent,
+  TemporalTimedRange,
   TemporalTimeZone,
   TemporalTone,
 } from './features/calendar/public';

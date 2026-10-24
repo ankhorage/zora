@@ -7,10 +7,14 @@ export type TemporalInstant = `${string}Z`;
 /** An IANA timezone identifier such as `Europe/Zurich`. */
 export type TemporalTimeZone = string;
 
-/** An ISO-8601 duration string such as `PT30M`. */
+/** An ISO-8601 duration string such as `PT30M` or `-PT15M`. */
 export type TemporalDuration = string;
 
-/** Data that remains safe to serialize through manifests and provider boundaries. */
+/**
+ * This contract describes serializable shape, not runtime validation. Consumers must validate
+ * RFC 3339 instants, ISO calendar dates and durations, IANA zone identifiers, positive non-zero
+ * intervals, ordered ranges, and finite JSON numbers at their input boundary.
+ */
 export type TemporalDataValue =
   | boolean
   | null
@@ -19,8 +23,12 @@ export type TemporalDataValue =
   | readonly TemporalDataValue[]
   | { readonly [key: string]: TemporalDataValue };
 
-/** A timed or all-day interval with exactly one way to define its end. */
-export type TemporalRange =
+/**
+ * A timed interval with exactly one exclusive end. Recurring timed events retain the local
+ * wall-clock time derived from `start` in `timeZone` across DST transitions; a recurrence engine
+ * materializes each occurrence as its corresponding UTC instant.
+ */
+export type TemporalTimedRange =
   | {
       readonly allDay: false;
       readonly start: TemporalInstant;
@@ -34,21 +42,28 @@ export type TemporalRange =
       readonly end?: never;
       readonly duration: TemporalDuration;
       readonly timeZone: TemporalTimeZone;
-    }
+    };
+
+/**
+ * A timezone-free all-day calendar-date interval with exactly one exclusive end. `end` is the
+ * first day not included, so a one-day event from `2026-10-24` ends on `2026-10-25`.
+ */
+export type TemporalAllDayRange =
   | {
       readonly allDay: true;
       readonly start: TemporalDate;
       readonly end: TemporalDate;
       readonly duration?: never;
-      readonly timeZone?: TemporalTimeZone;
     }
   | {
       readonly allDay: true;
       readonly start: TemporalDate;
       readonly end?: never;
       readonly duration: TemporalDuration;
-      readonly timeZone?: TemporalTimeZone;
     };
+
+/** A timed or all-day interval with exactly one way to define its exclusive end. */
+export type TemporalRange = TemporalAllDayRange | TemporalTimedRange;
 
 /** The availability an event contributes without disclosing its details. */
 export type TemporalAvailability = 'free' | 'busy' | 'tentative' | 'unavailable';
@@ -68,19 +83,26 @@ export interface TemporalParticipant {
   readonly response?: 'accepted' | 'declined' | 'delegated' | 'needs-action' | 'tentative';
 }
 
-/** A reminder that a presentation or provider adapter can schedule. */
+/**
+ * A reminder relative to the event start or exclusive end. A negative ISO duration fires before
+ * that reference point; a positive duration fires after it.
+ */
 export interface TemporalReminder {
   readonly id: string;
   readonly offset: TemporalDuration;
+  readonly reference: 'end' | 'start';
   readonly channel?: 'display' | 'email' | 'push';
 }
 
-/** One normalized recurrence rule; adapter layers map this to and from standards such as RRULE. */
-export interface TemporalRecurrenceRule {
+/**
+ * One normalized recurrence rule. `until` has the same value type as DTSTART: a date for all-day
+ * series and a UTC instant for timed series. Adapter layers map this to and from RFC 5545 RRULE.
+ */
+export interface TemporalRecurrenceRule<TValue extends TemporalDate | TemporalInstant> {
   readonly frequency: 'daily' | 'monthly' | 'weekly' | 'yearly';
   readonly interval?: number;
   readonly count?: number;
-  readonly until?: TemporalInstant;
+  readonly until?: TValue;
   readonly weekdays?: readonly (
     'friday' | 'monday' | 'saturday' | 'sunday' | 'thursday' | 'tuesday' | 'wednesday'
   )[];
@@ -88,18 +110,28 @@ export interface TemporalRecurrenceRule {
   readonly months?: readonly number[];
 }
 
-/** Recurrence data retained independently from provider-specific series representations. */
-export interface TemporalRecurrence {
-  readonly rules: readonly TemporalRecurrenceRule[];
-  readonly dates?: readonly (TemporalDate | TemporalInstant)[];
-  readonly excludedDates?: readonly (TemporalDate | TemporalInstant)[];
+/**
+ * Recurrence data retained independently from provider-specific series representations. `dates`
+ * and `excludedDates` correspond to RFC 5545 RDATE and EXDATE and use the DTSTART value type.
+ */
+export interface TemporalRecurrence<TValue extends TemporalDate | TemporalInstant> {
+  readonly rules: readonly TemporalRecurrenceRule<TValue>[];
+  readonly dates?: readonly TValue[];
+  readonly excludedDates?: readonly TValue[];
 }
 
-/** A detached occurrence that replaces or cancels one generated recurrence instance. */
-export interface TemporalRecurrenceException {
-  readonly recurrenceId: TemporalDate | TemporalInstant;
+/**
+ * A detached occurrence that replaces or cancels one generated recurrence instance. `recurrenceId`
+ * is the original scheduled DTSTART value: for timed DST series, the UTC instant materialized from
+ * that occurrence's wall-clock time in the series timezone; for all-day series, its calendar date.
+ */
+export interface TemporalRecurrenceException<
+  TValue extends TemporalDate | TemporalInstant,
+  TRange extends TemporalRange,
+> {
+  readonly recurrenceId: TValue;
   readonly status: 'cancelled' | 'replacement';
-  readonly range?: TemporalRange;
+  readonly range?: TRange;
   readonly title?: string;
 }
 
@@ -109,11 +141,9 @@ export interface TemporalInteroperabilityData {
   readonly value: TemporalDataValue;
 }
 
-/** Provider-neutral, serializable event data shared by future Calendar and Scheduler presentations. */
-export interface TemporalEvent {
+interface TemporalEventBase {
   readonly id: string;
   readonly title: string;
-  readonly range: TemporalRange;
   readonly description?: string;
   readonly location?: string;
   readonly conferenceUrl?: string;
@@ -125,9 +155,30 @@ export interface TemporalEvent {
   readonly organizer?: TemporalParticipant;
   readonly attendees?: readonly TemporalParticipant[];
   readonly reminders?: readonly TemporalReminder[];
-  readonly recurrence?: TemporalRecurrence;
-  readonly recurrenceExceptions?: readonly TemporalRecurrenceException[];
   readonly editable?: boolean;
   readonly metadata?: Readonly<Record<string, TemporalDataValue>>;
   readonly interoperability?: readonly TemporalInteroperabilityData[];
 }
+
+/** A provider-neutral timed event with instant-based recurrence values. */
+export interface TemporalTimedEvent extends TemporalEventBase {
+  readonly range: TemporalTimedRange;
+  readonly recurrence?: TemporalRecurrence<TemporalInstant>;
+  readonly recurrenceExceptions?: readonly TemporalRecurrenceException<
+    TemporalInstant,
+    TemporalTimedRange
+  >[];
+}
+
+/** A provider-neutral all-day event with date-based recurrence values. */
+export interface TemporalAllDayEvent extends TemporalEventBase {
+  readonly range: TemporalAllDayRange;
+  readonly recurrence?: TemporalRecurrence<TemporalDate>;
+  readonly recurrenceExceptions?: readonly TemporalRecurrenceException<
+    TemporalDate,
+    TemporalAllDayRange
+  >[];
+}
+
+/** Provider-neutral, serializable event data shared by future Calendar and Scheduler presentations. */
+export type TemporalEvent = TemporalAllDayEvent | TemporalTimedEvent;

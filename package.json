@@ -155,7 +155,7 @@
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
-    "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json && bun x tsc -p tsconfig.typecheck.json",
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {

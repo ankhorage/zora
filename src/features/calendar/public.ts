@@ -1,4 +1,6 @@
 export type {
+  TemporalAllDayEvent,
+  TemporalAllDayRange,
   TemporalAvailability,
   TemporalDataValue,
   TemporalDate,
@@ -13,6 +15,8 @@ export type {
   TemporalRecurrenceException,
   TemporalRecurrenceRule,
   TemporalReminder,
+  TemporalTimedEvent,
+  TemporalTimedRange,
   TemporalTimeZone,
   TemporalTone,
 } from '../../types/temporal';
