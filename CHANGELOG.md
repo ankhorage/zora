@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.8.22
+
+### Patch Changes
+
+- ad61b20: Update dependencies: `@ankhorage/runtime`.
+
 ## 25.8.21
 
 ### Patch Changes
