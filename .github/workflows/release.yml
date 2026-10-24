@@ -273,6 +273,13 @@ jobs:
           (
             cd "$install_dir"
             bun add "$artifact" --ignore-scripts
+            if [ -f node_modules/react/package.json ] && [ -f node_modules/react-dom/package.json ]; then
+              react_version="$(node -p "require('./node_modules/react/package.json').version")"
+              react_dom_version="$(node -p "require('./node_modules/react-dom/package.json').version")"
+              if [ "$react_version" != "$react_dom_version" ]; then
+                bun add "react-dom@$react_version" --ignore-scripts
+              fi
+            fi
 
             PACKAGE_NAME="$package_name" node - <<'NODE' > runtime-entrypoints.txt
           const { readFileSync } = require('node:fs');
