@@ -1,6 +1,6 @@
 export type { ZoraBaseProps } from '../../types/base';
-export type { ThemeModeToggleProps } from '../../types/theme-mode-toggle';
-export { ThemeModeToggle } from './adapters/inbound/ThemeModeToggle';
+export type { ThemeModeToggleProps } from './mode-toggle/public';
+export { ThemeModeToggle } from './mode-toggle/public';
 export { withZoraThemeScope } from './adapters/inbound/withZoraThemeScope';
 export type { ZoraProviderProps, ZoraToastCapability } from './adapters/inbound/ZoraProvider';
 export { ZoraProvider } from './adapters/inbound/ZoraProvider';
