@@ -33,8 +33,18 @@ const reactNativeWeb = await import('react-native-web');
 await mock.module('react-native', () => reactNativeWeb);
 // ZORA's ScrollView only needs Surface's ScrollView and ThemeScope; the real package would load
 // native-only peers, so the DOM-capable react-native-web ScrollView stands in for the primitive.
+type SurfaceScrollViewProps = React.ComponentProps<typeof reactNativeWeb.ScrollView> & {
+  readonly onRefresh?: () => void;
+  readonly refreshing?: boolean;
+};
+
+const surfaceScrollViewProps: SurfaceScrollViewProps[] = [];
+
 await mock.module('@ankhorage/surface', () => ({
-  ScrollView: reactNativeWeb.ScrollView,
+  ScrollView: (props: SurfaceScrollViewProps) => {
+    surfaceScrollViewProps.push(props);
+    return React.createElement(reactNativeWeb.ScrollView, props);
+  },
   ThemeScope: ({ children }: { readonly children: React.ReactNode }) => children,
 }));
 const { ScrollView } = await import('./ScrollView');
@@ -228,6 +238,55 @@ test('never re-enables a ScrollView that the caller disabled explicitly', async 
 
     await mounted.render(<TrackedScrollView id="page" mounted={mounted} scrollEnabled />);
     expect(await mounted.swipe('page')).toBe(true);
+  } finally {
+    await mounted.unmount();
+  }
+});
+
+test('forwards controlled refresh state and does not simulate a native pull gesture on web', async () => {
+  const mounted = mount();
+  const refreshSignals: undefined[] = [];
+  const onRefresh = () => refreshSignals.push(undefined);
+  try {
+    await mounted.render(
+      <ScrollView refreshing={false} onRefresh={onRefresh} testID="refreshable-scroll-view" />,
+    );
+    expect(surfaceScrollViewProps.at(-1)?.refreshing).toBe(false);
+    expect(surfaceScrollViewProps.at(-1)?.onRefresh).toBe(onRefresh);
+
+    await mounted.swipe('refreshable-scroll-view');
+    expect(refreshSignals).toEqual([]);
+
+    surfaceScrollViewProps.at(-1)?.onRefresh?.();
+    expect(refreshSignals).toEqual([undefined]);
+
+    await mounted.render(
+      <ScrollView refreshing onRefresh={onRefresh} testID="refreshable-scroll-view" />,
+    );
+    expect(surfaceScrollViewProps.at(-1)?.refreshing).toBe(true);
+
+    await mounted.render(
+      <ScrollView refreshing={false} onRefresh={onRefresh} testID="refreshable-scroll-view" />,
+    );
+    expect(surfaceScrollViewProps.at(-1)?.refreshing).toBe(false);
+  } finally {
+    await mounted.unmount();
+  }
+});
+
+test('suppresses pull-to-refresh while the interaction policy is passive', async () => {
+  const mounted = mount();
+  const onRefresh = () => undefined;
+  try {
+    await mounted.render(
+      <ScrollView
+        interactionPolicy="passive"
+        onRefresh={onRefresh}
+        testID="passive-refreshable-scroll-view"
+      />,
+    );
+
+    expect(surfaceScrollViewProps.at(-1)?.onRefresh).toBeUndefined();
   } finally {
     await mounted.unmount();
   }
