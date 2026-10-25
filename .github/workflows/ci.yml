@@ -121,6 +121,7 @@ jobs:
         run: |
           base_sha='${{ github.event.pull_request.base.sha }}'
           head_sha='${{ github.event.pull_request.head.sha }}'
+          git branch --force main "$base_sha"
           export ANKH_PR_CHANGESET_FILES
           ANKH_PR_CHANGESET_FILES="$(git diff --name-only --diff-filter=AMCR "$base_sha" "$head_sha" -- .changeset)"
           if [ -z "$ANKH_PR_CHANGESET_FILES" ]; then
