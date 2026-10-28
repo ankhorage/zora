@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.10.1
+
+### Patch Changes
+
+- a1bbfed: Update dependencies: `@ankhorage/color-theory`, `@ankhorage/contracts`, `@ankhorage/runtime`.
+
 ## 25.10.0
 
 ### Minor Changes
