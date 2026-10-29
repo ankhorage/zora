@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.10.2
+
+### Patch Changes
+
+- 0881578: Update dependencies: `@ankhorage/ankh`, `@ankhorage/devtools`.
+
 ## 25.10.1
 
 ### Patch Changes
