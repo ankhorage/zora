@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.10.3
+
+### Patch Changes
+
+- 877e367: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`, `@ankhorage/reader`, `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 25.10.2
 
 ### Patch Changes
