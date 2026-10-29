@@ -73,7 +73,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate .
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.25 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.27 validate .
           fi
 
       - name: Run lint
@@ -146,12 +146,12 @@ jobs:
             echo "No changeset:status script found; skipping validation."
           fi
 
-      - name: Enforce PKGViz cyclic-dependencies rule
-        run: cd src && bunx pkgviz@0.8.1 --out pkgviz-audit.json --rule cyclic-dependencies=block
+      - name: Enforce Atlas cyclic-dependencies rule
+        run: cd src && bunx @ankhorage/atlas@0.14.1 --out atlas-audit.json --rule cyclic-dependencies=block
 
-      - name: Upload PKGViz audit
-        if: always() && hashFiles('src/pkgviz-audit.json') != ''
+      - name: Upload Atlas audit
+        if: always() && hashFiles('src/atlas-audit.json') != ''
         uses: actions/upload-artifact@v4
         with:
-          name: pkgviz-audit
-          path: src/pkgviz-audit.json
+          name: atlas-audit
+          path: src/atlas-audit.json
