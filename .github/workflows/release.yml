@@ -85,8 +85,8 @@ jobs:
               bun ./dist/cli/bin/repository.js package sync .
               bun ./dist/cli/bin/repository.js package status .
             else
-              bunx --bun --no-install ankhorage-repository package sync .
-              bunx --bun --no-install ankhorage-repository package status .
+              ./node_modules/.bin/ankhorage-repository package sync .
+              ./node_modules/.bin/ankhorage-repository package status .
             fi
           else
             echo "No Ankh package metadata found; skipping capability materialization."
@@ -190,6 +190,13 @@ jobs:
               else
                 echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
               fi
+
+              if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+                git status --short
+                echo "::error title=Release recovery requires a clean worktree::A release preparation step modified the checkout before recovery. Refusing to discard changes while switching to canonical release commit $release_sha."
+                exit 1
+              fi
+
               git checkout --detach "$release_sha"
               echo "versioned=true" >> "$GITHUB_OUTPUT"
               echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
