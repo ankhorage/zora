@@ -68,7 +68,7 @@ jobs:
         run: npm install -g npm@11.5.1
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
       - name: Build package
         run: |
@@ -153,7 +153,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate .
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.27 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.29 validate .
           fi
 
       - name: Version packages directly on main
@@ -258,6 +258,7 @@ jobs:
         if: steps.release.outputs.versioned == 'true'
         run: |
           set -euo pipefail
+          # Changesets can intentionally update package metadata and the lockfile during versioning.
           bun install --ignore-scripts
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.build?0:1)"; then
             bun run build
@@ -538,7 +539,7 @@ jobs:
     needs: release
     if: needs.release.outputs.versioned == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 40
 
     steps:
       - name: Setup Node for npm verification
@@ -557,29 +558,83 @@ jobs:
         run: |
           set -euo pipefail
           package_spec="${PUBLISHED_PACKAGE_NAME}@${PUBLISHED_PACKAGE_VERSION}"
-          pack_dir="${RUNNER_TEMP}/npm-pack-verification"
-          pack_log="${RUNNER_TEMP}/npm-pack-verification.log"
-          max_attempts=5
-          retry_seconds=15
-          mkdir -p "$pack_dir"
+          registry_evidence="${RUNNER_TEMP}/npm-publish-verification.json"
+          registry_error="${RUNNER_TEMP}/npm-publish-verification.error"
+          metadata_values="${RUNNER_TEMP}/npm-publish-verification.values"
+          artifact="${RUNNER_TEMP}/npm-publish-verification.tgz"
+          download_error="${RUNNER_TEMP}/npm-publish-verification.download.error"
+          max_attempts=60
+          retry_seconds=30
 
           for attempt in $(seq 1 "$max_attempts"); do
             echo "Verifying ${package_spec} on npm (attempt ${attempt}/${max_attempts})..."
-            if npm pack "$package_spec" --ignore-scripts --prefer-online --pack-destination "$pack_dir" >"$pack_log" 2>&1; then
-              if find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -size +0c -print -quit | grep -q .; then
-                echo "Verified ${package_spec}: public npm package downloaded successfully."
-                exit 0
+            if npm view "$package_spec" name version dist.tarball dist.integrity --json >"$registry_evidence" 2>"$registry_error"; then
+              if ! node -e '
+                const metadata = require(process.argv[1]);
+                const fields = [metadata.name, metadata.version, metadata["dist.tarball"], metadata["dist.integrity"]];
+                if (fields.some((field) => typeof field !== "string" || field.length === 0)) process.exit(1);
+                for (const field of fields) console.log(field);
+              ' "$registry_evidence" >"$metadata_values"; then
+                echo "::error title=Invalid npm registry metadata::${package_spec} returned incomplete metadata."
+                cat "$registry_evidence"
+                exit 1
               fi
-              echo "npm pack succeeded without producing a non-empty tarball."
+
+              package_name="$(sed -n '1p' "$metadata_values")"
+              resolved_version="$(sed -n '2p' "$metadata_values")"
+              tarball="$(sed -n '3p' "$metadata_values")"
+              integrity="$(sed -n '4p' "$metadata_values")"
+              if [ "$package_name" != "$PUBLISHED_PACKAGE_NAME" ] || [ "$resolved_version" != "$PUBLISHED_PACKAGE_VERSION" ] || [[ "$integrity" != sha512-* ]]; then
+                echo "::error title=Wrong npm publication metadata::Expected ${package_spec} with SHA-512 integrity, received ${package_name}@${resolved_version}."
+                exit 1
+              fi
+
+              if curl --fail --location --silent --show-error --output "$artifact" "$tarball" 2>"$download_error"; then
+                if EXPECTED_INTEGRITY="$integrity" ARTIFACT="$artifact" node -e '
+                  const { createHash } = require("node:crypto");
+                  const { readFileSync } = require("node:fs");
+                  const actual = `sha512-${createHash("sha512").update(readFileSync(process.env.ARTIFACT)).digest("base64")}`;
+                  if (actual !== process.env.EXPECTED_INTEGRITY) {
+                    console.error(`Expected ${process.env.EXPECTED_INTEGRITY}, received ${actual}.`);
+                    process.exit(1);
+                  }
+                '; then
+                  echo "Verified ${package_spec}: exact registry metadata, tarball download, and SHA-512 integrity."
+                  exit 0
+                fi
+
+                echo "::error title=Wrong npm tarball::${package_spec} failed its registry SHA-512 integrity check."
+                exit 1
+              fi
+
+              if grep -Eq '(^|[^0-9])40[13]([^0-9]|$)' "$download_error"; then
+                echo "::error title=npm tarball authorization failed::Could not download ${package_spec}; verify registry credentials and access."
+                cat "$download_error"
+                exit 1
+              fi
+              if grep -Eq '(^|[^0-9])404([^0-9]|$)' "$download_error"; then
+                echo "Tarball propagation is still pending for ${package_spec}."
+              else
+                echo "Tarball download failed due to a network or registry error."
+                cat "$download_error"
+              fi
+            elif grep -Eq 'npm error code E(401|403)' "$registry_error"; then
+              echo "::error title=npm registry authorization failed::Could not read ${package_spec}; verify registry credentials and access."
+              cat "$registry_error"
+              exit 1
+            elif grep -Eq 'npm error code E404' "$registry_error"; then
+              echo "Registry propagation is still pending for ${package_spec}."
+            else
+              echo "Registry metadata lookup failed due to a network or registry error."
+              cat "$registry_error"
             fi
 
-            tail -n 20 "$pack_log" || true
             if [ "$attempt" -lt "$max_attempts" ]; then
               sleep "$retry_seconds"
             fi
           done
 
-          echo "::error title=npm publication not retrievable::${package_spec} could not be downloaded from public npm after ${max_attempts} attempts."
+          echo "::error title=npm publication propagation timeout::${package_spec} did not become independently retrievable after ${max_attempts} attempts."
           exit 1
 
   finalize:
