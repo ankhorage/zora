@@ -159,7 +159,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.3.39",
+    "@ankhorage/devtools": "^2.3.40",
     "@ankhorage/paradox": "^0.3.6",
     "@react-native-vector-icons/fontawesome": "^14.0.0",
     "@react-native-vector-icons/fontawesome5": "^14.0.0",
