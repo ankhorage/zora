@@ -78,20 +78,6 @@ jobs:
             echo "No build script found; skipping."
           fi
 
-      - name: Synchronize package capability metadata
-        run: |
-          if node -e "const p=require('./package.json'); process.exit(p.ankh === undefined ? 1 : 0)"; then
-            if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/devtools' ? 0 : 1)"; then
-              bun ./dist/cli/bin/repository.js package sync .
-              bun ./dist/cli/bin/repository.js package status .
-            else
-              bun ./node_modules/.bin/ankhorage-repository package sync .
-              bun ./node_modules/.bin/ankhorage-repository package status .
-            fi
-          else
-            echo "No Ankh package metadata found; skipping capability materialization."
-          fi
-
       - name: Verify npm release baseline
         id: release-baseline
         if: hashFiles('.changeset/config.json') != ''
@@ -147,6 +133,62 @@ jobs:
             '
           fi
           echo "highest_published_version=$highest_published_version" >> "$GITHUB_OUTPUT"
+
+      - name: Detect published release recovery
+        id: published-release-recovery
+        if: hashFiles('.changeset/config.json') != ''
+        env:
+          HIGHEST_PUBLISHED_VERSION: ${{ steps.release-baseline.outputs.highest_published_version }}
+        run: |
+          echo "recovery=false" >> "$GITHUB_OUTPUT"
+          if [ -n "$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name README.md -print -quit)" ]; then
+            exit 0
+          fi
+
+          current_version="$(node -p "require('./package.json').version")"
+          release_sha=""
+          for candidate_sha in $(git rev-list HEAD); do
+            candidate_subject="$(git show -s --format=%s "$candidate_sha")"
+            if [ "$candidate_subject" != "chore(release): version packages [skip ci]" ]; then
+              continue
+            fi
+            candidate_version="$(git show "${candidate_sha}:package.json" | node -e "let s=''; process.stdin.on('data',(d)=>s+=d); process.stdin.on('end',()=>process.stdout.write(JSON.parse(s).version ?? ''))")"
+            if [ "$candidate_version" = "$current_version" ]; then
+              release_sha="$candidate_sha"
+              break
+            fi
+          done
+
+          if [ -z "$release_sha" ]; then
+            exit 0
+          fi
+
+          release_tag="v$current_version"
+          tagged_sha="$(git rev-parse -q --verify "refs/tags/${release_tag}^{commit}" 2>/dev/null || true)"
+          if [ -n "$tagged_sha" ] && [ "$tagged_sha" != "$release_sha" ]; then
+            echo "::error title=Release tag mismatch::${release_tag} points to ${tagged_sha}, expected ${release_sha}."
+            exit 1
+          fi
+
+          if [ "$HIGHEST_PUBLISHED_VERSION" = "$current_version" ]; then
+            echo "Validated published release recovery for ${release_tag} at ${release_sha}; skipping package capability synchronization."
+            echo "recovery=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Synchronize package capability metadata
+        if: steps.published-release-recovery.outputs.recovery != 'true'
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.ankh === undefined ? 1 : 0)"; then
+            if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/devtools' ? 0 : 1)"; then
+              bun ./dist/cli/bin/repository.js package sync .
+              bun ./dist/cli/bin/repository.js package status .
+            else
+              bun ./node_modules/.bin/ankhorage-repository package sync .
+              bun ./node_modules/.bin/ankhorage-repository package status .
+            fi
+          else
+            echo "No Ankh package metadata found; skipping capability materialization."
+          fi
 
       - name: Validate release contract
         run: |
