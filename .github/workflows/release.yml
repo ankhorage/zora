@@ -661,6 +661,7 @@ jobs:
           owner: ankhorage
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
+          permission-workflows: write
 
       - name: Checkout exact release commit
         uses: actions/checkout@v4
