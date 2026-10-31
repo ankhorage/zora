@@ -85,8 +85,8 @@ jobs:
               bun ./dist/cli/bin/repository.js package sync .
               bun ./dist/cli/bin/repository.js package status .
             else
-              ./node_modules/.bin/ankhorage-repository package sync .
-              ./node_modules/.bin/ankhorage-repository package status .
+              bunx --bun --no-install ankhorage-repository package sync .
+              bunx --bun --no-install ankhorage-repository package status .
             fi
           else
             echo "No Ankh package metadata found; skipping capability materialization."
