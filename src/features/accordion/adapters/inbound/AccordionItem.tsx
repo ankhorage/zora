@@ -51,7 +51,11 @@ function AccordionItemInner({
       <View gap="none">
         <View align="center" direction="row" gap="s">
           <View flex={1}>
-            <SurfaceAccordionTrigger interactionPolicy={interactionPolicy} style={triggerStyle}>
+            <SurfaceAccordionTrigger
+              aria-expanded={open}
+              interactionPolicy={interactionPolicy}
+              style={triggerStyle}
+            >
               <View px="m" py="m">
                 <View align="center" direction="row" gap="m">
                   {icon ? <Icon {...icon} /> : null}
