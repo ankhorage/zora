@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.10.4
+
+### Patch Changes
+
+- 5590c6c: Expose the current expanded state on web accordion triggers through `aria-expanded`.
+
 ## 25.10.3
 
 ### Patch Changes
