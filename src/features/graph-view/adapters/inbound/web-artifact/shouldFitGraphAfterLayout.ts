@@ -1,4 +1,8 @@
-/*** Fit initial or structurally changed graphs while preserving the viewport across spacing updates. */
-export function shouldFitGraphAfterLayout(ready: boolean, topologyChanged: boolean): boolean {
-  return !ready || topologyChanged;
+/*** Fit initial, topology, or layout-algorithm changes while preserving viewport intent otherwise. */
+export function shouldFitGraphAfterLayout(
+  ready: boolean,
+  topologyChanged: boolean,
+  layoutChanged: boolean,
+): boolean {
+  return !ready || topologyChanged || layoutChanged;
 }
