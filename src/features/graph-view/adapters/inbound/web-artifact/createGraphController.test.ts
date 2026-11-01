@@ -68,6 +68,25 @@ test('keeps absolute zoom semantics for consumers that do not opt in', () => {
   }
 });
 
+test('preserves manual pan while recomputing a fit-relative zoom reference', () => {
+  const cy = cytoscape({
+    headless: true,
+    elements: [{ data: { id: 'a' } }, { data: { id: 'b' }, position: { x: 300, y: 200 } }],
+  });
+  cy.width = () => 800;
+  cy.height = () => 600;
+  const owner = createGraphController(cy, { current: 50 });
+  owner.configure({ nodes: [], edges: [], richNodeRendering: false, zoomMode: 'fit-relative' });
+  try {
+    owner.settle(true);
+    owner.controller.setPan({ x: 140, y: 90 });
+    owner.settle(false);
+    expect(owner.controller.getViewport().pan).toEqual({ x: 140, y: 90 });
+  } finally {
+    cy.destroy();
+  }
+});
+
 test('caps automatic label size for tiny graphs and expands manual zoom for large graphs', () => {
   const cy = cytoscape({
     headless: true,

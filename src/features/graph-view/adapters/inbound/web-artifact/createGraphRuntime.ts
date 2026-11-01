@@ -61,6 +61,7 @@ interface GraphRuntimeState {
   readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
   readonly pendingInitialFitRef: { current: boolean };
   readonly readyRef: { current: boolean };
+  readonly settledLayoutRef: { current: GraphRuntimeUpdate['layout'] | null };
   readonly settledTopologyRef: { current: string | null };
   readonly relayoutScheduledRef: { current: boolean };
   readonly renderedNodeListeners: Set<RenderedNodeListener>;
@@ -127,6 +128,7 @@ function createRuntimeState(
     loopSizer: createGraphLoopSizer(cy),
     pendingInitialFitRef: { current: false },
     readyRef,
+    settledLayoutRef: { current: null as GraphRuntimeUpdate['layout'] | null },
     settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
     renderedNodeListeners,
@@ -137,7 +139,7 @@ function createRuntimeState(
   const resizeObserver = createGraphResizeObserver({
     container,
     cy,
-    settleViewport: () => viewport.settle(true),
+    settleViewport: (fit) => viewport.settle(fit),
     layoutRunningRef,
     pendingInitialFitRef: stateBase.pendingInitialFitRef,
     onViewportSettled: (completedPendingInitialFit) => {
@@ -253,8 +255,10 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     const shouldFit = shouldFitGraphAfterLayout(
       state.readyRef.current,
       topology !== state.settledTopologyRef.current,
+      input.layout !== state.settledLayoutRef.current,
     );
     state.viewport.settle(shouldFit);
+    state.settledLayoutRef.current = input.layout;
     state.settledTopologyRef.current = topology;
     const fitRequest = state.fitRequestRef.current;
     state.fitRequestRef.current = null;

@@ -98,7 +98,6 @@ export function createGraphController(
       if (fit) controller.fit();
       else if (state.relative) {
         setCenteredZoom(cy, logicalZoom * state.scale);
-        cy.center(cy.nodes());
       }
     },
   };

@@ -5,7 +5,7 @@ import { scheduleGraphFrame } from './scheduleGraphFrame';
 interface CreateGraphResizeObserverInput {
   readonly container: unknown;
   readonly cy: Core;
-  readonly settleViewport: () => void;
+  readonly settleViewport: (fit: boolean) => void;
   readonly layoutRunningRef: { current: boolean };
   readonly pendingInitialFitRef: { current: boolean };
   readonly readyRef: { current: boolean };
@@ -23,6 +23,7 @@ export function createGraphResizeObserver(
   const Observer = readResizeObserverConstructor();
   if (Observer === null) return null;
   const sizeRef = { height: -1, width: -1 };
+  const resizeScheduledRef = { current: false };
 
   const observer = new Observer((entries) => {
     const entry = entries.at(0);
@@ -31,21 +32,27 @@ export function createGraphResizeObserver(
     sizeRef.width = entry.contentRect.width;
     if (input.layoutRunningRef.current) return;
     if (!input.readyRef.current && !input.pendingInitialFitRef.current) return;
-    scheduleResizeFit(input);
+    scheduleResizeFit(input, resizeScheduledRef);
   });
   observer.observe(input.container);
   return observer;
 }
 
-/*** Fit one genuine resize only after the active layout has settled. */
-function scheduleResizeFit(input: CreateGraphResizeObserverInput) {
+/*** Preserve settled viewport intent across one coalesced resize, except the deferred initial fit. */
+function scheduleResizeFit(
+  input: CreateGraphResizeObserverInput,
+  resizeScheduledRef: { current: boolean },
+) {
+  if (resizeScheduledRef.current) return;
+  resizeScheduledRef.current = true;
   scheduleGraphFrame(() => {
+    resizeScheduledRef.current = false;
     if (input.cy.destroyed() || input.layoutRunningRef.current) return;
     input.cy.resize();
     if (input.cy.width() <= 0 || input.cy.height() <= 0) return;
     const completedPendingInitialFit = input.pendingInitialFitRef.current;
     input.pendingInitialFitRef.current = false;
-    input.settleViewport();
+    input.settleViewport(completedPendingInitialFit);
     input.onViewportSettled(completedPendingInitialFit);
   });
 }
