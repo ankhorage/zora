@@ -139,6 +139,7 @@ function createRuntimeState(
   const resizeObserver = createGraphResizeObserver({
     container,
     cy,
+    beginViewportResize: () => viewport.beginResize(),
     settleViewport: (fit) => viewport.settle(fit),
     layoutRunningRef,
     pendingInitialFitRef: stateBase.pendingInitialFitRef,
@@ -244,6 +245,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.layoutRef.current = null;
     state.cy.resize();
     state.layoutRunningRef.current = false;
+    state.resizeObserver?.flushAfterLayout();
     if (!hasUsableViewport(state.cy)) {
       if (!state.readyRef.current) state.pendingInitialFitRef.current = true;
       return;

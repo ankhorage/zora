@@ -5,6 +5,7 @@ import { scheduleGraphFrame } from './scheduleGraphFrame';
 interface CreateGraphResizeObserverInput {
   readonly container: unknown;
   readonly cy: Core;
+  readonly beginViewportResize: () => void;
   readonly settleViewport: (fit: boolean) => void;
   readonly layoutRunningRef: { current: boolean };
   readonly pendingInitialFitRef: { current: boolean };
@@ -14,6 +15,7 @@ interface CreateGraphResizeObserverInput {
 
 export interface GraphResizeObserver {
   disconnect(): void;
+  flushAfterLayout(): void;
 }
 
 /*** Observe settled container resizing without racing an active layout generation. */
@@ -23,6 +25,7 @@ export function createGraphResizeObserver(
   const Observer = readResizeObserverConstructor();
   if (Observer === null) return null;
   const sizeRef = { height: -1, width: -1 };
+  const pendingLayoutResizeRef = { current: false };
   const resizeScheduledRef = { current: false };
 
   const observer = new Observer((entries) => {
@@ -30,12 +33,30 @@ export function createGraphResizeObserver(
     if (entry === undefined || !hasSizeChanged(sizeRef, entry.contentRect)) return;
     sizeRef.height = entry.contentRect.height;
     sizeRef.width = entry.contentRect.width;
-    if (input.layoutRunningRef.current) return;
     if (!input.readyRef.current && !input.pendingInitialFitRef.current) return;
+    if (input.layoutRunningRef.current) {
+      if (!pendingLayoutResizeRef.current) input.beginViewportResize();
+      pendingLayoutResizeRef.current = true;
+      return;
+    }
     scheduleResizeFit(input, resizeScheduledRef);
   });
   observer.observe(input.container);
-  return observer;
+  return {
+    disconnect: () => observer.disconnect(),
+    flushAfterLayout: () => flushAfterLayout(input, pendingLayoutResizeRef),
+  };
+}
+
+/*** Apply a resize observed during layout before that layout settles the preserved viewport. */
+function flushAfterLayout(
+  input: CreateGraphResizeObserverInput,
+  pendingLayoutResizeRef: { current: boolean },
+) {
+  if (!pendingLayoutResizeRef.current || input.cy.destroyed() || input.layoutRunningRef.current)
+    return;
+  pendingLayoutResizeRef.current = false;
+  input.cy.resize();
 }
 
 /*** Preserve settled viewport intent across one coalesced resize, except the deferred initial fit. */
@@ -48,6 +69,7 @@ function scheduleResizeFit(
   scheduleGraphFrame(() => {
     resizeScheduledRef.current = false;
     if (input.cy.destroyed() || input.layoutRunningRef.current) return;
+    input.beginViewportResize();
     input.cy.resize();
     if (input.cy.width() <= 0 || input.cy.height() <= 0) return;
     const completedPendingInitialFit = input.pendingInitialFitRef.current;

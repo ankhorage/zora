@@ -57,6 +57,7 @@ test('settles a pending initial fit only after the viewport becomes usable', () 
     const observer = createGraphResizeObserver({
       container: {},
       cy,
+      beginViewportResize: () => undefined,
       settleViewport: (fit) => {
         calls.settle.push(fit);
       },
@@ -143,6 +144,7 @@ test('preserves the settled viewport on ordinary resizes', () => {
         resize: () => undefined,
         width: () => 640,
       } as unknown as Core,
+      beginViewportResize: () => undefined,
       settleViewport: (fit) => calls.settle.push(fit),
       layoutRunningRef: { current: false },
       pendingInitialFitRef: { current: false },
@@ -160,5 +162,68 @@ test('preserves the settled viewport on ordinary resizes', () => {
     else globals.ResizeObserver = previousObserver;
     if (previousFrame === undefined) delete globals.requestAnimationFrame;
     else globals.requestAnimationFrame = previousFrame;
+  }
+});
+
+test('carries one resize snapshot through an active layout for its completion to settle', () => {
+  interface ResizeEntry {
+    readonly contentRect: { readonly height: number; readonly width: number };
+  }
+  type ResizeCallback = (entries: readonly ResizeEntry[]) => void;
+
+  const globals = globalThis as unknown as { ResizeObserver?: unknown };
+  const previousObserver = globals.ResizeObserver;
+  let callback: ResizeCallback | null = null;
+  const calls = { begin: 0, resize: 0, settle: 0 };
+  const layoutRunningRef = { current: true };
+
+  class FakeResizeObserver {
+    constructor(next: ResizeCallback) {
+      callback = next;
+    }
+
+    observe() {
+      return undefined;
+    }
+
+    disconnect() {
+      return undefined;
+    }
+  }
+
+  globals.ResizeObserver = FakeResizeObserver;
+  try {
+    const observer = createGraphResizeObserver({
+      container: {},
+      cy: {
+        destroyed: () => false,
+        height: () => 480,
+        resize: () => {
+          calls.resize += 1;
+        },
+        width: () => 640,
+      } as unknown as Core,
+      beginViewportResize: () => {
+        calls.begin += 1;
+      },
+      settleViewport: () => {
+        calls.settle += 1;
+      },
+      layoutRunningRef,
+      pendingInitialFitRef: { current: false },
+      readyRef: { current: true },
+      onViewportSettled: () => undefined,
+    });
+
+    callback?.([{ contentRect: { height: 480, width: 640 } }]);
+    callback?.([{ contentRect: { height: 600, width: 800 } }]);
+    expect(calls).toEqual({ begin: 1, resize: 0, settle: 0 });
+
+    layoutRunningRef.current = false;
+    observer?.flushAfterLayout();
+    expect(calls).toEqual({ begin: 1, resize: 1, settle: 0 });
+  } finally {
+    if (previousObserver === undefined) delete globals.ResizeObserver;
+    else globals.ResizeObserver = previousObserver;
   }
 });

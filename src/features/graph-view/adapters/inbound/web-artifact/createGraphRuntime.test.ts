@@ -133,10 +133,23 @@ test('fits a changed layout algorithm even when visible topology is unchanged', 
     runtime.update({ ...input, layout: 'circle' });
     const settled = await completed.promise;
     expect(settled.getViewport().zoom).not.toBeCloseTo(0.7);
+    expectMeasuredNodesToFit(settled, ['a', 'b', 'c']);
   } finally {
     runtime.destroy();
   }
 });
+
+function expectMeasuredNodesToFit(controller: GraphViewController, nodeIds: readonly string[]) {
+  const measurement = controller.measureNodes?.(nodeIds);
+  expect(measurement).not.toBeNull();
+  if (measurement === null) return;
+  for (const node of measurement.nodes) {
+    expect(node.position.x - node.size.width / 2).toBeGreaterThanOrEqual(0);
+    expect(node.position.y - node.size.height / 2).toBeGreaterThanOrEqual(0);
+    expect(node.position.x + node.size.width / 2).toBeLessThanOrEqual(measurement.viewport.width);
+    expect(node.position.y + node.size.height / 2).toBeLessThanOrEqual(measurement.viewport.height);
+  }
+}
 
 test('preserves selection and positions through hover presentation updates without relayout', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
