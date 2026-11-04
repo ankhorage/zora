@@ -44,7 +44,7 @@
     "@ankhorage/ankh": "^0.13.3",
     "@ankhorage/capability": "^0.2.2",
     "@ankhorage/color-theory": "^0.3.2",
-    "@ankhorage/contracts": "^26.3.0",
+    "@ankhorage/contracts": "^26.4.0",
     "@ankhorage/game": "^0.1.3",
     "@ankhorage/grid-view": "^0.5.0",
     "@ankhorage/reader": "^0.1.2",
