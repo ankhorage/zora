@@ -40,9 +40,12 @@ test(
     callbacks.onLayoutComplete?.(controller);
 
     expect(observed).toEqual(['ready', 'layout']);
-    expect(browserEvents).toEqual(['zora-graph-view-ready', 'zora-graph-view-layout-complete']);
+    expect(browserEvents).toEqual([
+      'zora-graph-view-ready',
+      'zora-graph-view-layout-complete',
+    ]);
     expect(controller.measureNodes?.(['src'])?.nodes[0]?.id).toBe('src');
-    },
+  },
 );
 
 test('preserves React callbacks when the browser host is unmounted', () => {
