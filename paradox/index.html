@@ -807,6 +807,11 @@
       <small>18 functions</small>
     </button>
   </li><li>
+    <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts">
+      src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts
+      <small>3 functions</small>
+    </button>
+  </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts">
       src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts
       <small>3 functions</small>
@@ -1708,7 +1713,7 @@
       <div class="summary">
         <div><strong>546</strong><span class="muted">public exports</span></div>
         <div><strong>125</strong><span class="muted">components</span></div>
-        <div><strong>607</strong><span class="muted">modules</span></div>
+        <div><strong>609</strong><span class="muted">modules</span></div>
         <div><strong>1</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -3054,6 +3059,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/graph-view-spacing.ts</code></p>
     <p><strong>Exports:</strong> <code>createGraphSpacingEvaluator</code></p>
+  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts src/features/graph-view/constants/events.ts src/types/graph-view.ts createGraphViewDomCallbacks">
+    <h3>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/graph-view/constants/events.ts</code>, <code>src/types/graph-view.ts</code></p>
+    <p><strong>Exports:</strong> <code>createGraphViewDomCallbacks</code></p>
   </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts src/types/graph-view.ts createRenderableGraphElements">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts</h3>
     <p class="muted">Referenced module</p>
@@ -3079,10 +3089,10 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/selection/application/resolveSelectionEventIntent.ts</code>, <code>src/types/graph-view.ts</code></p>
     <p><strong>Exports:</strong> <code>GraphNodeOverlay</code></p>
-  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx src/types/graph-view.ts GraphView">
+  </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx src/features/graph-view/constants/events.ts src/types/graph-view.ts GraphView">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx</code>, <code>src/types/graph-view.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts</code>, <code>src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx</code>, <code>src/features/graph-view/constants/events.ts</code>, <code>src/types/graph-view.ts</code></p>
     <p><strong>Exports:</strong> <code>GraphView</code></p>
   </article><article class="item" data-search="src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts src/types/graphViewRuntime.ts hasGraphLayoutChanged">
     <h3>src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts</h3>
@@ -3129,11 +3139,16 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts</code>, <code>src/types/graph-view.ts</code></p>
     <p><strong>Exports:</strong> <code>syncGraphElements</code></p>
-  </article><article class="item" data-search="src/features/graph-view/public.ts GraphView GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
+  </article><article class="item" data-search="src/features/graph-view/constants/events.ts GRAPH_VIEW_EVENTS GraphViewDomControllerEventName">
+    <h3>src/features/graph-view/constants/events.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>GRAPH_VIEW_EVENTS</code>, <code>GraphViewDomControllerEventName</code></p>
+  </article><article class="item" data-search="src/features/graph-view/public.ts GRAPH_VIEW_EVENTS GraphView GraphViewCallbacks GraphViewController GraphViewDomControllerEventDetail GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
     <h3>src/features/graph-view/public.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>GraphView</code>, <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
+    <p><strong>Exports:</strong> <code>GRAPH_VIEW_EVENTS</code>, <code>GraphView</code>, <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewDomControllerEventDetail</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
   </article><article class="item" data-search="src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts createGridInteractionsPointerQueue">
     <h3>src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts</h3>
     <p class="muted">Referenced module</p>
@@ -4649,11 +4664,11 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>GraphSpacingCandidate</code>, <code>GraphSpacingEvaluator</code>, <code>GraphSpacingFitOptions</code></p>
-  </article><article class="item" data-search="src/types/graph-view.ts GraphViewCallbacks GraphViewController GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
+  </article><article class="item" data-search="src/types/graph-view.ts GraphViewCallbacks GraphViewController GraphViewDomControllerEventDetail GraphViewEdge GraphViewElementEvent GraphViewElementEventType GraphViewFitOptions GraphViewLayoutName GraphViewMeasurement GraphViewNode GraphViewNodeMeasurement GraphViewNodeRenderContext GraphViewPoint GraphViewProps GraphViewRenderedNode GraphViewSize GraphViewStyleRule GraphViewViewport">
     <h3>src/types/graph-view.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
+    <p><strong>Exports:</strong> <code>GraphViewCallbacks</code>, <code>GraphViewController</code>, <code>GraphViewDomControllerEventDetail</code>, <code>GraphViewEdge</code>, <code>GraphViewElementEvent</code>, <code>GraphViewElementEventType</code>, <code>GraphViewFitOptions</code>, <code>GraphViewLayoutName</code>, <code>GraphViewMeasurement</code>, <code>GraphViewNode</code>, <code>GraphViewNodeMeasurement</code>, <code>GraphViewNodeRenderContext</code>, <code>GraphViewPoint</code>, <code>GraphViewProps</code>, <code>GraphViewRenderedNode</code>, <code>GraphViewSize</code>, <code>GraphViewStyleRule</code>, <code>GraphViewViewport</code></p>
   </article><article class="item" data-search="src/types/graphViewRuntime.ts src/types/graph-view.ts GraphRuntimeUpdate">
     <h3>src/types/graphViewRuntime.ts</h3>
     <p class="muted">Referenced module</p>
@@ -49228,6 +49243,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_features_graph_view_constants_events_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
@@ -49246,7 +49265,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx[&quot;src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
@@ -49273,6 +49294,8 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --&gt; module_src_types_graph_view_ts
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_public_ts
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
@@ -51847,6 +51870,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_features_graph_view_constants_events_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
@@ -51865,7 +51892,9 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx[&quot;src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
@@ -51892,6 +51921,8 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts --&gt; module_src_types_graph_view_ts
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_graph_view_public_ts
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
@@ -53685,6 +53716,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -53700,6 +53732,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_shouldFitGraphAfterLayout_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts&quot;]
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx[&quot;src/features/grid-interactions/adapters/inbound/GridInteractions.tsx&quot;]
@@ -54604,13 +54637,17 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_features_graph_view_constants_events_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --&gt; module_src_features_selection_application_resolveSelectionEventIntent_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --&gt; module_src_types_graphViewRuntime_ts
@@ -55695,6 +55732,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -55710,6 +55748,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_shouldFitGraphAfterLayout_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts&quot;]
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx[&quot;src/features/grid-interactions/adapters/inbound/GridInteractions.tsx&quot;]
@@ -56614,13 +56653,17 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --&gt; module_src_types_graphViewRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts --&gt; module_src_types_graph_view_spacing_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_features_graph_view_constants_events_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --&gt; module_src_features_selection_application_resolveSelectionEventIntent_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_features_graph_view_constants_events_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --&gt; module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --&gt; module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --&gt; module_src_types_graphViewRuntime_ts
@@ -57707,6 +57750,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -57722,6 +57766,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_shouldFitGraphAfterLayout_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts&quot;]
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx[&quot;src/features/grid-interactions/adapters/inbound/GridInteractions.tsx&quot;]
@@ -59826,6 +59871,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts&quot;]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_createRenderableGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_fitGraphViewport_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts&quot;]
@@ -59841,6 +59887,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_graph_view_adapters_inbound_web_artifact_shouldFitGraphAfterLayout_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/shouldFitGraphAfterLayout.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_sizeGraphNodesToLabels_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts&quot;]
   module_src_features_graph_view_adapters_inbound_web_artifact_syncGraphElements_ts[&quot;src/features/graph-view/adapters/inbound/web-artifact/syncGraphElements.ts&quot;]
+  module_src_features_graph_view_constants_events_ts[&quot;src/features/graph-view/constants/events.ts&quot;]
   module_src_features_graph_view_public_ts[&quot;src/features/graph-view/public.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_createGridInteractionsPointerQueue_ts[&quot;src/features/grid-interactions/adapters/inbound/createGridInteractionsPointerQueue.ts&quot;]
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx[&quot;src/features/grid-interactions/adapters/inbound/GridInteractions.tsx&quot;]
@@ -64728,6 +64775,27 @@ Pair-budget exhaustion is conservative and therefore treated as a hard collision
     
   </article>
     </section>
+  </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-creategraphviewdomcallbacks-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts" hidden>
+    <section class="panel">
+      <h2>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts</h2>
+      <article class="item" data-search="createGraphViewDomCallbacks src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts Mirror public GraphView controller callbacks as bubbling browser lifecycle events.&#10;Browser hosts can measure actual rendered nodes without reaching into the graph engine.">
+    <h3>createGraphViewDomCallbacks</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts:12:1</code></p>
+    <p>Mirror public GraphView controller callbacks as bubbling browser lifecycle events.
+Browser hosts can measure actual rendered nodes without reaching into the graph engine.</p>
+    
+  </article><article class="item" data-search="dispatchGraphViewControllerEvent src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts Deliver the existing public controller reference on the GraphView root event channel.">
+    <h3>dispatchGraphViewControllerEvent</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts:30:1</code></p>
+    <p>Deliver the existing public controller reference on the GraphView root event channel.</p>
+    
+  </article><article class="item" data-search="canDispatchBrowserEvent src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts Narrow an untrusted browser host to the standard event-dispatch method.">
+    <h3>canDispatchBrowserEvent</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts:46:1</code></p>
+    <p>Narrow an untrusted browser host to the standard event-dispatch method.</p>
+    
+  </article>
+    </section>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-createrenderablegraphelements-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts</h2>
@@ -64816,9 +64884,9 @@ Keep presentation-only changes out of the relayout decision.</p>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-graphview-tsx" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx" hidden>
     <section class="panel">
       <h2>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx</h2>
-      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.&#10;maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.&#10;onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).&#10;Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,&#10;stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries&#10;collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.">
+      <article class="item" data-search="GraphView src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.&#10;zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative&#10;to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.&#10;sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode&#10;text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.&#10;minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.&#10;maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.&#10;Browser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root&#10;with `detail.controller`: the same public GraphViewController delivered to React.&#10;Browser integrations can call `measureNodes` without accessing the Cytoscape runtime.&#10;The standalone browser artifact exposes the same names as `GraphView.events`.&#10;onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).&#10;Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,&#10;stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries&#10;collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.">
     <h3>GraphView</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:28:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:34:1</code></p>
     <p>Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.
 zoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative
 to the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.
@@ -64826,6 +64894,10 @@ sizeNodesToLabels Opt in to renderer-measured plain labels, including bold and U
 text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
 minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
 maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
+Browser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root
+with `detail.controller`: the same public GraphViewController delivered to React.
+Browser integrations can call `measureNodes` without accessing the Cytoscape runtime.
+The standalone browser artifact exposes the same names as `GraphView.events`.
 onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
 Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
 stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
@@ -64833,42 +64905,42 @@ collision-safe, and permits only a small rendered background-overlap fallback fo
     
   </article><article class="item" data-search="useGraphViewRuntime src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Compose React synchronization around the single imperative graph runtime.">
     <h3>useGraphViewRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:62:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:73:1</code></p>
     <p>Compose React synchronization around the single imperative graph runtime.</p>
     
   </article><article class="item" data-search="useGraphCallbacksRef src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Keep the callback ref current without mutating refs during render.">
     <h3>useGraphCallbacksRef</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:78:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:92:1</code></p>
     <p>Keep the callback ref current without mutating refs during render.</p>
     
   </article><article class="item" data-search="useRuntimeLifecycle src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Create and dispose the runtime only with the underlying browser container lifetime.">
     <h3>useRuntimeLifecycle</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:111:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:134:1</code></p>
     <p>Create and dispose the runtime only with the underlying browser container lifetime.</p>
     
   </article><article class="item" data-search="useRuntimeGraphUpdate src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Synchronize graph data and layout policy without exposing Cytoscape to React.">
     <h3>useRuntimeGraphUpdate</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:129:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:152:1</code></p>
     <p>Synchronize graph data and layout policy without exposing Cytoscape to React.</p>
     
   </article><article class="item" data-search="useRuntimeSelection src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Synchronize optional controlled selection independently from graph layout.">
     <h3>useRuntimeSelection</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:187:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:210:1</code></p>
     <p>Synchronize optional controlled selection independently from graph layout.</p>
     
   </article><article class="item" data-search="useRenderedNodeSubscription src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Subscribe the optional rich-node overlay to rendered runtime positions.">
     <h3>useRenderedNodeSubscription</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:197:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:220:1</code></p>
     <p>Subscribe the optional rich-node overlay to rendered runtime positions.</p>
     
   </article><article class="item" data-search="useKnownNodeSizes src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Seed known rich-node dimensions without requiring DOM measurement.">
     <h3>useKnownNodeSizes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:213:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:236:1</code></p>
     <p>Seed known rich-node dimensions without requiring DOM measurement.</p>
     
   </article><article class="item" data-search="readCallbacks src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx Read callback props for the initial runtime callback-ref value.">
     <h3>readCallbacks</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:229:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx:252:1</code></p>
     <p>Read callback props for the initial runtime callback-ref value.</p>
     
   </article>

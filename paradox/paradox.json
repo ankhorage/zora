@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.10.9",
+      "value": "v25.11.0",
       "color": "cb3837"
     },
     {
@@ -3055,6 +3055,17 @@
       ]
     },
     {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/graph-view/constants/events.ts",
+        "src/types/graph-view.ts"
+      ],
+      "exports": [
+        "createGraphViewDomCallbacks"
+      ]
+    },
+    {
       "path": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -3108,7 +3119,9 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "src/features/graph-view/constants/events.ts",
         "src/types/graph-view.ts"
       ],
       "exports": [
@@ -3199,13 +3212,24 @@
       ]
     },
     {
+      "path": "src/features/graph-view/constants/events.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "GRAPH_VIEW_EVENTS",
+        "GraphViewDomControllerEventName"
+      ]
+    },
+    {
       "path": "src/features/graph-view/public.ts",
       "isEntrypoint": false,
       "dependencies": [],
       "exports": [
+        "GRAPH_VIEW_EVENTS",
         "GraphView",
         "GraphViewCallbacks",
         "GraphViewController",
+        "GraphViewDomControllerEventDetail",
         "GraphViewEdge",
         "GraphViewElementEvent",
         "GraphViewElementEventType",
@@ -8151,6 +8175,7 @@
       "exports": [
         "GraphViewCallbacks",
         "GraphViewController",
+        "GraphViewDomControllerEventDetail",
         "GraphViewEdge",
         "GraphViewElementEvent",
         "GraphViewElementEventType",
@@ -67880,6 +67905,39 @@
       }
     },
     {
+      "name": "createGraphViewDomCallbacks",
+      "description": "Mirror public GraphView controller callbacks as bubbling browser lifecycle events.\nBrowser hosts can measure actual rendered nodes without reaching into the graph engine.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "dispatchGraphViewControllerEvent",
+      "description": "Deliver the existing public controller reference on the GraphView root event channel.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+        "line": 30,
+        "column": 1
+      }
+    },
+    {
+      "name": "canDispatchBrowserEvent",
+      "description": "Narrow an untrusted browser host to the standard event-dispatch method.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+        "line": 46,
+        "column": 1
+      }
+    },
+    {
       "name": "createRenderableGraphElements",
       "description": "Convert plain graph data into renderable Cytoscape elements without impossible compound edges.",
       "see": [],
@@ -68002,12 +68060,12 @@
     },
     {
       "name": "GraphView",
-      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nzoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\nsizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nminReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.\nmaxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.\nonSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).\nOrdinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,\nstops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries\ncollision-safe, and permits only a small rendered background-overlap fallback for dense graphs.",
+      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nzoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\nsizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nminReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.\nmaxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.\nBrowser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root\nwith `detail.controller`: the same public GraphViewController delivered to React.\nBrowser integrations can call `measureNodes` without accessing the Cytoscape runtime.\nThe standalone browser artifact exposes the same names as `GraphView.events`.\nonSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).\nOrdinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,\nstops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries\ncollision-safe, and permits only a small rendered background-overlap fallback for dense graphs.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 28,
+        "line": 34,
         "column": 1
       }
     },
@@ -68018,7 +68076,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 62,
+        "line": 73,
         "column": 1
       }
     },
@@ -68029,7 +68087,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 78,
+        "line": 92,
         "column": 1
       }
     },
@@ -68040,7 +68098,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 111,
+        "line": 134,
         "column": 1
       }
     },
@@ -68051,7 +68109,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 129,
+        "line": 152,
         "column": 1
       }
     },
@@ -68062,7 +68120,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 187,
+        "line": 210,
         "column": 1
       }
     },
@@ -68073,7 +68131,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 197,
+        "line": 220,
         "column": 1
       }
     },
@@ -68084,7 +68142,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 213,
+        "line": 236,
         "column": 1
       }
     },
@@ -68095,7 +68153,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 229,
+        "line": 252,
         "column": 1
       }
     },
@@ -74344,6 +74402,11 @@
       {
         "fromPath": "src/features/graph-view/public.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "sourcePath": "src/features/graph-view/public.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/public.ts",
+        "toPath": "src/features/graph-view/constants/events.ts",
         "sourcePath": "src/features/graph-view/public.ts"
       },
       {
@@ -81047,6 +81110,16 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+        "toPath": "src/types/graph-view.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
+        "toPath": "src/features/graph-view/constants/events.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
         "toPath": "src/types/graph-view.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts"
@@ -81078,7 +81151,17 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/constants/events.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
       {
@@ -88347,6 +88430,42 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts"
       },
       {
+        "fromSymbol": "onReady",
+        "toSymbol": "onReady",
+        "callExpression": "callbacks.onReady",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromSymbol": "onReady",
+        "toSymbol": "dispatchGraphViewControllerEvent",
+        "callExpression": "dispatchGraphViewControllerEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromSymbol": "onLayoutComplete",
+        "toSymbol": "onLayoutComplete",
+        "callExpression": "callbacks.onLayoutComplete",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromSymbol": "onLayoutComplete",
+        "toSymbol": "dispatchGraphViewControllerEvent",
+        "callExpression": "dispatchGraphViewControllerEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromSymbol": "dispatchGraphViewControllerEvent",
+        "toSymbol": "canDispatchBrowserEvent",
+        "callExpression": "canDispatchBrowserEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
+        "fromSymbol": "dispatchGraphViewControllerEvent",
+        "toSymbol": "dispatchEvent",
+        "callExpression": "host.dispatchEvent",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts"
+      },
+      {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createRenderableGraphElements.ts",
         "toSymbol": "createEdgeElement",
         "callExpression": "createEdgeElement",
@@ -88468,8 +88587,20 @@
       },
       {
         "fromSymbol": "useGraphCallbacksRef",
+        "toSymbol": "createGraphViewDomCallbacks",
+        "callExpression": "createGraphViewDomCallbacks",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "useGraphCallbacksRef",
         "toSymbol": "readCallbacks",
         "callExpression": "readCallbacks",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "createGraphViewDomCallbacks",
+        "callExpression": "createGraphViewDomCallbacks",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
       {

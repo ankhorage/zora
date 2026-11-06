@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.11.0
+
+### Minor Changes
+
+- 9f6a15f: Expose public bubbling GraphView browser lifecycle events carrying the existing controller, so integrations can measure and target actual rendered graph nodes without private renderer access.
+
 ## 25.10.9
 
 ### Patch Changes
