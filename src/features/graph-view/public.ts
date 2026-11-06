@@ -20,4 +20,3 @@ export type {
 } from '../../types/graph-view';
 export { GraphView } from './adapters/inbound/web-artifact/GraphView';
 export { GRAPH_VIEW_EVENTS } from './constants/events';
-export type { GraphViewDomControllerEventName } from './constants/events';
