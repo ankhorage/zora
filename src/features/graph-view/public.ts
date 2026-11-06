@@ -1,6 +1,7 @@
 export type {
   GraphViewCallbacks,
   GraphViewController,
+  GraphViewDomControllerEventDetail,
   GraphViewEdge,
   GraphViewElementEvent,
   GraphViewElementEventType,
