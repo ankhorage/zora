@@ -10,7 +10,7 @@ import type {
  */
 export function createGraphViewDomCallbacks(
   callbacks: GraphViewCallbacks,
-  hostRef: { readonly current: EventTarget | null },
+  hostRef: { readonly current: unknown },
 ): GraphViewCallbacks {
   return {
     ...callbacks,
@@ -27,11 +27,18 @@ export function createGraphViewDomCallbacks(
 
 /*** Deliver the existing public controller reference on the GraphView root event channel. */
 function dispatchGraphViewControllerEvent(
-  hostRef: { readonly current: EventTarget | null },
+  hostRef: { readonly current: unknown },
   name: 'zora-graph-view-ready' | 'zora-graph-view-layout-complete',
   controller: GraphViewController,
 ): void {
-  hostRef.current?.dispatchEvent(
+  const host = hostRef.current;
+  if (
+    typeof host !== 'object' ||
+    host === null ||
+    !('dispatchEvent' in host) ||
+    typeof host.dispatchEvent !== 'function'
+  ) return;
+  host.dispatchEvent(
     new CustomEvent<GraphViewDomControllerEventDetail>(name, {
       bubbles: true,
       detail: { controller },
