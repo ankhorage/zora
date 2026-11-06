@@ -1,5 +1,6 @@
 import { expect, test } from 'bun:test';
 
+import { GRAPH_VIEW_EVENTS } from '../../../constants/events';
 import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 
 test('exposes public controller on bubbling ready and layout events without changing React callbacks', () => {
@@ -7,7 +8,7 @@ test('exposes public controller on bubbling ready and layout events without chan
   const controller = createController();
   const observed: string[] = [];
   const browserEvents: string[] = [];
-  for (const name of ['zora-graph-view-ready', 'zora-graph-view-layout-complete']) {
+  for (const name of [GRAPH_VIEW_EVENTS.ready, GRAPH_VIEW_EVENTS.layoutComplete]) {
     host.addEventListener(name, (event) => {
       if (!(event instanceof CustomEvent)) throw new Error('Expected a CustomEvent.');
       const detail: unknown = event.detail;
@@ -36,7 +37,7 @@ test('exposes public controller on bubbling ready and layout events without chan
   callbacks.onLayoutComplete?.(controller);
 
   expect(observed).toEqual(['ready', 'layout']);
-  expect(browserEvents).toEqual(['zora-graph-view-ready', 'zora-graph-view-layout-complete']);
+  expect(browserEvents).toEqual([GRAPH_VIEW_EVENTS.ready, GRAPH_VIEW_EVENTS.layoutComplete]);
   expect(controller.measureNodes(['src']).nodes[0]?.id).toBe('src');
 });
 
