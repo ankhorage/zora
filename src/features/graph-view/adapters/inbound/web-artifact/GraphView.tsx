@@ -102,7 +102,14 @@ function useGraphCallbacksRef(
 
   React.useEffect(() => {
     callbacksRef.current = createGraphViewDomCallbacks(
-      { onEdgeEvent, onLayoutComplete, onNodeEvent, onReady, onViewportChange, onSpacingFactorChange },
+      {
+        onEdgeEvent,
+        onLayoutComplete,
+        onNodeEvent,
+        onReady,
+        onViewportChange,
+        onSpacingFactorChange,
+      },
       hostRef,
     );
   }, [
