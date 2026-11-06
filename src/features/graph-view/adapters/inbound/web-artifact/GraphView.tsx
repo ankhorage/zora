@@ -7,8 +7,8 @@ import type {
   GraphViewProps,
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
-import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
+import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
