@@ -32,16 +32,21 @@ function dispatchGraphViewControllerEvent(
   controller: GraphViewController,
 ): void {
   const host = hostRef.current;
-  if (
-    typeof host !== 'object' ||
-    host === null ||
-    !('dispatchEvent' in host) ||
-    typeof host.dispatchEvent !== 'function'
-  ) return;
+  if (!canDispatchBrowserEvent(host)) return;
   host.dispatchEvent(
     new CustomEvent<GraphViewDomControllerEventDetail>(name, {
       bubbles: true,
       detail: { controller },
     }),
+  );
+}
+
+/*** Narrow an untrusted browser host to the standard event-dispatch method. */
+function canDispatchBrowserEvent(value: unknown): value is { dispatchEvent(event: Event): boolean } {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'dispatchEvent' in value &&
+    typeof value.dispatchEvent === 'function'
   );
 }
