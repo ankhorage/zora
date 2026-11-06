@@ -25,7 +25,7 @@ export function createGraphViewDomCallbacks(
   };
 }
 
-/*** Deliver one read-only public controller reference on the GraphView root event channel. */
+/*** Deliver the existing public controller reference on the GraphView root event channel. */
 function dispatchGraphViewControllerEvent(
   hostRef: { readonly current: EventTarget | null },
   name: 'zora-graph-view-ready' | 'zora-graph-view-layout-complete',
