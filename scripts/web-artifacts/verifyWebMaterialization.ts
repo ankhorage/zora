@@ -124,6 +124,8 @@ try {
   ]) {
     assert(graphViewDeclaration.includes(exportName), `Missing materialized ${exportName}`);
   }
+  assert(graphViewDeclaration.includes('namespace GraphView'));
+  assert(graphViewDeclaration.includes('events:'));
   const graphViewTypeFile = evidence.files.find((file) =>
     /^components\/graph-view\/GraphView\.types-\d+\.d\.ts$/u.test(file),
   );
@@ -167,6 +169,13 @@ try {
   assert.equal(typeof AppBar, 'function');
   assert.equal(typeof DatePicker, 'function');
   assert.equal(typeof GraphView, 'function');
+  const graphViewFunction: unknown = GraphView;
+  if (typeof graphViewFunction !== 'function') throw new Error('Expected materialized GraphView.');
+  const materializedGraphEvents: unknown = Reflect.get(graphViewFunction, 'events');
+  assert.deepEqual(materializedGraphEvents, {
+    ready: 'zora-graph-view-ready',
+    layoutComplete: 'zora-graph-view-layout-complete',
+  });
   assert.equal(typeof TreeView, 'function');
   assert.equal(typeof useZoraTheme, 'function');
 

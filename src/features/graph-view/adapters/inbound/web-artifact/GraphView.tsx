@@ -7,7 +7,9 @@ import type {
   GraphViewProps,
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
+import { GRAPH_VIEW_EVENTS } from '../../../constants/events';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
+import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
@@ -20,16 +22,22 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
  * minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
  * maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
+ * Browser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root
+ * with `detail.controller`: the same public GraphViewController delivered to React.
+ * Browser integrations can call `measureNodes` without accessing the Cytoscape runtime.
+ * The standalone browser artifact exposes the same names as `GraphView.events`.
  * onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
  * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
  * stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
  * collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.
  */
 export function GraphView(props: GraphViewProps) {
-  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props);
+  const hostRef = React.useRef<HTMLDivElement | null>(null);
+  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props, hostRef);
 
   return (
     <div
+      ref={hostRef}
       aria-label={props.ariaLabel ?? 'Graph'}
       className={props.className}
       role="application"
@@ -58,11 +66,17 @@ export function GraphView(props: GraphViewProps) {
   );
 }
 
+/*** Publish the same canonical event registry on the standalone GraphView artifact. */
+GraphView.events = GRAPH_VIEW_EVENTS;
+
 /*** Compose React synchronization around the single imperative graph runtime. */
-function useGraphViewRuntime(props: GraphViewProps) {
+function useGraphViewRuntime(
+  props: GraphViewProps,
+  hostRef: React.RefObject<HTMLDivElement | null>,
+) {
   const containerRef = React.useRef<GraphContainer | null>(null);
   const runtimeRef = React.useRef<GraphRuntime | null>(null);
-  const callbacksRef = useGraphCallbacksRef(props);
+  const callbacksRef = useGraphCallbacksRef(props, hostRef);
   const [renderedNodes, setRenderedNodes] = React.useState<readonly GraphViewRenderedNode[]>([]);
 
   useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef);
@@ -75,8 +89,13 @@ function useGraphViewRuntime(props: GraphViewProps) {
 }
 
 /*** Keep the callback ref current without mutating refs during render. */
-function useGraphCallbacksRef(props: GraphViewProps) {
-  const callbacksRef = React.useRef<GraphViewCallbacks>(readCallbacks(props));
+function useGraphCallbacksRef(
+  props: GraphViewProps,
+  hostRef: React.RefObject<HTMLDivElement | null>,
+) {
+  const callbacksRef = React.useRef<GraphViewCallbacks>(
+    createGraphViewDomCallbacks(readCallbacks(props), hostRef),
+  );
   const {
     onEdgeEvent,
     onLayoutComplete,
@@ -87,14 +106,17 @@ function useGraphCallbacksRef(props: GraphViewProps) {
   } = props;
 
   React.useEffect(() => {
-    callbacksRef.current = {
-      onEdgeEvent,
-      onLayoutComplete,
-      onNodeEvent,
-      onReady,
-      onViewportChange,
-      onSpacingFactorChange,
-    };
+    callbacksRef.current = createGraphViewDomCallbacks(
+      {
+        onEdgeEvent,
+        onLayoutComplete,
+        onNodeEvent,
+        onReady,
+        onViewportChange,
+        onSpacingFactorChange,
+      },
+      hostRef,
+    );
   }, [
     onEdgeEvent,
     onLayoutComplete,
@@ -102,6 +124,7 @@ function useGraphCallbacksRef(props: GraphViewProps) {
     onReady,
     onViewportChange,
     onSpacingFactorChange,
+    hostRef,
   ]);
 
   return callbacksRef;

@@ -1,6 +1,7 @@
 export type {
   GraphViewCallbacks,
   GraphViewController,
+  GraphViewDomControllerEventDetail,
   GraphViewEdge,
   GraphViewElementEvent,
   GraphViewElementEventType,
@@ -18,3 +19,4 @@ export type {
   GraphViewViewport,
 } from '../../types/graph-view';
 export { GraphView } from './adapters/inbound/web-artifact/GraphView';
+export { GRAPH_VIEW_EVENTS } from './constants/events';
