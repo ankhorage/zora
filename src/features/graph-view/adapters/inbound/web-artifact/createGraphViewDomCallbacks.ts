@@ -42,7 +42,9 @@ function dispatchGraphViewControllerEvent(
 }
 
 /*** Narrow an untrusted browser host to the standard event-dispatch method. */
-function canDispatchBrowserEvent(value: unknown): value is { dispatchEvent(event: Event): boolean } {
+function canDispatchBrowserEvent(
+  value: unknown,
+): value is { dispatchEvent(event: Event): boolean } {
   return (
     typeof value === 'object' &&
     value !== null &&
