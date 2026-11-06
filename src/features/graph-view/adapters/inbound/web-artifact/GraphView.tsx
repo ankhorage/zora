@@ -21,8 +21,8 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * text. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.
  * minReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.
  * maxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.
- * DOM lifecycle events `zora-graph-view-ready` and `zora-graph-view-layout-complete` bubble
- * from the root with `detail.controller`: the same public GraphViewController delivered to React.
+ * Browser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root
+ * with `detail.controller`: the same public GraphViewController delivered to React.
  * Browser integrations can call `measureNodes` without accessing the Cytoscape runtime.
  * onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
  * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
