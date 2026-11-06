@@ -3,6 +3,10 @@ import type {
   GraphViewController,
   GraphViewDomControllerEventDetail,
 } from '../../../../../types/graph-view';
+import {
+  GRAPH_VIEW_EVENTS,
+  type GraphViewDomControllerEventName,
+} from '../../../constants/events';
 
 /***
  * Mirror public GraphView controller callbacks as bubbling browser lifecycle events.
@@ -16,11 +20,11 @@ export function createGraphViewDomCallbacks(
     ...callbacks,
     onReady(controller) {
       callbacks.onReady?.(controller);
-      dispatchGraphViewControllerEvent(hostRef, 'zora-graph-view-ready', controller);
+      dispatchGraphViewControllerEvent(hostRef, GRAPH_VIEW_EVENTS.ready, controller);
     },
     onLayoutComplete(controller) {
       callbacks.onLayoutComplete?.(controller);
-      dispatchGraphViewControllerEvent(hostRef, 'zora-graph-view-layout-complete', controller);
+      dispatchGraphViewControllerEvent(hostRef, GRAPH_VIEW_EVENTS.layoutComplete, controller);
     },
   };
 }
@@ -28,7 +32,7 @@ export function createGraphViewDomCallbacks(
 /*** Deliver the existing public controller reference on the GraphView root event channel. */
 function dispatchGraphViewControllerEvent(
   hostRef: { readonly current: unknown },
-  name: 'zora-graph-view-ready' | 'zora-graph-view-layout-complete',
+  name: GraphViewDomControllerEventName,
   controller: GraphViewController,
 ): void {
   const host = hostRef.current;
