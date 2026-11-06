@@ -1,43 +1,49 @@
 import { expect, test } from 'bun:test';
 
-import type { GraphViewController, GraphViewDomControllerEventDetail } from '../../../../../types/graph-view';
+import type {
+  GraphViewController,
+  GraphViewDomControllerEventDetail,
+} from '../../../../../types/graph-view';
 import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 
-test('exposes actual public controller on bubbling ready and layout events without changing React callbacks', () => {
-  const host = new EventTarget();
-  const controller = createController();
-  const observed: string[] = [];
-  const browserEvents: string[] = [];
-  for (const name of ['zora-graph-view-ready', 'zora-graph-view-layout-complete']) {
-    host.addEventListener(name, event => {
-      if (!(event instanceof CustomEvent)) throw new Error('Expected a CustomEvent.');
-      const detail: GraphViewDomControllerEventDetail = event.detail;
-      expect(detail.controller).toBe(controller);
-      expect(event.bubbles).toBe(true);
-      browserEvents.push(name);
-    });
-  }
+test(
+  'exposes actual public controller on bubbling ready and layout events without changing React callbacks',
+  () => {
+    const host = new EventTarget();
+    const controller = createController();
+    const observed: string[] = [];
+    const browserEvents: string[] = [];
+    for (const name of ['zora-graph-view-ready', 'zora-graph-view-layout-complete']) {
+      host.addEventListener(name, event => {
+        if (!(event instanceof CustomEvent)) throw new Error('Expected a CustomEvent.');
+        const detail: GraphViewDomControllerEventDetail = event.detail;
+        expect(detail.controller).toBe(controller);
+        expect(event.bubbles).toBe(true);
+        browserEvents.push(name);
+      });
+    }
 
-  const callbacks = createGraphViewDomCallbacks(
-    {
-      onReady: received => {
-        expect(received).toBe(controller);
-        observed.push('ready');
+    const callbacks = createGraphViewDomCallbacks(
+      {
+        onReady: received => {
+          expect(received).toBe(controller);
+          observed.push('ready');
+        },
+        onLayoutComplete: received => {
+          expect(received).toBe(controller);
+          observed.push('layout');
+        },
       },
-      onLayoutComplete: received => {
-        expect(received).toBe(controller);
-        observed.push('layout');
-      },
+      { current: host },
+    );
+    callbacks.onReady?.(controller);
+    callbacks.onLayoutComplete?.(controller);
+
+    expect(observed).toEqual(['ready', 'layout']);
+    expect(browserEvents).toEqual(['zora-graph-view-ready', 'zora-graph-view-layout-complete']);
+    expect(controller.measureNodes?.(['src'])?.nodes[0]?.id).toBe('src');
     },
-    { current: host },
-  );
-  callbacks.onReady?.(controller);
-  callbacks.onLayoutComplete?.(controller);
-
-  expect(observed).toEqual(['ready', 'layout']);
-  expect(browserEvents).toEqual(['zora-graph-view-ready', 'zora-graph-view-layout-complete']);
-  expect(controller.measureNodes?.(['src'])?.nodes[0]?.id).toBe('src');
-});
+);
 
 test('preserves React callbacks when the browser host is unmounted', () => {
   const controller = createController();
