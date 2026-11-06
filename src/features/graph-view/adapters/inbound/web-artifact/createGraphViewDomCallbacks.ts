@@ -3,10 +3,7 @@ import type {
   GraphViewController,
   GraphViewDomControllerEventDetail,
 } from '../../../../../types/graph-view';
-import {
-  GRAPH_VIEW_EVENTS,
-  type GraphViewDomControllerEventName,
-} from '../../../constants/events';
+import { GRAPH_VIEW_EVENTS, type GraphViewDomControllerEventName } from '../../../constants/events';
 
 /***
  * Mirror public GraphView controller callbacks as bubbling browser lifecycle events.
