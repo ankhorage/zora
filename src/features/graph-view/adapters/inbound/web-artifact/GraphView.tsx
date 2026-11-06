@@ -7,6 +7,7 @@ import type {
   GraphViewProps,
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
+import { GRAPH_VIEW_EVENTS } from '../../../constants/events';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
 import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
@@ -24,6 +25,7 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * Browser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root
  * with `detail.controller`: the same public GraphViewController delivered to React.
  * Browser integrations can call `measureNodes` without accessing the Cytoscape runtime.
+ * The standalone browser artifact exposes the same names as `GraphView.events`.
  * onSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).
  * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
  * stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
@@ -63,6 +65,9 @@ export function GraphView(props: GraphViewProps) {
     </div>
   );
 }
+
+/*** Publish the same canonical event registry on the standalone GraphView artifact. */
+GraphView.events = GRAPH_VIEW_EVENTS;
 
 /*** Compose React synchronization around the single imperative graph runtime. */
 function useGraphViewRuntime(
