@@ -382,7 +382,18 @@ describe('ZORA_COMPONENT_META invariants', () => {
     });
     expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.legalTargets?.value).toEqual({
       type: 'array',
-      itemType: 'string',
+      itemType: 'object',
+      fields: [
+        { path: '[].column', type: 'number', label: 'Column' },
+        { path: '[].row', type: 'number', label: 'Row' },
+      ],
+    });
+    expect(ZORA_COMPONENT_META.ChessBoard.bindings?.props?.selectedCell?.value).toEqual({
+      type: 'object',
+      fields: [
+        { path: 'column', type: 'number', label: 'Column' },
+        { path: 'row', type: 'number', label: 'Row' },
+      ],
     });
     expect(ZORA_COMPONENT_META.OpeningBook.bindings?.props?.moves?.value).toEqual({
       type: 'array',

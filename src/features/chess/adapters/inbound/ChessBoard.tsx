@@ -11,6 +11,8 @@ import type {
 import { GridView } from '../../../grid-view/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
+import { createChessBoardCellPressHandler } from '../../utils/createChessBoardCellPressHandler';
+import { createChessBoardCells } from '../../utils/createChessBoardCells';
 import { createChessBoardColorScheme } from '../../utils/createChessBoardColorScheme';
 
 const symbols = new Map<string, string>([
@@ -55,14 +57,11 @@ function ChessBoardInner({
 }: ChessBoardProps) {
   const { theme } = useZoraTheme();
   const colors = createChessBoardColorScheme(theme, colorScheme);
-  const dimensions = React.useMemo(
-    () => createChessBoardDimensions(columns, rows),
-    [columns, rows],
-  );
+  const dimensions = React.useMemo(() => ({ columns, rows }), [columns, rows]);
   const [width, setWidth] = React.useState(0);
   const cells = React.useMemo(
-    () => createChessBoardCells(dimensions, orientation),
-    [dimensions, orientation],
+    () => createChessBoardCells(columns, rows, orientation),
+    [columns, orientation, rows],
   );
   const piecesByCell = React.useMemo(
     () => new Map((pieces ?? []).map((piece) => [getCellKey(piece.cell), piece])),
@@ -70,12 +69,13 @@ function ChessBoardInner({
   );
   const cellById = React.useMemo(() => new Map(cells.map((cell) => [cell.id, cell])), [cells]);
   const legalTargetSet = React.useMemo(() => new Set(legalTargets.map(getCellKey)), [legalTargets]);
-  const pressCell = (cell: ChessBoardCell) => {
-    if (disabled || interactionPolicy === 'passive') return;
-    onCellPress?.(cell);
-    if (selectedCell === null || cellsEqual(selectedCell, cell)) return;
-    onMoveAttempt?.({ from: selectedCell, to: cell });
-  };
+  const pressCell = createChessBoardCellPressHandler({
+    disabled,
+    interactionPolicy,
+    onCellPress,
+    onMoveAttempt,
+    selectedCell,
+  });
   const canResize =
     resizable && onDimensionsChange !== undefined && !disabled && interactionPolicy !== 'passive';
   const height = width * (dimensions.rows / dimensions.columns);
@@ -293,46 +293,7 @@ function renderResizeAction(
   );
 }
 
-/*** Create the displayed rectangular cells in the requested presentation orientation. */
-function createChessBoardCells(
-  dimensions: ChessBoardDimensions,
-  orientation: ChessBoardProps['orientation'],
-) {
-  const columns = Array.from({ length: dimensions.columns }, (_, index) => index + 1);
-  const rows = Array.from({ length: dimensions.rows }, (_, index) => index + 1);
-  const displayedColumns = orientation === 'white' ? columns : [...columns].reverse();
-  const displayedRows = orientation === 'white' ? [...rows].reverse() : rows;
-  return displayedRows.flatMap((row) =>
-    displayedColumns.map((column) => ({
-      column,
-      height: 1,
-      id: getCellKey({ column, row }),
-      row,
-      width: 1,
-      x: column - 1,
-      y: dimensions.rows - row,
-    })),
-  );
-}
-
-/*** Validate caller-owned dimensions at the presentation boundary. */
-function createChessBoardDimensions(columns: number, rows: number): ChessBoardDimensions {
-  if (
-    ![columns, rows].every(
-      (dimension) =>
-        Number.isInteger(dimension) &&
-        dimension >= minimumDimension &&
-        dimension <= maximumDimension,
-    )
-  ) {
-    throw new RangeError(
-      `ChessBoard dimensions must be whole numbers from ${minimumDimension} through ${maximumDimension}.`,
-    );
-  }
-  return { columns, rows };
-}
-
-/*** Compare optional cell coordinates without attaching chess-rule meaning to them. */
+/*** Compares optional cell coordinates without attaching chess-rule meaning to them. */
 function cellsEqual(
   left: ChessBoardCell | undefined | null,
   right: ChessBoardCell | undefined | null,

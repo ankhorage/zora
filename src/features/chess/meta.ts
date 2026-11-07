@@ -45,9 +45,28 @@ export const chessBoardMeta = {
         acceptsFallback: true,
         acceptsTransforms: true,
       },
+      selectedCell: {
+        label: 'Selected cell',
+        value: {
+          type: 'object',
+          fields: [
+            { path: 'column', type: 'number', label: 'Column' },
+            { path: 'row', type: 'number', label: 'Row' },
+          ],
+        },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
       legalTargets: {
         label: 'Legal targets',
-        value: { type: 'array', itemType: 'string' },
+        value: {
+          type: 'array',
+          itemType: 'object',
+          fields: [
+            { path: '[].column', type: 'number', label: 'Column' },
+            { path: '[].row', type: 'number', label: 'Row' },
+          ],
+        },
         acceptsFallback: true,
         acceptsTransforms: true,
       },
@@ -84,9 +103,13 @@ export const chessBoardMeta = {
       authoring: { authority: 'instance' },
     },
     selectedCell: {
-      type: 'string',
+      type: 'object',
       category: 'Board',
       label: 'Selected cell',
+      itemSchema: [
+        { key: 'column', schema: { type: 'number', category: 'Cell' } },
+        { key: 'row', schema: { type: 'number', category: 'Cell' } },
+      ],
       authoring: { authority: 'instance' },
     },
     legalTargets: {
@@ -94,6 +117,10 @@ export const chessBoardMeta = {
       category: 'Board',
       label: 'Legal targets',
       default: [],
+      itemSchema: [
+        { key: 'column', schema: { type: 'number', category: 'Cell' } },
+        { key: 'row', schema: { type: 'number', category: 'Cell' } },
+      ],
       authoring: { authority: 'instance' },
     },
     showCoordinates: {
