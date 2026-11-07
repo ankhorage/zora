@@ -51,7 +51,6 @@
     "@ankhorage/runtime": "^5.2.4",
     "@ankhorage/surface": "^9.4.15",
     "@ankhorage/utility": "^1.10.0",
-    "chess.js": "^1.4.0",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20"
   },
@@ -529,7 +528,7 @@
         }
       },
       {
-        "id": "chess.invalidMove",
+        "id": "chess.cellPress",
         "owner": "@ankhorage/zora",
         "access": [
           "emit"
@@ -540,67 +539,18 @@
             "source"
           ]
         },
-        "label": "Invalid move",
+        "label": "Cell press",
         "output": {
           "schema": {
             "type": "object",
             "properties": {
-              "from": {
-                "type": "string",
-                "title": "From"
+              "column": {
+                "type": "number",
+                "title": "Column"
               },
-              "to": {
-                "type": "string",
-                "title": "To"
-              },
-              "promotion": {
-                "type": "string",
-                "title": "Promotion"
-              }
-            }
-          }
-        }
-      },
-      {
-        "id": "chess.legalMove",
-        "owner": "@ankhorage/zora",
-        "access": [
-          "emit"
-        ],
-        "binding": {
-          "kind": "event",
-          "bindableAs": [
-            "source"
-          ]
-        },
-        "label": "Legal move",
-        "output": {
-          "schema": {
-            "type": "object",
-            "properties": {
-              "from": {
-                "type": "string",
-                "title": "From"
-              },
-              "to": {
-                "type": "string",
-                "title": "To"
-              },
-              "fen": {
-                "type": "string",
-                "title": "Position"
-              },
-              "san": {
-                "type": "string",
-                "title": "SAN"
-              },
-              "lan": {
-                "type": "string",
-                "title": "LAN"
-              },
-              "promotion": {
-                "type": "string",
-                "title": "Promotion"
+              "row": {
+                "type": "number",
+                "title": "Row"
               }
             }
           }
@@ -624,16 +574,30 @@
             "type": "object",
             "properties": {
               "from": {
-                "type": "string",
-                "title": "From"
+                "type": "object",
+                "properties": {
+                  "column": {
+                    "type": "number",
+                    "title": "From column"
+                  },
+                  "row": {
+                    "type": "number",
+                    "title": "From row"
+                  }
+                }
               },
               "to": {
-                "type": "string",
-                "title": "To"
-              },
-              "promotion": {
-                "type": "string",
-                "title": "Promotion"
+                "type": "object",
+                "properties": {
+                  "column": {
+                    "type": "number",
+                    "title": "To column"
+                  },
+                  "row": {
+                    "type": "number",
+                    "title": "To row"
+                  }
+                }
               }
             }
           }
@@ -667,31 +631,6 @@
               "fen": {
                 "type": "string",
                 "title": "Position"
-              }
-            }
-          }
-        }
-      },
-      {
-        "id": "chess.squarePress",
-        "owner": "@ankhorage/zora",
-        "access": [
-          "emit"
-        ],
-        "binding": {
-          "kind": "event",
-          "bindableAs": [
-            "source"
-          ]
-        },
-        "label": "Square press",
-        "output": {
-          "schema": {
-            "type": "object",
-            "properties": {
-              "square": {
-                "type": "string",
-                "title": "Square"
               }
             }
           }

@@ -9,42 +9,31 @@ export const chessBoardMeta = {
   allowedChildren: [],
   blueprint: {
     label: 'Chess board',
-    defaultProps: { pieces: [], orientation: 'white', showCoordinates: true, validateMoves: true },
+    defaultProps: {
+      columns: 8,
+      pieces: [],
+      orientation: 'white',
+      rows: 8,
+      showCoordinates: true,
+    },
   },
   events: {
-    squarePress: {
-      label: 'Square press',
-      eventType: 'chess.squarePress',
-      payloadFields: [{ path: 'square', type: 'string', label: 'Square' }],
+    cellPress: {
+      label: 'Cell press',
+      eventType: 'chess.cellPress',
+      payloadFields: [
+        { path: 'column', type: 'number', label: 'Column' },
+        { path: 'row', type: 'number', label: 'Row' },
+      ],
     },
     moveAttempt: {
       label: 'Move attempt',
       eventType: 'chess.moveAttempt',
       payloadFields: [
-        { path: 'from', type: 'string', label: 'From' },
-        { path: 'to', type: 'string', label: 'To' },
-        { path: 'promotion', type: 'string', label: 'Promotion' },
-      ],
-    },
-    legalMove: {
-      label: 'Legal move',
-      eventType: 'chess.legalMove',
-      payloadFields: [
-        { path: 'from', type: 'string', label: 'From' },
-        { path: 'to', type: 'string', label: 'To' },
-        { path: 'fen', type: 'string', label: 'Position' },
-        { path: 'san', type: 'string', label: 'SAN' },
-        { path: 'lan', type: 'string', label: 'LAN' },
-        { path: 'promotion', type: 'string', label: 'Promotion' },
-      ],
-    },
-    invalidMove: {
-      label: 'Invalid move',
-      eventType: 'chess.invalidMove',
-      payloadFields: [
-        { path: 'from', type: 'string', label: 'From' },
-        { path: 'to', type: 'string', label: 'To' },
-        { path: 'promotion', type: 'string', label: 'Promotion' },
+        { path: 'from.column', type: 'number', label: 'From column' },
+        { path: 'from.row', type: 'number', label: 'From row' },
+        { path: 'to.column', type: 'number', label: 'To column' },
+        { path: 'to.row', type: 'number', label: 'To row' },
       ],
     },
   },
@@ -65,10 +54,18 @@ export const chessBoardMeta = {
     },
   },
   props: {
-    fen: {
-      type: 'string',
-      category: 'Position',
-      label: 'FEN',
+    columns: {
+      type: 'number',
+      category: 'Board',
+      label: 'Columns',
+      default: 8,
+      authoring: { authority: 'instance' },
+    },
+    rows: {
+      type: 'number',
+      category: 'Board',
+      label: 'Rows',
+      default: 8,
       authoring: { authority: 'instance' },
     },
     pieces: {
@@ -86,10 +83,10 @@ export const chessBoardMeta = {
       default: 'white',
       authoring: { authority: 'instance' },
     },
-    selectedSquare: {
+    selectedCell: {
       type: 'string',
       category: 'Board',
-      label: 'Selected square',
+      label: 'Selected cell',
       authoring: { authority: 'instance' },
     },
     legalTargets: {
@@ -106,11 +103,11 @@ export const chessBoardMeta = {
       default: false,
       authoring: { authority: 'instance' },
     },
-    validateMoves: {
+    resizable: {
       type: 'boolean',
       category: 'Behavior',
-      label: 'Validate moves',
-      default: true,
+      label: 'Resizable',
+      default: false,
       authoring: { authority: 'instance' },
     },
     disabled: {

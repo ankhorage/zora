@@ -4,33 +4,36 @@ import type { ZoraBaseProps } from './base';
 
 export type ChessBoardOrientation = 'white' | 'black';
 export type ChessPieceCode = string;
-export type ChessSquareId =
-  `${'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h'}${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}`;
-export type ChessPromotionPiece = 'q' | 'r' | 'b' | 'n';
 
-export interface ChessMoveAttempt {
-  readonly from: ChessSquareId;
-  readonly to: ChessSquareId;
-  readonly promotion?: ChessPromotionPiece;
+/** A caller-owned cell location in a rectangular chess presentation board. */
+export interface ChessBoardCell {
+  readonly column: number;
+  readonly row: number;
 }
 
-export interface ChessMoveResult extends Omit<ChessMoveAttempt, 'promotion'> {
-  readonly fen: string;
-  readonly lan: string;
-  readonly promotion?: ChessPromotionPiece;
-  readonly san: string;
+/** The bounded presentation dimensions supported by ChessBoard. */
+export interface ChessBoardDimensions {
+  readonly columns: number;
+  readonly rows: number;
+}
+
+export interface ChessMoveAttempt {
+  readonly from: ChessBoardCell;
+  readonly to: ChessBoardCell;
 }
 
 export interface ChessPieceState {
   readonly color: 'black' | 'white';
   readonly piece: ChessPieceCode;
-  readonly square: ChessSquareId;
+  readonly cell: ChessBoardCell;
 }
 
 export interface ChessPieceRenderContext {
   readonly color: string;
   readonly piece: ChessPieceCode;
-  readonly square: ChessSquareId;
+  readonly cell: ChessBoardCell;
+  /** Available cell edge length in pixels. */
+  readonly size: number;
 }
 
 export type ChessPieceRenderer = (context: ChessPieceRenderContext) => React.ReactNode;
@@ -65,20 +68,24 @@ export interface OpeningBookColorScheme {
 export type OpeningBookColorOverrides = Partial<OpeningBookColorScheme>;
 
 export interface ChessBoardProps extends ZoraBaseProps {
-  readonly fen?: string;
+  /** Number of displayed columns, from 2 through 24. */
+  readonly columns?: number;
+  /** Number of displayed rows, from 2 through 24. */
+  readonly rows?: number;
   readonly pieces?: readonly ChessPieceState[];
   readonly orientation?: ChessBoardOrientation;
-  readonly selectedSquare?: ChessSquareId | null;
-  readonly legalTargets?: readonly ChessSquareId[];
+  readonly selectedCell?: ChessBoardCell | null;
+  readonly legalTargets?: readonly ChessBoardCell[];
   readonly lastMove?: ChessMoveAttempt | null;
   readonly disabled?: boolean;
   readonly showCoordinates?: boolean;
-  readonly validateMoves?: boolean;
+  /** Enables explicit editor resize controls when a dimensions callback is supplied. */
+  readonly resizable?: boolean;
   readonly colorScheme?: ChessBoardColorOverrides;
-  readonly onSquarePress?: (square: ChessSquareId) => void;
+  readonly onCellPress?: (cell: ChessBoardCell) => void;
   readonly onMoveAttempt?: (move: ChessMoveAttempt) => void;
-  readonly onLegalMove?: (move: ChessMoveResult) => void;
-  readonly onInvalidMove?: (move: ChessMoveAttempt) => void;
+  /** Receives a caller-owned resize proposal; ZORA never mutates board dimensions. */
+  readonly onDimensionsChange?: (dimensions: ChessBoardDimensions) => void;
   readonly renderPiece?: ChessPieceRenderer;
 }
 
