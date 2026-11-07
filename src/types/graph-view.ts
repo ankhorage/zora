@@ -94,6 +94,11 @@ export interface GraphViewController {
   zoomBy(factor: number): void;
 }
 
+/*** The browser lifecycle events carry only the existing public graph controller. */
+export interface GraphViewDomControllerEventDetail {
+  readonly controller: GraphViewController;
+}
+
 export interface GraphViewProps {
   readonly nodes: readonly GraphViewNode[];
   readonly edges: readonly GraphViewEdge[];
