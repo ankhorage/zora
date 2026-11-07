@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v25.11.0",
+      "value": "v25.11.1",
       "color": "cb3837"
     },
     {
@@ -67377,13 +67377,57 @@
       }
     },
     {
+      "name": "captureResizeSnapshot",
+      "description": "Capture the model-space center and whether the prior viewport was an intact graph fit.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 119,
+        "column": 1
+      }
+    },
+    {
+      "name": "settlePreservedViewport",
+      "description": "Preserve a manual viewport through resize, fitting only when an intact prior fit becomes invalid.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 135,
+        "column": 1
+      }
+    },
+    {
+      "name": "getNodeBoundsStatus",
+      "description": "Accept only finite non-empty node bounds that are wholly visible in a usable viewport.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 165,
+        "column": 1
+      }
+    },
+    {
+      "name": "isUsableViewport",
+      "description": "Reject zero, negative, and non-finite renderer dimensions before viewport arithmetic.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "line": 179,
+        "column": 1
+      }
+    },
+    {
       "name": "measureRenderedNodes",
       "description": "Measure rendered node geometry for public consumers while keeping Cytoscape private.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 108,
+        "line": 189,
         "column": 1
       }
     },
@@ -67394,7 +67438,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 129,
+        "line": 210,
         "column": 1
       }
     },
@@ -67405,7 +67449,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 145,
+        "line": 226,
         "column": 1
       }
     },
@@ -67416,7 +67460,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 153,
+        "line": 234,
         "column": 1
       }
     },
@@ -67427,7 +67471,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 163,
+        "line": 244,
         "column": 1
       }
     },
@@ -67471,18 +67515,40 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 20,
+        "line": 22,
+        "column": 1
+      }
+    },
+    {
+      "name": "captureResizeSnapshot",
+      "description": "Keep the first pre-resize viewport intent until its resize or layout settlement consumes it.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 54,
+        "column": 1
+      }
+    },
+    {
+      "name": "flushAfterLayout",
+      "description": "Apply a resize observed during layout before that layout settles the preserved viewport.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "line": 64,
         "column": 1
       }
     },
     {
       "name": "scheduleResizeFit",
-      "description": "Fit one genuine resize only after the active layout has settled.",
+      "description": "Preserve settled viewport intent across one coalesced resize, except the deferred initial fit.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 41,
+        "line": 77,
         "column": 1
       }
     },
@@ -67493,7 +67559,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 54,
+        "line": 103,
         "column": 1
       }
     },
@@ -67504,7 +67570,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
-        "line": 62,
+        "line": 111,
         "column": 1
       }
     },
@@ -67515,7 +67581,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 72,
+        "line": 73,
         "column": 1
       }
     },
@@ -67526,7 +67592,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 98,
+        "line": 99,
         "column": 1
       }
     },
@@ -67537,7 +67603,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 161,
+        "line": 164,
         "column": 1
       }
     },
@@ -67548,7 +67614,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 217,
+        "line": 220,
         "column": 1
       }
     },
@@ -67559,7 +67625,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 238,
+        "line": 241,
         "column": 1
       }
     },
@@ -67570,7 +67636,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 276,
+        "line": 282,
         "column": 1
       }
     },
@@ -67581,7 +67647,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 302,
+        "line": 308,
         "column": 1
       }
     },
@@ -67592,7 +67658,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 310,
+        "line": 316,
         "column": 1
       }
     },
@@ -67603,7 +67669,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 334,
+        "line": 340,
         "column": 1
       }
     },
@@ -67614,7 +67680,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 348,
+        "line": 354,
         "column": 1
       }
     },
@@ -67625,7 +67691,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 357,
+        "line": 363,
         "column": 1
       }
     },
@@ -67636,7 +67702,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 362,
+        "line": 368,
         "column": 1
       }
     },
@@ -67647,7 +67713,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 372,
+        "line": 378,
         "column": 1
       }
     },
@@ -67658,7 +67724,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 385,
+        "line": 391,
         "column": 1
       }
     },
@@ -67669,7 +67735,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 397,
+        "line": 403,
         "column": 1
       }
     },
@@ -67680,7 +67746,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 406,
+        "line": 412,
         "column": 1
       }
     },
@@ -67691,7 +67757,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 420,
+        "line": 426,
         "column": 1
       }
     },
@@ -67702,7 +67768,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 425,
+        "line": 431,
         "column": 1
       }
     },
@@ -68280,7 +68346,7 @@
     },
     {
       "name": "shouldFitGraphAfterLayout",
-      "description": "Fit initial or structurally changed graphs while preserving the viewport across spacing updates.",
+      "description": "Fit initial, topology, or layout-algorithm changes while preserving viewport intent otherwise.",
       "see": [],
       "security": [],
       "sourceLocation": {
@@ -87836,6 +87902,12 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
+        "fromSymbol": "beginResize",
+        "toSymbol": "captureResizeSnapshot",
+        "callExpression": "captureResizeSnapshot",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
         "fromSymbol": "settle",
         "toSymbol": "getNodeFitZoom",
         "callExpression": "getNodeFitZoom",
@@ -87855,8 +87927,44 @@
       },
       {
         "fromSymbol": "settle",
+        "toSymbol": "settlePreservedViewport",
+        "callExpression": "settlePreservedViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "captureResizeSnapshot",
+        "toSymbol": "isUsableViewport",
+        "callExpression": "isUsableViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "captureResizeSnapshot",
+        "toSymbol": "getNodeBoundsStatus",
+        "callExpression": "getNodeBoundsStatus",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settlePreservedViewport",
         "toSymbol": "setCenteredZoom",
         "callExpression": "setCenteredZoom",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settlePreservedViewport",
+        "toSymbol": "isUsableViewport",
+        "callExpression": "isUsableViewport",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "settlePreservedViewport",
+        "toSymbol": "getNodeBoundsStatus",
+        "callExpression": "getNodeBoundsStatus",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
+        "fromSymbol": "getNodeBoundsStatus",
+        "toSymbol": "isUsableViewport",
+        "callExpression": "isUsableViewport",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
@@ -87873,6 +87981,12 @@
       },
       {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
+        "toSymbol": "captureResizeSnapshot",
+        "callExpression": "captureResizeSnapshot",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
         "toSymbol": "scheduleResizeFit",
         "callExpression": "scheduleResizeFit",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
@@ -87881,6 +87995,24 @@
         "fromSymbol": "createGraphResizeObserver",
         "toSymbol": "observe",
         "callExpression": "observer.observe",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "disconnect",
+        "toSymbol": "disconnect",
+        "callExpression": "observer.disconnect",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "flushAfterLayout",
+        "toSymbol": "flushAfterLayout",
+        "callExpression": "flushAfterLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
+      },
+      {
+        "fromSymbol": "captureResizeSnapshot",
+        "toSymbol": "beginViewportResize",
+        "callExpression": "input.beginViewportResize",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
       },
       {
@@ -87983,6 +88115,12 @@
         "fromSymbol": "createRuntimeState",
         "toSymbol": "createGraphResizeObserver",
         "callExpression": "createGraphResizeObserver",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "beginViewportResize",
+        "toSymbol": "beginResize",
+        "callExpression": "viewport.beginResize",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -88115,6 +88253,12 @@
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "update",
         "callExpression": "state.loopSizer.update",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "flushAfterLayout",
+        "callExpression": "state.resizeObserver?.flushAfterLayout",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {

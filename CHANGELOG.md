@@ -1,5 +1,11 @@
 # Changelog
 
+## 25.11.1
+
+### Patch Changes
+
+- 8653d18: Stabilize GraphView automatic fitting after layout changes and preserve manual viewport intent across resize updates.
+
 ## 25.11.0
 
 ### Minor Changes
