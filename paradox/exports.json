@@ -5219,7 +5219,7 @@
   {
     "name": "ChessBoard",
     "title": null,
-    "description": "Renders caller-owned or FEN-backed chess state with optional legal-move validation.",
+    "description": "Renders a configurable caller-owned chess presentation through the shared GridView surface.",
     "isReadme": false,
     "see": [],
     "security": [],
@@ -5227,7 +5227,7 @@
     "modulePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
     "sourceLocation": {
       "filePath": "src/features/chess/adapters/inbound/ChessBoard.tsx",
-      "line": 33,
+      "line": 36,
       "column": 14
     },
     "exportPaths": [
@@ -5236,6 +5236,43 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ChessBoardCell",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "column",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "row",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -5249,7 +5286,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 53,
+      "line": 56,
       "column": 1
     },
     "exportPaths": [
@@ -5271,7 +5308,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 38,
+      "line": 41,
       "column": 1
     },
     "exportPaths": [
@@ -5368,6 +5405,43 @@
     "structuredRows": []
   },
   {
+    "name": "ChessBoardDimensions",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/chess.ts",
+    "sourceLocation": {
+      "filePath": "src/types/chess.ts",
+      "line": 15,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "columns",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "rows",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "chessBoardMeta",
     "title": null,
     "description": null,
@@ -5422,20 +5496,20 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 67,
+      "line": 70,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
+      "ChessBoardCell",
       "ChessBoardColorScheme",
+      "ChessBoardDimensions",
       "ChessBoardOrientation",
       "ChessMoveAttempt",
-      "ChessMoveResult",
       "ChessPieceRenderer",
       "ChessPieceState",
-      "ChessSquareId",
       "ZoraThemeMode"
     ],
     "signatures": [],
@@ -5448,16 +5522,16 @@
         "description": null
       },
       {
-        "name": "disabled",
+        "name": "columns",
         "kind": "property",
-        "type": "boolean | undefined",
+        "type": "number | undefined",
         "required": false,
         "description": null
       },
       {
-        "name": "fen",
+        "name": "disabled",
         "kind": "property",
-        "type": "string | undefined",
+        "type": "boolean | undefined",
         "required": false,
         "description": null
       },
@@ -5485,7 +5559,7 @@
       {
         "name": "legalTargets",
         "kind": "property",
-        "type": "readonly (\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\")[] | undefined",
+        "type": "readonly ChessBoardCell[] | undefined",
         "required": false,
         "description": null
       },
@@ -5497,16 +5571,16 @@
         "description": null
       },
       {
-        "name": "onInvalidMove",
+        "name": "onCellPress",
         "kind": "property",
-        "type": "((move: ChessMoveAttempt) => void) | undefined",
+        "type": "((cell: ChessBoardCell) => void) | undefined",
         "required": false,
         "description": null
       },
       {
-        "name": "onLegalMove",
+        "name": "onDimensionsChange",
         "kind": "property",
-        "type": "((move: ChessMoveResult) => void) | undefined",
+        "type": "((dimensions: ChessBoardDimensions) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -5514,13 +5588,6 @@
         "name": "onMoveAttempt",
         "kind": "property",
         "type": "((move: ChessMoveAttempt) => void) | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "onSquarePress",
-        "kind": "property",
-        "type": "((square: ChessSquareId) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -5546,9 +5613,23 @@
         "description": null
       },
       {
-        "name": "selectedSquare",
+        "name": "resizable",
         "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\" | null | undefined",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "rows",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedCell",
+        "kind": "property",
+        "type": "ChessBoardCell | null | undefined",
         "required": false,
         "description": null
       },
@@ -5570,13 +5651,6 @@
         "name": "themeId",
         "kind": "property",
         "type": "string | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "validateMoves",
-        "kind": "property",
-        "type": "boolean | undefined",
         "required": false,
         "description": null
       }
@@ -5624,102 +5698,28 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 11,
+      "line": 20,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
     "relatedSymbols": [
-      "ChessPromotionPiece"
+      "ChessBoardCell"
     ],
     "signatures": [],
     "members": [
       {
         "name": "from",
         "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "promotion",
-        "kind": "property",
-        "type": "ChessPromotionPiece | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "to",
-        "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-        "required": true,
-        "description": null
-      }
-    ],
-    "structuredRows": []
-  },
-  {
-    "name": "ChessMoveResult",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "type",
-    "modulePath": "src/types/chess.ts",
-    "sourceLocation": {
-      "filePath": "src/types/chess.ts",
-      "line": 17,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ChessPromotionPiece"
-    ],
-    "signatures": [],
-    "members": [
-      {
-        "name": "fen",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "from",
-        "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "lan",
-        "kind": "property",
-        "type": "string",
-        "required": true,
-        "description": null
-      },
-      {
-        "name": "promotion",
-        "kind": "property",
-        "type": "ChessPromotionPiece | undefined",
-        "required": false,
-        "description": null
-      },
-      {
-        "name": "san",
-        "kind": "property",
-        "type": "string",
+        "type": "ChessBoardCell",
         "required": true,
         "description": null
       },
       {
         "name": "to",
         "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
+        "type": "ChessBoardCell",
         "required": true,
         "description": null
       }
@@ -5759,15 +5759,24 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 30,
+      "line": 31,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "ChessBoardCell"
+    ],
     "signatures": [],
     "members": [
+      {
+        "name": "cell",
+        "kind": "property",
+        "type": "ChessBoardCell",
+        "required": true,
+        "description": null
+      },
       {
         "name": "color",
         "kind": "property",
@@ -5783,9 +5792,9 @@
         "description": null
       },
       {
-        "name": "square",
+        "name": "size",
         "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
+        "type": "number",
         "required": true,
         "description": null
       }
@@ -5803,7 +5812,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 36,
+      "line": 39,
       "column": 1
     },
     "exportPaths": [
@@ -5825,15 +5834,24 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 24,
+      "line": 25,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "ChessBoardCell"
+    ],
     "signatures": [],
     "members": [
+      {
+        "name": "cell",
+        "kind": "property",
+        "type": "ChessBoardCell",
+        "required": true,
+        "description": null
+      },
       {
         "name": "color",
         "kind": "property",
@@ -5847,81 +5865,8 @@
         "type": "string",
         "required": true,
         "description": null
-      },
-      {
-        "name": "square",
-        "kind": "property",
-        "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-        "required": true,
-        "description": null
       }
     ],
-    "structuredRows": []
-  },
-  {
-    "name": "ChessPromotionPiece",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "unknown",
-    "modulePath": "src/types/chess.ts",
-    "sourceLocation": {
-      "filePath": "src/types/chess.ts",
-      "line": 9,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "ChessSquareId",
-    "title": null,
-    "description": null,
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "unknown",
-    "modulePath": "src/types/chess.ts",
-    "sourceLocation": {
-      "filePath": "src/types/chess.ts",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "chessSquares",
-    "title": null,
-    "description": "Lists every board square in ascending rank and file order.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "value",
-    "modulePath": "src/features/chess/utils/chessSquares.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/chessSquares.ts",
-      "line": 4,
-      "column": 14
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [],
-    "members": [],
     "structuredRows": []
   },
   {
@@ -6787,44 +6732,6 @@
         "description": null
       }
     ],
-    "structuredRows": []
-  },
-  {
-    "name": "createBoardSquares",
-    "title": null,
-    "description": "Orders the 64 displayed squares for the selected player orientation.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/createBoardSquares.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/createBoardSquares.ts",
-      "line": 7,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ChessBoardOrientation"
-    ],
-    "signatures": [
-      {
-        "label": "(orientation: ChessBoardOrientation) => readonly (\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\")[]",
-        "parameters": [
-          {
-            "name": "orientation",
-            "type": "ChessBoardOrientation",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "readonly (\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\")[]",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
     "structuredRows": []
   },
   {
@@ -11335,120 +11242,6 @@
     "structuredRows": []
   },
   {
-    "name": "getLegalTargets",
-    "title": null,
-    "description": "Resolve legal destination squares from one FEN position and source square.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/chessEngine.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/chessEngine.ts",
-      "line": 63,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [
-      {
-        "label": "(fen: string, from: \"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\") => readonly (\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\")[]",
-        "parameters": [
-          {
-            "name": "fen",
-            "type": "string",
-            "required": true,
-            "description": null
-          },
-          {
-            "name": "from",
-            "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "readonly (\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\")[]",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "getSquareFile",
-    "title": null,
-    "description": "Returns the file letter of a chess square.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/getSquareFile.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/getSquareFile.ts",
-      "line": 4,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [
-      {
-        "label": "(square: \"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\") => string",
-        "parameters": [
-          {
-            "name": "square",
-            "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "string",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
-    "name": "getSquareRank",
-    "title": null,
-    "description": "Returns the rank number of a chess square.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/getSquareRank.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/getSquareRank.ts",
-      "line": 4,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [
-      {
-        "label": "(square: \"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\") => string",
-        "parameters": [
-          {
-            "name": "square",
-            "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "string",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "Gradient",
     "title": null,
     "description": "Gradient background container for branded loading surfaces, hero blocks, and previews.\n\nThe host supplies a platform-compatible renderer through\n`GradientRendererProvider`; ZORA does not require an Expo runtime.",
@@ -14533,42 +14326,6 @@
     "structuredRows": []
   },
   {
-    "name": "isLightSquare",
-    "title": null,
-    "description": "Determines whether a chess square uses the light presentation color.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/isLightSquare.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/isLightSquare.ts",
-      "line": 6,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [],
-    "signatures": [
-      {
-        "label": "(square: \"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\") => boolean",
-        "parameters": [
-          {
-            "name": "square",
-            "type": "\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\"",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "boolean",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "KeyboardAvoidingView",
     "title": null,
     "description": "Native keyboard-aware container exposed through the canonical ZORA feature boundary.",
@@ -17441,7 +17198,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 65,
+      "line": 68,
       "column": 1
     },
     "exportPaths": [
@@ -17463,7 +17220,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 55,
+      "line": 58,
       "column": 1
     },
     "exportPaths": [
@@ -17542,7 +17299,7 @@
     "modulePath": "src/features/chess/meta.ts",
     "sourceLocation": {
       "filePath": "src/features/chess/meta.ts",
-      "line": 125,
+      "line": 149,
       "column": 14
     },
     "exportPaths": [
@@ -17564,7 +17321,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 85,
+      "line": 92,
       "column": 1
     },
     "exportPaths": [
@@ -17650,7 +17407,7 @@
     "modulePath": "src/types/chess.ts",
     "sourceLocation": {
       "filePath": "src/types/chess.ts",
-      "line": 97,
+      "line": 104,
       "column": 1
     },
     "exportPaths": [
@@ -20726,44 +20483,6 @@
         "description": null
       }
     ],
-    "structuredRows": []
-  },
-  {
-    "name": "readChessPieces",
-    "title": null,
-    "description": "Read all pieces from a FEN-backed position. Invalid FEN produces an empty position.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/chessEngine.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/chessEngine.ts",
-      "line": 44,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ChessPieceState"
-    ],
-    "signatures": [
-      {
-        "label": "(fen: string) => ReadonlyMap<\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\", ChessPieceState>",
-        "parameters": [
-          {
-            "name": "fen",
-            "type": "string",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "ReadonlyMap<\"a1\" | \"a2\" | \"a3\" | \"a4\" | \"a5\" | \"a6\" | \"a7\" | \"a8\" | \"b1\" | \"b2\" | \"b3\" | \"b4\" | \"b5\" | \"b6\" | \"b7\" | \"b8\" | \"c1\" | \"c2\" | \"c3\" | \"c4\" | \"c5\" | \"c6\" | \"c7\" | \"c8\" | \"d1\" | \"d2\" | \"d3\" | \"d4\" | \"d5\" | \"d6\" | \"d7\" | \"d8\" | \"e1\" | \"e2\" | \"e3\" | \"e4\" | \"e5\" | \"e6\" | \"e7\" | \"e8\" | \"f1\" | \"f2\" | \"f3\" | \"f4\" | \"f5\" | \"f6\" | \"f7\" | \"f8\" | \"g1\" | \"g2\" | \"g3\" | \"g4\" | \"g5\" | \"g6\" | \"g7\" | \"g8\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"h7\" | \"h8\", ChessPieceState>",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
     "structuredRows": []
   },
   {
@@ -31172,51 +30891,6 @@
     "structuredRows": []
   },
   {
-    "name": "tryMove",
-    "title": null,
-    "description": "Attempt one legal chess move against FEN and return the resulting position/move notation.",
-    "isReadme": false,
-    "see": [],
-    "security": [],
-    "kind": "function",
-    "modulePath": "src/features/chess/utils/chessEngine.ts",
-    "sourceLocation": {
-      "filePath": "src/features/chess/utils/chessEngine.ts",
-      "line": 69,
-      "column": 1
-    },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "ChessMoveAttempt",
-      "ChessMoveResult"
-    ],
-    "signatures": [
-      {
-        "label": "(fen: string, attempt: ChessMoveAttempt) => ChessMoveResult | null",
-        "parameters": [
-          {
-            "name": "attempt",
-            "type": "ChessMoveAttempt",
-            "required": true,
-            "description": null
-          },
-          {
-            "name": "fen",
-            "type": "string",
-            "required": true,
-            "description": null
-          }
-        ],
-        "returnType": "ChessMoveResult | null",
-        "returnDescription": null
-      }
-    ],
-    "members": [],
-    "structuredRows": []
-  },
-  {
     "name": "UploadAsset",
     "title": null,
     "description": null,
@@ -33079,7 +32753,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 45,
+      "line": 46,
       "column": 1
     },
     "exportPaths": [
@@ -33147,7 +32821,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 66,
+      "line": 67,
       "column": 1
     },
     "exportPaths": [
@@ -33201,7 +32875,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 59,
+      "line": 60,
       "column": 1
     },
     "exportPaths": [
@@ -33254,7 +32928,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 56,
+      "line": 57,
       "column": 1
     },
     "exportPaths": [
@@ -33276,7 +32950,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 55,
+      "line": 56,
       "column": 1
     },
     "exportPaths": [
@@ -33298,7 +32972,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 51,
+      "line": 52,
       "column": 1
     },
     "exportPaths": [
@@ -33328,7 +33002,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 78,
+      "line": 79,
       "column": 1
     },
     "exportPaths": [
@@ -33372,7 +33046,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 84,
+      "line": 85,
       "column": 1
     },
     "exportPaths": [
@@ -33501,7 +33175,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 101,
+      "line": 102,
       "column": 1
     },
     "exportPaths": [
@@ -33523,7 +33197,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 29,
+      "line": 30,
       "column": 1
     },
     "exportPaths": [
@@ -33562,7 +33236,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 21,
+      "line": 22,
       "column": 1
     },
     "exportPaths": [
@@ -33584,7 +33258,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 34,
+      "line": 35,
       "column": 1
     },
     "exportPaths": [
@@ -33593,6 +33267,7 @@
     "relatedSymbols": [
       "ZoraComponentPropArrayItemSchema",
       "ZoraComponentPropAuthoring",
+      "ZoraComponentPropType",
       "ZoraComponentPropValue"
     ],
     "signatures": [],
@@ -33649,7 +33324,7 @@
       {
         "name": "type",
         "kind": "property",
-        "type": "UiComponentPropType",
+        "type": "ZoraComponentPropType",
         "required": true,
         "description": null
       }
@@ -33667,7 +33342,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 11,
+      "line": 12,
       "column": 1
     },
     "exportPaths": [
@@ -33689,7 +33364,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 13,
+      "line": 14,
       "column": 1
     },
     "exportPaths": [
@@ -33733,7 +33408,7 @@
     "modulePath": "src/types/authoring.ts",
     "sourceLocation": {
       "filePath": "src/types/authoring.ts",
-      "line": 73,
+      "line": 74,
       "column": 1
     },
     "exportPaths": [

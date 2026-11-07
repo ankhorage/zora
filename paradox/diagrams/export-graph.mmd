@@ -88,14 +88,10 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx["src/features/chess/adapters/inbound/OpeningBook.tsx"]
   module_src_features_chess_meta_ts["src/features/chess/meta.ts"]
   module_src_features_chess_public_ts["src/features/chess/public.ts"]
-  module_src_features_chess_utils_chessEngine_ts["src/features/chess/utils/chessEngine.ts"]
-  module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
-  module_src_features_chess_utils_createBoardSquares_ts["src/features/chess/utils/createBoardSquares.ts"]
+  module_src_features_chess_utils_createChessBoardCellPressHandler_ts["src/features/chess/utils/createChessBoardCellPressHandler.ts"]
+  module_src_features_chess_utils_createChessBoardCells_ts["src/features/chess/utils/createChessBoardCells.ts"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts["src/features/chess/utils/createChessBoardColorScheme.ts"]
   module_src_features_chess_utils_createOpeningBookColorScheme_ts["src/features/chess/utils/createOpeningBookColorScheme.ts"]
-  module_src_features_chess_utils_getSquareFile_ts["src/features/chess/utils/getSquareFile.ts"]
-  module_src_features_chess_utils_getSquareRank_ts["src/features/chess/utils/getSquareRank.ts"]
-  module_src_features_chess_utils_isLightSquare_ts["src/features/chess/utils/isLightSquare.ts"]
   module_src_features_chip_adapters_inbound_Chip_tsx["src/features/chip/adapters/inbound/Chip.tsx"]
   module_src_features_chip_adapters_inbound_ChipGroup_tsx["src/features/chip/adapters/inbound/ChipGroup.tsx"]
   module_src_features_chip_chipGroupMeta_ts["src/features/chip/chipGroupMeta.ts"]
@@ -786,46 +782,43 @@ graph LR
   export_CheckboxProps -.-> export_ZoraThemeMode
   export_ChessBoard["ChessBoard"]
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> export_ChessBoard
+  export_ChessBoardCell["ChessBoardCell"]
+  module_src_types_chess_ts --> export_ChessBoardCell
   export_ChessBoardColorOverrides["ChessBoardColorOverrides"]
   module_src_types_chess_ts --> export_ChessBoardColorOverrides
   export_ChessBoardColorScheme["ChessBoardColorScheme"]
   module_src_types_chess_ts --> export_ChessBoardColorScheme
+  export_ChessBoardDimensions["ChessBoardDimensions"]
+  module_src_types_chess_ts --> export_ChessBoardDimensions
   export_chessBoardMeta["chessBoardMeta"]
   module_src_features_chess_meta_ts --> export_chessBoardMeta
   export_ChessBoardOrientation["ChessBoardOrientation"]
   module_src_types_chess_ts --> export_ChessBoardOrientation
   export_ChessBoardProps["ChessBoardProps"]
   module_src_types_chess_ts --> export_ChessBoardProps
+  export_ChessBoardProps -.-> export_ChessBoardCell
   export_ChessBoardProps -.-> export_ChessBoardColorScheme
+  export_ChessBoardProps -.-> export_ChessBoardDimensions
   export_ChessBoardProps -.-> export_ChessBoardOrientation
   export_ChessBoardProps -.-> export_ChessMoveAttempt
-  export_ChessBoardProps -.-> export_ChessMoveResult
   export_ChessBoardProps -.-> export_ChessPieceRenderer
   export_ChessBoardProps -.-> export_ChessPieceState
-  export_ChessBoardProps -.-> export_ChessSquareId
   export_ChessBoardProps -.-> export_ZoraThemeMode
   export_ChessColorThemeShape["ChessColorThemeShape"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts --> export_ChessColorThemeShape
   export_ChessMoveAttempt["ChessMoveAttempt"]
   module_src_types_chess_ts --> export_ChessMoveAttempt
-  export_ChessMoveAttempt -.-> export_ChessPromotionPiece
-  export_ChessMoveResult["ChessMoveResult"]
-  module_src_types_chess_ts --> export_ChessMoveResult
-  export_ChessMoveResult -.-> export_ChessPromotionPiece
+  export_ChessMoveAttempt -.-> export_ChessBoardCell
   export_ChessPieceCode["ChessPieceCode"]
   module_src_types_chess_ts --> export_ChessPieceCode
   export_ChessPieceRenderContext["ChessPieceRenderContext"]
   module_src_types_chess_ts --> export_ChessPieceRenderContext
+  export_ChessPieceRenderContext -.-> export_ChessBoardCell
   export_ChessPieceRenderer["ChessPieceRenderer"]
   module_src_types_chess_ts --> export_ChessPieceRenderer
   export_ChessPieceState["ChessPieceState"]
   module_src_types_chess_ts --> export_ChessPieceState
-  export_ChessPromotionPiece["ChessPromotionPiece"]
-  module_src_types_chess_ts --> export_ChessPromotionPiece
-  export_ChessSquareId["ChessSquareId"]
-  module_src_types_chess_ts --> export_ChessSquareId
-  export_chessSquares["chessSquares"]
-  module_src_features_chess_utils_chessSquares_ts --> export_chessSquares
+  export_ChessPieceState -.-> export_ChessBoardCell
   export_Chip["Chip"]
   module_src_features_chip_adapters_inbound_Chip_tsx --> export_Chip
   export_ChipGroup["ChipGroup"]
@@ -872,9 +865,6 @@ graph LR
   module_src_types_content_rail_ts --> export_ContentRailSpacing
   export_ContentRailVisibleRangeChangeEvent["ContentRailVisibleRangeChangeEvent"]
   module_src_types_content_rail_ts --> export_ContentRailVisibleRangeChangeEvent
-  export_createBoardSquares["createBoardSquares"]
-  module_src_features_chess_utils_createBoardSquares_ts --> export_createBoardSquares
-  export_createBoardSquares -.-> export_ChessBoardOrientation
   export_createChessBoardColorScheme["createChessBoardColorScheme"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts --> export_createChessBoardColorScheme
   export_createChessBoardColorScheme -.-> export_ChessBoardColorScheme
@@ -1081,12 +1071,6 @@ graph LR
   export_GameProps["GameProps"]
   module_src_types_gamePresentation_ts --> export_GameProps
   export_GameProps -.-> export_ZoraThemeMode
-  export_getLegalTargets["getLegalTargets"]
-  module_src_features_chess_utils_chessEngine_ts --> export_getLegalTargets
-  export_getSquareFile["getSquareFile"]
-  module_src_features_chess_utils_getSquareFile_ts --> export_getSquareFile
-  export_getSquareRank["getSquareRank"]
-  module_src_features_chess_utils_getSquareRank_ts --> export_getSquareRank
   export_Gradient["Gradient"]
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> export_Gradient
   export_GradientColor["GradientColor"]
@@ -1229,8 +1213,6 @@ graph LR
   export_ImageProps -.-> export_SurfaceImageSource
   export_ImageProps -.-> export_UploadAsset
   export_ImageProps -.-> export_ZoraThemeMode
-  export_isLightSquare["isLightSquare"]
-  module_src_features_chess_utils_isLightSquare_ts --> export_isLightSquare
   export_KeyboardAvoidingView["KeyboardAvoidingView"]
   module_src_features_keyboard_avoiding_view_adapters_inbound_KeyboardAvoidingView_tsx --> export_KeyboardAvoidingView
   export_KeyboardAvoidingViewBehavior["KeyboardAvoidingViewBehavior"]
@@ -1468,9 +1450,6 @@ graph LR
   export_RatingProps["RatingProps"]
   module_src_types_rating_ts --> export_RatingProps
   export_RatingProps -.-> export_ZoraThemeMode
-  export_readChessPieces["readChessPieces"]
-  module_src_features_chess_utils_chessEngine_ts --> export_readChessPieces
-  export_readChessPieces -.-> export_ChessPieceState
   export_Reader["Reader"]
   module_src_features_reader_adapters_inbound_Reader_tsx --> export_Reader
   export_ReaderColorScheme["ReaderColorScheme"]
@@ -1884,10 +1863,6 @@ graph LR
   export_TreeViewProps -.-> export_TreeItemNode
   export_TreeViewProps -.-> export_TreeItemRenderProps
   export_TreeViewProps -.-> export_ZoraThemeMode
-  export_tryMove["tryMove"]
-  module_src_features_chess_utils_chessEngine_ts --> export_tryMove
-  export_tryMove -.-> export_ChessMoveAttempt
-  export_tryMove -.-> export_ChessMoveResult
   export_UploadAsset["UploadAsset"]
   module_src_types_upload_ts --> export_UploadAsset
   export_UploadAssetBase["UploadAssetBase"]
@@ -2025,6 +2000,7 @@ graph LR
   module_src_types_authoring_ts --> export_ZoraComponentPropSchema
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropArrayItemSchema
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropAuthoring
+  export_ZoraComponentPropSchema -.-> export_ZoraComponentPropType
   export_ZoraComponentPropSchema -.-> export_ZoraComponentPropValue
   export_ZoraComponentPropType["ZoraComponentPropType"]
   module_src_types_authoring_ts --> export_ZoraComponentPropType

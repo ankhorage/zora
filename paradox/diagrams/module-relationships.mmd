@@ -88,14 +88,10 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx["src/features/chess/adapters/inbound/OpeningBook.tsx"]
   module_src_features_chess_meta_ts["src/features/chess/meta.ts"]
   module_src_features_chess_public_ts["src/features/chess/public.ts"]
-  module_src_features_chess_utils_chessEngine_ts["src/features/chess/utils/chessEngine.ts"]
-  module_src_features_chess_utils_chessSquares_ts["src/features/chess/utils/chessSquares.ts"]
-  module_src_features_chess_utils_createBoardSquares_ts["src/features/chess/utils/createBoardSquares.ts"]
+  module_src_features_chess_utils_createChessBoardCellPressHandler_ts["src/features/chess/utils/createChessBoardCellPressHandler.ts"]
+  module_src_features_chess_utils_createChessBoardCells_ts["src/features/chess/utils/createChessBoardCells.ts"]
   module_src_features_chess_utils_createChessBoardColorScheme_ts["src/features/chess/utils/createChessBoardColorScheme.ts"]
   module_src_features_chess_utils_createOpeningBookColorScheme_ts["src/features/chess/utils/createOpeningBookColorScheme.ts"]
-  module_src_features_chess_utils_getSquareFile_ts["src/features/chess/utils/getSquareFile.ts"]
-  module_src_features_chess_utils_getSquareRank_ts["src/features/chess/utils/getSquareRank.ts"]
-  module_src_features_chess_utils_isLightSquare_ts["src/features/chess/utils/isLightSquare.ts"]
   module_src_features_chip_adapters_inbound_Chip_tsx["src/features/chip/adapters/inbound/Chip.tsx"]
   module_src_features_chip_adapters_inbound_ChipGroup_tsx["src/features/chip/adapters/inbound/ChipGroup.tsx"]
   module_src_features_chip_chipGroupMeta_ts["src/features/chip/chipGroupMeta.ts"]
@@ -840,10 +836,10 @@ graph LR
   module_src_features_chat_chatListItemMeta_ts --> module_src_types_authoring_ts
   module_src_features_chat_messageBubbleMeta_ts --> module_src_constants_authoring_ts
   module_src_features_chat_messageBubbleMeta_ts --> module_src_types_authoring_ts
-  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_chessEngine_ts
-  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createBoardSquares_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardCellPressHandler_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardCells_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_createChessBoardColorScheme_ts
-  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_chess_utils_isLightSquare_ts
+  module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_grid_view_public_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_chess_adapters_inbound_ChessBoard_tsx --> module_src_types_chess_ts
@@ -852,15 +848,11 @@ graph LR
   module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_chess_adapters_inbound_OpeningBook_tsx --> module_src_types_chess_ts
   module_src_features_chess_meta_ts --> module_src_types_authoring_ts
-  module_src_features_chess_utils_chessEngine_ts --> module_src_types_chess_ts
-  module_src_features_chess_utils_chessSquares_ts --> module_src_types_chess_ts
-  module_src_features_chess_utils_createBoardSquares_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_createChessBoardCellPressHandler_ts --> module_src_types_chess_ts
+  module_src_features_chess_utils_createChessBoardCells_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_createChessBoardColorScheme_ts --> module_src_types_chess_ts
   module_src_features_chess_utils_createOpeningBookColorScheme_ts --> module_src_features_chess_utils_createChessBoardColorScheme_ts
   module_src_features_chess_utils_createOpeningBookColorScheme_ts --> module_src_types_chess_ts
-  module_src_features_chess_utils_getSquareFile_ts --> module_src_types_chess_ts
-  module_src_features_chess_utils_getSquareRank_ts --> module_src_types_chess_ts
-  module_src_features_chess_utils_isLightSquare_ts --> module_src_types_chess_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_chip_utils_resolveChipColors_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_icon_public_ts
   module_src_features_chip_adapters_inbound_Chip_tsx --> module_src_features_icon_utils_resolveIconSize_ts

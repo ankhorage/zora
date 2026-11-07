@@ -1113,21 +1113,34 @@ Source: `src/types/checkbox.ts:6:1`
 
 Kind: `value`
 Module: `src/features/chess/adapters/inbound/ChessBoard.tsx`
-Source: `src/features/chess/adapters/inbound/ChessBoard.tsx:33:14`
+Source: `src/features/chess/adapters/inbound/ChessBoard.tsx:36:14`
 
-Renders caller-owned or FEN-backed chess state with optional legal-move validation.
+Renders a configurable caller-owned chess presentation through the shared GridView surface.
+
+## ChessBoardCell
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:9:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| column | property | `number` | yes |  |
+| row | property | `number` | yes |  |
 
 ## ChessBoardColorOverrides
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:53:1`
+Source: `src/types/chess.ts:56:1`
 
 ## ChessBoardColorScheme
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:38:1`
+Source: `src/types/chess.ts:41:1`
 
 ### Members
 
@@ -1146,6 +1159,19 @@ Source: `src/types/chess.ts:38:1`
 | lightSquareText | property | `string` | yes |  |
 | selectedSquare | property | `string` | yes |  |
 
+## ChessBoardDimensions
+
+Kind: `type`
+Module: `src/types/chess.ts`
+Source: `src/types/chess.ts:15:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| columns | property | `number` | yes |  |
+| rows | property | `number` | yes |  |
+
 ## chessBoardMeta
 
 Kind: `value`
@@ -1162,32 +1188,32 @@ Source: `src/types/chess.ts:5:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:67:1`
+Source: `src/types/chess.ts:70:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | colorScheme | property | `Partial<ChessBoardColorScheme> \| undefined` | no |  |
+| columns | property | `number \| undefined` | no |  |
 | disabled | property | `boolean \| undefined` | no |  |
-| fen | property | `string \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | lastMove | property | `ChessMoveAttempt \| null \| undefined` | no |  |
-| legalTargets | property | `readonly ("a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8")[] \| undefined` | no |  |
+| legalTargets | property | `readonly ChessBoardCell[] \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
-| onInvalidMove | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
-| onLegalMove | property | `((move: ChessMoveResult) => void) \| undefined` | no |  |
+| onCellPress | property | `((cell: ChessBoardCell) => void) \| undefined` | no |  |
+| onDimensionsChange | property | `((dimensions: ChessBoardDimensions) => void) \| undefined` | no |  |
 | onMoveAttempt | property | `((move: ChessMoveAttempt) => void) \| undefined` | no |  |
-| onSquarePress | property | `((square: ChessSquareId) => void) \| undefined` | no |  |
 | orientation | property | `ChessBoardOrientation \| undefined` | no |  |
 | pieces | property | `readonly ChessPieceState[] \| undefined` | no |  |
 | renderPiece | property | `ChessPieceRenderer \| undefined` | no |  |
-| selectedSquare | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8" \| null \| undefined` | no |  |
+| resizable | property | `boolean \| undefined` | no |  |
+| rows | property | `number \| undefined` | no |  |
+| selectedCell | property | `ChessBoardCell \| null \| undefined` | no |  |
 | showCoordinates | property | `boolean \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
-| validateMoves | property | `boolean \| undefined` | no |  |
 
 ## ChessColorThemeShape
 
@@ -1205,32 +1231,14 @@ Source: `src/features/chess/utils/createChessBoardColorScheme.ts:3:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:11:1`
+Source: `src/types/chess.ts:20:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| from | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
-| promotion | property | `ChessPromotionPiece \| undefined` | no |  |
-| to | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
-
-## ChessMoveResult
-
-Kind: `type`
-Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:17:1`
-
-### Members
-
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| fen | property | `string` | yes |  |
-| from | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
-| lan | property | `string` | yes |  |
-| promotion | property | `ChessPromotionPiece \| undefined` | no |  |
-| san | property | `string` | yes |  |
-| to | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
+| from | property | `ChessBoardCell` | yes |  |
+| to | property | `ChessBoardCell` | yes |  |
 
 ## ChessPieceCode
 
@@ -1242,55 +1250,36 @@ Source: `src/types/chess.ts:6:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:30:1`
+Source: `src/types/chess.ts:31:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| cell | property | `ChessBoardCell` | yes |  |
 | color | property | `string` | yes |  |
 | piece | property | `string` | yes |  |
-| square | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
+| size | property | `number` | yes |  |
 
 ## ChessPieceRenderer
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:36:1`
+Source: `src/types/chess.ts:39:1`
 
 ## ChessPieceState
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:24:1`
+Source: `src/types/chess.ts:25:1`
 
 ### Members
 
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| cell | property | `ChessBoardCell` | yes |  |
 | color | property | `"white" \| "black"` | yes |  |
 | piece | property | `string` | yes |  |
-| square | property | `"a1" \| "a2" \| "a3" \| "a4" \| "a5" \| "a6" \| "a7" \| "a8" \| "b1" \| "b2" \| "b3" \| "b4" \| "b5" \| "b6" \| "b7" \| "b8" \| "c1" \| "c2" \| "c3" \| "c4" \| "c5" \| "c6" \| "c7" \| "c8" \| "d1" \| "d2" \| "d3" \| "d4" \| "d5" \| "d6" \| "d7" \| "d8" \| "e1" \| "e2" \| "e3" \| "e4" \| "e5" \| "e6" \| "e7" \| "e8" \| "f1" \| "f2" \| "f3" \| "f4" \| "f5" \| "f6" \| "f7" \| "f8" \| "g1" \| "g2" \| "g3" \| "g4" \| "g5" \| "g6" \| "g7" \| "g8" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "h7" \| "h8"` | yes |  |
-
-## ChessPromotionPiece
-
-Kind: `unknown`
-Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:9:1`
-
-## ChessSquareId
-
-Kind: `unknown`
-Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:7:1`
-
-## chessSquares
-
-Kind: `value`
-Module: `src/features/chess/utils/chessSquares.ts`
-Source: `src/features/chess/utils/chessSquares.ts:4:14`
-
-Lists every board square in ascending rank and file order.
 
 ## Chip
 
@@ -1508,20 +1497,6 @@ Source: `src/types/content-rail.ts:15:1`
 | firstVisibleIndex | property | `number` | yes |  |
 | itemCount | property | `number` | yes |  |
 | lastVisibleIndex | property | `number` | yes |  |
-
-## createBoardSquares
-
-Kind: `function`
-Module: `src/features/chess/utils/createBoardSquares.ts`
-Source: `src/features/chess/utils/createBoardSquares.ts:7:1`
-
-Orders the 64 displayed squares for the selected player orientation.
-
-### Signatures
-
-- `(orientation: ChessBoardOrientation) => readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
-  - orientation: `ChessBoardOrientation`
-  - returns: `readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
 
 ## createChessBoardColorScheme
 
@@ -2644,49 +2619,6 @@ Source: `src/types/gamePresentation.ts:97:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 
-## getLegalTargets
-
-Kind: `function`
-Module: `src/features/chess/utils/chessEngine.ts`
-Source: `src/features/chess/utils/chessEngine.ts:63:1`
-
-Resolve legal destination squares from one FEN position and source square.
-
-### Signatures
-
-- `(fen: string, from: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
-  - fen: `string`
-  - from: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
-  - returns: `readonly ("a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8")[]`
-
-## getSquareFile
-
-Kind: `function`
-Module: `src/features/chess/utils/getSquareFile.ts`
-Source: `src/features/chess/utils/getSquareFile.ts:4:1`
-
-Returns the file letter of a chess square.
-
-### Signatures
-
-- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => string`
-  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
-  - returns: `string`
-
-## getSquareRank
-
-Kind: `function`
-Module: `src/features/chess/utils/getSquareRank.ts`
-Source: `src/features/chess/utils/getSquareRank.ts:4:1`
-
-Returns the rank number of a chess square.
-
-### Signatures
-
-- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => string`
-  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
-  - returns: `string`
-
 ## Gradient
 
 Kind: `value`
@@ -3466,20 +3398,6 @@ Source: `src/types/image.ts:8:1`
 | themeId | property | `string \| undefined` | no |  |
 | width | property | `string \| number \| undefined` | no |  |
 
-## isLightSquare
-
-Kind: `function`
-Module: `src/features/chess/utils/isLightSquare.ts`
-Source: `src/features/chess/utils/isLightSquare.ts:6:1`
-
-Determines whether a chess square uses the light presentation color.
-
-### Signatures
-
-- `(square: "a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8") => boolean`
-  - square: `"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8"`
-  - returns: `boolean`
-
 ## KeyboardAvoidingView
 
 Kind: `value`
@@ -4117,13 +4035,13 @@ Renders caller-owned opening suggestions and their visual states.
 
 Kind: `unknown`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:65:1`
+Source: `src/types/chess.ts:68:1`
 
 ## OpeningBookColorScheme
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:55:1`
+Source: `src/types/chess.ts:58:1`
 
 ### Members
 
@@ -4142,13 +4060,13 @@ Source: `src/types/chess.ts:55:1`
 
 Kind: `value`
 Module: `src/features/chess/meta.ts`
-Source: `src/features/chess/meta.ts:125:14`
+Source: `src/features/chess/meta.ts:149:14`
 
 ## OpeningBookMove
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:85:1`
+Source: `src/types/chess.ts:92:1`
 
 ### Members
 
@@ -4168,7 +4086,7 @@ Source: `src/types/chess.ts:85:1`
 
 Kind: `type`
 Module: `src/types/chess.ts`
-Source: `src/types/chess.ts:97:1`
+Source: `src/types/chess.ts:104:1`
 
 ### Members
 
@@ -4856,20 +4774,6 @@ Source: `src/types/rating.ts:5:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 | value | property | `number` | yes |  |
-
-## readChessPieces
-
-Kind: `function`
-Module: `src/features/chess/utils/chessEngine.ts`
-Source: `src/features/chess/utils/chessEngine.ts:44:1`
-
-Read all pieces from a FEN-backed position. Invalid FEN produces an empty position.
-
-### Signatures
-
-- `(fen: string) => ReadonlyMap<"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8", ChessPieceState>`
-  - fen: `string`
-  - returns: `ReadonlyMap<"a1" | "a2" | "a3" | "a4" | "a5" | "a6" | "a7" | "a8" | "b1" | "b2" | "b3" | "b4" | "b5" | "b6" | "b7" | "b8" | "c1" | "c2" | "c3" | "c4" | "c5" | "c6" | "c7" | "c8" | "d1" | "d2" | "d3" | "d4" | "d5" | "d6" | "d7" | "d8" | "e1" | "e2" | "e3" | "e4" | "e5" | "e6" | "e7" | "e8" | "f1" | "f2" | "f3" | "f4" | "f5" | "f6" | "f7" | "f8" | "g1" | "g2" | "g3" | "g4" | "g5" | "g6" | "g7" | "g8" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "h7" | "h8", ChessPieceState>`
 
 ## Reader
 
@@ -7324,21 +7228,6 @@ Source: `src/types/tree-view.ts:26:1`
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
 
-## tryMove
-
-Kind: `function`
-Module: `src/features/chess/utils/chessEngine.ts`
-Source: `src/features/chess/utils/chessEngine.ts:69:1`
-
-Attempt one legal chess move against FEN and return the resulting position/move notation.
-
-### Signatures
-
-- `(fen: string, attempt: ChessMoveAttempt) => ChessMoveResult | null`
-  - attempt: `ChessMoveAttempt`
-  - fen: `string`
-  - returns: `ChessMoveResult | null`
-
 ## UploadAsset
 
 Kind: `unknown`
@@ -7827,7 +7716,7 @@ Source: `src/types/theme.ts:90:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:45:1`
+Source: `src/types/authoring.ts:46:1`
 
 ### Members
 
@@ -7847,7 +7736,7 @@ Source: `src/types/authoring.ts:9:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:66:1`
+Source: `src/types/authoring.ts:67:1`
 
 ### Members
 
@@ -7862,7 +7751,7 @@ Source: `src/types/authoring.ts:66:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:59:1`
+Source: `src/types/authoring.ts:60:1`
 
 ### Members
 
@@ -7877,19 +7766,19 @@ Source: `src/types/authoring.ts:59:1`
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:56:1`
+Source: `src/types/authoring.ts:57:1`
 
 ## ZoraComponentEventPayloadKind
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:55:1`
+Source: `src/types/authoring.ts:56:1`
 
 ## ZoraComponentI18nMeta
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:51:1`
+Source: `src/types/authoring.ts:52:1`
 
 ### Members
 
@@ -7901,7 +7790,7 @@ Source: `src/types/authoring.ts:51:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:78:1`
+Source: `src/types/authoring.ts:79:1`
 
 ### Members
 
@@ -7915,7 +7804,7 @@ Source: `src/types/authoring.ts:78:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:84:1`
+Source: `src/types/authoring.ts:85:1`
 
 ### Members
 
@@ -7940,13 +7829,13 @@ Source: `src/types/authoring.ts:84:1`
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:101:1`
+Source: `src/types/authoring.ts:102:1`
 
 ## ZoraComponentPropArrayItemSchema
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:29:1`
+Source: `src/types/authoring.ts:30:1`
 
 ### Members
 
@@ -7959,13 +7848,13 @@ Source: `src/types/authoring.ts:29:1`
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:21:1`
+Source: `src/types/authoring.ts:22:1`
 
 ## ZoraComponentPropSchema
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:34:1`
+Source: `src/types/authoring.ts:35:1`
 
 ### Members
 
@@ -7978,19 +7867,19 @@ Source: `src/types/authoring.ts:34:1`
 | itemSchema | property | `readonly ZoraComponentPropArrayItemSchema[] \| undefined` | no |  |
 | label | property | `string \| undefined` | no |  |
 | mediaKinds | property | `readonly ("image" \| "video" \| "audio" \| "file" \| "font")[] \| undefined` | no |  |
-| type | property | `UiComponentPropType` | yes |  |
+| type | property | `ZoraComponentPropType` | yes |  |
 
 ## ZoraComponentPropType
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:11:1`
+Source: `src/types/authoring.ts:12:1`
 
 ## ZoraComponentPropValue
 
 Kind: `unknown`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:13:1`
+Source: `src/types/authoring.ts:14:1`
 
 ## ZoraComponentRegistry
 
@@ -8002,7 +7891,7 @@ Source: `src/types/registry.ts:3:1`
 
 Kind: `type`
 Module: `src/types/authoring.ts`
-Source: `src/types/authoring.ts:73:1`
+Source: `src/types/authoring.ts:74:1`
 
 ### Members
 
