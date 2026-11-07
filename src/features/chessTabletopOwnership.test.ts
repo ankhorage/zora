@@ -32,17 +32,13 @@ test('Chess and Tabletop implementation modules own one matching runtime export 
             );
           return [];
         });
-        const expectedExports =
-          name === 'chessEngine.ts'
-            ? ['getLegalTargets', 'readChessPieces', 'tryMove']
-            : [parse(name).name];
-        expect(runtimeExports.sort(), join(directory, name)).toEqual(expectedExports.sort());
+        expect(runtimeExports.sort(), join(directory, name)).toEqual([parse(name).name]);
       }
     }
   }
 });
 
-test('Chess and Tabletop source graphs depend only on their intentional runtime owners', () => {
+test('Chess and Tabletop source graphs depend only on their intentional presentation owners', () => {
   const sourcePaths = featureRoots.flatMap((featureRoot) => {
     const visit = (directory: string): string[] =>
       readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -67,7 +63,7 @@ test('Chess and Tabletop source graphs depend only on their intentional runtime 
     for (const specifier of imports) {
       if (specifier.startsWith('.')) continue;
       expect(
-        ['react', 'react-native', 'chess.js', '@ankhorage/color-theory'],
+        ['react', 'react-native', '@ankhorage/color-theory'],
         `${path}: ${specifier}`,
       ).toContain(specifier);
     }

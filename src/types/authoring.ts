@@ -8,7 +8,8 @@ import type {
 
 export type ZoraComponentCategory = 'foundation' | 'component' | 'pattern' | 'layout';
 
-export type ZoraComponentPropType = UiComponentPropType;
+/** ZORA authoring additionally describes serializable object-shaped values. */
+export type ZoraComponentPropType = UiComponentPropType | 'object';
 
 export type ZoraComponentPropValue =
   | string

@@ -119,18 +119,17 @@ export type {
 } from './features/chat/public';
 export { ChatListItem, MessageBubble } from './features/chat/public';
 export type {
+  ChessBoardCell,
   ChessBoardColorOverrides,
   ChessBoardColorScheme,
+  ChessBoardDimensions,
   ChessBoardOrientation,
   ChessBoardProps,
   ChessMoveAttempt,
-  ChessMoveResult,
   ChessPieceCode,
   ChessPieceRenderContext,
   ChessPieceRenderer,
   ChessPieceState,
-  ChessPromotionPiece,
-  ChessSquareId,
   OpeningBookColorOverrides,
   OpeningBookColorScheme,
   OpeningBookMove,
@@ -138,18 +137,7 @@ export type {
 } from './features/chess/public';
 export type { ChessColorThemeShape } from './features/chess/public';
 export { ChessBoard, chessBoardMeta, OpeningBook, openingBookMeta } from './features/chess/public';
-export {
-  chessSquares,
-  createBoardSquares,
-  createChessBoardColorScheme,
-  createOpeningBookColorScheme,
-  getLegalTargets,
-  getSquareFile,
-  getSquareRank,
-  isLightSquare,
-  readChessPieces,
-  tryMove,
-} from './features/chess/public';
+export { createChessBoardColorScheme, createOpeningBookColorScheme } from './features/chess/public';
 export type { ChipProps } from './features/chip/public';
 export type { ChipGroupItem, ChipGroupProps } from './features/chip/public';
 export { Chip } from './features/chip/public';
