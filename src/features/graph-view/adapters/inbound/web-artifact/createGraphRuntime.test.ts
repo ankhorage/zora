@@ -109,6 +109,48 @@ test('fits changed topology but preserves viewport and avoids relayout for highl
   }
 });
 
+test('fits a changed layout algorithm even when visible topology is unchanged', async () => {
+  const initial = Promise.withResolvers<GraphViewController>();
+  const completed = Promise.withResolvers<GraphViewController>();
+  const callbacks: { current: GraphViewCallbacks } = { current: { onReady: initial.resolve } };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const input = {
+    nodes: [{ id: 'a' }, { id: 'b' }, { id: 'c' }],
+    edges: [
+      { source: 'a', target: 'b' },
+      { source: 'b', target: 'c' },
+    ],
+    layout: 'grid' as const,
+    richNodeRendering: false,
+    zoomMode: 'fit-relative' as const,
+  };
+  try {
+    runtime.update(input);
+    const controller = await initial.promise;
+    controller.setZoom(0.7);
+    controller.setPan({ x: 40, y: 30 });
+    callbacks.current = { onLayoutComplete: completed.resolve };
+    runtime.update({ ...input, layout: 'circle' });
+    const settled = await completed.promise;
+    expect(settled.getViewport().zoom).not.toBeCloseTo(0.7);
+    expectMeasuredNodesToFit(settled, ['a', 'b', 'c']);
+  } finally {
+    runtime.destroy();
+  }
+});
+
+function expectMeasuredNodesToFit(controller: GraphViewController, nodeIds: readonly string[]) {
+  const measurement = controller.measureNodes?.(nodeIds);
+  expect(measurement).not.toBeNull();
+  if (measurement === null) return;
+  for (const node of measurement.nodes) {
+    expect(node.position.x - node.size.width / 2).toBeGreaterThanOrEqual(0);
+    expect(node.position.y - node.size.height / 2).toBeGreaterThanOrEqual(0);
+    expect(node.position.x + node.size.width / 2).toBeLessThanOrEqual(measurement.viewport.width);
+    expect(node.position.y + node.size.height / 2).toBeLessThanOrEqual(measurement.viewport.height);
+  }
+}
+
 test('preserves selection and positions through hover presentation updates without relayout', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
   const events: GraphViewElementEvent[] = [];

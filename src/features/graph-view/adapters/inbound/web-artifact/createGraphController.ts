@@ -23,6 +23,7 @@ export function createGraphController(
     fitSize: Infinity,
     readableZoom: 0,
     fitZoom: Infinity,
+    resizeSnapshot: null as GraphResizeSnapshot | null,
   };
   const controller: GraphViewController = {
     fit(options) {
@@ -78,6 +79,10 @@ export function createGraphController(
     getReadableZoomTarget() {
       return state.readableZoom;
     },
+    /*** Capture the model point beneath the current viewport center before Cytoscape resizes. */
+    beginResize() {
+      state.resizeSnapshot = captureResizeSnapshot(cy);
+    },
     settle(fit: boolean) {
       const logicalZoom = cy.zoom() / state.scale;
       const fonts = cy
@@ -95,13 +100,89 @@ export function createGraphController(
         ? Math.min(getNodeFitZoom(cy, fitPaddingRef.current), state.fitZoom)
         : 1;
       applyZoomLimits(cy, state);
-      if (fit) controller.fit();
-      else if (state.relative) {
-        setCenteredZoom(cy, logicalZoom * state.scale);
-        cy.center(cy.nodes());
-      }
+      if (fit) {
+        state.resizeSnapshot = null;
+        controller.fit();
+      } else if (settlePreservedViewport(cy, state, logicalZoom)) controller.fit();
     },
   };
+}
+
+interface GraphResizeSnapshot {
+  readonly center: { readonly x: number; readonly y: number };
+  readonly nodeBounds: GraphNodeBoundsStatus;
+}
+
+type GraphNodeBoundsStatus = 'clipped' | 'empty' | 'fit' | 'unusable';
+
+/*** Capture the model-space center and whether the prior viewport was an intact graph fit. */
+function captureResizeSnapshot(cy: Core): GraphResizeSnapshot | null {
+  const viewport = { width: cy.width(), height: cy.height() };
+  const zoom = cy.zoom();
+  if (!isUsableViewport(viewport) || !Number.isFinite(zoom) || zoom <= 0) return null;
+  const pan = cy.pan();
+  const renderedCenter = { x: viewport.width / 2, y: viewport.height / 2 };
+  return {
+    center: {
+      x: (renderedCenter.x - pan.x) / zoom,
+      y: (renderedCenter.y - pan.y) / zoom,
+    },
+    nodeBounds: getNodeBoundsStatus(cy, viewport),
+  };
+}
+
+/*** Preserve a manual viewport through resize, fitting only when an intact prior fit becomes invalid. */
+function settlePreservedViewport(
+  cy: Core,
+  state: {
+    readonly relative: boolean;
+    resizeSnapshot: GraphResizeSnapshot | null;
+    readonly scale: number;
+  },
+  logicalZoom: number,
+): boolean {
+  const snapshot = state.resizeSnapshot;
+  state.resizeSnapshot = null;
+  const zoom = state.relative ? logicalZoom * state.scale : cy.zoom();
+  if (snapshot === null) {
+    if (state.relative) setCenteredZoom(cy, zoom);
+    return false;
+  }
+  const viewport = { width: cy.width(), height: cy.height() };
+  if (!isUsableViewport(viewport)) return false;
+  cy.viewport({
+    zoom,
+    pan: {
+      x: viewport.width / 2 - snapshot.center.x * zoom,
+      y: viewport.height / 2 - snapshot.center.y * zoom,
+    },
+  });
+  const nodeBounds = getNodeBoundsStatus(cy, viewport);
+  return nodeBounds === 'unusable' || (snapshot.nodeBounds === 'fit' && nodeBounds === 'clipped');
+}
+
+/*** Accept only finite non-empty node bounds that are wholly visible in a usable viewport. */
+function getNodeBoundsStatus(
+  cy: Core,
+  viewport: { readonly width: number; readonly height: number },
+): GraphNodeBoundsStatus {
+  if (cy.nodes().empty()) return 'empty';
+  if (!isUsableViewport(viewport)) return 'unusable';
+  const bounds = cy.nodes().renderedBoundingBox();
+  if (![bounds.x1, bounds.x2, bounds.y1, bounds.y2].every(Number.isFinite)) return 'unusable';
+  const fitsHorizontally = bounds.x1 >= 0 && bounds.x2 <= viewport.width;
+  const fitsVertically = bounds.y1 >= 0 && bounds.y2 <= viewport.height;
+  return fitsHorizontally && fitsVertically ? 'fit' : 'clipped';
+}
+
+/*** Reject zero, negative, and non-finite renderer dimensions before viewport arithmetic. */
+function isUsableViewport(viewport: { readonly width: number; readonly height: number }): boolean {
+  return (
+    Number.isFinite(viewport.width) &&
+    Number.isFinite(viewport.height) &&
+    viewport.width > 0 &&
+    viewport.height > 0
+  );
 }
 
 /*** Measure rendered node geometry for public consumers while keeping Cytoscape private. */
