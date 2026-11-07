@@ -82,6 +82,13 @@ test('preserves manual pan while recomputing a fit-relative zoom reference', () 
     owner.controller.setPan({ x: 140, y: 90 });
     owner.settle(false);
     expect(owner.controller.getViewport().pan).toEqual({ x: 140, y: 90 });
+
+    // Atlas #332: selecting a compound must not recenter a fit-relative viewport.
+    const atlasViewport = { x: -331.42857142857133, y: -222.85714285714278 };
+    owner.controller.setPan(atlasViewport);
+    cy.getElementById('a').select();
+    owner.settle(false);
+    expect(owner.controller.getViewport().pan).toEqual(atlasViewport);
   } finally {
     cy.destroy();
   }
