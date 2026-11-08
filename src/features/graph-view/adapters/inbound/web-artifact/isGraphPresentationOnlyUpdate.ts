@@ -35,9 +35,9 @@ function sameNodeGeometryInputs(
       const next = current.at(index);
       return (
         node.id === next?.id &&
-        node.parentId === next?.parentId &&
-        node.label === next?.label &&
-        sameData(node.data, next?.data)
+        node.parentId === next.parentId &&
+        node.label === next.label &&
+        sameData(node.data, next.data)
       );
     })
   );
@@ -53,10 +53,10 @@ function sameEdgeGeometryInputs(
     previous.every((edge, index) => {
       const next = current.at(index);
       return (
-        edge.id === next?.id &&
         edge.source === next?.source &&
-        edge.target === next?.target &&
-        sameData(edge.data, next?.data)
+        edge.id === next.id &&
+        edge.target === next.target &&
+        sameData(edge.data, next.data)
       );
     })
   );
