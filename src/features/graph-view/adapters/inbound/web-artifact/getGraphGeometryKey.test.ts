@@ -11,6 +11,7 @@ test('ignores styled highlight colors but detects changed layout dimensions', ()
     style: [
       { selector: 'node', style: { width: 'data(width)', height: 24 } },
       { selector: 'node.highlight', style: { 'background-color': '#ff0000' } },
+      { selector: 'node.expanded', style: { width: 160 } },
     ],
   });
   try {
@@ -19,7 +20,7 @@ test('ignores styled highlight colors but detects changed layout dimensions', ()
     syncGraphElements(cy, [{ id: 'a', classes: 'highlight', data: { width: 80 } }], []);
     expect(cy.getElementById('a').style('background-color')).toBe('rgb(255,0,0)');
     expect(getGraphGeometryKey(cy)).toBe(before);
-    syncGraphElements(cy, [{ id: 'a', classes: 'highlight', data: { width: 160 } }], []);
+    syncGraphElements(cy, [{ id: 'a', classes: 'expanded', data: { width: 80 } }], []);
     expect(getGraphGeometryKey(cy)).not.toBe(before);
   } finally {
     cy.destroy();
