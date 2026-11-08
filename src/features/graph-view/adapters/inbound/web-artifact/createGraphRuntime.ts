@@ -16,6 +16,7 @@ import { createGraphController } from './createGraphController';
 import { createGraphLoopSizer } from './createGraphLoopSizer';
 import { createGraphResizeObserver, type GraphResizeObserver } from './createGraphResizeObserver';
 import { getGraphGeometryKey } from './getGraphGeometryKey';
+import { isGraphPresentationOnlyUpdate } from './isGraphPresentationOnlyUpdate';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
 import { hasGraphLayoutChanged } from './hasGraphLayoutChanged';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
@@ -192,7 +193,10 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   applyKnownNodeSizes(state);
   state.loopSizer.update();
   const geometry = getGraphGeometryKey(state.cy);
-  const relayout = geometry !== state.geometryRef.current || hasGraphLayoutChanged(previous, input);
+  // Class-only selection updates must not move a node between two native pointer presses.
+  const relayout =
+    hasGraphLayoutChanged(previous, input) ||
+    (geometry !== state.geometryRef.current && !isGraphPresentationOnlyUpdate(previous, input));
   state.geometryRef.current = geometry;
   if (!relayout) {
     if (
