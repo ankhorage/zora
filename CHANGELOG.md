@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.0.2
+
+### Patch Changes
+
+- 8066dd0: Update dependencies: `@ankhorage/contracts`.
+
 ## 26.0.1
 
 ### Patch Changes
