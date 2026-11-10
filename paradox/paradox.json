@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v26.0.0",
+      "value": "v26.0.1",
       "color": "cb3837"
     },
     {
@@ -67005,7 +67005,7 @@
     },
     {
       "name": "measureRenderedNodes",
-      "description": "Measure rendered node geometry for public consumers while keeping Cytoscape private.",
+      "description": "Measure rendered node hit geometry without exposing paint-only outlines or Cytoscape.",
       "see": [],
       "security": [],
       "sourceLocation": {
@@ -67021,7 +67021,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 210,
+        "line": 209,
         "column": 1
       }
     },
@@ -67032,7 +67032,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 226,
+        "line": 225,
         "column": 1
       }
     },
@@ -67043,7 +67043,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 234,
+        "line": 233,
         "column": 1
       }
     },
@@ -67054,7 +67054,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 244,
+        "line": 243,
         "column": 1
       }
     },
@@ -67197,7 +67197,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 220,
+        "line": 222,
         "column": 1
       }
     },
@@ -67208,7 +67208,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 241,
+        "line": 243,
         "column": 1
       }
     },
@@ -67219,7 +67219,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 282,
+        "line": 284,
         "column": 1
       }
     },
@@ -67230,7 +67230,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 308,
+        "line": 310,
         "column": 1
       }
     },
@@ -67241,7 +67241,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 316,
+        "line": 318,
         "column": 1
       }
     },
@@ -67252,7 +67252,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 340,
+        "line": 342,
         "column": 1
       }
     },
@@ -67263,7 +67263,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 354,
+        "line": 356,
         "column": 1
       }
     },
@@ -67274,7 +67274,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 363,
+        "line": 365,
         "column": 1
       }
     },
@@ -67285,7 +67285,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 368,
+        "line": 370,
         "column": 1
       }
     },
@@ -67296,7 +67296,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 378,
+        "line": 380,
         "column": 1
       }
     },
@@ -67307,7 +67307,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 391,
+        "line": 393,
         "column": 1
       }
     },
@@ -67318,7 +67318,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 403,
+        "line": 405,
         "column": 1
       }
     },
@@ -67329,7 +67329,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 412,
+        "line": 414,
         "column": 1
       }
     },
@@ -67340,7 +67340,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 426,
+        "line": 428,
         "column": 1
       }
     },
@@ -67351,7 +67351,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 431,
+        "line": 433,
         "column": 1
       }
     },
@@ -67643,7 +67643,7 @@
     },
     {
       "name": "getGraphGeometryKey",
-      "description": "Identifies layout-relevant leaf dimensions without including positions or presentation colors.\nAdding viewport, color or arbitrary data to this key turns interaction updates into relayouts.\nMeasure after style reconciliation; actual size changes still require layout. Compound bounds\nfollow child positions, so keying their measured bounds would feed layout output back into input.\nStyled geometry tests and runtime interaction tests protect these distinctions.",
+      "description": "Identifies layout-relevant leaf dimensions without including positions or paint-only outlines.\nCytoscape's layoutDimensions() includes selected-outline rendering even though layouts use only\nthe node body, padding, border, and label bounds. Key those direct inputs instead. Compound\nbounds follow child positions, so keying their measured bounds would feed layout output back\ninto input. Styled geometry tests and runtime interaction tests protect these distinctions.",
       "see": [],
       "security": [],
       "sourceLocation": {

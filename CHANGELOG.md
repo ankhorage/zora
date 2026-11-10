@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.0.1
+
+### Patch Changes
+
+- 89e0e4b: Preserve GraphView node double-press hit targets by preventing class-only selection or hover updates from triggering a layout between native pointer presses.
+
 ## 26.0.0
 
 ### Major Changes
