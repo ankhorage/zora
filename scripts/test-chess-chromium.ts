@@ -47,6 +47,7 @@ async function testChessChromiumAsync() {
         ? new Response(Bun.file(bundlePath))
         : new Response(
             '<!doctype html><meta charset="utf-8"><script type="module" src="/chess-acceptance.js"></script>',
+            { headers: { 'content-type': 'text/html' } },
           );
     },
     port: 0,
@@ -211,7 +212,7 @@ class ChromeSession {
     await this.sendAsync('Page.navigate', { url });
   }
   async resizeAsync(width: number) {
-    await this.evaluateAsync(`window.chessAcceptance.resize(${width})`);
+    await this.evaluateAsync(`window.chessAcceptance.resize(${width}); true`);
   }
   async clickRectAsync(rect: ChessRect) {
     await this.mouseAsync(rect, 'mousePressed');
