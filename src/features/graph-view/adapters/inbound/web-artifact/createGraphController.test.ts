@@ -243,7 +243,6 @@ test('measures requested rendered nodes without exposing Cytoscape', () => {
   try {
     const measurement = controller.measureNodes?.(['a', 'missing']);
     const node = cy.getElementById('a');
-    const bounds = node.renderedBoundingBox();
 
     expect(measurement).toEqual({
       viewport: { width: 800, height: 600 },
@@ -251,7 +250,7 @@ test('measures requested rendered nodes without exposing Cytoscape', () => {
         {
           id: 'a',
           position: node.renderedPosition(),
-          size: { width: bounds.w, height: bounds.h },
+          size: { width: node.renderedOuterWidth(), height: node.renderedOuterHeight() },
         },
       ],
     });

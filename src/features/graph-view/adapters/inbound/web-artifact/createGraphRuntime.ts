@@ -192,7 +192,9 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   applyKnownNodeSizes(state);
   state.loopSizer.update();
   const geometry = getGraphGeometryKey(state.cy);
-  const relayout = geometry !== state.geometryRef.current || hasGraphLayoutChanged(previous, input);
+  // Keep native double-press targets stable for paint-only class changes. A class that changes
+  // measured node dimensions remains a geometry change and must relayout.
+  const relayout = hasGraphLayoutChanged(previous, input) || geometry !== state.geometryRef.current;
   state.geometryRef.current = geometry;
   if (!relayout) {
     if (

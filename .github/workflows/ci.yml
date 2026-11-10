@@ -108,6 +108,19 @@ jobs:
             echo "No test script found; skipping."
           fi
 
+      - name: Verify Chromium executable
+        run: |
+          chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$chrome_bin" ]; then
+            echo "No supported Chromium executable is available on the Ubuntu runner." >&2
+            exit 1
+          fi
+          "$chrome_bin" --version
+          echo "CHROME_BIN=$chrome_bin" >> "$GITHUB_ENV"
+
+      - name: Run Chromium GraphView acceptance
+        run: bun run test:graph-view:chromium
+
       - name: Run typecheck
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.typecheck ? 0 : 1)"; then

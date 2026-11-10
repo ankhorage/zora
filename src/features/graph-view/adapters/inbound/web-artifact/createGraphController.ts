@@ -185,7 +185,7 @@ function isUsableViewport(viewport: { readonly width: number; readonly height: n
   );
 }
 
-/*** Measure rendered node geometry for public consumers while keeping Cytoscape private. */
+/*** Measure rendered node hit geometry without exposing paint-only outlines or Cytoscape. */
 function measureRenderedNodes(cy: Core, nodeIds: readonly string[]): GraphViewMeasurement | null {
   const viewport = { width: cy.width(), height: cy.height() };
   if (viewport.width <= 0 || viewport.height <= 0 || nodeIds.length === 0) return null;
@@ -194,12 +194,11 @@ function measureRenderedNodes(cy: Core, nodeIds: readonly string[]): GraphViewMe
     const node = cy.getElementById(id);
     if (!node.isNode()) return [];
 
-    const bounds = node.renderedBoundingBox();
     return [
       {
         id,
         position: node.renderedPosition(),
-        size: { width: bounds.w, height: bounds.h },
+        size: { width: node.renderedOuterWidth(), height: node.renderedOuterHeight() },
       },
     ];
   });

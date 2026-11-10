@@ -214,6 +214,51 @@ test('preserves selection and positions through hover presentation updates witho
   }
 });
 
+test('does not relayout when controlled selection adds a paint-only outline', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const calls = { sort: 0 };
+  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const input = {
+    nodes: [
+      { id: 'src', label: 'src' },
+      { id: 'dependency', label: 'dependency' },
+    ],
+    edges: [{ source: 'src', target: 'dependency' }],
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: false,
+    sizeNodesToLabels: true,
+    styleRules: [
+      {
+        selector: 'node',
+        style: { height: 24, label: 'data(label)', padding: '12px', width: 24 },
+      },
+      { selector: 'node:selected', style: { 'outline-width': 2 } },
+    ],
+  };
+  try {
+    runtime.update(input);
+    await ready.promise;
+    const sortCount = calls.sort;
+    runtime.setSelectedNodeIds(['src']);
+    runtime.update({
+      ...input,
+      nodes: [
+        { id: 'src', classes: 'highlight', label: 'src' },
+        { id: 'dependency', label: 'dependency' },
+      ],
+    });
+    expect(calls.sort).toBe(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
 test('forwards semantic selection intent from rich-node press events', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
   const events: GraphViewElementEvent[] = [];
