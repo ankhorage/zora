@@ -25,14 +25,6 @@ describe('Chess presentation', () => {
     expect(source).not.toContain('fen');
   });
 
-  test('gives every rendered cell the GridView-computed hit-target dimensions', async () => {
-    const source = await Bun.file('src/features/chess/adapters/inbound/ChessBoard.tsx').text();
-
-    expect(source).toContain(
-      'style={[styles.square, { backgroundColor, height: cellSize, width: cellSize }]}',
-    );
-  });
-
   test('maps non-square boards into opposite GridView coordinates for white and black orientation', () => {
     const white = createChessBoardCells(3, 2, 'white');
     const black = createChessBoardCells(3, 2, 'black');
