@@ -39,9 +39,7 @@ async function testGraphViewChromiumAsync() {
   const browser = await ChromeSession.createAsync(await dynamicPortAsync());
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
-    const initial = await browser.waitForStateAsync(
-      (state) => state.ready && state.measurement !== null,
-    );
+    const initial = await browser.waitForStableInitialStateAsync();
     const before = requireMeasurement(initial);
     const beforeViewport = requireViewport(initial);
     const beforeSorts = initial.layoutSorts;
@@ -129,9 +127,10 @@ function requireViewport(state: GraphAcceptanceState): GraphViewport {
 interface GraphAcceptanceState {
   readonly events: readonly { readonly id: string; readonly type: string }[];
   readonly layoutCompletions: number;
+  readonly layoutCompleteEvents: number;
   readonly layoutSorts: number;
   readonly measurement: GraphMeasurement | null;
-  readonly ready: boolean;
+  readonly readyEvents: number;
   readonly selected: boolean;
   readonly viewport: GraphViewport | null;
 }
@@ -148,6 +147,21 @@ interface GraphMeasurement {
 interface GraphViewport {
   readonly pan: { readonly x: number; readonly y: number };
   readonly zoom: number;
+}
+
+/*** Require public lifecycle counters, geometry, and viewport to remain exact between frames. */
+function isStableInitialGraphState(
+  previous: GraphAcceptanceState,
+  next: GraphAcceptanceState,
+): boolean {
+  return (
+    previous.readyEvents === next.readyEvents &&
+    previous.layoutCompleteEvents === next.layoutCompleteEvents &&
+    previous.layoutCompletions === next.layoutCompletions &&
+    previous.layoutSorts === next.layoutSorts &&
+    JSON.stringify(previous.measurement) === JSON.stringify(next.measurement) &&
+    JSON.stringify(previous.viewport) === JSON.stringify(next.viewport)
+  );
 }
 
 /*** Drive an isolated Chrome page through its public DevTools Protocol endpoint. */
@@ -241,11 +255,31 @@ class ChromeSession {
       );
       last = state;
       if (state !== null && predicate(state)) return state;
-      await Bun.sleep(25);
+      await this.nextAnimationFrameAsync();
     }
     throw new Error(
       `Timed out waiting for a stable public GraphView state: ${JSON.stringify(last)}`,
     );
+  }
+
+  /*** Wait for public lifecycle completion and stable public geometry across browser animation frames. */
+  async waitForStableInitialStateAsync(): Promise<GraphAcceptanceState> {
+    const initial = await this.waitForStateAsync(
+      (state) =>
+        state.readyEvents > 0 &&
+        state.layoutCompleteEvents > 0 &&
+        state.measurement !== null &&
+        state.viewport !== null,
+    );
+    await this.nextAnimationFrameAsync();
+    const settled = await this.readStateAsync();
+    await this.nextAnimationFrameAsync();
+    const stable = await this.readStateAsync();
+    assert(
+      isStableInitialGraphState(initial, settled) && isStableInitialGraphState(settled, stable),
+      `Initial public GraphView state changed after lifecycle completion: ${JSON.stringify({ initial, settled, stable })}`,
+    );
+    return stable;
   }
 
   close(): void {
@@ -253,8 +287,26 @@ class ChromeSession {
     this.process.kill();
   }
 
+  private async nextAnimationFrameAsync(): Promise<void> {
+    await this.evaluateAsync(
+      'new Promise((resolve) => requestAnimationFrame(() => resolve(true)))',
+    );
+  }
+
+  private async readStateAsync(): Promise<GraphAcceptanceState> {
+    const state = await this.evaluateAsync<GraphAcceptanceState | null>(
+      'window.graphAcceptance?.read() ?? null',
+    );
+    assert(state !== null, 'GraphView acceptance fixture is unavailable.');
+    return state;
+  }
+
   private async evaluateAsync<T>(expression: string): Promise<T> {
-    const result = await this.sendAsync('Runtime.evaluate', { expression, returnByValue: true });
+    const result = await this.sendAsync('Runtime.evaluate', {
+      awaitPromise: true,
+      expression,
+      returnByValue: true,
+    });
     assert(
       isRecord(result) && isRecord(result.result) && 'value' in result.result,
       `Chrome returned no value for ${expression}.`,
