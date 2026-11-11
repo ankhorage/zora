@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v26.0.4",
+      "value": "v26.0.5",
       "color": "cb3837"
     },
     {
@@ -64843,7 +64843,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/chess/utils/createChessBoardCellPressHandler.ts",
-        "line": 28,
+        "line": 36,
         "column": 1
       }
     },
