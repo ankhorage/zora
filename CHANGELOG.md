@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.0.5
+
+### Patch Changes
+
+- ddeafcf: Restore usable React Native Web touch targets for ChessBoard cells.
+
 ## 26.0.4
 
 ### Patch Changes
