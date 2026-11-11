@@ -18,6 +18,7 @@ export default createKnipConfig({
     'test-fixtures/registrySnapshot.test.ts',
     'test-fixtures/graphLayoutLifecycle.ts',
     'test-fixtures/graphViewChromiumAcceptance.tsx',
+    'test-fixtures/chessChromiumAcceptance.tsx',
     'type-tests/**/*.ts',
   ],
   ignoreFiles: [

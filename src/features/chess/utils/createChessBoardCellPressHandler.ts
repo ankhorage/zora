@@ -16,11 +16,19 @@ export function createChessBoardCellPressHandler({
   return (cell) => {
     if (disabled || interactionPolicy === 'passive') return;
 
-    onCellPress?.(cell);
-    if (selectedCell === null || selectedCell === undefined || cellsEqual(selectedCell, cell)) {
+    const cellIntent = { column: cell.column, row: cell.row };
+    onCellPress?.(cellIntent);
+    if (
+      selectedCell === null ||
+      selectedCell === undefined ||
+      cellsEqual(selectedCell, cellIntent)
+    ) {
       return;
     }
-    onMoveAttempt?.({ from: selectedCell, to: cell });
+    onMoveAttempt?.({
+      from: { column: selectedCell.column, row: selectedCell.row },
+      to: cellIntent,
+    });
   };
 }
 

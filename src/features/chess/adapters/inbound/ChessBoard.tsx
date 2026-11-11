@@ -193,7 +193,7 @@ function renderChessBoardCell({
       disabled={disabled}
       key={key}
       onPress={() => onPress(cell)}
-      style={[styles.square, { backgroundColor }]}
+      style={[styles.square, { backgroundColor, height: cellSize, width: cellSize }]}
       testID={testID === undefined ? undefined : `${testID}-cell-${coordinate}`}
     >
       {showCoordinates ? (
