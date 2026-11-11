@@ -1,5 +1,15 @@
 # Changelog
 
+## 26.1.0
+
+### Minor Changes
+
+- a5a6632: Expose typed declarative `columns` and `rows` bindings for `ChessBoard`.
+
+### Patch Changes
+
+- b044e97: Update dependencies: `@ankhorage/runtime`.
+
 ## 26.0.5
 
 ### Patch Changes

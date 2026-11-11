@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v26.0.5",
+      "value": "v26.1.0",
       "color": "cb3837"
     },
     {
@@ -26151,7 +26151,7 @@
       "modulePath": "src/features/chess/meta.ts",
       "sourceLocation": {
         "filePath": "src/features/chess/meta.ts",
-        "line": 149,
+        "line": 161,
         "column": 14
       },
       "exportPaths": [

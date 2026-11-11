@@ -4060,7 +4060,7 @@ Source: `src/types/chess.ts:58:1`
 
 Kind: `value`
 Module: `src/features/chess/meta.ts`
-Source: `src/features/chess/meta.ts:149:14`
+Source: `src/features/chess/meta.ts:161:14`
 
 ## OpeningBookMove
 
