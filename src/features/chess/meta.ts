@@ -39,6 +39,18 @@ export const chessBoardMeta = {
   },
   bindings: {
     props: {
+      columns: {
+        label: 'Columns',
+        value: { type: 'number' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+      rows: {
+        label: 'Rows',
+        value: { type: 'number' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
       pieces: {
         label: 'Pieces',
         value: { type: 'array', itemType: 'object' },

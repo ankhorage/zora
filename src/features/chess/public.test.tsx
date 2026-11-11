@@ -94,4 +94,23 @@ describe('Chess presentation', () => {
       fields: [{ path: '[].column' }, { path: '[].row' }],
     });
   });
+
+  test('declares independently bindable numeric dimensions for rectangular caller-owned boards', () => {
+    expect(chessBoardMeta.bindings.props.columns).toEqual({
+      acceptsFallback: true,
+      acceptsTransforms: true,
+      label: 'Columns',
+      value: { type: 'number' },
+    });
+    expect(chessBoardMeta.bindings.props.rows).toEqual({
+      acceptsFallback: true,
+      acceptsTransforms: true,
+      label: 'Rows',
+      value: { type: 'number' },
+    });
+    expect(chessBoardMeta.bindings.props.pieces.value).toEqual({
+      itemType: 'object',
+      type: 'array',
+    });
+  });
 });
