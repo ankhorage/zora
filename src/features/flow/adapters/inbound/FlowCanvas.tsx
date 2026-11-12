@@ -105,6 +105,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       />
       <View
         ref={canvasRef}
+        testID={props.testID ? `${props.testID}-viewport` : undefined}
         style={{
           flex: 1,
           minHeight: 300,
