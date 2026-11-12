@@ -14,6 +14,7 @@ export const FlowCanvas = withZoraThemeScope(FlowCanvasInner);
 function FlowCanvasInner(props: FlowCanvasProps) {
   const controller = React.useMemo(() => createFlowEditorController(props), [props]);
   const [pendingSource, setPendingSource] = React.useState<FlowPortAddress | null>(null);
+  const panStart = React.useRef<{ readonly x: number; readonly y: number } | null>(null);
   const { theme } = useZoraTheme();
   const selectedNodeIds = props.selectedNodeIds ?? [];
   const minZoom = props.minZoom ?? 0.5;
@@ -44,6 +45,25 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         overflow: 'hidden',
       }}
       testID={props.testID}
+      onMoveShouldSetResponder={() => props.readOnly !== true}
+      onResponderGrant={(event) => {
+        panStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
+      }}
+      onResponderRelease={(event) => {
+        const start = panStart.current;
+        panStart.current = null;
+        if (!start) return;
+        controller.setViewport({
+          ...props.viewport,
+          pan: {
+            x: props.viewport.pan.x + (event.nativeEvent.pageX - start.x) / props.viewport.zoom,
+            y: props.viewport.pan.y + (event.nativeEvent.pageY - start.y) / props.viewport.zoom,
+          },
+        });
+      }}
+      onResponderTerminate={() => {
+        panStart.current = null;
+      }}
     >
       <FlowToolbar
         canRedo={props.canRedo === true}
