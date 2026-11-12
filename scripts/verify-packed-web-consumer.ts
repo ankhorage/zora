@@ -1,9 +1,10 @@
 import { strict as assert } from 'node:assert';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
 const repositoryRoot = resolve(import.meta.dir, '..');
-const temporaryRoot = mkdtempSync('/tmp/zora-packed-web-consumer-');
+const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-web-consumer-'));
 const skipBuild = process.argv.includes('--skip-build');
 
 /*** Run one consumer-boundary command and retain its output on failure. */
@@ -169,7 +170,7 @@ try {
   writeConsumerAcceptance(consumerRoot);
   run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
-    TMPDIR: '/tmp',
+    TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
   console.log('Packed ZORA web consumer SSR, hydration, and Select interaction passed.');
