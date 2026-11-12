@@ -1,10 +1,12 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
 import type { FlowCanvasProps, FlowPortAddress } from '../../../../types/flow';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { createFlowEditorController } from '../../application/createFlowEditorController';
+import { getFlowPortAnchor } from '../../application/getFlowPortAnchor';
 import { FlowNode } from './FlowNode';
 
 /** Render the controlled, accessible process-editor canvas shared by React Native and React Native Web. */
@@ -45,7 +47,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         overflow: 'hidden',
       }}
       testID={props.testID}
-      onMoveShouldSetResponder={() => props.readOnly !== true}
+      onStartShouldSetResponder={() => props.readOnly !== true}
       onResponderGrant={(event) => {
         panStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
       }}
@@ -56,8 +58,8 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         controller.setViewport({
           ...props.viewport,
           pan: {
-            x: props.viewport.pan.x + (event.nativeEvent.pageX - start.x) / props.viewport.zoom,
-            y: props.viewport.pan.y + (event.nativeEvent.pageY - start.y) / props.viewport.zoom,
+            x: props.viewport.pan.x + event.nativeEvent.pageX - start.x,
+            y: props.viewport.pan.y + event.nativeEvent.pageY - start.y,
           },
         });
       }}
@@ -85,12 +87,19 @@ function FlowCanvasInner(props: FlowCanvasProps) {
           ],
         }}
       >
+        <FlowEdges
+          connections={props.connections}
+          nodes={props.nodes}
+          readOnly={props.readOnly === true}
+          onDisconnect={props.onDisconnect}
+        />
         {props.nodes.map((node) => (
           <FlowNode
             key={node.id}
             node={node}
             readOnly={props.readOnly === true}
             selected={selectedNodeIds.includes(node.id)}
+            zoom={props.viewport.zoom}
             onMove={controller.moveNode}
             onNodePress={controller.selectNode}
             onPortPress={selectPort}
@@ -99,11 +108,6 @@ function FlowCanvasInner(props: FlowCanvasProps) {
           </FlowNode>
         ))}
       </View>
-      <FlowConnections
-        connections={props.connections}
-        readOnly={props.readOnly === true}
-        onDisconnect={props.onDisconnect}
-      />
       <FlowPalette
         items={props.paletteItems}
         readOnly={props.readOnly === true}
@@ -168,30 +172,64 @@ function FlowControl(props: {
   );
 }
 
-/** Render disconnection controls without attempting to own connection routing geometry. */
-function FlowConnections(props: {
+/** Render visual Bezier edges joined to the exact fixed anchors of their port controls. */
+function FlowEdges(props: {
   readonly connections: FlowCanvasProps['connections'];
+  readonly nodes: FlowCanvasProps['nodes'];
   readonly readOnly: boolean;
   readonly onDisconnect: FlowCanvasProps['onDisconnect'];
 }) {
   const { theme } = useZoraTheme();
   return (
-    <View accessibilityLabel="Flow connections" style={{ gap: 4, padding: 10 }}>
-      {props.connections.map((connection) => (
-        <Pressable
-          key={connection.id}
-          accessibilityHint="Disconnect this flow connection"
-          accessibilityLabel={connection.label ?? `Connection ${connection.id}`}
-          accessibilityRole="button"
-          accessibilityState={{ disabled: props.readOnly }}
-          disabled={props.readOnly}
-          onPress={() => props.onDisconnect?.(connection.id)}
-        >
-          <Text style={{ color: theme.colors.primary }}>
-            {connection.label ?? `${connection.source.nodeId} → ${connection.target.nodeId}`}
-          </Text>
-        </Pressable>
-      ))}
+    <View
+      pointerEvents="box-none"
+      style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
+    >
+      <Svg
+        height="100%"
+        pointerEvents="none"
+        style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
+        width="100%"
+      >
+        {props.connections.flatMap((connection) => {
+          const source = getFlowPortAnchor(props.nodes, connection.source);
+          const target = getFlowPortAnchor(props.nodes, connection.target);
+          if (!source || !target) return [];
+          const controlDistance = Math.max(48, Math.abs(target.x - source.x) / 2);
+          return (
+            <Path
+              key={connection.id}
+              d={`M ${source.x} ${source.y} C ${source.x + controlDistance} ${source.y}, ${target.x - controlDistance} ${target.y}, ${target.x} ${target.y}`}
+              fill="none"
+              stroke={theme.colors.primary}
+              strokeWidth={3}
+            />
+          );
+        })}
+      </Svg>
+      {props.connections.flatMap((connection) => {
+        const source = getFlowPortAnchor(props.nodes, connection.source);
+        const target = getFlowPortAnchor(props.nodes, connection.target);
+        if (!source || !target) return [];
+        return (
+          <Pressable
+            key={connection.id}
+            accessibilityHint="Disconnect this flow connection"
+            accessibilityLabel={connection.label ?? `Connection ${connection.id}`}
+            accessibilityRole="button"
+            accessibilityState={{ disabled: props.readOnly }}
+            disabled={props.readOnly}
+            style={{
+              height: 44,
+              left: (source.x + target.x) / 2 - 22,
+              position: 'absolute',
+              top: (source.y + target.y) / 2 - 22,
+              width: 44,
+            }}
+            onPress={() => props.onDisconnect?.(connection.id)}
+          />
+        );
+      })}
     </View>
   );
 }
