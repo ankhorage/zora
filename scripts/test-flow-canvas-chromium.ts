@@ -231,7 +231,7 @@ class ChromeSession {
       'document.querySelector("svg path")?.getAttribute("d") ?? null',
     );
     assert(d !== null, 'Expected a rendered FlowCanvas edge path.');
-    const values = d.match(/-?\\d+(?:\\.\\d+)?/g)?.map(Number) ?? [];
+    const values = d.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
     assert(values.length >= 8, `Unexpected edge path ${d}.`);
     const expected = [
       source.x + source.width / 2 - canvas.x,
