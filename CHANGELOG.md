@@ -1,5 +1,23 @@
 # Changelog
 
+## 26.1.6
+
+### Patch Changes
+
+- a8fe7f5: Update dependencies: `@ankhorage/runtime`.
+
+## 26.1.5
+
+### Patch Changes
+
+- 99a71b4: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
+## 26.1.4
+
+### Patch Changes
+
+- c08d13a: Update dependencies: `@ankhorage/contracts`.
+
 ## 26.1.3
 
 ### Patch Changes
