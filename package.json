@@ -77,6 +77,13 @@
       "import": "./dist/features/bottom-sheet/public.js",
       "default": "./dist/features/bottom-sheet/public.js"
     },
+    "./flow": {
+      "react-native": "./src/features/flow/public.ts",
+      "browser": "./src/features/flow/public.ts",
+      "types": "./dist/features/flow/public.d.ts",
+      "import": "./dist/features/flow/public.js",
+      "default": "./dist/features/flow/public.js"
+    },
     "./uploader": {
       "react-native": "./src/features/uploader/public.ts",
       "browser": "./src/features/uploader/public.ts",
