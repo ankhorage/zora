@@ -27,6 +27,7 @@ test('publishes SSR-safe ordinary UI through canonical web subpaths', async () =
     import: './web-dist/components/*/index.js',
     default: './web-dist/components/*/index.js',
   });
+  expect(packageJson.exports['./cli']).toBeUndefined();
 
   const temporaryDirectory = await mkdtemp(join(process.cwd(), '.cache-zora-web-entrypoints-'));
   try {

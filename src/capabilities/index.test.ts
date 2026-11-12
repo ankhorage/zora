@@ -93,13 +93,10 @@ test('exports the catalog from the public capabilities subpath', async () => {
   expect(capabilities.CAPABILITIES).toEqual(CAPABILITIES);
 });
 
-test('preserves the executable action semantics of ZORA provider capabilities', () => {
-  const actions = CAPABILITIES.filter((capability) => capability.access.includes('invoke'));
-  expect(actions.map((capability) => capability.id)).toEqual(['zora.create', 'zora.sync']);
-  expect(actions.every((capability) => capability.binding.kind === 'action')).toBe(true);
-  expect(actions.every((capability) => capability.binding.bindableAs.includes('target'))).toBe(
-    true,
-  );
+test('publishes event capabilities without consumer-generation actions', () => {
+  expect(CAPABILITIES.every((capability) => capability.access.includes('emit'))).toBe(true);
+  expect(CAPABILITIES.some((capability) => capability.id === 'zora.create')).toBe(false);
+  expect(CAPABILITIES.some((capability) => capability.id === 'zora.sync')).toBe(false);
 });
 
 test('built public capability entrypoint imports under Node ESM', async () => {

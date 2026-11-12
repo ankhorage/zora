@@ -5,7 +5,6 @@
     "": {
       "name": "@ankhorage/zora",
       "dependencies": {
-        "@ankhorage/ankh": "^0.13.3",
         "@ankhorage/capability": "^0.2.2",
         "@ankhorage/color-theory": "^0.3.2",
         "@ankhorage/contracts": "^26.6.0",
