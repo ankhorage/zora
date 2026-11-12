@@ -21,7 +21,7 @@ import type { Text as TextComponent } from './features/typography/public';
 
 const webDist = join(import.meta.dir, '..', 'web-dist');
 
-test('web materialization exposes the public AppHeader component', async () => {
+test('published web artifacts expose the public AppHeader component', async () => {
   const manifest = (await Bun.file(join(webDist, 'manifest.json')).json()) as {
     artifacts: readonly { component: string; exportName: string; files: readonly string[] }[];
   };
