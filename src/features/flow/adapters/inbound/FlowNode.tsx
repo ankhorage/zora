@@ -79,6 +79,7 @@ function FlowNodeInner(props: FlowNodeProps) {
           accessibilityRole="button"
           accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
           disabled={props.readOnly ? true : props.node.disabled}
+          testID={`flow-node-${props.node.id}`}
           accessibilityHint="Select this node. Drag to move it."
           onPressIn={(event) => {
             dragCancelled.current = false;
@@ -132,6 +133,7 @@ function FlowNodeInner(props: FlowNodeProps) {
               accessibilityRole="button"
               accessibilityState={{ disabled: props.readOnly || port.disabled }}
               disabled={props.readOnly || port.disabled}
+              testID={`flow-port-${props.node.id}-${port.id}`}
               style={{
                 backgroundColor:
                   port.direction === 'input'

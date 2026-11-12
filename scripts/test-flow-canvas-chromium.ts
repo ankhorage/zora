@@ -71,14 +71,14 @@ async function testFlowCanvasChromiumAsync() {
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     const initial = await browser.waitForStateAsync((state) => state.nodes.length === 2);
-    const source = await browser.rectAsync('[aria-label="Source output"]');
-    const target = await browser.rectAsync('[aria-label="Target input"]');
+    const source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
+    const target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
     const canvas = await browser.rectAsync('[data-testid="flow-canvas"]');
     await browser.assertPathAnchorsAsync(source, target, canvas);
     await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
-    await browser.clickAsync(await browser.rectAsync('[aria-label="Source"]'));
+    await browser.clickAsync(await browser.rectAsync('[data-testid="flow-node-source"]'));
     await browser.waitForStateAsync((state) => state.selected.includes('source'));
-    await browser.dragAsync(await browser.rectAsync('[aria-label="Source"]'), 96, 48);
+    await browser.dragAsync(await browser.rectAsync('[data-testid="flow-node-source"]'), 96, 48);
     const moved = await browser.waitForStateAsync(
       (state) =>
         state.nodes.find((node) => node.id === 'source')?.x !==
@@ -203,14 +203,17 @@ class ChromeSession {
     await this.sendAsync('Input.dispatchKeyEvent', { key, type: 'keyUp' });
   }
   async rectAsync(selector: string) {
-    const rect = await this.evaluateAsync<Rect | null>(
-      `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!(element instanceof HTMLElement)) return null; const { x, y, width, height } = element.getBoundingClientRect(); return { x, y, width, height }; })()`,
-    );
-    assert(
-      rect !== null && rect.width > 0 && rect.height > 0,
-      `Missing usable target ${selector}.`,
-    );
-    return rect;
+    const deadline = Date.now() + 30_000;
+    let last: Rect | null = null;
+    while (Date.now() < deadline) {
+      const rect = await this.evaluateAsync<Rect | null>(
+        `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!(element instanceof HTMLElement)) return null; const { x, y, width, height } = element.getBoundingClientRect(); return { x, y, width, height }; })()`,
+      );
+      last = rect;
+      if (rect !== null && rect.width > 0 && rect.height > 0) return rect;
+      await this.evaluateAsync('new Promise((resolve) => requestAnimationFrame(resolve))');
+    }
+    throw new Error(`Missing usable target ${selector}: ${JSON.stringify(last)}`);
   }
   async clickAsync(rect: Rect) {
     await this.mouseAsync(rect.x + rect.width / 2, rect.y + rect.height / 2, 'mousePressed');
