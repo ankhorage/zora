@@ -1,5 +1,13 @@
 # Changelog
 
+## 27.0.0
+
+### Major Changes
+
+- 3d67dc0: Remove the obsolete `ankh zora create` and `ankh zora sync` materialization workflow. Standalone
+  Web-only consumers import published `@ankhorage/zora/web/*` subpaths directly instead of copying
+  package artifacts into project-local aliases.
+
 ## 26.1.6
 
 ### Patch Changes
