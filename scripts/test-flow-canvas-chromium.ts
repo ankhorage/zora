@@ -73,7 +73,7 @@ async function testFlowCanvasChromiumAsync() {
     const initial = await browser.waitForStateAsync((state) => state.nodes.length === 2);
     const source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
     const target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
-    const canvas = await browser.rectAsync('[data-testid="flow-canvas"]');
+    const canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
     await browser.assertPathAnchorsAsync(source, target, canvas);
     await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
     await browser.clickAsync(await browser.rectAsync('[data-testid="flow-node-source"]'));
