@@ -157,6 +157,7 @@
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
+    "test:flow-canvas:chromium": "bun scripts/test-flow-canvas-chromium.ts",
     "test:graph-view:chromium": "bun scripts/test-graph-view-chromium.ts",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json && bun x tsc -p tsconfig.typecheck.json",
     "version-packages": "ankhorage-changeset version"

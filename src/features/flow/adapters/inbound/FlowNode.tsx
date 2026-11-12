@@ -27,6 +27,7 @@ export const FlowNode = withZoraThemeScope(FlowNodeInner);
 
 /** Render node content in the active ZORA theme scope. */
 function FlowNodeInner(props: FlowNodeProps) {
+  const { canvasRef, node, onPortLayout } = props;
   const dragCancelled = React.useRef(false);
   const dragStart = React.useRef<{ readonly x: number; readonly y: number } | null>(null);
   const portRefs = React.useRef(new Map<string, View | null>());
@@ -34,23 +35,19 @@ function FlowNodeInner(props: FlowNodeProps) {
   const reportPortAnchor = React.useCallback(
     (address: FlowPortAddress) => {
       const port = portRefs.current.get(address.portId);
-      const canvas = props.canvasRef.current;
+      const canvas = canvasRef.current;
       if (!port || !canvas) return;
       port.measureLayout(
         canvas,
-        (x, y, width, height) =>
-          props.onPortLayout(address, { x: x + width / 2, y: y + height / 2 }),
+        (x, y, width, height) => onPortLayout(address, { x: x + width / 2, y: y + height / 2 }),
         () => undefined,
       );
     },
-    [props.canvasRef, props.onPortLayout],
+    [canvasRef, onPortLayout],
   );
   const reportAllPortAnchors = React.useCallback(
-    () =>
-      props.node.ports.forEach((port) =>
-        reportPortAnchor({ nodeId: props.node.id, portId: port.id }),
-      ),
-    [props.node.id, props.node.ports, reportPortAnchor],
+    () => node.ports.forEach((port) => reportPortAnchor({ nodeId: node.id, portId: port.id })),
+    [node.id, node.ports, reportPortAnchor],
   );
   return (
     <View
@@ -78,9 +75,10 @@ function FlowNodeInner(props: FlowNodeProps) {
         style={{ padding: 12 }}
       >
         <Pressable
+          accessibilityLabel={props.node.title}
           accessibilityRole="button"
           accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
-          disabled={props.node.disabled || props.readOnly}
+          disabled={props.readOnly ? true : props.node.disabled}
           accessibilityHint="Select this node. Drag to move it."
           onPressIn={(event) => {
             dragCancelled.current = false;
