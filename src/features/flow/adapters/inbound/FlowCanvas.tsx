@@ -2,11 +2,11 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-import type { FlowCanvasProps, FlowPortAddress } from '../../../../types/flow';
+import type { FlowCanvasProps, FlowPoint, FlowPortAddress } from '../../../../types/flow';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
 import { createFlowEditorController } from '../../application/createFlowEditorController';
-import { getFlowPortAnchor } from '../../application/getFlowPortAnchor';
+import { getFlowPortAnchor, getFlowPortAnchorKey } from '../../application/getFlowPortAnchor';
 import { FlowNode } from './FlowNode';
 
 /** Render the controlled, accessible process-editor canvas shared by React Native and React Native Web. */
@@ -16,7 +16,13 @@ export const FlowCanvas = withZoraThemeScope(FlowCanvasInner);
 function FlowCanvasInner(props: FlowCanvasProps) {
   const controller = React.useMemo(() => createFlowEditorController(props), [props]);
   const [pendingSource, setPendingSource] = React.useState<FlowPortAddress | null>(null);
-  const panStart = React.useRef<{ readonly x: number; readonly y: number } | null>(null);
+  const [portAnchors, setPortAnchors] = React.useState<ReadonlyMap<string, FlowPoint>>(new Map());
+  const canvasRef = React.useRef<View>(null);
+  const panStart = React.useRef<{
+    readonly x: number;
+    readonly y: number;
+    readonly pan: FlowPoint;
+  } | null>(null);
   const { theme } = useZoraTheme();
   const selectedNodeIds = props.selectedNodeIds ?? [];
   const minZoom = props.minZoom ?? 0.5;
@@ -35,6 +41,29 @@ function FlowCanvasInner(props: FlowCanvasProps) {
   };
   const setZoom = (zoom: number) =>
     controller.setViewport({ ...props.viewport, zoom: Math.max(minZoom, Math.min(maxZoom, zoom)) });
+  const setPortAnchor = React.useCallback((address: FlowPortAddress, anchor: FlowPoint) => {
+    const key = getFlowPortAnchorKey(address);
+    setPortAnchors((current) => {
+      const previous = current.get(key);
+      if (previous?.x === anchor.x && previous.y === anchor.y) return current;
+      const next = new Map(current);
+      next.set(key, anchor);
+      return next;
+    });
+  }, []);
+  const updatePan = (event: {
+    readonly nativeEvent: { readonly pageX: number; readonly pageY: number };
+  }) => {
+    const start = panStart.current;
+    if (!start) return;
+    controller.setViewport({
+      ...props.viewport,
+      pan: {
+        x: start.pan.x + event.nativeEvent.pageX - start.x,
+        y: start.pan.y + event.nativeEvent.pageY - start.y,
+      },
+    });
+  };
 
   return (
     <View
@@ -47,21 +76,19 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         overflow: 'hidden',
       }}
       testID={props.testID}
-      onStartShouldSetResponder={() => props.readOnly !== true}
+      onStartShouldSetResponder={() => false}
+      onMoveShouldSetResponder={() => true}
       onResponderGrant={(event) => {
-        panStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
+        panStart.current = {
+          pan: props.viewport.pan,
+          x: event.nativeEvent.pageX,
+          y: event.nativeEvent.pageY,
+        };
       }}
+      onResponderMove={updatePan}
       onResponderRelease={(event) => {
-        const start = panStart.current;
+        updatePan(event);
         panStart.current = null;
-        if (!start) return;
-        controller.setViewport({
-          ...props.viewport,
-          pan: {
-            x: props.viewport.pan.x + event.nativeEvent.pageX - start.x,
-            y: props.viewport.pan.y + event.nativeEvent.pageY - start.y,
-          },
-        });
       }}
       onResponderTerminate={() => {
         panStart.current = null;
@@ -77,6 +104,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         onZoomOut={() => setZoom(props.viewport.zoom - 0.1)}
       />
       <View
+        ref={canvasRef}
         style={{
           flex: 1,
           minHeight: 300,
@@ -88,8 +116,8 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         }}
       >
         <FlowEdges
+          anchors={portAnchors}
           connections={props.connections}
-          nodes={props.nodes}
           readOnly={props.readOnly === true}
           onDisconnect={props.onDisconnect}
         />
@@ -99,10 +127,12 @@ function FlowCanvasInner(props: FlowCanvasProps) {
             node={node}
             readOnly={props.readOnly === true}
             selected={selectedNodeIds.includes(node.id)}
+            canvasRef={canvasRef}
             zoom={props.viewport.zoom}
             onMove={controller.moveNode}
             onNodePress={controller.selectNode}
             onPortPress={selectPort}
+            onPortLayout={setPortAnchor}
           >
             {props.renderNode?.(node, { selected: selectedNodeIds.includes(node.id) })}
           </FlowNode>
@@ -174,8 +204,8 @@ function FlowControl(props: {
 
 /** Render visual Bezier edges joined to the exact fixed anchors of their port controls. */
 function FlowEdges(props: {
+  readonly anchors: ReadonlyMap<string, FlowPoint>;
   readonly connections: FlowCanvasProps['connections'];
-  readonly nodes: FlowCanvasProps['nodes'];
   readonly readOnly: boolean;
   readonly onDisconnect: FlowCanvasProps['onDisconnect'];
 }) {
@@ -192,8 +222,8 @@ function FlowEdges(props: {
         width="100%"
       >
         {props.connections.flatMap((connection) => {
-          const source = getFlowPortAnchor(props.nodes, connection.source);
-          const target = getFlowPortAnchor(props.nodes, connection.target);
+          const source = getFlowPortAnchor(props.anchors, connection.source);
+          const target = getFlowPortAnchor(props.anchors, connection.target);
           if (!source || !target) return [];
           const controlDistance = Math.max(48, Math.abs(target.x - source.x) / 2);
           return (
@@ -208,8 +238,8 @@ function FlowEdges(props: {
         })}
       </Svg>
       {props.connections.flatMap((connection) => {
-        const source = getFlowPortAnchor(props.nodes, connection.source);
-        const target = getFlowPortAnchor(props.nodes, connection.target);
+        const source = getFlowPortAnchor(props.anchors, connection.source);
+        const target = getFlowPortAnchor(props.anchors, connection.target);
         if (!source || !target) return [];
         return (
           <Pressable
