@@ -32,12 +32,27 @@ export default function App() {
   const [viewport, setViewport] = useState({ pan: { x: 0, y: 0 }, zoom: 1 });
   const [history, setHistory] = useState<readonly string[]>([]);
   const record = (event: string) => setHistory((current) => [...current, event]);
+  const source = nodes.find((node) => node.id === 'source')!;
 
   return (
     <View style={{ flex: 1 }}>
-      <Text accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
-        {JSON.stringify({ connections: connections.length, history, nodes, viewport })}
-      </Text>
+      <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
+        <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>
+        <Text testID="flow-node-state">
+          source-position={source.position.x},{source.position.y}
+        </Text>
+        <Text testID="flow-node-moved-state">
+          source-moved={String(source.position.x !== 32 || source.position.y !== 120)}
+        </Text>
+        <Text testID="flow-viewport-state">
+          viewport={viewport.pan.x},{viewport.pan.y},{viewport.zoom}
+        </Text>
+        <Text testID="flow-connection-state">connections={connections.length}</Text>
+        <Text testID="flow-history-state">events={history.join(',') || 'none'}</Text>
+        {history.map((event, index) => (
+          <Text key={`${event}-${index}`}>event={event}</Text>
+        ))}
+      </View>
       <FlowCanvas
         canRedo
         canUndo

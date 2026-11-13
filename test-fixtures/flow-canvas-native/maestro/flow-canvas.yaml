@@ -5,15 +5,27 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'Source task'
 - assertVisible: 'Target task'
 - tapOn: 'Source task'
-- assertVisible: 'Flow acceptance state'
+- assertVisible: 'selection=source'
+- swipe:
+    start: '40%, 36%'
+    end: '55%, 31%'
+    duration: 500
+- assertVisible: 'source-moved=true'
 - swipe:
     start: '50%, 45%'
     end: '70%, 35%'
     duration: 500
+- assertVisible: 'event=viewport'
 - tapOn: 'Source task: Output'
 - tapOn: 'Target task: Input'
+- assertVisible: 'event=connect'
 - tapOn: 'Connection source-target'
+- assertVisible: 'connections=0'
+- assertVisible: 'event=disconnect'
 - tapOn: 'Zoom in'
+- assertVisible: 'event=viewport'
 - tapOn: 'Undo'
+- assertVisible: 'event=undo'
 - tapOn: 'Redo'
+- assertVisible: 'event=redo'
 - takeScreenshot: flow-canvas-native

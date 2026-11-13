@@ -1,21 +1,23 @@
 import {
   cpSync,
   existsSync,
+  mkdirSync,
   mkdtempSync,
   readFileSync,
   readdirSync,
   rmSync,
   writeFileSync,
 } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve, sep } from 'node:path';
 
 import { assert } from './utils/assert';
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const fixtureSource = join(repositoryRoot, 'test-fixtures', 'flow-canvas-native');
-const temporaryRoot = mkdtempSync(
-  join(process.env.FLOW_NATIVE_TMPDIR ?? '/private/tmp', 'zora-flow-native-'),
-);
+const temporaryBase = process.env.FLOW_NATIVE_TMPDIR ?? tmpdir();
+mkdirSync(temporaryBase, { recursive: true });
+const temporaryRoot = mkdtempSync(join(temporaryBase, 'zora-flow-native-'));
 const fixtureRoot = join(temporaryRoot, 'consumer');
 const packedRoot = join(temporaryRoot, 'packed');
 const ignoredSegments = new Set(['.expo', 'android', 'ios', 'node_modules']);
@@ -41,6 +43,7 @@ async function testPackedFlowCanvasNativeAsync() {
   } finally {
     if (process.env.FLOW_NATIVE_KEEP_ARTIFACTS !== '1')
       rmSync(temporaryRoot, { force: true, recursive: true });
+    else console.log(`Retained native acceptance artifacts: ${temporaryRoot}`);
   }
 }
 
@@ -127,7 +130,8 @@ function runMaestro(root: string) {
     'Set FLOW_NATIVE_PLATFORM to android or ios.',
   );
   run(['bunx', 'expo', 'prebuild', '--no-install', '--platform', platform], root);
-  run(['bunx', 'expo', 'run:' + platform], root);
+  run(['maestro', '--version'], root);
+  run(['bunx', 'expo', 'run:' + platform, '--no-bundler'], root);
   run(['maestro', 'test', join('maestro', 'flow-canvas.yaml')], root);
 }
 
