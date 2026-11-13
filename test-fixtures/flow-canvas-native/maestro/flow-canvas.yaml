@@ -1,0 +1,19 @@
+appId: dev.ankhorage.zora.flowacceptance
+---
+- launchApp:
+    clearState: true
+- assertVisible: 'Source task'
+- assertVisible: 'Target task'
+- tapOn: 'Source task'
+- assertVisible: 'Flow acceptance state'
+- swipe:
+    start: '50%, 45%'
+    end: '70%, 35%'
+    duration: 500
+- tapOn: 'Source task: Output'
+- tapOn: 'Target task: Input'
+- tapOn: 'Connection source-target'
+- tapOn: 'Zoom in'
+- tapOn: 'Undo'
+- tapOn: 'Redo'
+- takeScreenshot: flow-canvas-native
