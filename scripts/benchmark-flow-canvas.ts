@@ -401,7 +401,7 @@ async function freePortAsync() {
 }
 /** Wait for an HTTP endpoint to become ready. */
 async function waitForAsync(url: string) {
-  const deadline = Date.now() + 30_000;
+  const deadline = Date.now() + 60_000;
   while (Date.now() < deadline) {
     try {
       if ((await fetch(url)).ok) return;
