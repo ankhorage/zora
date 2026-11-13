@@ -33,6 +33,7 @@ export default function App() {
   const [history, setHistory] = useState<readonly string[]>([]);
   const record = (event: string) => setHistory((current) => [...current, event]);
   const source = nodes.find((node) => node.id === 'source')!;
+  const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
 
   return (
     <View style={{ flex: 1 }}>
@@ -49,7 +50,7 @@ export default function App() {
         </Text>
         <Text testID="flow-connection-state">connections={connections.length}</Text>
         <Text testID="flow-history-state">events={history.join(',') || 'none'}</Text>
-        {history.map((event, index) => (
+        {observedEvents.map((event, index) => (
           <Text key={`${event}-${index}`}>event={event}</Text>
         ))}
       </View>
