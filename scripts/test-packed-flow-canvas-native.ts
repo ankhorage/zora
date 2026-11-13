@@ -13,6 +13,11 @@ import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve, sep } from 'node:path';
 
 import { assert } from './utils/assert';
+import {
+  createExpoMetroCommand,
+  createExpoNativeRunCommand,
+  getExpoNativeMetroPort,
+} from './utils/createExpoNativeCommand';
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const fixtureSource = join(repositoryRoot, 'test-fixtures', 'flow-canvas-native');
@@ -155,7 +160,8 @@ async function runMaestroAsync(root: string) {
   let primaryError: unknown;
   try {
     metro = await startMetroAsync(root);
-    run(['bunx', 'expo', `run:${platform}`, '--no-bundler', '--port', String(metro.port)], root);
+    if (platform === 'android') configureAndroidMetroRouting(root, metro.port);
+    run(createExpoNativeRunCommand(platform), root);
     run(
       [
         'maestro',
@@ -179,9 +185,9 @@ async function runMaestroAsync(root: string) {
 /** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
 async function startMetroAsync(root: string) {
   mkdirSync(diagnosticRoot, { recursive: true });
-  const port = await freePortAsync();
+  const port = getExpoNativeMetroPort();
   const logPath = join(diagnosticRoot, 'metro.log');
-  const metro = Bun.spawn(['bunx', 'expo', 'start', '--localhost', '--port', String(port)], {
+  const metro = Bun.spawn(createExpoMetroCommand(), {
     cwd: root,
     env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
     stderr: 'pipe',
@@ -208,6 +214,17 @@ async function startMetroAsync(root: string) {
     await Promise.allSettled([metro.exited, output]);
     throw error;
   }
+}
+
+/** Route Android's default debug-server address to the separately owned loopback Metro process. */
+function configureAndroidMetroRouting(root: string, port: number) {
+  const route = `tcp:${port}`;
+  run(['adb', 'reverse', route, route], root);
+  const result = Bun.spawnSync({ cmd: ['adb', 'reverse', '--list'], cwd: root });
+  const output = new TextDecoder().decode(result.stdout);
+  if (retainCommandOutput) writeFileSync(join(diagnosticRoot, 'android-metro-routing.log'), output);
+  assert(result.exitCode === 0, 'Could not inspect Android Metro routing.');
+  assert(output.includes(`${route} ${route}`), `Android Metro route is missing: ${route}.`);
 }
 
 type MetroProcess = Readonly<{
@@ -254,14 +271,6 @@ async function cleanupMetroAsync(
   } catch (error) {
     return error;
   }
-}
-
-/** Allocate a loopback port for this owned Metro process instead of contending for the default port. */
-async function freePortAsync() {
-  const server = Bun.serve({ fetch: () => new Response(''), port: 0 });
-  const port = server.port;
-  server.stop();
-  return port;
 }
 
 /** Retain platform logs without copying generated consumers, dependency trees, or build products. */
