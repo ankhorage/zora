@@ -85,8 +85,9 @@ async function benchmarkFlowCanvasAsync() {
             headers: { 'content-type': 'text/html' },
           }),
   });
-  const browser = await BenchmarkBrowser.createAsync();
+  let browser: BenchmarkBrowser | undefined;
   try {
+    browser = await BenchmarkBrowser.createAsync();
     const results: Result[] = [];
     for (const size of [25, 200, 1000] as const)
       results.push(await benchmarkSizeAsync(browser, server.port, size));
@@ -108,8 +109,15 @@ async function benchmarkFlowCanvasAsync() {
       ),
     );
     console.log(JSON.stringify(results, null, 2));
+  } catch (error) {
+    mkdirSync(artifactDirectory, { recursive: true });
+    writeFileSync(
+      join(artifactDirectory, 'flow-canvas-benchmark-failure.json'),
+      JSON.stringify({ error: String(error) }, null, 2),
+    );
+    throw error;
   } finally {
-    browser.close();
+    browser?.close();
     server.stop();
   }
 }
@@ -224,12 +232,7 @@ class BenchmarkBrowser {
 
     const beforePan = await this.readStateAsync();
     const panStart = performance.now();
-    await this.dragFromAsync(
-      viewport.x + viewport.width - 20,
-      viewport.y + viewport.height - 20,
-      24,
-      16,
-    );
+    await this.dragFromAsync(viewport.x + 24, viewport.y + viewport.height - 20, 24, 16);
     await this.waitForStateAsync(
       (state) =>
         state.viewport.pan.x !== beforePan.viewport.pan.x ||
