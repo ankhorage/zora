@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.0.1
+
+### Patch Changes
+
+- bc73106: Update dependencies: `@ankhorage/contracts`.
+
 ## 27.0.0
 
 ### Major Changes
