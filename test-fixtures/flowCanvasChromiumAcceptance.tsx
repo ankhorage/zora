@@ -6,8 +6,10 @@ import { FlowCanvas } from '@ankhorage/zora/flow';
 type FlowState = Readonly<{
   readonly connections: number;
   readonly events: readonly string[];
+  readonly nodeMoveChanges: number;
   readonly nodes: readonly { readonly id: string; readonly x: number; readonly y: number }[];
   readonly selected: readonly string[];
+  readonly viewportChanges: number;
   readonly viewport: {
     readonly pan: { readonly x: number; readonly y: number };
     readonly zoom: number;
@@ -54,22 +56,26 @@ function FlowCanvasChromiumAcceptance() {
   ]);
   const [events, setEvents] = useState<readonly string[]>([]);
   const [nodes, setNodes] = useState(initialNodes);
+  const [nodeMoveChanges, setNodeMoveChanges] = useState(0);
   const [selected, setSelected] = useState<readonly string[]>([]);
   const [viewport, setViewport] = useState({ pan: { x: 0, y: 0 }, zoom: 1 });
+  const [viewportChanges, setViewportChanges] = useState(0);
   useEffect(() => {
     window.flowAcceptance = {
       read: () => ({
         connections: connections.length,
         events,
+        nodeMoveChanges,
         nodes: nodes.map((node) => ({ id: node.id, x: node.position.x, y: node.position.y })),
         selected,
+        viewportChanges,
         viewport,
       }),
     };
     return () => {
       delete window.flowAcceptance;
     };
-  }, [connections, events, nodes, selected, viewport]);
+  }, [connections, events, nodeMoveChanges, nodes, selected, viewport, viewportChanges]);
   const record = (event: string) => setEvents((current) => [...current, event]);
   return (
     <FlowCanvas
@@ -98,12 +104,14 @@ function FlowCanvasChromiumAcceptance() {
       }}
       onNodesMove={(next) => {
         setNodes(next);
+        setNodeMoveChanges((current) => current + 1);
         record('move');
       }}
       onRedo={() => record('redo')}
       onUndo={() => record('undo')}
       onViewportChange={(next) => {
         setViewport(next);
+        setViewportChanges((current) => current + 1);
         record('viewport');
       }}
     />

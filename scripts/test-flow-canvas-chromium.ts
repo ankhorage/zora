@@ -8,8 +8,10 @@ type Rect = Readonly<{ height: number; width: number; x: number; y: number }>;
 type FlowState = Readonly<{
   connections: number;
   events: readonly string[];
+  nodeMoveChanges: number;
   nodes: readonly { id: string; x: number; y: number }[];
   selected: readonly string[];
+  viewportChanges: number;
   viewport: { pan: { x: number; y: number }; zoom: number };
 }>;
 type JsonRecord = Record<string, unknown>;
@@ -86,12 +88,18 @@ async function testFlowCanvasChromiumAsync() {
     await browser.dragFromAsync(canvas.x + 24, canvas.y + canvas.height - 24, 32, 24);
     const panned = await browser.waitForStateAsync(
       (state) =>
-        state.viewport.pan.x !== initial.viewport.pan.x ||
-        state.viewport.pan.y !== initial.viewport.pan.y,
+        state.viewport.pan.x === initial.viewport.pan.x + 32 &&
+        state.viewport.pan.y === initial.viewport.pan.y + 24 &&
+        state.viewportChanges === initial.viewportChanges + 2,
+    );
+    assert(
+      JSON.stringify(panned.nodes) === JSON.stringify(initial.nodes),
+      'Canvas pan must not move nodes.',
     );
     phase = 'select';
     await browser.clickAsync(await browser.rectAsync('[role="button"][aria-label="Source"]'));
     await browser.waitForStateAsync((state) => state.selected.includes('source'));
+    const beforeNodeDrag = await browser.readStateAsync();
     phase = 'drag';
     await browser.dragAsync(
       await browser.rectAsync('[role="button"][aria-label="Source"]'),
@@ -101,7 +109,11 @@ async function testFlowCanvasChromiumAsync() {
     const moved = await browser.waitForStateAsync(
       (state) =>
         state.nodes.find((node) => node.id === 'source')?.x !==
-        initial.nodes.find((node) => node.id === 'source')?.x,
+          beforeNodeDrag.nodes.find((node) => node.id === 'source')?.x &&
+        state.viewport.pan.x === beforeNodeDrag.viewport.pan.x &&
+        state.viewport.pan.y === beforeNodeDrag.viewport.pan.y &&
+        state.viewportChanges === beforeNodeDrag.viewportChanges &&
+        state.nodeMoveChanges > beforeNodeDrag.nodeMoveChanges,
     );
     source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
     target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
@@ -137,8 +149,8 @@ async function testFlowCanvasChromiumAsync() {
         state.viewport.zoom > 1,
     );
     assert(
-      final.viewport.pan.x === panned.viewport.pan.x &&
-        final.viewport.pan.y === panned.viewport.pan.y,
+      moved.viewport.pan.x === panned.viewport.pan.x &&
+        moved.viewport.pan.y === panned.viewport.pan.y,
       'Node drag must not pan the canvas.',
     );
     await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-desktop', phase);
@@ -294,6 +306,13 @@ class ChromeSession {
       `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!(element instanceof HTMLElement)) return false; element.focus(); return document.activeElement === element; })()`,
     );
     assert(focused, `Could not focus ${selector}.`);
+  }
+  async readStateAsync() {
+    const state = await this.evaluateAsync<FlowState | null>(
+      'window.flowAcceptance?.read() ?? null',
+    );
+    assert(state !== null, 'FlowCanvas controlled host state is unavailable.');
+    return state;
   }
   async assertPathAnchorsAsync(source: Rect, target: Rect, canvas: Rect) {
     const expected = [
