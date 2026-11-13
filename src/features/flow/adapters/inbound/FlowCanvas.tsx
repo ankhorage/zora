@@ -76,23 +76,6 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         overflow: 'hidden',
       }}
       testID={props.testID}
-      onStartShouldSetResponder={() => false}
-      onMoveShouldSetResponder={() => true}
-      onResponderGrant={(event) => {
-        panStart.current = {
-          pan: props.viewport.pan,
-          x: event.nativeEvent.pageX,
-          y: event.nativeEvent.pageY,
-        };
-      }}
-      onResponderMove={updatePan}
-      onResponderRelease={(event) => {
-        updatePan(event);
-        panStart.current = null;
-      }}
-      onResponderTerminate={() => {
-        panStart.current = null;
-      }}
     >
       <FlowToolbar
         canRedo={props.canRedo === true}
@@ -106,6 +89,21 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       <View
         ref={canvasRef}
         testID={props.testID ? `${props.testID}-viewport` : undefined}
+        onStartShouldSetResponder={(event) => event.target === event.currentTarget}
+        onResponderGrant={(event) => {
+          panStart.current = {
+            pan: props.viewport.pan,
+            x: event.nativeEvent.pageX,
+            y: event.nativeEvent.pageY,
+          };
+        }}
+        onResponderMove={updatePan}
+        onResponderRelease={() => {
+          panStart.current = null;
+        }}
+        onResponderTerminate={() => {
+          panStart.current = null;
+        }}
         style={{
           flex: 1,
           minHeight: 300,
@@ -187,6 +185,7 @@ function FlowControl(props: {
   const { theme } = useZoraTheme();
   return (
     <Pressable
+      accessibilityLabel={props.label}
       accessibilityRole="button"
       accessibilityState={{ disabled: props.disabled }}
       disabled={props.disabled}
