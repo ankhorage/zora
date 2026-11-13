@@ -1,0 +1,76 @@
+name: FlowCanvas native acceptance
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  MAESTRO_VERSION: 1.39.0
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install frozen dependencies
+        run: bun install --frozen-lockfile
+      - name: Install pinned Maestro
+        run: |
+          curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          maestro --version
+      - name: Run packed Android FlowCanvas acceptance
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          script: FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
+      - name: Upload Android diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-canvas-native-android
+          path: /tmp/zora-flow-native-*
+          if-no-files-found: warn
+
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - name: Install frozen dependencies
+        run: bun install --frozen-lockfile
+      - name: Install pinned Maestro
+        run: |
+          curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          maestro --version
+      - name: Boot iPhone simulator
+        run: |
+          simulator="$(xcrun simctl list devices available | sed -n 's/.*(\(.*\)) (Shutdown).*/\1/p' | head -n 1)"
+          test -n "$simulator"
+          xcrun simctl boot "$simulator" || true
+          xcrun simctl bootstatus "$simulator" -b
+      - name: Run packed iOS FlowCanvas acceptance
+        run: FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
+      - name: Upload iOS diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-canvas-native-ios
+          path: /tmp/zora-flow-native-*
+          if-no-files-found: warn
