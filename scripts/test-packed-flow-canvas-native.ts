@@ -1,4 +1,5 @@
 import {
+  appendFileSync,
   cpSync,
   existsSync,
   mkdirSync,
@@ -150,9 +151,11 @@ async function runMaestroAsync(root: string) {
   retainCommandOutput = true;
   run(['bunx', 'expo', 'prebuild', '--no-install', '--platform', platform], root);
   run(['maestro', '--version'], root);
-  const metro = await startMetroAsync(root);
+  let metro: MetroProcess | undefined;
+  let primaryError: unknown;
   try {
-    run(['bunx', 'expo', 'run:' + platform, '--no-bundler'], root);
+    metro = await startMetroAsync(root);
+    run(['bunx', 'expo', `run:${platform}`, '--no-bundler', '--port', String(metro.port)], root);
     run(
       [
         'maestro',
@@ -163,52 +166,120 @@ async function runMaestroAsync(root: string) {
       ],
       root,
     );
+    run(['maestro', 'hierarchy'], root);
+  } catch (error) {
+    primaryError = error;
   } finally {
-    metro.kill();
-    writeFileSync(join(diagnosticRoot, 'metro.log'), await readOutputAsync(metro));
-    captureDeviceDiagnostics(platform, root);
+    const cleanupError = await cleanupMetroAsync(metro, platform, root);
+    if (primaryError === undefined && cleanupError !== undefined) primaryError = cleanupError;
   }
+  if (primaryError !== undefined) throw primaryError;
 }
 
 /** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
 async function startMetroAsync(root: string) {
-  const metro = Bun.spawn(
-    ['bunx', 'expo', 'start', '--localhost', '--port', '8081', '--no-interactive'],
-    {
-      cwd: root,
-      env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
-      stderr: 'pipe',
-      stdout: 'pipe',
-    },
-  );
+  mkdirSync(diagnosticRoot, { recursive: true });
+  const port = await freePortAsync();
+  const logPath = join(diagnosticRoot, 'metro.log');
+  const metro = Bun.spawn(['bunx', 'expo', 'start', '--localhost', '--port', String(port)], {
+    cwd: root,
+    env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
+    stderr: 'pipe',
+    stdout: 'pipe',
+  });
+  const output = captureMetroOutputAsync(metro, logPath);
   const deadline = Date.now() + 30_000;
-  while (Date.now() < deadline) {
-    try {
-      if ((await fetch('http://127.0.0.1:8081')).ok) return metro;
-    } catch {}
-    await Bun.sleep(250);
+  try {
+    while (Date.now() < deadline) {
+      const exitCode = await Promise.race([Bun.sleep(100).then(() => undefined), metro.exited]);
+      if (exitCode !== undefined)
+        throw new Error(
+          `Metro exited before readiness (pid ${metro.pid}, port ${port}, exit ${exitCode}). See ${logPath}.`,
+        );
+      const response = await fetch(`http://127.0.0.1:${port}/status`).catch(() => undefined);
+      if (response?.ok && (await response.text()).includes('packager-status:running'))
+        return { output, port, process: metro };
+    }
+    throw new Error(
+      `Metro did not report packager readiness on http://127.0.0.1:${port}/status (pid ${metro.pid}). See ${logPath}.`,
+    );
+  } catch (error) {
+    metro.kill();
+    await Promise.allSettled([metro.exited, output]);
+    throw error;
   }
-  metro.kill();
-  throw new Error('Metro did not become ready on http://127.0.0.1:8081.');
 }
 
-/** Read a completed process stream after shutting down the owned Metro lifecycle. */
-async function readOutputAsync(process: ReturnType<typeof Bun.spawn>) {
-  const [stderr, stdout] = await Promise.all([
-    new Response(process.stderr).text(),
-    new Response(process.stdout).text(),
+type MetroProcess = Readonly<{
+  output: Promise<void>;
+  port: number;
+  process: ReturnType<typeof Bun.spawn>;
+}>;
+
+/** Persist each Metro stream as it arrives so process failures cannot be hidden by pipe backpressure. */
+async function captureMetroOutputAsync(process: ReturnType<typeof Bun.spawn>, path: string) {
+  writeFileSync(path, `pid=${process.pid}\n`);
+  await Promise.all([
+    copyMetroStreamAsync('stderr', process.stderr, path),
+    copyMetroStreamAsync('stdout', process.stdout, path),
   ]);
-  return `${stdout}${stderr}`;
+}
+
+/** Drain one Metro output stream continuously into the bounded diagnostics artifact. */
+async function copyMetroStreamAsync(
+  name: string,
+  stream: ReadableStream<Uint8Array> | null,
+  path: string,
+) {
+  if (stream === null) return;
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  for (;;) {
+    const result = await reader.read();
+    if (result.done) return;
+    appendFileSync(path, `[${name}] ${decoder.decode(result.value, { stream: true })}`);
+  }
+}
+
+/** Stop Metro and collect platform diagnostics without masking the acceptance failure that triggered cleanup. */
+async function cleanupMetroAsync(
+  metro: MetroProcess | undefined,
+  platform: 'android' | 'ios',
+  root: string,
+) {
+  try {
+    metro?.process.kill();
+    await Promise.allSettled(metro === undefined ? [] : [metro.process.exited, metro.output]);
+    captureDeviceDiagnostics(platform, root);
+  } catch (error) {
+    return error;
+  }
+}
+
+/** Allocate a loopback port for this owned Metro process instead of contending for the default port. */
+async function freePortAsync() {
+  const server = Bun.serve({ fetch: () => new Response(''), port: 0 });
+  const port = server.port;
+  server.stop();
+  return port;
 }
 
 /** Retain platform logs without copying generated consumers, dependency trees, or build products. */
 function captureDeviceDiagnostics(platform: 'android' | 'ios', root: string) {
-  if (platform !== 'android') return;
-  const result = Bun.spawnSync({ cmd: ['adb', 'logcat', '-d'], cwd: root });
+  const command =
+    platform === 'android'
+      ? ['adb', 'logcat', '-d']
+      : ['xcrun', 'simctl', 'spawn', 'booted', 'log', 'show', '--last', '2m', '--style', 'compact'];
+  const result = Bun.spawnSync({ cmd: command, cwd: root });
   writeFileSync(
-    join(diagnosticRoot, 'android-logcat.log'),
+    join(diagnosticRoot, `${platform}-app.log`),
     new TextDecoder().decode(result.stdout),
   );
+  if (platform === 'ios')
+    Bun.spawnSync({
+      cmd: ['xcrun', 'simctl', 'io', 'booted', 'screenshot', join(diagnosticRoot, 'ios.png')],
+      cwd: root,
+    });
 }
 
 await testPackedFlowCanvasNativeAsync();
