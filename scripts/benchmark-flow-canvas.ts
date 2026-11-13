@@ -5,12 +5,33 @@ import { existsSync } from 'node:fs';
 
 import { assert } from './utils/assert';
 
-type Sample = Readonly<{ durationMs: number; heapBytes?: number; longTaskCount: number }>;
+type Sample = Readonly<{
+  heapBytes?: number;
+  initialRenderMs: number;
+  interactionMs: Readonly<{
+    connectionUpdate: number;
+    nodeDrag: number;
+    pan: number;
+    zoom: number;
+  }>;
+  longTaskCount: number;
+}>;
 type Result = Readonly<{
-  medianMs: number;
-  p95Ms: number;
+  cold: Sample;
+  medianMs: Readonly<
+    Record<'connectionUpdate' | 'initialRender' | 'nodeDrag' | 'pan' | 'zoom', number>
+  >;
+  p95Ms: Readonly<
+    Record<'connectionUpdate' | 'initialRender' | 'nodeDrag' | 'pan' | 'zoom', number>
+  >;
   samples: readonly Sample[];
   size: number;
+  warmupSamples: readonly Sample[];
+}>;
+type BenchmarkState = Readonly<{
+  connections: number;
+  firstNode?: Readonly<{ x: number; y: number }>;
+  viewport: Readonly<{ pan: Readonly<{ x: number; y: number }>; zoom: number }>;
 }>;
 
 const repositoryRoot = resolve(import.meta.dir, '..');
@@ -66,15 +87,20 @@ async function benchmarkFlowCanvasAsync() {
   });
   const browser = await BenchmarkBrowser.createAsync();
   try {
-    const results = await Promise.all(
-      [25, 200, 1000].map((size) => benchmarkSizeAsync(browser, server.port, size)),
-    );
+    const results: Result[] = [];
+    for (const size of [25, 200, 1000] as const)
+      results.push(await benchmarkSizeAsync(browser, server.port, size));
     mkdirSync(artifactDirectory, { recursive: true });
     writeFileSync(
       join(artifactDirectory, 'flow-canvas-benchmark.json'),
       JSON.stringify(
         {
-          environment: { bun: Bun.version, platform: process.platform, chromium: chromiumCommand },
+          environment: {
+            bun: Bun.version,
+            chromium: await browser.versionAsync(),
+            command: chromiumCommand,
+            platform: process.platform,
+          },
           results,
         },
         null,
@@ -94,16 +120,43 @@ async function benchmarkSizeAsync(
   port: number,
   size: number,
 ): Promise<Result> {
-  const samples: Sample[] = [];
-  for (let index = 0; index < 7; index += 1)
-    samples.push(await browser.sampleAsync(`http://127.0.0.1:${port}/?size=${size}`));
-  const durations = samples.map(({ durationMs }) => durationMs).sort((left, right) => left - right);
+  const url = `http://127.0.0.1:${port}/?size=${size}`;
+  const cold = await browser.sampleAsync(url);
+  const warmupSamples = [await browser.sampleAsync(url), await browser.sampleAsync(url)];
+  const samples = await collectSamplesAsync(browser, url, 7);
+  const summary = (key: 'connectionUpdate' | 'initialRender' | 'nodeDrag' | 'pan' | 'zoom') => {
+    const values = samples
+      .map((sample) =>
+        key === 'initialRender' ? sample.initialRenderMs : sample.interactionMs[key],
+      )
+      .sort((left, right) => left - right);
+    return { median: percentile(values, 0.5), p95: percentile(values, 0.95) };
+  };
   return {
-    medianMs: percentile(durations, 0.5),
-    p95Ms: percentile(durations, 0.95),
+    cold,
+    medianMs: Object.fromEntries(
+      ['connectionUpdate', 'initialRender', 'nodeDrag', 'pan', 'zoom'].map((key) => [
+        key,
+        summary(key as 'connectionUpdate' | 'initialRender' | 'nodeDrag' | 'pan' | 'zoom').median,
+      ]),
+    ) as Result['medianMs'],
+    p95Ms: Object.fromEntries(
+      ['connectionUpdate', 'initialRender', 'nodeDrag', 'pan', 'zoom'].map((key) => [
+        key,
+        summary(key as 'connectionUpdate' | 'initialRender' | 'nodeDrag' | 'pan' | 'zoom').p95,
+      ]),
+    ) as Result['p95Ms'],
     samples,
     size,
+    warmupSamples,
   };
+}
+
+/** Collect independent, sequentially navigated measurement samples after dedicated warmups. */
+async function collectSamplesAsync(browser: BenchmarkBrowser, url: string, count: number) {
+  const samples: Sample[] = [];
+  for (let index = 0; index < count; index += 1) samples.push(await browser.sampleAsync(url));
+  return samples;
 }
 
 /** Select a deterministic nearest-rank percentile for a small measured sample set. */
@@ -152,28 +205,66 @@ class BenchmarkBrowser {
     return browser;
   }
   async sampleAsync(url: string): Promise<Sample> {
-    const before = performance.now();
+    const renderStart = performance.now();
     await this.sendAsync('Page.navigate', { url });
-    await this.evaluateAsync(
-      'new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+    const initial = await this.waitForStateAsync((state) => state.firstNode !== undefined);
+    const initialRenderMs = performance.now() - renderStart;
+    const node = await this.rectAsync('[data-testid="flow-node-node-0"]');
+    const viewport = await this.rectAsync('[data-testid="flow-benchmark-viewport"]');
+
+    const nodeDragStart = performance.now();
+    await this.dragAsync(node, 32, 18);
+    await this.waitForStateAsync(
+      (state) =>
+        state.firstNode?.x !== initial.firstNode?.x &&
+        state.viewport.pan.x === initial.viewport.pan.x &&
+        state.viewport.pan.y === initial.viewport.pan.y,
     );
-    await this.evaluateAsync(
-      '(() => { const viewport = document.querySelector("[data-testid=flow-benchmark-viewport]"); viewport?.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, clientX: 20, clientY: 340 })); viewport?.dispatchEvent(new PointerEvent("pointermove", { bubbles: true, clientX: 56, clientY: 368 })); viewport?.dispatchEvent(new PointerEvent("pointerup", { bubbles: true, clientX: 56, clientY: 368 })); document.querySelector("[aria-label=Zoom\\ in]")?.dispatchEvent(new MouseEvent("click", { bubbles: true })); })()',
+    const nodeDrag = performance.now() - nodeDragStart;
+
+    const beforePan = await this.readStateAsync();
+    const panStart = performance.now();
+    await this.dragFromAsync(
+      viewport.x + viewport.width - 20,
+      viewport.y + viewport.height - 20,
+      24,
+      16,
     );
-    await this.evaluateAsync(
-      'new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+    await this.waitForStateAsync(
+      (state) =>
+        state.viewport.pan.x !== beforePan.viewport.pan.x ||
+        state.viewport.pan.y !== beforePan.viewport.pan.y,
     );
+    const pan = performance.now() - panStart;
+
+    const beforeZoom = await this.readStateAsync();
+    const zoomStart = performance.now();
+    await this.clickAsync(await this.rectAsync('[aria-label="Zoom in"]'));
+    await this.waitForStateAsync((state) => state.viewport.zoom > beforeZoom.viewport.zoom);
+    const zoom = performance.now() - zoomStart;
+
+    const beforeConnection = await this.readStateAsync();
+    const connectionStart = performance.now();
+    await this.clickAsync(await this.rectAsync('[data-testid="flow-port-node-0-out"]'));
+    await this.clickAsync(await this.rectAsync('[data-testid="flow-port-node-1-in"]'));
+    await this.waitForStateAsync((state) => state.connections === beforeConnection.connections + 1);
+    const connectionUpdate = performance.now() - connectionStart;
     const metrics = (await this.sendAsync('Performance.getMetrics')) as {
       metrics: readonly { name: string; value: number }[];
     };
     const heapBytes = metrics.metrics.find(({ name }) => name === 'JSHeapUsedSize')?.value;
     return {
-      durationMs: performance.now() - before,
       ...(heapBytes === undefined ? {} : { heapBytes }),
+      initialRenderMs,
+      interactionMs: { connectionUpdate, nodeDrag, pan, zoom },
       longTaskCount: await this.evaluateAsync<number>(
         'performance.getEntriesByType("longtask").length',
       ),
     };
+  }
+  async versionAsync() {
+    const version = (await this.sendAsync('Browser.getVersion')) as { product?: string };
+    return version.product ?? 'unknown';
   }
   close() {
     this.socket.close();
@@ -186,6 +277,62 @@ class BenchmarkBrowser {
       returnByValue: true,
     })) as { result: { value: T } };
     return result.result.value;
+  }
+  private async readStateAsync(): Promise<BenchmarkState> {
+    return this.evaluateAsync<BenchmarkState>('window.flowBenchmark?.read()');
+  }
+  private async waitForStateAsync(predicate: (state: BenchmarkState) => boolean) {
+    const deadline = Date.now() + 30_000;
+    let state: BenchmarkState | undefined;
+    while (Date.now() < deadline) {
+      state = await this.evaluateAsync<BenchmarkState | undefined>('window.flowBenchmark?.read()');
+      if (state !== undefined && predicate(state)) return state;
+      await Bun.sleep(16);
+    }
+    throw new Error(`Timed out waiting for benchmark host state: ${JSON.stringify(state)}`);
+  }
+  private async rectAsync(selector: string) {
+    const rect = await this.evaluateAsync<
+      Readonly<{ height: number; width: number; x: number; y: number }> | undefined
+    >(
+      `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!(element instanceof HTMLElement)) return undefined; const { height, width, x, y } = element.getBoundingClientRect(); return width > 0 && height > 0 ? { height, width, x, y } : undefined; })()`,
+    );
+    assert(rect !== undefined, `Missing benchmark target ${selector}.`);
+    return rect;
+  }
+  private async clickAsync(
+    rect: Readonly<{ height: number; width: number; x: number; y: number }>,
+  ) {
+    const x = rect.x + rect.width / 2;
+    const y = rect.y + rect.height / 2;
+    await this.mouseAsync(x, y, 'mousePressed');
+    await this.mouseAsync(x, y, 'mouseReleased');
+  }
+  private async dragAsync(
+    rect: Readonly<{ height: number; width: number; x: number; y: number }>,
+    deltaX: number,
+    deltaY: number,
+  ) {
+    await this.dragFromAsync(rect.x + rect.width / 2, rect.y + rect.height / 2, deltaX, deltaY);
+  }
+  private async dragFromAsync(x: number, y: number, deltaX: number, deltaY: number) {
+    await this.mouseAsync(x, y, 'mousePressed');
+    await this.mouseAsync(x + deltaX / 2, y + deltaY / 2, 'mouseMoved');
+    await this.mouseAsync(x + deltaX, y + deltaY, 'mouseMoved');
+    await this.mouseAsync(x + deltaX, y + deltaY, 'mouseReleased');
+  }
+  private async mouseAsync(
+    x: number,
+    y: number,
+    type: 'mousePressed' | 'mouseMoved' | 'mouseReleased',
+  ) {
+    await this.sendAsync('Input.dispatchMouseEvent', {
+      button: type === 'mouseMoved' ? 'none' : 'left',
+      buttons: type === 'mouseReleased' ? 0 : 1,
+      type,
+      x,
+      y,
+    });
   }
   private sendAsync(method: string, params: Record<string, unknown> = {}): Promise<unknown> {
     const id = this.nextId++;
