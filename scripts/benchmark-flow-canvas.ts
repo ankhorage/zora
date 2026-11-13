@@ -332,6 +332,7 @@ class BenchmarkBrowser {
     await this.sendAsync('Input.dispatchMouseEvent', {
       button: type === 'mouseMoved' ? 'none' : 'left',
       buttons: type === 'mouseReleased' ? 0 : 1,
+      clickCount: type === 'mouseMoved' ? 0 : 1,
       type,
       x,
       y,
