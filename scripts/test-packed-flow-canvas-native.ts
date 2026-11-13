@@ -92,6 +92,26 @@ function run(command: readonly string[], cwd: string) {
   assert(result.exitCode === 0, `Command failed: ${command.join(' ')}`);
 }
 
+/** Run a diagnostic command, retaining its output before applying its owning invariant. */
+function commandOutput(command: readonly string[], cwd: string) {
+  console.log(`> (${cwd}) ${command.join(' ')}`);
+  const result = Bun.spawnSync({ cmd: command, cwd, stderr: 'pipe', stdout: 'pipe' });
+  const output = `${new TextDecoder().decode(result.stdout)}${new TextDecoder().decode(result.stderr)}`;
+  if (retainCommandOutput) {
+    mkdirSync(diagnosticRoot, { recursive: true });
+    writeFileSync(
+      join(
+        diagnosticRoot,
+        `${String(++commandNumber).padStart(2, '0')}-${command[1] ?? command[0]}.log`,
+      ),
+      output,
+    );
+  }
+  process.stdout.write(output);
+  assert(result.exitCode === 0, `Command failed: ${command.join(' ')}`);
+  return output;
+}
+
 /** Copy the committed consumer while excluding generated host projects and installations. */
 function copyFixture(source: string, destination: string) {
   cpSync(source, destination, {
@@ -180,7 +200,10 @@ async function runMaestroAsync(root: string) {
   try {
     metro = await startMetroAsync(root);
     await verifyMetroBundleAsync(root, metro.port, platform);
-    if (platform === 'android') configureAndroidMetroRouting(root, metro.port);
+    if (platform === 'android') {
+      assertAndroidDeviceHealth(root);
+      configureAndroidMetroRouting(root, metro.port);
+    }
     run(createExpoNativeRunCommand(platform), root);
     run(
       [
@@ -205,6 +228,27 @@ async function runMaestroAsync(root: string) {
 /** Request the platform bundle so readiness cannot be mistaken for an executable application graph. */
 async function verifyMetroBundleAsync(root: string, port: number, platform: 'android' | 'ios') {
   await verifyExpoMetroBundleAsync({ diagnosticRoot, platform, port });
+}
+
+/** Refuse to build or install while Android's package service is not responsive. */
+function assertAndroidDeviceHealth(root: string) {
+  run(['adb', 'wait-for-device'], root);
+  const devices = commandOutput(['adb', 'devices', '-l'], root);
+  assert(/\sdevice\s/.test(devices), 'ADB has no connected emulator in device state.');
+  const bootCompleted = commandOutput(['adb', 'shell', 'getprop', 'sys.boot_completed'], root);
+  assert(
+    bootCompleted.trim() === '1',
+    `Android emulator has not completed boot: ${bootCompleted.trim()}.`,
+  );
+  const packageManager = commandOutput(
+    ['adb', 'shell', 'cmd', 'package', 'list', 'packages', 'android'],
+    root,
+  );
+  assert(
+    packageManager.includes('package:android'),
+    'Android PackageManager did not return the platform package.',
+  );
+  commandOutput(['adb', 'shell', 'dumpsys', 'package', 'android'], root);
 }
 
 /** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
