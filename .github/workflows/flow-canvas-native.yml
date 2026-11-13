@@ -69,6 +69,10 @@ jobs:
         with:
           api-level: 34
           arch: x86_64
+          avd-name: flow-canvas-api-34
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -no-snapshot-save -noaudio -no-boot-anim -gpu swiftshader_indirect -memory 4096
+          heap-size: 1024M
           script: bun test scripts/utils/createExpoNativeCommand.test.ts scripts/utils/verifyExpoMetroBundle.test.ts && FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" maestro --version && FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" bun run test:flow-canvas:native
       - name: Upload Android diagnostics
         if: always()
@@ -112,6 +116,8 @@ jobs:
           xcrun simctl boot "$simulator" || true
           xcrun simctl bootstatus "$simulator" -b
       - name: Run packed iOS FlowCanvas acceptance
+        env:
+          EXPO_DEBUG: '1'
         run: bun test scripts/utils/createExpoNativeCommand.test.ts scripts/utils/verifyExpoMetroBundle.test.ts && FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" maestro --version && FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" bun run test:flow-canvas:native
       - name: Upload iOS diagnostics
         if: always()
