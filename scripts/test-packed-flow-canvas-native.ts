@@ -18,6 +18,7 @@ import {
   createExpoNativeRunCommand,
   getExpoNativeMetroPort,
 } from './utils/createExpoNativeCommand';
+import { verifyExpoMetroBundleAsync } from './utils/verifyExpoMetroBundle';
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const fixtureSource = join(repositoryRoot, 'test-fixtures', 'flow-canvas-native');
@@ -203,28 +204,7 @@ async function runMaestroAsync(root: string) {
 
 /** Request the platform bundle so readiness cannot be mistaken for an executable application graph. */
 async function verifyMetroBundleAsync(root: string, port: number, platform: 'android' | 'ios') {
-  const url = new URL(`http://127.0.0.1:${port}/index.bundle`);
-  url.searchParams.set('platform', platform);
-  url.searchParams.set('dev', 'true');
-  url.searchParams.set('minify', 'false');
-  const response = await fetch(url);
-  const bundle = await response.text();
-  writeFileSync(
-    join(diagnosticRoot, `metro-${platform}-bundle.log`),
-    `${response.status} ${response.statusText} ${response.url}\n${bundle}`,
-  );
-  assert(
-    response.ok,
-    `Metro did not serve the ${platform} application bundle: HTTP ${response.status}.`,
-  );
-  assert(
-    bundle.includes('Source task'),
-    'Metro bundle does not contain the native FlowCanvas host.',
-  );
-  assert(
-    !/(CommandError|Unable to resolve module|TypeScript but don't have)/.test(bundle),
-    'Metro returned a fatal dependency or resolution error instead of the application bundle.',
-  );
+  await verifyExpoMetroBundleAsync({ diagnosticRoot, platform, port });
 }
 
 /** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
