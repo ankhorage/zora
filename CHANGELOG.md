@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.0.2
+
+### Patch Changes
+
+- e213137: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 27.0.1
 
 ### Patch Changes
