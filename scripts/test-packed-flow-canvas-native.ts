@@ -45,6 +45,7 @@ async function testPackedFlowCanvasNativeAsync() {
     run(['bun', 'install'], fixtureRoot);
     run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
     verifyInstalledCandidate(fixtureRoot, candidate);
+    verifyInstalledTypeScript(fixtureRoot);
     run(['bunx', 'expo', 'export', '--platform', 'android'], fixtureRoot);
     run(['bunx', 'expo', 'export', '--platform', 'ios'], fixtureRoot);
     if (process.env.FLOW_NATIVE_RUN_MAESTRO === '1') await runMaestroAsync(fixtureRoot);
@@ -136,6 +137,23 @@ function verifyInstalledCandidate(root: string, candidate: string) {
   );
 }
 
+/** Verify the Expo fixture owns TypeScript instead of inheriting it from this repository. */
+function verifyInstalledTypeScript(root: string) {
+  const manifest = JSON.parse(readFileSync(join(fixtureSource, 'package.json'), 'utf8')) as {
+    devDependencies?: Record<string, string>;
+  };
+  const range = manifest.devDependencies?.typescript;
+  assert(
+    /^~6\.0\.\d+$/.test(range ?? ''),
+    'Native fixture must declare an Expo 57-compatible TypeScript dependency.',
+  );
+  assert(
+    existsSync(join(root, 'node_modules', 'typescript', 'bin', 'tsc')),
+    'Native fixture did not install its declared TypeScript compiler.',
+  );
+  run(['bunx', 'tsc', '--version'], root);
+}
+
 /** Locate the one package archive emitted by the canonical Bun packing workflow. */
 function singleTarball(root: string): string {
   const archives = readdirSync(root).filter((entry) => entry.endsWith('.tgz'));
@@ -160,6 +178,7 @@ async function runMaestroAsync(root: string) {
   let primaryError: unknown;
   try {
     metro = await startMetroAsync(root);
+    await verifyMetroBundleAsync(root, metro.port, platform);
     if (platform === 'android') configureAndroidMetroRouting(root, metro.port);
     run(createExpoNativeRunCommand(platform), root);
     run(
@@ -180,6 +199,32 @@ async function runMaestroAsync(root: string) {
     if (primaryError === undefined && cleanupError !== undefined) primaryError = cleanupError;
   }
   if (primaryError !== undefined) throw primaryError;
+}
+
+/** Request the platform bundle so readiness cannot be mistaken for an executable application graph. */
+async function verifyMetroBundleAsync(root: string, port: number, platform: 'android' | 'ios') {
+  const url = new URL(`http://127.0.0.1:${port}/index.bundle`);
+  url.searchParams.set('platform', platform);
+  url.searchParams.set('dev', 'true');
+  url.searchParams.set('minify', 'false');
+  const response = await fetch(url);
+  const bundle = await response.text();
+  writeFileSync(
+    join(diagnosticRoot, `metro-${platform}-bundle.log`),
+    `${response.status} ${response.statusText} ${response.url}\n${bundle}`,
+  );
+  assert(
+    response.ok,
+    `Metro did not serve the ${platform} application bundle: HTTP ${response.status}.`,
+  );
+  assert(
+    bundle.includes('Source task'),
+    'Metro bundle does not contain the native FlowCanvas host.',
+  );
+  assert(
+    !/(CommandError|Unable to resolve module|TypeScript but don't have)/.test(bundle),
+    'Metro returned a fatal dependency or resolution error instead of the application bundle.',
+  );
 }
 
 /** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
