@@ -27,7 +27,9 @@ jobs:
       - name: Install pinned Maestro
         run: |
           curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          mkdir -p "$HOME/.local/bin"
           unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
+          export PATH="$HOME/.local/bin:$PATH"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           maestro --version
       - name: Run packed Android FlowCanvas acceptance
@@ -56,7 +58,9 @@ jobs:
       - name: Install pinned Maestro
         run: |
           curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          mkdir -p "$HOME/.local/bin"
           unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
+          export PATH="$HOME/.local/bin:$PATH"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           maestro --version
       - name: Boot iPhone simulator
