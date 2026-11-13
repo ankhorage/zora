@@ -10,7 +10,7 @@ interface FlowNodeProps extends ZoraBaseProps {
   readonly node: FlowNodeData;
   readonly selected: boolean;
   readonly readOnly: boolean;
-  readonly zoom: number;
+  readonly zoomRef: React.RefObject<number>;
   readonly canvasRef: React.RefObject<View | null>;
   readonly onNodePress: (nodeId: string) => void;
   readonly onPortPress: (address: FlowPortAddress) => void;
@@ -23,7 +23,7 @@ interface FlowNodeProps extends ZoraBaseProps {
 }
 
 /** Render an accessible flow node with typed, independently focusable ports. */
-export const FlowNode = withZoraThemeScope(FlowNodeInner);
+export const FlowNode = React.memo(withZoraThemeScope(FlowNodeInner));
 
 /** Render node content in the active ZORA theme scope. */
 function FlowNodeInner(props: FlowNodeProps) {
@@ -89,8 +89,8 @@ function FlowNodeInner(props: FlowNodeProps) {
             const start = dragStart.current;
             if (!start || dragCancelled.current || props.readOnly) return;
             const delta = {
-              x: (event.nativeEvent.pageX - start.x) / props.zoom,
-              y: (event.nativeEvent.pageY - start.y) / props.zoom,
+              x: (event.nativeEvent.pageX - start.x) / props.zoomRef.current,
+              y: (event.nativeEvent.pageY - start.y) / props.zoomRef.current,
             };
             if (Math.abs(delta.x) < 2 && Math.abs(delta.y) < 2) return;
             dragMoved.current = true;
