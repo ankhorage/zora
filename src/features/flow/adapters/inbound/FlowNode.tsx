@@ -29,7 +29,9 @@ export const FlowNode = withZoraThemeScope(FlowNodeInner);
 function FlowNodeInner(props: FlowNodeProps) {
   const { canvasRef, node, onPortLayout } = props;
   const dragCancelled = React.useRef(false);
+  const dragMoved = React.useRef(false);
   const dragStart = React.useRef<{ readonly x: number; readonly y: number } | null>(null);
+  const pointerSelectionHandled = React.useRef(false);
   const portRefs = React.useRef(new Map<string, View | null>());
   const { theme } = useZoraTheme();
   const reportPortAnchor = React.useCallback(
@@ -49,6 +51,9 @@ function FlowNodeInner(props: FlowNodeProps) {
     () => node.ports.forEach((port) => reportPortAnchor({ nodeId: node.id, portId: port.id })),
     [node.id, node.ports, reportPortAnchor],
   );
+  React.useLayoutEffect(() => {
+    reportAllPortAnchors();
+  }, [reportAllPortAnchors, node.position.x, node.position.y]);
   return (
     <View
       onLayout={reportAllPortAnchors}
@@ -74,43 +79,62 @@ function FlowNodeInner(props: FlowNodeProps) {
         accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
         style={{ padding: 12 }}
       >
-        <Pressable
-          accessibilityLabel={props.node.title}
-          accessibilityRole="button"
-          accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
-          disabled={props.readOnly ? true : props.node.disabled}
-          testID={`flow-node-${props.node.id}`}
-          accessibilityHint="Select this node. Drag to move it."
-          onPressIn={(event) => {
+        <View
+          onResponderGrant={(event) => {
             dragCancelled.current = false;
+            dragMoved.current = false;
             dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
           }}
-          onPressOut={(event) => {
+          onResponderMove={(event) => {
             const start = dragStart.current;
-            dragStart.current = null;
             if (!start || dragCancelled.current || props.readOnly) return;
             const delta = {
               x: (event.nativeEvent.pageX - start.x) / props.zoom,
               y: (event.nativeEvent.pageY - start.y) / props.zoom,
             };
-            if (Math.abs(delta.x) < 2 && Math.abs(delta.y) < 2) props.onNodePress(props.node.id);
-            else props.onMove(props.node.id, delta);
+            if (Math.abs(delta.x) < 2 && Math.abs(delta.y) < 2) return;
+            dragMoved.current = true;
+            dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
+            props.onMove(props.node.id, delta);
+          }}
+          onResponderRelease={() => {
+            dragStart.current = null;
+            pointerSelectionHandled.current = true;
+            if (dragCancelled.current || props.readOnly || dragMoved.current) return;
+            props.onNodePress(props.node.id);
           }}
           onResponderTerminate={() => {
             dragCancelled.current = true;
             dragStart.current = null;
           }}
           onResponderTerminationRequest={() => false}
+          onStartShouldSetResponderCapture={() => !props.readOnly && !props.node.disabled}
         >
-          <Text style={{ color: theme.semantics.neutral.text, fontSize: 16, fontWeight: '700' }}>
-            {props.node.title}
-          </Text>
-          {props.node.description ? (
-            <Text style={{ color: theme.semantics.neutral.textMuted }}>
-              {props.node.description}
+          <Pressable
+            accessibilityLabel={props.node.title}
+            accessibilityRole="button"
+            accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
+            disabled={props.readOnly ? true : props.node.disabled}
+            testID={`flow-node-${props.node.id}`}
+            accessibilityHint="Select this node. Drag to move it."
+            onPress={() => {
+              if (pointerSelectionHandled.current) {
+                pointerSelectionHandled.current = false;
+                return;
+              }
+              props.onNodePress(props.node.id);
+            }}
+          >
+            <Text style={{ color: theme.semantics.neutral.text, fontSize: 16, fontWeight: '700' }}>
+              {props.node.title}
             </Text>
-          ) : null}
-        </Pressable>
+            {props.node.description ? (
+              <Text style={{ color: theme.semantics.neutral.textMuted }}>
+                {props.node.description}
+              </Text>
+            ) : null}
+          </Pressable>
+        </View>
         {props.children}
       </View>
       <View style={{ gap: 4, paddingHorizontal: 12 }}>
