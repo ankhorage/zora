@@ -5,6 +5,7 @@ export default createKnipConfig({
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
     'scripts/utils/createExpoNativeCommand.test.ts',
+    'scripts/utils/verifyExpoMetroBundle.test.ts',
     'examples/basic-app/App.tsx',
     'examples/game-presentation/index.ts',
     'examples/grid-workspaces/index.ts',
