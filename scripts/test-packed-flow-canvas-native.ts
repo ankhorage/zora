@@ -20,7 +20,13 @@ mkdirSync(temporaryBase, { recursive: true });
 const temporaryRoot = mkdtempSync(join(temporaryBase, 'zora-flow-native-'));
 const fixtureRoot = join(temporaryRoot, 'consumer');
 const packedRoot = join(temporaryRoot, 'packed');
+const diagnosticRoot = join(
+  process.env.FLOW_NATIVE_DIAGNOSTIC_DIR ?? temporaryBase,
+  'zora-flow-native-diagnostics',
+);
 const ignoredSegments = new Set(['.expo', 'android', 'ios', 'node_modules']);
+let commandNumber = 0;
+let retainCommandOutput = false;
 
 /** Build a packed candidate, prove Metro resolves only its public FlowCanvas export, and run Maestro when supplied. */
 async function testPackedFlowCanvasNativeAsync() {
@@ -35,7 +41,7 @@ async function testPackedFlowCanvasNativeAsync() {
     verifyInstalledCandidate(fixtureRoot, candidate);
     run(['bunx', 'expo', 'export', '--platform', 'android'], fixtureRoot);
     run(['bunx', 'expo', 'export', '--platform', 'ios'], fixtureRoot);
-    if (process.env.FLOW_NATIVE_RUN_MAESTRO === '1') runMaestro(fixtureRoot);
+    if (process.env.FLOW_NATIVE_RUN_MAESTRO === '1') await runMaestroAsync(fixtureRoot);
     else
       console.log(
         'Packed native Metro acceptance passed; Maestro execution is intentionally opt-in.',
@@ -60,9 +66,21 @@ function run(command: readonly string[], cwd: string) {
       EXPO_NO_TELEMETRY: '1',
       TMPDIR: temporaryRoot,
     },
-    stderr: 'inherit',
-    stdout: 'inherit',
+    stderr: 'pipe',
+    stdout: 'pipe',
   });
+  const output = `${new TextDecoder().decode(result.stdout)}${new TextDecoder().decode(result.stderr)}`;
+  if (retainCommandOutput) {
+    mkdirSync(diagnosticRoot, { recursive: true });
+    writeFileSync(
+      join(
+        diagnosticRoot,
+        `${String(++commandNumber).padStart(2, '0')}-${command[1] ?? command[0]}.log`,
+      ),
+      output,
+    );
+  }
+  process.stdout.write(output);
   assert(result.exitCode === 0, `Command failed: ${command.join(' ')}`);
 }
 
@@ -123,16 +141,74 @@ function singleTarball(root: string): string {
 }
 
 /** Run real Maestro touch automation against a locally booted native host. */
-function runMaestro(root: string) {
+async function runMaestroAsync(root: string) {
   const platform = process.env.FLOW_NATIVE_PLATFORM;
   assert(
     platform === 'android' || platform === 'ios',
     'Set FLOW_NATIVE_PLATFORM to android or ios.',
   );
+  retainCommandOutput = true;
   run(['bunx', 'expo', 'prebuild', '--no-install', '--platform', platform], root);
   run(['maestro', '--version'], root);
-  run(['bunx', 'expo', 'run:' + platform, '--no-bundler'], root);
-  run(['maestro', 'test', join('maestro', 'flow-canvas.yaml')], root);
+  const metro = await startMetroAsync(root);
+  try {
+    run(['bunx', 'expo', 'run:' + platform, '--no-bundler'], root);
+    run(
+      [
+        'maestro',
+        'test',
+        '--test-output-dir',
+        join(diagnosticRoot, 'maestro'),
+        join('maestro', 'flow-canvas.yaml'),
+      ],
+      root,
+    );
+  } finally {
+    metro.kill();
+    writeFileSync(join(diagnosticRoot, 'metro.log'), await readOutputAsync(metro));
+    captureDeviceDiagnostics(platform, root);
+  }
+}
+
+/** Start the debug JavaScript server explicitly because native Debug builds do not embed it. */
+async function startMetroAsync(root: string) {
+  const metro = Bun.spawn(
+    ['bunx', 'expo', 'start', '--localhost', '--port', '8081', '--no-interactive'],
+    {
+      cwd: root,
+      env: { ...process.env, CI: '1', EXPO_NO_TELEMETRY: '1' },
+      stderr: 'pipe',
+      stdout: 'pipe',
+    },
+  );
+  const deadline = Date.now() + 30_000;
+  while (Date.now() < deadline) {
+    try {
+      if ((await fetch('http://127.0.0.1:8081')).ok) return metro;
+    } catch {}
+    await Bun.sleep(250);
+  }
+  metro.kill();
+  throw new Error('Metro did not become ready on http://127.0.0.1:8081.');
+}
+
+/** Read a completed process stream after shutting down the owned Metro lifecycle. */
+async function readOutputAsync(process: ReturnType<typeof Bun.spawn>) {
+  const [stderr, stdout] = await Promise.all([
+    new Response(process.stderr).text(),
+    new Response(process.stdout).text(),
+  ]);
+  return `${stdout}${stderr}`;
+}
+
+/** Retain platform logs without copying generated consumers, dependency trees, or build products. */
+function captureDeviceDiagnostics(platform: 'android' | 'ios', root: string) {
+  if (platform !== 'android') return;
+  const result = Bun.spawnSync({ cmd: ['adb', 'logcat', '-d'], cwd: root });
+  writeFileSync(
+    join(diagnosticRoot, 'android-logcat.log'),
+    new TextDecoder().decode(result.stdout),
+  );
 }
 
 await testPackedFlowCanvasNativeAsync();
