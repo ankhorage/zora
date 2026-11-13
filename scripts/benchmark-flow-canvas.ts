@@ -8,6 +8,7 @@ import { assert } from './utils/assert';
 type Sample = Readonly<{
   heapBytes?: number;
   initialRenderMs: number;
+  interactionDiagnostic: InteractionDiagnostic;
   interactionMs: Readonly<{
     connectionUpdate: number;
     nodeDrag: number;
@@ -32,6 +33,11 @@ type BenchmarkState = Readonly<{
   connections: number;
   firstNode?: Readonly<{ x: number; y: number }>;
   viewport: Readonly<{ pan: Readonly<{ x: number; y: number }>; zoom: number }>;
+}>;
+type InteractionDiagnostic = Readonly<{
+  backgroundTarget: string | null;
+  events: readonly string[];
+  viewport: Readonly<{ height: number; width: number; x: number; y: number }>;
 }>;
 
 const repositoryRoot = resolve(import.meta.dir, '..');
@@ -218,8 +224,6 @@ class BenchmarkBrowser {
     const initial = await this.waitForStateAsync((state) => state.firstNode !== undefined);
     const initialRenderMs = performance.now() - renderStart;
     const node = await this.rectAsync('[data-testid="flow-node-node-0"]');
-    const viewport = await this.rectAsync('[data-testid="flow-benchmark-viewport"]');
-
     const nodeDragStart = performance.now();
     await this.dragAsync(node, 32, 18);
     await this.waitForStateAsync(
@@ -231,14 +235,20 @@ class BenchmarkBrowser {
     const nodeDrag = performance.now() - nodeDragStart;
 
     const beforePan = await this.readStateAsync();
+    const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
     const panStart = performance.now();
-    await this.dragFromAsync(viewport.x + 24, viewport.y + viewport.height - 20, 24, 16);
+    await this.dragFromAsync(background.x, background.y, 24, 16);
     await this.waitForStateAsync(
       (state) =>
         state.viewport.pan.x !== beforePan.viewport.pan.x ||
         state.viewport.pan.y !== beforePan.viewport.pan.y,
     );
     const pan = performance.now() - panStart;
+    const interactionDiagnostic = {
+      backgroundTarget: background.backgroundTarget,
+      events: await this.readPointerEventsAsync(),
+      viewport: background.viewport,
+    };
 
     const beforeZoom = await this.readStateAsync();
     const zoomStart = performance.now();
@@ -259,6 +269,7 @@ class BenchmarkBrowser {
     return {
       ...(heapBytes === undefined ? {} : { heapBytes }),
       initialRenderMs,
+      interactionDiagnostic,
       interactionMs: { connectionUpdate, nodeDrag, pan, zoom },
       longTaskCount: await this.evaluateAsync<number>(
         'performance.getEntriesByType("longtask").length',
@@ -268,6 +279,33 @@ class BenchmarkBrowser {
   async versionAsync() {
     const version = (await this.sendAsync('Browser.getVersion')) as { product?: string };
     return version.product ?? 'unknown';
+  }
+  /*** Find a point that React Native Web will dispatch to the viewport rather than an overlaid node. */
+  private async backgroundPointAsync(selector: string) {
+    const diagnostic = await this.evaluateAsync<InteractionDiagnostic & { x?: number; y?: number }>(
+      `(() => {
+        const viewport = document.querySelector(${JSON.stringify(selector)});
+        if (!(viewport instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
+        const rect = viewport.getBoundingClientRect();
+        const events = window.flowBenchmarkEvents = [];
+        const listener = (event) => events.push(event.type + ':' + ((event.target instanceof Element && event.target.getAttribute('data-testid')) || event.target?.tagName || 'unknown'));
+        for (const type of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(type, listener, true);
+        const offsets = [24, 48, 72, 96, 128];
+        const points = offsets.flatMap((y) => offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })));
+        const point = points.find(({ x, y }) => document.elementFromPoint(x, y) === viewport);
+        const target = point ? document.elementFromPoint(point.x, point.y) : null;
+        return { backgroundTarget: target instanceof Element ? target.getAttribute('data-testid') ?? target.tagName : null, events, viewport: { height: rect.height, width: rect.width, x: rect.x, y: rect.y }, ...(point ?? {}) };
+      })()`,
+    );
+    assert(
+      typeof diagnostic.x === 'number' && typeof diagnostic.y === 'number',
+      `No unoccluded viewport background point: ${JSON.stringify(diagnostic)}`,
+    );
+    return diagnostic as InteractionDiagnostic & { x: number; y: number };
+  }
+  /*** Read the actual dispatched pointer sequence retained by the browser-side hit-test probe. */
+  private async readPointerEventsAsync(): Promise<readonly string[]> {
+    return this.evaluateAsync<readonly string[]>('window.flowBenchmarkEvents ?? []');
   }
   close() {
     this.socket.close();
