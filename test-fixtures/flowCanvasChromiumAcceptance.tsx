@@ -32,7 +32,7 @@ const initialNodes = [
       'This deliberately long description proves that measured ports do not assume a fixed node height.',
     id: 'target',
     ports: [{ direction: 'input' as const, id: 'in', label: 'Target input' }],
-    position: { x: 420, y: 238 },
+    position: { x: 420, y: 160 },
     title: 'Target',
   },
 ];

@@ -67,31 +67,66 @@ async function testFlowCanvasChromiumAsync() {
     },
     port: 0,
   });
-  const browser = await ChromeSession.createAsync(await dynamicPortAsync());
+  let browser: ChromeSession | null = null;
+  let failure: unknown = null;
+  let phase = 'starting';
+  let passed = false;
   try {
+    browser = await ChromeSession.createAsync(await dynamicPortAsync());
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
+    await browser.installDiagnosticsAsync();
     const initial = await browser.waitForStateAsync((state) => state.nodes.length === 2);
-    const source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
-    const target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
-    const canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
+    let source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
+    let target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
+    let canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
     await browser.assertPathAnchorsAsync(source, target, canvas);
+    phase = 'insert';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
-    await browser.clickAsync(await browser.rectAsync('[data-testid="flow-node-source"]'));
+    phase = 'pan';
+    await browser.dragFromAsync(canvas.x + 24, canvas.y + canvas.height - 24, 32, 24);
+    const panned = await browser.waitForStateAsync(
+      (state) =>
+        state.viewport.pan.x !== initial.viewport.pan.x ||
+        state.viewport.pan.y !== initial.viewport.pan.y,
+    );
+    phase = 'select';
+    await browser.clickAsync(await browser.rectAsync('[role="button"][aria-label="Source"]'));
     await browser.waitForStateAsync((state) => state.selected.includes('source'));
-    await browser.dragAsync(await browser.rectAsync('[data-testid="flow-node-source"]'), 96, 48);
+    phase = 'drag';
+    await browser.dragAsync(
+      await browser.rectAsync('[role="button"][aria-label="Source"]'),
+      96,
+      -48,
+    );
     const moved = await browser.waitForStateAsync(
       (state) =>
         state.nodes.find((node) => node.id === 'source')?.x !==
         initial.nodes.find((node) => node.id === 'source')?.x,
     );
+    source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
+    target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
+    canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
+    await browser.assertPathAnchorsAsync(source, target, canvas);
+    phase = 'disconnect-initial';
+    await browser.clickAsync(await browser.rectAsync('[aria-label="Connection source-target"]'));
+    await browser.waitForStateAsync((state) => state.connections === 0);
+    phase = 'connect';
+    source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
+    target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
     await browser.clickAsync(source);
     await browser.clickAsync(target);
     await browser.waitForStateAsync((state) => state.connections === 1);
+    phase = 'disconnect-created';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Connection source-target"]'));
     await browser.waitForStateAsync((state) => state.connections === 0);
+    phase = 'zoom';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Zoom in"]'));
+    await browser.waitForStateAsync((state) => state.viewport.zoom > initial.viewport.zoom);
+    phase = 'undo';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Undo"]'));
-    await browser.keyAsync('TAB');
+    phase = 'keyboard-zoom';
+    await browser.focusAsync('[aria-label="Zoom in"]');
+    await browser.keyAsync('Enter');
     const final = await browser.waitForStateAsync(
       (state) =>
         state.events.includes('insert') &&
@@ -102,13 +137,13 @@ async function testFlowCanvasChromiumAsync() {
         state.viewport.zoom > 1,
     );
     assert(
-      final.viewport.pan.x === moved.viewport.pan.x &&
-        final.viewport.pan.y === moved.viewport.pan.y,
+      final.viewport.pan.x === panned.viewport.pan.x &&
+        final.viewport.pan.y === panned.viewport.pan.y,
       'Node drag must not pan the canvas.',
     );
-    await browser.screenshotAsync(join(artifactsDirectory, 'flow-canvas-desktop.png'));
+    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-desktop', phase);
     await browser.setViewportAsync(390, 844);
-    await browser.screenshotAsync(join(artifactsDirectory, 'flow-canvas-mobile.png'));
+    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-mobile', phase);
     assert(
       browser.exceptions.length === 0,
       `Chromium exceptions: ${browser.exceptions.join('\n')}`,
@@ -117,11 +152,28 @@ async function testFlowCanvasChromiumAsync() {
       browser.consoleErrors.length === 0,
       `Chromium console errors: ${browser.consoleErrors.join('\n')}`,
     );
+    passed = true;
     console.log(`Chromium FlowCanvas acceptance passed: ${JSON.stringify(final)}`);
+  } catch (error) {
+    failure = error;
+    throw error;
   } finally {
-    browser.close();
+    if (!passed) {
+      if (browser) await browser.captureFailureEvidenceAsync(artifactsDirectory, phase);
+      else captureStartupFailureEvidence(artifactsDirectory, phase, failure);
+    }
+    browser?.close();
     server.stop();
   }
+}
+
+/*** Retain a diagnosable record when Chromium cannot create a DevTools session. */
+function captureStartupFailureEvidence(directory: string, phase: string, failure: unknown) {
+  mkdirSync(directory, { recursive: true });
+  writeFileSync(
+    join(directory, 'flow-canvas-startup-failure.json'),
+    JSON.stringify({ failure: String(failure), phase }, null, 2),
+  );
 }
 
 /*** Allocate a loopback DevTools port without a fixed-port test assumption. */
@@ -184,7 +236,14 @@ class ChromeSession {
       return session;
     } catch (error) {
       process.kill();
-      throw error;
+      await process.exited;
+      const [stderr, stdout] = await Promise.all([
+        new Response(process.stderr).text(),
+        new Response(process.stdout).text(),
+      ]);
+      throw new Error(
+        `Chrome DevTools session creation failed: ${String(error)}\nstdout: ${stdout}\nstderr: ${stderr}`,
+      );
     }
   }
   async navigateAsync(url: string) {
@@ -222,36 +281,89 @@ class ChromeSession {
   async dragAsync(rect: Rect, deltaX: number, deltaY: number) {
     const x = rect.x + rect.width / 2;
     const y = rect.y + rect.height / 2;
+    await this.dragFromAsync(x, y, deltaX, deltaY);
+  }
+  async dragFromAsync(x: number, y: number, deltaX: number, deltaY: number) {
     await this.mouseAsync(x, y, 'mousePressed');
+    await this.mouseAsync(x + deltaX / 2, y + deltaY / 2, 'mouseMoved');
     await this.mouseAsync(x + deltaX, y + deltaY, 'mouseMoved');
     await this.mouseAsync(x + deltaX, y + deltaY, 'mouseReleased');
   }
-  async assertPathAnchorsAsync(source: Rect, target: Rect, canvas: Rect) {
-    const d = await this.evaluateAsync<string | null>(
-      'document.querySelector("svg path")?.getAttribute("d") ?? null',
+  async focusAsync(selector: string) {
+    const focused = await this.evaluateAsync<boolean>(
+      `(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!(element instanceof HTMLElement)) return false; element.focus(); return document.activeElement === element; })()`,
     );
-    assert(d !== null, 'Expected a rendered FlowCanvas edge path.');
-    const values = d.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
-    assert(values.length >= 8, `Unexpected edge path ${d}.`);
+    assert(focused, `Could not focus ${selector}.`);
+  }
+  async assertPathAnchorsAsync(source: Rect, target: Rect, canvas: Rect) {
     const expected = [
       source.x + source.width / 2 - canvas.x,
       source.y + source.height / 2 - canvas.y,
       target.x + target.width / 2 - canvas.x,
       target.y + target.height / 2 - canvas.y,
     ];
-    assert(
-      Math.abs(values[0]! - expected[0]!) < 2 &&
+    const deadline = Date.now() + 30_000;
+    let d: string | null = null;
+    while (Date.now() < deadline) {
+      d = await this.evaluateAsync<string | null>(
+        'document.querySelector("svg path")?.getAttribute("d") ?? null',
+      );
+      const values = d?.match(/-?\d+(?:\.\d+)?/g)?.map(Number) ?? [];
+      if (
+        values.length >= 8 &&
+        Math.abs(values[0]! - expected[0]!) < 2 &&
         Math.abs(values[1]! - expected[1]!) < 2 &&
         Math.abs(values.at(-2)! - expected[2]!) < 2 &&
-        Math.abs(values.at(-1)! - expected[3]!) < 2,
-      `Edge did not use measured port centers: ${JSON.stringify({ d, expected })}`,
-    );
+        Math.abs(values.at(-1)! - expected[3]!) < 2
+      )
+        return;
+      await this.evaluateAsync('new Promise((resolve) => requestAnimationFrame(resolve))');
+    }
+    throw new Error(`Edge did not use measured port centers: ${JSON.stringify({ d, expected })}`);
   }
   async screenshotAsync(path: string) {
     mkdirSync(resolve(path, '..'), { recursive: true });
     const result = await this.sendAsync('Page.captureScreenshot', { format: 'png' });
     assert(isRecord(result) && typeof result.data === 'string', 'Chrome returned no screenshot.');
     writeFileSync(path, Buffer.from(result.data, 'base64'));
+  }
+  async installDiagnosticsAsync() {
+    await this.evaluateAsync(
+      `(() => {
+        const windowWithDiagnostics = window;
+        const diagnostics = windowWithDiagnostics.flowDiagnostics ??= [];
+        const describe = (target) => target instanceof Element ? {
+          ariaLabel: target.closest('[aria-label]')?.getAttribute('aria-label') ?? null,
+          id: target.id,
+          tagName: target.tagName,
+          testId: target.closest('[data-testid]')?.getAttribute('data-testid') ?? null,
+        } : null;
+        for (const type of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'click']) {
+          document.addEventListener(type, (event) => diagnostics.push({ target: describe(event.target), type }), true);
+        }
+        return true;
+      })()`,
+    );
+  }
+  async captureEvidenceAsync(directory: string, name: string, phase: string) {
+    await this.screenshotAsync(join(directory, `${name}.png`));
+    const evidence = {
+      consoleErrors: this.consoleErrors,
+      diagnostics: await this.evaluateAsync('window.flowDiagnostics ?? []'),
+      exceptions: this.exceptions,
+      phase,
+      state: await this.evaluateAsync('window.flowAcceptance?.read() ?? null'),
+    };
+    mkdirSync(directory, { recursive: true });
+    writeFileSync(join(directory, `${name}.json`), JSON.stringify(evidence, null, 2));
+  }
+  async captureFailureEvidenceAsync(directory: string, phase: string) {
+    try {
+      await this.captureEvidenceAsync(directory, 'flow-canvas-failure', phase);
+    } catch (error) {
+      mkdirSync(directory, { recursive: true });
+      writeFileSync(join(directory, 'flow-canvas-failure.txt'), String(error));
+    }
   }
   async waitForStateAsync(predicate: (state: FlowState) => boolean): Promise<FlowState> {
     const deadline = Date.now() + 30_000;
@@ -275,7 +387,14 @@ class ChromeSession {
     y: number,
     type: 'mousePressed' | 'mouseMoved' | 'mouseReleased',
   ) {
-    await this.sendAsync('Input.dispatchMouseEvent', { button: 'left', clickCount: 1, type, x, y });
+    await this.sendAsync('Input.dispatchMouseEvent', {
+      button: type === 'mouseMoved' ? 'none' : 'left',
+      buttons: type === 'mouseReleased' ? 0 : 1,
+      clickCount: type === 'mouseMoved' ? 0 : 1,
+      type,
+      x,
+      y,
+    });
   }
   private async evaluateAsync<T>(expression: string): Promise<T> {
     const result = await this.sendAsync('Runtime.evaluate', {
