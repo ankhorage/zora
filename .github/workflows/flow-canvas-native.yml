@@ -11,6 +11,30 @@ env:
   MAESTRO_VERSION: cli-2.12.1
 
 jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - name: Install frozen dependencies
+        run: bun install --frozen-lockfile
+      - name: Measure FlowCanvas benchmark baseline
+        env:
+          FLOW_BENCHMARK_ARTIFACT_DIR: ${{ runner.temp }}/flow-canvas-benchmark
+        run: |
+          chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          test -n "$chrome_bin"
+          CHROME_BIN="$chrome_bin" bun run benchmark:flow-canvas
+      - name: Upload FlowCanvas benchmark artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-canvas-benchmark
+          path: ${{ runner.temp }}/flow-canvas-benchmark
+          if-no-files-found: warn
+
   android:
     runs-on: ubuntu-latest
     steps:
@@ -26,24 +50,34 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Install pinned Maestro
         run: |
-          curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
-          mkdir -p "$HOME/.local/bin"
-          unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
-          export PATH="$HOME/.local/bin:$PATH"
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          archive="${RUNNER_TEMP}/maestro.zip"
+          install_root="${RUNNER_TEMP}/maestro/${MAESTRO_VERSION}"
+          curl --fail --location --retry 3 --output "$archive" "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          rm -rf "$install_root"
+          mkdir -p "$install_root"
+          unzip -q "$archive" -d "$install_root"
+          maestro_bin="$(find "$install_root" -type f -name maestro -print -quit)"
+          test -n "$maestro_bin"
+          chmod +x "$maestro_bin"
+          maestro_dir="$(dirname "$maestro_bin")"
+          echo "$maestro_dir" >> "$GITHUB_PATH"
+          export PATH="$maestro_dir:$PATH"
           maestro --version
+          printf 'version=%s\nexecutable=%s\n' "$MAESTRO_VERSION" "$maestro_bin" > "${RUNNER_TEMP}/maestro-provenance.txt"
       - name: Run packed Android FlowCanvas acceptance
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
           arch: x86_64
-          script: FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
+          script: FLOW_NATIVE_KEEP_ARTIFACTS=1 FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 maestro --version && FLOW_NATIVE_KEEP_ARTIFACTS=1 FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
       - name: Upload Android diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: flow-canvas-native-android
-          path: /tmp/zora-flow-native-*
+          path: |
+            /tmp/zora-flow-native-*
+            ${{ runner.temp }}/maestro-provenance.txt
           if-no-files-found: warn
 
   ios:
@@ -57,12 +91,20 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Install pinned Maestro
         run: |
-          curl --fail --location --retry 3 --output /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
-          mkdir -p "$HOME/.local/bin"
-          unzip -q /tmp/maestro.zip -d "$HOME/.local/bin"
-          export PATH="$HOME/.local/bin:$PATH"
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          archive="${RUNNER_TEMP}/maestro.zip"
+          install_root="${RUNNER_TEMP}/maestro/${MAESTRO_VERSION}"
+          curl --fail --location --retry 3 --output "$archive" "https://github.com/mobile-dev-inc/maestro/releases/download/${MAESTRO_VERSION}/maestro.zip"
+          rm -rf "$install_root"
+          mkdir -p "$install_root"
+          unzip -q "$archive" -d "$install_root"
+          maestro_bin="$(find "$install_root" -type f -name maestro -print -quit)"
+          test -n "$maestro_bin"
+          chmod +x "$maestro_bin"
+          maestro_dir="$(dirname "$maestro_bin")"
+          echo "$maestro_dir" >> "$GITHUB_PATH"
+          export PATH="$maestro_dir:$PATH"
           maestro --version
+          printf 'version=%s\nexecutable=%s\n' "$MAESTRO_VERSION" "$maestro_bin" > "${RUNNER_TEMP}/maestro-provenance.txt"
       - name: Boot iPhone simulator
         run: |
           simulator="$(xcrun simctl list devices available | sed -n 's/.*(\(.*\)) (Shutdown).*/\1/p' | head -n 1)"
@@ -70,11 +112,13 @@ jobs:
           xcrun simctl boot "$simulator" || true
           xcrun simctl bootstatus "$simulator" -b
       - name: Run packed iOS FlowCanvas acceptance
-        run: FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
+        run: FLOW_NATIVE_KEEP_ARTIFACTS=1 FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 maestro --version && FLOW_NATIVE_KEEP_ARTIFACTS=1 FLOW_NATIVE_PLATFORM=ios FLOW_NATIVE_RUN_MAESTRO=1 bun run test:flow-canvas:native
       - name: Upload iOS diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: flow-canvas-native-ios
-          path: /tmp/zora-flow-native-*
+          path: |
+            /tmp/zora-flow-native-*
+            ${{ runner.temp }}/maestro-provenance.txt
           if-no-files-found: warn

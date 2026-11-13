@@ -22,6 +22,8 @@ export default createKnipConfig({
     'test-fixtures/graphViewChromiumAcceptance.tsx',
     'test-fixtures/chessChromiumAcceptance.tsx',
     'test-fixtures/flowCanvasChromiumAcceptance.tsx',
+    'test-fixtures/flowCanvasBenchmark.tsx',
+    'test-fixtures/flow-canvas-native/App.tsx',
     'type-tests/**/*.ts',
   ],
   ignoreFiles: [

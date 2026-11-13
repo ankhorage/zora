@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { FlowCanvas } from '@ankhorage/zora/flow';
@@ -33,16 +33,37 @@ function createGraph(size: GraphSize) {
 function FlowCanvasBenchmark() {
   const size = Number(new URLSearchParams(location.search).get('size')) as GraphSize;
   const graph = createGraph(graphSizes.includes(size) ? size : 25);
+  const [connections, setConnections] = useState(graph.connections);
   const [nodes, setNodes] = useState(graph.nodes);
   const [viewport, setViewport] = useState({ pan: { x: 0, y: 0 }, zoom: 1 });
+  useEffect(() => {
+    (
+      globalThis as typeof globalThis & {
+        flowBenchmark?: { read(): unknown; ready: true };
+      }
+    ).flowBenchmark = {
+      ready: true,
+      read: () => ({
+        connections: connections.length,
+        firstNode: nodes[0]?.position,
+        viewport,
+      }),
+    };
+  }, [connections, nodes, viewport]);
   return (
     <FlowCanvas
-      connections={graph.connections}
+      connections={connections}
       nodes={nodes}
       testID="flow-benchmark"
       viewport={viewport}
       onNodesMove={setNodes}
       onViewportChange={setViewport}
+      onConnect={(source, target) =>
+        setConnections((current) => [
+          ...current,
+          { id: `measured-${source.nodeId}-${target.nodeId}`, source, target },
+        ])
+      }
     />
   );
 }
