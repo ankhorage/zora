@@ -317,7 +317,7 @@ Source: `src/types/authoring-adapters.ts:60:1`
 
 Kind: `function`
 Module: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx`
-Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1`
+Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:7:1`
 
 Presents canonical bindable properties while leaving binding representation and mutation ownership external.
 
@@ -387,7 +387,7 @@ Source: `src/types/authoring-adapters.ts:26:1`
 
 Kind: `function`
 Module: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx`
-Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1`
+Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:7:1`
 
 Presents canonical component properties while keeping node storage and mutations with the consumer.
 
@@ -6968,7 +6968,7 @@ Source: `src/types/text.ts:18:1`
 
 Kind: `function`
 Module: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx`
-Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1`
+Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:8:1`
 
 Presents ZORA recipe fields without taking ownership of a consumer's theme document.
 

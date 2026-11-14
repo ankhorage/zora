@@ -1,7 +1,8 @@
 {
-  "packageName": "@ankhorage/zora",
+  "packageName": "ZORA",
   "packageId": "@ankhorage/zora",
-  "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
+  "description": "Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.",
+  "purpose": "Give independently released applications a reusable, cross-platform presentation layer with explicit public entrypoints for components, themes, registries, readers, and authoring controls.",
   "collaborators": true,
   "donation": {
     "account": "ankhorage"
@@ -16,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.1.13",
+      "value": "v27.2.0",
       "color": "cb3837"
     },
     {
@@ -187,6 +188,43 @@
   ],
   "modules": [
     {
+      "path": "src/authoring.browser.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "AuthoringBindingControlState",
+        "AuthoringBindingEditorAdapter",
+        "AuthoringBindingEditorAdapterProps",
+        "AuthoringPropertyControlState",
+        "AuthoringPropertyInspectorAdapter",
+        "AuthoringPropertyInspectorAdapterProps",
+        "AuthoringSelectionAdapter",
+        "AuthoringSelectionAdapterProps",
+        "AuthoringSelectionItemState",
+        "Button",
+        "ButtonProps",
+        "Card",
+        "CardProps",
+        "Field",
+        "FieldProps",
+        "Pressable",
+        "PressableProps",
+        "Text",
+        "TextInput",
+        "TextInputProps",
+        "TextProps",
+        "ThemeEditorAdapter",
+        "ThemeEditorAdapterProps",
+        "ThemeProvider",
+        "ThemeProviderProps",
+        "ThemeRecipeFieldControlState",
+        "ThemeRuntime",
+        "useTheme",
+        "View",
+        "ViewProps"
+      ]
+    },
+    {
       "path": "src/authoring.ts",
       "isEntrypoint": false,
       "dependencies": [],
@@ -200,9 +238,27 @@
         "AuthoringSelectionAdapter",
         "AuthoringSelectionAdapterProps",
         "AuthoringSelectionItemState",
+        "Button",
+        "ButtonProps",
+        "Card",
+        "CardProps",
+        "Field",
+        "FieldProps",
+        "Pressable",
+        "PressableProps",
+        "Text",
+        "TextInput",
+        "TextInputProps",
+        "TextProps",
         "ThemeEditorAdapter",
         "ThemeEditorAdapterProps",
-        "ThemeRecipeFieldControlState"
+        "ThemeProvider",
+        "ThemeProviderProps",
+        "ThemeRecipeFieldControlState",
+        "ThemeRuntime",
+        "useTheme",
+        "View",
+        "ViewProps"
       ]
     },
     {
@@ -4532,8 +4588,6 @@
       "path": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/form/public.ts",
-        "src/features/layout/public.ts",
         "src/types/authoring-adapters.ts"
       ],
       "exports": [
@@ -4544,8 +4598,6 @@
       "path": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/form/public.ts",
-        "src/features/layout/public.ts",
         "src/types/authoring-adapters.ts"
       ],
       "exports": [
@@ -4567,9 +4619,6 @@
       "path": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/card/public.ts",
-        "src/features/form/public.ts",
-        "src/features/layout/public.ts",
         "src/features/registry/themeRecipeMeta.ts",
         "src/types/authoring-adapters.ts"
       ],
@@ -10350,7 +10399,7 @@
       "modulePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       },
       "exportPaths": [
@@ -10553,7 +10602,7 @@
       "modulePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       },
       "exportPaths": [
@@ -38771,7 +38820,7 @@
       "modulePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "line": 10,
+        "line": 8,
         "column": 1
       },
       "exportPaths": [
@@ -46352,7 +46401,7 @@
       "modulePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       },
       "exportPaths": [
@@ -46419,7 +46468,7 @@
       "modulePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       },
       "exportPaths": [
@@ -62877,7 +62926,7 @@
       "modulePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "line": 10,
+        "line": 8,
         "column": 1
       },
       "exportPaths": [
@@ -70596,7 +70645,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       }
     },
@@ -70607,7 +70656,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-        "line": 8,
+        "line": 7,
         "column": 1
       }
     },
@@ -70629,7 +70678,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "line": 10,
+        "line": 8,
         "column": 1
       }
     },
@@ -73069,6 +73118,31 @@
   ],
   "graphs": {
     "imports": [
+      {
+        "fromPath": "src/authoring.browser.ts",
+        "toPath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
+        "sourcePath": "src/authoring.browser.ts"
+      },
+      {
+        "fromPath": "src/authoring.browser.ts",
+        "toPath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
+        "sourcePath": "src/authoring.browser.ts"
+      },
+      {
+        "fromPath": "src/authoring.browser.ts",
+        "toPath": "src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx",
+        "sourcePath": "src/authoring.browser.ts"
+      },
+      {
+        "fromPath": "src/authoring.browser.ts",
+        "toPath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
+        "sourcePath": "src/authoring.browser.ts"
+      },
+      {
+        "fromPath": "src/authoring.browser.ts",
+        "toPath": "src/types/authoring-adapters.ts",
+        "sourcePath": "src/authoring.browser.ts"
+      },
       {
         "fromPath": "src/authoring.ts",
         "toPath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
@@ -80190,28 +80264,8 @@
         "sourcePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"
       },
       {
-        "fromPath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-        "toPath": "src/features/form/public.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-        "toPath": "src/features/layout/public.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"
-      },
-      {
         "fromPath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
         "toPath": "src/types/authoring-adapters.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-        "toPath": "src/features/form/public.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-        "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"
       },
       {
@@ -80227,21 +80281,6 @@
       {
         "fromPath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
         "toPath": "src/types/authoring-adapters.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "toPath": "src/features/card/public.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "toPath": "src/features/form/public.ts",
-        "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
-      },
-      {
-        "fromPath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-        "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
       },
       {
@@ -94836,7 +94875,7 @@
       {
         "fromComponent": "AuthoringBindingEditorAdapter",
         "toComponent": "Field",
-        "jsxElement": "<Field\n            key={name}\n            description={meta.description}\n            disabled={controlDisabled}\n            label={meta.label ?? name}\n            required={required}\n          >",
+        "jsxElement": "<Field\n            key={name}\n            helperText={meta.description}\n            disabled={controlDisabled}\n            label={meta.label ?? name}\n            required={required}\n          >",
         "sourcePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"
       },
       {
@@ -94848,7 +94887,7 @@
       {
         "fromComponent": "AuthoringPropertyInspectorAdapter",
         "toComponent": "Field",
-        "jsxElement": "<Field\n            key={name}\n            description={schema.label === undefined ? undefined : schema.category}\n            disabled={controlDisabled}\n            label={schema.label ?? name}\n            required={required}\n          >",
+        "jsxElement": "<Field\n            key={name}\n            helperText={schema.label === undefined ? undefined : schema.category}\n            disabled={controlDisabled}\n            label={schema.label ?? name}\n            required={required}\n          >",
         "sourcePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"
       },
       {
@@ -94998,13 +95037,19 @@
       {
         "fromComponent": "ThemeEditorAdapter",
         "toComponent": "Card",
-        "jsxElement": "<Card key={recipeName} description={recipe.description} title={recipe.name}>",
+        "jsxElement": "<Card key={recipeName}>",
+        "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
+      },
+      {
+        "fromComponent": "ThemeEditorAdapter",
+        "toComponent": "Text",
+        "jsxElement": "<Text>",
         "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
       },
       {
         "fromComponent": "ThemeEditorAdapter",
         "toComponent": "Field",
-        "jsxElement": "<Field\n                  key={fieldName}\n                  description={field.description}\n                  disabled={controlDisabled}\n                  label={field.label}\n                  required={required}\n                >",
+        "jsxElement": "<Field\n                  key={fieldName}\n                  helperText={field.description}\n                  disabled={controlDisabled}\n                  label={field.label}\n                  required={required}\n                >",
         "sourcePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"
       },
       {

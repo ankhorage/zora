@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ankhorage/zora • Paradox</title>
+    <title>ZORA • Paradox</title>
     <style>
       :root {
         color-scheme: light;
@@ -115,8 +115,9 @@
     <div class="layout">
       <aside class="sidebar">
         <p class="muted">Generated with Paradox</p>
-        <h1>@ankhorage/zora</h1>
-        <p>Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.</p>
+        <h1>ZORA</h1>
+        <p>Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.</p>
+        <p>Give independently released applications a reusable, cross-platform presentation layer with explicit public entrypoints for components, themes, registries, readers, and authoring controls.</p>
         <input id="search" class="search" type="search" placeholder="Search current view" />
         <nav aria-label="Documentation sections">
           <ul class="nav-list">
@@ -1673,7 +1674,7 @@
       <div class="summary">
         <div><strong>549</strong><span class="muted">public exports</span></div>
         <div><strong>129</strong><span class="muted">components</span></div>
-        <div><strong>601</strong><span class="muted">modules</span></div>
+        <div><strong>602</strong><span class="muted">modules</span></div>
         <div><strong>1</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -1846,11 +1847,16 @@ their platform adapters use Popover instead.</p>
   </section>
     <section class="panel">
       <h2>Modules</h2>
-      <article class="item" data-search="src/authoring.ts AuthoringBindingControlState AuthoringBindingEditorAdapter AuthoringBindingEditorAdapterProps AuthoringPropertyControlState AuthoringPropertyInspectorAdapter AuthoringPropertyInspectorAdapterProps AuthoringSelectionAdapter AuthoringSelectionAdapterProps AuthoringSelectionItemState ThemeEditorAdapter ThemeEditorAdapterProps ThemeRecipeFieldControlState">
+      <article class="item" data-search="src/authoring.browser.ts AuthoringBindingControlState AuthoringBindingEditorAdapter AuthoringBindingEditorAdapterProps AuthoringPropertyControlState AuthoringPropertyInspectorAdapter AuthoringPropertyInspectorAdapterProps AuthoringSelectionAdapter AuthoringSelectionAdapterProps AuthoringSelectionItemState Button ButtonProps Card CardProps Field FieldProps Pressable PressableProps Text TextInput TextInputProps TextProps ThemeEditorAdapter ThemeEditorAdapterProps ThemeProvider ThemeProviderProps ThemeRecipeFieldControlState ThemeRuntime useTheme View ViewProps">
+    <h3>src/authoring.browser.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>AuthoringBindingControlState</code>, <code>AuthoringBindingEditorAdapter</code>, <code>AuthoringBindingEditorAdapterProps</code>, <code>AuthoringPropertyControlState</code>, <code>AuthoringPropertyInspectorAdapter</code>, <code>AuthoringPropertyInspectorAdapterProps</code>, <code>AuthoringSelectionAdapter</code>, <code>AuthoringSelectionAdapterProps</code>, <code>AuthoringSelectionItemState</code>, <code>Button</code>, <code>ButtonProps</code>, <code>Card</code>, <code>CardProps</code>, <code>Field</code>, <code>FieldProps</code>, <code>Pressable</code>, <code>PressableProps</code>, <code>Text</code>, <code>TextInput</code>, <code>TextInputProps</code>, <code>TextProps</code>, <code>ThemeEditorAdapter</code>, <code>ThemeEditorAdapterProps</code>, <code>ThemeProvider</code>, <code>ThemeProviderProps</code>, <code>ThemeRecipeFieldControlState</code>, <code>ThemeRuntime</code>, <code>useTheme</code>, <code>View</code>, <code>ViewProps</code></p>
+  </article><article class="item" data-search="src/authoring.ts AuthoringBindingControlState AuthoringBindingEditorAdapter AuthoringBindingEditorAdapterProps AuthoringPropertyControlState AuthoringPropertyInspectorAdapter AuthoringPropertyInspectorAdapterProps AuthoringSelectionAdapter AuthoringSelectionAdapterProps AuthoringSelectionItemState Button ButtonProps Card CardProps Field FieldProps Pressable PressableProps Text TextInput TextInputProps TextProps ThemeEditorAdapter ThemeEditorAdapterProps ThemeProvider ThemeProviderProps ThemeRecipeFieldControlState ThemeRuntime useTheme View ViewProps">
     <h3>src/authoring.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>AuthoringBindingControlState</code>, <code>AuthoringBindingEditorAdapter</code>, <code>AuthoringBindingEditorAdapterProps</code>, <code>AuthoringPropertyControlState</code>, <code>AuthoringPropertyInspectorAdapter</code>, <code>AuthoringPropertyInspectorAdapterProps</code>, <code>AuthoringSelectionAdapter</code>, <code>AuthoringSelectionAdapterProps</code>, <code>AuthoringSelectionItemState</code>, <code>ThemeEditorAdapter</code>, <code>ThemeEditorAdapterProps</code>, <code>ThemeRecipeFieldControlState</code></p>
+    <p><strong>Exports:</strong> <code>AuthoringBindingControlState</code>, <code>AuthoringBindingEditorAdapter</code>, <code>AuthoringBindingEditorAdapterProps</code>, <code>AuthoringPropertyControlState</code>, <code>AuthoringPropertyInspectorAdapter</code>, <code>AuthoringPropertyInspectorAdapterProps</code>, <code>AuthoringSelectionAdapter</code>, <code>AuthoringSelectionAdapterProps</code>, <code>AuthoringSelectionItemState</code>, <code>Button</code>, <code>ButtonProps</code>, <code>Card</code>, <code>CardProps</code>, <code>Field</code>, <code>FieldProps</code>, <code>Pressable</code>, <code>PressableProps</code>, <code>Text</code>, <code>TextInput</code>, <code>TextInputProps</code>, <code>TextProps</code>, <code>ThemeEditorAdapter</code>, <code>ThemeEditorAdapterProps</code>, <code>ThemeProvider</code>, <code>ThemeProviderProps</code>, <code>ThemeRecipeFieldControlState</code>, <code>ThemeRuntime</code>, <code>useTheme</code>, <code>View</code>, <code>ViewProps</code></p>
   </article><article class="item" data-search="src/capabilities/index.ts src/features/registry/createEventCapabilities.ts CAPABILITIES">
     <h3>src/capabilities/index.ts</h3>
     <p class="muted">Referenced module</p>
@@ -3661,25 +3667,25 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>resolveReaderProgress</code></p>
-  </article><article class="item" data-search="src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx src/features/form/public.ts src/features/layout/public.ts src/types/authoring-adapters.ts AuthoringBindingEditorAdapter">
+  </article><article class="item" data-search="src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx src/types/authoring-adapters.ts AuthoringBindingEditorAdapter">
     <h3>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/form/public.ts</code>, <code>src/features/layout/public.ts</code>, <code>src/types/authoring-adapters.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/types/authoring-adapters.ts</code></p>
     <p><strong>Exports:</strong> <code>AuthoringBindingEditorAdapter</code></p>
-  </article><article class="item" data-search="src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx src/features/form/public.ts src/features/layout/public.ts src/types/authoring-adapters.ts AuthoringPropertyInspectorAdapter">
+  </article><article class="item" data-search="src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx src/types/authoring-adapters.ts AuthoringPropertyInspectorAdapter">
     <h3>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/form/public.ts</code>, <code>src/features/layout/public.ts</code>, <code>src/types/authoring-adapters.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/types/authoring-adapters.ts</code></p>
     <p><strong>Exports:</strong> <code>AuthoringPropertyInspectorAdapter</code></p>
   </article><article class="item" data-search="src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx src/features/selection/public.ts src/types/authoring-adapters.ts AuthoringSelectionAdapter">
     <h3>src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/features/selection/public.ts</code>, <code>src/types/authoring-adapters.ts</code></p>
     <p><strong>Exports:</strong> <code>AuthoringSelectionAdapter</code></p>
-  </article><article class="item" data-search="src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx src/features/card/public.ts src/features/form/public.ts src/features/layout/public.ts src/features/registry/themeRecipeMeta.ts src/types/authoring-adapters.ts ThemeEditorAdapter">
+  </article><article class="item" data-search="src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx src/features/registry/themeRecipeMeta.ts src/types/authoring-adapters.ts ThemeEditorAdapter">
     <h3>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/card/public.ts</code>, <code>src/features/form/public.ts</code>, <code>src/features/layout/public.ts</code>, <code>src/features/registry/themeRecipeMeta.ts</code>, <code>src/types/authoring-adapters.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/registry/themeRecipeMeta.ts</code>, <code>src/types/authoring-adapters.ts</code></p>
     <p><strong>Exports:</strong> <code>ThemeEditorAdapter</code></p>
   </article><article class="item" data-search="src/features/registry/bindableComponentMeta.ts src/constants/authoring.ts src/features/image/imageMeta.ts src/features/reader/meta.ts ZORA_BINDABLE_COMPONENT_META ZoraBindableComponentType">
     <h3>src/features/registry/bindableComponentMeta.ts</h3>
@@ -7165,7 +7171,7 @@ Rendering, pagination and navigation remain owned by @ankhorage/reader.</p>
               <article class="item" id="symbol-authoringbindingeditoradapter" data-search="AuthoringBindingEditorAdapter  function src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx Presents canonical bindable properties while leaving binding representation and mutation ownership external. AuthoringBindingEditorAdapterProps ({&#10;  node,&#10;  component,&#10;  getBinding,&#10;  onBindingChange,&#10;  renderBinding,&#10;  isBindingDisabled,&#10;  isBindingRequired,&#10;  disabled = false,&#10;}: AuthoringBindingEditorAdapterProps&lt;TNode, TBinding&gt;) =&gt; React.JSX.Element | null">
     <h4>AuthoringBindingEditorAdapter</h4>
     
-    <p class="muted">function • <code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1</code></p>
+    <p class="muted">function • <code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:7:1</code></p>
     <p>Presents canonical bindable properties while leaving binding representation and mutation ownership external.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -7212,7 +7218,7 @@ Rendering, pagination and navigation remain owned by @ankhorage/reader.</p>
               <article class="item" id="symbol-authoringpropertyinspectoradapter" data-search="AuthoringPropertyInspectorAdapter  function src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx Presents canonical component properties while keeping node storage and mutations with the consumer. AuthoringPropertyInspectorAdapterProps ({&#10;  node,&#10;  component,&#10;  getPropertyValue,&#10;  onPropertyChange,&#10;  renderProperty,&#10;  isPropertyDisabled,&#10;  isPropertyRequired,&#10;  disabled = false,&#10;}: AuthoringPropertyInspectorAdapterProps&lt;TNode&gt;) =&gt; React.JSX.Element | null">
     <h4>AuthoringPropertyInspectorAdapter</h4>
     
-    <p class="muted">function • <code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1</code></p>
+    <p class="muted">function • <code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:7:1</code></p>
     <p>Presents canonical component properties while keeping node storage and mutations with the consumer.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -7302,7 +7308,7 @@ Rendering, pagination and navigation remain owned by @ankhorage/reader.</p>
               <article class="item" id="symbol-themeeditoradapter" data-search="ThemeEditorAdapter  function src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document. ThemeEditorAdapterProps ({&#10;  theme,&#10;  recipes = ZORA_THEME_RECIPE_META,&#10;  getRecipeFieldValue,&#10;  onRecipeFieldChange,&#10;  renderField,&#10;  isFieldDisabled,&#10;  isFieldRequired,&#10;  disabled = false,&#10;}: ThemeEditorAdapterProps&lt;TTheme&gt;) =&gt; React.JSX.Element | null">
     <h4>ThemeEditorAdapter</h4>
     
-    <p class="muted">function • <code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1</code></p>
+    <p class="muted">function • <code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:8:1</code></p>
     <p>Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -33971,7 +33977,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
     </table>
   </article><article class="item" id="component-authoringbindingeditoradapter" data-search="AuthoringBindingEditorAdapter src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx Presents canonical bindable properties while leaving binding representation and mutation ownership external. component ZoraComponentMeta | null disabled boolean | undefined getBinding (node: TNode, name: string) =&gt; TBinding | undefined isBindingDisabled (node: TNode, name: string) =&gt; boolean | undefined isBindingRequired (node: TNode, name: string) =&gt; boolean | undefined node TNode | null onBindingChange (node: TNode, name: string, binding: TBinding | undefined) =&gt; void renderBinding (state: AuthoringBindingControlState&lt;TNode, TBinding&gt;) =&gt; React.ReactNode">
     <h3>AuthoringBindingEditorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:7:1</code></p>
     <p>Presents canonical bindable properties while leaving binding representation and mutation ownership external.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -34023,7 +34029,7 @@ consumers do not need to import lower-level Surface typography directly.</p>
     </table>
   </article><article class="item" id="component-authoringpropertyinspectoradapter" data-search="AuthoringPropertyInspectorAdapter src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx Presents canonical component properties while keeping node storage and mutations with the consumer. component ZoraComponentMeta | null disabled boolean | undefined getPropertyValue (node: TNode, name: string) =&gt; ZoraComponentPropValue | undefined isPropertyDisabled (&#10;    node: TNode,&#10;    name: string,&#10;    schema: ZoraComponentPropSchema,&#10;  ) =&gt; boolean | undefined isPropertyRequired (&#10;    node: TNode,&#10;    name: string,&#10;    schema: ZoraComponentPropSchema,&#10;  ) =&gt; boolean | undefined node TNode | null onPropertyChange (&#10;    node: TNode,&#10;    name: string,&#10;    value: ZoraComponentPropValue | undefined,&#10;  ) =&gt; void renderProperty (state: AuthoringPropertyControlState&lt;TNode&gt;) =&gt; React.ReactNode">
     <h3>AuthoringPropertyInspectorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:7:1</code></p>
     <p>Presents canonical component properties while keeping node storage and mutations with the consumer.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -47469,7 +47475,7 @@ Use `TextInput` for single-line, multiline, and password form controls with ZORA
     </table>
   </article><article class="item" id="component-themeeditoradapter" data-search="ThemeEditorAdapter src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document. disabled boolean | undefined getRecipeFieldValue (&#10;    theme: TTheme,&#10;    recipeName: string,&#10;    fieldName: string,&#10;  ) =&gt; string | boolean | undefined isFieldDisabled (theme: TTheme, recipeName: string, fieldName: string) =&gt; boolean | undefined isFieldRequired (theme: TTheme, recipeName: string, fieldName: string) =&gt; boolean | undefined onRecipeFieldChange (&#10;    theme: TTheme,&#10;    recipeName: string,&#10;    fieldName: string,&#10;    value: string | boolean | undefined,&#10;  ) =&gt; void recipes ZoraThemeRecipeMetaRegistry | undefined renderField (state: ThemeRecipeFieldControlState&lt;TTheme&gt;) =&gt; React.ReactNode theme TTheme | null">
     <h3>ThemeEditorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:8:1</code></p>
     <p>Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document.</p>
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -48788,9 +48794,11 @@ Expansion controls are separate from row selection, including when rendering cus
     <h3>Architecture overview</h3>
     <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
     <div class="mermaid">graph TD
-  package__ankhorage_zora[&quot;@ankhorage/zora&quot;]
+  package__ankhorage_zora[&quot;ZORA&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_zora --&gt; entrypoint_src_index_ts
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_authoring_browser_ts
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_authoring_ts
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
@@ -50307,13 +50315,9 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_features_reader_utils_resolveReaderProgress_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx
@@ -50321,9 +50325,6 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx[&quot;src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_card_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_registry_themeRecipeMeta_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_bindableComponentMeta_ts[&quot;src/features/registry/bindableComponentMeta.ts&quot;]
@@ -51397,9 +51398,11 @@ Expansion controls are separate from row selection, including when rendering cus
     <details>
       <summary>View Mermaid source</summary>
       <pre>graph TD
-  package__ankhorage_zora[&quot;@ankhorage/zora&quot;]
+  package__ankhorage_zora[&quot;ZORA&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_zora --&gt; entrypoint_src_index_ts
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
+  package__ankhorage_zora -.-&gt; module_src_authoring_browser_ts
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_authoring_ts
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
@@ -52916,13 +52919,9 @@ Expansion controls are separate from row selection, including when rendering cus
   package__ankhorage_zora -.-&gt; module_src_features_reader_utils_resolveReaderProgress_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx[&quot;src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx
@@ -52930,9 +52929,6 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx[&quot;src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_card_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_registry_themeRecipeMeta_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_bindableComponentMeta_ts[&quot;src/features/registry/bindableComponentMeta.ts&quot;]
@@ -54008,6 +54004,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <h3>Module relationships</h3>
     <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
     <div class="mermaid">graph LR
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_constants_authoring_ts[&quot;src/constants/authoring.ts&quot;]
@@ -55397,17 +55394,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_reader_composition_useReaderController_ts --&gt; module_src_types_reader_ts
   module_src_features_reader_meta_ts --&gt; module_src_constants_authoring_ts
   module_src_features_reader_meta_ts --&gt; module_src_types_authoring_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_features_selection_public_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_card_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_registry_themeRecipeMeta_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_bindableComponentMeta_ts --&gt; module_src_constants_authoring_ts
@@ -56014,6 +56004,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <details>
       <summary>View Mermaid source</summary>
       <pre>graph LR
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_constants_authoring_ts[&quot;src/constants/authoring.ts&quot;]
@@ -57403,17 +57394,10 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_reader_composition_useReaderController_ts --&gt; module_src_types_reader_ts
   module_src_features_reader_meta_ts --&gt; module_src_constants_authoring_ts
   module_src_features_reader_meta_ts --&gt; module_src_types_authoring_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_features_selection_public_ts
   module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_card_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_form_public_ts
-  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_layout_public_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_features_registry_themeRecipeMeta_ts
   module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --&gt; module_src_types_authoring_adapters_ts
   module_src_features_registry_bindableComponentMeta_ts --&gt; module_src_constants_authoring_ts
@@ -58022,6 +58006,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <h3>Export graph</h3>
     <p class="muted"><code>diagrams/export-graph.mmd</code></p>
     <div class="mermaid">graph LR
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_constants_authoring_ts[&quot;src/constants/authoring.ts&quot;]
@@ -60157,6 +60142,7 @@ Expansion controls are separate from row selection, including when rendering cus
     <details>
       <summary>View Mermaid source</summary>
       <pre>graph LR
+  module_src_authoring_browser_ts[&quot;src/authoring.browser.ts&quot;]
   module_src_authoring_ts[&quot;src/authoring.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_constants_authoring_ts[&quot;src/constants/authoring.ts&quot;]
@@ -66614,7 +66600,7 @@ so echoes of GridView&#39;s own scrollTo calls never become viewport pans.</p>
       <h2>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx</h2>
       <article class="item" data-search="AuthoringBindingEditorAdapter src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx Presents canonical bindable properties while leaving binding representation and mutation ownership external.">
     <h3>AuthoringBindingEditorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:7:1</code></p>
     <p>Presents canonical bindable properties while leaving binding representation and mutation ownership external.</p>
     
   </article>
@@ -66624,7 +66610,7 @@ so echoes of GridView&#39;s own scrollTo calls never become viewport pans.</p>
       <h2>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx</h2>
       <article class="item" data-search="AuthoringPropertyInspectorAdapter src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx Presents canonical component properties while keeping node storage and mutations with the consumer.">
     <h3>AuthoringPropertyInspectorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:7:1</code></p>
     <p>Presents canonical component properties while keeping node storage and mutations with the consumer.</p>
     
   </article>
@@ -66644,7 +66630,7 @@ so echoes of GridView&#39;s own scrollTo calls never become viewport pans.</p>
       <h2>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx</h2>
       <article class="item" data-search="ThemeEditorAdapter src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document.">
     <h3>ThemeEditorAdapter</h3>
-    <p class="muted"><code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1</code></p>
+    <p class="muted"><code>src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:8:1</code></p>
     <p>Presents ZORA recipe fields without taking ownership of a consumer&#39;s theme document.</p>
     
   </article>

@@ -403,7 +403,7 @@ Export paths: `src/index.ts`
 
 ## AuthoringBindingEditorAdapter
 
-Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1`
+Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:7:1`
 
 Presents canonical bindable properties while leaving binding representation and mutation ownership external.
 
@@ -422,7 +422,7 @@ Export paths: `src/index.ts`
 
 ## AuthoringPropertyInspectorAdapter
 
-Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1`
+Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:7:1`
 
 Presents canonical component properties while keeping node storage and mutations with the consumer.
 
@@ -4071,7 +4071,7 @@ Export paths: `src/index.ts`
 
 ## ThemeEditorAdapter
 
-Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1`
+Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:8:1`
 
 Presents ZORA recipe fields without taking ownership of a consumer's theme document.
 

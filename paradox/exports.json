@@ -1501,7 +1501,7 @@
     "modulePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
     "sourceLocation": {
       "filePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
-      "line": 8,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -1704,7 +1704,7 @@
     "modulePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
     "sourceLocation": {
       "filePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
-      "line": 8,
+      "line": 7,
       "column": 1
     },
     "exportPaths": [
@@ -29922,7 +29922,7 @@
     "modulePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
     "sourceLocation": {
       "filePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
-      "line": 10,
+      "line": 8,
       "column": 1
     },
     "exportPaths": [

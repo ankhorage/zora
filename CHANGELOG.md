@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.2.0
+
+### Minor Changes
+
+- 1e83f94: Expose a browser-safe authoring entrypoint with released Surface controls and theme runtime.
+
 ## 27.1.13
 
 ### Patch Changes
