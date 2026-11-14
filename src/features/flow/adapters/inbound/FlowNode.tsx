@@ -77,40 +77,39 @@ function FlowNodeInner(props: FlowNodeProps) {
         accessibilityLabel={props.node.title}
         accessibilityRole="summary"
         accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
+        collapsable={false}
+        onResponderGrant={(event) => {
+          dragCancelled.current = false;
+          dragMoved.current = false;
+          dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
+        }}
+        onResponderMove={(event) => {
+          const start = dragStart.current;
+          if (!start || dragCancelled.current || props.readOnly) return;
+          const delta = {
+            x: (event.nativeEvent.pageX - start.x) / props.zoomRef.current,
+            y: (event.nativeEvent.pageY - start.y) / props.zoomRef.current,
+          };
+          if (Math.abs(delta.x) < 2 && Math.abs(delta.y) < 2) return;
+          dragMoved.current = true;
+          dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
+          props.onMove(props.node.id, delta);
+        }}
+        onResponderRelease={() => {
+          dragStart.current = null;
+          pointerSelectionHandled.current = true;
+          if (dragCancelled.current || props.readOnly || dragMoved.current) return;
+          props.onNodePress(props.node.id);
+        }}
+        onResponderTerminate={() => {
+          dragCancelled.current = true;
+          dragStart.current = null;
+        }}
+        onResponderTerminationRequest={() => false}
+        onStartShouldSetResponderCapture={() => !props.readOnly && !props.node.disabled}
         style={{ padding: 12 }}
       >
-        <View
-          collapsable={false}
-          onResponderGrant={(event) => {
-            dragCancelled.current = false;
-            dragMoved.current = false;
-            dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
-          }}
-          onResponderMove={(event) => {
-            const start = dragStart.current;
-            if (!start || dragCancelled.current || props.readOnly) return;
-            const delta = {
-              x: (event.nativeEvent.pageX - start.x) / props.zoomRef.current,
-              y: (event.nativeEvent.pageY - start.y) / props.zoomRef.current,
-            };
-            if (Math.abs(delta.x) < 2 && Math.abs(delta.y) < 2) return;
-            dragMoved.current = true;
-            dragStart.current = { x: event.nativeEvent.pageX, y: event.nativeEvent.pageY };
-            props.onMove(props.node.id, delta);
-          }}
-          onResponderRelease={() => {
-            dragStart.current = null;
-            pointerSelectionHandled.current = true;
-            if (dragCancelled.current || props.readOnly || dragMoved.current) return;
-            props.onNodePress(props.node.id);
-          }}
-          onResponderTerminate={() => {
-            dragCancelled.current = true;
-            dragStart.current = null;
-          }}
-          onResponderTerminationRequest={() => false}
-          onStartShouldSetResponderCapture={() => !props.readOnly && !props.node.disabled}
-        >
+        <View>
           <Pressable
             accessibilityLabel={props.node.title}
             accessibilityRole="button"
