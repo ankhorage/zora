@@ -10,6 +10,7 @@ export default createKnipConfig({
     'src/features/**/public.ts',
     'src/features/**/adapters/inbound/web-artifact/**/*.{ts,tsx}',
     'src/features/uploader/composition/createUploadPicker.web.ts',
+    'src/authoring.browser.ts',
     'src/**/*.native.tsx',
     'src/**/*.web.ts',
     'src/**/*.web.tsx',
