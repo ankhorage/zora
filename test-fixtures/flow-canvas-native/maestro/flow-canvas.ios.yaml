@@ -1,14 +1,14 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# The source node occupies 45%,38% on the iPhone simulator; 10%,50% is empty canvas after it moves.
+# The source title is centered near 45%,44% on the iPhone simulator; 10%,50% is empty canvas after it moves.
 - launchApp:
-    clearState: true
+    clearState: false
 - assertVisible: 'Source task'
 - assertVisible: 'Target task'
 - tapOn: 'Source task'
 - assertVisible: 'selection=source'
 - swipe:
-    start: '45%, 38%'
+    start: '45%, 44%'
     end: '60%, 47%'
     duration: 500
 - assertVisible: 'source-moved=true'
