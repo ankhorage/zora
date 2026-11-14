@@ -1,6 +1,6 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# The source title occupies 45%,67% after Android's system and acceptance-state chrome.
+# The source title occupies 45%,67%; after it moves, 15%,90% is empty viewport below the toolbar.
 - launchApp:
     clearState: true
 - assertVisible: 'Source task'
@@ -14,8 +14,8 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'source-moved=true'
 - assertVisible: 'viewport=0,0,1'
 - swipe:
-    start: '10%, 50%'
-    end: '20%, 55%'
+    start: '15%, 90%'
+    end: '25%, 85%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
