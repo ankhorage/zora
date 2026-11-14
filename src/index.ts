@@ -7,13 +7,13 @@ export type {
   AuthoringSelectionItemState,
   ThemeEditorAdapterProps,
   ThemeRecipeFieldControlState,
-} from './features/authoring/public';
+} from './authoring';
 export {
   AuthoringBindingEditorAdapter,
   AuthoringPropertyInspectorAdapter,
   AuthoringSelectionAdapter,
   ThemeEditorAdapter,
-} from './features/authoring/public';
+} from './authoring';
 export type {
   ReaderColorScheme,
   ReaderDocumentFormat,

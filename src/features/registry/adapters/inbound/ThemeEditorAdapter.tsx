@@ -4,7 +4,7 @@ import type { ThemeEditorAdapterProps } from '../../../../types/authoring-adapte
 import { Card } from '../../../card/public';
 import { Field } from '../../../form/public';
 import { View } from '../../../layout/public';
-import { ZORA_THEME_RECIPE_META } from '../../../registry/themeRecipeMeta';
+import { ZORA_THEME_RECIPE_META } from '../../themeRecipeMeta';
 
 /*** Presents ZORA recipe fields without taking ownership of a consumer's theme document. */
 export function ThemeEditorAdapter<TTheme>({

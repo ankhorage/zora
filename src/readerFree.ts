@@ -46,22 +46,6 @@ export {
   SignInForm,
   SignUpForm,
 } from './features/auth/public';
-export type {
-  AuthoringBindingControlState,
-  AuthoringBindingEditorAdapterProps,
-  AuthoringPropertyControlState,
-  AuthoringPropertyInspectorAdapterProps,
-  AuthoringSelectionAdapterProps,
-  AuthoringSelectionItemState,
-  ThemeEditorAdapterProps,
-  ThemeRecipeFieldControlState,
-} from './features/authoring/public';
-export {
-  AuthoringBindingEditorAdapter,
-  AuthoringPropertyInspectorAdapter,
-  AuthoringSelectionAdapter,
-  ThemeEditorAdapter,
-} from './features/authoring/public';
 export type { AvatarProps, AvatarShape, AvatarSize } from './features/avatar/public';
 export type { AvatarGroupItem, AvatarGroupProps } from './features/avatar/public';
 export { Avatar, resolveAvatarInitials } from './features/avatar/public';

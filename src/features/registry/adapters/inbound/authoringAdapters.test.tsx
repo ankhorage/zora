@@ -191,7 +191,7 @@ function readStringChange(
 /*** Load adapter modules with inert ZORA controls so unit assertions stay at the public callback boundary. */
 async function loadAdapters(): Promise<LoadedAdapters> {
   const build = await Bun.build({
-    entrypoints: [new URL('../../public.ts', import.meta.url).pathname],
+    entrypoints: [new URL('../../../../authoring.ts', import.meta.url).pathname],
     target: 'bun',
     plugins: [
       {
