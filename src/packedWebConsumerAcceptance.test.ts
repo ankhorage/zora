@@ -13,7 +13,7 @@ test(
 
     expect(subprocess.exitCode, output).toBe(0);
     expect(output).toContain(
-      'Packed ZORA web consumer SSR, hydration, and Select interaction passed.',
+      'Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.',
     );
   },
   { timeout: 120_000 },

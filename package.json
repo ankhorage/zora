@@ -120,8 +120,8 @@
     },
     "./authoring": {
       "react-native": "./src/authoring.ts",
-      "browser": "./src/authoring.ts",
-      "types": "./dist/authoring.d.ts",
+      "browser": "./web-dist/authoring/index.js",
+      "types": "./web-dist/authoring/index.d.ts",
       "import": "./dist/authoring.js",
       "default": "./dist/authoring.js"
     },

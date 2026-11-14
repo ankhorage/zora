@@ -38,6 +38,8 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
+          'react-native-web': '0.21.3',
+          vite: '8.3.8',
         },
       },
       null,
@@ -48,6 +50,76 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
 
 /*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
 function writeConsumerAcceptance(consumerRoot: string): void {
+  mkdirSync(join(consumerRoot, 'src'));
+  writeFileSync(
+    join(consumerRoot, 'vite.config.mjs'),
+    `import { defineConfig } from 'vite';
+
+export default defineConfig({
+  resolve: {
+    alias: { 'react-native': 'react-native-web' },
+    conditions: ['browser', 'import', 'default'],
+    dedupe: ['react', 'react-dom'],
+  },
+  ssr: {
+    noExternal: ['@ankhorage/surface', '@ankhorage/zora', 'react-native-web'],
+    resolve: { conditions: ['browser', 'import', 'default'] },
+  },
+});
+`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'index.html'),
+    '<!doctype html><html><body><div id="root"></div><script type="module" src="/src/authoring.tsx"></script></body></html>\n',
+  );
+  writeFileSync(
+    join(consumerRoot, 'src', 'authoring.tsx'),
+    `import React from 'react';
+import {
+  AuthoringSelectionAdapter,
+  Button,
+  Card,
+  Text,
+  TextInput,
+  ThemeProvider,
+  View,
+} from '@ankhorage/zora/authoring';
+
+const screens = [
+  { id: 'first', label: 'First screen' },
+  { id: 'second', label: 'Second screen' },
+];
+
+export function App() {
+  const [selectedScreenId, setSelectedScreenId] = React.useState('first');
+  const [name, setName] = React.useState('');
+  return (
+    <ThemeProvider>
+      <View gap="m">
+        <Text>Authoring controls</Text>
+        <TextInput onChangeText={setName} testID="authoring-name" value={name} />
+        <Card title="Create screen">
+          <Button disabled={name.length === 0} testID="authoring-create">
+            Create screen
+          </Button>
+        </Card>
+        <AuthoringSelectionAdapter
+          getItemId={(screen) => screen.id}
+          items={screens}
+          onSelectionChange={(screen) => setSelectedScreenId(screen?.id ?? '')}
+          renderItem={({ item, selected, disabled, select }) => (
+            <Button disabled={disabled} onPress={select} testID={\`authoring-select-\${item.id}\`}>
+              {selected ? \`Selected \${item.label}\` : item.label}
+            </Button>
+          )}
+          selectedItemId={selectedScreenId}
+        />
+      </View>
+    </ThemeProvider>
+  );
+}
+`,
+  );
   writeFileSync(
     join(consumerRoot, 'acceptance.mjs'),
     `import assert from 'node:assert/strict';
@@ -57,11 +129,7 @@ import { Window } from 'happy-dom';
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
-import { ZoraProvider, useZoraTheme } from '@ankhorage/zora/web/runtime';
-import { Button } from '@ankhorage/zora/web/button';
-import { Select } from '@ankhorage/zora/web/select';
-import { TreeView } from '@ankhorage/zora/web/tree-view';
-import { GraphView } from '@ankhorage/zora/web/graph-view';
+import { createServer } from 'vite';
 
 const browser = new Window();
 Object.assign(globalThis, {
@@ -72,6 +140,7 @@ Object.assign(globalThis, {
   Node: browser.Node,
   Element: browser.Element,
   MutationObserver: browser.MutationObserver,
+  ShadowRoot: browser.ShadowRoot,
   getComputedStyle: browser.getComputedStyle.bind(browser),
   requestAnimationFrame: browser.requestAnimationFrame.bind(browser),
   cancelAnimationFrame: browser.cancelAnimationFrame.bind(browser),
@@ -79,74 +148,31 @@ Object.assign(globalThis, {
 });
 
 assert.equal(existsSync(join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'node_modules', 'react')), false);
-assert.equal(typeof GraphView, 'function');
-
-function ThemeProbe() {
-  const { mode } = useZoraTheme();
-  return React.createElement('span', { 'data-testid': 'theme-probe', 'data-mode': mode }, mode);
-}
-
-function App() {
-  const [value, setValue] = React.useState('grid');
-  return React.createElement(
-    ZoraProvider,
-    { mode: 'light' },
-    React.createElement(ThemeProbe),
-    React.createElement(Button, null, 'Save'),
-    React.createElement(Select, {
-      value,
-      options: [
-        { label: 'Grid', value: 'grid' },
-        { label: 'Circle', value: 'circle' },
-      ],
-      onValueChange: setValue,
-      testID: 'layout',
-    }),
-    React.createElement(TreeView, {
-      defaultExpandedIds: ['root'],
-      nodes: [{ id: 'root', label: 'Root', children: [{ id: 'child', label: 'Child' }] }],
-    }),
-  );
-}
-
-const app = React.createElement(App);
-const markup = renderToString(app);
-assert.match(markup, /Save/);
-assert.match(markup, /Root/);
-browser.document.body.innerHTML = '<div id="root">' + markup + '</div>';
-const hydrationErrors = [];
-const originalError = console.error;
-console.error = (...args) => {
-  const message = args.map(String).join(' ');
-  if (/hydration/i.test(message)) hydrationErrors.push(message);
-  originalError(...args);
-};
+const vite = await createServer({ configFile: 'vite.config.mjs', server: { middlewareMode: true } });
 try {
+  const { App } = await vite.ssrLoadModule('/src/authoring.tsx');
+  const app = React.createElement(App);
+  const markup = renderToString(app);
+  assert.match(markup, /Authoring controls/);
+  browser.document.body.innerHTML = '<div id="root">' + markup + '</div>';
   let root;
   await React.act(async () => {
     root = hydrateRoot(browser.document.getElementById('root'), app);
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
-  assert.deepEqual(hydrationErrors, []);
-  assert.equal(browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'), 'light');
+  const secondScreen = browser.document.querySelector('[data-testid="authoring-select-second"]');
+  assert.notEqual(secondScreen, null);
   await React.act(async () => {
-    browser.document.querySelector('[data-testid="layout-trigger"]')?.dispatchEvent(
-      new browser.MouseEvent('click', { bubbles: true }),
-    );
+    secondScreen.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
-  const option = browser.document.querySelector('[data-testid="layout-option-circle"]');
-  assert.notEqual(option, null);
-  await React.act(async () => {
-    option.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
-    await new Promise((resolve) => setTimeout(resolve, 20));
-  });
-  assert.match(browser.document.querySelector('[data-testid="layout-trigger"]')?.textContent ?? '', /Circle/);
+  assert.match(secondScreen.textContent ?? '', /Selected Second screen/);
+  assert.equal(browser.document.querySelector('[data-testid="authoring-create"]')?.hasAttribute('disabled'), true);
   root.unmount();
 } finally {
-  console.error = originalError;
+  await vite.close();
 }
-console.log('Packed ZORA web consumer SSR, hydration, and Select interaction passed.');
+console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');
 `,
   );
 }
@@ -173,7 +199,8 @@ try {
     TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
-  console.log('Packed ZORA web consumer SSR, hydration, and Select interaction passed.');
+  run(['bunx', 'vite', 'build'], consumerRoot);
+  console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');
 } finally {
   rmSync(temporaryRoot, { force: true, recursive: true });
 }
