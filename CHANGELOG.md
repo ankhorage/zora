@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.2
+
+### Patch Changes
+
+- 7b77abf: Fit GraphView canvases narrower than the requested padding without clipping rendered nodes.
+
 ## 27.1.1
 
 ### Patch Changes

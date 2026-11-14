@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.1.1",
+      "value": "v27.1.2",
       "color": "cb3837"
     },
     {
@@ -2927,6 +2927,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
         "src/types/graph-view.ts",
         "src/types/graphViewRuntime.ts"
       ],
@@ -3015,10 +3016,19 @@
       "path": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
         "src/types/graph-view.ts"
       ],
       "exports": [
         "fitGraphViewport"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "getGraphFitPadding"
       ]
     },
     {
@@ -67933,7 +67943,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 12,
+        "line": 13,
         "column": 1
       }
     },
@@ -67944,7 +67954,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 119,
+        "line": 120,
         "column": 1
       }
     },
@@ -67955,7 +67965,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 135,
+        "line": 136,
         "column": 1
       }
     },
@@ -67966,7 +67976,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 165,
+        "line": 166,
         "column": 1
       }
     },
@@ -67977,7 +67987,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 179,
+        "line": 180,
         "column": 1
       }
     },
@@ -67988,7 +67998,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 189,
+        "line": 190,
         "column": 1
       }
     },
@@ -67999,7 +68009,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 209,
+        "line": 210,
         "column": 1
       }
     },
@@ -68010,7 +68020,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 225,
+        "line": 226,
         "column": 1
       }
     },
@@ -68021,7 +68031,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 233,
+        "line": 234,
         "column": 1
       }
     },
@@ -68032,7 +68042,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 243,
+        "line": 245,
         "column": 1
       }
     },
@@ -68604,7 +68614,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
-        "line": 6,
+        "line": 7,
         "column": 1
       }
     },
@@ -68615,7 +68625,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
-        "line": 24,
+        "line": 25,
+        "column": 1
+      }
+    },
+    {
+      "name": "getGraphFitPadding",
+      "description": "Limits requested fit padding so every usable canvas retains graph space.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
+        "line": 4,
         "column": 1
       }
     },
@@ -81482,6 +81503,11 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"
@@ -81594,6 +81620,11 @@
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
         "toPath": "src/types/graph-view.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphFitPadding.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
       },
       {
@@ -88148,6 +88179,12 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
+        "fromSymbol": "getNodeFitZoom",
+        "toSymbol": "getGraphFitPadding",
+        "callExpression": "getGraphFitPadding",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
+      },
+      {
         "fromSymbol": "createGraphResizeObserver",
         "toSymbol": "readResizeObserverConstructor",
         "callExpression": "readResizeObserverConstructor",
@@ -88805,6 +88842,12 @@
         "fromSymbol": "fitGraphViewport",
         "toSymbol": "getFitNodes",
         "callExpression": "getFitNodes",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
+      },
+      {
+        "fromSymbol": "fitGraphViewport",
+        "toSymbol": "getGraphFitPadding",
+        "callExpression": "getGraphFitPadding",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/fitGraphViewport.ts"
       },
       {
