@@ -297,7 +297,10 @@ class BenchmarkBrowser {
         for (const type of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(type, listener, true);
         const offsets = [24, 48, 72, 96, 128];
         const points = offsets.flatMap((y) => offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })));
-        const point = points.find(({ x, y }) => document.elementFromPoint(x, y) === background);
+        const point = points.find(({ x, y }) => {
+          const target = document.elementFromPoint(x, y);
+          return target instanceof Node && background.contains(target);
+        });
         const target = point ? document.elementFromPoint(point.x, point.y) : null;
         return { backgroundTarget: target instanceof Element ? target.getAttribute('data-testid') ?? target.tagName : null, events, viewport: { height: rect.height, width: rect.width, x: rect.x, y: rect.y }, ...(point ?? {}) };
       })()`,
