@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "library",
+  "title": "ZORA",
+  "summary": "Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.",
+  "purpose": "Give independently released applications a reusable, cross-platform presentation layer with explicit public entrypoints for components, themes, registries, readers, and authoring controls.",
+  "domain": "cross-platform user interface",
+  "responsibilities": [
+    "Publish React Native and React Native Web UI components and their public props through explicit package entrypoints.",
+    "Provide theme primitives, component registries, reader surfaces, and selected feature-specific UI entrypoints.",
+    "Compose UI behavior on the published @ankhorage/surface foundation and declared React Native peer dependencies."
+  ],
+  "boundaries": [
+    "Does not own application-specific business workflows, persistence, deployment, authentication providers, or infrastructure operations.",
+    "Does not execute capabilities or replace the runtime that interprets application descriptors.",
+    "Does not require consumers to use an Ankhorage application, repository, or unpublished sibling source."
+  ],
+  "audience": [
+    "React Native and React Native Web application authors who need reusable Ankhorage UI components.",
+    "Maintainers integrating published ZORA components, themes, registries, readers, or authoring controls into independent applications."
+  ],
+  "useCases": [
+    "Render reusable controls, layouts, cards, navigation-adjacent UI, data displays, and specialized feature surfaces in a React Native or web application.",
+    "Register and resolve ZORA components for descriptor-driven presentation.",
+    "Apply ZORA themes and reader or authoring UI through the package's public entrypoints."
+  ],
+  "architecture": {
+    "role": "Reusable cross-platform UI and design-system library with feature-owned components and explicit public package subpaths.",
+    "invariants": [
+      "Consumers use published package entrypoints and declared dependencies rather than sibling source imports.",
+      "React, React Native, and platform-specific integration remain declared peer or package dependencies at the UI boundary.",
+      "Application workflows and provider-specific side effects remain outside the component library."
+    ]
+  },
+  "constraints": {
+    "platforms": ["React Native", "React Native Web"],
+    "limitations": [
+      "Consumers must provide the declared React Native peer dependencies required by the entrypoints they use.",
+      "Platform-native behavior is available only where the underlying declared React Native or Expo dependency supports it."
+    ]
+  }
+}
