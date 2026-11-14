@@ -124,7 +124,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       <View
         ref={canvasRef}
         testID={props.testID ? `${props.testID}-viewport` : undefined}
-        onStartShouldSetResponder={(event) => event.target === event.currentTarget}
+        onStartShouldSetResponder={() => true}
         onResponderGrant={(event) => {
           panStart.current = {
             pan: propsRef.current.viewport.pan,
