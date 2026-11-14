@@ -292,7 +292,7 @@ class BenchmarkBrowser {
         for (const type of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(type, listener, true);
         const offsets = [24, 48, 72, 96, 128];
         const points = offsets.flatMap((y) =>
-          offsets.map((x) => ({ x: rect.x + x, y: rect.y + rect.height - y })),
+          offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })),
         );
         const point = points.find(({ x, y }) => {
           const target = document.elementFromPoint(x, y);
