@@ -194,7 +194,7 @@ async function runMaestroAsync(root: string) {
   );
   retainCommandOutput = true;
   run(['bunx', 'expo', 'prebuild', '--no-install', '--platform', platform], root);
-  if (platform === 'ios') resolveIosPackageDependencies(root);
+  const iosProject = platform === 'ios' ? resolveIosPackageDependencies(root) : undefined;
   run(['maestro', '--version'], root);
   let metro: MetroProcess | undefined;
   let primaryError: unknown;
@@ -215,7 +215,8 @@ async function runMaestroAsync(root: string) {
       );
       configureAndroidMetroRouting(root, metro.port);
     }
-    run(createExpoNativeRunCommand(platform), root);
+    if (platform === 'ios') runIosProject(root, iosProject!);
+    else run(createExpoNativeRunCommand(platform), root);
     run(
       [
         'maestro',
@@ -260,6 +261,58 @@ function resolveIosPackageDependencies(root: string) {
     root,
   );
   retainIosPackageResolution(root);
+  return { scheme, workspace };
+}
+
+/** Build the prebuilt Expo workspace directly so Xcode's original diagnostics remain available. */
+function runIosProject(
+  root: string,
+  project: { readonly scheme: string; readonly workspace: string },
+) {
+  const derivedDataPath = join(temporaryRoot, 'ios-derived-data');
+  const resultBundlePath = join(diagnosticRoot, 'ios-build.xcresult');
+  const destination = commandOutput(['xcrun', 'simctl', 'list', 'devices', 'booted', '-j'], root);
+  const deviceId = singleBootedIosDevice(destination);
+  commandOutput(
+    [
+      'xcodebuild',
+      '-workspace',
+      join('ios', project.workspace),
+      '-scheme',
+      project.scheme,
+      '-configuration',
+      'Debug',
+      '-destination',
+      `id=${deviceId}`,
+      '-derivedDataPath',
+      derivedDataPath,
+      '-resultBundlePath',
+      resultBundlePath,
+      'COCOAPODS_PARALLEL_CODE_SIGN=true',
+      'COMPILER_INDEX_STORE_ENABLE=NO',
+      'build',
+    ],
+    root,
+  );
+  const application = join(
+    derivedDataPath,
+    'Build',
+    'Products',
+    'Debug-iphonesimulator',
+    `${project.scheme}.app`,
+  );
+  assert(existsSync(application), `Xcode did not produce the expected app: ${application}.`);
+  run(['xcrun', 'simctl', 'install', deviceId, application], root);
+  run(['xcrun', 'simctl', 'launch', deviceId, 'dev.ankhorage.zora.flowacceptance'], root);
+}
+
+/** Select the one booted simulator instead of silently routing a build to an arbitrary destination. */
+function singleBootedIosDevice(output: string) {
+  const devices = Object.values(
+    (JSON.parse(output) as { devices?: Record<string, readonly { udid: string }[]> }).devices ?? {},
+  ).flat();
+  assert(devices.length === 1, `Expected one booted iOS simulator, found ${devices.length}.`);
+  return devices[0]!.udid;
 }
 
 /** Locate the one generated Xcode project before invoking the CocoaPods-owned workspace step. */
