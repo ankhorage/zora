@@ -1,9 +1,7 @@
+import { Card, Field, Text, View } from '@ankhorage/surface/authoring-controls';
 import React from 'react';
 
 import type { ThemeEditorAdapterProps } from '../../../../types/authoring-adapters';
-import { Card } from '../../../card/public';
-import { Field } from '../../../form/public';
-import { View } from '../../../layout/public';
 import { ZORA_THEME_RECIPE_META } from '../../themeRecipeMeta';
 
 /*** Presents ZORA recipe fields without taking ownership of a consumer's theme document. */
@@ -22,8 +20,10 @@ export function ThemeEditorAdapter<TTheme>({
   return (
     <View gap="m">
       {Object.entries(recipes).map(([recipeName, recipe]) => (
-        <Card key={recipeName} description={recipe.description} title={recipe.name}>
+        <Card key={recipeName}>
           <View gap="m">
+            <Text>{recipe.name}</Text>
+            {recipe.description === undefined ? null : <Text>{recipe.description}</Text>}
             {Object.entries(recipe.fields).map(([fieldName, field]) => {
               const controlDisabled =
                 disabled || isFieldDisabled?.(theme, recipeName, fieldName) === true;
@@ -31,7 +31,7 @@ export function ThemeEditorAdapter<TTheme>({
               return (
                 <Field
                   key={fieldName}
-                  description={field.description}
+                  helperText={field.description}
                   disabled={controlDisabled}
                   label={field.label}
                   required={required}

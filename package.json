@@ -120,8 +120,8 @@
     },
     "./authoring": {
       "react-native": "./src/authoring.ts",
-      "browser": "./src/authoring.ts",
-      "types": "./dist/authoring.d.ts",
+      "browser": "./web-dist/authoring/index.js",
+      "types": "./web-dist/authoring/index.d.ts",
       "import": "./dist/authoring.js",
       "default": "./dist/authoring.js"
     },
@@ -156,6 +156,7 @@
     "prepack": "bun run build",
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
+    "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
     "test:graph-view:chromium": "bun scripts/test-graph-view-chromium.ts",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json && bun x tsc -p tsconfig.typecheck.json",

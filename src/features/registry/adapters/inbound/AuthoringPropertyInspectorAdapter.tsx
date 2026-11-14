@@ -1,8 +1,7 @@
+import { Field, View } from '@ankhorage/surface/authoring-controls';
 import React from 'react';
 
 import type { AuthoringPropertyInspectorAdapterProps } from '../../../../types/authoring-adapters';
-import { Field } from '../../../form/public';
-import { View } from '../../../layout/public';
 
 /*** Presents canonical component properties while keeping node storage and mutations with the consumer. */
 export function AuthoringPropertyInspectorAdapter<TNode>({
@@ -25,7 +24,7 @@ export function AuthoringPropertyInspectorAdapter<TNode>({
         return (
           <Field
             key={name}
-            description={schema.label === undefined ? undefined : schema.category}
+            helperText={schema.label === undefined ? undefined : schema.category}
             disabled={controlDisabled}
             label={schema.label ?? name}
             required={required}

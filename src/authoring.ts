@@ -12,3 +12,25 @@ export type {
   ThemeEditorAdapterProps,
   ThemeRecipeFieldControlState,
 } from './types/authoring-adapters';
+export type {
+  ButtonProps,
+  CardProps,
+  FieldProps,
+  PressableProps,
+  TextInputProps,
+  TextProps,
+  ThemeProviderProps,
+  ThemeRuntime,
+  ViewProps,
+} from '@ankhorage/surface/authoring-controls';
+export {
+  Button,
+  Card,
+  Field,
+  Pressable,
+  Text,
+  TextInput,
+  ThemeProvider,
+  useTheme,
+  View,
+} from '@ankhorage/surface/authoring-controls';
