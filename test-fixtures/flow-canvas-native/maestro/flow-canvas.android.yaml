@@ -14,8 +14,8 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'source-moved=true'
 - assertVisible: 'viewport=0,0,1'
 - swipe:
-    start: '15%, 90%'
-    end: '25%, 85%'
+    start: '25%, 85%'
+    end: '15%, 80%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
