@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.1
+
+### Patch Changes
+
+- 4eab6f3: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 27.1.0
 
 ### Minor Changes
