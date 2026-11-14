@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.9
+
+### Patch Changes
+
+- e87d6ff: Add the authored repository metadata document to the published source package.
+
 ## 27.1.8
 
 ### Patch Changes
