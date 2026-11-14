@@ -1,6 +1,6 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# The source title is centered near 45%,44% on the iPhone simulator; 10%,50% is empty canvas after it moves.
+# Select the source before panning; the empty canvas pan brings the complete target node into the clipped viewport.
 - launchApp:
     clearState: false
 - assertVisible: 'Source task'
@@ -13,14 +13,14 @@ appId: dev.ankhorage.zora.flowacceptance
     duration: 500
 - assertVisible: 'source-moved=true'
 - assertVisible: 'viewport=0,0,1'
+- tapOn: 'Source task: Output'
 - swipe:
-    start: '20%, 55%'
-    end: '10%, 50%'
+    start: '90%, 55%'
+    end: '20%, 55%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
 - assertVisible: 'source-unchanged-on-viewport-change=true'
-- tapOn: 'Source task: Output'
 - tapOn: 'Target task: Input'
 - assertVisible: 'event=connect'
 - tapOn: 'Connection source-target'

@@ -1,6 +1,6 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# The source title occupies 45%,67%; after it moves, 15%,90% is empty viewport below the toolbar.
+# Select the source before panning; the empty lower-right viewport pan brings the complete target node into Android's clipped accessibility tree.
 - launchApp:
     clearState: false
 - assertVisible: 'Source task'
@@ -13,14 +13,14 @@ appId: dev.ankhorage.zora.flowacceptance
     duration: 500
 - assertVisible: 'source-moved=true'
 - assertVisible: 'viewport=0,0,1'
+- tapOn: 'Source task: Output'
 - swipe:
-    start: '25%, 85%'
-    end: '15%, 80%'
+    start: '90%, 85%'
+    end: '20%, 85%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
 - assertVisible: 'source-unchanged-on-viewport-change=true'
-- tapOn: 'Source task: Output'
 - tapOn: 'Target task: Input'
 - assertVisible: 'event=connect'
 - tapOn: 'Connection source-target'
