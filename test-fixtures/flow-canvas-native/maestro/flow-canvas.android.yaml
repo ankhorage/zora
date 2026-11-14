@@ -1,0 +1,38 @@
+appId: dev.ankhorage.zora.flowacceptance
+---
+# Select the source before panning; the empty lower-right viewport pan brings the complete target node into Android's clipped accessibility tree.
+- launchApp:
+    clearState: false
+- assertVisible: 'Source task'
+- assertVisible: 'Target task'
+- tapOn: 'Source task'
+- assertVisible: 'selection=source'
+- swipe:
+    start: '45%, 67%'
+    end: '60%, 47%'
+    duration: 500
+- assertVisible: 'source-moved=true'
+- assertVisible: 'viewport=0,0,1'
+- tapOn: 'Source task: Output'
+- swipe:
+    start: '85%, 70%'
+    end: '20%, 70%'
+    duration: 500
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+- assertVisible: 'source-unchanged-on-viewport-change=true'
+- tapOn: 'Target task: Input'
+- assertVisible: 'event=connect'
+- tapOn: 'Connection source-target'
+- assertVisible: 'connections=0'
+- assertVisible: 'event=disconnect'
+- tapOn: 'Zoom in'
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+- tapOn: 'Undo'
+- assertVisible: 'event=undo'
+- assertVisible: 'undo-count=1'
+- tapOn: 'Redo'
+- assertVisible: 'event=redo'
+- assertVisible: 'redo-count=1'
+- takeScreenshot: flow-canvas-native
