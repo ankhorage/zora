@@ -29,6 +29,7 @@ const reactNativeSvgWebEntry = Bun.resolveSync(
   'react-native-svg/lib/module/index.js',
   repositoryRoot,
 );
+const manualPreview = process.env.FLOW_CHROMIUM_PREVIEW === '1';
 
 /*** Exercise controlled FlowCanvas interactions through real Chromium pointer and keyboard input. */
 async function testFlowCanvasChromiumAsync() {
@@ -67,8 +68,14 @@ async function testFlowCanvasChromiumAsync() {
             { headers: { 'content-type': 'text/html' } },
           );
     },
-    port: 0,
+    port: manualPreview ? 4173 : 0,
   });
+  if (manualPreview) {
+    console.log(`FlowCanvas preview: http://127.0.0.1:${server.port}`);
+    await waitForPreviewExitAsync();
+    server.stop();
+    return;
+  }
   let browser: ChromeSession | null = null;
   let failure: unknown = null;
   let phase = 'starting';
@@ -186,6 +193,14 @@ function captureStartupFailureEvidence(directory: string, phase: string, failure
     join(directory, 'flow-canvas-startup-failure.json'),
     JSON.stringify({ failure: String(failure), phase }, null, 2),
   );
+}
+
+/** Keep the existing Chromium acceptance fixture available for local, human-operated review. */
+function waitForPreviewExitAsync() {
+  return new Promise<void>((resolve) => {
+    process.once('SIGINT', resolve);
+    process.once('SIGTERM', resolve);
+  });
 }
 
 /*** Allocate a loopback DevTools port without a fixed-port test assumption. */
