@@ -12,7 +12,7 @@
         "@ankhorage/grid-view": "^0.5.0",
         "@ankhorage/reader": "^0.1.2",
         "@ankhorage/runtime": "^5.4.4",
-        "@ankhorage/surface": "^9.5.6",
+        "@ankhorage/surface": "^9.5.7",
         "@ankhorage/utility": "^1.10.0",
         "expo-document-picker": "~57.0.3",
         "expo-image-picker": "~57.0.20",
