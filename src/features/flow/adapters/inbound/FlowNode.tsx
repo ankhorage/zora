@@ -80,7 +80,7 @@ function FlowNodeInner(props: FlowNodeProps) {
         style={{ padding: 12 }}
       >
         <View
-        collapsable={false}
+          collapsable={false}
           onResponderGrant={(event) => {
             dragCancelled.current = false;
             dragMoved.current = false;
