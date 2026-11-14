@@ -280,26 +280,28 @@ class BenchmarkBrowser {
     const version = (await this.sendAsync('Browser.getVersion')) as { product?: string };
     return version.product ?? 'unknown';
   }
-  /*** Find a point that React Native Web will dispatch to the viewport rather than an overlaid node. */
+  /*** Find a point that React Native Web dispatches to the FlowCanvas-owned background responder. */
   private async backgroundPointAsync(selector: string) {
     const diagnostic = await this.evaluateAsync<InteractionDiagnostic & { x?: number; y?: number }>(
       `(() => {
         const viewport = document.querySelector(${JSON.stringify(selector)});
         if (!(viewport instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
+        const background = document.querySelector(${JSON.stringify(`${selector}-background`)});
+        if (!(background instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
         const rect = viewport.getBoundingClientRect();
         const events = window.flowBenchmarkEvents = [];
         const listener = (event) => events.push(event.type + ':' + ((event.target instanceof Element && event.target.getAttribute('data-testid')) || event.target?.tagName || 'unknown'));
         for (const type of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(type, listener, true);
         const offsets = [24, 48, 72, 96, 128];
         const points = offsets.flatMap((y) => offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })));
-        const point = points.find(({ x, y }) => document.elementFromPoint(x, y) === viewport);
+        const point = points.find(({ x, y }) => document.elementFromPoint(x, y) === background);
         const target = point ? document.elementFromPoint(point.x, point.y) : null;
         return { backgroundTarget: target instanceof Element ? target.getAttribute('data-testid') ?? target.tagName : null, events, viewport: { height: rect.height, width: rect.width, x: rect.x, y: rect.y }, ...(point ?? {}) };
       })()`,
     );
     assert(
       typeof diagnostic.x === 'number' && typeof diagnostic.y === 'number',
-      `No unoccluded viewport background point: ${JSON.stringify(diagnostic)}`,
+      `No unoccluded FlowCanvas background-responder point: ${JSON.stringify(diagnostic)}`,
     );
     return diagnostic as InteractionDiagnostic & { x: number; y: number };
   }

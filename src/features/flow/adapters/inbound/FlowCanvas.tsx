@@ -144,6 +144,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
           }}
           onStartShouldSetResponder={() => true}
           style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
+          testID={props.testID ? `${props.testID}-background` : undefined}
         />
         <View
           pointerEvents="box-none"
