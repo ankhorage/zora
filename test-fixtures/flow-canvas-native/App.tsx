@@ -62,7 +62,6 @@ export default function App() {
         <Text testID="flow-connection-state">connections={connections.length}</Text>
         <Text testID="flow-undo-state">undo-count={undoCount}</Text>
         <Text testID="flow-redo-state">redo-count={redoCount}</Text>
-        <Text testID="flow-history-state">events={history.join(',') || 'none'}</Text>
         {observedEvents.map((event, index) => (
           <Text key={`${event}-${index}`}>event={event}</Text>
         ))}
