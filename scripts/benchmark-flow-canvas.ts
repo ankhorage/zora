@@ -235,7 +235,10 @@ class BenchmarkBrowser {
     const nodeDrag = performance.now() - nodeDragStart;
 
     const beforePan = await this.readStateAsync();
-    const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
+    const background = await this.backgroundPointAsync(
+      '[data-testid="flow-benchmark-viewport"]',
+      '[data-testid="flow-benchmark-viewport-background"]',
+    );
     const panStart = performance.now();
     await this.dragFromAsync(background.x, background.y, 24, 16);
     await this.waitForStateAsync(
@@ -281,12 +284,12 @@ class BenchmarkBrowser {
     return version.product ?? 'unknown';
   }
   /*** Find a point that React Native Web dispatches to the FlowCanvas-owned background responder. */
-  private async backgroundPointAsync(selector: string) {
+  private async backgroundPointAsync(viewportSelector: string, backgroundSelector: string) {
     const diagnostic = await this.evaluateAsync<InteractionDiagnostic & { x?: number; y?: number }>(
       `(() => {
-        const viewport = document.querySelector(${JSON.stringify(selector)});
+        const viewport = document.querySelector(${JSON.stringify(viewportSelector)});
         if (!(viewport instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
-        const background = document.querySelector(${JSON.stringify(`${selector}-background`)});
+        const background = document.querySelector(${JSON.stringify(backgroundSelector)});
         if (!(background instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
         const rect = viewport.getBoundingClientRect();
         const events = window.flowBenchmarkEvents = [];
