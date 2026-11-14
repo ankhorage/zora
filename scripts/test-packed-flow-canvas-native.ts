@@ -85,7 +85,7 @@ function run(command: readonly string[], cwd: string) {
         diagnosticRoot,
         `${String(++commandNumber).padStart(2, '0')}-${command[1] ?? command[0]}.log`,
       ),
-      output,
+      `${output}\nexitCode=${String(result.exitCode)}\n`,
     );
   }
   process.stdout.write(output);
@@ -104,7 +104,7 @@ function commandOutput(command: readonly string[], cwd: string) {
         diagnosticRoot,
         `${String(++commandNumber).padStart(2, '0')}-${command[1] ?? command[0]}.log`,
       ),
-      output,
+      `${output}\nexitCode=${String(result.exitCode)}\n`,
     );
   }
   process.stdout.write(output);
@@ -239,9 +239,14 @@ async function runMaestroAsync(root: string) {
 /** Resolve the generated workspace before its build so SwiftPM failures retain their own evidence. */
 function resolveIosPackageDependencies(root: string) {
   const iosRoot = join(root, 'ios');
-  const workspace = readdirSync(iosRoot).find((entry) => entry.endsWith('.xcworkspace'));
-  assert(workspace !== undefined, 'Expo prebuild did not create an iOS workspace.');
-  const scheme = workspace.slice(0, -'.xcworkspace'.length);
+  commandOutput(['xcodebuild', '-version'], root);
+  const project = singleIosProject(iosRoot);
+  retainIosProjectMetadata(iosRoot, project);
+  commandOutput(['pod', '--version'], iosRoot);
+  commandOutput(['pod', 'install'], iosRoot);
+  const workspace = singleIosWorkspace(iosRoot);
+  const scheme = singleIosScheme(root, workspace);
+  retainIosPackageResolution(root);
   commandOutput(
     [
       'xcodebuild',
@@ -254,6 +259,60 @@ function resolveIosPackageDependencies(root: string) {
     root,
   );
   retainIosPackageResolution(root);
+}
+
+/** Locate the one generated Xcode project before invoking the CocoaPods-owned workspace step. */
+function singleIosProject(iosRoot: string) {
+  const projects = readdirSync(iosRoot).filter((entry) => entry.endsWith('.xcodeproj'));
+  assert(
+    projects.length === 1,
+    `Expected one generated iOS Xcode project, found ${projects.join(', ') || 'none'}.`,
+  );
+  const project = projects[0]!;
+  assert(
+    existsSync(join(iosRoot, project, 'project.pbxproj')),
+    `Generated iOS Xcode project lacks project.pbxproj: ${project}.`,
+  );
+  return project;
+}
+
+/** Locate the one CocoaPods workspace created for the generated iOS project. */
+function singleIosWorkspace(iosRoot: string) {
+  const workspaces = readdirSync(iosRoot).filter((entry) => entry.endsWith('.xcworkspace'));
+  assert(
+    workspaces.length === 1,
+    `Expected one CocoaPods iOS workspace, found ${workspaces.join(', ') || 'none'}.`,
+  );
+  return workspaces[0]!;
+}
+
+/** Read the generated workspace's declared shared scheme instead of inferring it from a filename. */
+function singleIosScheme(root: string, workspace: string) {
+  const output = commandOutput(
+    ['xcodebuild', '-list', '-json', '-workspace', join('ios', workspace)],
+    root,
+  );
+  const jsonStart = output.indexOf('{');
+  const jsonEnd = output.lastIndexOf('}');
+  assert(
+    jsonStart >= 0 && jsonEnd > jsonStart,
+    `Xcode did not emit workspace JSON for ${workspace}.`,
+  );
+  const schemes = (
+    JSON.parse(output.slice(jsonStart, jsonEnd + 1)) as { workspace?: { schemes?: unknown } }
+  ).workspace?.schemes;
+  assert(Array.isArray(schemes), `Xcode did not report workspace schemes for ${workspace}.`);
+  assert(
+    schemes.length === 1 && typeof schemes[0] === 'string',
+    `Expected one generated iOS workspace scheme, found ${schemes.join(', ') || 'none'}.`,
+  );
+  return schemes[0];
+}
+
+/** Retain generated Xcode metadata that declares SwiftPM inputs without retaining native products. */
+function retainIosProjectMetadata(iosRoot: string, project: string) {
+  const projectFile = join(iosRoot, project, 'project.pbxproj');
+  writeFileSync(join(diagnosticRoot, 'ios-project.pbxproj'), readFileSync(projectFile));
 }
 
 /** Retain only declared SwiftPM inputs, never generated native products or checkout trees. */
