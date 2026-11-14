@@ -9,7 +9,7 @@ describe('src ownership', () => {
       .map((entry) => entry.name)
       .sort();
 
-    expect(directories).toEqual(['capabilities', 'constants', 'features', 'types']);
+    expect(directories).toEqual(['capabilities', 'constants', 'features', 'metadata', 'types']);
   });
 
   test('does not reintroduce technical ownership roots', () => {
@@ -17,7 +17,6 @@ describe('src ownership', () => {
       'src/constants.ts',
       'src/context',
       'src/internal',
-      'src/metadata',
       'src/theme',
       'src/utils',
     ]) {
