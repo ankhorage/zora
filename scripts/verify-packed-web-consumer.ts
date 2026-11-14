@@ -40,7 +40,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
-          ...(authoring ? { 'react-native-web': '0.21.3', vite: '8.3.8' } : {}),
+          ...(authoring ? { 'react-native-web': '0.21.4', vite: '8.3.8' } : {}),
         },
       },
       null,
@@ -103,6 +103,10 @@ const screens = [
 
 export function App() {
   const [selectedScreenId, setSelectedScreenId] = React.useState('first');
+  const [selectionNotifications, setSelectionNotifications] = React.useState(0);
+  const [containerSelectedScreenId, setContainerSelectedScreenId] = React.useState('first');
+  const [containerSelectionNotifications, setContainerSelectionNotifications] = React.useState(0);
+  const [disabledSelectionNotifications, setDisabledSelectionNotifications] = React.useState(0);
   const [name, setName] = React.useState('');
   return (
     <ThemeProvider>
@@ -122,7 +126,10 @@ export function App() {
         <AuthoringSelectionAdapter
           getItemId={(screen) => screen.id}
           items={screens}
-          onSelectionChange={(screen) => setSelectedScreenId(screen?.id ?? '')}
+          onSelectionChange={(screen) => {
+            setSelectedScreenId(screen?.id ?? '');
+            setSelectionNotifications((count) => count + 1);
+          }}
           renderItem={({ item, selected, disabled, select }) => (
             <Button disabled={disabled} onPress={select} testID={\`authoring-select-\${item.id}\`}>
               {selected ? \`Selected \${item.label}\` : item.label}
@@ -130,16 +137,40 @@ export function App() {
           )}
           selectedItemId={selectedScreenId}
         />
+        <Text testID="authoring-explicit-selection-notifications">
+          {selectionNotifications}
+        </Text>
+        <AuthoringSelectionAdapter
+          getItemId={(screen) => screen.id}
+          items={screens}
+          onSelectionChange={(screen) => {
+            setContainerSelectedScreenId(screen?.id ?? '');
+            setContainerSelectionNotifications((count) => count + 1);
+          }}
+          renderItem={({ item, selected }) => (
+            <View testID={\`authoring-container-\${item.id}\`}>
+              <Text>{selected ? \`Selected container \${item.label}\` : item.label}</Text>
+            </View>
+          )}
+          selectedItemId={containerSelectedScreenId}
+        />
+        <Text testID="authoring-container-selection-notifications">
+          {containerSelectionNotifications}
+        </Text>
         <AuthoringSelectionAdapter
           disabled
           getItemId={(screen) => screen.id}
           items={[screens[0]]}
+          onSelectionChange={() => setDisabledSelectionNotifications((count) => count + 1)}
           renderItem={({ item, disabled, select }) => (
             <Button disabled={disabled} onPress={select} testID="authoring-disabled">
               {item.label}
             </Button>
           )}
         />
+        <Text testID="authoring-disabled-selection-notifications">
+          {disabledSelectionNotifications}
+        </Text>
         <AuthoringBindingEditorAdapter
           component={{ bindings: { props: {} } }}
           getBinding={() => undefined}
@@ -211,6 +242,10 @@ Object.assign(globalThis, {
 });
 
 assert.equal(existsSync(join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'node_modules', 'react')), false);
+assert.equal(
+  JSON.parse(readFileSync(join(process.cwd(), 'node_modules', 'react-native-web', 'package.json'), 'utf8')).version,
+  '0.21.4',
+);
 const vite = await createServer({ configFile: 'vite.config.mjs', server: { middlewareMode: true } });
 try {
   const { App, authoringApi } = await vite.ssrLoadModule('/src/authoring.tsx');
@@ -234,7 +269,7 @@ try {
   const declaration = readFileSync(join(authoringDirectory, 'index.d.ts'), 'utf8');
   for (const name of ['FieldProps', 'PressableProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
   const artifact = readFileSync(join(authoringDirectory, 'index.js'), 'utf8');
-  for (const forbidden of ['AppBar', 'react-native-safe-area-context', 'codegen']) assert.equal(artifact.includes(forbidden), false);
+  for (const forbidden of ['AppBar', 'react-native-safe-area-context', 'react-native-gesture-handler', 'codegen']) assert.equal(artifact.includes(forbidden), false);
   const app = React.createElement(App);
   const markup = renderToString(app);
   assert.match(markup, /Authoring controls/);
@@ -251,8 +286,33 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
   assert.match(secondScreen.textContent ?? '', /Selected Second screen/);
+  assert.equal(
+    browser.document.querySelector('[data-testid="authoring-explicit-selection-notifications"]')?.textContent,
+    '1',
+  );
+  const secondContainer = browser.document.querySelector('[data-testid="authoring-container-second"]');
+  assert.notEqual(secondContainer, null);
+  await React.act(async () => {
+    secondContainer.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.match(secondContainer.textContent ?? '', /Selected container Second screen/);
+  assert.equal(
+    browser.document.querySelector('[data-testid="authoring-container-selection-notifications"]')?.textContent,
+    '1',
+  );
   assert.equal(browser.document.querySelector('[data-testid="authoring-create"]')?.hasAttribute('disabled'), true);
   assert.equal(browser.document.querySelector('[data-testid="authoring-disabled"]')?.hasAttribute('disabled'), true);
+  await React.act(async () => {
+    browser.document.querySelector('[data-testid="authoring-disabled"]')?.dispatchEvent(
+      new browser.MouseEvent('click', { bubbles: true }),
+    );
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.equal(
+    browser.document.querySelector('[data-testid="authoring-disabled-selection-notifications"]')?.textContent,
+    '0',
+  );
   root.unmount();
 } finally {
   await vite.close();

@@ -77,6 +77,7 @@ describe('authoring adapters', () => {
 
     expect(selected).toEqual([{ id: 'second' }, null]);
     expect(findElement(element, 'SelectionProvider')?.props.selectedIds).toEqual(['first']);
+    expect(findElement(element, 'SelectableItem')).toBeDefined();
   });
 
   test('passes required state and real property mutations while preventing disabled mutations', async () => {

@@ -1,4 +1,4 @@
-import { Pressable } from '@ankhorage/surface';
+import { Pressable } from '@ankhorage/surface/authoring-controls';
 import type { SelectionIntent } from '@ankhorage/utility/selection';
 import React from 'react';
 import { type GestureResponderEvent, Platform } from 'react-native';
