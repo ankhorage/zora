@@ -1,0 +1,38 @@
+appId: dev.ankhorage.zora.flowacceptance
+---
+# The source node occupies 45%,38% on the iPhone simulator; 10%,50% is empty canvas after it moves.
+- launchApp:
+    clearState: true
+- assertVisible: 'Source task'
+- assertVisible: 'Target task'
+- tapOn: 'Source task'
+- assertVisible: 'selection=source'
+- swipe:
+    start: '45%, 38%'
+    end: '60%, 47%'
+    duration: 500
+- assertVisible: 'source-moved=true'
+- assertVisible: 'viewport=0,0,1'
+- swipe:
+    start: '10%, 50%'
+    end: '20%, 55%'
+    duration: 500
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+- assertVisible: 'source-unchanged-on-viewport-change=true'
+- tapOn: 'Source task: Output'
+- tapOn: 'Target task: Input'
+- assertVisible: 'event=connect'
+- tapOn: 'Connection source-target'
+- assertVisible: 'connections=0'
+- assertVisible: 'event=disconnect'
+- tapOn: 'Zoom in'
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+- tapOn: 'Undo'
+- assertVisible: 'event=undo'
+- assertVisible: 'undo-count=1'
+- tapOn: 'Redo'
+- assertVisible: 'event=redo'
+- assertVisible: 'redo-count=1'
+- takeScreenshot: flow-canvas-native

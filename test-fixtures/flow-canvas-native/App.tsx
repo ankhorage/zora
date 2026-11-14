@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -32,6 +32,10 @@ export default function App() {
   const [selectedNodeIds, setSelectedNodeIds] = useState<readonly string[]>([]);
   const [viewport, setViewport] = useState({ pan: { x: 0, y: 0 }, zoom: 1 });
   const [history, setHistory] = useState<readonly string[]>([]);
+  const sourcePositionRef = useRef(initialNodes[0]!.position);
+  const [sourceUnchangedOnViewportChange, setSourceUnchangedOnViewportChange] = useState(true);
+  const [undoCount, setUndoCount] = useState(0);
+  const [redoCount, setRedoCount] = useState(0);
   const record = (event: string) => setHistory((current) => [...current, event]);
   const source = nodes.find((node) => node.id === 'source')!;
   const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
@@ -49,7 +53,15 @@ export default function App() {
         <Text testID="flow-viewport-state">
           viewport={viewport.pan.x},{viewport.pan.y},{viewport.zoom}
         </Text>
+        <Text testID="flow-viewport-pan-state">
+          viewport-panned={String(viewport.pan.x !== 0 || viewport.pan.y !== 0)}
+        </Text>
+        <Text testID="flow-node-viewport-state">
+          source-unchanged-on-viewport-change={String(sourceUnchangedOnViewportChange)}
+        </Text>
         <Text testID="flow-connection-state">connections={connections.length}</Text>
+        <Text testID="flow-undo-state">undo-count={undoCount}</Text>
+        <Text testID="flow-redo-state">redo-count={redoCount}</Text>
         <Text testID="flow-history-state">events={history.join(',') || 'none'}</Text>
         {observedEvents.map((event, index) => (
           <Text key={`${event}-${index}`}>event={event}</Text>
@@ -79,11 +91,22 @@ export default function App() {
         }}
         onNodesMove={(next) => {
           setNodes(next);
+          sourcePositionRef.current = next.find((node) => node.id === 'source')!.position;
           record('move');
         }}
-        onRedo={() => record('redo')}
-        onUndo={() => record('undo')}
+        onRedo={() => {
+          setRedoCount((current) => current + 1);
+          record('redo');
+        }}
+        onUndo={() => {
+          setUndoCount((current) => current + 1);
+          record('undo');
+        }}
         onViewportChange={(next) => {
+          setSourceUnchangedOnViewportChange(
+            source.position.x === sourcePositionRef.current.x &&
+              source.position.y === sourcePositionRef.current.y,
+          );
           setViewport(next);
           record('viewport');
         }}
