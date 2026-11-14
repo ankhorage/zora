@@ -235,10 +235,7 @@ class BenchmarkBrowser {
     const nodeDrag = performance.now() - nodeDragStart;
 
     const beforePan = await this.readStateAsync();
-    const background = await this.backgroundPointAsync(
-      '[data-testid="flow-benchmark-viewport"]',
-      '[data-testid="flow-benchmark-viewport-background"]',
-    );
+    const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
     const panStart = performance.now();
     await this.dragFromAsync(background.x, background.y, 24, 16);
     await this.waitForStateAsync(
@@ -283,14 +280,12 @@ class BenchmarkBrowser {
     const version = (await this.sendAsync('Browser.getVersion')) as { product?: string };
     return version.product ?? 'unknown';
   }
-  /*** Find a point that React Native Web dispatches to the FlowCanvas-owned background responder. */
-  private async backgroundPointAsync(viewportSelector: string, backgroundSelector: string) {
+  /*** Find unoccupied canvas space and prove its real pointer drag changes only the controlled viewport. */
+  private async backgroundPointAsync(viewportSelector: string) {
     const diagnostic = await this.evaluateAsync<InteractionDiagnostic & { x?: number; y?: number }>(
       `(() => {
         const viewport = document.querySelector(${JSON.stringify(viewportSelector)});
         if (!(viewport instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
-        const background = document.querySelector(${JSON.stringify(backgroundSelector)});
-        if (!(background instanceof HTMLElement)) return { backgroundTarget: null, events: [], viewport: { height: 0, width: 0, x: 0, y: 0 } };
         const rect = viewport.getBoundingClientRect();
         const events = window.flowBenchmarkEvents = [];
         const listener = (event) => events.push(event.type + ':' + ((event.target instanceof Element && event.target.getAttribute('data-testid')) || event.target?.tagName || 'unknown'));
@@ -299,7 +294,7 @@ class BenchmarkBrowser {
         const points = offsets.flatMap((y) => offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })));
         const point = points.find(({ x, y }) => {
           const target = document.elementFromPoint(x, y);
-          return target instanceof Node && background.contains(target);
+          return target instanceof Element && !target.closest('[data-testid^="flow-node-"], [data-testid^="flow-port-"], [aria-label="Connection source-target"]');
         });
         const target = point ? document.elementFromPoint(point.x, point.y) : null;
         return { backgroundTarget: target instanceof Element ? target.getAttribute('data-testid') ?? target.tagName : null, events, viewport: { height: rect.height, width: rect.width, x: rect.x, y: rect.y }, ...(point ?? {}) };
@@ -307,7 +302,7 @@ class BenchmarkBrowser {
     );
     assert(
       typeof diagnostic.x === 'number' && typeof diagnostic.y === 'number',
-      `No unoccluded FlowCanvas background-responder point: ${JSON.stringify(diagnostic)}`,
+      `No unoccupied FlowCanvas background point: ${JSON.stringify(diagnostic)}`,
     );
     return diagnostic as InteractionDiagnostic & { x: number; y: number };
   }
