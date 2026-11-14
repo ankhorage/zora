@@ -142,35 +142,43 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         style={{
           flex: 1,
           minHeight: 300,
-          transform: [
-            { translateX: props.viewport.pan.x },
-            { translateY: props.viewport.pan.y },
-            { scale: props.viewport.zoom },
-          ],
         }}
       >
-        <FlowEdges
-          anchors={portAnchors}
-          connections={props.connections}
-          readOnly={props.readOnly === true}
-          onDisconnect={disconnect}
-        />
-        {props.nodes.map((node) => (
-          <FlowNode
-            key={node.id}
-            node={node}
+        <View
+          pointerEvents="box-none"
+          style={{
+            flex: 1,
+            minHeight: 300,
+            transform: [
+              { translateX: props.viewport.pan.x },
+              { translateY: props.viewport.pan.y },
+              { scale: props.viewport.zoom },
+            ],
+          }}
+        >
+          <FlowEdges
+            anchors={portAnchors}
+            connections={props.connections}
             readOnly={props.readOnly === true}
-            selected={selectedNodeIds.has(node.id)}
-            canvasRef={canvasRef}
-            zoomRef={zoomRef}
-            onMove={moveNode}
-            onNodePress={selectNode}
-            onPortPress={selectPort}
-            onPortLayout={setPortAnchor}
-          >
-            {props.renderNode?.(node, { selected: selectedNodeIds.has(node.id) })}
-          </FlowNode>
-        ))}
+            onDisconnect={disconnect}
+          />
+          {props.nodes.map((node) => (
+            <FlowNode
+              key={node.id}
+              node={node}
+              readOnly={props.readOnly === true}
+              selected={selectedNodeIds.has(node.id)}
+              canvasRef={canvasRef}
+              zoomRef={zoomRef}
+              onMove={moveNode}
+              onNodePress={selectNode}
+              onPortPress={selectPort}
+              onPortLayout={setPortAnchor}
+            >
+              {props.renderNode?.(node, { selected: selectedNodeIds.has(node.id) })}
+            </FlowNode>
+          ))}
+        </View>
       </View>
       <FlowPalette
         items={props.paletteItems}
@@ -324,6 +332,7 @@ const FlowEdgeControl = React.memo(function FlowEdgeControl(props: {
         position: 'absolute',
         top: (props.source.y + props.target.y) / 2 - 22,
         width: 44,
+        zIndex: 1,
       }}
       onPress={() => props.onDisconnect?.(props.connection.id)}
     />

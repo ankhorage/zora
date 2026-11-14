@@ -81,7 +81,7 @@ async function testFlowCanvasChromiumAsync() {
     let source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
     let target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
     let canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
-    await browser.assertPathAnchorsAsync(source, target, canvas);
+    await browser.assertPathAnchorsAsync(source, target, canvas, initial.viewport);
     phase = 'insert';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
     phase = 'pan';
@@ -118,7 +118,7 @@ async function testFlowCanvasChromiumAsync() {
     source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
     target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
     canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
-    await browser.assertPathAnchorsAsync(source, target, canvas);
+    await browser.assertPathAnchorsAsync(source, target, canvas, moved.viewport);
     phase = 'disconnect-initial';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Connection source-target"]'));
     await browser.waitForStateAsync((state) => state.connections === 0);
@@ -314,12 +314,17 @@ class ChromeSession {
     assert(state !== null, 'FlowCanvas controlled host state is unavailable.');
     return state;
   }
-  async assertPathAnchorsAsync(source: Rect, target: Rect, canvas: Rect) {
+  async assertPathAnchorsAsync(
+    source: Rect,
+    target: Rect,
+    canvas: Rect,
+    viewport: FlowState['viewport'],
+  ) {
     const expected = [
-      source.x + source.width / 2 - canvas.x,
-      source.y + source.height / 2 - canvas.y,
-      target.x + target.width / 2 - canvas.x,
-      target.y + target.height / 2 - canvas.y,
+      (source.x + source.width / 2 - canvas.x - viewport.pan.x) / viewport.zoom,
+      (source.y + source.height / 2 - canvas.y - viewport.pan.y) / viewport.zoom,
+      (target.x + target.width / 2 - canvas.x - viewport.pan.x) / viewport.zoom,
+      (target.y + target.height / 2 - canvas.y - viewport.pan.y) / viewport.zoom,
     ];
     const deadline = Date.now() + 30_000;
     let d: string | null = null;
