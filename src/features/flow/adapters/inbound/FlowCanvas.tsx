@@ -246,10 +246,7 @@ const FlowEdges = React.memo(function FlowEdges(props: {
 }) {
   const { theme } = useZoraTheme();
   return (
-    <View
-      pointerEvents="box-none"
-      style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
-    >
+    <>
       <View
         pointerEvents="none"
         style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
@@ -283,7 +280,7 @@ const FlowEdges = React.memo(function FlowEdges(props: {
           />
         );
       })}
-    </View>
+    </>
   );
 });
 
