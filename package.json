@@ -118,6 +118,13 @@
       "import": "./dist/features/theme/public.js",
       "default": "./dist/features/theme/public.js"
     },
+    "./authoring": {
+      "react-native": "./src/features/authoring/public.ts",
+      "browser": "./src/features/authoring/public.ts",
+      "types": "./dist/features/authoring/public.d.ts",
+      "import": "./dist/features/authoring/public.js",
+      "default": "./dist/features/authoring/public.js"
+    },
     "./web/runtime": {
       "types": "./web-dist/runtime/ZoraProvider.d.ts",
       "import": "./web-dist/runtime/ZoraProvider.js",
