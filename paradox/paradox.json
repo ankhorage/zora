@@ -2,8 +2,10 @@
   "packageName": "@ankhorage/zora",
   "packageId": "@ankhorage/zora",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
-  "collaborators": null,
-  "donation": null,
+  "collaborators": true,
+  "donation": {
+    "account": "ankhorage"
+  },
   "badges": [
     {
       "id": "license",
@@ -14,7 +16,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.1.4",
+      "value": "v27.1.5",
       "color": "cb3837"
     },
     {
