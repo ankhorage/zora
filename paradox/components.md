@@ -401,6 +401,73 @@ Export paths: `src/index.ts`
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
 
+## AuthoringBindingEditorAdapter
+
+Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1`
+
+Presents canonical bindable properties while leaving binding representation and mutation ownership external.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| component | `ZoraComponentMeta \| null` | yes | — |  |
+| disabled | `boolean \| undefined` | no | `false` |  |
+| getBinding | `(node: TNode, name: string) => TBinding \| undefined` | yes | — |  |
+| isBindingDisabled | `(node: TNode, name: string) => boolean \| undefined` | no | — |  |
+| isBindingRequired | `(node: TNode, name: string) => boolean \| undefined` | no | — |  |
+| node | `TNode \| null` | yes | — |  |
+| onBindingChange | `(node: TNode, name: string, binding: TBinding \| undefined) => void` | no | — |  |
+| renderBinding | `(state: AuthoringBindingControlState<TNode, TBinding>) => React.ReactNode` | yes | — |  |
+
+## AuthoringPropertyInspectorAdapter
+
+Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1`
+
+Presents canonical component properties while keeping node storage and mutations with the consumer.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| component | `ZoraComponentMeta \| null` | yes | — |  |
+| disabled | `boolean \| undefined` | no | `false` |  |
+| getPropertyValue | `(node: TNode, name: string) => ZoraComponentPropValue \| undefined` | yes | — |  |
+| isPropertyDisabled | `(
+    node: TNode,
+    name: string,
+    schema: ZoraComponentPropSchema,
+  ) => boolean \| undefined` | no | — |  |
+| isPropertyRequired | `(
+    node: TNode,
+    name: string,
+    schema: ZoraComponentPropSchema,
+  ) => boolean \| undefined` | no | — |  |
+| node | `TNode \| null` | yes | — |  |
+| onPropertyChange | `(
+    node: TNode,
+    name: string,
+    value: ZoraComponentPropValue \| undefined,
+  ) => void` | no | — |  |
+| renderProperty | `(state: AuthoringPropertyControlState<TNode>) => React.ReactNode` | yes | — |  |
+
+## AuthoringSelectionAdapter
+
+Source: `src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx:7:1`
+
+Connects consumer-owned items to ZORA's controlled single-selection behavior.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | — |  |
+| getItemId | `(item: TItem) => string` | yes | — |  |
+| items | `readonly TItem[]` | yes | — |  |
+| onSelectionChange | `(item: TItem \| null) => void \| undefined` | no | — |  |
+| renderItem | `(state: AuthoringSelectionItemState<TItem>) => React.ReactNode` | yes | — |  |
+| selectedItemId | `string \| undefined` | no | — |  |
+
 ## AuthScreen
 
 Source: `src/features/auth/adapters/inbound/AuthScreen.tsx:20:14`
@@ -4001,6 +4068,34 @@ Export paths: `src/index.ts`
 | underlineColorAndroid | `ColorValue \| undefined` | no | — |  |
 | value | `string \| undefined` | no | — |  |
 | verticalAlign | `"auto" \| "top" \| "bottom" \| "middle" \| undefined` | no | — |  |
+
+## ThemeEditorAdapter
+
+Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1`
+
+Presents ZORA recipe fields without taking ownership of a consumer's theme document.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| disabled | `boolean \| undefined` | no | `false` |  |
+| getRecipeFieldValue | `(
+    theme: TTheme,
+    recipeName: string,
+    fieldName: string,
+  ) => string \| boolean \| undefined` | yes | — |  |
+| isFieldDisabled | `(theme: TTheme, recipeName: string, fieldName: string) => boolean \| undefined` | no | — |  |
+| isFieldRequired | `(theme: TTheme, recipeName: string, fieldName: string) => boolean \| undefined` | no | — |  |
+| onRecipeFieldChange | `(
+    theme: TTheme,
+    recipeName: string,
+    fieldName: string,
+    value: string \| boolean \| undefined,
+  ) => void` | no | — |  |
+| recipes | `ZoraThemeRecipeMetaRegistry \| undefined` | no | `ZORA_THEME_RECIPE_META` |  |
+| renderField | `(state: ThemeRecipeFieldControlState<TTheme>) => React.ReactNode` | yes | — |  |
+| theme | `TTheme \| null` | yes | — |  |
 
 ## ThemeModeToggle
 

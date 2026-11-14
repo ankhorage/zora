@@ -1,4 +1,5 @@
 graph LR
+  module_src_authoring_ts["src/authoring.ts"]
   module_src_capabilities_index_ts["src/capabilities/index.ts"]
   module_src_constants_authoring_ts["src/constants/authoring.ts"]
   module_src_features_accordion_accordionItemMeta_ts["src/features/accordion/accordionItemMeta.ts"]
@@ -360,6 +361,10 @@ graph LR
   module_src_features_reader_meta_ts["src/features/reader/meta.ts"]
   module_src_features_reader_public_ts["src/features/reader/public.ts"]
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx["src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"]
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx["src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"]
+  module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx["src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx"]
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx["src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"]
   module_src_features_registry_bindableComponentMeta_ts["src/features/registry/bindableComponentMeta.ts"]
   module_src_features_registry_componentMeta_ts["src/features/registry/componentMeta.ts"]
   module_src_features_registry_createEventCapabilities_ts["src/features/registry/createEventCapabilities.ts"]
@@ -512,6 +517,7 @@ graph LR
   module_src_types_app_bar_ts["src/types/app-bar.ts"]
   module_src_types_app_header_ts["src/types/app-header.ts"]
   module_src_types_auth_ts["src/types/auth.ts"]
+  module_src_types_authoring_adapters_ts["src/types/authoring-adapters.ts"]
   module_src_types_authoring_ts["src/types/authoring.ts"]
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]
   module_src_types_avatar_ts["src/types/avatar.ts"]
@@ -639,6 +645,38 @@ graph LR
   export_AuthFormBaseProps -.-> export_ZoraThemeMode
   export_AuthIdentifierKind["AuthIdentifierKind"]
   module_src_types_auth_ts --> export_AuthIdentifierKind
+  export_AuthoringBindingControlState["AuthoringBindingControlState"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringBindingControlState
+  export_AuthoringBindingControlState -.-> export_ZoraComponentMeta
+  export_AuthoringBindingEditorAdapter["AuthoringBindingEditorAdapter"]
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --> export_AuthoringBindingEditorAdapter
+  export_AuthoringBindingEditorAdapter -.-> export_AuthoringBindingEditorAdapterProps
+  export_AuthoringBindingEditorAdapterProps["AuthoringBindingEditorAdapterProps"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringBindingEditorAdapterProps
+  export_AuthoringBindingEditorAdapterProps -.-> export_AuthoringBindingControlState
+  export_AuthoringBindingEditorAdapterProps -.-> export_ZoraComponentMeta
+  export_AuthoringPropertyControlState["AuthoringPropertyControlState"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringPropertyControlState
+  export_AuthoringPropertyControlState -.-> export_ZoraComponentMeta
+  export_AuthoringPropertyControlState -.-> export_ZoraComponentPropSchema
+  export_AuthoringPropertyControlState -.-> export_ZoraComponentPropValue
+  export_AuthoringPropertyInspectorAdapter["AuthoringPropertyInspectorAdapter"]
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --> export_AuthoringPropertyInspectorAdapter
+  export_AuthoringPropertyInspectorAdapter -.-> export_AuthoringPropertyInspectorAdapterProps
+  export_AuthoringPropertyInspectorAdapterProps["AuthoringPropertyInspectorAdapterProps"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringPropertyInspectorAdapterProps
+  export_AuthoringPropertyInspectorAdapterProps -.-> export_AuthoringPropertyControlState
+  export_AuthoringPropertyInspectorAdapterProps -.-> export_ZoraComponentMeta
+  export_AuthoringPropertyInspectorAdapterProps -.-> export_ZoraComponentPropSchema
+  export_AuthoringPropertyInspectorAdapterProps -.-> export_ZoraComponentPropValue
+  export_AuthoringSelectionAdapter["AuthoringSelectionAdapter"]
+  module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --> export_AuthoringSelectionAdapter
+  export_AuthoringSelectionAdapter -.-> export_AuthoringSelectionAdapterProps
+  export_AuthoringSelectionAdapterProps["AuthoringSelectionAdapterProps"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringSelectionAdapterProps
+  export_AuthoringSelectionAdapterProps -.-> export_AuthoringSelectionItemState
+  export_AuthoringSelectionItemState["AuthoringSelectionItemState"]
+  module_src_types_authoring_adapters_ts --> export_AuthoringSelectionItemState
   export_AuthScreen["AuthScreen"]
   module_src_features_auth_adapters_inbound_AuthScreen_tsx --> export_AuthScreen
   export_AuthScreenMode["AuthScreenMode"]
@@ -1774,10 +1812,20 @@ graph LR
   module_src_types_text_ts --> export_TextVariant
   export_TextWeight["TextWeight"]
   module_src_types_text_ts --> export_TextWeight
+  export_ThemeEditorAdapter["ThemeEditorAdapter"]
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> export_ThemeEditorAdapter
+  export_ThemeEditorAdapter -.-> export_ThemeEditorAdapterProps
+  export_ThemeEditorAdapterProps["ThemeEditorAdapterProps"]
+  module_src_types_authoring_adapters_ts --> export_ThemeEditorAdapterProps
+  export_ThemeEditorAdapterProps -.-> export_ThemeRecipeFieldControlState
+  export_ThemeEditorAdapterProps -.-> export_ZoraThemeRecipeMeta
   export_ThemeModeToggle["ThemeModeToggle"]
   module_src_features_theme_adapters_inbound_ThemeModeToggle_tsx --> export_ThemeModeToggle
   export_ThemeModeToggleProps["ThemeModeToggleProps"]
   module_src_types_theme_mode_toggle_ts --> export_ThemeModeToggleProps
+  export_ThemeRecipeFieldControlState["ThemeRecipeFieldControlState"]
+  module_src_types_authoring_adapters_ts --> export_ThemeRecipeFieldControlState
+  export_ThemeRecipeFieldControlState -.-> export_ZoraThemeRecipeFieldMeta
   export_TileGrid["TileGrid"]
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> export_TileGrid
   export_TileGrid -.-> export_TileGridProps

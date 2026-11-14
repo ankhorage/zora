@@ -2,6 +2,8 @@ graph TD
   package__ankhorage_zora["@ankhorage/zora"]
   entrypoint_src_index_ts["src/index.ts"]
   package__ankhorage_zora --> entrypoint_src_index_ts
+  module_src_authoring_ts["src/authoring.ts"]
+  package__ankhorage_zora -.-> module_src_authoring_ts
   module_src_capabilities_index_ts["src/capabilities/index.ts"]
   package__ankhorage_zora -.-> module_src_capabilities_index_ts
   module_src_capabilities_index_ts --> module_src_features_registry_createEventCapabilities_ts
@@ -1510,6 +1512,27 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_reader_public_ts
   module_src_features_reader_utils_resolveReaderProgress_ts["src/features/reader/utils/resolveReaderProgress.ts"]
   package__ankhorage_zora -.-> module_src_features_reader_utils_resolveReaderProgress_ts
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx["src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx"]
+  package__ankhorage_zora -.-> module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --> module_src_features_form_public_ts
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --> module_src_features_layout_public_ts
+  module_src_features_registry_adapters_inbound_AuthoringBindingEditorAdapter_tsx --> module_src_types_authoring_adapters_ts
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx["src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx"]
+  package__ankhorage_zora -.-> module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --> module_src_features_form_public_ts
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --> module_src_features_layout_public_ts
+  module_src_features_registry_adapters_inbound_AuthoringPropertyInspectorAdapter_tsx --> module_src_types_authoring_adapters_ts
+  module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx["src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx"]
+  package__ankhorage_zora -.-> module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx
+  module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --> module_src_features_selection_public_ts
+  module_src_features_registry_adapters_inbound_AuthoringSelectionAdapter_tsx --> module_src_types_authoring_adapters_ts
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx["src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx"]
+  package__ankhorage_zora -.-> module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> module_src_features_card_public_ts
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> module_src_features_form_public_ts
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> module_src_features_layout_public_ts
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> module_src_features_registry_themeRecipeMeta_ts
+  module_src_features_registry_adapters_inbound_ThemeEditorAdapter_tsx --> module_src_types_authoring_adapters_ts
   module_src_features_registry_bindableComponentMeta_ts["src/features/registry/bindableComponentMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_registry_bindableComponentMeta_ts
   module_src_features_registry_bindableComponentMeta_ts --> module_src_constants_authoring_ts
@@ -2292,6 +2315,10 @@ graph TD
   module_src_types_auth_ts --> module_src_types_base_ts
   module_src_types_auth_ts --> module_src_types_button_ts
   module_src_types_auth_ts --> module_src_types_form_ts
+  module_src_types_authoring_adapters_ts["src/types/authoring-adapters.ts"]
+  package__ankhorage_zora -.-> module_src_types_authoring_adapters_ts
+  module_src_types_authoring_adapters_ts --> module_src_types_authoring_ts
+  module_src_types_authoring_adapters_ts --> module_src_types_theme_recipe_ts
   module_src_types_authoring_ts["src/types/authoring.ts"]
   package__ankhorage_zora -.-> module_src_types_authoring_ts
   module_src_types_avatar_group_ts["src/types/avatar-group.ts"]

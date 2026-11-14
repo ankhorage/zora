@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.0
+
+### Minor Changes
+
+- 5d344e6: Expose generic authoring selection, property, binding, and theme editor adapters through the public API.
+
 ## 27.0.3
 
 ### Patch Changes

@@ -1403,6 +1403,575 @@
     "structuredRows": []
   },
   {
+    "name": "AuthoringBindingControlState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 60,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentMeta"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "binding",
+        "kind": "property",
+        "type": "TBinding | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "component",
+        "kind": "property",
+        "type": "ZoraComponentMeta",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "node",
+        "kind": "property",
+        "type": "TNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onChange",
+        "kind": "property",
+        "type": "(binding: TBinding | undefined) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringBindingEditorAdapter",
+    "title": null,
+    "description": "Presents canonical bindable properties while leaving binding representation and mutation ownership external.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringBindingEditorAdapterProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  node,\n  component,\n  getBinding,\n  onBindingChange,\n  renderBinding,\n  isBindingDisabled,\n  isBindingRequired,\n  disabled = false,\n}: AuthoringBindingEditorAdapterProps<TNode, TBinding>) => React.JSX.Element | null",
+        "parameters": [
+          {
+            "name": "{\n  node,\n  component,\n  getBinding,\n  onBindingChange,\n  renderBinding,\n  isBindingDisabled,\n  isBindingRequired,\n  disabled = false,\n}",
+            "type": "AuthoringBindingEditorAdapterProps<TNode, TBinding>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element | null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringBindingEditorAdapterProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 72,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringBindingControlState",
+      "ZoraComponentMeta"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "component",
+        "kind": "property",
+        "type": "ZoraComponentMeta | null",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "getBinding",
+        "kind": "property",
+        "type": "(node: TNode, name: string) => TBinding | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "isBindingDisabled",
+        "kind": "property",
+        "type": "((node: TNode, name: string) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isBindingRequired",
+        "kind": "property",
+        "type": "((node: TNode, name: string) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "node",
+        "kind": "property",
+        "type": "TNode | null",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onBindingChange",
+        "kind": "property",
+        "type": "((node: TNode, name: string, binding: TBinding | undefined) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderBinding",
+        "kind": "property",
+        "type": "(state: AuthoringBindingControlState<TNode, TBinding>) => React.ReactNode",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringPropertyControlState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraComponentMeta",
+      "ZoraComponentPropSchema",
+      "ZoraComponentPropValue"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "component",
+        "kind": "property",
+        "type": "ZoraComponentMeta",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "name",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "node",
+        "kind": "property",
+        "type": "TNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onChange",
+        "kind": "property",
+        "type": "(value: ZoraComponentPropValue | undefined) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "schema",
+        "kind": "property",
+        "type": "ZoraComponentPropSchema",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "ZoraComponentPropValue | undefined",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringPropertyInspectorAdapter",
+    "title": null,
+    "description": "Presents canonical component properties while keeping node storage and mutations with the consumer.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringPropertyInspectorAdapterProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  node,\n  component,\n  getPropertyValue,\n  onPropertyChange,\n  renderProperty,\n  isPropertyDisabled,\n  isPropertyRequired,\n  disabled = false,\n}: AuthoringPropertyInspectorAdapterProps<TNode>) => React.JSX.Element | null",
+        "parameters": [
+          {
+            "name": "{\n  node,\n  component,\n  getPropertyValue,\n  onPropertyChange,\n  renderProperty,\n  isPropertyDisabled,\n  isPropertyRequired,\n  disabled = false,\n}",
+            "type": "AuthoringPropertyInspectorAdapterProps<TNode>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element | null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringPropertyInspectorAdapterProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 37,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringPropertyControlState",
+      "ZoraComponentMeta",
+      "ZoraComponentPropSchema",
+      "ZoraComponentPropValue"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "component",
+        "kind": "property",
+        "type": "ZoraComponentMeta | null",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "getPropertyValue",
+        "kind": "property",
+        "type": "(node: TNode, name: string) => ZoraComponentPropValue | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "isPropertyDisabled",
+        "kind": "property",
+        "type": "((node: TNode, name: string, schema: ZoraComponentPropSchema) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isPropertyRequired",
+        "kind": "property",
+        "type": "((node: TNode, name: string, schema: ZoraComponentPropSchema) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "node",
+        "kind": "property",
+        "type": "TNode | null",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onPropertyChange",
+        "kind": "property",
+        "type": "((node: TNode, name: string, value: ZoraComponentPropValue | undefined) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderProperty",
+        "kind": "property",
+        "type": "(state: AuthoringPropertyControlState<TNode>) => React.ReactNode",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringSelectionAdapter",
+    "title": null,
+    "description": "Connects consumer-owned items to ZORA's controlled single-selection behavior.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx",
+      "line": 7,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringSelectionAdapterProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  items,\n  selectedItemId,\n  getItemId,\n  onSelectionChange,\n  renderItem,\n  disabled,\n}: AuthoringSelectionAdapterProps<TItem>) => React.JSX.Element",
+        "parameters": [
+          {
+            "name": "{\n  items,\n  selectedItemId,\n  getItemId,\n  onSelectionChange,\n  renderItem,\n  disabled,\n}",
+            "type": "AuthoringSelectionAdapterProps<TItem>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringSelectionAdapterProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "AuthoringSelectionItemState"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "getItemId",
+        "kind": "property",
+        "type": "(item: TItem) => string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly TItem[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onSelectionChange",
+        "kind": "property",
+        "type": "((item: TItem | null) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderItem",
+        "kind": "property",
+        "type": "(state: AuthoringSelectionItemState<TItem>) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selectedItemId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "AuthoringSelectionItemState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "item",
+        "kind": "property",
+        "type": "TItem",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "select",
+        "kind": "property",
+        "type": "() => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "selected",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "AuthScreen",
     "title": null,
     "description": "Reusable authentication-screen composition for sign-in and sign-up flows.\n\nOwns keyboard-safe responsive layout, auth surface presentation, OAuth separation, and\nsign-in/sign-up form composition while consumers retain routing and authentication orchestration.",
@@ -29343,6 +29912,126 @@
     "structuredRows": []
   },
   {
+    "name": "ThemeEditorAdapter",
+    "title": null,
+    "description": "Presents ZORA recipe fields without taking ownership of a consumer's theme document.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "function",
+    "modulePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ThemeEditorAdapterProps"
+    ],
+    "signatures": [
+      {
+        "label": "({\n  theme,\n  recipes = ZORA_THEME_RECIPE_META,\n  getRecipeFieldValue,\n  onRecipeFieldChange,\n  renderField,\n  isFieldDisabled,\n  isFieldRequired,\n  disabled = false,\n}: ThemeEditorAdapterProps<TTheme>) => React.JSX.Element | null",
+        "parameters": [
+          {
+            "name": "{\n  theme,\n  recipes = ZORA_THEME_RECIPE_META,\n  getRecipeFieldValue,\n  onRecipeFieldChange,\n  renderField,\n  isFieldDisabled,\n  isFieldRequired,\n  disabled = false,\n}",
+            "type": "ThemeEditorAdapterProps<TTheme>",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "React.JSX.Element | null",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ThemeEditorAdapterProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 94,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ThemeRecipeFieldControlState",
+      "ZoraThemeRecipeMeta"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "getRecipeFieldValue",
+        "kind": "property",
+        "type": "(theme: TTheme, recipeName: string, fieldName: string) => string | boolean | undefined",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "isFieldDisabled",
+        "kind": "property",
+        "type": "((theme: TTheme, recipeName: string, fieldName: string) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isFieldRequired",
+        "kind": "property",
+        "type": "((theme: TTheme, recipeName: string, fieldName: string) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onRecipeFieldChange",
+        "kind": "property",
+        "type": "((theme: TTheme, recipeName: string, fieldName: string, value: string | boolean | undefined) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "recipes",
+        "kind": "property",
+        "type": "Readonly<Record<string, import(\"./theme-recipe\").ZoraThemeRecipeMeta>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "renderField",
+        "kind": "property",
+        "type": "(state: ThemeRecipeFieldControlState<TTheme>) => React.ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "theme",
+        "kind": "property",
+        "type": "TTheme | null",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "ThemeModeToggle",
     "title": null,
     "description": "Provide a theme mode control with inherited surface polarity.",
@@ -29384,6 +30073,87 @@
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ThemeRecipeFieldControlState",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/authoring-adapters.ts",
+    "sourceLocation": {
+      "filePath": "src/types/authoring-adapters.ts",
+      "line": 83,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "ZoraThemeRecipeFieldMeta"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "disabled",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "field",
+        "kind": "property",
+        "type": "ZoraThemeRecipeFieldMeta",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "fieldName",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "onChange",
+        "kind": "property",
+        "type": "(value: string | boolean | undefined) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "recipeName",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "required",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "theme",
+        "kind": "property",
+        "type": "TTheme",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "value",
+        "kind": "property",
+        "type": "string | boolean | undefined",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {

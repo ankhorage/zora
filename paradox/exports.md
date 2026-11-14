@@ -293,6 +293,207 @@ Kind: `unknown`
 Module: `src/types/auth.ts`
 Source: `src/types/auth.ts:8:1`
 
+## AuthoringBindingControlState
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:60:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| binding | property | `TBinding \| undefined` | yes |  |
+| component | property | `ZoraComponentMeta` | yes |  |
+| description | property | `string \| undefined` | no |  |
+| disabled | property | `boolean` | yes |  |
+| label | property | `string` | yes |  |
+| name | property | `string` | yes |  |
+| node | property | `TNode` | yes |  |
+| onChange | property | `(binding: TBinding \| undefined) => void` | yes |  |
+| required | property | `boolean` | yes |  |
+
+## AuthoringBindingEditorAdapter
+
+Kind: `function`
+Module: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx`
+Source: `src/features/registry/adapters/inbound/AuthoringBindingEditorAdapter.tsx:8:1`
+
+Presents canonical bindable properties while leaving binding representation and mutation ownership external.
+
+### Signatures
+
+- `({
+  node,
+  component,
+  getBinding,
+  onBindingChange,
+  renderBinding,
+  isBindingDisabled,
+  isBindingRequired,
+  disabled = false,
+}: AuthoringBindingEditorAdapterProps<TNode, TBinding>) => React.JSX.Element | null`
+  - {
+  node,
+  component,
+  getBinding,
+  onBindingChange,
+  renderBinding,
+  isBindingDisabled,
+  isBindingRequired,
+  disabled = false,
+}: `AuthoringBindingEditorAdapterProps<TNode, TBinding>`
+  - returns: `React.JSX.Element | null`
+
+## AuthoringBindingEditorAdapterProps
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:72:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| component | property | `ZoraComponentMeta \| null` | yes |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| getBinding | property | `(node: TNode, name: string) => TBinding \| undefined` | yes |  |
+| isBindingDisabled | property | `((node: TNode, name: string) => boolean) \| undefined` | no |  |
+| isBindingRequired | property | `((node: TNode, name: string) => boolean) \| undefined` | no |  |
+| node | property | `TNode \| null` | yes |  |
+| onBindingChange | property | `((node: TNode, name: string, binding: TBinding \| undefined) => void) \| undefined` | no |  |
+| renderBinding | property | `(state: AuthoringBindingControlState<TNode, TBinding>) => React.ReactNode` | yes |  |
+
+## AuthoringPropertyControlState
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:26:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| component | property | `ZoraComponentMeta` | yes |  |
+| disabled | property | `boolean` | yes |  |
+| name | property | `string` | yes |  |
+| node | property | `TNode` | yes |  |
+| onChange | property | `(value: ZoraComponentPropValue \| undefined) => void` | yes |  |
+| required | property | `boolean` | yes |  |
+| schema | property | `ZoraComponentPropSchema` | yes |  |
+| value | property | `ZoraComponentPropValue \| undefined` | yes |  |
+
+## AuthoringPropertyInspectorAdapter
+
+Kind: `function`
+Module: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx`
+Source: `src/features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter.tsx:8:1`
+
+Presents canonical component properties while keeping node storage and mutations with the consumer.
+
+### Signatures
+
+- `({
+  node,
+  component,
+  getPropertyValue,
+  onPropertyChange,
+  renderProperty,
+  isPropertyDisabled,
+  isPropertyRequired,
+  disabled = false,
+}: AuthoringPropertyInspectorAdapterProps<TNode>) => React.JSX.Element | null`
+  - {
+  node,
+  component,
+  getPropertyValue,
+  onPropertyChange,
+  renderProperty,
+  isPropertyDisabled,
+  isPropertyRequired,
+  disabled = false,
+}: `AuthoringPropertyInspectorAdapterProps<TNode>`
+  - returns: `React.JSX.Element | null`
+
+## AuthoringPropertyInspectorAdapterProps
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:37:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| component | property | `ZoraComponentMeta \| null` | yes |  |
+| disabled | property | `boolean \| undefined` | no |  |
+| getPropertyValue | property | `(node: TNode, name: string) => ZoraComponentPropValue \| undefined` | yes |  |
+| isPropertyDisabled | property | `((node: TNode, name: string, schema: ZoraComponentPropSchema) => boolean) \| undefined` | no |  |
+| isPropertyRequired | property | `((node: TNode, name: string, schema: ZoraComponentPropSchema) => boolean) \| undefined` | no |  |
+| node | property | `TNode \| null` | yes |  |
+| onPropertyChange | property | `((node: TNode, name: string, value: ZoraComponentPropValue \| undefined) => void) \| undefined` | no |  |
+| renderProperty | property | `(state: AuthoringPropertyControlState<TNode>) => React.ReactNode` | yes |  |
+
+## AuthoringSelectionAdapter
+
+Kind: `function`
+Module: `src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx`
+Source: `src/features/registry/adapters/inbound/AuthoringSelectionAdapter.tsx:7:1`
+
+Connects consumer-owned items to ZORA's controlled single-selection behavior.
+
+### Signatures
+
+- `({
+  items,
+  selectedItemId,
+  getItemId,
+  onSelectionChange,
+  renderItem,
+  disabled,
+}: AuthoringSelectionAdapterProps<TItem>) => React.JSX.Element`
+  - {
+  items,
+  selectedItemId,
+  getItemId,
+  onSelectionChange,
+  renderItem,
+  disabled,
+}: `AuthoringSelectionAdapterProps<TItem>`
+  - returns: `React.JSX.Element`
+
+## AuthoringSelectionAdapterProps
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:17:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean \| undefined` | no |  |
+| getItemId | property | `(item: TItem) => string` | yes |  |
+| items | property | `readonly TItem[]` | yes |  |
+| onSelectionChange | property | `((item: TItem \| null) => void) \| undefined` | no |  |
+| renderItem | property | `(state: AuthoringSelectionItemState<TItem>) => React.ReactNode` | yes |  |
+| selectedItemId | property | `string \| undefined` | no |  |
+
+## AuthoringSelectionItemState
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:10:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean` | yes |  |
+| item | property | `TItem` | yes |  |
+| select | property | `() => void` | yes |  |
+| selected | property | `boolean` | yes |  |
+
 ## AuthScreen
 
 Kind: `value`
@@ -6763,6 +6964,57 @@ Kind: `unknown`
 Module: `src/types/text.ts`
 Source: `src/types/text.ts:18:1`
 
+## ThemeEditorAdapter
+
+Kind: `function`
+Module: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx`
+Source: `src/features/registry/adapters/inbound/ThemeEditorAdapter.tsx:10:1`
+
+Presents ZORA recipe fields without taking ownership of a consumer's theme document.
+
+### Signatures
+
+- `({
+  theme,
+  recipes = ZORA_THEME_RECIPE_META,
+  getRecipeFieldValue,
+  onRecipeFieldChange,
+  renderField,
+  isFieldDisabled,
+  isFieldRequired,
+  disabled = false,
+}: ThemeEditorAdapterProps<TTheme>) => React.JSX.Element | null`
+  - {
+  theme,
+  recipes = ZORA_THEME_RECIPE_META,
+  getRecipeFieldValue,
+  onRecipeFieldChange,
+  renderField,
+  isFieldDisabled,
+  isFieldRequired,
+  disabled = false,
+}: `ThemeEditorAdapterProps<TTheme>`
+  - returns: `React.JSX.Element | null`
+
+## ThemeEditorAdapterProps
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:94:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean \| undefined` | no |  |
+| getRecipeFieldValue | property | `(theme: TTheme, recipeName: string, fieldName: string) => string \| boolean \| undefined` | yes |  |
+| isFieldDisabled | property | `((theme: TTheme, recipeName: string, fieldName: string) => boolean) \| undefined` | no |  |
+| isFieldRequired | property | `((theme: TTheme, recipeName: string, fieldName: string) => boolean) \| undefined` | no |  |
+| onRecipeFieldChange | property | `((theme: TTheme, recipeName: string, fieldName: string, value: string \| boolean \| undefined) => void) \| undefined` | no |  |
+| recipes | property | `Readonly<Record<string, import("./theme-recipe").ZoraThemeRecipeMeta>> \| undefined` | no |  |
+| renderField | property | `(state: ThemeRecipeFieldControlState<TTheme>) => React.ReactNode` | yes |  |
+| theme | property | `TTheme \| null` | yes |  |
+
 ## ThemeModeToggle
 
 Kind: `value`
@@ -6776,6 +7028,25 @@ Provide a theme mode control with inherited surface polarity.
 Kind: `unknown`
 Module: `src/types/theme-mode-toggle.ts`
 Source: `src/types/theme-mode-toggle.ts:4:1`
+
+## ThemeRecipeFieldControlState
+
+Kind: `type`
+Module: `src/types/authoring-adapters.ts`
+Source: `src/types/authoring-adapters.ts:83:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| disabled | property | `boolean` | yes |  |
+| field | property | `ZoraThemeRecipeFieldMeta` | yes |  |
+| fieldName | property | `string` | yes |  |
+| onChange | property | `(value: string \| boolean \| undefined) => void` | yes |  |
+| recipeName | property | `string` | yes |  |
+| required | property | `boolean` | yes |  |
+| theme | property | `TTheme` | yes |  |
+| value | property | `string \| boolean \| undefined` | yes |  |
 
 ## TileGrid
 
