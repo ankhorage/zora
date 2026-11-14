@@ -223,7 +223,7 @@ async function runMaestroAsync(root: string) {
         'test',
         '--test-output-dir',
         join(diagnosticRoot, 'maestro'),
-        join('maestro', 'flow-canvas.yaml'),
+        join('maestro', `flow-canvas.${platform}.yaml`),
       ],
       root,
     );

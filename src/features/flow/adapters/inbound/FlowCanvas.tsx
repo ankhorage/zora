@@ -250,25 +250,25 @@ const FlowEdges = React.memo(function FlowEdges(props: {
       pointerEvents="box-none"
       style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
     >
-      <Svg
-        height="100%"
+      <View
         pointerEvents="none"
         style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
-        width="100%"
       >
-        {props.connections.map((connection) => {
-          const source = getFlowPortAnchor(props.anchors, connection.source);
-          const target = getFlowPortAnchor(props.anchors, connection.target);
-          return (
-            <FlowEdgePath
-              key={connection.id}
-              source={source}
-              stroke={theme.colors.primary}
-              target={target}
-            />
-          );
-        })}
-      </Svg>
+        <Svg height="100%" width="100%">
+          {props.connections.map((connection) => {
+            const source = getFlowPortAnchor(props.anchors, connection.source);
+            const target = getFlowPortAnchor(props.anchors, connection.target);
+            return (
+              <FlowEdgePath
+                key={connection.id}
+                source={source}
+                stroke={theme.colors.primary}
+                target={target}
+              />
+            );
+          })}
+        </Svg>
+      </View>
       {props.connections.map((connection) => {
         const source = getFlowPortAnchor(props.anchors, connection.source);
         const target = getFlowPortAnchor(props.anchors, connection.target);
