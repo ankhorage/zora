@@ -126,4 +126,15 @@ describe('ZORA_COMPONENT_REGISTRY', () => {
     expect(registryEntries).not.toContain('ToastProvider');
     expect(registryEntries).not.toContain('SelectionProvider');
   });
+
+  test('keeps public authoring adapters outside the reader-free runtime catalog', async () => {
+    const [authoringSource, readerFreeSource] = await Promise.all([
+      Bun.file('src/authoring.ts').text(),
+      Bun.file('src/readerFree.ts').text(),
+    ]);
+
+    expect(authoringSource).toContain("from './features/registry/adapters/inbound/");
+    expect(readerFreeSource).not.toContain('AuthoringSelectionAdapter');
+    expect(await listRuntimeRegistryEntries()).not.toContain('AuthoringSelectionAdapter');
+  });
 });

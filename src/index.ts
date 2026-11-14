@@ -1,4 +1,20 @@
 export type {
+  AuthoringBindingControlState,
+  AuthoringBindingEditorAdapterProps,
+  AuthoringPropertyControlState,
+  AuthoringPropertyInspectorAdapterProps,
+  AuthoringSelectionAdapterProps,
+  AuthoringSelectionItemState,
+  ThemeEditorAdapterProps,
+  ThemeRecipeFieldControlState,
+} from './authoring';
+export {
+  AuthoringBindingEditorAdapter,
+  AuthoringPropertyInspectorAdapter,
+  AuthoringSelectionAdapter,
+  ThemeEditorAdapter,
+} from './authoring';
+export type {
   ReaderColorScheme,
   ReaderDocumentFormat,
   ReaderErrorCode,
