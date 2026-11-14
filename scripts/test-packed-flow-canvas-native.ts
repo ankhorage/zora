@@ -245,7 +245,8 @@ function resolveIosPackageDependencies(root: string) {
   commandOutput(['pod', '--version'], iosRoot);
   commandOutput(['pod', 'install'], iosRoot);
   const workspace = singleIosWorkspace(iosRoot);
-  const scheme = singleIosScheme(root, workspace);
+  const scheme = singleIosProjectScheme(iosRoot, project);
+  assertIosWorkspaceScheme(root, workspace, scheme);
   retainIosPackageResolution(root);
   commandOutput(
     [
@@ -286,8 +287,21 @@ function singleIosWorkspace(iosRoot: string) {
   return workspaces[0]!;
 }
 
-/** Read the generated workspace's declared shared scheme instead of inferring it from a filename. */
-function singleIosScheme(root: string, workspace: string) {
+/** Read the generated project's shared app scheme instead of inferring it from a workspace filename. */
+function singleIosProjectScheme(iosRoot: string, project: string) {
+  const schemesRoot = join(iosRoot, project, 'xcshareddata', 'xcschemes');
+  const schemes = readdirSync(schemesRoot)
+    .filter((entry) => entry.endsWith('.xcscheme'))
+    .map((entry) => entry.slice(0, -'.xcscheme'.length));
+  assert(
+    schemes.length === 1,
+    `Expected one generated iOS project scheme, found ${schemes.join(', ') || 'none'}.`,
+  );
+  return schemes[0]!;
+}
+
+/** Verify CocoaPods retained the generated app scheme in its workspace before SwiftPM resolution. */
+function assertIosWorkspaceScheme(root: string, workspace: string, scheme: string) {
   const output = commandOutput(
     ['xcodebuild', '-list', '-json', '-workspace', join('ios', workspace)],
     root,
@@ -303,10 +317,9 @@ function singleIosScheme(root: string, workspace: string) {
   ).workspace?.schemes;
   assert(Array.isArray(schemes), `Xcode did not report workspace schemes for ${workspace}.`);
   assert(
-    schemes.length === 1 && typeof schemes[0] === 'string',
-    `Expected one generated iOS workspace scheme, found ${schemes.join(', ') || 'none'}.`,
+    schemes.includes(scheme),
+    `Generated iOS project scheme ${scheme} is absent from workspace ${workspace}: ${schemes.join(', ') || 'none'}.`,
   );
-  return schemes[0];
 }
 
 /** Retain generated Xcode metadata that declares SwiftPM inputs without retaining native products. */
