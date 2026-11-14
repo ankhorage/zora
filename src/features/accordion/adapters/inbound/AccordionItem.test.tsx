@@ -39,9 +39,9 @@ test('leaves native trigger accessibility owned by the published Surface primiti
   ]);
 
   expect(zoraSource).not.toContain('accessibilityState');
-  expect(surfaceTrigger).toContain('accessibilityRole="button"');
-  expect(surfaceTrigger).toContain(
-    'accessibilityState={{ disabled: resolvedDisabled, expanded: item.open }}',
+  expect(surfaceTrigger).toMatch(/\baccessibilityRole\s*:\s*["']button["']/u);
+  expect(surfaceTrigger).toMatch(
+    /\baccessibilityState\s*:\s*\{\s*disabled\s*:\s*resolvedDisabled\s*,\s*expanded\s*:\s*item\.open\s*\}/u,
   );
 });
 
