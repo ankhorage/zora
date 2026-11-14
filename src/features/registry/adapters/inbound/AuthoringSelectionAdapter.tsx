@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { AuthoringSelectionAdapterProps } from '../../../../types/authoring-adapters';
-import { SelectableItem, SelectionProvider } from '../../../selection/public';
+import { SelectionProvider, useSelection } from '../../../selection/public';
 
 /*** Connects consumer-owned items to ZORA's controlled single-selection behavior. */
 export function AuthoringSelectionAdapter<TItem>({
@@ -22,21 +22,33 @@ export function AuthoringSelectionAdapter<TItem>({
         onSelectionChange?.(items.find((item) => getItemId(item) === selectedId) ?? null);
       }}
     >
-      {items.map((item) => {
-        const id = getItemId(item);
-        return (
-          <SelectableItem key={id} id={id} trigger="press">
-            {(state) =>
-              renderItem({
-                item,
-                selected: state.selected,
-                disabled: state.disabled,
-                select: state.select,
-              })
-            }
-          </SelectableItem>
-        );
-      })}
+      {items.map((item) => (
+        <AuthoringSelectionItem
+          getItemId={getItemId}
+          item={item}
+          key={getItemId(item)}
+          renderItem={renderItem}
+        />
+      ))}
     </SelectionProvider>
   );
+}
+
+/*** Maps the canonical selection engine state onto one consumer-owned authoring item. */
+function AuthoringSelectionItem<TItem>({
+  item,
+  getItemId,
+  renderItem,
+}: Pick<AuthoringSelectionAdapterProps<TItem>, 'getItemId' | 'renderItem'> & {
+  readonly item: TItem;
+}) {
+  const selection = useSelection();
+  const id = getItemId(item);
+
+  return renderItem({
+    item,
+    selected: selection.isSelected(id),
+    disabled: selection.disabled,
+    select: () => selection.select(id),
+  });
 }

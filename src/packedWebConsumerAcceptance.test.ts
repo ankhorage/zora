@@ -13,6 +13,30 @@ test(
 
     expect(subprocess.exitCode, output).toBe(0);
     expect(output).toContain(
+      'Packed ZORA web consumer SSR, hydration, and Select interaction passed.',
+    );
+  },
+  { timeout: 120_000 },
+);
+
+/** Verifies the published authoring package in an independent Vite/RNW consumer installation. */
+test(
+  'installs, renders, and bundles the public authoring entrypoint',
+  () => {
+    const subprocess = Bun.spawnSync({
+      cmd: [
+        process.execPath,
+        'scripts/verify-packed-web-consumer.ts',
+        '--skip-build',
+        '--authoring',
+      ],
+      stderr: 'pipe',
+      stdout: 'pipe',
+    });
+    const output = `${subprocess.stdout.toString()}\n${subprocess.stderr.toString()}`;
+
+    expect(subprocess.exitCode, output).toBe(0);
+    expect(output).toContain(
       'Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.',
     );
   },

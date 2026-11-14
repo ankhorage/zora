@@ -12,7 +12,15 @@ const forbiddenWebDependencies = [
   'react-native-gesture-handler',
 ] as const;
 
-const authoringControls = ['Button', 'Card', 'Text', 'TextInput', 'View'] as const;
+const authoringControls = [
+  'Button',
+  'Card',
+  'Field',
+  'Pressable',
+  'Text',
+  'TextInput',
+  'View',
+] as const;
 
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
 test('publishes SSR-safe ordinary UI through canonical web subpaths', async () => {

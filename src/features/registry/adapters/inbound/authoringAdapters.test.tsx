@@ -206,9 +206,10 @@ async function loadAdapters(): Promise<LoadedAdapters> {
           );
           builder.onLoad({ filter: /.*/u, namespace: 'inert-zora-controls' }, () => ({
             loader: 'js',
-            contents: `export const Button='Button', Card='Card', Field='Field', Text='Text',
+            contents: `export const Button='Button', Card='Card', Field='Field', Pressable='Pressable', Text='Text',
               TextInput='TextInput', ThemeProvider='ThemeProvider', useTheme=()=>undefined,
-              View='View', SelectableItem='SelectableItem', SelectionProvider='SelectionProvider';`,
+              View='View', SelectableItem='SelectableItem', SelectionProvider='SelectionProvider',
+              useSelection=()=>({ disabled:false, isSelected:()=>false, select:()=>undefined });`,
           }));
         },
       },

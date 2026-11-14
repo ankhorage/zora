@@ -15,6 +15,8 @@ export type {
 export type {
   ButtonProps,
   CardProps,
+  FieldProps,
+  PressableProps,
   TextInputProps,
   TextProps,
   ThemeProviderProps,
@@ -24,6 +26,8 @@ export type {
 export {
   Button,
   Card,
+  Field,
+  Pressable,
   Text,
   TextInput,
   ThemeProvider,

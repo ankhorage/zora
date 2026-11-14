@@ -1,8 +1,7 @@
+import { Field, View } from '@ankhorage/surface/authoring-controls';
 import React from 'react';
 
 import type { AuthoringBindingEditorAdapterProps } from '../../../../types/authoring-adapters';
-import { Field } from '../../../form/public';
-import { View } from '../../../layout/public';
 
 /*** Presents canonical bindable properties while leaving binding representation and mutation ownership external. */
 export function AuthoringBindingEditorAdapter<TNode, TBinding>({
@@ -27,7 +26,7 @@ export function AuthoringBindingEditorAdapter<TNode, TBinding>({
         return (
           <Field
             key={name}
-            description={meta.description}
+            helperText={meta.description}
             disabled={controlDisabled}
             label={meta.label ?? name}
             required={required}
