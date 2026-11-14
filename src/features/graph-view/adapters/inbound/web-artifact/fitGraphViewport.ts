@@ -1,6 +1,7 @@
 import type { Core } from 'cytoscape';
 
 import type { GraphViewFitOptions } from '../../../../../types/graph-view';
+import { getGraphFitPadding } from './getGraphFitPadding';
 
 /*** Fit the requested visible nodes and never include edge geometry in viewport bounds. */
 export function fitGraphViewport(
@@ -12,7 +13,7 @@ export function fitGraphViewport(
   const nodes = getFitNodes(cy, options.nodeIds);
   if (nodes.empty()) return false;
 
-  cy.fit(nodes, options.padding ?? 50);
+  cy.fit(nodes, getGraphFitPadding(cy, options.padding ?? 50));
   if (cy.zoom() > maxZoom) {
     cy.zoom(maxZoom);
     cy.center(nodes);
