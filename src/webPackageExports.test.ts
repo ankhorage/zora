@@ -12,6 +12,8 @@ const forbiddenWebDependencies = [
   'react-native-gesture-handler',
 ] as const;
 
+const authoringControls = ['Button', 'Card', 'Text', 'TextInput', 'View'] as const;
+
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
 test('publishes SSR-safe ordinary UI through canonical web subpaths', async () => {
   const packageJson = (await Bun.file('package.json').json()) as {
@@ -106,4 +108,12 @@ test('SSR-renders ordinary UI from its public web subpaths', async () => {
 
   expect(markup).toContain('Web entrypoint');
   expect(markup).toContain('Continue');
+});
+
+/** Verifies that the authoring boundary delegates its portable controls to released Surface. */
+test('publishes browser-safe authoring controls through the released Surface boundary', async () => {
+  const entrypoint = await Bun.file(join('src', 'authoring.ts')).text();
+  expect(entrypoint).toContain("from '@ankhorage/surface/authoring-controls'");
+  for (const control of authoringControls) expect(entrypoint).toContain(control);
+  expect(entrypoint).not.toContain("from './features/theme/runtime'");
 });

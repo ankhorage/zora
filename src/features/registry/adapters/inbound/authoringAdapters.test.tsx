@@ -198,13 +198,17 @@ async function loadAdapters(): Promise<LoadedAdapters> {
         name: 'inert-zora-authoring-controls',
         setup(builder) {
           builder.onResolve(
-            { filter: /(?:card|form|layout|registry|selection)\/public$/u },
+            {
+              filter:
+                /(?:card|form|layout|registry|selection)\/public$|@ankhorage\/surface\/authoring-controls/u,
+            },
             ({ path }) => ({ path, namespace: 'inert-zora-controls' }),
           );
           builder.onLoad({ filter: /.*/u, namespace: 'inert-zora-controls' }, () => ({
             loader: 'js',
-            contents: `export const Card='Card', Field='Field', View='View',
-              SelectableItem='SelectableItem', SelectionProvider='SelectionProvider';`,
+            contents: `export const Button='Button', Card='Card', Field='Field', Text='Text',
+              TextInput='TextInput', ThemeProvider='ThemeProvider', useTheme=()=>undefined,
+              View='View', SelectableItem='SelectableItem', SelectionProvider='SelectionProvider';`,
           }));
         },
       },
