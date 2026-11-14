@@ -7,6 +7,7 @@ import type {
 } from '../../../../../types/graph-view';
 import type { GraphRuntimeUpdate } from '../../../../../types/graphViewRuntime';
 import { fitGraphViewport } from './fitGraphViewport';
+import { getGraphFitPadding } from './getGraphFitPadding';
 
 /*** Own viewport units and limits alongside the public controller, without exposing Cytoscape. */
 export function createGraphController(
@@ -233,8 +234,9 @@ function positiveSize(value: number | undefined, fallback: number): number {
 function getNodeFitZoom(cy: Core, padding: number): number {
   if (cy.nodes().empty()) return 1;
   const bounds = cy.nodes().boundingBox();
-  const width = cy.width() - 2 * padding;
-  const height = cy.height() - 2 * padding;
+  const fitPadding = getGraphFitPadding(cy, padding);
+  const width = cy.width() - 2 * fitPadding;
+  const height = cy.height() - 2 * fitPadding;
   if (width <= 0 || height <= 0 || bounds.w <= 0 || bounds.h <= 0) return 1;
   return Math.min(width / bounds.w, height / bounds.h);
 }

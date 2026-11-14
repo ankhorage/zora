@@ -41,6 +41,7 @@ async function testGraphViewChromiumAsync() {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     const initial = await browser.waitForStableInitialStateAsync();
     const before = requireMeasurement(initial);
+    assertNarrowViewportFit(initial);
     const beforeViewport = requireViewport(initial);
     const beforeSorts = initial.layoutSorts;
     const source = before.nodes.find((node) => node.id === 'src');
@@ -130,9 +131,32 @@ interface GraphAcceptanceState {
   readonly layoutCompleteEvents: number;
   readonly layoutSorts: number;
   readonly measurement: GraphMeasurement | null;
+  readonly narrowMeasurement: GraphMeasurement | null;
   readonly readyEvents: number;
   readonly selected: boolean;
   readonly viewport: GraphViewport | null;
+}
+
+/*** Prove native fit keeps every ELK node inside a canvas narrower than the configured padding. */
+function assertNarrowViewportFit(state: GraphAcceptanceState): void {
+  const measurement = state.narrowMeasurement;
+  assert(measurement !== null, 'Narrow GraphView measureNodes() returned null.');
+  assert(measurement.nodes.length === 5, 'Narrow GraphView did not render every ELK node.');
+  for (const node of measurement.nodes) {
+    const bounds = {
+      x1: node.position.x - node.size.width / 2,
+      x2: node.position.x + node.size.width / 2,
+      y1: node.position.y - node.size.height / 2,
+      y2: node.position.y + node.size.height / 2,
+    };
+    assert(
+      bounds.x1 >= 0 &&
+        bounds.x2 <= measurement.viewport.width &&
+        bounds.y1 >= 0 &&
+        bounds.y2 <= measurement.viewport.height,
+      `Narrow GraphView fit clipped ${node.id}: ${JSON.stringify({ bounds, viewport: measurement.viewport })}`,
+    );
+  }
 }
 
 interface GraphMeasurement {
@@ -269,6 +293,7 @@ class ChromeSession {
         state.readyEvents > 0 &&
         state.layoutCompleteEvents > 0 &&
         state.measurement !== null &&
+        state.narrowMeasurement !== null &&
         state.viewport !== null,
     );
     await this.nextAnimationFrameAsync();

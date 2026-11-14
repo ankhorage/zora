@@ -10,6 +10,7 @@ interface GraphAcceptanceState {
   readonly layoutCompleteEvents: number;
   readonly layoutSorts: number;
   readonly measurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
+  readonly narrowMeasurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
   readonly readyEvents: number;
   readonly selected: boolean;
   readonly viewport: ReturnType<GraphViewController['getViewport']> | null;
@@ -45,6 +46,15 @@ const nodes = [
   { id: 'src', label: 'src' },
   { id: 'dependency', label: 'dependency' },
 ];
+const narrowNodes = Array.from({ length: 5 }, (_, index) => ({
+  id: `narrow-${index}`,
+  label: `repository-${index}`,
+}));
+const narrowEdges = narrowNodes.slice(1).map((node, index) => ({
+  id: `narrow-edge-${index}`,
+  source: narrowNodes[index]!.id,
+  target: node.id,
+}));
 const styleRules = [
   {
     selector: 'node',
@@ -64,6 +74,7 @@ const styleRules = [
 function GraphViewChromiumAcceptance() {
   const [selectedNodeIds, setSelectedNodeIds] = useState<readonly string[]>([]);
   const [, setVersion] = useState(0);
+  const [narrowController, setNarrowController] = useState<GraphViewController | null>(null);
   const lifecycleRef = useCallback((element: HTMLDivElement | null) => {
     if (element === null) return;
     element.addEventListener(GraphView.events.ready, (event) => {
@@ -97,6 +108,8 @@ function GraphViewChromiumAcceptance() {
           layoutCompleteEvents: state.layoutCompleteEvents,
           layoutSorts: state.layoutSorts,
           measurement: controller?.measureNodes?.(['src']) ?? null,
+          narrowMeasurement:
+            narrowController?.measureNodes?.(narrowNodes.map((node) => node.id)) ?? null,
           readyEvents: state.readyEvents,
           selected: state.selected,
           viewport: controller?.getViewport() ?? null,
@@ -106,27 +119,43 @@ function GraphViewChromiumAcceptance() {
     return () => {
       delete window.graphAcceptance;
     };
-  }, []);
+  }, [narrowController]);
 
   return (
-    <div ref={lifecycleRef}>
+    <div>
+      <div ref={lifecycleRef}>
+        <GraphView
+          edges={edges}
+          layout="grid"
+          layoutOptions={layoutOptions}
+          nodes={graphNodes}
+          onLayoutComplete={() => {
+            state.layoutCompletions += 1;
+            setVersion((version) => version + 1);
+          }}
+          onNodeEvent={(event) => {
+            state.events.push(event);
+            if (event.id === 'src' && event.type === 'press') setSelectedNodeIds(['src']);
+          }}
+          selectedNodeIds={selectedNodeIds}
+          sizeNodesToLabels
+          style={{ height: 720, width: 960 }}
+          styleRules={styleRules}
+        />
+      </div>
       <GraphView
-        edges={edges}
-        layout="grid"
-        layoutOptions={layoutOptions}
-        nodes={graphNodes}
-        onLayoutComplete={() => {
-          state.layoutCompletions += 1;
-          setVersion((version) => version + 1);
-        }}
-        onNodeEvent={(event) => {
-          state.events.push(event);
-          if (event.id === 'src' && event.type === 'press') setSelectedNodeIds(['src']);
-        }}
-        selectedNodeIds={selectedNodeIds}
+        edges={narrowEdges}
+        layout="elk"
+        maxFitLabelSize={24}
+        maxZoom={2}
+        minReadableLabelSize={24}
+        minZoom={0.5}
+        nodes={narrowNodes}
         sizeNodesToLabels
-        style={{ height: 720, width: 960 }}
+        style={{ height: 520, width: 38 }}
         styleRules={styleRules}
+        zoomMode="fit-relative"
+        onLayoutComplete={setNarrowController}
       />
     </div>
   );
