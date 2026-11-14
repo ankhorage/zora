@@ -62,7 +62,7 @@
     },
   },
   "packages": {
-    "@ankhorage/ankh": ["@ankhorage/ankh@0.13.6", "", { "dependencies": { "@ankhorage/capability": "^0.2.2", "@ankhorage/contracts": "^26.0.0", "yaml": "^2.9.1" }, "bin": { "ankh": "dist/bin.js" } }, "sha512-DURpwLYiqCGiRbObM+mcdeDVrOmxmZXB2W59Qu/9mhuzOW9YENbaLSlUzUY7YtBdIj/QnEgCjZRZ12wKV2nt/g=="],
+    "@ankhorage/ankh": ["@ankhorage/ankh@0.13.7", "", { "dependencies": { "@ankhorage/capability": "^0.2.2", "@ankhorage/contracts": "^26.0.0", "yaml": "^2.9.1" }, "bin": { "ankh": "dist/bin.js" } }, "sha512-5pLXDQToHHsieT/Pq9Ewp1JCdGcuRf8vCK/TmYoSrQ4D/4XgYFr/6o6u6bvNGF6GFloeEAk//ZmJ6GCqMXDFEA=="],
 
     "@ankhorage/apm": ["@ankhorage/apm@0.8.15", "", { "dependencies": { "@ankhorage/contracts": "^26.0.0", "@ankhorage/project-detector": "^0.1.0", "@ankhorage/utility": "^1.4.0", "jsonc-parser": "^3.3.1", "semver": "^7.8.5", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.13.1" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "apm": "dist/cli/runAsync.js" } }, "sha512-3Gts6J0ayMKx1gogCtjPWuh4kvFsDEdyKwSzagjHS4vcVae42XnkobJoSUIj4ffehBNYOSZi67jYSLzg8CjMXw=="],
 
@@ -82,7 +82,7 @@
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.4.1", "", { "dependencies": { "@ankhorage/ankh": "^0.13.3", "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^25.0.1", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-RguAfwjFjzHYAk/0zF/Idj5RWpIPZx3ZAi9RCIr9FnSUfoF0PRmSNbGNl+Lgo7BoCEclpRF6kqtLJ3vBa96H7A=="],
 
-    "@ankhorage/project-detector": ["@ankhorage/project-detector@0.3.5", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.0.0", "@ankhorage/utility": "^0.8.0", "minimatch": "^10.2.6", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.12.0" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "project-detector": "dist/cli/runAsync.js" } }, "sha512-3cENcse8iLkfWYlAMt5uASGCLpoP0xphlfZmNmjj28skR54KWHmz+HOUdenS8F/H2uxyeaOLtMdlI1BiiZlY7w=="],
+    "@ankhorage/project-detector": ["@ankhorage/project-detector@0.3.6", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.0.0", "@ankhorage/utility": "^0.8.0", "minimatch": "^10.2.6", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.12.0" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "project-detector": "dist/cli/runAsync.js" } }, "sha512-REfNjd4BQDzvDMHCEKpzxt7lz42z2fzkJSfGk/E3xnoVQw3SVD9PbxiylOPWyR7w3+X8jPuBYy1zwb/CtqZOyw=="],
 
     "@ankhorage/reader": ["@ankhorage/reader@0.1.3", "", { "dependencies": { "@readium/navigator": "2.11.1", "@readium/shared": "2.6.0", "@zip.js/zip.js": "2.23.0", "pdfjs-dist": "6.4.299" }, "peerDependencies": { "expo": "^57.0.0", "react": "19.2.3", "react-dom": "19.2.3", "react-native": "0.86.x", "react-native-web": "~0.21.3" }, "optionalPeers": ["expo", "react-dom", "react-native", "react-native-web"] }, "sha512-GtT1NDm5KtQGrjuFPjf4kS4zj7xvGWrtqpy9lPelOEv6YuGC6MocrYlo81q3RRPyP8dKbOJTMsmK0sM3KGnWWQ=="],
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.1.12
+
+### Patch Changes
+
+- 81b761d: Update dependencies: `@ankhorage/capability`, `@ankhorage/color-theory`, `@ankhorage/game`, `@ankhorage/reader`, `@ankhorage/runtime`, `@ankhorage/surface`, `@ankhorage/utility`.
+
 ## 27.1.11
 
 ### Patch Changes
