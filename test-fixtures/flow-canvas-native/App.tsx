@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
@@ -36,7 +37,7 @@ export default function App() {
   const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
       <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
         <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>
         <Text testID="flow-node-state">
@@ -87,6 +88,6 @@ export default function App() {
           record('viewport');
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 }

@@ -7,13 +7,13 @@ appId: dev.ankhorage.zora.flowacceptance
 - tapOn: 'Source task'
 - assertVisible: 'selection=source'
 - swipe:
-    start: '40%, 36%'
-    end: '55%, 31%'
+    start: '45%, 52%'
+    end: '60%, 47%'
     duration: 500
 - assertVisible: 'source-moved=true'
 - swipe:
-    start: '50%, 45%'
-    end: '70%, 35%'
+    start: '80%, 70%'
+    end: '60%, 62%'
     duration: 500
 - assertVisible: 'event=viewport'
 - tapOn: 'Source task: Output'
