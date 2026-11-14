@@ -194,6 +194,7 @@ async function runMaestroAsync(root: string) {
   );
   retainCommandOutput = true;
   run(['bunx', 'expo', 'prebuild', '--no-install', '--platform', platform], root);
+  if (platform === 'ios') resolveIosPackageDependencies(root);
   run(['maestro', '--version'], root);
   let metro: MetroProcess | undefined;
   let primaryError: unknown;
@@ -202,6 +203,16 @@ async function runMaestroAsync(root: string) {
     await verifyMetroBundleAsync(root, metro.port, platform);
     if (platform === 'android') {
       assertAndroidDeviceHealth(root);
+      run(
+        [
+          'maestro',
+          'test',
+          '--test-output-dir',
+          join(diagnosticRoot, 'maestro-driver-smoke'),
+          join('maestro', 'driver-smoke.yaml'),
+        ],
+        root,
+      );
       configureAndroidMetroRouting(root, metro.port);
     }
     run(createExpoNativeRunCommand(platform), root);
@@ -223,6 +234,46 @@ async function runMaestroAsync(root: string) {
     if (primaryError === undefined && cleanupError !== undefined) primaryError = cleanupError;
   }
   if (primaryError !== undefined) throw primaryError;
+}
+
+/** Resolve the generated workspace before its build so SwiftPM failures retain their own evidence. */
+function resolveIosPackageDependencies(root: string) {
+  const iosRoot = join(root, 'ios');
+  const workspace = readdirSync(iosRoot).find((entry) => entry.endsWith('.xcworkspace'));
+  assert(workspace !== undefined, 'Expo prebuild did not create an iOS workspace.');
+  const scheme = workspace.slice(0, -'.xcworkspace'.length);
+  commandOutput(
+    [
+      'xcodebuild',
+      '-resolvePackageDependencies',
+      '-workspace',
+      join('ios', workspace),
+      '-scheme',
+      scheme,
+    ],
+    root,
+  );
+  retainIosPackageResolution(root);
+}
+
+/** Retain only declared SwiftPM inputs, never generated native products or checkout trees. */
+function retainIosPackageResolution(root: string) {
+  const packageFiles = findFiles(join(root, 'ios'), 'Package.resolved');
+  for (const [index, path] of packageFiles.entries()) {
+    writeFileSync(
+      join(diagnosticRoot, `ios-package-${String(index + 1).padStart(2, '0')}.resolved`),
+      readFileSync(path),
+    );
+  }
+}
+
+/** Find a bounded diagnostics input below the generated native project. */
+function findFiles(root: string, filename: string): string[] {
+  return readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(root, entry.name);
+    if (entry.isDirectory()) return findFiles(path, filename);
+    return entry.name === filename ? [path] : [];
+  });
 }
 
 /** Request the platform bundle so readiness cannot be mistaken for an executable application graph. */
