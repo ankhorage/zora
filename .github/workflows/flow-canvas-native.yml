@@ -70,7 +70,12 @@ jobs:
           api-level: 34
           arch: x86_64
           avd-name: flow-canvas-api-34
+          disable-linux-hw-accel: false
           disable-animations: true
+          pre-emulator-launch-script: |
+            sudo chmod 666 /dev/kvm
+            test -r /dev/kvm
+            test -w /dev/kvm
           script: bun test scripts/utils/createExpoNativeCommand.test.ts scripts/utils/verifyExpoMetroBundle.test.ts && FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" maestro --version && FLOW_NATIVE_PLATFORM=android FLOW_NATIVE_RUN_MAESTRO=1 FLOW_NATIVE_DIAGNOSTIC_DIR="${RUNNER_TEMP}" bun run test:flow-canvas:native
       - name: Upload Android diagnostics
         if: always()
