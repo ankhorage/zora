@@ -102,9 +102,6 @@ function FlowCanvasInner(props: FlowCanvasProps) {
 
   return (
     <View
-      accessible
-      accessibilityLabel="Flow canvas"
-      accessibilityRole="summary"
       style={{
         backgroundColor: theme.semantics.surface.default,
         minHeight: 360,
