@@ -1,0 +1,5 @@
+appId: com.android.settings
+---
+- launchApp:
+    clearState: false
+- assertVisible: 'Settings'
