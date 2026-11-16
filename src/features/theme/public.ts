@@ -12,7 +12,7 @@ export type {
   ZoraThemeSelectionTarget,
   ZoraThemeSwatchRole,
   ZoraThemeValueOrigin,
-} from '../../types/theme';
-export { compileZoraTheme } from './application/use-cases/compileZoraTheme';
-export { createZoraThemeConfig } from './application/use-cases/createZoraThemeConfig';
-export { zoraDefaultTheme } from './zoraDefaultTheme';
+} from '../../types/theme.js';
+export { compileZoraTheme } from './application/use-cases/compileZoraTheme.js';
+export { createZoraThemeConfig } from './application/use-cases/createZoraThemeConfig.js';
+export { zoraDefaultTheme } from './zoraDefaultTheme.js';

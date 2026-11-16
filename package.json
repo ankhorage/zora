@@ -159,6 +159,7 @@
     "test:packed-next-web-consumer": "bun scripts/verify-packed-next-web-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
     "test:checkbox:chromium": "bun scripts/test-packed-checkbox-chromium.ts",
+    "test:packed-theme-consumer": "bun scripts/verify-packed-theme-consumer.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
     "test:graph-view:chromium": "bun scripts/test-graph-view-chromium.ts",
     "test:color-picker:chromium": "bun scripts/test-packed-color-picker-chromium.ts",
