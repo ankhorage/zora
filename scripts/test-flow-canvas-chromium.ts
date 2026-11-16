@@ -92,11 +92,11 @@ async function testFlowCanvasChromiumAsync() {
     phase = 'insert';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
     phase = 'pan';
-    await browser.dragFromAsync(canvas.x + 24, canvas.y + canvas.height - 24, 32, 24);
+    await browser.dragFromAsync(canvas.x + 24, canvas.y + canvas.height - 24, 32, -24);
     const panned = await browser.waitForStateAsync(
       (state) =>
         state.viewport.pan.x === initial.viewport.pan.x + 32 &&
-        state.viewport.pan.y === initial.viewport.pan.y + 24 &&
+        state.viewport.pan.y === initial.viewport.pan.y - 24 &&
         state.viewportChanges === initial.viewportChanges + 2,
     );
     assert(
