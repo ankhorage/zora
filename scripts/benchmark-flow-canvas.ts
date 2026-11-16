@@ -238,11 +238,20 @@ class BenchmarkBrowser {
     const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
     const panStart = performance.now();
     await this.dragFromAsync(background.x, background.y, 24, 16);
-    await this.waitForStateAsync(
-      (state) =>
-        state.viewport.pan.x !== beforePan.viewport.pan.x ||
-        state.viewport.pan.y !== beforePan.viewport.pan.y,
-    );
+    try {
+      await this.waitForStateAsync(
+        (state) =>
+          state.viewport.pan.x !== beforePan.viewport.pan.x ||
+          state.viewport.pan.y !== beforePan.viewport.pan.y,
+      );
+    } catch (error) {
+      throw new Error(
+        `${String(error)}\nFlowCanvas pan diagnostic: ${JSON.stringify({
+          background,
+          events: await this.readPointerEventsAsync(),
+        })}`,
+      );
+    }
     const pan = performance.now() - panStart;
     const interactionDiagnostic = {
       backgroundTarget: background.backgroundTarget,
@@ -296,7 +305,12 @@ class BenchmarkBrowser {
         );
         const point = points.find(({ x, y }) => {
           const target = document.elementFromPoint(x, y);
-          return target instanceof Element && !target.closest('[data-testid^="flow-node-"], [data-testid^="flow-port-"], [aria-label="Connection source-target"]');
+          return (
+            target instanceof Element &&
+            !target.closest(
+              '[data-testid^="flow-node-"], [data-testid^="flow-port-"], [aria-label="Connection source-target"], button, [role]',
+            )
+          );
         });
         const target = point ? document.elementFromPoint(point.x, point.y) : null;
         return { backgroundTarget: target instanceof Element ? target.getAttribute('data-testid') ?? target.tagName : null, events, viewport: { height: rect.height, width: rect.width, x: rect.x, y: rect.y }, ...(point ?? {}) };
