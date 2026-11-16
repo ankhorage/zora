@@ -64,7 +64,7 @@ async function testFlowCanvasChromiumAsync() {
       return new URL(request.url).pathname === '/flow-canvas-acceptance.js'
         ? new Response(Bun.file(bundlePath))
         : new Response(
-            '<!doctype html><meta charset="utf-8"><script type="module" src="/flow-canvas-acceptance.js"></script>',
+            '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script type="module" src="/flow-canvas-acceptance.js"></script>',
             { headers: { 'content-type': 'text/html' } },
           );
     },
@@ -166,6 +166,16 @@ async function testFlowCanvasChromiumAsync() {
     );
     await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-desktop', phase);
     await browser.setViewportAsync(390, 844);
+    for (const label of ['Zoom out', 'Zoom in', 'Delete selected nodes', 'Undo', 'Redo']) {
+      const control = await browser.rectAsync(`[aria-label="${label}"]`);
+      assert(
+        control.x >= 0 &&
+          control.y >= 0 &&
+          control.x + control.width <= 390 &&
+          control.y + control.height <= 844,
+        `${label} must remain an on-screen hit target in the narrow viewport: ${JSON.stringify(control)}`,
+      );
+    }
     await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-mobile', phase);
     assert(
       browser.exceptions.length === 0,
