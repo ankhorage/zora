@@ -60,7 +60,6 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
           module: 'NodeNext',
           moduleResolution: 'NodeNext',
           noEmit: true,
-          skipLibCheck: true,
           strict: true,
         },
       },
