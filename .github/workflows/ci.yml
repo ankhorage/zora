@@ -108,6 +108,9 @@ jobs:
             echo "No test script found; skipping."
           fi
 
+      - name: Run packed theme consumer acceptance
+        run: bun run test:packed-theme-consumer
+
       - name: Verify Chromium executable
         run: |
           chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
@@ -132,6 +135,9 @@ jobs:
 
       - name: Run packed Next production consumer acceptance
         run: bun run test:packed-next-web-consumer
+
+      - name: Run packed Expo 57 Metro acceptance
+        run: bun run expo:reader-free
 
       - name: Run typecheck
         run: |

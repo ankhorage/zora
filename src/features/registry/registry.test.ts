@@ -99,15 +99,15 @@ describe('ZORA_COMPONENT_REGISTRY', () => {
     expect(readerFreeRootSource).not.toContain("from './features/reader/public'");
     expect(readerFreeRootSource).not.toContain('ZORA_COMPONENT_REGISTRY');
     expect(packageJson.exports['./registry']).toEqual({
-      'react-native': './src/features/registry/readerFreeRegistry.ts',
-      browser: './src/features/registry/readerFreeRegistry.ts',
+      'react-native': './dist/features/registry/readerFreeRegistry.js',
+      browser: './dist/features/registry/readerFreeRegistry.js',
       types: './dist/features/registry/readerFreeRegistry.d.ts',
       import: './dist/features/registry/readerFreeRegistry.js',
       default: './dist/features/registry/readerFreeRegistry.js',
     });
     expect(packageJson.exports['./reader-free']).toEqual({
-      'react-native': './src/readerFree.ts',
-      browser: './src/readerFree.ts',
+      'react-native': './dist/readerFree.js',
+      browser: './dist/readerFree.js',
       types: './dist/readerFree.d.ts',
       import: './dist/readerFree.js',
       default: './dist/readerFree.js',
