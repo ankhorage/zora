@@ -67,6 +67,7 @@ test('connects only an enabled output to an input on a different node', () => {
 });
 
 test('suppresses mutation intents in read-only mode', () => {
+  const deleted: string[][] = [];
   const moved: (readonly FlowNodeData[])[] = [];
   const selected: string[][] = [];
   const controller = createFlowEditorController(
@@ -75,13 +76,29 @@ test('suppresses mutation intents in read-only mode', () => {
       onNodesMove: (next) => {
         moved.push(next);
       },
+      onNodesDelete: (ids) => deleted.push([...ids]),
       readOnly: true,
     }),
   );
 
   controller.selectNode('source');
   controller.moveNode('source', { x: 3, y: -2 });
+  controller.deleteNodes(['source']);
 
   expect(selected).toEqual([]);
   expect(moved).toEqual([]);
+  expect(deleted).toEqual([]);
+});
+
+test('deletes only enabled selected nodes through the controlled host', () => {
+  const deleted: string[][] = [];
+  const controller = createFlowEditorController(
+    createProps({ onNodesDelete: (ids) => deleted.push([...ids]) }),
+  );
+
+  controller.deleteNodes(['source']);
+  controller.deleteNodes([]);
+  controller.deleteNodes(['missing']);
+
+  expect(deleted).toEqual([['source']]);
 });

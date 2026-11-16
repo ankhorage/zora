@@ -78,6 +78,7 @@ export interface FlowCanvasProps extends ZoraBaseProps {
   readonly onConnect?: (source: FlowPortAddress, target: FlowPortAddress) => void;
   readonly onDisconnect?: (connectionId: string) => void;
   readonly onInsert?: (paletteItemId: string) => void;
+  readonly onNodesDelete?: (nodeIds: readonly string[]) => void;
   readonly onUndo?: () => void;
   readonly onRedo?: () => void;
 }

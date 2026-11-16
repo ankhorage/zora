@@ -98,6 +98,18 @@ function FlowCanvasChromiumAcceptance() {
       onInsert={() => {
         record('insert');
       }}
+      onNodesDelete={(nodeIds) => {
+        setConnections((current) =>
+          current.filter(
+            (connection) =>
+              !nodeIds.includes(connection.source.nodeId) &&
+              !nodeIds.includes(connection.target.nodeId),
+          ),
+        );
+        setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
+        setSelected([]);
+        record('delete');
+      }}
       onNodeSelectionChange={(nodeIds) => {
         setSelected(nodeIds);
         record(`select:${nodeIds.join(',')}`);
