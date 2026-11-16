@@ -510,6 +510,7 @@ async function verifyLiveVariantAsync(
     logs.push(
       `native theme bundle: ${nativeBundle.response.status} ${nativeBundle.response.statusText}; ${nativeBundle.response.url}\n`,
     );
+    console.log(`${label}: native Metro ${nativeBundle.response.status}.`);
     const hasPdfWorker = /pdfjs-dist|pdf\.worker|@ankhorage\/reader/u.test(source);
     const evidence = [
       `request URL: ${bundleUrl}`,
