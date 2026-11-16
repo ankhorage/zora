@@ -156,6 +156,7 @@
     "prepack": "bun run build",
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
+    "test:packed-next-web-consumer": "bun scripts/verify-packed-next-web-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
     "test:checkbox:chromium": "bun scripts/test-packed-checkbox-chromium.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
