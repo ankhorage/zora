@@ -109,6 +109,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
     <View
       style={{
         backgroundColor: theme.semantics.surface.default,
+        flex: 1,
         minHeight: 360,
         overflow: 'hidden',
       }}
@@ -208,7 +209,7 @@ interface FlowToolbarProps {
 /** Present keyboard-accessible viewport and history controls. */
 function FlowToolbar(props: FlowToolbarProps) {
   return (
-    <View style={{ flexDirection: 'row', gap: 8, padding: 10 }}>
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, padding: 10, width: '100%' }}>
       <FlowControl label="Zoom out" onPress={props.onZoomOut} />
       <FlowControl label="Zoom in" onPress={props.onZoomIn} />
       <FlowControl
