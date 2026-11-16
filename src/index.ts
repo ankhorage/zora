@@ -29,5 +29,17 @@ export type {
 } from './features/reader/public';
 export { Reader, resolveReaderProgress } from './features/reader/public';
 export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
+export type {
+  FlowExecutionOverlayProps,
+  FlowInspectorDataSection,
+  FlowInspectorField,
+  FlowInspectorProps,
+  FlowNodePaletteItem,
+  FlowNodePaletteProps,
+  FlowOutlineItem,
+} from './types/flow-ui';
+export { FlowExecutionOverlay } from './features/flow-execution-overlay/public';
+export { FlowInspector } from './features/flow-inspector/public';
+export { FlowNodePalette } from './features/flow-node-palette/public';
 export * from './readerFree';
 export type { ZoraComponentRegistry } from './types/registry';
