@@ -146,13 +146,17 @@ async function testFlowCanvasChromiumAsync() {
     phase = 'keyboard-zoom';
     await browser.focusAsync('[aria-label="Zoom in"]');
     await browser.keyAsync('Enter');
+    phase = 'delete';
+    await browser.clickAsync(await browser.rectAsync('[aria-label="Delete selected nodes"]'));
     const final = await browser.waitForStateAsync(
       (state) =>
         state.events.includes('insert') &&
         state.events.includes('connect') &&
         state.events.includes('disconnect') &&
+        state.events.includes('delete') &&
         state.events.includes('undo') &&
         state.events.includes('move') &&
+        !state.nodes.some((node) => node.id === 'source') &&
         state.viewport.zoom > 1,
     );
     assert(

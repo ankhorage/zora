@@ -84,6 +84,18 @@ export default function App() {
           record('disconnect');
         }}
         onInsert={(id) => record(`insert:${id}`)}
+        onNodesDelete={(nodeIds) => {
+          setConnections((current) =>
+            current.filter(
+              (connection) =>
+                !nodeIds.includes(connection.source.nodeId) &&
+                !nodeIds.includes(connection.target.nodeId),
+            ),
+          );
+          setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
+          setSelectedNodeIds([]);
+          record('delete');
+        }}
         onNodeSelectionChange={(nodeIds) => {
           setSelectedNodeIds(nodeIds);
           record(`select:${nodeIds.join(',')}`);

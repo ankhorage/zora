@@ -29,8 +29,17 @@ export function createFlowEditorController(props: FlowCanvasProps) {
     if (props.readOnly || !isCompatibleConnection(props.nodes, source, target)) return;
     props.onConnect?.(source, target);
   };
+  /*** Deliver a controlled deletion request for the currently enabled nodes. */
+  const deleteNodes = (nodeIds: readonly string[]) => {
+    if (props.readOnly || nodeIds.length === 0) return;
+    const enabledNodeIds = nodeIds.filter((nodeId) => {
+      const node = props.nodes.find((candidate) => candidate.id === nodeId);
+      return node !== undefined && !node.disabled;
+    });
+    if (enabledNodeIds.length > 0) props.onNodesDelete?.(enabledNodeIds);
+  };
 
-  return { connect, moveNode, selectNode, setViewport };
+  return { connect, deleteNodes, moveNode, selectNode, setViewport };
 }
 
 /** Move only the caller-owned coordinate of a node. */

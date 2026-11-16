@@ -31,8 +31,8 @@ function FlowCanvasInner(props: FlowCanvasProps) {
     readonly pan: FlowPoint;
   } | null>(null);
   const { theme } = useZoraTheme();
-  const selectedNodeIds = React.useMemo(
-    () => new Set(props.selectedNodeIds),
+  const selectedNodeIdSet = React.useMemo(
+    () => new Set(props.selectedNodeIds ?? []),
     [props.selectedNodeIds],
   );
   const minZoom = props.minZoom ?? 0.5;
@@ -99,6 +99,11 @@ function FlowCanvasInner(props: FlowCanvasProps) {
     (connectionId: string) => propsRef.current.onDisconnect?.(connectionId),
     [],
   );
+  /*** Request deletion from the controlled host for the current selection. */
+  const deleteSelectedNodes = React.useCallback(
+    () => controllerRef.current.deleteNodes(propsRef.current.selectedNodeIds ?? []),
+    [],
+  );
 
   return (
     <View
@@ -112,7 +117,9 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       <FlowToolbar
         canRedo={props.canRedo === true}
         canUndo={props.canUndo === true}
+        canDelete={(props.selectedNodeIds?.length ?? 0) > 0}
         readOnly={props.readOnly === true}
+        onDelete={deleteSelectedNodes}
         onRedo={props.onRedo}
         onUndo={props.onUndo}
         onZoomIn={() => setZoom(props.viewport.zoom + 0.1)}
@@ -164,7 +171,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
               key={node.id}
               node={node}
               readOnly={props.readOnly === true}
-              selected={selectedNodeIds.has(node.id)}
+              selected={selectedNodeIdSet.has(node.id)}
               canvasRef={canvasRef}
               zoomRef={zoomRef}
               onMove={moveNode}
@@ -172,7 +179,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
               onPortPress={selectPort}
               onPortLayout={setPortAnchor}
             >
-              {props.renderNode?.(node, { selected: selectedNodeIds.has(node.id) })}
+              {props.renderNode?.(node, { selected: selectedNodeIdSet.has(node.id) })}
             </FlowNode>
           ))}
         </View>
@@ -187,9 +194,11 @@ function FlowCanvasInner(props: FlowCanvasProps) {
 }
 
 interface FlowToolbarProps {
+  readonly canDelete: boolean;
   readonly canUndo: boolean;
   readonly canRedo: boolean;
   readonly readOnly: boolean;
+  readonly onDelete: () => void;
   readonly onUndo: (() => void) | undefined;
   readonly onRedo: (() => void) | undefined;
   readonly onZoomIn: () => void;
@@ -202,6 +211,11 @@ function FlowToolbar(props: FlowToolbarProps) {
     <View style={{ flexDirection: 'row', gap: 8, padding: 10 }}>
       <FlowControl label="Zoom out" onPress={props.onZoomOut} />
       <FlowControl label="Zoom in" onPress={props.onZoomIn} />
+      <FlowControl
+        disabled={props.readOnly || !props.canDelete}
+        label="Delete selected nodes"
+        onPress={props.onDelete}
+      />
       <FlowControl
         disabled={props.readOnly || !props.canUndo}
         label="Undo"
@@ -232,6 +246,9 @@ function FlowControl(props: {
       style={{
         backgroundColor: theme.colors.primary,
         borderRadius: 8,
+        justifyContent: 'center',
+        minHeight: 44,
+        minWidth: 44,
         paddingHorizontal: 10,
         paddingVertical: 7,
       }}
@@ -357,7 +374,13 @@ function FlowPalette(props: {
           accessibilityRole="button"
           accessibilityState={{ disabled: props.readOnly || item.disabled }}
           disabled={props.readOnly || item.disabled}
-          style={{ backgroundColor: theme.semantics.neutral.surface, borderRadius: 8, padding: 10 }}
+          style={{
+            backgroundColor: theme.semantics.neutral.surface,
+            borderRadius: 8,
+            justifyContent: 'center',
+            minHeight: 44,
+            padding: 10,
+          }}
           onPress={() => props.onInsert?.(item.id)}
         >
           <Text style={{ color: theme.semantics.neutral.text, fontWeight: '700' }}>

@@ -144,7 +144,7 @@ function FlowNodeInner(props: FlowNodeProps) {
             style={{
               alignItems: 'center',
               flexDirection: 'row',
-              height: 32,
+              minHeight: 44,
               justifyContent: port.direction === 'input' ? 'flex-start' : 'flex-end',
             }}
           >
@@ -164,7 +164,7 @@ function FlowNodeInner(props: FlowNodeProps) {
                     ? theme.semantics.neutral.surfaceHover
                     : theme.colors.primary,
                 borderRadius: 999,
-                minHeight: 32,
+                minHeight: 44,
                 minWidth: 44,
                 paddingHorizontal: 10,
                 justifyContent: 'center',
