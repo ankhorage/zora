@@ -26,6 +26,8 @@ export interface ActivityIndicatorProps extends Omit<
 /*** Render a self-contained web loading indicator whose first server frame has deterministic bounds. */
 /*** Render the indicator inside its resolved ZORA theme scope. */
 function ActivityIndicatorInner({
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   animating = true,
   color,
   hidesWhenStopped = true,
@@ -47,6 +49,8 @@ function ActivityIndicatorInner({
       <style>{animationStyle}</style>
       <span
         {...props}
+        aria-label={ariaLabel ?? (ariaLabelledBy === undefined ? 'Loading' : undefined)}
+        aria-labelledby={ariaLabelledBy}
         aria-valuemax={1}
         aria-valuemin={0}
         data-testid={testID}

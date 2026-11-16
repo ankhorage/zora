@@ -1,5 +1,5 @@
 import { strict as assert } from 'node:assert';
-import { mkdtempSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -57,7 +57,6 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
         scripts: { build: 'next build', start: 'next start' },
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
-          '@ankhorage/surface': '9.5.10',
           next: '16.0.0',
           react: '19.2.3',
           'react-dom': '19.2.3',
@@ -110,7 +109,7 @@ import { ZoraProvider } from '@ankhorage/zora/web/runtime';
 
 export default function Page() {
   useEffect(() => document.documentElement.setAttribute('data-hydrated', 'true'), []);
-  return <main><ZoraProvider mode="light"><ActivityIndicator size="small" testID="light-small" /><ActivityIndicator size="large" testID="light-large" /></ZoraProvider><ZoraProvider mode="dark"><ActivityIndicator size="small" testID="dark-small" /><ActivityIndicator size="large" testID="dark-large" /></ZoraProvider></main>;
+  return <main><span id="dark-small-label">Dark mode loading</span><ZoraProvider mode="light"><ActivityIndicator size="small" testID="light-small" /><ActivityIndicator aria-label="Publishing results" size="large" testID="light-large" /></ZoraProvider><ZoraProvider mode="dark"><ActivityIndicator aria-labelledby="dark-small-label" size="small" testID="dark-small" /><ActivityIndicator size="large" testID="dark-large" /></ZoraProvider></main>;
 }
 `,
   );
@@ -146,6 +145,9 @@ function assertServerHtml(html: string) {
     assert.match(html, new RegExp(`width:${dimension}px`));
   }
   assert.match(html, /role="progressbar"/);
+  assert.match(html, /aria-label="Loading"/);
+  assert.match(html, /aria-label="Publishing results"/);
+  assert.match(html, /aria-labelledby="dark-small-label"/);
   assert.match(html, /prefers-reduced-motion: reduce/);
   assert.match(html, /<svg/);
   assert.doesNotMatch(html, /r-width-|react-native-web/i);
@@ -207,6 +209,11 @@ async function assertMeasurementsAsync(browser: ChromeSession, viewport: string,
     assert.notEqual(measurement.color, '', `${viewport} ${phase} ${testId} lacks theme color.`);
     if (phase === 'hydrated') assert.equal(measurement.hydrated, 'true');
   }
+  assert.deepEqual(
+    (await browser.progressbarAccessibleNamesAsync()).sort(),
+    ['Dark mode loading', 'Loading', 'Loading', 'Publishing results'].sort(),
+    `${viewport} ${phase} progressbars do not expose their expected accessible names.`,
+  );
 }
 
 /*** Drive Chromium through CDP so server-only and hydrated frames use the same real browser engine. */
@@ -279,6 +286,24 @@ class ChromeSession {
     return this.evaluateAsync(
       `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const style = getComputedStyle(node); const svg = node.querySelector('svg'); return { animation: svg ? getComputedStyle(svg).animationName : '', color: svg?.querySelector('circle')?.getAttribute('stroke') ?? '', height: node.getBoundingClientRect().height, hydrated: document.documentElement.getAttribute('data-hydrated'), role: node.getAttribute('role'), width: node.getBoundingClientRect().width }; })()`,
     );
+  }
+  async progressbarAccessibleNamesAsync(): Promise<readonly string[]> {
+    const response = await this.sendAsync('Accessibility.getFullAXTree');
+    assert.ok(
+      isRecord(response) && Array.isArray(response.nodes),
+      'Chrome returned no accessibility tree.',
+    );
+    return response.nodes.flatMap((node) => {
+      if (
+        !isRecord(node) ||
+        !isRecord(node.name) ||
+        !isRecord(node.role) ||
+        node.role.value !== 'progressbar' ||
+        typeof node.name.value !== 'string'
+      )
+        return [];
+      return [node.name.value];
+    });
   }
   async navigateAsync(url: string) {
     await this.sendAsync('Page.navigate', { url });
@@ -358,6 +383,38 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
 
+/*** Verify that the packed consumer resolves Surface through ZORA's published dependency range. */
+function assertPublishedSurfaceGraph(consumerRoot: string): void {
+  const consumerPackage = JSON.parse(readFileSync(join(consumerRoot, 'package.json'), 'utf8')) as {
+    readonly dependencies?: Readonly<Record<string, string>>;
+  };
+  const zoraPackage = JSON.parse(
+    readFileSync(join(consumerRoot, 'node_modules', '@ankhorage', 'zora', 'package.json'), 'utf8'),
+  ) as { readonly dependencies?: Readonly<Record<string, string>> };
+  const surfacePackage = JSON.parse(
+    readFileSync(
+      join(consumerRoot, 'node_modules', '@ankhorage', 'surface', 'package.json'),
+      'utf8',
+    ),
+  ) as { readonly version?: string };
+  const surfaceRange = zoraPackage.dependencies?.['@ankhorage/surface'];
+
+  assert.equal(
+    consumerPackage.dependencies?.['@ankhorage/surface'],
+    undefined,
+    'The Next consumer must resolve Surface through ZORA, not a direct pin.',
+  );
+  assert.match(
+    surfaceRange ?? '',
+    /^\^\d+\.\d+\.\d+$/,
+    'ZORA must publish a compatible Surface range.',
+  );
+  assert.ok(
+    surfacePackage.version && Bun.semver.satisfies(surfacePackage.version, surfaceRange),
+    `Resolved Surface ${surfacePackage.version ?? 'version'} is outside ZORA's published ${surfaceRange} range.`,
+  );
+}
+
 try {
   const packageRoot = join(temporaryRoot, 'package');
   const consumerRoot = join(temporaryRoot, 'consumer');
@@ -376,6 +433,7 @@ try {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
+  assertPublishedSurfaceGraph(consumerRoot);
   run(['bun', 'run', 'build'], consumerRoot);
   const port = allocatePort();
   const server = Bun.spawn(['bun', 'run', 'start', '--', '--port', String(port)], {
