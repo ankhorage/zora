@@ -39,8 +39,15 @@ async function testGraphViewChromiumAsync() {
   const browser = await ChromeSession.createAsync(await dynamicPortAsync());
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
+    await browser.waitForProgressiveScenarioAsync(
+      (state) =>
+        state.layoutCompletions === 1 &&
+        state.readyCount === 1 &&
+        state.repositoryIds.length === 5 &&
+        state.measurement !== null,
+    );
     for (const repositoryCount of [5, 20, 87]) {
-      const initial = await browser.waitForScenarioAsync(
+      await browser.waitForScenarioAsync(
         repositoryCount,
         (state) => state.measurement !== null && state.repositoryIds.length === repositoryCount,
       );
@@ -175,6 +182,13 @@ interface GraphViewport {
   readonly zoom: number;
 }
 
+interface ProgressiveGraphAcceptanceState {
+  readonly layoutCompletions: number;
+  readonly measurement: GraphMeasurement | null;
+  readonly readyCount: number;
+  readonly repositoryIds: readonly string[];
+}
+
 /*** Drive an isolated Chrome page through its public DevTools Protocol endpoint. */
 class ChromeSession {
   readonly consoleErrors: string[] = [];
@@ -254,6 +268,25 @@ class ChromeSession {
     }
     throw new Error(
       `Timed out waiting for a stable public GraphView state: ${JSON.stringify(last)}`,
+    );
+  }
+
+  /*** Wait for the public progressive-initial-layout regression state. */
+  async waitForProgressiveScenarioAsync(
+    predicate: (state: ProgressiveGraphAcceptanceState) => boolean,
+  ): Promise<ProgressiveGraphAcceptanceState> {
+    const deadline = Date.now() + 30_000;
+    let last: ProgressiveGraphAcceptanceState | null = null;
+    while (Date.now() < deadline) {
+      const state = await this.evaluateAsync<ProgressiveGraphAcceptanceState>(
+        'window.graphAcceptance?.readProgressive() ?? null',
+      );
+      last = state;
+      if (state !== null && predicate(state)) return state;
+      await this.nextAnimationFrameAsync();
+    }
+    throw new Error(
+      `Timed out waiting for progressive initial GraphView layout: ${JSON.stringify(last)}`,
     );
   }
 

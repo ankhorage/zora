@@ -10,6 +10,7 @@ import { getGraphTopologyKey } from './getGraphTopologyKey';
 export function hasGraphLayoutChanged(
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
+  preservesTopology: boolean,
 ): boolean {
   return (
     previous === null ||
@@ -17,7 +18,7 @@ export function hasGraphLayoutChanged(
     previous.spacingFactor !== input.spacingFactor ||
     previous.layoutOptions !== input.layoutOptions ||
     previous.richNodeRendering !== input.richNodeRendering ||
-    (input.topologyUpdatePolicy !== 'preserve-positions' &&
+    (!preservesTopology &&
       getGraphTopologyKey(previous.nodes, previous.edges) !==
         getGraphTopologyKey(input.nodes, input.edges))
   );

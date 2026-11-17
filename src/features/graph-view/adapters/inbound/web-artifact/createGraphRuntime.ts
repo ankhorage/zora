@@ -173,14 +173,14 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.viewport.configure(input);
-  const retainedNodeIds = getRetainedNodeIds(previous, input);
+  const preservesTopology = shouldPreserveTopology(state, previous, input);
+  const retainedNodeIds = getRetainedNodeIds(previous, input, preservesTopology);
   const retainedGeometry =
     retainedNodeIds === null ? null : getGraphGeometryKey(state.cy, retainedNodeIds);
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
-      if (shouldPreserveTopology(previous, input))
-        placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
+      if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
     }
     if (
       previous?.styleRules !== input.styleRules ||
@@ -204,7 +204,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
     retainedGeometry === null
       ? geometry !== state.geometryRef.current
       : retainedGeometry !== getGraphGeometryKey(state.cy, retainedNodeIds ?? undefined);
-  const relayout = hasGraphLayoutChanged(previous, input) || geometryChanged;
+  const relayout = hasGraphLayoutChanged(previous, input, preservesTopology) || geometryChanged;
   state.geometryRef.current = geometry;
   if (!relayout) {
     if (
@@ -226,20 +226,27 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   startCurrentLayout(state, input);
 }
 
-/*** Preserve only opt-in topology updates after the initial graph has settled elements. */
+/*** Preserve only opt-in topology updates after the initial layout and fit have settled. */
 function shouldPreserveTopology(
+  state: GraphRuntimeState,
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
 ): boolean {
-  return previous !== null && input.topologyUpdatePolicy === 'preserve-positions';
+  return (
+    previous !== null &&
+    state.readyRef.current &&
+    !state.pendingInitialFitRef.current &&
+    input.topologyUpdatePolicy === 'preserve-positions'
+  );
 }
 
 /*** Limit stable-update geometry checks to nodes that existed before reconciliation. */
 function getRetainedNodeIds(
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
+  preservesTopology: boolean,
 ): ReadonlySet<string> | null {
-  if (!shouldPreserveTopology(previous, input) || previous === null) return null;
+  if (!preservesTopology || previous === null) return null;
   const nextNodeIds = new Set(input.nodes.map((node) => node.id));
   return new Set(previous.nodes.map((node) => node.id).filter((id) => nextNodeIds.has(id)));
 }

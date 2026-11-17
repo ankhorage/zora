@@ -360,3 +360,34 @@ test('settles the pending initial layout when presentation changes before readin
     runtime.destroy();
   }
 });
+
+test('lays out 0 → 1 → 5 topology updates before preserve-positions becomes active', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const calls = { sort: 0 };
+  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const layoutOptions = {
+    sort: () => {
+      calls.sort += 1;
+      return 0;
+    },
+  };
+  const fiveNodes = Array.from({ length: 5 }, (_, index) => ({ id: `repository-${index}` }));
+  const input = {
+    edges: [],
+    layout: 'grid' as const,
+    layoutOptions,
+    richNodeRendering: false,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update({ ...input, nodes: [] });
+    runtime.update({ ...input, nodes: fiveNodes.slice(0, 1) });
+    runtime.update({ ...input, nodes: fiveNodes });
+    const controller = await ready.promise;
+
+    expect(calls.sort).toBeGreaterThan(0);
+    expect(controller.measureNodes?.(fiveNodes.map((node) => node.id))?.nodes).toHaveLength(5);
+  } finally {
+    runtime.destroy();
+  }
+});

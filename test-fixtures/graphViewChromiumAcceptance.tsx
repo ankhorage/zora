@@ -14,11 +14,19 @@ interface ScenarioState {
   readonly viewport: ReturnType<GraphViewController['getViewport']> | null;
 }
 
+interface ProgressiveScenarioState {
+  readonly layoutCompletions: number;
+  readonly measurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
+  readonly readyCount: number;
+  readonly repositoryIds: readonly string[];
+}
+
 declare global {
   interface Window {
     graphAcceptance?: {
       fit(repositoryCount: number): void;
       read(repositoryCount: number): ScenarioState | null;
+      readProgressive(): ProgressiveScenarioState | null;
       remove(repositoryCount: number): void;
       restore(repositoryCount: number): void;
       reselect(repositoryCount: number): void;
@@ -51,6 +59,8 @@ const scenarioActions = new Map<
   }
 >();
 const elkLayoutOptions = { 'elk.algorithm': 'layered' };
+const progressiveRepositories = createRepositories(5);
+let progressiveScenarioAction: { readonly read: () => ProgressiveScenarioState } | null = null;
 
 /*** Render the real compound ELK graphs used by the Chromium stable-topology acceptance. */
 function GraphViewChromiumAcceptance() {
@@ -58,6 +68,7 @@ function GraphViewChromiumAcceptance() {
     window.graphAcceptance = {
       fit: (repositoryCount) => scenarioActions.get(repositoryCount)?.fit(),
       read: (repositoryCount) => scenarioActions.get(repositoryCount)?.read() ?? null,
+      readProgressive: () => progressiveScenarioAction?.read() ?? null,
       remove: (repositoryCount) => scenarioActions.get(repositoryCount)?.remove(),
       restore: (repositoryCount) => scenarioActions.get(repositoryCount)?.restore(),
       reselect: (repositoryCount) => scenarioActions.get(repositoryCount)?.reselect(),
@@ -74,7 +85,66 @@ function GraphViewChromiumAcceptance() {
       {repositoryCounts.map((repositoryCount) => (
         <StableTopologyScenario key={repositoryCount} repositoryCount={repositoryCount} />
       ))}
+      <ProgressiveInitialLayoutScenario />
     </div>
+  );
+}
+
+/*** Exercise 0 → 1 → 5 nodes before the first compound ELK layout settles. */
+function ProgressiveInitialLayoutScenario() {
+  const [visibleRepositoryIds, setVisibleRepositoryIds] = useState<readonly string[]>([]);
+  const [layoutCompletions, setLayoutCompletions] = useState(0);
+  const [readyCount, setReadyCount] = useState(0);
+  const [controller, setController] = useState<GraphViewController | null>(null);
+  const visibleRepositories = progressiveRepositories.filter((node) =>
+    visibleRepositoryIds.includes(node.id),
+  );
+  const repositoryIds = visibleRepositories.map((node) => node.id);
+  const nodes = [
+    { id: 'progressive-group-even', label: 'even repositories' },
+    { id: 'progressive-group-odd', label: 'odd repositories' },
+    ...visibleRepositories.map((node) => ({
+      ...node,
+      parentId: node.parentId === 'group-even' ? 'progressive-group-even' : 'progressive-group-odd',
+    })),
+  ];
+  const edges = visibleRepositories.slice(1).map((node, index) => ({
+    id: `progressive-dependency-${index}`,
+    source: visibleRepositories[index]!.id,
+    target: node.id,
+  }));
+
+  useEffect(() => {
+    setVisibleRepositoryIds([progressiveRepositories[0]!.id]);
+    requestAnimationFrame(() =>
+      setVisibleRepositoryIds(progressiveRepositories.map((node) => node.id)),
+    );
+  }, []);
+  progressiveScenarioAction = {
+    read: () => ({
+      layoutCompletions,
+      measurement: controller?.measureNodes?.(repositoryIds) ?? null,
+      readyCount,
+      repositoryIds,
+    }),
+  };
+
+  return (
+    <GraphView
+      edges={edges}
+      layout="elk"
+      layoutOptions={elkLayoutOptions}
+      nodes={nodes}
+      sizeNodesToLabels
+      style={{ height: 360, width: 960 }}
+      styleRules={styleRules}
+      topologyUpdatePolicy="preserve-positions"
+      onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
+      onReady={(nextController) => {
+        setController(nextController);
+        setReadyCount((count) => count + 1);
+      }}
+    />
   );
 }
 
