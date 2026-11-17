@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.2.5
+
+### Patch Changes
+
+- 1537dad: Rebuild standalone web checkbox artifacts with Surface accessibility fixes for checked ARIA state and Space-key activation.
+
 ## 27.2.4
 
 ### Patch Changes
