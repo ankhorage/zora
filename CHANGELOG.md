@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.0
+
+### Minor Changes
+
+- 845a331: Add the GraphView `preserve-positions` topology update policy for stable incremental graph updates.
+
 ## 27.2.6
 
 ### Patch Changes

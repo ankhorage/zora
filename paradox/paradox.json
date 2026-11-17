@@ -17,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.2.6",
+      "value": "v27.3.0",
       "color": "cb3837"
     },
     {
@@ -3024,6 +3024,7 @@
         "src/features/graph-view/adapters/inbound/web-artifact/getGraphGeometryKey.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
+        "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
@@ -3144,6 +3145,16 @@
       ]
     },
     {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/graph-view.ts"
+      ],
+      "exports": [
+        "placeAddedGraphNodes"
+      ]
+    },
+    {
       "path": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -3248,6 +3259,7 @@
         "GraphViewRenderedNode",
         "GraphViewSize",
         "GraphViewStyleRule",
+        "GraphViewTopologyUpdatePolicy",
         "GraphViewViewport"
       ]
     },
@@ -8166,6 +8178,7 @@
         "GraphViewRenderedNode",
         "GraphViewSize",
         "GraphViewStyleRule",
+        "GraphViewTopologyUpdatePolicy",
         "GraphViewViewport"
       ]
     },
@@ -68203,7 +68216,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 73,
+        "line": 74,
         "column": 1
       }
     },
@@ -68214,7 +68227,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 99,
+        "line": 100,
         "column": 1
       }
     },
@@ -68225,7 +68238,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 164,
+        "line": 165,
+        "column": 1
+      }
+    },
+    {
+      "name": "shouldPreserveTopology",
+      "description": "Preserve only opt-in topology updates after the initial layout and fit have settled.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 230,
+        "column": 1
+      }
+    },
+    {
+      "name": "getRetainedNodeIds",
+      "description": "Limit stable-update geometry checks to nodes that existed before reconciliation.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 244,
         "column": 1
       }
     },
@@ -68236,7 +68271,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 222,
+        "line": 255,
         "column": 1
       }
     },
@@ -68247,7 +68282,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 243,
+        "line": 276,
         "column": 1
       }
     },
@@ -68258,7 +68293,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 284,
+        "line": 317,
         "column": 1
       }
     },
@@ -68269,7 +68304,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 310,
+        "line": 343,
         "column": 1
       }
     },
@@ -68280,7 +68315,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 318,
+        "line": 351,
         "column": 1
       }
     },
@@ -68291,7 +68326,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 342,
+        "line": 375,
         "column": 1
       }
     },
@@ -68302,7 +68337,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 356,
+        "line": 389,
         "column": 1
       }
     },
@@ -68313,7 +68348,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 365,
+        "line": 398,
         "column": 1
       }
     },
@@ -68324,7 +68359,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 370,
+        "line": 403,
         "column": 1
       }
     },
@@ -68335,7 +68370,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 380,
+        "line": 413,
         "column": 1
       }
     },
@@ -68346,7 +68381,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 393,
+        "line": 426,
         "column": 1
       }
     },
@@ -68357,7 +68392,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 405,
+        "line": 438,
         "column": 1
       }
     },
@@ -68368,7 +68403,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 414,
+        "line": 447,
         "column": 1
       }
     },
@@ -68379,7 +68414,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 428,
+        "line": 461,
         "column": 1
       }
     },
@@ -68390,7 +68425,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 433,
+        "line": 466,
         "column": 1
       }
     },
@@ -68759,12 +68794,12 @@
     },
     {
       "name": "GraphView",
-      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nzoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\nsizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nminReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.\nmaxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.\nBrowser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root\nwith `detail.controller`: the same public GraphViewController delivered to React.\nBrowser integrations can call `measureNodes` without accessing the Cytoscape runtime.\nThe standalone browser artifact exposes the same names as `GraphView.events`.\nonSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).\nOrdinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,\nstops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries\ncollision-safe, and permits only a small rendered background-overlap fallback for dense graphs.",
+      "description": "Render a browser graph while one runtime owns Cytoscape layout, viewport, and disposal.\nzoomMode Use `fit-relative` to make controller zoom, events and min/max limits relative\nto the visible-node fit (1 = fit). The default `absolute` keeps engine-space zoom units.\nsizeNodesToLabels Opt in to renderer-measured plain labels, including bold and Unicode\ntext. Keep padding in styleRules. Compound and rich-node dimensions retain their existing owners.\nminReadableLabelSize Expand the manual zoom ceiling until plain labels reach this CSS-pixel size.\nmaxFitLabelSize Cap automatic fitting at this plain-label CSS-pixel size, leaving whitespace for tiny graphs.\nBrowser lifecycle events named by public GRAPH_VIEW_EVENTS bubble from the root\nwith `detail.controller`: the same public GraphViewController delivered to React.\nBrowser integrations can call `measureNodes` without accessing the Cytoscape runtime.\nThe standalone browser artifact exposes the same names as `GraphView.events`.\nonSpacingFactorChange Receive the spacing accepted by explicit fit({ optimizeSpacing: true }).\nOrdinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,\nstops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries\ncollision-safe, and permits only a small rendered background-overlap fallback for dense graphs.\ntopologyUpdatePolicy Use `preserve-positions` for controlled incremental topology changes. It\nretains settled nodes and the user viewport, and initially places new nodes on a deterministic\nlocal grid. Use an explicit controller fit or a layout change when a complete rearrangement is\nintentional.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 34,
+        "line": 38,
         "column": 1
       }
     },
@@ -68775,7 +68810,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 73,
+        "line": 77,
         "column": 1
       }
     },
@@ -68786,7 +68821,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 92,
+        "line": 96,
         "column": 1
       }
     },
@@ -68797,7 +68832,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 134,
+        "line": 138,
         "column": 1
       }
     },
@@ -68808,7 +68843,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 152,
+        "line": 156,
         "column": 1
       }
     },
@@ -68819,7 +68854,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 210,
+        "line": 217,
         "column": 1
       }
     },
@@ -68830,7 +68865,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 220,
+        "line": 227,
         "column": 1
       }
     },
@@ -68841,7 +68876,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 236,
+        "line": 243,
         "column": 1
       }
     },
@@ -68852,7 +68887,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 252,
+        "line": 259,
         "column": 1
       }
     },
@@ -68864,6 +68899,17 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
         "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "placeAddedGraphNodes",
+      "description": "Give stable-topology additions deterministic positions without moving settled nodes.\nThis deliberately is not an incremental layout: callers can request a complete layout by\nchanging the configured algorithm, while ordinary controlled additions keep the user viewport.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
+        "line": 12,
         "column": 1
       }
     },
@@ -81605,6 +81651,11 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
@@ -81717,6 +81768,11 @@
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/getGraphTopologyKey.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
+        "toPath": "src/types/graph-view.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts"
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
@@ -88412,9 +88468,33 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "shouldPreserveTopology",
+        "callExpression": "shouldPreserveTopology",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "getRetainedNodeIds",
+        "callExpression": "getRetainedNodeIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "getGraphGeometryKey",
+        "callExpression": "getGraphGeometryKey",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "syncGraphElements",
         "callExpression": "syncGraphElements",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "placeAddedGraphNodes",
+        "callExpression": "placeAddedGraphNodes",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -88449,12 +88529,6 @@
       },
       {
         "fromSymbol": "updateRuntime",
-        "toSymbol": "getGraphGeometryKey",
-        "callExpression": "getGraphGeometryKey",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromSymbol": "updateRuntime",
         "toSymbol": "hasGraphLayoutChanged",
         "callExpression": "hasGraphLayoutChanged",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
@@ -88469,12 +88543,6 @@
         "fromSymbol": "updateRuntime",
         "toSymbol": "emitRenderedNodes",
         "callExpression": "emitRenderedNodes",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromSymbol": "updateRuntime",
-        "toSymbol": "onLayoutComplete",
-        "callExpression": "state.callbacksRef.current.onLayoutComplete",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
