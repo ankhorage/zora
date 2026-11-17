@@ -16,6 +16,7 @@ export type {
   GraphViewRenderedNode,
   GraphViewSize,
   GraphViewStyleRule,
+  GraphViewTopologyUpdatePolicy,
   GraphViewViewport,
 } from '../../types/graph-view';
 export { GraphView } from './adapters/inbound/web-artifact/GraphView';

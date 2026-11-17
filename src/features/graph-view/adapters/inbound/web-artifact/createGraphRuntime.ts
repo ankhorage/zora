@@ -18,6 +18,7 @@ import { createGraphResizeObserver, type GraphResizeObserver } from './createGra
 import { getGraphGeometryKey } from './getGraphGeometryKey';
 import { getGraphTopologyKey } from './getGraphTopologyKey';
 import { hasGraphLayoutChanged } from './hasGraphLayoutChanged';
+import { placeAddedGraphNodes } from './placeAddedGraphNodes';
 import { readGraphRenderedNodes } from './readGraphRenderedNodes';
 import { registerGraphLayouts } from './registerGraphLayouts';
 import { runGraphLayout } from './runGraphLayout';
@@ -172,9 +173,14 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.latestUpdateRef.current = input;
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.viewport.configure(input);
+  const preservesTopology = shouldPreserveTopology(state, previous, input);
+  const retainedNodeIds = getRetainedNodeIds(previous, input, preservesTopology);
+  const retainedGeometry =
+    retainedNodeIds === null ? null : getGraphGeometryKey(state.cy, retainedNodeIds);
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
+      if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
     }
     if (
       previous?.styleRules !== input.styleRules ||
@@ -194,7 +200,11 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   const geometry = getGraphGeometryKey(state.cy);
   // Keep native double-press targets stable for paint-only class changes. A class that changes
   // measured node dimensions remains a geometry change and must relayout.
-  const relayout = hasGraphLayoutChanged(previous, input) || geometry !== state.geometryRef.current;
+  const geometryChanged =
+    retainedGeometry === null
+      ? geometry !== state.geometryRef.current
+      : retainedGeometry !== getGraphGeometryKey(state.cy, retainedNodeIds ?? undefined);
+  const relayout = hasGraphLayoutChanged(previous, input, preservesTopology) || geometryChanged;
   state.geometryRef.current = geometry;
   if (!relayout) {
     if (
@@ -208,14 +218,37 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       state.viewport.settle(previous?.zoomMode !== input.zoomMode);
     }
     emitRenderedNodes(state);
-    if (!state.layoutRunningRef.current && !state.pendingInitialFitRef.current)
-      state.callbacksRef.current.onLayoutComplete?.(state.controller);
     return;
   }
   stopCurrentLayout(state);
   state.fitRequestRef.current = null;
   state.optimizedSpacingRef.current = null;
   startCurrentLayout(state, input);
+}
+
+/*** Preserve only opt-in topology updates after the initial layout and fit have settled. */
+function shouldPreserveTopology(
+  state: GraphRuntimeState,
+  previous: GraphRuntimeUpdate | null,
+  input: GraphRuntimeUpdate,
+): boolean {
+  return (
+    previous !== null &&
+    state.readyRef.current &&
+    !state.pendingInitialFitRef.current &&
+    input.topologyUpdatePolicy === 'preserve-positions'
+  );
+}
+
+/*** Limit stable-update geometry checks to nodes that existed before reconciliation. */
+function getRetainedNodeIds(
+  previous: GraphRuntimeUpdate | null,
+  input: GraphRuntimeUpdate,
+  preservesTopology: boolean,
+): ReadonlySet<string> | null {
+  if (!preservesTopology || previous === null) return null;
+  const nextNodeIds = new Set(input.nodes.map((node) => node.id));
+  return new Set(previous.nodes.map((node) => node.id).filter((id) => nextNodeIds.has(id)));
 }
 
 /*** Start a generation-safe layout whose completion is the only normal automatic fit trigger. */
