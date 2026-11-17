@@ -39,6 +39,51 @@ async function testGraphViewChromiumAsync() {
   const browser = await ChromeSession.createAsync(await dynamicPortAsync());
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
+    const initialInteraction = await browser.waitForStableInteractionStateAsync();
+    const beforeInteractionMeasurement = requireInteractionMeasurement(initialInteraction);
+    assertNarrowViewportFit(initialInteraction);
+    const beforeInteractionViewport = requireInteractionViewport(initialInteraction);
+    const beforeInteractionLayouts = initialInteraction.layoutCompletions;
+    const beforeInteractionSorts = initialInteraction.layoutSorts;
+    const source = beforeInteractionMeasurement.nodes.find((node) => node.id === 'src');
+    assert(source !== undefined, 'Public measureNodes() did not return src.');
+
+    await browser.clickAsync(source.position.x, source.position.y, 1);
+    const selected = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.selected &&
+        state.events.filter((event) => event.id === 'src' && event.type === 'press').length === 1,
+    );
+    assert(
+      selected.layoutCompletions === beforeInteractionLayouts &&
+        selected.layoutSorts === beforeInteractionSorts,
+      `Selection unexpectedly restarted layout: ${JSON.stringify({
+        beforeInteractionLayouts,
+        afterInteractionLayouts: selected.layoutCompletions,
+        beforeInteractionSorts,
+        afterInteractionSorts: selected.layoutSorts,
+      })}`,
+    );
+    await browser.clickAsync(source.position.x, source.position.y, 2);
+    const afterInteraction = await browser.waitForInteractionStateAsync(
+      (state) => state.events.filter(isSourceDoublePress).length === 1,
+    );
+    assert(
+      JSON.stringify(requireInteractionMeasurement(afterInteraction)) ===
+        JSON.stringify(beforeInteractionMeasurement),
+      `Selection changed public rendered hit geometry: ${JSON.stringify({
+        before: beforeInteractionMeasurement,
+        after: requireInteractionMeasurement(afterInteraction),
+      })}`,
+    );
+    assert(
+      JSON.stringify(requireInteractionViewport(afterInteraction)) ===
+        JSON.stringify(beforeInteractionViewport),
+      `Selection changed public viewport: ${JSON.stringify({
+        before: beforeInteractionViewport,
+        after: requireInteractionViewport(afterInteraction),
+      })}`,
+    );
     await browser.waitForProgressiveScenarioAsync(
       (state) =>
         state.layoutCompletions === 1 &&
@@ -124,12 +169,17 @@ async function testGraphViewChromiumAsync() {
       `Chromium console errors: ${browser.consoleErrors.join('\n')}`,
     );
     console.log(
-      'Chromium GraphView acceptance passed: 5/20/87 compound ELK removals preserve topology, viewport, and controller identity.',
+      `Chromium GraphView acceptance passed: src double-press once; layout sorts ${beforeInteractionSorts}; measurement and viewport unchanged; narrow ELK fit and 0→1→5 plus 5/20/87 topology suites passed.`,
     );
   } finally {
     browser.close();
     server.stop();
   }
+}
+
+/*** Distinguish the required public src double-press from unrelated graph events. */
+function isSourceDoublePress(event: { readonly id: string; readonly type: string }) {
+  return event.id === 'src' && event.type === 'double-press';
 }
 
 /*** Allocate a loopback port without making a fixed-port test assumption. */
@@ -158,6 +208,40 @@ function requireViewport(state: GraphAcceptanceState): GraphViewport {
   return state.viewport;
 }
 
+/*** Require the stable public rendered-node measurement used for native input coordinates. */
+function requireInteractionMeasurement(state: InteractionAcceptanceState): GraphMeasurement {
+  assert(state.measurement !== null, 'Public measureNodes() returned null.');
+  return state.measurement;
+}
+
+/*** Require the stable public viewport before comparing the selection presentation update. */
+function requireInteractionViewport(state: InteractionAcceptanceState): GraphViewport {
+  assert(state.viewport !== null, 'Public getViewport() returned null.');
+  return state.viewport;
+}
+
+/*** Prove native fit keeps every ELK node inside a canvas narrower than the configured padding. */
+function assertNarrowViewportFit(state: InteractionAcceptanceState): void {
+  const measurement = state.narrowMeasurement;
+  assert(measurement !== null, 'Narrow GraphView measureNodes() returned null.');
+  assert(measurement.nodes.length === 5, 'Narrow GraphView did not render every ELK node.');
+  for (const node of measurement.nodes) {
+    const bounds = {
+      x1: node.position.x - node.size.width / 2,
+      x2: node.position.x + node.size.width / 2,
+      y1: node.position.y - node.size.height / 2,
+      y2: node.position.y + node.size.height / 2,
+    };
+    assert(
+      bounds.x1 >= 0 &&
+        bounds.x2 <= measurement.viewport.width &&
+        bounds.y1 >= 0 &&
+        bounds.y2 <= measurement.viewport.height,
+      `Narrow GraphView fit clipped ${node.id}: ${JSON.stringify({ bounds, viewport: measurement.viewport })}`,
+    );
+  }
+}
+
 interface GraphAcceptanceState {
   readonly controllerChanges: number;
   readonly layoutCompletions: number;
@@ -165,6 +249,17 @@ interface GraphAcceptanceState {
   readonly repositoryIds: readonly string[];
   readonly selectedRepositoryIds: readonly string[];
   readonly selectionTransitions: number;
+  readonly viewport: GraphViewport | null;
+}
+
+interface InteractionAcceptanceState {
+  readonly events: readonly { readonly id: string; readonly type: string }[];
+  readonly layoutCompletions: number;
+  readonly layoutSorts: number;
+  readonly measurement: GraphMeasurement | null;
+  readonly narrowMeasurement: GraphMeasurement | null;
+  readonly readyCount: number;
+  readonly selected: boolean;
   readonly viewport: GraphViewport | null;
 }
 
@@ -187,6 +282,21 @@ interface ProgressiveGraphAcceptanceState {
   readonly measurement: GraphMeasurement | null;
   readonly readyCount: number;
   readonly repositoryIds: readonly string[];
+}
+
+/*** Compare only lifecycle and public canvas state that must settle before native input. */
+function isStableInteractionState(
+  previous: InteractionAcceptanceState,
+  next: InteractionAcceptanceState,
+): boolean {
+  return (
+    previous.readyCount === next.readyCount &&
+    previous.layoutCompletions === next.layoutCompletions &&
+    previous.layoutSorts === next.layoutSorts &&
+    JSON.stringify(previous.measurement) === JSON.stringify(next.measurement) &&
+    JSON.stringify(previous.narrowMeasurement) === JSON.stringify(next.narrowMeasurement) &&
+    JSON.stringify(previous.viewport) === JSON.stringify(next.viewport)
+  );
 }
 
 /*** Drive an isolated Chrome page through its public DevTools Protocol endpoint. */
@@ -250,6 +360,62 @@ class ChromeSession {
 
   async navigateAsync(url: string): Promise<void> {
     await this.sendAsync('Page.navigate', { url });
+  }
+
+  async clickAsync(x: number, y: number, clickCount: number): Promise<void> {
+    await this.sendAsync('Input.dispatchMouseEvent', {
+      type: 'mousePressed',
+      x,
+      y,
+      button: 'left',
+      clickCount,
+    });
+    await this.sendAsync('Input.dispatchMouseEvent', {
+      type: 'mouseReleased',
+      x,
+      y,
+      button: 'left',
+      clickCount,
+    });
+  }
+
+  async waitForInteractionStateAsync(
+    predicate: (state: InteractionAcceptanceState) => boolean,
+  ): Promise<InteractionAcceptanceState> {
+    const deadline = Date.now() + 30_000;
+    let last: InteractionAcceptanceState | null = null;
+    while (Date.now() < deadline) {
+      const state = await this.evaluateAsync<InteractionAcceptanceState>(
+        'window.graphAcceptance?.readInteraction() ?? null',
+      );
+      last = state;
+      if (state !== null && predicate(state)) return state;
+      await this.nextAnimationFrameAsync();
+    }
+    throw new Error(
+      `Timed out waiting for a stable native-input GraphView state: ${JSON.stringify(last)}`,
+    );
+  }
+
+  /*** Wait for lifecycle completion and stable public geometry across browser animation frames. */
+  async waitForStableInteractionStateAsync(): Promise<InteractionAcceptanceState> {
+    const initial = await this.waitForInteractionStateAsync(
+      (state) =>
+        state.readyCount === 1 &&
+        state.layoutCompletions > 0 &&
+        state.measurement !== null &&
+        state.narrowMeasurement !== null &&
+        state.viewport !== null,
+    );
+    await this.nextAnimationFrameAsync();
+    const settled = await this.readInteractionStateAsync();
+    await this.nextAnimationFrameAsync();
+    const stable = await this.readInteractionStateAsync();
+    assert(
+      isStableInteractionState(initial, settled) && isStableInteractionState(settled, stable),
+      `Initial public GraphView state changed after lifecycle completion: ${JSON.stringify({ initial, settled, stable })}`,
+    );
+    return stable;
   }
 
   async waitForScenarioAsync(
@@ -322,6 +488,14 @@ class ChromeSession {
     await this.evaluateAsync(
       'new Promise((resolve) => requestAnimationFrame(() => resolve(true)))',
     );
+  }
+
+  private async readInteractionStateAsync(): Promise<InteractionAcceptanceState> {
+    const state = await this.evaluateAsync<InteractionAcceptanceState | null>(
+      'window.graphAcceptance?.readInteraction() ?? null',
+    );
+    assert(state !== null, 'GraphView native-input acceptance fixture is unavailable.');
+    return state;
   }
 
   private async evaluateAsync<T>(expression: string): Promise<T> {

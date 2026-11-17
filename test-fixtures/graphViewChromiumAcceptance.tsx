@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import type { GraphViewController } from '../src/types/graph-view';
+import type { GraphViewController, GraphViewElementEvent } from '../src/types/graph-view';
 import { GraphView } from '../src/features/graph-view/adapters/inbound/web-artifact/GraphView';
 
 interface ScenarioState {
@@ -21,11 +21,23 @@ interface ProgressiveScenarioState {
   readonly repositoryIds: readonly string[];
 }
 
+interface InteractionScenarioState {
+  readonly events: readonly GraphViewElementEvent[];
+  readonly layoutCompletions: number;
+  readonly layoutSorts: number;
+  readonly measurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
+  readonly narrowMeasurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
+  readonly readyCount: number;
+  readonly selected: boolean;
+  readonly viewport: ReturnType<GraphViewController['getViewport']> | null;
+}
+
 declare global {
   interface Window {
     graphAcceptance?: {
       fit(repositoryCount: number): void;
       read(repositoryCount: number): ScenarioState | null;
+      readInteraction(): InteractionScenarioState | null;
       readProgressive(): ProgressiveScenarioState | null;
       remove(repositoryCount: number): void;
       restore(repositoryCount: number): void;
@@ -60,7 +72,30 @@ const scenarioActions = new Map<
 >();
 const elkLayoutOptions = { 'elk.algorithm': 'layered' };
 const progressiveRepositories = createRepositories(5);
+const interactionEdges = [{ id: 'src-dependency', source: 'src', target: 'dependency' }];
+const interactionNodes = [
+  { id: 'src', label: 'src' },
+  { id: 'dependency', label: 'dependency' },
+];
+const narrowNodes = Array.from({ length: 5 }, (_, index) => ({
+  id: `narrow-${index}`,
+  label: `repository-${index}`,
+}));
+const narrowEdges = narrowNodes.slice(1).map((node, index) => ({
+  id: `narrow-edge-${index}`,
+  source: narrowNodes[index]!.id,
+  target: node.id,
+}));
+const interactionLayoutState = { layoutSorts: 0 };
+const interactionLayoutOptions = {
+  boundingBox: { x1: 0, y1: 0, w: 960, h: 720 },
+  sort: () => {
+    interactionLayoutState.layoutSorts += 1;
+    return 0;
+  },
+};
 let progressiveScenarioAction: { readonly read: () => ProgressiveScenarioState } | null = null;
+let interactionScenarioAction: { readonly read: () => InteractionScenarioState } | null = null;
 
 /*** Render the real compound ELK graphs used by the Chromium stable-topology acceptance. */
 function GraphViewChromiumAcceptance() {
@@ -68,6 +103,7 @@ function GraphViewChromiumAcceptance() {
     window.graphAcceptance = {
       fit: (repositoryCount) => scenarioActions.get(repositoryCount)?.fit(),
       read: (repositoryCount) => scenarioActions.get(repositoryCount)?.read() ?? null,
+      readInteraction: () => interactionScenarioAction?.read() ?? null,
       readProgressive: () => progressiveScenarioAction?.read() ?? null,
       remove: (repositoryCount) => scenarioActions.get(repositoryCount)?.remove(),
       restore: (repositoryCount) => scenarioActions.get(repositoryCount)?.restore(),
@@ -82,10 +118,75 @@ function GraphViewChromiumAcceptance() {
 
   return (
     <div>
+      <InteractionScenario />
       {repositoryCounts.map((repositoryCount) => (
         <StableTopologyScenario key={repositoryCount} repositoryCount={repositoryCount} />
       ))}
       <ProgressiveInitialLayoutScenario />
+    </div>
+  );
+}
+
+/*** Exercise native canvas input without allowing selection paint to restart layout. */
+function InteractionScenario() {
+  const [controller, setController] = useState<GraphViewController | null>(null);
+  const [events, setEvents] = useState<readonly GraphViewElementEvent[]>([]);
+  const [layoutCompletions, setLayoutCompletions] = useState(0);
+  const [narrowController, setNarrowController] = useState<GraphViewController | null>(null);
+  const [readyCount, setReadyCount] = useState(0);
+  const [selectedNodeIds, setSelectedNodeIds] = useState<readonly string[]>([]);
+  const nodes = selectedNodeIds.includes('src')
+    ? [{ id: 'src', label: 'src', classes: 'selected' }, interactionNodes[1]!]
+    : interactionNodes;
+  interactionScenarioAction = {
+    read: () => ({
+      events,
+      layoutCompletions,
+      layoutSorts: interactionLayoutState.layoutSorts,
+      measurement: controller?.measureNodes?.(['src']) ?? null,
+      narrowMeasurement:
+        narrowController?.measureNodes?.(narrowNodes.map((node) => node.id)) ?? null,
+      readyCount,
+      selected: selectedNodeIds.includes('src'),
+      viewport: controller?.getViewport() ?? null,
+    }),
+  };
+
+  return (
+    <div>
+      <GraphView
+        edges={interactionEdges}
+        layout="grid"
+        layoutOptions={interactionLayoutOptions}
+        nodes={nodes}
+        onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
+        onNodeEvent={(event) => {
+          setEvents((current) => [...current, event]);
+          if (event.id === 'src' && event.type === 'press') setSelectedNodeIds(['src']);
+        }}
+        onReady={(nextController) => {
+          setController(nextController);
+          setReadyCount((count) => count + 1);
+        }}
+        selectedNodeIds={selectedNodeIds}
+        sizeNodesToLabels
+        style={{ height: 720, width: 960 }}
+        styleRules={styleRules}
+      />
+      <GraphView
+        edges={narrowEdges}
+        layout="elk"
+        maxFitLabelSize={24}
+        maxZoom={2}
+        minReadableLabelSize={24}
+        minZoom={0.5}
+        nodes={narrowNodes}
+        sizeNodesToLabels
+        style={{ height: 520, width: 38 }}
+        styleRules={styleRules}
+        zoomMode="fit-relative"
+        onLayoutComplete={setNarrowController}
+      />
     </div>
   );
 }
