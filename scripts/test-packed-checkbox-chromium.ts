@@ -27,7 +27,10 @@ async function testPackedCheckboxChromiumAsync() {
     TMPDIR: temporaryRoot,
   });
   writeAcceptanceSources(consumerRoot);
-  const markup = runAndRead(['bun', 'server.mjs'], consumerRoot);
+  const markup = {
+    dark: runAndRead(['bun', 'server.mjs', 'dark'], consumerRoot),
+    light: runAndRead(['bun', 'server.mjs', 'light'], consumerRoot),
+  };
   const bundle = await Bun.build({
     entrypoints: [join(consumerRoot, 'client.tsx')],
     format: 'esm',
@@ -41,56 +44,71 @@ async function testPackedCheckboxChromiumAsync() {
       return new URL(request.url).pathname === '/checkbox.js'
         ? new Response(Bun.file(join(consumerRoot, 'checkbox.js')))
         : new Response(
-            `<!doctype html><html><body><div id="root">${markup}</div><script type="module" src="/checkbox.js"></script></body></html>`,
+            `<!doctype html><html><body><div id="root">${markup[new URL(request.url).searchParams.get('mode') === 'dark' ? 'dark' : 'light']}</div><script type="module" src="/checkbox.js"></script></body></html>`,
             { headers: { 'content-type': 'text/html; charset=utf-8' } },
           );
     },
     port: 0,
   });
-  const browser = await ChromeSession.createAsync(await dynamicPortAsync());
+  const serverUrl = `http://127.0.0.1:${server.port}`;
   try {
-    await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
-    const initial = await browser.waitForStateAsync((state) => state.hydrated === true);
-    assert.equal(initial.hydrationErrors.length, 0, initial.hydrationErrors.join('\n'));
-    assert.equal(initial.ariaChecked, 'false');
-    assert.equal(initial.mode, 'light');
-    assert.equal(initial.disabledChecked, 'true');
-    assert.equal(initial.readOnlyChecked, 'true');
-    assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'false');
-
-    await browser.clickTestIdAsync('packed-checkbox');
-    const clicked = await browser.waitForStateAsync((state) => state.ariaChecked === 'true');
-    assert.equal(clicked.changeCount, 1);
-    assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'true');
-
-    await browser.focusAndPressSpaceAsync('packed-checkbox');
-    const spaced = await browser.waitForStateAsync((state) => state.ariaChecked === 'false');
-    assert.equal(spaced.changeCount, 2);
-    assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'false');
-
-    await browser.clickTestIdAsync('programmatic-reset');
-    const reset = await browser.waitForStateAsync((state) => state.ariaChecked === 'false');
-    assert.equal(reset.changeCount, 2);
-
-    await browser.clickTestIdAsync('toggle-theme');
-    const dark = await browser.waitForStateAsync((state) => state.mode === 'dark');
-    assert.equal(dark.mode, 'dark');
-
-    for (const testId of ['disabled-checkbox', 'readonly-checkbox']) {
-      await browser.clickTestIdAsync(testId);
-      await browser.focusAndPressSpaceAsync(testId);
+    for (const mode of ['light', 'dark'] as const) {
+      const preHydrationBrowser = await ChromeSession.createAsync(await dynamicPortAsync());
+      try {
+        await preHydrationBrowser.disableScriptExecutionAsync();
+        await preHydrationBrowser.navigateAsync(`${serverUrl}?mode=${mode}`);
+        await preHydrationBrowser.assertPreHydrationCheckboxesAsync(mode);
+      } finally {
+        preHydrationBrowser.close();
+      }
     }
-    const protectedState = await browser.waitForStateAsync(
-      (state) => state.disabledChecked === 'true' && state.readOnlyChecked === 'true',
-    );
-    assert.equal(protectedState.changeCount, 2);
-    assert.equal(browser.exceptions.length, 0, browser.exceptions.join('\n'));
-    assert.equal(browser.consoleErrors.length, 0, browser.consoleErrors.join('\n'));
-    console.log(
-      'Packed ZORA Checkbox Chromium acceptance passed: SSR/hydration, controlled click/Space/reset, ARIA/AX, Light/Dark, disabled, and readOnly.',
-    );
+
+    const browser = await ChromeSession.createAsync(await dynamicPortAsync());
+    try {
+      await browser.navigateAsync(serverUrl);
+      const initial = await browser.waitForStateAsync((state) => state.hydrated === true);
+      assert.equal(initial.hydrationErrors.length, 0, initial.hydrationErrors.join('\n'));
+      assert.equal(initial.ariaChecked, 'false');
+      assert.equal(initial.mode, 'light');
+      assert.equal(initial.disabledChecked, 'true');
+      assert.equal(initial.readOnlyChecked, 'true');
+      assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'false');
+
+      await browser.clickTestIdAsync('packed-checkbox');
+      const clicked = await browser.waitForStateAsync((state) => state.ariaChecked === 'true');
+      assert.equal(clicked.changeCount, 1);
+      assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'true');
+
+      await browser.focusAndPressSpaceAsync('packed-checkbox');
+      const spaced = await browser.waitForStateAsync((state) => state.ariaChecked === 'false');
+      assert.equal(spaced.changeCount, 2);
+      assert.equal(await browser.axCheckedAsync('Packed checkbox'), 'false');
+
+      await browser.clickTestIdAsync('programmatic-reset');
+      const reset = await browser.waitForStateAsync((state) => state.ariaChecked === 'false');
+      assert.equal(reset.changeCount, 2);
+
+      await browser.clickTestIdAsync('toggle-theme');
+      const dark = await browser.waitForStateAsync((state) => state.mode === 'dark');
+      assert.equal(dark.mode, 'dark');
+
+      for (const testId of ['disabled-checkbox', 'readonly-checkbox']) {
+        await browser.clickTestIdAsync(testId);
+        await browser.focusAndPressSpaceAsync(testId);
+      }
+      const protectedState = await browser.waitForStateAsync(
+        (state) => state.disabledChecked === 'true' && state.readOnlyChecked === 'true',
+      );
+      assert.equal(protectedState.changeCount, 2);
+      assert.equal(browser.exceptions.length, 0, browser.exceptions.join('\n'));
+      assert.equal(browser.consoleErrors.length, 0, browser.consoleErrors.join('\n'));
+      console.log(
+        'Packed ZORA Checkbox Chromium acceptance passed: JavaScript-disabled pre-hydration Light/Dark DOM/AX, SSR/hydration, controlled click/Space/reset, ARIA/AX, disabled, and readOnly.',
+      );
+    } finally {
+      browser.close();
+    }
   } finally {
-    browser.close();
     server.stop();
   }
 }
@@ -171,10 +189,10 @@ function ThemeProbe() {
   return <output data-testid="theme-mode">{mode}</output>;
 }
 
-export function App() {
+export function App({ initialMode = 'light' }) {
   const [checked, setChecked] = React.useState(false);
   const [changes, setChanges] = React.useState(0);
-  const [mode, setMode] = React.useState('light');
+  const [mode, setMode] = React.useState(initialMode);
   return <ZoraProvider mode={mode}>
     <ThemeProbe />
     <Checkbox accessibilityLabel="Packed checkbox" checked={checked} onCheckedChange={(next) => { setChecked(next); setChanges((count) => count + 1); }} testID="packed-checkbox">Packed checkbox</Checkbox>
@@ -192,7 +210,8 @@ export function App() {
     `import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { App } from './App.tsx';
-process.stdout.write(renderToString(React.createElement(App)));
+const mode = process.argv[2] === 'dark' ? 'dark' : 'light';
+process.stdout.write(renderToString(React.createElement(App, { initialMode: mode })));
 `,
   );
   writeFileSync(
@@ -230,6 +249,14 @@ interface ElementRect {
   readonly width: number;
   readonly x: number;
   readonly y: number;
+}
+
+interface AxCheckbox {
+  readonly checked: string | undefined;
+  readonly disabled: boolean | undefined;
+  readonly name: string | undefined;
+  readonly readOnly: boolean | undefined;
+  readonly role: string | undefined;
 }
 
 /*** Reserve a dynamic loopback debugging port for Chromium. */
@@ -289,8 +316,8 @@ class ChromeSession {
       });
       const session = new ChromeSession(process, socket);
       await Promise.all(
-        ['Accessibility.enable', 'Log.enable', 'Page.enable', 'Runtime.enable'].map((method) =>
-          session.sendAsync(method),
+        ['Accessibility.enable', 'DOM.enable', 'Log.enable', 'Page.enable', 'Runtime.enable'].map(
+          (method) => session.sendAsync(method),
         ),
       );
       return session;
@@ -301,20 +328,67 @@ class ChromeSession {
   }
 
   async axCheckedAsync(name: string): Promise<string | undefined> {
+    return (await this.axCheckboxAsync(name)).checked;
+  }
+
+  async assertPreHydrationCheckboxesAsync(mode: 'dark' | 'light'): Promise<void> {
+    const expected = [
+      {
+        attributes: { 'aria-checked': 'false', role: 'checkbox' },
+        name: 'Packed checkbox',
+        testId: 'packed-checkbox',
+      },
+      {
+        attributes: { 'aria-checked': 'true', 'aria-disabled': 'true', role: 'checkbox' },
+        name: 'Disabled checkbox',
+        testId: 'disabled-checkbox',
+      },
+      {
+        attributes: { 'aria-checked': 'true', 'aria-readonly': 'true', role: 'checkbox' },
+        name: 'Read only checkbox',
+        testId: 'readonly-checkbox',
+      },
+    ] as const;
+    for (const checkbox of expected) {
+      const attributes = await this.visibleAttributesForTestIdAsync(checkbox.testId);
+      for (const [name, value] of Object.entries(checkbox.attributes))
+        assert.equal(attributes[name], value, `${mode} pre-hydration ${checkbox.testId} ${name}`);
+      const ax = await this.axCheckboxAsync(checkbox.name);
+      assert.equal(ax.name, checkbox.name, `${mode} pre-hydration accessible name`);
+      assert.equal(ax.role, 'checkbox', `${mode} pre-hydration accessibility role`);
+      assert.equal(
+        ax.checked,
+        checkbox.attributes['aria-checked'],
+        `${mode} pre-hydration AX checked`,
+      );
+      if (checkbox.testId === 'disabled-checkbox')
+        assert.equal(ax.disabled, true, `${mode} pre-hydration AX disabled`);
+      if (checkbox.testId === 'readonly-checkbox')
+        assert.equal(ax.readOnly, true, `${mode} pre-hydration AX readOnly`);
+    }
+    const modeHtml = await this.outerHtmlForTestIdAsync('theme-mode');
+    assert(modeHtml.includes(`>${mode}<`), `Missing ${mode} pre-hydration HTML response state.`);
+  }
+
+  async disableScriptExecutionAsync(): Promise<void> {
+    await this.sendAsync('Emulation.setScriptExecutionDisabled', { value: true });
+  }
+
+  async axCheckboxAsync(name: string): Promise<AxCheckbox> {
     const tree = await this.sendAsync('Accessibility.getFullAXTree');
     assert(isRecord(tree) && Array.isArray(tree.nodes), 'Chrome returned no accessibility tree.');
     const node = tree.nodes.find(
       (candidate) => isRecord(candidate) && readAxName(candidate) === name,
     );
     assert(node !== undefined && isRecord(node), `Missing AX node named ${name}.`);
-    const property = Array.isArray(node.properties)
-      ? node.properties.find((candidate) => isRecord(candidate) && candidate.name === 'checked')
-      : undefined;
-    assert(
-      isRecord(property) && isRecord(property.value) && typeof property.value.value === 'string',
-      `Missing checked AX property for ${name}.`,
-    );
-    return property.value.value;
+    return {
+      checked: readAxStringProperty(node, 'checked'),
+      disabled: readAxBooleanProperty(node, 'disabled'),
+      name: readAxName(node),
+      readOnly: readAxBooleanProperty(node, 'readonly'),
+      role:
+        isRecord(node.role) && typeof node.role.value === 'string' ? node.role.value : undefined,
+    };
   }
 
   async clickTestIdAsync(testId: string): Promise<void> {
@@ -354,6 +428,72 @@ class ChromeSession {
 
   async navigateAsync(url: string): Promise<void> {
     await this.sendAsync('Page.navigate', { url });
+  }
+
+  private async visibleAttributesForTestIdAsync(testId: string): Promise<Record<string, string>> {
+    const deadline = Date.now() + 30_000;
+    while (Date.now() < deadline) {
+      try {
+        const document = await this.sendAsync('DOM.getDocument', { depth: 0 });
+        assert(isRecord(document) && isRecord(document.root), 'Chrome returned no DOM document.');
+        const rootNodeId = document.root.nodeId;
+        assert(typeof rootNodeId === 'number', 'Chrome returned no DOM root node id.');
+        const result = await this.sendAsync('DOM.querySelector', {
+          nodeId: rootNodeId,
+          selector: `[data-testid="${testId}"]`,
+        });
+        assert(
+          isRecord(result) && typeof result.nodeId === 'number',
+          'Chrome returned no DOM node id.',
+        );
+        if (result.nodeId === 0) {
+          await Bun.sleep(25);
+          continue;
+        }
+        const [attributes, boxModel] = await Promise.all([
+          this.sendAsync('DOM.getAttributes', { nodeId: result.nodeId }),
+          this.sendAsync('DOM.getBoxModel', { nodeId: result.nodeId }),
+        ]);
+        assert(isRecord(attributes), 'Chrome returned no attributes.');
+        const attributeValues = attributes.attributes;
+        assert(Array.isArray(attributeValues), 'Chrome returned invalid attributes.');
+        assert(
+          isRecord(boxModel) && isRecord(boxModel.model),
+          'Chrome returned no element box model.',
+        );
+        const width = boxModel.model.width;
+        const height = boxModel.model.height;
+        assert(
+          typeof width === 'number' && width > 0 && typeof height === 'number' && height > 0,
+          `Pre-hydration ${testId} is not visible.`,
+        );
+        return Object.fromEntries(
+          Array.from({ length: attributeValues.length / 2 }, (_, index) => [
+            String(attributeValues[index * 2]),
+            String(attributeValues[index * 2 + 1]),
+          ]),
+        );
+      } catch (error) {
+        if (Date.now() >= deadline) throw error;
+        await Bun.sleep(25);
+      }
+    }
+    throw new Error(`Timed out waiting for pre-hydration ${testId}.`);
+  }
+
+  private async outerHtmlForTestIdAsync(testId: string): Promise<string> {
+    const document = await this.sendAsync('DOM.getDocument', { depth: 0 });
+    assert(isRecord(document) && isRecord(document.root), 'Chrome returned no DOM document.');
+    const rootNodeId = document.root.nodeId;
+    assert(typeof rootNodeId === 'number', 'Chrome returned no DOM root node id.');
+    const result = await this.sendAsync('DOM.querySelector', {
+      nodeId: rootNodeId,
+      selector: `[data-testid="${testId}"]`,
+    });
+    assert(isRecord(result) && typeof result.nodeId === 'number' && result.nodeId !== 0);
+    const outerHtml = await this.sendAsync('DOM.getOuterHTML', { nodeId: result.nodeId });
+    assert(isRecord(outerHtml) && typeof outerHtml.outerHTML === 'string');
+    return outerHtml.outerHTML;
   }
 
   async waitForStateAsync(predicate: (state: CheckboxState) => boolean): Promise<CheckboxState> {
@@ -431,6 +571,26 @@ class ChromeSession {
 /*** Read the accessible name from one Chrome accessibility-tree node. */
 function readAxName(node: JsonRecord): string | undefined {
   return isRecord(node.name) && typeof node.name.value === 'string' ? node.name.value : undefined;
+}
+
+/*** Read a string accessibility property from one Chrome accessibility-tree node. */
+function readAxStringProperty(node: JsonRecord, name: string): string | undefined {
+  const property = Array.isArray(node.properties)
+    ? node.properties.find((candidate) => isRecord(candidate) && candidate.name === name)
+    : undefined;
+  return isRecord(property) && isRecord(property.value) && typeof property.value.value === 'string'
+    ? property.value.value
+    : undefined;
+}
+
+/*** Read a boolean accessibility property from one Chrome accessibility-tree node. */
+function readAxBooleanProperty(node: JsonRecord, name: string): boolean | undefined {
+  const property = Array.isArray(node.properties)
+    ? node.properties.find((candidate) => isRecord(candidate) && candidate.name === name)
+    : undefined;
+  return isRecord(property) && isRecord(property.value) && typeof property.value.value === 'boolean'
+    ? property.value.value
+    : undefined;
 }
 
 /*** Wait until Chromium exposes its loopback DevTools endpoint. */
