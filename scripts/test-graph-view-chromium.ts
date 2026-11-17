@@ -14,7 +14,7 @@ const chromiumCommand =
     ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     : 'google-chrome');
 
-/*** Execute the actual Cytoscape canvas double-press regression in headless Chromium. */
+/*** Execute real-browser stable-topology acceptance at representative repository counts. */
 async function testGraphViewChromiumAsync() {
   const bundlePath = join(temporaryRoot, 'graph-view-acceptance.js');
   const build = await Bun.build({
@@ -39,44 +39,75 @@ async function testGraphViewChromiumAsync() {
   const browser = await ChromeSession.createAsync(await dynamicPortAsync());
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
-    const initial = await browser.waitForStableInitialStateAsync();
-    const before = requireMeasurement(initial);
-    assertNarrowViewportFit(initial);
-    const beforeViewport = requireViewport(initial);
-    const beforeSorts = initial.layoutSorts;
-    const source = before.nodes.find((node) => node.id === 'src');
-    assert(source !== undefined, 'Public measureNodes() did not return src.');
-
-    await browser.clickAsync(source.position.x, source.position.y, 1);
-    const selected = await browser.waitForStateAsync(
-      (state) =>
-        state.selected &&
-        state.events.filter((event) => event.id === 'src' && event.type === 'press').length === 1 &&
-        state.layoutCompletions > initial.layoutCompletions,
-    );
-    assert(
-      selected.layoutSorts === beforeSorts,
-      `Selection unexpectedly reran the layout: ${JSON.stringify({ beforeSorts, afterSorts: selected.layoutSorts })}`,
-    );
-    await browser.clickAsync(source.position.x, source.position.y, 2);
-    const after = await browser.waitForStateAsync(
-      (state) => state.events.filter(isSourceDoublePress).length === 1,
-    );
-    const afterMeasurement = requireMeasurement(after);
-    const afterViewport = requireViewport(after);
-
-    assert(
-      after.events.filter(isSourceDoublePress).length === 1,
-      'Expected exactly one src double-press.',
-    );
-    assert(
-      JSON.stringify(afterMeasurement) === JSON.stringify(before),
-      `Selection changed public rendered hit geometry: ${JSON.stringify({ before, after: afterMeasurement })}`,
-    );
-    assert(
-      JSON.stringify(afterViewport) === JSON.stringify(beforeViewport),
-      `Selection changed public viewport: ${JSON.stringify({ before: beforeViewport, after: afterViewport })}`,
-    );
+    for (const repositoryCount of [5, 20, 87]) {
+      const initial = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.measurement !== null && state.repositoryIds.length === repositoryCount,
+      );
+      await browser.setViewportAsync(repositoryCount, { pan: { x: 40, y: 30 }, zoom: 1.25 });
+      const panned = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.viewport?.zoom === 1.25 && state.viewport.pan.x === 40,
+      );
+      const pannedViewport = requireViewport(panned);
+      const before = requireMeasurement(panned);
+      const layoutCompletions = panned.layoutCompletions;
+      await browser.reselectAsync(repositoryCount);
+      const reselected = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) =>
+          state.selectionTransitions === 2 && state.selectedRepositoryIds.includes('repository-0'),
+      );
+      assert(
+        JSON.stringify(requireMeasurement(reselected)) === JSON.stringify(before),
+        `Rapid deselect/reselect moved repositories at ${repositoryCount}.`,
+      );
+      assert(
+        reselected.layoutCompletions === layoutCompletions,
+        `Rapid deselect/reselect reran ELK at ${repositoryCount}.`,
+      );
+      await browser.removeAsync(repositoryCount);
+      const removed = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.repositoryIds.length === repositoryCount - 1,
+      );
+      assert(
+        JSON.stringify(requireMeasurement(removed).nodes) ===
+          JSON.stringify(before.nodes.slice(0, -1)),
+        `Removal moved retained repositories at ${repositoryCount}: ${JSON.stringify(removed)}`,
+      );
+      assert(
+        JSON.stringify(requireViewport(removed)) === JSON.stringify(pannedViewport),
+        `Removal changed viewport at ${repositoryCount}.`,
+      );
+      assert(
+        removed.layoutCompletions === layoutCompletions,
+        `Removal reran ELK at ${repositoryCount}.`,
+      );
+      assert(
+        removed.controllerChanges === 0,
+        `Removal replaced the controller at ${repositoryCount}.`,
+      );
+      assert(
+        removed.selectedRepositoryIds.includes('repository-0'),
+        `Removal lost retained selection at ${repositoryCount}.`,
+      );
+      await browser.restoreAsync(repositoryCount);
+      await browser.removeAsync(repositoryCount);
+      await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.repositoryIds.length === repositoryCount - 1,
+      );
+      await browser.fitAsync(repositoryCount);
+      const fitted = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => JSON.stringify(state.viewport) !== JSON.stringify(pannedViewport),
+      );
+      assert(
+        fitted.controllerChanges === 0,
+        `Explicit fit replaced the controller at ${repositoryCount}.`,
+      );
+    }
     assert(
       browser.exceptions.length === 0,
       `Chromium exceptions: ${browser.exceptions.join('\n')}`,
@@ -86,7 +117,7 @@ async function testGraphViewChromiumAsync() {
       `Chromium console errors: ${browser.consoleErrors.join('\n')}`,
     );
     console.log(
-      `Chromium GraphView acceptance passed: src double-press once; layout sorts ${beforeSorts}; measurement and viewport unchanged.`,
+      'Chromium GraphView acceptance passed: 5/20/87 compound ELK removals preserve topology, viewport, and controller identity.',
     );
   } finally {
     browser.close();
@@ -101,11 +132,6 @@ async function dynamicPortAsync(): Promise<number> {
   server.stop();
   assert(port !== undefined, 'Bun did not allocate a TCP port.');
   return port;
-}
-
-/*** Distinguish the required public src double-press from unrelated graph events. */
-function isSourceDoublePress(event: { readonly id: string; readonly type: string }) {
-  return event.id === 'src' && event.type === 'double-press';
 }
 
 /*** Narrow the browser fixture's serializable public GraphView state. */
@@ -126,37 +152,13 @@ function requireViewport(state: GraphAcceptanceState): GraphViewport {
 }
 
 interface GraphAcceptanceState {
-  readonly events: readonly { readonly id: string; readonly type: string }[];
+  readonly controllerChanges: number;
   readonly layoutCompletions: number;
-  readonly layoutCompleteEvents: number;
-  readonly layoutSorts: number;
   readonly measurement: GraphMeasurement | null;
-  readonly narrowMeasurement: GraphMeasurement | null;
-  readonly readyEvents: number;
-  readonly selected: boolean;
+  readonly repositoryIds: readonly string[];
+  readonly selectedRepositoryIds: readonly string[];
+  readonly selectionTransitions: number;
   readonly viewport: GraphViewport | null;
-}
-
-/*** Prove native fit keeps every ELK node inside a canvas narrower than the configured padding. */
-function assertNarrowViewportFit(state: GraphAcceptanceState): void {
-  const measurement = state.narrowMeasurement;
-  assert(measurement !== null, 'Narrow GraphView measureNodes() returned null.');
-  assert(measurement.nodes.length === 5, 'Narrow GraphView did not render every ELK node.');
-  for (const node of measurement.nodes) {
-    const bounds = {
-      x1: node.position.x - node.size.width / 2,
-      x2: node.position.x + node.size.width / 2,
-      y1: node.position.y - node.size.height / 2,
-      y2: node.position.y + node.size.height / 2,
-    };
-    assert(
-      bounds.x1 >= 0 &&
-        bounds.x2 <= measurement.viewport.width &&
-        bounds.y1 >= 0 &&
-        bounds.y2 <= measurement.viewport.height,
-      `Narrow GraphView fit clipped ${node.id}: ${JSON.stringify({ bounds, viewport: measurement.viewport })}`,
-    );
-  }
 }
 
 interface GraphMeasurement {
@@ -171,21 +173,6 @@ interface GraphMeasurement {
 interface GraphViewport {
   readonly pan: { readonly x: number; readonly y: number };
   readonly zoom: number;
-}
-
-/*** Require public lifecycle counters, geometry, and viewport to remain exact between frames. */
-function isStableInitialGraphState(
-  previous: GraphAcceptanceState,
-  next: GraphAcceptanceState,
-): boolean {
-  return (
-    previous.readyEvents === next.readyEvents &&
-    previous.layoutCompleteEvents === next.layoutCompleteEvents &&
-    previous.layoutCompletions === next.layoutCompletions &&
-    previous.layoutSorts === next.layoutSorts &&
-    JSON.stringify(previous.measurement) === JSON.stringify(next.measurement) &&
-    JSON.stringify(previous.viewport) === JSON.stringify(next.viewport)
-  );
 }
 
 /*** Drive an isolated Chrome page through its public DevTools Protocol endpoint. */
@@ -251,31 +238,15 @@ class ChromeSession {
     await this.sendAsync('Page.navigate', { url });
   }
 
-  async clickAsync(x: number, y: number, clickCount: number): Promise<void> {
-    await this.sendAsync('Input.dispatchMouseEvent', {
-      type: 'mousePressed',
-      x,
-      y,
-      button: 'left',
-      clickCount,
-    });
-    await this.sendAsync('Input.dispatchMouseEvent', {
-      type: 'mouseReleased',
-      x,
-      y,
-      button: 'left',
-      clickCount,
-    });
-  }
-
-  async waitForStateAsync(
+  async waitForScenarioAsync(
+    repositoryCount: number,
     predicate: (state: GraphAcceptanceState) => boolean,
   ): Promise<GraphAcceptanceState> {
     const deadline = Date.now() + 30_000;
     let last: GraphAcceptanceState | null = null;
     while (Date.now() < deadline) {
       const state = await this.evaluateAsync<GraphAcceptanceState>(
-        'window.graphAcceptance?.read() ?? null',
+        `window.graphAcceptance?.read(${repositoryCount}) ?? null`,
       );
       last = state;
       if (state !== null && predicate(state)) return state;
@@ -286,25 +257,27 @@ class ChromeSession {
     );
   }
 
-  /*** Wait for public lifecycle completion and stable public geometry across browser animation frames. */
-  async waitForStableInitialStateAsync(): Promise<GraphAcceptanceState> {
-    const initial = await this.waitForStateAsync(
-      (state) =>
-        state.readyEvents > 0 &&
-        state.layoutCompleteEvents > 0 &&
-        state.measurement !== null &&
-        state.narrowMeasurement !== null &&
-        state.viewport !== null,
+  /*** Change viewport only through the public GraphViewController supplied by browser lifecycle. */
+  async setViewportAsync(repositoryCount: number, viewport: GraphViewport): Promise<void> {
+    await this.evaluateAsync(
+      `window.graphAcceptance?.setViewport(${repositoryCount}, ${JSON.stringify(viewport)}) ?? false`,
     );
-    await this.nextAnimationFrameAsync();
-    const settled = await this.readStateAsync();
-    await this.nextAnimationFrameAsync();
-    const stable = await this.readStateAsync();
-    assert(
-      isStableInitialGraphState(initial, settled) && isStableInitialGraphState(settled, stable),
-      `Initial public GraphView state changed after lifecycle completion: ${JSON.stringify({ initial, settled, stable })}`,
-    );
-    return stable;
+  }
+
+  async removeAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.remove(${repositoryCount}) ?? false`);
+  }
+
+  async restoreAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.restore(${repositoryCount}) ?? false`);
+  }
+
+  async reselectAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.reselect(${repositoryCount}) ?? false`);
+  }
+
+  async fitAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.fit(${repositoryCount}) ?? false`);
   }
 
   close(): void {
@@ -316,14 +289,6 @@ class ChromeSession {
     await this.evaluateAsync(
       'new Promise((resolve) => requestAnimationFrame(() => resolve(true)))',
     );
-  }
-
-  private async readStateAsync(): Promise<GraphAcceptanceState> {
-    const state = await this.evaluateAsync<GraphAcceptanceState | null>(
-      'window.graphAcceptance?.read() ?? null',
-    );
-    assert(state !== null, 'GraphView acceptance fixture is unavailable.');
-    return state;
   }
 
   private async evaluateAsync<T>(expression: string): Promise<T> {

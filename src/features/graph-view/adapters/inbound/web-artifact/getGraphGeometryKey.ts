@@ -7,18 +7,22 @@ import type { Core } from 'cytoscape';
  * bounds follow child positions, so keying their measured bounds would feed layout output back
  * into input. Styled geometry tests and runtime interaction tests protect these distinctions.
  */
-export function getGraphGeometryKey(cy: Core): string {
+export function getGraphGeometryKey(cy: Core, nodeIds?: ReadonlySet<string>): string {
   return JSON.stringify(
-    cy.nodes().map((node) => {
-      if (node.isParent()) return [node.id()];
-      const labelBounds = node.boundingBox({
-        includeEdges: false,
-        includeLabels: true,
-        includeNodes: false,
-        includeOverlays: false,
-        includeUnderlays: false,
-      });
-      return [node.id(), node.outerWidth(), node.outerHeight(), labelBounds.w, labelBounds.h];
-    }),
+    cy
+      .nodes()
+      .map((node) => {
+        if (nodeIds !== undefined && !nodeIds.has(node.id())) return null;
+        if (node.isParent()) return [node.id()];
+        const labelBounds = node.boundingBox({
+          includeEdges: false,
+          includeLabels: true,
+          includeNodes: false,
+          includeOverlays: false,
+          includeUnderlays: false,
+        });
+        return [node.id(), node.outerWidth(), node.outerHeight(), labelBounds.w, labelBounds.h];
+      })
+      .filter((entry) => entry !== null),
   );
 }

@@ -17,7 +17,8 @@ export function hasGraphLayoutChanged(
     previous.spacingFactor !== input.spacingFactor ||
     previous.layoutOptions !== input.layoutOptions ||
     previous.richNodeRendering !== input.richNodeRendering ||
-    getGraphTopologyKey(previous.nodes, previous.edges) !==
-      getGraphTopologyKey(input.nodes, input.edges)
+    (input.topologyUpdatePolicy !== 'preserve-positions' &&
+      getGraphTopologyKey(previous.nodes, previous.edges) !==
+        getGraphTopologyKey(input.nodes, input.edges))
   );
 }

@@ -109,6 +109,52 @@ test('fits changed topology but preserves viewport and avoids relayout for highl
   }
 });
 
+test('preserves a stable topology removal without relayout, fit, or retained-node movement', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const calls = { sort: 0 };
+  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
+  const input = {
+    nodes,
+    edges: nodes.slice(1).flatMap((node, index) => {
+      const source = nodes.at(index);
+      return source ? [{ id: `dependency-${index}`, source: source.id, target: node.id }] : [];
+    }),
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: false,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    const controller = await ready.promise;
+    controller.setZoom(0.7);
+    controller.setPan({ x: 40, y: 30 });
+    runtime.setSelectedNodeIds(['repository-0']);
+    const retainedIds = nodes.slice(0, -1).map((node) => node.id);
+    const before = controller.measureNodes?.(retainedIds);
+    const viewport = controller.getViewport();
+    const sortCount = calls.sort;
+
+    runtime.update({
+      ...input,
+      nodes: nodes.slice(0, -1),
+      edges: input.edges.slice(0, -1),
+    });
+
+    expect(controller.measureNodes?.(retainedIds)).toEqual(before);
+    expect(controller.getViewport()).toEqual(viewport);
+    expect(calls.sort).toBe(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
 test('fits a changed layout algorithm even when visible topology is unchanged', async () => {
   const initial = Promise.withResolvers<GraphViewController>();
   const completed = Promise.withResolvers<GraphViewController>();

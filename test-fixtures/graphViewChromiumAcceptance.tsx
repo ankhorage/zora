@@ -1,60 +1,172 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import type { GraphViewController, GraphViewElementEvent } from '../src/types/graph-view';
+import type { GraphViewController } from '../src/types/graph-view';
 import { GraphView } from '../src/features/graph-view/adapters/inbound/web-artifact/GraphView';
 
-interface GraphAcceptanceState {
-  readonly events: readonly GraphViewElementEvent[];
+interface ScenarioState {
+  readonly controllerChanges: number;
   readonly layoutCompletions: number;
-  readonly layoutCompleteEvents: number;
-  readonly layoutSorts: number;
   readonly measurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
-  readonly narrowMeasurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
-  readonly readyEvents: number;
-  readonly selected: boolean;
+  readonly repositoryIds: readonly string[];
+  readonly selectedRepositoryIds: readonly string[];
+  readonly selectionTransitions: number;
   readonly viewport: ReturnType<GraphViewController['getViewport']> | null;
 }
 
 declare global {
   interface Window {
     graphAcceptance?: {
-      read(): GraphAcceptanceState;
+      fit(repositoryCount: number): void;
+      read(repositoryCount: number): ScenarioState | null;
+      remove(repositoryCount: number): void;
+      restore(repositoryCount: number): void;
+      reselect(repositoryCount: number): void;
+      setViewport(
+        repositoryCount: number,
+        viewport: {
+          readonly pan: { readonly x: number; readonly y: number };
+          readonly zoom: number;
+        },
+      ): void;
     };
   }
 }
 
-const state = {
-  controller: null as GraphViewController | null,
-  events: [] as GraphViewElementEvent[],
-  layoutCompletions: 0,
-  layoutCompleteEvents: 0,
-  layoutSorts: 0,
-  readyEvents: 0,
-  selected: false,
-};
+const repositoryCounts = [5, 20, 87] as const;
+const controllers = new Map<number, GraphViewController>();
+const controllerChanges = new Map<number, number>();
+const scenarioActions = new Map<
+  number,
+  {
+    fit(): void;
+    read(): ScenarioState;
+    remove(): void;
+    restore(): void;
+    reselect(): void;
+    setViewport(viewport: {
+      readonly pan: { readonly x: number; readonly y: number };
+      readonly zoom: number;
+    }): void;
+  }
+>();
+const elkLayoutOptions = { 'elk.algorithm': 'layered' };
 
-const edges = [{ id: 'src-dependency', source: 'src', target: 'dependency' }];
-const layoutOptions = {
-  boundingBox: { x1: 0, y1: 0, w: 960, h: 720 },
-  sort: () => {
-    state.layoutSorts += 1;
-    return 0;
-  },
-};
-const nodes = [
-  { id: 'src', label: 'src' },
-  { id: 'dependency', label: 'dependency' },
-];
-const narrowNodes = Array.from({ length: 5 }, (_, index) => ({
-  id: `narrow-${index}`,
-  label: `repository-${index}`,
-}));
-const narrowEdges = narrowNodes.slice(1).map((node, index) => ({
-  id: `narrow-edge-${index}`,
-  source: narrowNodes[index]!.id,
-  target: node.id,
-}));
+/*** Render the real compound ELK graphs used by the Chromium stable-topology acceptance. */
+function GraphViewChromiumAcceptance() {
+  useEffect(() => {
+    window.graphAcceptance = {
+      fit: (repositoryCount) => scenarioActions.get(repositoryCount)?.fit(),
+      read: (repositoryCount) => scenarioActions.get(repositoryCount)?.read() ?? null,
+      remove: (repositoryCount) => scenarioActions.get(repositoryCount)?.remove(),
+      restore: (repositoryCount) => scenarioActions.get(repositoryCount)?.restore(),
+      reselect: (repositoryCount) => scenarioActions.get(repositoryCount)?.reselect(),
+      setViewport: (repositoryCount, viewport) =>
+        scenarioActions.get(repositoryCount)?.setViewport(viewport),
+    };
+    return () => {
+      delete window.graphAcceptance;
+    };
+  }, []);
+
+  return (
+    <div>
+      {repositoryCounts.map((repositoryCount) => (
+        <StableTopologyScenario key={repositoryCount} repositoryCount={repositoryCount} />
+      ))}
+    </div>
+  );
+}
+
+/*** Exercise one independently mounted, compound ELK GraphView at a production-scale count. */
+function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount: number }) {
+  const repositories = createRepositories(repositoryCount);
+  const [visibleRepositoryIds, setVisibleRepositoryIds] = useState(
+    repositories.map((node) => node.id),
+  );
+  const [layoutCompletions, setLayoutCompletions] = useState(0);
+  const [selectedRepositoryIds, setSelectedRepositoryIds] = useState<readonly string[]>([
+    'repository-0',
+  ]);
+  const [selectionTransitions, setSelectionTransitions] = useState(0);
+  const visibleRepositories = repositories.filter((node) => visibleRepositoryIds.includes(node.id));
+  const repositoryIds = visibleRepositories.map((node) => node.id);
+  const nodes = [
+    { id: 'group-even', label: 'even repositories' },
+    { id: 'group-odd', label: 'odd repositories' },
+    ...visibleRepositories,
+  ];
+  const edges = visibleRepositories.slice(1).map((node, index) => ({
+    id: `dependency-${index}`,
+    source: visibleRepositories[index]!.id,
+    target: node.id,
+  }));
+  const controller = controllers.get(repositoryCount) ?? null;
+  scenarioActions.set(repositoryCount, {
+    fit: () => controller?.fit(),
+    read: () => {
+      const currentController = controllers.get(repositoryCount);
+      return {
+        controllerChanges: controllerChanges.get(repositoryCount) ?? 0,
+        layoutCompletions,
+        measurement: currentController?.measureNodes?.(repositoryIds) ?? null,
+        repositoryIds,
+        selectedRepositoryIds,
+        selectionTransitions,
+        viewport: currentController?.getViewport() ?? null,
+      };
+    },
+    remove: () => setVisibleRepositoryIds((ids) => ids.slice(0, -1)),
+    reselect: () => {
+      setSelectedRepositoryIds([]);
+      setSelectionTransitions((count) => count + 1);
+      requestAnimationFrame(() => {
+        setSelectedRepositoryIds(['repository-0']);
+        setSelectionTransitions((count) => count + 1);
+      });
+    },
+    restore: () => setVisibleRepositoryIds(repositories.map((node) => node.id)),
+    setViewport: (viewport) => {
+      controller?.setZoom(viewport.zoom);
+      controller?.setPan(viewport.pan);
+    },
+  });
+  return (
+    <div data-graph-scenario={repositoryCount}>
+      <GraphView
+        edges={edges}
+        layout="elk"
+        layoutOptions={elkLayoutOptions}
+        nodes={nodes}
+        selectedNodeIds={selectedRepositoryIds}
+        sizeNodesToLabels
+        style={{ height: 360, width: 960 }}
+        styleRules={styleRules}
+        topologyUpdatePolicy="preserve-positions"
+        onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
+        onReady={(nextController) => {
+          const previous = controllers.get(repositoryCount);
+          if (previous !== undefined && previous !== nextController)
+            controllerChanges.set(
+              repositoryCount,
+              (controllerChanges.get(repositoryCount) ?? 0) + 1,
+            );
+          controllers.set(repositoryCount, nextController);
+        }}
+      />
+    </div>
+  );
+}
+
+/*** Build a two-compound repository topology with stable IDs and deterministic edge membership. */
+function createRepositories(repositoryCount: number) {
+  return Array.from({ length: repositoryCount }, (_, index) => ({
+    id: `repository-${index}`,
+    label: `repository-${index}`,
+    parentId: index % 2 === 0 ? 'group-even' : 'group-odd',
+  }));
+}
+
 const styleRules = [
   {
     selector: 'node',
@@ -69,118 +181,6 @@ const styleRules = [
   },
   { selector: 'node:selected', style: { 'outline-color': '#f97316', 'outline-width': 3 } },
 ];
-
-/*** Mount the real canvas fixture used by the Chromium GraphView acceptance command. */
-function GraphViewChromiumAcceptance() {
-  const [selectedNodeIds, setSelectedNodeIds] = useState<readonly string[]>([]);
-  const [, setVersion] = useState(0);
-  const [narrowController, setNarrowController] = useState<GraphViewController | null>(null);
-  const lifecycleRef = useCallback((element: HTMLDivElement | null) => {
-    if (element === null) return;
-    element.addEventListener(GraphView.events.ready, (event) => {
-      const controller = readGraphViewController(event);
-      if (controller === null) return;
-      state.controller = controller;
-      state.readyEvents += 1;
-      setVersion((version) => version + 1);
-    });
-    element.addEventListener(GraphView.events.layoutComplete, (event) => {
-      const controller = readGraphViewController(event);
-      if (controller === null) return;
-      state.controller = controller;
-      state.layoutCompleteEvents += 1;
-      setVersion((version) => version + 1);
-    });
-  }, []);
-  const graphNodes = selectedNodeIds.includes('src')
-    ? [{ id: 'src', label: 'src', classes: 'selected' }, nodes[1]!]
-    : nodes;
-  useEffect(() => {
-    state.selected = selectedNodeIds.includes('src');
-  }, [selectedNodeIds]);
-  useEffect(() => {
-    window.graphAcceptance = {
-      read: () => {
-        const controller = state.controller;
-        return {
-          events: state.events,
-          layoutCompletions: state.layoutCompletions,
-          layoutCompleteEvents: state.layoutCompleteEvents,
-          layoutSorts: state.layoutSorts,
-          measurement: controller?.measureNodes?.(['src']) ?? null,
-          narrowMeasurement:
-            narrowController?.measureNodes?.(narrowNodes.map((node) => node.id)) ?? null,
-          readyEvents: state.readyEvents,
-          selected: state.selected,
-          viewport: controller?.getViewport() ?? null,
-        };
-      },
-    };
-    return () => {
-      delete window.graphAcceptance;
-    };
-  }, [narrowController]);
-
-  return (
-    <div>
-      <div ref={lifecycleRef}>
-        <GraphView
-          edges={edges}
-          layout="grid"
-          layoutOptions={layoutOptions}
-          nodes={graphNodes}
-          onLayoutComplete={() => {
-            state.layoutCompletions += 1;
-            setVersion((version) => version + 1);
-          }}
-          onNodeEvent={(event) => {
-            state.events.push(event);
-            if (event.id === 'src' && event.type === 'press') setSelectedNodeIds(['src']);
-          }}
-          selectedNodeIds={selectedNodeIds}
-          sizeNodesToLabels
-          style={{ height: 720, width: 960 }}
-          styleRules={styleRules}
-        />
-      </div>
-      <GraphView
-        edges={narrowEdges}
-        layout="elk"
-        maxFitLabelSize={24}
-        maxZoom={2}
-        minReadableLabelSize={24}
-        minZoom={0.5}
-        nodes={narrowNodes}
-        sizeNodesToLabels
-        style={{ height: 520, width: 38 }}
-        styleRules={styleRules}
-        zoomMode="fit-relative"
-        onLayoutComplete={setNarrowController}
-      />
-    </div>
-  );
-}
-
-/*** Read the controller only from the public bubbling GraphView lifecycle event payload. */
-function readGraphViewController(event: Event): GraphViewController | null {
-  if (!(event instanceof CustomEvent)) return null;
-  const detail = event.detail;
-  if (typeof detail !== 'object' || detail === null || !('controller' in detail)) return null;
-  const { controller } = detail;
-  return isGraphViewController(controller) ? controller : null;
-}
-
-/*** Narrow the event payload to the public GraphView controller API. */
-function isGraphViewController(value: unknown): value is GraphViewController {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    'getViewport' in value &&
-    typeof value.getViewport === 'function' &&
-    'measureNodes' in value &&
-    typeof value.measureNodes === 'function'
-  );
-}
 
 document.body.style.margin = '0';
 const host = document.createElement('div');

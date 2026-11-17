@@ -30,6 +30,10 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * Ordinary zoom never adjusts spacing or relayouts. Explicit optimization preserves layout ordering,
  * stops once effective fit reaches maxFitLabelSize, keeps labels and unrelated compound boundaries
  * collision-safe, and permits only a small rendered background-overlap fallback for dense graphs.
+ * topologyUpdatePolicy Use `preserve-positions` for controlled incremental topology changes. It
+ * retains settled nodes and the user viewport, and initially places new nodes on a deterministic
+ * local grid. Use an explicit controller fit or a layout change when a complete rearrangement is
+ * intentional.
  */
 export function GraphView(props: GraphViewProps) {
   const hostRef = React.useRef<HTMLDivElement | null>(null);
@@ -168,6 +172,7 @@ function useRuntimeGraphUpdate(
     renderNode,
     spacingFactor,
     styleRules,
+    topologyUpdatePolicy,
   } = props;
 
   React.useEffect(() => {
@@ -186,6 +191,7 @@ function useRuntimeGraphUpdate(
       richNodeRendering: renderNode !== undefined,
       spacingFactor,
       styleRules,
+      topologyUpdatePolicy,
     });
   }, [
     edges,
@@ -203,6 +209,7 @@ function useRuntimeGraphUpdate(
     runtimeRef,
     spacingFactor,
     styleRules,
+    topologyUpdatePolicy,
   ]);
 }
 
