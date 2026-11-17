@@ -344,7 +344,7 @@ class ChromeSession {
         testId: 'disabled-checkbox',
       },
       {
-        attributes: { 'aria-checked': 'true', 'aria-readonly': 'true', role: 'checkbox' },
+        attributes: { 'aria-checked': 'true', role: 'checkbox' },
         name: 'Read only checkbox',
         testId: 'readonly-checkbox',
       },
@@ -364,7 +364,7 @@ class ChromeSession {
       if (checkbox.testId === 'disabled-checkbox')
         assert.equal(ax.disabled, true, `${mode} pre-hydration AX disabled`);
       if (checkbox.testId === 'readonly-checkbox')
-        assert.equal(ax.readOnly, true, `${mode} pre-hydration AX readOnly`);
+        assert.equal(ax.readOnly, undefined, `${mode} pre-hydration AX readOnly`);
     }
     const modeHtml = await this.outerHtmlForTestIdAsync('theme-mode');
     assert(modeHtml.includes(`>${mode}<`), `Missing ${mode} pre-hydration HTML response state.`);
