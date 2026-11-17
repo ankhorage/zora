@@ -143,7 +143,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
         onResponderTerminate={() => {
           panStart.current = null;
         }}
-        onStartShouldSetResponder={() => true}
+        onStartShouldSetResponder={(event) => event.target === event.currentTarget}
         style={{
           flex: 1,
           minHeight: 300,
