@@ -48,7 +48,7 @@
     "@ankhorage/grid-view": "^0.5.0",
     "@ankhorage/reader": "^0.1.3",
     "@ankhorage/runtime": "^5.4.9",
-    "@ankhorage/surface": "^9.5.10",
+    "@ankhorage/surface": "^9.5.15",
     "@ankhorage/utility": "^1.10.1",
     "expo-document-picker": "~57.0.3",
     "expo-image-picker": "~57.0.20"
@@ -157,6 +157,7 @@
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
+    "test:checkbox:chromium": "bun scripts/test-packed-checkbox-chromium.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
     "test:graph-view:chromium": "bun scripts/test-graph-view-chromium.ts",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json && bun x tsc --noEmit -p tsconfig.scripts.json && bun x tsc -p tsconfig.typecheck.json",

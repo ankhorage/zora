@@ -91,10 +91,6 @@ import {
   View,
   useTheme,
 } from '@ankhorage/zora/authoring';
-import {
-  ThemeProvider as SurfaceThemeProvider,
-  useTheme as useSurfaceTheme,
-} from '@ankhorage/surface/authoring-controls';
 
 const screens = [
   { id: 'first', label: 'First screen' },
@@ -202,13 +198,11 @@ export const authoringApi = {
   Card,
   Field,
   Pressable,
-  SurfaceThemeProvider,
   Text,
   TextInput,
   ThemeEditorAdapter,
   ThemeProvider,
   View,
-  useSurfaceTheme,
   useTheme,
 };
 
@@ -263,8 +257,6 @@ try {
     'ThemeProvider',
     'View',
   ]) assert.equal(typeof authoringApi[name], 'function');
-  assert.equal(authoringApi.ThemeProvider, authoringApi.SurfaceThemeProvider);
-  assert.equal(authoringApi.useTheme, authoringApi.useSurfaceTheme);
   const authoringDirectory = join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'web-dist', 'authoring');
   const declaration = readFileSync(join(authoringDirectory, 'index.d.ts'), 'utf8');
   for (const name of ['FieldProps', 'PressableProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
