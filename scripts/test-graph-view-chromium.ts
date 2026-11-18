@@ -47,6 +47,8 @@ async function testGraphViewChromiumAsync() {
     const beforeInteractionSorts = initialInteraction.layoutSorts;
     const source = beforeInteractionMeasurement.nodes.find((node) => node.id === 'src');
     assert(source !== undefined, 'Public measureNodes() did not return src.');
+    const dependency = beforeInteractionMeasurement.nodes.find((node) => node.id === 'dependency');
+    assert(dependency !== undefined, 'Public measureNodes() did not return dependency.');
 
     await browser.clickAsync(source.position.x, source.position.y, 1);
     const selected = await browser.waitForInteractionStateAsync(
@@ -63,6 +65,53 @@ async function testGraphViewChromiumAsync() {
         beforeInteractionSorts,
         afterInteractionSorts: selected.layoutSorts,
       })}`,
+    );
+    assert(
+      selected.events.find(isSourcePress)?.selectionIntent === 'replace',
+      `Plain native click did not emit replace: ${JSON.stringify(selected.events)}`,
+    );
+    await browser.clickAsync(dependency.position.x, dependency.position.y, 1, { ctrlKey: true });
+    const toggled = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.events.filter((event) => event.id === 'dependency' && event.type === 'press').length ===
+          1 &&
+        state.selectedNodeIds.includes('src') &&
+        state.selectedNodeIds.includes('dependency'),
+    );
+    assert(
+      toggled.domPointerModifiers.some((modifiers) => modifiers.ctrlKey),
+      `Chromium did not deliver Ctrl to the DOM pointer event: ${JSON.stringify(toggled.domPointerModifiers)}`,
+    );
+    assert(
+      toggled.events.find(isDependencyPress)?.selectionIntent === 'toggle',
+      `Cytoscape tap did not preserve Ctrl selection intent: ${JSON.stringify(toggled.events)}`,
+    );
+    await browser.clickAsync(source.position.x, source.position.y, 1);
+    const replaced = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.events.filter((event) => event.id === 'src' && event.type === 'press').length === 2 &&
+        state.selectedNodeIds.length === 1 &&
+        state.selectedNodeIds[0] === 'src',
+    );
+    assert(
+      replaced.events.filter(isSourcePress).at(-1)?.selectionIntent === 'replace',
+      `Unmodified native click did not restore replace intent: ${JSON.stringify(replaced.events)}`,
+    );
+    await browser.clickAsync(dependency.position.x, dependency.position.y, 1, { metaKey: true });
+    const metaToggled = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.events.filter((event) => event.id === 'dependency' && event.type === 'press').length ===
+          2 &&
+        state.selectedNodeIds.includes('src') &&
+        state.selectedNodeIds.includes('dependency'),
+    );
+    assert(
+      metaToggled.domPointerModifiers.some((modifiers) => modifiers.metaKey),
+      `Chromium did not deliver Meta to the DOM pointer event: ${JSON.stringify(metaToggled.domPointerModifiers)}`,
+    );
+    assert(
+      metaToggled.events.filter(isDependencyPress).at(-1)?.selectionIntent === 'toggle',
+      `Cytoscape tap did not preserve Meta selection intent: ${JSON.stringify(metaToggled.events)}`,
     );
     await browser.clickAsync(source.position.x, source.position.y, 2);
     const afterInteraction = await browser.waitForInteractionStateAsync(
@@ -182,6 +231,16 @@ function isSourceDoublePress(event: { readonly id: string; readonly type: string
   return event.id === 'src' && event.type === 'double-press';
 }
 
+/*** Distinguish the required public src press from unrelated graph events. */
+function isSourcePress(event: { readonly id: string; readonly type: string }) {
+  return event.id === 'src' && event.type === 'press';
+}
+
+/*** Distinguish the required public dependency press from unrelated graph events. */
+function isDependencyPress(event: { readonly id: string; readonly type: string }) {
+  return event.id === 'dependency' && event.type === 'press';
+}
+
 /*** Allocate a loopback port without making a fixed-port test assumption. */
 async function dynamicPortAsync(): Promise<number> {
   const server = Bun.serve({ fetch: () => new Response(''), port: 0 });
@@ -253,13 +312,19 @@ interface GraphAcceptanceState {
 }
 
 interface InteractionAcceptanceState {
-  readonly events: readonly { readonly id: string; readonly type: string }[];
+  readonly domPointerModifiers: readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[];
+  readonly events: readonly {
+    readonly id: string;
+    readonly selectionIntent?: string;
+    readonly type: string;
+  }[];
   readonly layoutCompletions: number;
   readonly layoutSorts: number;
   readonly measurement: GraphMeasurement | null;
   readonly narrowMeasurement: GraphMeasurement | null;
   readonly readyCount: number;
   readonly selected: boolean;
+  readonly selectedNodeIds: readonly string[];
   readonly viewport: GraphViewport | null;
 }
 
@@ -362,13 +427,21 @@ class ChromeSession {
     await this.sendAsync('Page.navigate', { url });
   }
 
-  async clickAsync(x: number, y: number, clickCount: number): Promise<void> {
+  async clickAsync(
+    x: number,
+    y: number,
+    clickCount: number,
+    modifiers: { readonly ctrlKey?: boolean; readonly metaKey?: boolean } = {},
+  ): Promise<void> {
+    const modifierMask =
+      (modifiers.ctrlKey === true ? 2 : 0) | (modifiers.metaKey === true ? 4 : 0);
     await this.sendAsync('Input.dispatchMouseEvent', {
       type: 'mousePressed',
       x,
       y,
       button: 'left',
       clickCount,
+      modifiers: modifierMask,
     });
     await this.sendAsync('Input.dispatchMouseEvent', {
       type: 'mouseReleased',
@@ -376,6 +449,7 @@ class ChromeSession {
       y,
       button: 'left',
       clickCount,
+      modifiers: modifierMask,
     });
   }
 

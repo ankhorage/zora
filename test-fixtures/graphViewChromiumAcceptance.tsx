@@ -22,6 +22,7 @@ interface ProgressiveScenarioState {
 }
 
 interface InteractionScenarioState {
+  readonly domPointerModifiers: readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[];
   readonly events: readonly GraphViewElementEvent[];
   readonly layoutCompletions: number;
   readonly layoutSorts: number;
@@ -130,24 +131,39 @@ function GraphViewChromiumAcceptance() {
 /*** Exercise native canvas input without allowing selection paint to restart layout. */
 function InteractionScenario() {
   const [controller, setController] = useState<GraphViewController | null>(null);
+  const [domPointerModifiers, setDomPointerModifiers] = useState<
+    readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[]
+  >([]);
   const [events, setEvents] = useState<readonly GraphViewElementEvent[]>([]);
   const [layoutCompletions, setLayoutCompletions] = useState(0);
   const [narrowController, setNarrowController] = useState<GraphViewController | null>(null);
   const [readyCount, setReadyCount] = useState(0);
   const [selectedNodeIds, setSelectedNodeIds] = useState<readonly string[]>([]);
-  const nodes = selectedNodeIds.includes('src')
-    ? [{ id: 'src', label: 'src', classes: 'selected' }, interactionNodes[1]!]
-    : interactionNodes;
+  const nodes = interactionNodes.map((node) =>
+    selectedNodeIds.includes(node.id) ? { ...node, classes: 'selected' } : node,
+  );
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      setDomPointerModifiers((current) => [
+        ...current,
+        { ctrlKey: event.ctrlKey, metaKey: event.metaKey },
+      ]);
+    };
+    document.addEventListener('pointerdown', onPointerDown, true);
+    return () => document.removeEventListener('pointerdown', onPointerDown, true);
+  }, []);
   interactionScenarioAction = {
     read: () => ({
+      domPointerModifiers,
       events,
       layoutCompletions,
       layoutSorts: interactionLayoutState.layoutSorts,
-      measurement: controller?.measureNodes?.(['src']) ?? null,
+      measurement: controller?.measureNodes?.(['src', 'dependency']) ?? null,
       narrowMeasurement:
         narrowController?.measureNodes?.(narrowNodes.map((node) => node.id)) ?? null,
       readyCount,
       selected: selectedNodeIds.includes('src'),
+      selectedNodeIds,
       viewport: controller?.getViewport() ?? null,
     }),
   };
@@ -162,7 +178,14 @@ function InteractionScenario() {
         onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
         onNodeEvent={(event) => {
           setEvents((current) => [...current, event]);
-          if (event.id === 'src' && event.type === 'press') setSelectedNodeIds(['src']);
+          if (event.type !== 'press') return;
+          setSelectedNodeIds((current) =>
+            event.selectionIntent === 'toggle'
+              ? current.includes(event.id)
+                ? current.filter((id) => id !== event.id)
+                : [...current, event.id]
+              : [event.id],
+          );
         }}
         onReady={(nextController) => {
           setController(nextController);
