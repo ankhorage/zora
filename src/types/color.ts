@@ -52,9 +52,8 @@ export interface ColorHueScaleProps extends ZoraBaseProps {
 
 export interface ColorPickerProps extends ZoraBaseProps {
   readonly tabs: readonly ColorPickerTab[];
-  readonly value?: ColorPickerTab;
-  readonly defaultValue?: ColorPickerTab;
-  readonly onValueChange?: (tab: ColorPickerTab) => void;
+  readonly value: ColorPickerTab;
+  readonly onValueChange: (tab: ColorPickerTab) => void;
   readonly hideTabListWhenSingle?: boolean;
   readonly wheel?: ColorWheelProps;
   readonly tone?: ColorToneProps;

@@ -17,7 +17,6 @@ function ColorPickerInner({
   inverted: _inverted,
   tabs,
   value,
-  defaultValue,
   onValueChange,
   hideTabListWhenSingle = true,
   wheel,
@@ -25,14 +24,14 @@ function ColorPickerInner({
   hue,
   testID,
 }: ColorPickerProps) {
-  const initialTab = value ?? defaultValue ?? tabs[0];
-  if (!initialTab) throw new Error('ColorPicker requires at least one tab.');
+  if (tabs.length === 0) throw new Error('ColorPicker requires at least one tab.');
+  if (!tabs.includes(value)) throw new Error('ColorPicker value must be configured in tabs.');
 
   return (
     <Tabs
-      defaultValue={initialTab}
+      defaultValue={value}
       onValueChange={(nextValue) => {
-        if (isColorPickerTab(nextValue)) onValueChange?.(nextValue);
+        if (isColorPickerTab(nextValue) && tabs.includes(nextValue)) onValueChange(nextValue);
       }}
       testID={testID}
       value={value}

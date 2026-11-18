@@ -6,14 +6,17 @@ import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
 import type { ColorWheelProps } from '../../types/color';
 import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
-import { resolveColorAtHue } from './utils/resolveColorAtHue';
+import { ColorWheelKeyboardProxy } from './ColorWheelKeyboardProxy';
 import { resolveColorHue } from './utils/resolveColorHue';
 import { resolveOklchColor } from './utils/resolveOklchColor';
+import { resolveWheelColor } from './utils/resolveWheelColor';
+import { resolveWheelColorComponents } from './utils/resolveWheelColorComponents';
 
 const WHEEL_SIZE = 240;
 const WHEEL_CENTER = WHEEL_SIZE / 2;
 const WHEEL_RADIUS = 104;
 const WHEEL_SEGMENT_COUNT = 36;
+const WHEEL_MAX_CHROMA = 0.2;
 
 /*** Selects an OKLCH hue and optionally visualizes the existing color-theory harmony. */
 export const ColorWheel = withZoraThemeScope(ColorWheelInner);
@@ -31,69 +34,81 @@ function ColorWheelInner({
   testID,
 }: ColorWheelProps) {
   const hue = resolveColorHue(value);
+  const chroma = resolveWheelChroma(value);
   const harmonyColors = harmony ? generateHarmonyRoleColors(value, harmony).colors : [];
-  const selectedPoint = resolveWheelPoint(hue);
+  const selectedPoint = resolveWheelPoint(hue, Math.min(1, chroma / WHEEL_MAX_CHROMA));
   const harmonyPoints = harmonyColors.map((color) => resolveWheelPoint(color.hueDegrees));
+  const harmonyLines = resolveHarmonyLines(harmonyPoints, selectedPoint);
+  const changeColorAt = (x: number, y: number) => {
+    if (interactionPolicy === 'passive') return;
+    onChange({
+      color: resolveWheelColor(value, x, y, WHEEL_CENTER, WHEEL_RADIUS, WHEEL_MAX_CHROMA),
+      harmony,
+    });
+  };
 
   return (
     <View align="center" gap="sm" testID={testID}>
-      <Svg
-        accessibilityLabel="Color wheel"
-        accessibilityRole="adjustable"
-        height={WHEEL_SIZE}
-        onPress={(event) => {
-          if (interactionPolicy === 'passive') return;
-          const { locationX, locationY } = event.nativeEvent;
+      <ColorWheelKeyboardProxy
+        chroma={chroma}
+        disabled={interactionPolicy === 'passive'}
+        hue={hue}
+        onChange={(nextHue, nextChroma) =>
           onChange({
-            color: resolveColorAtHue(value, resolvePointerHue(locationX, locationY)),
+            color: resolveOklchColor(
+              { lightness: resolveWheelLightness(value), chroma: nextChroma },
+              nextHue,
+            ),
             harmony,
-          });
-        }}
-        width={WHEEL_SIZE}
+          })
+        }
       >
-        {resolveWheelSegments().map((segment) => (
-          <Path d={segment.path} fill={segment.color} key={segment.hue} />
-        ))}
-        {harmony === 'triadic' && harmonyPoints.length === 3 ? (
-          <Polygon
-            fill="none"
-            points={harmonyPoints.map((point) => `${point.x},${point.y}`).join(' ')}
-            stroke="currentColor"
-            strokeWidth={2}
-          />
-        ) : (
-          harmonyPoints
-            .slice(1)
-            .map((point, index) => (
-              <Line
-                key={`${point.x}-${point.y}`}
-                stroke="currentColor"
-                strokeWidth={2}
-                x1={harmonyPoints[index]?.x}
-                x2={point.x}
-                y1={harmonyPoints[index]?.y}
-                y2={point.y}
-              />
-            ))
-        )}
-        {harmonyPoints.map((point) => (
+        <Svg
+          accessibilityLabel="Color wheel"
+          height={WHEEL_SIZE}
+          onResponderGrant={(event) => {
+            const { locationX, locationY } = event.nativeEvent;
+            changeColorAt(locationX, locationY);
+          }}
+          onResponderMove={(event) => {
+            const { locationX, locationY } = event.nativeEvent;
+            changeColorAt(locationX, locationY);
+          }}
+          onStartShouldSetResponder={() => interactionPolicy !== 'passive'}
+          width={WHEEL_SIZE}
+        >
+          {resolveWheelSegments().map((segment) => (
+            <Path d={segment.path} fill={segment.color} key={segment.hue} />
+          ))}
+          {harmony === 'triadic' && harmonyPoints.length === 3 ? (
+            <Polygon
+              fill="none"
+              points={harmonyPoints.map((point) => `${point.x},${point.y}`).join(' ')}
+              stroke="currentColor"
+              strokeWidth={2}
+            />
+          ) : (
+            harmonyLines
+          )}
+          {harmonyPoints.map((point) => (
+            <Circle
+              cx={point.x}
+              cy={point.y}
+              fill="currentColor"
+              key={`${point.x}-${point.y}`}
+              r={5}
+            />
+          ))}
           <Circle
-            cx={point.x}
-            cy={point.y}
-            fill="currentColor"
-            key={`${point.x}-${point.y}`}
-            r={5}
+            cx={selectedPoint.x}
+            cy={selectedPoint.y}
+            fill="none"
+            r={9}
+            stroke="currentColor"
+            strokeWidth={3}
           />
-        ))}
-        <Circle
-          cx={selectedPoint.x}
-          cy={selectedPoint.y}
-          fill="none"
-          r={9}
-          stroke="currentColor"
-          strokeWidth={3}
-        />
-      </Svg>
+        </Svg>
+      </ColorWheelKeyboardProxy>
       {harmonies ? (
         <View direction="row" gap="xs" wrap="wrap">
           <Button
@@ -128,7 +143,7 @@ function resolveWheelSegments(): readonly {
   return Array.from({ length: WHEEL_SEGMENT_COUNT }, (_, index) => {
     const hue = (index * 360) / WHEEL_SEGMENT_COUNT;
     return {
-      color: resolveOklchColor({ lightness: 0.65, chroma: 0.2 }, hue),
+      color: resolveOklchColor({ lightness: 0.65, chroma: WHEEL_MAX_CHROMA }, hue),
       hue,
       path: resolveSegmentPath(hue, hue + 360 / WHEEL_SEGMENT_COUNT),
     };
@@ -143,16 +158,50 @@ function resolveSegmentPath(startHue: number, endHue: number): string {
 }
 
 /*** Convert a hue degree to the corresponding visual wheel coordinate. */
-function resolveWheelPoint(hue: number): { readonly x: number; readonly y: number } {
+function resolveWheelPoint(
+  hue: number,
+  radiusRatio = 1,
+): { readonly x: number; readonly y: number } {
   const radians = ((hue - 90) * Math.PI) / 180;
   return {
-    x: WHEEL_CENTER + WHEEL_RADIUS * Math.cos(radians),
-    y: WHEEL_CENTER + WHEEL_RADIUS * Math.sin(radians),
+    x: WHEEL_CENTER + WHEEL_RADIUS * radiusRatio * Math.cos(radians),
+    y: WHEEL_CENTER + WHEEL_RADIUS * radiusRatio * Math.sin(radians),
   };
 }
 
-/*** Convert a wheel tap position into a normalized hue degree. */
-function resolvePointerHue(x: number, y: number): number {
-  const degrees = (Math.atan2(y - WHEEL_CENTER, x - WHEEL_CENTER) * 180) / Math.PI + 90;
-  return degrees < 0 ? degrees + 360 : degrees;
+/*** Connect consecutive harmony points without dynamic collection indexing. */
+function resolveHarmonyLines(
+  points: readonly { readonly x: number; readonly y: number }[],
+  selectedPoint: { readonly x: number; readonly y: number },
+) {
+  return points.slice(1).reduce(
+    ({ lines, previous }, point) => ({
+      lines: [
+        ...lines,
+        <Line
+          key={`${previous.x}-${previous.y}-${point.x}-${point.y}`}
+          stroke="currentColor"
+          strokeWidth={2}
+          x1={previous.x}
+          x2={point.x}
+          y1={previous.y}
+          y2={point.y}
+        />,
+      ],
+      previous: point,
+    }),
+    { lines: [] as React.ReactNode[], previous: points.at(0) ?? selectedPoint },
+  ).lines;
+}
+
+/*** Read the selected color's lightness for wheel-only hue and chroma changes. */
+function resolveWheelLightness(color: HexColor): number {
+  const { lightness } = resolveWheelColorComponents(color);
+  return lightness;
+}
+
+/*** Read the selected color's chroma for accessible wheel value reporting. */
+function resolveWheelChroma(color: HexColor): number {
+  const { chroma } = resolveWheelColorComponents(color);
+  return chroma;
 }

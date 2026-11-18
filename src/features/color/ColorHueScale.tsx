@@ -1,4 +1,4 @@
-import { COLOR_SWATCH_STEPS, generateColorSwatch } from '@ankhorage/color-theory';
+import { generateColorSwatch } from '@ankhorage/color-theory';
 import { Pressable } from '@ankhorage/surface';
 
 import type { ColorHueScaleProps } from '../../types/color';
@@ -20,21 +20,29 @@ function ColorHueScaleInner({
   testID,
 }: ColorHueScaleProps) {
   const { swatch } = generateColorSwatch(value);
+  const swatches = Object.entries(swatch);
 
   return (
-    <View direction="row" gap="xs" testID={testID} wrap="wrap">
-      {COLOR_SWATCH_STEPS.map((step) => (
+    <View
+      accessibilityLabel="Color shade selection"
+      accessibilityRole="radiogroup"
+      direction="row"
+      gap="xs"
+      testID={testID}
+      wrap="wrap"
+    >
+      {swatches.map(([step, color]) => (
         <Pressable
           key={step}
           accessibilityLabel={`Color ${step}`}
           accessibilityRole="radio"
-          accessibilityState={{ checked: step === 500 }}
-          bg={swatch[step]}
+          accessibilityState={{ checked: Number(step) === 500 }}
+          bg={color}
           borderColor="border"
-          borderWidth={step === 500 ? 3 : 1}
+          borderWidth={Number(step) === 500 ? 3 : 1}
           disabled={interactionPolicy === 'passive'}
           height={48}
-          onPress={() => onChange(step === 500 ? value : swatch[step])}
+          onPress={() => onChange(color)}
           radius="sm"
           width={48}
         >
