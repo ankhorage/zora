@@ -3,25 +3,37 @@ import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
 import type { RadioGroupProps } from '../../../../../types/radio';
+import type { ReactNativeComponentInstance } from '../../../../../types/react-native';
 import { Icon } from '../../../../icon/public';
 import { Text } from '../../../../typography/public';
-import {
-  handleRadioOptionKeyDown,
-  type RadioOptionKeyboardTarget,
-} from '../../utils/handleRadioOptionKeyDown';
+import { handleRadioOptionKeyDown } from '../../utils/handleRadioOptionKeyDown';
 import { resolveRadioOptionColors } from '../../utils/resolveRadioOptionColors';
 
 /*** Render a selectable icon radio option with one accessible radio target and a trailing check. */
 export function RadioOptionControl<TValue extends string>(props: RadioOptionControlProps<TValue>) {
   const { theme } = useTheme();
-  const { option, checked, disabled, readOnly, interactionPolicy, onSelect } = props;
+  const {
+    option,
+    checked,
+    disabled,
+    readOnly,
+    interactionPolicy,
+    onNavigate,
+    onOptionRef,
+    onSelect,
+  } = props;
   const colors = resolveRadioOptionColors(theme, props);
   const [focused, setFocused] = React.useState(false);
   const keyboardProps =
     Platform.OS === 'web' && !readOnly && !disabled && interactionPolicy !== 'passive'
       ? {
-          onKeyDown: (event: React.KeyboardEvent<RadioOptionKeyboardTarget>) =>
-            handleRadioOptionKeyDown(event, onSelect),
+          onKeyDown: (event: RadioOptionKeyboardEvent) =>
+            handleRadioOptionKeyDown(
+              event.nativeEvent?.key ?? event.key ?? '',
+              () => event.preventDefault(),
+              onSelect,
+              onNavigate,
+            ),
         }
       : {};
   const controlStyle = {
@@ -36,6 +48,7 @@ export function RadioOptionControl<TValue extends string>(props: RadioOptionCont
   return (
     <Pressable
       {...keyboardProps}
+      ref={onOptionRef}
       accessibilityRole="radio"
       accessibilityState={{ checked, disabled }}
       aria-checked={checked}
@@ -98,7 +111,15 @@ interface RadioOptionControlProps<TValue extends string> extends Pick<
   readOnly: boolean;
   invalid: boolean;
   layout: 'horizontal' | 'vertical';
+  onNavigate: (direction: -1 | 1) => void;
+  onOptionRef: (element: ReactNativeComponentInstance<typeof Pressable> | null) => void;
   onSelect: () => void;
+}
+
+interface RadioOptionKeyboardEvent {
+  readonly key?: string;
+  readonly nativeEvent?: { readonly key?: string };
+  preventDefault(): void;
 }
 
 /*** Keep decoration passive while allowing labels to wrap at narrow widths and large text sizes. */

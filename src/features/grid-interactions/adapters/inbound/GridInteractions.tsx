@@ -5,6 +5,7 @@ import type {
   GridInteractionsController,
   GridInteractionsProps,
 } from '../../../../types/grid-interactions';
+import type { ReactNativeComponentInstance } from '../../../../types/react-native';
 import { createGridInteractionsController } from '../../application/createGridInteractionsController';
 import { createGridInteractionsPointerQueue } from './createGridInteractionsPointerQueue';
 import { GridInteractionsKeyboardProxy } from './GridInteractionsKeyboardProxy';
@@ -26,7 +27,7 @@ export function GridInteractions({
   const [controller] = React.useState<GridInteractionsController>(() =>
     createGridInteractionsController(controllerProps),
   );
-  const surfaceRef = React.useRef<View>(null);
+  const surfaceRef = React.useRef<ReactNativeComponentInstance<typeof View>>(null);
   const spaceKeyRef = React.useRef(false);
   const [pointerQueue] = React.useState(() => createGridInteractionsPointerQueue());
   const scrollLock = useGridInteractionScrollLock();

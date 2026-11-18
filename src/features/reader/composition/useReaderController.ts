@@ -105,6 +105,13 @@ export function useReaderController(props: ControllerProps) {
 /*** Resolve a ZORA file source to the independent ReaderView's URI. */
 function resolveReaderSourceUri(source: ReaderProps['source']): string | undefined {
   if (typeof source === 'string') return source;
-  if (typeof source === 'number') return Image.resolveAssetSource(source).uri;
+  if (typeof source === 'number') {
+    return resolveReaderAssetUri(Image.resolveAssetSource(source));
+  }
   return source?.uri;
+}
+
+/*** Extract the URI from either supported React Native asset-source result shape. */
+function resolveReaderAssetUri(asset: { readonly uri: string } | undefined): string | undefined {
+  return asset?.uri;
 }

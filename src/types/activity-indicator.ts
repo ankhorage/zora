@@ -3,6 +3,6 @@ import type { ActivityIndicatorProps as ReactNativeActivityIndicatorProps } from
 import type { ZoraBaseProps } from './base';
 
 export interface ActivityIndicatorProps
-  extends ZoraBaseProps, Omit<ReactNativeActivityIndicatorProps, 'color'> {
+  extends ZoraBaseProps, Omit<ReactNativeActivityIndicatorProps, 'color' | 'testID'> {
   color?: ReactNativeActivityIndicatorProps['color'];
 }
