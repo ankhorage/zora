@@ -433,6 +433,8 @@ class ChromeSession {
     clickCount: number,
     modifiers: { readonly ctrlKey?: boolean; readonly metaKey?: boolean } = {},
   ): Promise<void> {
+    const modifierMask =
+      (modifiers.ctrlKey === true ? 2 : 0) | (modifiers.metaKey === true ? 4 : 0);
     const modifier =
       modifiers.ctrlKey === true ? 'Control' : modifiers.metaKey === true ? 'Meta' : null;
     if (modifier !== null) await this.setModifierAsync(modifier, true);
@@ -443,6 +445,7 @@ class ChromeSession {
       button: 'left',
       buttons: 1,
       clickCount,
+      modifiers: modifierMask,
     });
     await this.sendAsync('Input.dispatchMouseEvent', {
       type: 'mouseReleased',
@@ -451,6 +454,7 @@ class ChromeSession {
       button: 'left',
       buttons: 0,
       clickCount,
+      modifiers: modifierMask,
     });
     if (modifier !== null) await this.setModifierAsync(modifier, false);
   }
