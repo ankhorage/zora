@@ -326,6 +326,7 @@ import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 import { ZoraProvider, useZoraTheme } from '@ankhorage/zora/web/runtime';
+import { ActivityIndicator } from '@ankhorage/zora/web/activity-indicator';
 import { Button } from '@ankhorage/zora/web/button';
 import { Select } from '@ankhorage/zora/web/select';
 import { TreeView } from '@ankhorage/zora/web/tree-view';
@@ -360,6 +361,7 @@ function App() {
     ZoraProvider,
     { mode: 'light' },
     React.createElement(ThemeProbe),
+    React.createElement(ActivityIndicator, { size: 'small', testID: 'activity-indicator' }),
     React.createElement(Button, null, 'Save'),
     React.createElement(Select, {
       value,
@@ -381,6 +383,10 @@ const app = React.createElement(App);
 const markup = renderToString(app);
 assert.match(markup, /Save/);
 assert.match(markup, /Root/);
+assert.match(markup, /data-testid="activity-indicator"/);
+assert.match(markup, /height:20px/);
+assert.match(markup, /width:20px/);
+assert.doesNotMatch(markup, /r-width-/);
 browser.document.body.innerHTML = '<div id="root">' + markup + '</div>';
 const hydrationErrors = [];
 const originalError = console.error;
@@ -396,6 +402,11 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 20));
   });
   assert.deepEqual(hydrationErrors, []);
+  const indicator = browser.document.querySelector('[data-testid="activity-indicator"]');
+  assert.notEqual(indicator, null);
+  assert.equal(indicator?.getAttribute('role'), 'progressbar');
+  assert.match(indicator?.getAttribute('style') ?? '', /height:20px/);
+  assert.match(indicator?.getAttribute('style') ?? '', /width:20px/);
   assert.equal(browser.document.querySelector('[data-testid="theme-probe"]')?.getAttribute('data-mode'), 'light');
   await React.act(async () => {
     browser.document.querySelector('[data-testid="layout-trigger"]')?.dispatchEvent(
