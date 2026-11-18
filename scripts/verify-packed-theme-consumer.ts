@@ -6,17 +6,32 @@ import { join, resolve } from 'node:path';
 const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-theme-consumer-'));
 const skipBuild = process.argv.includes('--skip-build');
-const typescriptVersion = readTypescriptVersion();
+const nodeTypesVersion = readDevelopmentDependencyVersion('@types/node');
+const reactTypesVersion = readDevelopmentDependencyVersion('@types/react');
+const peerDependencies = readPeerDependencies();
+const typescriptVersion = readDevelopmentDependencyVersion('typescript');
 
-/*** Read the repository's declared TypeScript range for the isolated consumer. */
-function readTypescriptVersion(): string {
+/*** Read one declared development dependency range for the isolated consumer. */
+function readDevelopmentDependencyVersion(dependency: string): string {
   const packageJson = JSON.parse(readFileSync(join(repositoryRoot, 'package.json'), 'utf8')) as {
     readonly devDependencies?: Readonly<Record<string, unknown>>;
   };
-  const version = packageJson.devDependencies?.typescript;
+  const version = packageJson.devDependencies?.[dependency];
   if (typeof version !== 'string')
-    throw new Error('Expected a declared TypeScript development dependency.');
+    throw new Error(`Expected a declared ${dependency} development dependency.`);
   return version;
+}
+
+/*** Read the ZORA peer contract required to typecheck its public declarations. */
+function readPeerDependencies(): Readonly<Record<string, string>> {
+  const packageJson = JSON.parse(readFileSync(join(repositoryRoot, 'package.json'), 'utf8')) as {
+    readonly peerDependencies?: Readonly<Record<string, unknown>>;
+  };
+  const dependencies = packageJson.peerDependencies;
+  if (!dependencies) throw new Error('Expected declared ZORA peer dependencies.');
+  if (Object.values(dependencies).some((version) => typeof version !== 'string'))
+    throw new Error('Expected ZORA peer dependency ranges to be strings.');
+  return dependencies as Readonly<Record<string, string>>;
 }
 
 /*** Run one consumer-boundary command and retain its output on failure. */
@@ -46,7 +61,12 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
         private: true,
         type: 'module',
         dependencies: { '@ankhorage/zora': `file:${tarballPath}` },
-        devDependencies: { typescript: typescriptVersion },
+        devDependencies: {
+          ...peerDependencies,
+          '@types/node': nodeTypesVersion,
+          '@types/react': reactTypesVersion,
+          typescript: typescriptVersion,
+        },
       },
       null,
       2,
@@ -60,6 +80,7 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
           module: 'NodeNext',
           moduleResolution: 'NodeNext',
           noEmit: true,
+          skipLibCheck: false,
           strict: true,
           types: ['node'],
         },
@@ -94,7 +115,7 @@ try {
   if (tarball === undefined) throw new Error('Expected a packed ZORA tarball.');
   mkdirSync(consumerRoot);
   writeConsumer(consumerRoot, join(packageDirectory, tarball));
-  run(['bun', 'install', '--ignore-scripts', '--omit=peer'], consumerRoot, {
+  run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
