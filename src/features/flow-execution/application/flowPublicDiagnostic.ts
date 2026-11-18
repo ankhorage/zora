@@ -20,6 +20,7 @@ export function flowPublicDiagnostic(diagnostic: FlowPublicDiagnostic): Readonly
   readonly code: FlowPublicDiagnosticCode;
   readonly message: string;
 }> {
+  if (!Object.hasOwn(PUBLIC_DIAGNOSTIC_MESSAGES, diagnostic.code)) return FALLBACK_DIAGNOSTIC;
   const message = PUBLIC_DIAGNOSTIC_MESSAGES[diagnostic.code];
-  return message ? { code: diagnostic.code, message } : FALLBACK_DIAGNOSTIC;
+  return { code: diagnostic.code, message };
 }

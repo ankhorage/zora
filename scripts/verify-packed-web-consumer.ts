@@ -63,7 +63,7 @@ export default defineConfig({
     dedupe: ['react', 'react-dom'],
   },
   ssr: {
-    noExternal: ['@ankhorage/surface', '@ankhorage/zora', 'react-native-web'],
+    noExternal: ['@ankhorage/surface', '@ankhorage/zora', 'react-native', 'react-native-web'],
     resolve: { conditions: ['browser', 'import', 'default'] },
   },
 });
@@ -330,8 +330,8 @@ function writeFlowUiConsumerAcceptance(consumerRoot: string): void {
     `import React from 'react';
 import { FlowExecutionOverlay, FlowInspector, ZoraProvider } from '@ankhorage/zora';
 
-const rawError = { code: 'Bearer SENTINEL_SECRET_ERROR_CODE', message: 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', retryable: true };
-const rawStepError = { code: 'Bearer SENTINEL_SECRET_STEP_ERROR', message: 'Bearer SENTINEL_SECRET_STEP_ERROR', retryable: true };
+const rawError = { code: 'constructor', message: 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', retryable: true };
+const rawStepError = { code: '__proto__', message: 'Bearer SENTINEL_SECRET_STEP_ERROR', retryable: true };
 const rawTrace = { timestamp: '2026-11-18T00:00:00.000Z', level: 'error', message: 'Bearer SENTINEL_SECRET_TRACE_MESSAGE' };
 const rawStep = { id: 'step-1', nodeId: 'node-1', status: 'failed', attempt: 1, error: rawStepError, trace: [rawTrace] };
 export function App() {
