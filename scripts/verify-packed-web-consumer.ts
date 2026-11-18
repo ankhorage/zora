@@ -350,7 +350,7 @@ import { createServer } from 'vite';
 
 const sentinels = ['Bearer SENTINEL_SECRET_ERROR_CODE', 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', 'Bearer SENTINEL_SECRET_STEP_ERROR', 'Bearer SENTINEL_SECRET_TRACE_MESSAGE'];
 const browser = new Window();
-Object.assign(globalThis, { window: browser, document: browser.document, navigator: browser.navigator, HTMLElement: browser.HTMLElement, Node: browser.Node, Element: browser.Element, MutationObserver: browser.MutationObserver, getComputedStyle: browser.getComputedStyle.bind(browser), requestAnimationFrame: browser.requestAnimationFrame.bind(browser), cancelAnimationFrame: browser.cancelAnimationFrame.bind(browser), IS_REACT_ACT_ENVIRONMENT: true });
+Object.assign(globalThis, { window: browser, document: browser.document, navigator: browser.navigator, HTMLElement: browser.HTMLElement, Node: browser.Node, Element: browser.Element, MutationObserver: browser.MutationObserver, ShadowRoot: browser.ShadowRoot, getComputedStyle: browser.getComputedStyle.bind(browser), requestAnimationFrame: browser.requestAnimationFrame.bind(browser), cancelAnimationFrame: browser.cancelAnimationFrame.bind(browser), IS_REACT_ACT_ENVIRONMENT: true });
 const vite = await createServer({ configFile: 'vite.config.mjs', server: { middlewareMode: true } });
 try {
   const { App } = await vite.ssrLoadModule('/src/flow-ui.tsx');

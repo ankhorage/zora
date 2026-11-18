@@ -3,7 +3,7 @@ import React from 'react';
 import { Pressable } from 'react-native';
 
 import type { FlowExecutionOverlayProps, FlowExecutionStep } from '../../../../types/flow-ui';
-import { flowPublicDiagnostic } from '../../../../utils/flowPublicDiagnostic';
+import { flowPublicDiagnostic } from '../../../flow-execution/application/flowPublicDiagnostic';
 import { Badge } from '../../../badge/public';
 import { Card } from '../../../card/public';
 import { View } from '../../../layout/public';

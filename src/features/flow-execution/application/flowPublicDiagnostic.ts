@@ -1,4 +1,4 @@
-import type { FlowPublicDiagnostic, FlowPublicDiagnosticCode } from '../types/flow-ui';
+import type { FlowPublicDiagnostic, FlowPublicDiagnosticCode } from '../../../types/flow-ui';
 
 const PUBLIC_DIAGNOSTIC_MESSAGES: Readonly<Record<FlowPublicDiagnosticCode, string>> = {
   FLOW_EXECUTION_FAILED: 'The flow could not be completed.',
