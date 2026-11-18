@@ -1,8 +1,4 @@
-import {
-  generateHarmonyRoleColors,
-  isHexColor,
-  type HexColor,
-} from '@ankhorage/color-theory';
+import { generateHarmonyRoleColors, type HexColor, isHexColor } from '@ankhorage/color-theory';
 import { Button, TextInput } from '@ankhorage/surface';
 import React from 'react';
 import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
@@ -38,10 +34,7 @@ function ColorWheelInner({
   testID,
 }: ColorWheelProps) {
   const hue = resolveColorHue(value);
-  const components = resolveWheelColorComponents(value);
-  const chroma = components.chroma;
-  const [hexInput, setHexInput] = React.useState<string>(value);
-  React.useEffect(() => setHexInput(value), [value]);
+  const { chroma, lightness } = resolveWheelColorComponents(value);
   const harmonyColors = harmony ? generateHarmonyRoleColors(value, harmony).colors : [];
   const selectedPoint = resolveWheelPoint(hue, Math.min(1, chroma / WHEEL_MAX_CHROMA));
   const harmonyPoints = harmonyColors.map((color) => resolveWheelPoint(color.hueDegrees));
@@ -56,7 +49,7 @@ function ColorWheelInner({
   const changeLightness = (offset: number) =>
     onChange({
       color: resolveOklchColor(
-        { chroma, lightness: Math.max(0, Math.min(1, components.lightness + offset)) },
+        { chroma, lightness: Math.max(0, Math.min(1, lightness + offset)) },
         hue,
       ),
       harmony,
@@ -126,26 +119,24 @@ function ColorWheelInner({
       </ColorWheelKeyboardProxy>
       <View direction="row" gap="xs" wrap="wrap">
         <Button
-          disabled={interactionPolicy === 'passive' || components.lightness <= 0}
+          disabled={interactionPolicy === 'passive' || lightness <= 0}
           onPress={() => changeLightness(-0.05)}
         >
           Lightness -
         </Button>
         <Button
-          disabled={interactionPolicy === 'passive' || components.lightness >= 1}
+          disabled={interactionPolicy === 'passive' || lightness >= 1}
           onPress={() => changeLightness(0.05)}
         >
           Lightness +
         </Button>
       </View>
-      <TextInput
-        accessibilityLabel="Color hex value"
+      <ColorHexInput
         disabled={interactionPolicy === 'passive'}
-        onChangeText={(nextValue) => {
-          setHexInput(nextValue);
-          if (isHexColor(nextValue)) onChange({ color: nextValue, harmony });
-        }}
-        value={hexInput}
+        harmony={harmony}
+        key={value}
+        onChange={onChange}
+        value={value}
       />
       {harmonies ? (
         <View direction="row" gap="xs" wrap="wrap">
@@ -238,8 +229,23 @@ function resolveWheelLightness(color: HexColor): number {
   return lightness;
 }
 
-/*** Read the selected color's chroma for accessible wheel value reporting. */
-function resolveWheelChroma(color: HexColor): number {
-  const { chroma } = resolveWheelColorComponents(color);
-  return chroma;
+/*** Retains in-progress hexadecimal input while resetting for an externally controlled color. */
+function ColorHexInput({
+  disabled,
+  harmony,
+  onChange,
+  value,
+}: Pick<ColorWheelProps, 'harmony' | 'onChange' | 'value'> & { readonly disabled: boolean }) {
+  const [input, setInput] = React.useState<string>(value);
+  return (
+    <TextInput
+      accessibilityLabel="Color hex value"
+      disabled={disabled}
+      onChangeText={(nextValue) => {
+        setInput(nextValue);
+        if (isHexColor(nextValue)) onChange({ color: nextValue, harmony });
+      }}
+      value={input}
+    />
+  );
 }

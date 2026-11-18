@@ -102,7 +102,9 @@ function ColorToneInner({
               <Button
                 disabled={interactionPolicy === 'passive'}
                 onPress={() => {
-                  const nextColors = colors.filter((_, index) => index !== currentEditingColorIndex);
+                  const nextColors = colors.filter(
+                    (_, index) => index !== currentEditingColorIndex,
+                  );
                   setEditingColorIndex(Math.min(currentEditingColorIndex, nextColors.length - 1));
                   onChange({ toneId: selectedTone.id, colors: nextColors });
                 }}
