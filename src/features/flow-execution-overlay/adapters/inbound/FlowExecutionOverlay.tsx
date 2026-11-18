@@ -79,7 +79,12 @@ function FlowStepRow({
   );
   if (!onPress) return content;
   return (
-    <Pressable accessibilityRole="button" onPress={() => onPress(step)} style={{ minHeight: 44 }}>
+    <Pressable
+      accessibilityLabel={`${step.nodeId}, ${formatStatus(step.status)}`}
+      accessibilityRole="button"
+      onPress={() => onPress(step)}
+      style={{ minHeight: 44 }}
+    >
       {content}
     </Pressable>
   );
@@ -102,6 +107,8 @@ function formatTrace(trace: NonNullable<FlowExecutionOverlayProps['trace']>[numb
 
 /** Translates portable execution states to stable, human-readable labels. */
 function formatStatus(status: FlowExecutionStatus): string {
+  if (status === 'pending') return 'idle';
+  if (status === 'succeeded') return 'completed';
   return status.replaceAll('_', ' ');
 }
 
