@@ -136,6 +136,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       >
         <View
           accessible={false}
+          collapsable={false}
           onResponderGrant={(event) => {
             panStart.current = {
               pan: propsRef.current.viewport.pan,
@@ -151,13 +152,15 @@ function FlowCanvasInner(props: FlowCanvasProps) {
             panStart.current = null;
           }}
           onStartShouldSetResponder={() => true}
-          style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0 }}
+          style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0, zIndex: 0 }}
+          testID={props.testID ? `${props.testID}-background` : undefined}
         />
         <View
           pointerEvents="box-none"
           style={{
             flex: 1,
             minHeight: 300,
+            zIndex: 1,
             transform: [
               { translateX: props.viewport.pan.x },
               { translateY: props.viewport.pan.y },
