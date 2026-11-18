@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.6
+
+### Patch Changes
+
+- d4852ec: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
 ## 27.3.5
 
 ### Patch Changes
