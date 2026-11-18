@@ -63,7 +63,7 @@ export default defineConfig({
     dedupe: ['react', 'react-dom'],
   },
   ssr: {
-    noExternal: ['@ankhorage/surface', '@ankhorage/zora', 'react-native', 'react-native-web'],
+    noExternal: ['@ankhorage/surface', '@ankhorage/zora', 'react-native-web'],
     resolve: { conditions: ['browser', 'import', 'default'] },
   },
 });
@@ -326,9 +326,15 @@ function writeFlowUiConsumerAcceptance(consumerRoot: string): void {
   mkdirSync(join(consumerRoot, 'src'));
   writeRnwConsumerConfig(consumerRoot);
   writeFileSync(
+    join(consumerRoot, 'index.html'),
+    '<!doctype html><html><body><div id="root"></div><script type="module" src="/src/flow-ui.tsx"></script></body></html>\n',
+  );
+  writeFileSync(
     join(consumerRoot, 'src', 'flow-ui.tsx'),
     `import React from 'react';
-import { FlowExecutionOverlay, FlowInspector, ZoraProvider } from '@ankhorage/zora';
+import { FlowExecutionOverlay } from '@ankhorage/zora/web/flow-execution-overlay';
+import { FlowInspector } from '@ankhorage/zora/web/flow-inspector';
+import { ZoraProvider } from '@ankhorage/zora/web/runtime';
 
 const rawError = { code: 'constructor', message: 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', retryable: true };
 const rawStepError = { code: '__proto__', message: 'Bearer SENTINEL_SECRET_STEP_ERROR', retryable: true };
@@ -342,6 +348,7 @@ export function App() {
   writeFileSync(
     join(consumerRoot, 'acceptance.mjs'),
     `import assert from 'node:assert/strict';
+import { join } from 'node:path';
 import { Window } from 'happy-dom';
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
@@ -353,6 +360,15 @@ const browser = new Window();
 Object.assign(globalThis, { window: browser, document: browser.document, navigator: browser.navigator, HTMLElement: browser.HTMLElement, Node: browser.Node, Element: browser.Element, MutationObserver: browser.MutationObserver, ShadowRoot: browser.ShadowRoot, getComputedStyle: browser.getComputedStyle.bind(browser), requestAnimationFrame: browser.requestAnimationFrame.bind(browser), cancelAnimationFrame: browser.cancelAnimationFrame.bind(browser), IS_REACT_ACT_ENVIRONMENT: true });
 const vite = await createServer({ configFile: 'vite.config.mjs', server: { middlewareMode: true } });
 try {
+  const resolvedReactNative = await vite.pluginContainer.resolveId(
+    'react-native',
+    join(process.cwd(), 'src', 'flow-ui.tsx'),
+    { ssr: true },
+  );
+  const resolvedReactNativeId =
+    typeof resolvedReactNative === 'string' ? resolvedReactNative : resolvedReactNative?.id ?? '';
+  assert.match(resolvedReactNativeId, /node_modules\\/react-native-web\\//);
+  assert.doesNotMatch(resolvedReactNativeId, /node_modules\\/react-native\\/index\\.js$/);
   const { App } = await vite.ssrLoadModule('/src/flow-ui.tsx');
   const app = React.createElement(App);
   const markup = renderToString(app);
