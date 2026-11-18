@@ -36,25 +36,26 @@ function ColorToneInner({
     <View gap="sm" testID={testID}>
       <View direction="row" wrap="wrap" gap="sm">
         {tones.map((tone) => {
-        const selected = value?.toneId === tone.id;
-        const color = selected && selectedColor ? selectedColor : resolveOklchColor(tone.accentTarget, 0);
-        return (
-          <Pressable
-            key={tone.id}
-            accessibilityLabel={tone.accent}
-            accessibilityRole="radio"
-            accessibilityState={{ checked: selected }}
-            bg={color}
-            borderColor="border"
-            borderWidth={selected ? 3 : 1}
-            disabled={interactionPolicy === 'passive'}
-            height={44}
-            onPress={() => selectTone(tone)}
-            radius="md"
-            width={44}
-          />
-        );
-      })}
+          const selected = value?.toneId === tone.id;
+          const color =
+            selected && selectedColor ? selectedColor : resolveOklchColor(tone.accentTarget, 0);
+          return (
+            <Pressable
+              key={tone.id}
+              accessibilityLabel={tone.accent}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: selected }}
+              bg={color}
+              borderColor="border"
+              borderWidth={selected ? 3 : 1}
+              disabled={interactionPolicy === 'passive'}
+              height={44}
+              onPress={() => selectTone(tone)}
+              radius="md"
+              width={44}
+            />
+          );
+        })}
       </View>
       {selectedTone && selectedColor && value ? (
         <>
@@ -94,7 +95,10 @@ function ColorToneInner({
             harmony={null}
             interactionPolicy={interactionPolicy}
             onChange={({ color }) => {
-              const nextColor = resolveOklchColor(selectedTone.accentTarget, resolveColorHue(color));
+              const nextColor = resolveOklchColor(
+                selectedTone.accentTarget,
+                resolveColorHue(color),
+              );
               onChange({
                 toneId: selectedTone.id,
                 colors: value.colors.map((entry, index) =>
