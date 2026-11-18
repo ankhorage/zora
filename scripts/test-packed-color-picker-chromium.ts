@@ -42,9 +42,10 @@ async function testPackedColorPickerChromiumAsync() {
     fetch: (request) =>
       new URL(request.url).pathname === '/app.js'
         ? new Response(Bun.file(join(consumerRoot, 'app.js')))
-        : new Response('<div id="root"></div><script type="module" src="/app.js"></script>', {
-            headers: { 'content-type': 'text/html; charset=utf-8' },
-          }),
+        : new Response(
+            '<div id="root"></div><script type="module" src="/app.js"></script>',
+            { headers: { 'content-type': 'text/html; charset=utf-8' } },
+          ),
     port: 0,
   });
   const browser = await Chrome.createAsync();
@@ -165,19 +166,14 @@ class Chrome {
   }
   static async createAsync(): Promise<Chrome> {
     const port = await portAsync();
-    const process = Bun.spawn(
-      [
-        chromiumCommand,
-        '--headless=new',
-        '--no-first-run',
-        '--no-default-browser-check',
-        '--remote-debugging-address=127.0.0.1',
-        `--remote-debugging-port=${port}`,
-        `--user-data-dir=${join(temporaryRoot, 'chrome')}`,
-        'about:blank',
-      ],
-      { stderr: 'pipe', stdout: 'pipe' },
-    );
+    const process = Bun.spawn([
+      chromiumCommand,
+      '--headless=new',
+      '--no-first-run',
+      `--remote-debugging-port=${port}`,
+      `--user-data-dir=${join(temporaryRoot, 'chrome')}`,
+      'about:blank',
+    ]);
     await waitAsync(`http://127.0.0.1:${port}/json/version`);
     const target = (await (
       await fetch(`http://127.0.0.1:${port}/json/new?about:blank`, { method: 'PUT' })
