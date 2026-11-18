@@ -37,7 +37,7 @@ function createPointerDownSnapshot(event: unknown): GraphPointerDownSnapshot | n
 /*** Read Cytoscape's underlying browser event without trusting programmatic event shapes. */
 function readRendererPointerId(value: unknown): number | null {
   if (!isRecord(value)) return null;
-  const originalEvent = value.originalEvent;
+  const { originalEvent } = value;
   if (!isRecord(originalEvent) || typeof originalEvent.pointerId !== 'number') return null;
   return originalEvent.pointerId;
 }
