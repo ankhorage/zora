@@ -1,3 +1,5 @@
+import type {} from './types/color-theory-culori';
+
 export type {
   AuthoringBindingControlState,
   AuthoringBindingEditorAdapterProps,

@@ -1,5 +1,5 @@
 import type { HexColor } from '@ankhorage/color-theory';
-import { converter } from '@ankhorage/color-theory/culori';
+import { converter } from '@ankhorage/color-theory/culori/fn';
 
 const toOklch = converter('oklch');
 

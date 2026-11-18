@@ -1,6 +1,6 @@
 import type { HexColor } from '@ankhorage/color-theory';
 import { parseHexColorOrThrow } from '@ankhorage/color-theory';
-import { formatHex } from '@ankhorage/color-theory/culori';
+import { formatHex } from '@ankhorage/color-theory/culori/fn';
 
 import type { ColorToneTarget } from '../../../types/color';
 

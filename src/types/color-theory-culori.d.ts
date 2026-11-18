@@ -1,4 +1,7 @@
-declare module '@ankhorage/color-theory/culori' {
+/*** Completes the published color-theory functional Culori subpath until its declaration bundle exposes Culori's public exports. */
+export {};
+
+declare module '@ankhorage/color-theory/culori/fn' {
   interface OklchColor {
     readonly mode: 'oklch';
     readonly l: number;

@@ -1,6 +1,6 @@
 import type { HexColor } from '@ankhorage/color-theory';
 import { parseHexColorOrThrow } from '@ankhorage/color-theory';
-import { converter, formatHex } from '@ankhorage/color-theory/culori';
+import { converter, formatHex } from '@ankhorage/color-theory/culori/fn';
 
 const toOklch = converter('oklch');
 
