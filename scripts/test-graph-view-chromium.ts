@@ -433,8 +433,9 @@ class ChromeSession {
     clickCount: number,
     modifiers: { readonly ctrlKey?: boolean; readonly metaKey?: boolean } = {},
   ): Promise<void> {
-    const modifierMask =
-      (modifiers.ctrlKey === true ? 2 : 0) | (modifiers.metaKey === true ? 4 : 0);
+    const modifier =
+      modifiers.ctrlKey === true ? 'Control' : modifiers.metaKey === true ? 'Meta' : null;
+    if (modifier !== null) await this.setModifierAsync(modifier, true);
     await this.sendAsync('Input.dispatchMouseEvent', {
       type: 'mousePressed',
       x,
@@ -442,7 +443,6 @@ class ChromeSession {
       button: 'left',
       buttons: 1,
       clickCount,
-      modifiers: modifierMask,
     });
     await this.sendAsync('Input.dispatchMouseEvent', {
       type: 'mouseReleased',
@@ -451,7 +451,18 @@ class ChromeSession {
       button: 'left',
       buttons: 0,
       clickCount,
-      modifiers: modifierMask,
+    });
+    if (modifier !== null) await this.setModifierAsync(modifier, false);
+  }
+
+  private async setModifierAsync(modifier: 'Control' | 'Meta', pressed: boolean): Promise<void> {
+    const isControl = modifier === 'Control';
+    await this.sendAsync('Input.dispatchKeyEvent', {
+      type: pressed ? 'rawKeyDown' : 'keyUp',
+      code: isControl ? 'ControlLeft' : 'MetaLeft',
+      key: modifier,
+      nativeVirtualKeyCode: isControl ? 17 : 91,
+      windowsVirtualKeyCode: isControl ? 17 : 91,
     });
   }
 
