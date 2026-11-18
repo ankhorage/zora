@@ -61,6 +61,7 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
           moduleResolution: 'NodeNext',
           noEmit: true,
           strict: true,
+          types: ['node'],
         },
       },
       null,
@@ -93,7 +94,7 @@ try {
   if (tarball === undefined) throw new Error('Expected a packed ZORA tarball.');
   mkdirSync(consumerRoot);
   writeConsumer(consumerRoot, join(packageDirectory, tarball));
-  run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
+  run(['bun', 'install', '--ignore-scripts', '--omit=peer'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
