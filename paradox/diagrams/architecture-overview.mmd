@@ -475,6 +475,61 @@ graph TD
   module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
   module_src_features_collection_editor_public_ts["src/features/collection-editor/public.ts"]
   package__ankhorage_zora -.-> module_src_features_collection_editor_public_ts
+  module_src_features_color_ColorHueScale_tsx["src/features/color/ColorHueScale.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorHueScale_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_typography_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorPicker_tsx["src/features/color/ColorPicker.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorPicker_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHueScale_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_tabs_public_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorTone_tsx["src/features/color/ColorTone.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheel_tsx["src/features/color/ColorWheel.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx["src/features/color/ColorWheelKeyboardProxy.native.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_native_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_tsx["src/features/color/ColorWheelKeyboardProxy.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx["src/features/color/ColorWheelKeyboardProxy.web.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_web_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_public_ts["src/features/color/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_public_ts
+  module_src_features_color_utils_resolveColorAtHue_ts["src/features/color/utils/resolveColorAtHue.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveColorAtHue_ts
+  module_src_features_color_utils_resolveColorHue_ts["src/features/color/utils/resolveColorHue.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_utils_resolveOklchColor_ts["src/features/color/utils/resolveOklchColor.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_utils_resolveOklchColor_ts --> module_src_types_color_ts
+  module_src_features_color_utils_resolveWheelColor_ts["src/features/color/utils/resolveWheelColor.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveWheelColor_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveWheelColorComponents_ts
+  module_src_features_color_utils_resolveWheelColorComponents_ts["src/features/color/utils/resolveWheelColorComponents.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveWheelColorComponents_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx["src/features/content-rail/adapters/inbound/ContentRail.tsx"]
   package__ankhorage_zora -.-> module_src_features_content_rail_adapters_inbound_ContentRail_tsx
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
@@ -2392,6 +2447,9 @@ graph TD
   module_src_types_collection_editor_ts["src/types/collection-editor.ts"]
   package__ankhorage_zora -.-> module_src_types_collection_editor_ts
   module_src_types_collection_editor_ts --> module_src_types_base_ts
+  module_src_types_color_ts["src/types/color.ts"]
+  package__ankhorage_zora -.-> module_src_types_color_ts
+  module_src_types_color_ts --> module_src_types_base_ts
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   package__ankhorage_zora -.-> module_src_types_content_rail_ts
   module_src_types_content_rail_ts --> module_src_types_base_ts

@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.0
+
+### Minor Changes
+
+- 5f86e60: Add controlled ColorPicker, ColorWheel, ColorTone, and ColorHueScale components for Web and React Native consumers.
+
 ## 27.3.9
 
 ### Patch Changes

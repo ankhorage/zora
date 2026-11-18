@@ -101,6 +101,19 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx["src/features/collection-editor/adapters/inbound/CollectionEditor.tsx"]
   module_src_features_collection_editor_meta_ts["src/features/collection-editor/meta.ts"]
   module_src_features_collection_editor_public_ts["src/features/collection-editor/public.ts"]
+  module_src_features_color_ColorHueScale_tsx["src/features/color/ColorHueScale.tsx"]
+  module_src_features_color_ColorPicker_tsx["src/features/color/ColorPicker.tsx"]
+  module_src_features_color_ColorTone_tsx["src/features/color/ColorTone.tsx"]
+  module_src_features_color_ColorWheel_tsx["src/features/color/ColorWheel.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx["src/features/color/ColorWheelKeyboardProxy.native.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_tsx["src/features/color/ColorWheelKeyboardProxy.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx["src/features/color/ColorWheelKeyboardProxy.web.tsx"]
+  module_src_features_color_public_ts["src/features/color/public.ts"]
+  module_src_features_color_utils_resolveColorAtHue_ts["src/features/color/utils/resolveColorAtHue.ts"]
+  module_src_features_color_utils_resolveColorHue_ts["src/features/color/utils/resolveColorHue.ts"]
+  module_src_features_color_utils_resolveOklchColor_ts["src/features/color/utils/resolveOklchColor.ts"]
+  module_src_features_color_utils_resolveWheelColor_ts["src/features/color/utils/resolveWheelColor.ts"]
+  module_src_features_color_utils_resolveWheelColorComponents_ts["src/features/color/utils/resolveWheelColorComponents.ts"]
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx["src/features/content-rail/adapters/inbound/ContentRail.tsx"]
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx["src/features/content-rail/adapters/inbound/ContentRailFlow.tsx"]
   module_src_features_content_rail_constants_ts["src/features/content-rail/constants.ts"]
@@ -537,6 +550,7 @@ graph LR
   module_src_types_chip_group_ts["src/types/chip-group.ts"]
   module_src_types_chip_ts["src/types/chip.ts"]
   module_src_types_collection_editor_ts["src/types/collection-editor.ts"]
+  module_src_types_color_ts["src/types/color.ts"]
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   module_src_types_control_ts["src/types/control.ts"]
   module_src_types_data_table_ts["src/types/data-table.ts"]
@@ -870,6 +884,53 @@ graph LR
   export_CollectionEditorProps -.-> export_ZoraThemeMode
   export_CollectionEditorRenderItemProps["CollectionEditorRenderItemProps"]
   module_src_types_collection_editor_ts --> export_CollectionEditorRenderItemProps
+  export_ColorHueScale["ColorHueScale"]
+  module_src_features_color_ColorHueScale_tsx --> export_ColorHueScale
+  export_ColorHueScaleProps["ColorHueScaleProps"]
+  module_src_types_color_ts --> export_ColorHueScaleProps
+  export_ColorHueScaleProps -.-> export_ZoraThemeMode
+  export_ColorPicker["ColorPicker"]
+  module_src_features_color_ColorPicker_tsx --> export_ColorPicker
+  export_ColorPickerProps["ColorPickerProps"]
+  module_src_types_color_ts --> export_ColorPickerProps
+  export_ColorPickerProps -.-> export_ColorHueScaleProps
+  export_ColorPickerProps -.-> export_ColorPickerSelection
+  export_ColorPickerProps -.-> export_ColorPickerTab
+  export_ColorPickerProps -.-> export_ColorPickerValue
+  export_ColorPickerProps -.-> export_ColorToneProps
+  export_ColorPickerProps -.-> export_ColorWheelProps
+  export_ColorPickerProps -.-> export_ZoraThemeMode
+  export_ColorPickerSelection["ColorPickerSelection"]
+  module_src_types_color_ts --> export_ColorPickerSelection
+  export_ColorPickerTab["ColorPickerTab"]
+  module_src_types_color_ts --> export_ColorPickerTab
+  export_ColorPickerValue["ColorPickerValue"]
+  module_src_types_color_ts --> export_ColorPickerValue
+  export_ColorPickerValue -.-> export_ColorPickerTab
+  export_ColorPickerValue -.-> export_ColorToneSelection
+  export_ColorPickerValue -.-> export_ColorWheelSelection
+  export_ColorTone["ColorTone"]
+  module_src_features_color_ColorTone_tsx --> export_ColorTone
+  export_ColorToneDefinition["ColorToneDefinition"]
+  module_src_types_color_ts --> export_ColorToneDefinition
+  export_ColorToneDefinition -.-> export_ColorToneTarget
+  export_ColorToneProps["ColorToneProps"]
+  module_src_types_color_ts --> export_ColorToneProps
+  export_ColorToneProps -.-> export_ColorToneDefinition
+  export_ColorToneProps -.-> export_ColorToneSelection
+  export_ColorToneProps -.-> export_ZoraThemeMode
+  export_ColorToneSelection["ColorToneSelection"]
+  module_src_types_color_ts --> export_ColorToneSelection
+  export_ColorToneTarget["ColorToneTarget"]
+  module_src_types_color_ts --> export_ColorToneTarget
+  export_ColorWheel["ColorWheel"]
+  module_src_features_color_ColorWheel_tsx --> export_ColorWheel
+  export_ColorWheelProps["ColorWheelProps"]
+  module_src_types_color_ts --> export_ColorWheelProps
+  export_ColorWheelProps -.-> export_ColorWheelSelection
+  export_ColorWheelProps -.-> export_ZoraThemeMode
+  export_ColorWheelSelection["ColorWheelSelection"]
+  module_src_types_color_ts --> export_ColorWheelSelection
   export_compileZoraTheme["compileZoraTheme"]
   module_src_features_theme_application_use_cases_compileZoraTheme_ts --> export_compileZoraTheme
   export_compileZoraTheme -.-> export_ZoraComputedTheme
