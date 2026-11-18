@@ -1,6 +1,5 @@
 import { Button } from '@ankhorage/surface';
 import {
-  COLOR_HARMONIES,
   generateHarmonyRoleColors,
   type ColorHarmony,
   type HexColor,
@@ -11,7 +10,9 @@ import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
 import type { ColorWheelProps } from '../../types/color';
 import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
-import { resolveColorAtHue, resolveColorHue, resolveOklchColor } from './colorMath';
+import { resolveColorAtHue } from './utils/resolveColorAtHue';
+import { resolveColorHue } from './utils/resolveColorHue';
+import { resolveOklchColor } from './utils/resolveOklchColor';
 
 const WHEEL_SIZE = 240;
 const WHEEL_CENTER = WHEEL_SIZE / 2;
@@ -45,7 +46,7 @@ function ColorWheelInner({
         accessibilityRole="adjustable"
         height={WHEEL_SIZE}
         onPress={(event) => {
-          if (interactionPolicy === 'disabled') return;
+          if (interactionPolicy === 'passive') return;
           const { locationX, locationY } = event.nativeEvent;
           onChange({ color: resolveColorAtHue(value, resolvePointerHue(locationX, locationY)), harmony });
         }}
@@ -89,7 +90,7 @@ function ColorWheelInner({
       {harmonies ? (
         <View direction="row" gap="xs" wrap="wrap">
           <Button
-            disabled={interactionPolicy === 'disabled'}
+            disabled={interactionPolicy === 'passive'}
             onPress={() => onChange({ color: value, harmony: null })}
             variant={harmony === null ? 'solid' : 'outline'}
           >
@@ -98,7 +99,7 @@ function ColorWheelInner({
           {harmonies.map((candidate) => (
             <Button
               key={candidate}
-              disabled={interactionPolicy === 'disabled'}
+              disabled={interactionPolicy === 'passive'}
               onPress={() => onChange({ color: value, harmony: candidate })}
               variant={harmony === candidate ? 'solid' : 'outline'}
             >

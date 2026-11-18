@@ -29,7 +29,14 @@ function ColorPickerInner({
   if (!initialTab) throw new Error('ColorPicker requires at least one tab.');
 
   return (
-    <Tabs defaultValue={initialTab} onValueChange={onValueChange} testID={testID} value={value}>
+    <Tabs
+      defaultValue={initialTab}
+      onValueChange={(nextValue) => {
+        if (isColorPickerTab(nextValue)) onValueChange?.(nextValue);
+      }}
+      testID={testID}
+      value={value}
+    >
       {tabs.length > 1 || !hideTabListWhenSingle ? (
         <TabList fill>
           {tabs.map((tab) => (
@@ -44,6 +51,11 @@ function ColorPickerInner({
       ))}
     </Tabs>
   );
+}
+
+/*** Check whether a Surface tab value belongs to the configured picker vocabulary. */
+function isColorPickerTab(value: string): value is ColorPickerTab {
+  return value === 'wheel' || value === 'tone' || value === 'hue';
 }
 
 /*** Resolve the configured control for one picker tab without adding fallback feature modes. */

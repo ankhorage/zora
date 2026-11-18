@@ -32,7 +32,7 @@ function ColorHueScaleInner({
           bg={swatch[step]}
           borderColor="border"
           borderWidth={step === 500 ? 3 : 1}
-          disabled={interactionPolicy === 'disabled'}
+          disabled={interactionPolicy === 'passive'}
           height={48}
           onPress={() => onChange(step === 500 ? value : swatch[step])}
           radius="sm"

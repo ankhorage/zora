@@ -2,9 +2,7 @@ import type { ColorHarmony, HexColor } from '@ankhorage/color-theory';
 
 import type { ZoraBaseProps } from './base';
 
-export const COLOR_PICKER_TABS = ['wheel', 'tone', 'hue'] as const;
-
-export type ColorPickerTab = (typeof COLOR_PICKER_TABS)[number];
+export type ColorPickerTab = 'wheel' | 'tone' | 'hue';
 
 /** A consumer-owned OKLCH target from the published Templates tone catalog. */
 export interface ColorToneTarget {
