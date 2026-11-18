@@ -1,6 +1,7 @@
 export type {
   FlowCanvasProps,
   FlowConnection,
+  FlowConnectionRejection,
   FlowNodeData,
   FlowNodeRenderState,
   FlowPaletteItem,
