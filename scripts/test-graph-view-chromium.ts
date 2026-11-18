@@ -439,24 +439,26 @@ class ChromeSession {
     const modifier =
       modifiers.ctrlKey === true ? 'Control' : modifiers.metaKey === true ? 'Meta' : null;
     if (modifier !== null) await this.setModifierAsync(modifier, true);
-    await this.sendAsync('Input.dispatchMouseEvent', {
-      type: 'mousePressed',
-      x,
-      y,
-      button: 'left',
-      buttons: 1,
-      clickCount,
-      modifiers: modifierMask,
-    });
-    await this.sendAsync('Input.dispatchMouseEvent', {
-      type: 'mouseReleased',
-      x,
-      y,
-      button: 'left',
-      buttons: 0,
-      clickCount,
-      modifiers: modifierMask,
-    });
+    for (const currentClickCount of Array.from({ length: clickCount }, (_, index) => index + 1)) {
+      await this.sendAsync('Input.dispatchMouseEvent', {
+        type: 'mousePressed',
+        x,
+        y,
+        button: 'left',
+        buttons: 1,
+        clickCount: currentClickCount,
+        modifiers: modifierMask,
+      });
+      await this.sendAsync('Input.dispatchMouseEvent', {
+        type: 'mouseReleased',
+        x,
+        y,
+        button: 'left',
+        buttons: 0,
+        clickCount: currentClickCount,
+        modifiers: modifierMask,
+      });
+    }
     if (modifier !== null) await this.setModifierAsync(modifier, false);
   }
 
