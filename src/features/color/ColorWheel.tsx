@@ -243,7 +243,7 @@ function ColorHexInput({
       disabled={disabled}
       onChangeText={(nextValue) => {
         setInput(nextValue);
-        if (isHexColor(nextValue)) onChange({ color: nextValue, harmony });
+        if (isHexColor(nextValue)) onChange({ color: nextValue, harmony: harmony ?? null });
       }}
       value={input}
     />
