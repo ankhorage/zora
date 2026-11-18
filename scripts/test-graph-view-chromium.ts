@@ -312,7 +312,6 @@ interface GraphAcceptanceState {
 }
 
 interface InteractionAcceptanceState {
-  readonly domMouseEvents: readonly DomMouseEvent[];
   readonly domPointerModifiers: readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[];
   readonly events: readonly {
     readonly id: string;
@@ -327,18 +326,6 @@ interface InteractionAcceptanceState {
   readonly selected: boolean;
   readonly selectedNodeIds: readonly string[];
   readonly viewport: GraphViewport | null;
-}
-
-interface DomMouseEvent {
-  readonly button: number;
-  readonly buttons: number;
-  readonly clientX: number;
-  readonly clientY: number;
-  readonly ctrlKey: boolean;
-  readonly metaKey: boolean;
-  readonly target: string;
-  readonly type: 'mousedown' | 'mouseup';
-  readonly which: number;
 }
 
 interface GraphMeasurement {
@@ -405,6 +392,7 @@ class ChromeSession {
         '--remote-debugging-address=127.0.0.1',
         `--remote-debugging-port=${debugPort}`,
         `--user-data-dir=${profile}`,
+        '--window-size=1280,960',
         'about:blank',
       ],
       { stderr: 'pipe', stdout: 'pipe' },
