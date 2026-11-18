@@ -9,11 +9,11 @@ import type {
 } from '@ankhorage/color-theory';
 import type { AppCategory, ThemeConfig } from '@ankhorage/contracts';
 import type {
-  SurfaceColor,
-  SurfaceEmphasis,
-  SurfacePaletteColor,
-  SurfaceStatusColor,
-} from '@ankhorage/surface';
+  SURFACE_COLORS,
+  SURFACE_EMPHASES,
+  SURFACE_PALETTE_COLORS,
+  SURFACE_STATUS_COLORS,
+} from '@ankhorage/surface/color';
 import type { SurfaceTheme } from '@ankhorage/surface/theme';
 
 export type ZoraThemeId = string;
@@ -85,7 +85,7 @@ export interface ZoraComputedTheme {
   readonly provenance: readonly ZoraThemeProvenanceEntry[];
 }
 
-export type ZoraPaletteColor = SurfacePaletteColor;
-export type ZoraStatusColor = SurfaceStatusColor;
-export type ZoraColor = SurfaceColor;
-export type ZoraEmphasis = SurfaceEmphasis;
+export type ZoraPaletteColor = (typeof SURFACE_PALETTE_COLORS)[number];
+export type ZoraStatusColor = (typeof SURFACE_STATUS_COLORS)[number];
+export type ZoraColor = (typeof SURFACE_COLORS)[number];
+export type ZoraEmphasis = (typeof SURFACE_EMPHASES)[number];
