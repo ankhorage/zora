@@ -153,7 +153,7 @@ function FlowInspectorFieldControl({
   }
   if (field.kind === 'select') {
     const selectedIndex = field.options.findIndex((option) => option.value === valueText);
-    const selected = field.options[selectedIndex];
+    const selected = field.options.find((option) => option.value === valueText);
     return (
       <Pressable
         accessibilityLabel={field.label}
@@ -161,7 +161,8 @@ function FlowInspectorFieldControl({
         accessibilityState={{ disabled }}
         disabled={disabled}
         onPress={() => {
-          const next = field.options[(selectedIndex + 1) % field.options.length];
+          const nextIndex = (selectedIndex + 1) % field.options.length;
+          const next = field.options.find((_option, index) => index === nextIndex);
           if (next) onValueChange?.(field.id, { kind: 'inline', value: next.value });
         }}
         style={{ minHeight: 44 }}
@@ -269,7 +270,7 @@ function FlowOutline({
 
 /** Converts only ordinary inline primitive values to input text; references and secrets remain opaque. */
 function readInlineValue(value: FlowNodeConfigValue | undefined): string {
-  if (!value || value.kind !== 'inline') return '';
+  if (value?.kind !== 'inline') return '';
   if (
     typeof value.value === 'string' ||
     typeof value.value === 'number' ||

@@ -1,8 +1,4 @@
-import type {
-  FlowExecutionStatus,
-  FlowStepSnapshot,
-  FlowTraceEvent,
-} from '@ankhorage/contracts/flow';
+import type { FlowExecutionStatus, FlowStepSnapshot } from '@ankhorage/contracts/flow';
 import React from 'react';
 import { Pressable } from 'react-native';
 
