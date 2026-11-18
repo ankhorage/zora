@@ -127,6 +127,9 @@ jobs:
       - name: Run packed Chromium Checkbox acceptance
         run: bun run test:checkbox:chromium
 
+      - name: Run packed Chromium ColorPicker acceptance
+        run: bun run test:color-picker:chromium
+
       - name: Run packed Next production consumer acceptance
         run: bun run test:packed-next-web-consumer
 

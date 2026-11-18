@@ -66,9 +66,9 @@ const packageJsonSource = readFileSync(PACKAGE_JSON_PATH, 'utf8');
 
 const allSource = [srcSource, examplesSource, readmeSource, packageJsonSource].join('\n');
 
-describe('Plan 5 audit — no stale color-tone APIs', () => {
-  test('no ColorTone / colorTone / ZORA_COLOR_TONES / ZoraColorTone references', () => {
-    expect(allSource).not.toMatch(/ColorTone|colorTone|ZORA_COLOR_TONES|ZoraColorTone/);
+describe('Plan 5 audit — no stale color-tone catalogs', () => {
+  test('no retired ZORA tone catalog references', () => {
+    expect(allSource).not.toMatch(/ZORA_COLOR_TONES|ZoraColorTone/);
   });
 
   test('no ZORA_COLOR_HARMONIES / ZoraColorHarmony references', () => {

@@ -118,6 +118,21 @@ test('SSR-renders ordinary UI from its public web subpaths', async () => {
   expect(markup).toContain('Continue');
 });
 
+/** Verifies that the color controls are available through their generated public web entrypoints. */
+test('publishes the independent color controls through canonical web subpaths', async () => {
+  const [{ ColorPicker }, { ColorWheel }, { ColorTone }, { ColorHueScale }] = await Promise.all([
+    import('@ankhorage/zora/web/color-picker'),
+    import('@ankhorage/zora/web/color-wheel'),
+    import('@ankhorage/zora/web/color-tone'),
+    import('@ankhorage/zora/web/color-hue-scale'),
+  ]);
+
+  expect(ColorPicker).toBeDefined();
+  expect(ColorWheel).toBeDefined();
+  expect(ColorTone).toBeDefined();
+  expect(ColorHueScale).toBeDefined();
+});
+
 /** Verifies that the authoring boundary delegates its portable controls to released Surface. */
 test('publishes browser-safe authoring controls through the released Surface boundary', async () => {
   const entrypoint = await Bun.file(join('src', 'authoring.ts')).text();
