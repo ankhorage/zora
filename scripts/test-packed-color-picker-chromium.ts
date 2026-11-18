@@ -42,10 +42,9 @@ async function testPackedColorPickerChromiumAsync() {
     fetch: (request) =>
       new URL(request.url).pathname === '/app.js'
         ? new Response(Bun.file(join(consumerRoot, 'app.js')))
-        : new Response(
-            '<div id="root"></div><script type="module" src="/app.js"></script>',
-            { headers: { 'content-type': 'text/html; charset=utf-8' } },
-          ),
+        : new Response('<div id="root"></div><script type="module" src="/app.js"></script>', {
+            headers: { 'content-type': 'text/html; charset=utf-8' },
+          }),
     port: 0,
   });
   const browser = await Chrome.createAsync();
@@ -56,7 +55,7 @@ async function testPackedColorPickerChromiumAsync() {
     await browser.keyAsync('[role="slider"]', 'ArrowRight');
     await browser.clickAsync('button', 0.5, 0.5, 'triadic');
     await browser.waitAsync(
-      `(() => { const state = window.colorAcceptance.read(); return state.wheelChanges >= 2 && state.triangle; })()`,
+      `(() => { const state = window.colorAcceptance.read(); return state.wheelChanges >= 2 && document.querySelector('polygon') !== null; })()`,
     );
     await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'tone');
     await browser.clickAsync('[aria-label="Jewel"]');
@@ -73,7 +72,11 @@ async function testPackedColorPickerChromiumAsync() {
     await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'wheel');
     const state = await browser.evaluateAsync(`window.colorAcceptance.read()`);
     assert(state.wheelChanges >= 2, 'Wheel pointer and keyboard updates were not controlled.');
-    assert.equal(state.triangle, true, 'Triadic harmony did not render its triangle.');
+    assert.equal(
+      await browser.evaluateAsync(`document.querySelector('polygon') !== null`),
+      true,
+      'Triadic harmony did not render its triangle.',
+    );
     assert.equal(state.toneColors, 1, 'External controlled removal left a stale tone edit index.');
     assert.notEqual(
       state.hue,
