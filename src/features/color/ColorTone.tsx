@@ -56,7 +56,7 @@ function ColorToneInner({
         );
       })}
       </View>
-      {selectedTone && selectedColor ? (
+      {selectedTone && selectedColor && value ? (
         <>
           <View direction="row" gap="xs" wrap="wrap">
             {value.colors.map((color, index) => (
