@@ -68,9 +68,9 @@ function SectionListInner({
       }
       showsHorizontalScrollIndicator={showsScrollIndicator}
       showsVerticalScrollIndicator={showsScrollIndicator}
-      ListHeaderComponent={headerText ? <Text>{headerText}</Text> : null}
-      ListFooterComponent={footerText ? <Text>{footerText}</Text> : null}
-      ListEmptyComponent={emptyText ? <Text>{emptyText}</Text> : null}
+      ListHeaderComponent={headerText ? <Text>{headerText}</Text> : undefined}
+      ListFooterComponent={footerText ? <Text>{footerText}</Text> : undefined}
+      ListEmptyComponent={emptyText ? <Text>{emptyText}</Text> : undefined}
       testID={testID}
     />
   );

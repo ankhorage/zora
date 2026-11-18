@@ -1,37 +1,19 @@
-import type { KeyboardEvent } from 'react';
-
 import { DIRECTION_MODIFIERS } from '../constants';
 
-/*** Support Space and directional navigation for web radio options without affecting native presses. */
+/*** Select a focused radio option through the React Native keyboard event contract. */
 export function handleRadioOptionKeyDown(
-  event: KeyboardEvent<RadioOptionKeyboardTarget>,
+  key: string,
+  preventDefault: () => void,
   select: () => void,
+  navigate: (direction: -1 | 1) => void,
 ): void {
-  if (event.key === ' ') {
-    event.preventDefault();
+  if (key === ' ') {
+    preventDefault();
     select();
     return;
   }
-  const direction = DIRECTION_MODIFIERS.get(event.key);
-  if (direction === undefined) return;
-  const group = event.currentTarget.closest('[role="radiogroup"]');
-  const options = Array.from(group?.querySelectorAll('[role="radio"]') ?? []).filter(
-    (option) => option.getAttribute('aria-disabled') !== 'true',
-  );
-  const index = options.indexOf(event.currentTarget);
-  if (index < 0 || options.length === 0) return;
-  event.preventDefault();
-  const next = options.at((index + direction + options.length) % options.length);
-  next?.focus();
-  next?.click();
-}
-
-/** Minimal web target contract keeps the native build independent of DOM ambient libraries. */
-export interface RadioOptionKeyboardTarget {
-  closest(
-    selector: string,
-  ): { querySelectorAll(selector: string): ArrayLike<RadioOptionKeyboardTarget> } | null;
-  getAttribute(name: string): string | null;
-  focus(): void;
-  click(): void;
+  const direction = DIRECTION_MODIFIERS.get(key);
+  if (direction !== -1 && direction !== 1) return;
+  preventDefault();
+  navigate(direction);
 }

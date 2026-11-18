@@ -421,9 +421,7 @@ try {
     run(['bun', 'run', 'typecheck'], fixtureRoot);
     run(['bun', 'x', 'expo', 'install', '--check'], fixtureRoot);
 
-    if (fixture.name === 'grid-workspaces') {
-      verifyNpmPeerGraph(fixtureRoot, join(temporaryRoot, `${fixture.name}-npm`));
-    }
+    verifyNpmPeerGraph(fixtureRoot, join(temporaryRoot, `${fixture.name}-npm`));
 
     if (fixture.doctor) {
       run(['bunx', 'expo-doctor@1.20.2'], fixtureRoot);

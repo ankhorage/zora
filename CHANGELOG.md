@@ -1,5 +1,53 @@
 # Changelog
 
+## 27.3.8
+
+### Patch Changes
+
+- 785ffd3: Update dependencies: `@ankhorage/contracts`.
+
+## 27.3.7
+
+### Patch Changes
+
+- 251c24b: Correct native component-ref type contracts while retaining the supported Expo 57 peer contract.
+
+## 27.3.6
+
+### Patch Changes
+
+- d4852ec: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
+## 27.3.5
+
+### Patch Changes
+
+- 96458c3: Update dependencies: `@ankhorage/surface`.
+
+## 27.3.4
+
+### Patch Changes
+
+- 5b1a6fc: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.3
+
+### Patch Changes
+
+- 5aca94e: Render the published web ActivityIndicator with deterministic server-side dimensions and semantic theme colors before hydration.
+
+## 27.3.2
+
+### Patch Changes
+
+- 9f7f408: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.1
+
+### Patch Changes
+
+- facab24: Update dependencies: `@ankhorage/runtime`.
+
 ## 27.3.0
 
 ### Minor Changes

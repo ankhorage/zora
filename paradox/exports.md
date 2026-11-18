@@ -1615,7 +1615,7 @@ This function is pure and does not mount React or reproduce owner algorithms.
 
 Kind: `value`
 Module: `src/features/content-rail/adapters/inbound/ContentRail.tsx`
-Source: `src/features/content-rail/adapters/inbound/ContentRail.tsx:30:14`
+Source: `src/features/content-rail/adapters/inbound/ContentRail.tsx:31:14`
 
 ## ContentRailControlPressEvent
 
@@ -2563,7 +2563,7 @@ Bind one serializable game definition to a local transient session and presentat
 
 Kind: `value`
 Module: `src/features/game/adapters/inbound/GameEntity.tsx`
-Source: `src/features/game/adapters/inbound/GameEntity.tsx:10:14`
+Source: `src/features/game/adapters/inbound/GameEntity.tsx:12:14`
 
 Render one generic positioned game entity without owning gameplay semantics.
 
@@ -3023,7 +3023,7 @@ Source: `src/types/grid-interactions.ts:54:1`
 
 Kind: `function`
 Module: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx`
-Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:15:1`
+Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:16:1`
 
 Adapts native responder and keyboard events to the controlled grid interaction boundary.
 
@@ -3268,7 +3268,7 @@ Source: `src/types/grid-rulers.ts:13:1`
 
 Kind: `function`
 Module: `src/features/grid-view/adapters/inbound/GridView.tsx`
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:38:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:39:1`
 
 Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.
 
@@ -4823,7 +4823,7 @@ Single-choice selection control used within a radio group.
 
 Kind: `value`
 Module: `src/features/form/radio/adapters/inbound/RadioGroup.tsx`
-Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:15:14`
+Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:17:14`
 
 Present one controlled single-choice group as inline radios or icon radio options.
 

@@ -1,7 +1,11 @@
 import React from 'react';
-import type { ViewToken } from 'react-native';
+import type { FlatList } from 'react-native';
 
 import type { ManifestListProps } from '../../../../types/manifest-list';
+
+type NativeViewToken = Parameters<
+  NonNullable<React.ComponentProps<typeof FlatList>['onViewableItemsChanged']>
+>[0]['viewableItems'][number];
 
 /*** Keeps the native visibility callback stable and emits only serializable item identities. */
 export function useListVisibility(
@@ -14,11 +18,11 @@ export function useListVisibility(
     handler.current = onVisibleItemsChange;
     disabled.current = passive;
   }, [onVisibleItemsChange, passive]);
-  return React.useCallback(({ viewableItems }: { viewableItems: ViewToken[] }) => {
+  return React.useCallback(({ viewableItems }: { viewableItems: NativeViewToken[] }) => {
     if (!disabled.current)
       handler.current?.({
         keys: viewableItems
-          .filter((item) => item.isViewable && item.index !== null && item.index >= 0)
+          .filter((item) => item.isViewable && typeof item.index === 'number' && item.index >= 0)
           .map((item) => item.key),
       });
   }, []);

@@ -1134,7 +1134,7 @@ Export paths: `src/index.ts`
 
 ## ContentRail
 
-Source: `src/features/content-rail/adapters/inbound/ContentRail.tsx:30:14`
+Source: `src/features/content-rail/adapters/inbound/ContentRail.tsx:31:14`
 
 Export paths: `src/index.ts`
 
@@ -1584,7 +1584,7 @@ Export paths: `src/index.ts`
 
 ## GameEntity
 
-Source: `src/features/game/adapters/inbound/GameEntity.tsx:10:14`
+Source: `src/features/game/adapters/inbound/GameEntity.tsx:12:14`
 
 Render one generic positioned game entity without owning gameplay semantics.
 
@@ -1836,7 +1836,7 @@ Export paths: `src/index.ts`
 
 ## GridInteractions
 
-Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:15:1`
+Source: `src/features/grid-interactions/adapters/inbound/GridInteractions.tsx:16:1`
 
 Adapts native responder and keyboard events to the controlled grid interaction boundary.
 
@@ -1907,7 +1907,7 @@ Export paths: `src/index.ts`
 
 ## GridView
 
-Source: `src/features/grid-view/adapters/inbound/GridView.tsx:38:1`
+Source: `src/features/grid-view/adapters/inbound/GridView.tsx:39:1`
 
 Renders a controlled or uncontrolled, virtualized 2D world through the canonical grid viewport engine.
 
@@ -2832,7 +2832,7 @@ Export paths: `src/index.ts`
 
 ## RadioGroup
 
-Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:15:14`
+Source: `src/features/form/radio/adapters/inbound/RadioGroup.tsx:17:14`
 
 Present one controlled single-choice group as inline radios or icon radio options.
 

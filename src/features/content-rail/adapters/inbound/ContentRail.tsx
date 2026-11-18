@@ -11,6 +11,7 @@ import type {
   ContentRailProps,
   ContentRailVisibleRangeChangeEvent,
 } from '../../../../types/content-rail';
+import type { ReactNativeComponentInstance } from '../../../../types/react-native';
 import { IconButton } from '../../../button/public';
 import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
@@ -62,7 +63,7 @@ function ContentRailCarousel({
 }: ContentRailProps) {
   const { theme } = useZoraTheme();
   const items = React.Children.toArray(children);
-  const scrollViewRef = React.useRef<ScrollView>(null);
+  const scrollViewRef = React.useRef<ReactNativeComponentInstance<typeof ScrollView>>(null);
   const lastRangeRef = React.useRef<ContentRailVisibleRangeChangeEvent | null>(null);
   const logicalOffsetRef = React.useRef(0);
   const rtlInitializedRef = React.useRef(false);

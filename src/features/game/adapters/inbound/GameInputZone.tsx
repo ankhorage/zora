@@ -73,7 +73,20 @@ function createGameInputZoneKeyboardProps({
   if (Platform.OS !== 'web' || !enabled || keyboardBindings === undefined) return {};
   if (keyboardBindings.length === 0) return {};
 
-  return { onKeyDown: dispatchKeyboard, tabIndex: 0 as const };
+  return {
+    onKeyDown: (event: GameInputZoneKeyboardEvent) =>
+      dispatchKeyboard({
+        key: event.nativeEvent?.key ?? event.key ?? '',
+        preventDefault: () => event.preventDefault(),
+      }),
+    tabIndex: 0 as const,
+  };
+}
+
+interface GameInputZoneKeyboardEvent {
+  readonly key?: string;
+  readonly nativeEvent?: { readonly key?: string };
+  preventDefault(): void;
 }
 
 interface InputZoneStyleInput {
