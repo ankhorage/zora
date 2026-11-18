@@ -1,6 +1,6 @@
 export type {
-  FlowInspectorDataSection,
   FlowExecutionStep,
+  FlowInspectorDataSection,
   FlowInspectorField,
   FlowInspectorProps,
   FlowOutlineItem,
