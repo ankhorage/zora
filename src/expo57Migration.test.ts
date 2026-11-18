@@ -15,6 +15,9 @@ const EXPO_EXAMPLE_DIRS = [
   'examples/social_community/private-messaging',
   'examples/social_community/visual-discovery',
 ] as const;
+const EXPO_57_EXAMPLE_DIRS = EXPO_EXAMPLE_DIRS.filter(
+  (directory) => directory !== 'examples/expo-showcase',
+);
 const ROUTER_EXAMPLE_DIRS = EXPO_EXAMPLE_DIRS.filter(
   (directory) => directory !== 'examples/expo-showcase',
 );
@@ -35,6 +38,16 @@ const EXPO_57_GRID_WORKSPACES_CONTRACT = {
   typesReact: '~19.2.18',
 } as const;
 const GRID_WORKSPACES_MANIFEST = 'examples/grid-workspaces/package.json';
+const EXPO_58_SHOWCASE_CONTRACT = {
+  expo: '58.0.26',
+  expoFont: '~58.0.12',
+  expoLinearGradient: '~58.0.4',
+  expoStatusBar: '~58.0.5',
+  react: '19.3.0',
+  reactNative: '0.88.1',
+  safeAreaContext: '~5.11.1',
+  svg: '15.16.0',
+} as const;
 
 function readRenovatePackageRule(packageName: string): string {
   const renovateSource = readFileSync(join(ROOT, 'renovate.json5'), 'utf8');
@@ -82,14 +95,14 @@ describe('portable ZORA package boundary', () => {
 
     expect(readValue(dependencies, '@ankhorage/surface')).toMatch(SEMVER_PATTERNS.caret);
     expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(SEMVER_PATTERNS.caret);
-    expect(peers.react).toMatch(SEMVER_PATTERNS.exact);
-    expect(readValue(peers, 'react-native')).toMatch(SEMVER_PATTERNS.minorWildcard);
-    expect(readValue(peers, 'react-native-svg')).toMatch(SEMVER_PATTERNS.exact);
+    expect(peers.react).toContain(' || ');
+    expect(readValue(peers, 'react-native')).toContain(' || ');
+    expect(readValue(peers, 'react-native-svg')).toContain(' || ');
     expect(readValue(development, 'react-native-svg')).toMatch(SEMVER_PATTERNS.exact);
     expect(readValue(peers, 'react-native-web')).toMatch(SEMVER_PATTERNS.tilde);
-    expect(readValue(peers, 'react-native-gesture-handler')).toMatch(SEMVER_PATTERNS.tilde);
-    expect(readValue(peers, 'react-native-reanimated')).toMatch(SEMVER_PATTERNS.exact);
-    expect(readValue(peers, 'react-native-worklets')).toMatch(SEMVER_PATTERNS.exact);
+    expect(readValue(peers, 'react-native-gesture-handler')).toContain(' || ');
+    expect(readValue(peers, 'react-native-reanimated')).toContain(' || ');
+    expect(readValue(peers, 'react-native-worklets')).toContain(' || ');
     expect(development.typescript).toMatch(SEMVER_PATTERNS.tilde);
 
     for (const expoPackage of ['@expo/vector-icons', 'expo-font', 'expo-linear-gradient']) {
@@ -119,7 +132,7 @@ describe('Expo 57 example boundary', () => {
   test('uses Renovate-safe dependency range styles across every Expo example', () => {
     const expoVersions = new Set<string>();
 
-    for (const directory of EXPO_EXAMPLE_DIRS) {
+    for (const directory of EXPO_57_EXAMPLE_DIRS) {
       const packageJson = readExamplePackage(directory);
       const dependencies = readRecord(packageJson, 'dependencies');
       const development = readRecord(packageJson, 'devDependencies');
@@ -167,6 +180,22 @@ describe('Expo 57 example boundary', () => {
       EXPO_57_GRID_WORKSPACES_CONTRACT.metroConfig,
     );
     expect(development['@types/react']).toBe(EXPO_57_GRID_WORKSPACES_CONTRACT.typesReact);
+  });
+
+  test('pins Showcase to its Expo 58 React Native contract', () => {
+    const packageJson = readExamplePackage('examples/expo-showcase');
+    const dependencies = readRecord(packageJson, 'dependencies');
+
+    expect(dependencies.expo).toBe(EXPO_58_SHOWCASE_CONTRACT.expo);
+    expect(dependencies['expo-font']).toBe(EXPO_58_SHOWCASE_CONTRACT.expoFont);
+    expect(dependencies['expo-linear-gradient']).toBe(EXPO_58_SHOWCASE_CONTRACT.expoLinearGradient);
+    expect(dependencies['expo-status-bar']).toBe(EXPO_58_SHOWCASE_CONTRACT.expoStatusBar);
+    expect(dependencies.react).toBe(EXPO_58_SHOWCASE_CONTRACT.react);
+    expect(dependencies['react-native']).toBe(EXPO_58_SHOWCASE_CONTRACT.reactNative);
+    expect(dependencies['react-native-safe-area-context']).toBe(
+      EXPO_58_SHOWCASE_CONTRACT.safeAreaContext,
+    );
+    expect(dependencies['react-native-svg']).toBe(EXPO_58_SHOWCASE_CONTRACT.svg);
   });
 
   test('limits Grid Workspaces native-tooling Renovate constraints to its manifest', () => {

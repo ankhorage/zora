@@ -2,21 +2,38 @@ import { readFile } from 'node:fs/promises';
 
 import { expect, test } from 'bun:test';
 
-const EXPO_57_NATIVE_PEER_VERSIONS = {
-  '@react-native-vector-icons/fontawesome': '13.1.4',
-  '@react-native-vector-icons/fontawesome5': '13.1.4',
-  '@react-native-vector-icons/fontawesome6': '13.1.4',
-  '@react-native-vector-icons/ionicons': '13.1.4',
-  '@react-native-vector-icons/material-design-icons': '13.1.4',
-  react: '19.2.3',
-  'react-native': '0.86.3',
-  'react-native-gesture-handler': '2.32.0',
-  'react-native-reanimated': '4.5.1',
-  'react-native-safe-area-context': '5.7.0',
-  'react-native-svg': '15.15.4',
-  'react-native-web': '0.21.3',
-  'react-native-worklets': '0.10.1',
-} as const;
+const SUPPORTED_NATIVE_PEER_TUPLES = [
+  {
+    '@react-native-vector-icons/fontawesome': '13.1.4',
+    '@react-native-vector-icons/fontawesome5': '13.1.4',
+    '@react-native-vector-icons/fontawesome6': '13.1.4',
+    '@react-native-vector-icons/ionicons': '13.1.4',
+    '@react-native-vector-icons/material-design-icons': '13.1.4',
+    react: '19.2.3',
+    'react-native': '0.86.3',
+    'react-native-gesture-handler': '2.32.0',
+    'react-native-reanimated': '4.5.1',
+    'react-native-safe-area-context': '5.7.0',
+    'react-native-svg': '15.15.4',
+    'react-native-web': '0.21.3',
+    'react-native-worklets': '0.10.1',
+  },
+  {
+    '@react-native-vector-icons/fontawesome': '14.0.0',
+    '@react-native-vector-icons/fontawesome5': '14.0.0',
+    '@react-native-vector-icons/fontawesome6': '14.0.0',
+    '@react-native-vector-icons/ionicons': '14.0.0',
+    '@react-native-vector-icons/material-design-icons': '14.0.0',
+    react: '19.3.0',
+    'react-native': '0.88.1',
+    'react-native-gesture-handler': '3.3.0',
+    'react-native-reanimated': '4.7.1',
+    'react-native-safe-area-context': '5.11.1',
+    'react-native-svg': '15.16.0',
+    'react-native-web': '0.21.4',
+    'react-native-worklets': '0.13.0',
+  },
+] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -37,7 +54,7 @@ test('root-entry native imports expose only required portable peers', async () =
   expect(isRecord(peerDependencies) && peerDependencies['@expo/vector-icons']).toBeUndefined();
 });
 
-test('declares a jointly satisfiable Expo 57 native peer contract with Surface', async () => {
+test('declares native peer contracts jointly satisfiable with Surface', async () => {
   const packageJson = JSON.parse(
     await readFile(new URL('../package.json', import.meta.url), 'utf8'),
   ) as unknown;
@@ -70,13 +87,15 @@ test('declares a jointly satisfiable Expo 57 native peer contract with Surface',
   const zoraPeers = new Map(Object.entries(peerDependencies));
   const surfacePeers = new Map(Object.entries(surfacePackageJson.peerDependencies));
 
-  for (const [name, version] of Object.entries(EXPO_57_NATIVE_PEER_VERSIONS)) {
-    const zoraRange = zoraPeers.get(name);
-    const surfaceRange = surfacePeers.get(name);
+  for (const tuple of SUPPORTED_NATIVE_PEER_TUPLES) {
+    for (const [name, version] of Object.entries(tuple)) {
+      const zoraRange = zoraPeers.get(name);
+      const surfaceRange = surfacePeers.get(name);
 
-    expect(typeof zoraRange).toBe('string');
-    expect(typeof surfaceRange).toBe('string');
-    expect(Bun.semver.satisfies(version, zoraRange as string)).toBe(true);
-    expect(Bun.semver.satisfies(version, surfaceRange as string)).toBe(true);
+      expect(typeof zoraRange).toBe('string');
+      expect(typeof surfaceRange).toBe('string');
+      expect(Bun.semver.satisfies(version, zoraRange as string)).toBe(true);
+      expect(Bun.semver.satisfies(version, surfaceRange as string)).toBe(true);
+    }
   }
 });
