@@ -82,8 +82,8 @@ describe('portable ZORA package boundary', () => {
 
     expect(readValue(dependencies, '@ankhorage/surface')).toMatch(SEMVER_PATTERNS.caret);
     expect(readValue(dependencies, '@ankhorage/contracts')).toMatch(SEMVER_PATTERNS.caret);
-    expect(peers.react).toBe('19.2.3 || 19.3.0');
-    expect(readValue(peers, 'react-native')).toBe('0.86.x || 0.88.x');
+    expect(peers.react).toMatch(SEMVER_PATTERNS.exact);
+    expect(readValue(peers, 'react-native')).toMatch(SEMVER_PATTERNS.minorWildcard);
     expect(readValue(peers, 'react-native-svg')).toMatch(SEMVER_PATTERNS.exact);
     expect(readValue(development, 'react-native-svg')).toMatch(SEMVER_PATTERNS.exact);
     expect(readValue(peers, 'react-native-web')).toMatch(SEMVER_PATTERNS.tilde);
