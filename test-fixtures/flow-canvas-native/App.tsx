@@ -37,7 +37,7 @@ export default function App() {
   const [undoCount, setUndoCount] = useState(0);
   const [redoCount, setRedoCount] = useState(0);
   const record = (event: string) => setHistory((current) => [...current, event]);
-  const source = nodes.find((node) => node.id === 'source')!;
+  const source = nodes.find((node) => node.id === 'source');
   const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
 
   return (
@@ -45,10 +45,11 @@ export default function App() {
       <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
         <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>
         <Text testID="flow-node-state">
-          source-position={source.position.x},{source.position.y}
+          source-position={source?.position.x ?? 'deleted'},{source?.position.y ?? 'deleted'}
         </Text>
         <Text testID="flow-node-moved-state">
-          source-moved={String(source.position.x !== 32 || source.position.y !== 120)}
+          source-moved=
+          {String(source === undefined || source.position.x !== 32 || source.position.y !== 120)}
         </Text>
         <Text testID="flow-viewport-state">
           viewport={viewport.pan.x},{viewport.pan.y},{viewport.zoom}
@@ -115,8 +116,8 @@ export default function App() {
         }}
         onViewportChange={(next) => {
           setSourceUnchangedOnViewportChange(
-            source.position.x === sourcePositionRef.current.x &&
-              source.position.y === sourcePositionRef.current.y,
+            source?.position.x === sourcePositionRef.current.x &&
+              source?.position.y === sourcePositionRef.current.y,
           );
           setViewport(next);
           record('viewport');
