@@ -67,11 +67,15 @@ test('connects only an enabled output to an input on a different node', () => {
 });
 
 test('rejects an output and input whose published Contracts schema types do not overlap', () => {
+  const connections: { readonly source: string; readonly target: string }[] = [];
+  const source = nodes.find((node) => node.id === 'source');
+  const target = nodes.find((node) => node.id === 'target');
+  if (!source || !target) throw new Error('The typed-port test requires source and target nodes.');
   const controller = createFlowEditorController(
     createProps({
       nodes: [
         {
-          ...nodes[0]!,
+          ...source,
           ports: [
             {
               data: { schema: { type: 'string' } },
@@ -82,7 +86,7 @@ test('rejects an output and input whose published Contracts schema types do not 
           ],
         },
         {
-          ...nodes[1]!,
+          ...target,
           ports: [
             {
               data: { schema: { type: 'number' } },
@@ -93,12 +97,15 @@ test('rejects an output and input whose published Contracts schema types do not 
           ],
         },
       ],
+      onConnect: (connectionSource, connectionTarget) =>
+        connections.push({ source: connectionSource.portId, target: connectionTarget.portId }),
     }),
   );
 
   expect(
     controller.connect({ nodeId: 'source', portId: 'out' }, { nodeId: 'target', portId: 'in' }),
   ).toBe('connection_types_incompatible');
+  expect(connections).toEqual([]);
 });
 
 test('suppresses mutation intents in read-only mode', () => {
