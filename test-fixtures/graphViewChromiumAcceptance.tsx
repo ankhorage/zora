@@ -22,6 +22,7 @@ interface ProgressiveScenarioState {
 }
 
 interface InteractionScenarioState {
+  readonly domMouseEvents: readonly DomMouseEvent[];
   readonly domPointerModifiers: readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[];
   readonly events: readonly GraphViewElementEvent[];
   readonly layoutCompletions: number;
@@ -31,6 +32,18 @@ interface InteractionScenarioState {
   readonly readyCount: number;
   readonly selected: boolean;
   readonly viewport: ReturnType<GraphViewController['getViewport']> | null;
+}
+
+interface DomMouseEvent {
+  readonly button: number;
+  readonly buttons: number;
+  readonly clientX: number;
+  readonly clientY: number;
+  readonly ctrlKey: boolean;
+  readonly metaKey: boolean;
+  readonly target: string;
+  readonly type: 'mousedown' | 'mouseup';
+  readonly which: number;
 }
 
 declare global {
@@ -131,6 +144,7 @@ function GraphViewChromiumAcceptance() {
 /*** Exercise native canvas input without allowing selection paint to restart layout. */
 function InteractionScenario() {
   const [controller, setController] = useState<GraphViewController | null>(null);
+  const [domMouseEvents, setDomMouseEvents] = useState<readonly DomMouseEvent[]>([]);
   const [domPointerModifiers, setDomPointerModifiers] = useState<
     readonly { readonly ctrlKey: boolean; readonly metaKey: boolean }[]
   >([]);
@@ -152,8 +166,35 @@ function InteractionScenario() {
     document.addEventListener('pointerdown', onPointerDown, true);
     return () => document.removeEventListener('pointerdown', onPointerDown, true);
   }, []);
+  useEffect(() => {
+    const recordMouseEvent = (event: MouseEvent, type: DomMouseEvent['type']) => {
+      setDomMouseEvents((current) => [
+        ...current,
+        {
+          button: event.button,
+          buttons: event.buttons,
+          clientX: event.clientX,
+          clientY: event.clientY,
+          ctrlKey: event.ctrlKey,
+          metaKey: event.metaKey,
+          target: describeEventTarget(event.target),
+          type,
+          which: event.which,
+        },
+      ]);
+    };
+    const onMouseDown = (event: MouseEvent) => recordMouseEvent(event, 'mousedown');
+    const onMouseUp = (event: MouseEvent) => recordMouseEvent(event, 'mouseup');
+    document.addEventListener('mousedown', onMouseDown, true);
+    document.addEventListener('mouseup', onMouseUp, true);
+    return () => {
+      document.removeEventListener('mousedown', onMouseDown, true);
+      document.removeEventListener('mouseup', onMouseUp, true);
+    };
+  }, []);
   interactionScenarioAction = {
     read: () => ({
+      domMouseEvents,
       domPointerModifiers,
       events,
       layoutCompletions,
@@ -212,6 +253,14 @@ function InteractionScenario() {
       />
     </div>
   );
+}
+
+/*** Serialize the browser target at the GraphView input boundary for failure diagnostics. */
+function describeEventTarget(target: EventTarget | null): string {
+  if (!(target instanceof Element)) return String(target);
+  return target instanceof HTMLElement
+    ? `${target.tagName.toLowerCase()}.${target.className}`
+    : target.tagName.toLowerCase();
 }
 
 /*** Exercise 0 → 1 → 5 nodes before the first compound ELK layout settles. */
