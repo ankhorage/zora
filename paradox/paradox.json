@@ -17,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.3.6",
+      "value": "v27.3.7",
       "color": "cb3837"
     },
     {
@@ -1579,7 +1579,8 @@
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/theme/composition/useZoraTheme.ts",
         "src/features/typography/public.ts",
-        "src/types/content-rail.ts"
+        "src/types/content-rail.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "ContentRail"
@@ -2251,7 +2252,8 @@
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/theme/composition/useZoraThemeRecipe.ts",
         "src/features/typography/public.ts",
-        "src/types/radio.ts"
+        "src/types/radio.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "RadioGroup"
@@ -2265,7 +2267,8 @@
         "src/features/form/radio/utils/resolveRadioOptionColors.ts",
         "src/features/icon/public.ts",
         "src/features/typography/public.ts",
-        "src/types/radio.ts"
+        "src/types/radio.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "RadioOptionControl"
@@ -2321,8 +2324,7 @@
         "src/features/form/radio/constants.ts"
       ],
       "exports": [
-        "handleRadioOptionKeyDown",
-        "RadioOptionKeyboardTarget"
+        "handleRadioOptionKeyDown"
       ]
     },
     {
@@ -2621,7 +2623,8 @@
         "src/features/game/utils/useGameEntityAnimatedStyle.ts",
         "src/features/game/utils/useGameEntityMeasurement.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
-        "src/types/gamePresentation.ts"
+        "src/types/gamePresentation.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "GameEntity"
@@ -2837,7 +2840,8 @@
       "path": "src/features/game/utils/measureGameEntity.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/types/gameRuntime.ts"
+        "src/types/gameRuntime.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "measureGameEntity"
@@ -2893,7 +2897,8 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/game/composition/GameRuntimeContext.ts",
-        "src/features/game/utils/measureGameEntity.ts"
+        "src/features/game/utils/measureGameEntity.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "useGameEntityMeasurement"
@@ -3292,7 +3297,8 @@
         "src/features/grid-interactions/adapters/inbound/resolveGridInteractionPointer.ts",
         "src/features/grid-interactions/adapters/inbound/useGridInteractionScrollLock.ts",
         "src/features/grid-interactions/application/createGridInteractionsController.ts",
-        "src/types/grid-interactions.ts"
+        "src/types/grid-interactions.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "GridInteractions"
@@ -3490,7 +3496,8 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/grid-view/application/createGridScrollSync.ts",
-        "src/types/grid-view.ts"
+        "src/types/grid-view.ts",
+        "src/types/react-native.ts"
       ],
       "exports": [
         "GridView"
@@ -8540,6 +8547,14 @@
       ],
       "exports": [
         "RatingProps"
+      ]
+    },
+    {
+      "path": "src/types/react-native.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ReactNativeComponentInstance"
       ]
     },
     {
@@ -15875,7 +15890,7 @@
       "modulePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 30,
+        "line": 31,
         "column": 14
       },
       "exportPaths": [
@@ -19561,7 +19576,7 @@
       "modulePath": "src/features/game/adapters/inbound/GameEntity.tsx",
       "sourceLocation": {
         "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-        "line": 10,
+        "line": 12,
         "column": 14
       },
       "exportPaths": [
@@ -21468,7 +21483,7 @@
       "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 15,
+        "line": 16,
         "column": 1
       },
       "exportPaths": [
@@ -22570,7 +22585,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 38,
+        "line": 39,
         "column": 1
       },
       "exportPaths": [
@@ -29164,7 +29179,7 @@
       "modulePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 15,
+        "line": 17,
         "column": 14
       },
       "exportPaths": [
@@ -49548,7 +49563,7 @@
       "modulePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 30,
+        "line": 31,
         "column": 14
       },
       "exportPaths": [
@@ -51522,7 +51537,7 @@
       "modulePath": "src/features/game/adapters/inbound/GameEntity.tsx",
       "sourceLocation": {
         "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-        "line": 10,
+        "line": 12,
         "column": 14
       },
       "exportPaths": [
@@ -52614,7 +52629,7 @@
       "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 15,
+        "line": 16,
         "column": 1
       },
       "exportPaths": [
@@ -52896,7 +52911,7 @@
       "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 38,
+        "line": 39,
         "column": 1
       },
       "exportPaths": [
@@ -56955,7 +56970,7 @@
       "modulePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 15,
+        "line": 17,
         "column": 14
       },
       "exportPaths": [
@@ -66094,7 +66109,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 33,
+        "line": 34,
         "column": 1
       }
     },
@@ -66105,7 +66120,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 42,
+        "line": 43,
         "column": 1
       }
     },
@@ -66116,7 +66131,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 147,
+        "line": 148,
         "column": 9
       }
     },
@@ -66127,7 +66142,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 166,
+        "line": 167,
         "column": 9
       }
     },
@@ -66138,7 +66153,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-        "line": 251,
+        "line": 252,
         "column": 1
       }
     },
@@ -66919,7 +66934,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 18,
+        "line": 20,
         "column": 1
       }
     },
@@ -66930,7 +66945,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 24,
+        "line": 29,
+        "column": 9
+      }
+    },
+    {
+      "name": "onNavigateCardOption",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
+        "line": 33,
+        "column": 9
+      }
+    },
+    {
+      "name": "onCardOptionRef",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
+        "line": 45,
         "column": 9
       }
     },
@@ -66941,7 +66978,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 58,
+        "line": 88,
         "column": 1
       }
     },
@@ -66952,7 +66989,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 75,
+        "line": 105,
         "column": 1
       }
     },
@@ -66963,7 +67000,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-        "line": 85,
+        "line": 121,
         "column": 9
       }
     },
@@ -66974,7 +67011,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
-        "line": 15,
+        "line": 13,
         "column": 1
       }
     },
@@ -66985,7 +67022,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
-        "line": 57,
+        "line": 70,
         "column": 1
       }
     },
@@ -66996,7 +67033,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
-        "line": 105,
+        "line": 126,
         "column": 1
       }
     },
@@ -67007,18 +67044,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
-        "line": 145,
+        "line": 166,
         "column": 1
       }
     },
     {
       "name": "handleRadioOptionKeyDown",
-      "description": "Support Space and directional navigation for web radio options without affecting native presses.",
+      "description": "Select a focused radio option through the React Native keyboard event contract.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts",
-        "line": 6,
+        "line": 4,
         "column": 1
       }
     },
@@ -67304,7 +67341,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-        "line": 13,
+        "line": 15,
         "column": 1
       }
     },
@@ -67315,7 +67352,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-        "line": 34,
+        "line": 36,
         "column": 1
       }
     },
@@ -67359,7 +67396,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/game/adapters/inbound/GameInputZone.tsx",
-        "line": 88,
+        "line": 101,
         "column": 1
       }
     },
@@ -67590,7 +67627,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/game/utils/measureGameEntity.ts",
-        "line": 6,
+        "line": 7,
         "column": 1
       }
     },
@@ -67689,7 +67726,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/game/utils/useGameEntityMeasurement.ts",
-        "line": 8,
+        "line": 9,
         "column": 1
       }
     },
@@ -69119,7 +69156,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 15,
+        "line": 16,
         "column": 1
       }
     },
@@ -69130,7 +69167,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-        "line": 45,
+        "line": 46,
         "column": 9
       }
     },
@@ -69405,7 +69442,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 38,
+        "line": 39,
         "column": 1
       }
     },
@@ -69416,7 +69453,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 111,
+        "line": 114,
         "column": 9
       }
     },
@@ -69427,7 +69464,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 113,
+        "line": 116,
         "column": 9
       }
     },
@@ -69438,7 +69475,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 159,
+        "line": 162,
         "column": 9
       }
     },
@@ -69449,7 +69486,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 283,
+        "line": 286,
         "column": 9
       }
     },
@@ -69460,7 +69497,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 447,
+        "line": 450,
         "column": 1
       }
     },
@@ -69471,7 +69508,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 464,
+        "line": 467,
         "column": 1
       }
     },
@@ -69482,7 +69519,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 472,
+        "line": 475,
         "column": 1
       }
     },
@@ -69493,7 +69530,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 519,
+        "line": 522,
         "column": 1
       }
     },
@@ -69504,7 +69541,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 535,
+        "line": 538,
         "column": 1
       }
     },
@@ -69515,7 +69552,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 547,
+        "line": 550,
         "column": 1
       }
     },
@@ -69526,7 +69563,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 570,
+        "line": 573,
         "column": 1
       }
     },
@@ -70010,7 +70047,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/list/adapters/inbound/useListVisibility.ts",
-        "line": 7,
+        "line": 11,
         "column": 1
       }
     },
@@ -70693,6 +70730,17 @@
       "sourceLocation": {
         "filePath": "src/features/reader/composition/useReaderController.ts",
         "line": 106,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveReaderAssetUri",
+      "description": "Extract the URI from either supported React Native asset-source result shape.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/reader/composition/useReaderController.ts",
+        "line": 115,
         "column": 1
       }
     },
@@ -77418,6 +77466,11 @@
         "sourcePath": "src/features/game/utils/measureGameEntity.ts"
       },
       {
+        "fromPath": "src/features/game/utils/measureGameEntity.ts",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/game/utils/measureGameEntity.ts"
+      },
+      {
         "fromPath": "src/features/game/utils/resolveGameEntityMotionPlan.ts",
         "toPath": "src/types/gamePresentation.ts",
         "sourcePath": "src/features/game/utils/resolveGameEntityMotionPlan.ts"
@@ -77456,6 +77509,11 @@
         "fromPath": "src/features/game/utils/useGameEntityAnimatedStyle.ts",
         "toPath": "src/features/game/utils/useGameReducedMotion.ts",
         "sourcePath": "src/features/game/utils/useGameEntityAnimatedStyle.ts"
+      },
+      {
+        "fromPath": "src/features/game/utils/useGameEntityMeasurement.ts",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/game/utils/useGameEntityMeasurement.ts"
       },
       {
         "fromPath": "src/features/game/utils/useGameEntityMeasurement.ts",
@@ -78849,6 +78907,11 @@
       },
       {
         "fromPath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx"
+      },
+      {
+        "fromPath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
         "toPath": "src/features/button/public.ts",
         "sourcePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx"
       },
@@ -79344,6 +79407,11 @@
       },
       {
         "fromPath": "src/features/game/adapters/inbound/GameEntity.tsx",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/game/adapters/inbound/GameEntity.tsx"
+      },
+      {
+        "fromPath": "src/features/game/adapters/inbound/GameEntity.tsx",
         "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "sourcePath": "src/features/game/adapters/inbound/GameEntity.tsx"
       },
@@ -79484,6 +79552,11 @@
       },
       {
         "fromPath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
+      },
+      {
+        "fromPath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
         "toPath": "src/features/grid-interactions/application/createGridInteractionsController.ts",
         "sourcePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx"
       },
@@ -79600,6 +79673,11 @@
       {
         "fromPath": "src/features/grid-view/adapters/inbound/GridView.tsx",
         "toPath": "src/types/grid-view.ts",
+        "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
+      },
+      {
+        "fromPath": "src/features/grid-view/adapters/inbound/GridView.tsx",
+        "toPath": "src/types/react-native.ts",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
@@ -81399,6 +81477,11 @@
       },
       {
         "fromPath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
+        "toPath": "src/types/react-native.ts",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
+      },
+      {
+        "fromPath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
       },
@@ -81435,6 +81518,11 @@
       {
         "fromPath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
         "toPath": "src/types/radio.ts",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
+      },
+      {
+        "fromPath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
+        "toPath": "src/types/react-native.ts",
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
       },
       {
@@ -83092,6 +83180,12 @@
         "fromSymbol": "goPrevious",
         "toSymbol": "navigate",
         "callExpression": "navigate",
+        "sourcePath": "src/features/reader/composition/useReaderController.ts"
+      },
+      {
+        "fromSymbol": "resolveReaderSourceUri",
+        "toSymbol": "resolveReaderAssetUri",
+        "callExpression": "resolveReaderAssetUri",
         "sourcePath": "src/features/reader/composition/useReaderController.ts"
       },
       {
@@ -85094,38 +85188,20 @@
       },
       {
         "fromSymbol": "handleRadioOptionKeyDown",
+        "toSymbol": "preventDefault",
+        "callExpression": "preventDefault",
+        "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
+      },
+      {
+        "fromSymbol": "handleRadioOptionKeyDown",
         "toSymbol": "select",
         "callExpression": "select",
         "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
       },
       {
         "fromSymbol": "handleRadioOptionKeyDown",
-        "toSymbol": "closest",
-        "callExpression": "event.currentTarget.closest",
-        "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
-      },
-      {
-        "fromSymbol": "handleRadioOptionKeyDown",
-        "toSymbol": "querySelectorAll",
-        "callExpression": "group?.querySelectorAll",
-        "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
-      },
-      {
-        "fromSymbol": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts",
-        "toSymbol": "getAttribute",
-        "callExpression": "option.getAttribute",
-        "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
-      },
-      {
-        "fromSymbol": "handleRadioOptionKeyDown",
-        "toSymbol": "focus",
-        "callExpression": "next?.focus",
-        "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
-      },
-      {
-        "fromSymbol": "handleRadioOptionKeyDown",
-        "toSymbol": "click",
-        "callExpression": "next?.click",
+        "toSymbol": "navigate",
+        "callExpression": "navigate",
         "sourcePath": "src/features/form/radio/utils/handleRadioOptionKeyDown.ts"
       },
       {
@@ -85246,6 +85322,18 @@
         "fromSymbol": "GameInputZoneInner",
         "toSymbol": "createInputZoneStyle",
         "callExpression": "createInputZoneStyle",
+        "sourcePath": "src/features/game/adapters/inbound/GameInputZone.tsx"
+      },
+      {
+        "fromSymbol": "onKeyDown",
+        "toSymbol": "dispatchKeyboard",
+        "callExpression": "dispatchKeyboard",
+        "sourcePath": "src/features/game/adapters/inbound/GameInputZone.tsx"
+      },
+      {
+        "fromSymbol": "preventDefault",
+        "toSymbol": "preventDefault",
+        "callExpression": "event.preventDefault",
         "sourcePath": "src/features/game/adapters/inbound/GameInputZone.tsx"
       },
       {
@@ -87781,6 +87869,12 @@
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
       },
       {
+        "fromSymbol": "onNavigateCardOption",
+        "toSymbol": "onValueChange",
+        "callExpression": "onValueChange",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
+      },
+      {
         "fromSymbol": "RadioGroupInner",
         "toSymbol": "useZoraThemeRecipe",
         "callExpression": "useZoraThemeRecipe",
@@ -87799,6 +87893,18 @@
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
       },
       {
+        "fromSymbol": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
+        "toSymbol": "onNavigate",
+        "callExpression": "onNavigate",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
+        "toSymbol": "onOptionRef",
+        "callExpression": "onOptionRef",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx"
+      },
+      {
         "fromSymbol": "RadioOptionControl",
         "toSymbol": "useTheme",
         "callExpression": "useTheme",
@@ -87814,6 +87920,12 @@
         "fromSymbol": "onKeyDown",
         "toSymbol": "handleRadioOptionKeyDown",
         "callExpression": "handleRadioOptionKeyDown",
+        "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
+      },
+      {
+        "fromSymbol": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx",
+        "toSymbol": "preventDefault",
+        "callExpression": "event.preventDefault",
         "sourcePath": "src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"
       },
       {

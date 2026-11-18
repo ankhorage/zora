@@ -6952,7 +6952,7 @@
     "modulePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
     "sourceLocation": {
       "filePath": "src/features/content-rail/adapters/inbound/ContentRail.tsx",
-      "line": 30,
+      "line": 31,
       "column": 14
     },
     "exportPaths": [
@@ -10638,7 +10638,7 @@
     "modulePath": "src/features/game/adapters/inbound/GameEntity.tsx",
     "sourceLocation": {
       "filePath": "src/features/game/adapters/inbound/GameEntity.tsx",
-      "line": 10,
+      "line": 12,
       "column": 14
     },
     "exportPaths": [
@@ -12545,7 +12545,7 @@
     "modulePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
     "sourceLocation": {
       "filePath": "src/features/grid-interactions/adapters/inbound/GridInteractions.tsx",
-      "line": 15,
+      "line": 16,
       "column": 1
     },
     "exportPaths": [
@@ -13647,7 +13647,7 @@
     "modulePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
     "sourceLocation": {
       "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-      "line": 38,
+      "line": 39,
       "column": 1
     },
     "exportPaths": [
@@ -20241,7 +20241,7 @@
     "modulePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
     "sourceLocation": {
       "filePath": "src/features/form/radio/adapters/inbound/RadioGroup.tsx",
-      "line": 15,
+      "line": 17,
       "column": 14
     },
     "exportPaths": [

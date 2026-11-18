@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.7
+
+### Patch Changes
+
+- 251c24b: Correct native component-ref type contracts while retaining the supported Expo 57 peer contract.
+
 ## 27.3.6
 
 ### Patch Changes
