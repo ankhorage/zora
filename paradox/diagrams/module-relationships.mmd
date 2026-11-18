@@ -11,6 +11,7 @@ graph LR
   module_src_features_accordion_public_ts["src/features/accordion/public.ts"]
   module_src_features_activity_indicator_activityIndicatorMeta_ts["src/features/activity-indicator/activityIndicatorMeta.ts"]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"]
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"]
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
   module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
   module_src_features_app_bar_appBarMeta_ts["src/features/app-bar/appBarMeta.ts"]
@@ -620,6 +621,8 @@ graph LR
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_button_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_layout_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_popover_menu_public_ts

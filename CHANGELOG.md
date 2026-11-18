@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.3
+
+### Patch Changes
+
+- 5aca94e: Render the published web ActivityIndicator with deterministic server-side dimensions and semantic theme colors before hydration.
+
 ## 27.3.2
 
 ### Patch Changes

@@ -17,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.3.2",
+      "value": "v27.3.3",
       "color": "cb3837"
     },
     {
@@ -381,6 +381,18 @@
       ],
       "exports": [
         "ActivityIndicator"
+      ]
+    },
+    {
+      "path": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts"
+      ],
+      "exports": [
+        "ActivityIndicator",
+        "ActivityIndicatorProps"
       ]
     },
     {
@@ -64613,6 +64625,17 @@
       }
     },
     {
+      "name": "ActivityIndicatorInner",
+      "description": "Render the indicator inside its resolved ZORA theme scope.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
       "name": "AppBarInner",
       "description": "Composes the opinionated ZORA AppBar over the Surface layout primitive.",
       "see": [],
@@ -81300,6 +81323,16 @@
         "sourcePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts"
       },
       {
+        "fromPath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx",
+        "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"
+      },
+      {
+        "fromPath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"
+      },
+      {
         "fromPath": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx",
         "toPath": "src/types/checkbox.ts",
         "sourcePath": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx"
@@ -87686,6 +87719,18 @@
         "toSymbol": "matchesAcceptToken",
         "callExpression": "matchesAcceptToken",
         "sourcePath": "src/features/uploader/application/use-cases/validateUploadAsset.ts"
+      },
+      {
+        "fromSymbol": "ActivityIndicatorInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"
+      },
+      {
+        "fromSymbol": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"
       },
       {
         "fromSymbol": "src/features/form/checkbox/adapters/inbound/Checkbox.tsx",
