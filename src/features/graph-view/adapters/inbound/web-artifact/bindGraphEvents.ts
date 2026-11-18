@@ -14,7 +14,7 @@ export function bindGraphEvents(
   callbacksRef: { current: GraphViewCallbacks },
   controller: GraphViewController,
   onRuntimeChange: () => void,
-  readLatestPointerDown: () => unknown,
+  readLatestPointerDown: () => unknown = () => null,
 ) {
   const nodeHandlers = bindElementEvents(
     cy,
