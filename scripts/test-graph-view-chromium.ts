@@ -440,6 +440,7 @@ class ChromeSession {
       x,
       y,
       button: 'left',
+      buttons: 1,
       clickCount,
       modifiers: modifierMask,
     });
@@ -448,6 +449,7 @@ class ChromeSession {
       x,
       y,
       button: 'left',
+      buttons: 0,
       clickCount,
       modifiers: modifierMask,
     });
