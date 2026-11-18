@@ -66,6 +66,41 @@ test('connects only an enabled output to an input on a different node', () => {
   expect(connections).toEqual([{ source: 'out', target: 'in' }]);
 });
 
+test('rejects an output and input whose published Contracts schema types do not overlap', () => {
+  const controller = createFlowEditorController(
+    createProps({
+      nodes: [
+        {
+          ...nodes[0]!,
+          ports: [
+            {
+              data: { schema: { type: 'string' } },
+              direction: 'output',
+              id: 'out',
+              label: 'Text output',
+            },
+          ],
+        },
+        {
+          ...nodes[1]!,
+          ports: [
+            {
+              data: { schema: { type: 'number' } },
+              direction: 'input',
+              id: 'in',
+              label: 'Number input',
+            },
+          ],
+        },
+      ],
+    }),
+  );
+
+  expect(
+    controller.connect({ nodeId: 'source', portId: 'out' }, { nodeId: 'target', portId: 'in' }),
+  ).toBe('connection_types_incompatible');
+});
+
 test('suppresses mutation intents in read-only mode', () => {
   const deleted: string[][] = [];
   const moved: (readonly FlowNodeData[])[] = [];

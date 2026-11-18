@@ -1,5 +1,7 @@
 import type React from 'react';
 
+import type { FlowPortDescriptor } from '@ankhorage/contracts/flow';
+
 import type { ZoraBaseProps } from './base';
 
 /** A position in the caller-owned flow coordinate space. */
@@ -13,8 +15,17 @@ export interface FlowPort {
   readonly id: string;
   readonly direction: 'input' | 'output';
   readonly label: string;
+  /** The portable Contracts schema used to validate a prospective connection. */
+  readonly data?: FlowPortDescriptor['data'];
   readonly disabled?: boolean;
 }
+
+/** Explains why the controlled canvas refused a connection request. */
+export type FlowConnectionRejection =
+  | 'connection_requires_distinct_nodes'
+  | 'connection_requires_output_to_input'
+  | 'connection_targets_disabled_port'
+  | 'connection_types_incompatible';
 
 /** A caller-owned node rendered on the flow canvas. */
 export interface FlowNodeData {
@@ -76,6 +87,11 @@ export interface FlowCanvasProps extends ZoraBaseProps {
   readonly onNodesMove?: (nodes: readonly FlowNodeData[]) => void;
   readonly onViewportChange?: (viewport: FlowViewport) => void;
   readonly onConnect?: (source: FlowPortAddress, target: FlowPortAddress) => void;
+  readonly onConnectionRejected?: (
+    source: FlowPortAddress,
+    target: FlowPortAddress,
+    reason: FlowConnectionRejection,
+  ) => void;
   readonly onDisconnect?: (connectionId: string) => void;
   readonly onInsert?: (paletteItemId: string) => void;
   readonly onNodesDelete?: (nodeIds: readonly string[]) => void;
