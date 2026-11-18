@@ -334,6 +334,7 @@ function writeFlowUiConsumerAcceptance(consumerRoot: string): void {
     `import React from 'react';
 import { FlowExecutionOverlay } from '@ankhorage/zora/web/flow-execution-overlay';
 import { FlowInspector } from '@ankhorage/zora/web/flow-inspector';
+import { FlowNodePalette } from '@ankhorage/zora/web/flow-node-palette';
 import { ZoraProvider } from '@ankhorage/zora/web/runtime';
 
 const rawError = { code: 'constructor', message: 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', retryable: true };
@@ -341,7 +342,8 @@ const rawStepError = { code: '__proto__', message: 'Bearer SENTINEL_SECRET_STEP_
 const rawTrace = { timestamp: '2026-11-18T00:00:00.000Z', level: 'error', message: 'Bearer SENTINEL_SECRET_TRACE_MESSAGE' };
 const rawStep = { id: 'step-1', nodeId: 'node-1', status: 'failed', attempt: 1, error: rawStepError, trace: [rawTrace] };
 export function App() {
-  return <ZoraProvider><FlowExecutionOverlay error={rawError} status="failed" steps={[rawStep]} trace={[rawTrace]} /><FlowInspector node={{ id: 'node-1', kind: 'capability', capability: { capabilityId: 'send', providerId: 'example' } }} step={rawStep} /></ZoraProvider>;
+  const [focusedItemId, setFocusedItemId] = React.useState('first');
+  return <ZoraProvider><FlowExecutionOverlay error={rawError} status="failed" steps={[rawStep]} trace={[rawTrace]} /><FlowInspector node={{ id: 'node-1', kind: 'capability', capability: { capabilityId: 'send', providerId: 'example' } }} step={rawStep} /><FlowNodePalette focusedItemId={focusedItemId} items={[{ id: 'first', title: 'First node' }, { id: 'second', title: 'Second node' }]} onFocusChange={(itemId) => setFocusedItemId(itemId ?? '')} testID="flow-ui-palette" /><span data-testid="flow-ui-focused-item">{focusedItemId}</span></ZoraProvider>;
 }
 `,
   );
@@ -381,6 +383,13 @@ try {
     assert.equal(browser.document.body.textContent?.includes(sentinel), false, 'RNW text exposed an untrusted Flow value.');
     assert.equal([...browser.document.querySelectorAll('[aria-label]')].some((node) => node.getAttribute('aria-label')?.includes(sentinel)), false, 'RNW accessibility labels exposed an untrusted Flow value.');
   }
+  const firstPaletteItem = browser.document.querySelector('[data-testid="flow-ui-palette-first"]');
+  assert.notEqual(firstPaletteItem, null);
+  await React.act(async () => {
+    firstPaletteItem.dispatchEvent(new browser.KeyboardEvent('keydown', { bubbles: true, key: 'ArrowDown' }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.equal(browser.document.querySelector('[data-testid="flow-ui-focused-item"]')?.textContent, 'second');
   root.unmount();
 } finally { await vite.close(); }
 console.log('Packed ZORA RNW Flow UI consumer redaction boundary passed.');
