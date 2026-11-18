@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.3.1
+
+### Patch Changes
+
+- facab24: Update dependencies: `@ankhorage/runtime`.
+
 ## 27.3.0
 
 ### Minor Changes
