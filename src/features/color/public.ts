@@ -1,7 +1,9 @@
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
+  ColorPickerSelection,
   ColorPickerTab,
+  ColorPickerValue,
   ColorToneDefinition,
   ColorToneProps,
   ColorToneSelection,

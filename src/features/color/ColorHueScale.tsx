@@ -6,10 +6,10 @@ import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
 import { Text } from '../typography/public';
 
-/*** Selects a base color from the canonical color-theory 50-to-950 swatch. */
+/*** Edits the 500 base color and previews its canonical 50-to-950 swatch. */
 export const ColorHueScale = withZoraThemeScope(ColorHueScaleInner);
 
-/*** Maps the generated ramp to accessible swatch controls and returns only the chosen base color. */
+/*** Maps generated previews to an explicitly editable 500 base without misreporting preview selection. */
 function ColorHueScaleInner({
   themeId: _themeId,
   mode: _mode,
@@ -24,8 +24,7 @@ function ColorHueScaleInner({
 
   return (
     <View
-      accessibilityLabel="Color shade selection"
-      accessibilityRole="radiogroup"
+      accessibilityLabel="Color scale previews; choose a preview as the next 500 base color"
       direction="row"
       gap="xs"
       testID={testID}
@@ -34,9 +33,11 @@ function ColorHueScaleInner({
       {swatches.map(([step, color]) => (
         <Pressable
           key={step}
-          accessibilityLabel={`Color ${step}`}
-          accessibilityRole="radio"
-          accessibilityState={{ checked: Number(step) === 500 }}
+          accessibilityLabel={
+            Number(step) === 500
+              ? `Current editable base color 500: ${color}`
+              : `Use generated ${step} preview ${color} as the next base color 500`
+          }
           bg={color}
           borderColor="border"
           borderWidth={Number(step) === 500 ? 3 : 1}

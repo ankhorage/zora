@@ -30,6 +30,20 @@ export interface ColorToneSelection {
   readonly colors: readonly HexColor[];
 }
 
+/** The persistent, controlled state for every independently selectable picker mode. */
+export interface ColorPickerValue {
+  readonly tab: ColorPickerTab;
+  readonly wheel: ColorWheelSelection;
+  readonly tone: ColorToneSelection | null;
+  readonly hue: HexColor;
+}
+
+/** A single mode-specific update emitted by the composed picker. */
+export type ColorPickerSelection =
+  | { readonly mode: 'wheel'; readonly value: ColorWheelSelection }
+  | { readonly mode: 'tone'; readonly value: ColorToneSelection }
+  | { readonly mode: 'hue'; readonly value: HexColor };
+
 export interface ColorWheelProps extends ZoraBaseProps {
   readonly value: HexColor;
   readonly harmony?: ColorHarmony | null;
@@ -39,9 +53,8 @@ export interface ColorWheelProps extends ZoraBaseProps {
 
 export interface ColorToneProps extends ZoraBaseProps {
   readonly tones: readonly ColorToneDefinition[];
-  readonly hue: number;
   readonly selectionMode?: 'single' | 'multiple';
-  readonly value: readonly string[];
+  readonly value: ColorToneSelection | null;
   readonly onChange: (selection: ColorToneSelection) => void;
 }
 
@@ -52,10 +65,11 @@ export interface ColorHueScaleProps extends ZoraBaseProps {
 
 export interface ColorPickerProps extends ZoraBaseProps {
   readonly tabs: readonly ColorPickerTab[];
-  readonly value: ColorPickerTab;
-  readonly onValueChange: (tab: ColorPickerTab) => void;
+  readonly value: ColorPickerValue;
+  readonly onValueChange: (value: ColorPickerValue) => void;
+  readonly onSelectionChange?: (selection: ColorPickerSelection) => void;
   readonly hideTabListWhenSingle?: boolean;
-  readonly wheel?: ColorWheelProps;
-  readonly tone?: ColorToneProps;
-  readonly hue?: ColorHueScaleProps;
+  readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value'>;
+  readonly tone?: Omit<ColorToneProps, 'onChange' | 'value'>;
+  readonly hue?: Omit<ColorHueScaleProps, 'onChange' | 'value'>;
 }

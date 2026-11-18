@@ -1,4 +1,3 @@
-import type {} from './types/color-theory-culori';
 
 export type {
   AuthoringBindingControlState,
@@ -19,7 +18,9 @@ export {
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
+  ColorPickerSelection,
   ColorPickerTab,
+  ColorPickerValue,
   ColorToneDefinition,
   ColorToneProps,
   ColorToneSelection,
