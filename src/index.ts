@@ -29,5 +29,17 @@ export type {
 } from './features/reader/public';
 export { Reader, resolveReaderProgress } from './features/reader/public';
 export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
+export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
+export type {
+  ColorHueScaleProps,
+  ColorPickerProps,
+  ColorPickerTab,
+  ColorToneDefinition,
+  ColorToneProps,
+  ColorToneSelection,
+  ColorToneTarget,
+  ColorWheelProps,
+  ColorWheelSelection,
+} from './features/color/public';
 export * from './readerFree';
 export type { ZoraComponentRegistry } from './types/registry';
