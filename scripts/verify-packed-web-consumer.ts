@@ -7,6 +7,7 @@ const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-web-consumer-'));
 const skipBuild = process.argv.includes('--skip-build');
 const authoring = process.argv.includes('--authoring');
+const flowUi = process.argv.includes('--flow-ui');
 
 /*** Run one consumer-boundary command and retain its output on failure. */
 function run(
@@ -40,7 +41,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
-          ...(authoring ? { 'react-native-web': '0.21.4', vite: '8.3.8' } : {}),
+          ...(authoring || flowUi ? { 'react-native-web': '0.21.4', vite: '8.3.8' } : {}),
         },
       },
       null,
@@ -49,9 +50,8 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
   );
 }
 
-/*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
-function writeAuthoringConsumerAcceptance(consumerRoot: string): void {
-  mkdirSync(join(consumerRoot, 'src'));
+/*** Write the React Native Web resolver configuration used by packed presentation consumers. */
+function writeRnwConsumerConfig(consumerRoot: string): void {
   writeFileSync(
     join(consumerRoot, 'vite.config.mjs'),
     `import { defineConfig } from 'vite';
@@ -69,6 +69,12 @@ export default defineConfig({
 });
 `,
   );
+}
+
+/*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
+function writeAuthoringConsumerAcceptance(consumerRoot: string): void {
+  mkdirSync(join(consumerRoot, 'src'));
+  writeRnwConsumerConfig(consumerRoot);
   writeFileSync(
     join(consumerRoot, 'index.html'),
     '<!doctype html><html><body><div id="root"></div><script type="module" src="/src/authoring.tsx"></script></body></html>\n',
@@ -309,7 +315,59 @@ try {
 } finally {
   await vite.close();
 }
+
 console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');
+`,
+  );
+}
+
+/*** Exercise Flow presentation with a packed React Native Web consumer and untrusted sentinel data. */
+function writeFlowUiConsumerAcceptance(consumerRoot: string): void {
+  mkdirSync(join(consumerRoot, 'src'));
+  writeRnwConsumerConfig(consumerRoot);
+  writeFileSync(
+    join(consumerRoot, 'src', 'flow-ui.tsx'),
+    `import React from 'react';
+import { FlowExecutionOverlay, FlowInspector, ZoraProvider } from '@ankhorage/zora';
+
+const rawError = { code: 'Bearer SENTINEL_SECRET_ERROR_CODE', message: 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', retryable: true };
+const rawStepError = { code: 'Bearer SENTINEL_SECRET_STEP_ERROR', message: 'Bearer SENTINEL_SECRET_STEP_ERROR', retryable: true };
+const rawTrace = { timestamp: '2026-11-18T00:00:00.000Z', level: 'error', message: 'Bearer SENTINEL_SECRET_TRACE_MESSAGE' };
+const rawStep = { id: 'step-1', nodeId: 'node-1', status: 'failed', attempt: 1, error: rawStepError, trace: [rawTrace] };
+export function App() {
+  return <ZoraProvider><FlowExecutionOverlay error={rawError} status="failed" steps={[rawStep]} trace={[rawTrace]} /><FlowInspector node={{ id: 'node-1', kind: 'capability', capability: { capabilityId: 'send', providerId: 'example' } }} step={rawStep} /></ZoraProvider>;
+}
+`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'acceptance.mjs'),
+    `import assert from 'node:assert/strict';
+import { Window } from 'happy-dom';
+import React from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { renderToString } from 'react-dom/server';
+import { createServer } from 'vite';
+
+const sentinels = ['Bearer SENTINEL_SECRET_ERROR_CODE', 'Bearer SENTINEL_SECRET_ERROR_MESSAGE', 'Bearer SENTINEL_SECRET_STEP_ERROR', 'Bearer SENTINEL_SECRET_TRACE_MESSAGE'];
+const browser = new Window();
+Object.assign(globalThis, { window: browser, document: browser.document, navigator: browser.navigator, HTMLElement: browser.HTMLElement, Node: browser.Node, Element: browser.Element, MutationObserver: browser.MutationObserver, getComputedStyle: browser.getComputedStyle.bind(browser), requestAnimationFrame: browser.requestAnimationFrame.bind(browser), cancelAnimationFrame: browser.cancelAnimationFrame.bind(browser), IS_REACT_ACT_ENVIRONMENT: true });
+const vite = await createServer({ configFile: 'vite.config.mjs', server: { middlewareMode: true } });
+try {
+  const { App } = await vite.ssrLoadModule('/src/flow-ui.tsx');
+  const app = React.createElement(App);
+  const markup = renderToString(app);
+  for (const sentinel of sentinels) assert.equal(markup.includes(sentinel), false, 'SSR exposed an untrusted Flow value.');
+  assert.match(markup, /FLOW_EXECUTION_FAILED/);
+  browser.document.body.innerHTML = '<div id="root">' + markup + '</div>';
+  let root;
+  await React.act(async () => { root = hydrateRoot(browser.document.getElementById('root'), app); await new Promise((resolve) => setTimeout(resolve, 20)); });
+  for (const sentinel of sentinels) {
+    assert.equal(browser.document.body.textContent?.includes(sentinel), false, 'RNW text exposed an untrusted Flow value.');
+    assert.equal([...browser.document.querySelectorAll('[aria-label]')].some((node) => node.getAttribute('aria-label')?.includes(sentinel)), false, 'RNW accessibility labels exposed an untrusted Flow value.');
+  }
+  root.unmount();
+} finally { await vite.close(); }
+console.log('Packed ZORA RNW Flow UI consumer redaction boundary passed.');
 `,
   );
 }
@@ -436,15 +494,20 @@ try {
   mkdirSync(consumerRoot);
   writeConsumerPackage(consumerRoot, join(packageDirectory, tarball));
   if (authoring) writeAuthoringConsumerAcceptance(consumerRoot);
+  else if (flowUi) writeFlowUiConsumerAcceptance(consumerRoot);
   else writeWebConsumerAcceptance(consumerRoot);
   run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
-  if (authoring) {
+  if (authoring || flowUi) {
     run(['bunx', 'vite', 'build'], consumerRoot);
-    console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');
+    console.log(
+      authoring
+        ? 'Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.'
+        : 'Packed ZORA RNW Flow UI consumer redaction boundary passed.',
+    );
   } else {
     console.log('Packed ZORA web consumer SSR, hydration, and Select interaction passed.');
   }

@@ -1,8 +1,9 @@
-import type { FlowExecutionStatus, FlowStepSnapshot } from '@ankhorage/contracts/flow';
+import type { FlowExecutionStatus } from '@ankhorage/contracts/flow';
 import React from 'react';
 import { Pressable } from 'react-native';
 
-import type { FlowExecutionOverlayProps } from '../../../../types/flow-ui';
+import type { FlowExecutionOverlayProps, FlowExecutionStep } from '../../../../types/flow-ui';
+import { flowPublicDiagnostic } from '../../../../utils/flowPublicDiagnostic';
 import { Badge } from '../../../badge/public';
 import { Card } from '../../../card/public';
 import { View } from '../../../layout/public';
@@ -36,19 +37,19 @@ function FlowExecutionOverlayInner({
           <Progress max={progress.max} value={progress.value} />
         </View>
       ) : null}
-      {error ? <Text color="error">{`${error.code}: ${error.message}`}</Text> : null}
+      {error ? <FlowDiagnostic diagnostic={error} /> : null}
       {steps.map((step) => (
         <FlowStepRow key={step.id} onPress={onStepPress} step={step} />
       ))}
       {trace.map((event, index) => (
         <Pressable
-          accessibilityLabel={`${event.level}: ${event.message}`}
+          accessibilityLabel={`Trace ${event.level} at ${event.timestamp}`}
           accessibilityRole="button"
           key={`${event.timestamp}-${index}`}
           onPress={() => onTracePress?.(event)}
         >
           <Text emphasis="muted" variant="caption">
-            {`${event.timestamp} · ${event.level} · ${event.message}`}
+            {formatTrace(event)}
           </Text>
         </Pressable>
       ))}
@@ -56,12 +57,12 @@ function FlowExecutionOverlayInner({
   );
 }
 
-/** Renders one selectable step snapshot with its visible progress and error state. */
+/** Renders one selectable, presentation-safe step with its visible progress and diagnostic state. */
 function FlowStepRow({
   step,
   onPress,
 }: {
-  readonly step: FlowStepSnapshot;
+  readonly step: FlowExecutionStep;
   readonly onPress: FlowExecutionOverlayProps['onStepPress'];
 }) {
   const content = (
@@ -72,7 +73,7 @@ function FlowStepRow({
           <Badge color={statusTone(step.status)}>{formatStatus(step.status)}</Badge>
         </View>
         <Text emphasis="muted" variant="caption">{`Attempt ${step.attempt}`}</Text>
-        {step.error ? <Text color="error">{step.error.message}</Text> : null}
+        {step.diagnostic ? <FlowDiagnostic diagnostic={step.diagnostic} /> : null}
       </View>
     </Card>
   );
@@ -82,6 +83,21 @@ function FlowStepRow({
       {content}
     </Pressable>
   );
+}
+
+/** Renders a code and message selected by the public ZORA diagnostic allowlist. */
+function FlowDiagnostic({
+  diagnostic,
+}: {
+  readonly diagnostic: NonNullable<FlowExecutionOverlayProps['error']>;
+}) {
+  const publicDiagnostic = flowPublicDiagnostic(diagnostic);
+  return <Text color="error">{`${publicDiagnostic.code}: ${publicDiagnostic.message}`}</Text>;
+}
+
+/** Formats only trusted trace projection fields; raw FlowTraceEvent.message is never read. */
+function formatTrace(trace: NonNullable<FlowExecutionOverlayProps['trace']>[number]): string {
+  return [trace.timestamp, trace.level, trace.trustedMessage].filter(Boolean).join(' · ');
 }
 
 /** Translates portable execution states to stable, human-readable labels. */

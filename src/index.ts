@@ -35,11 +35,15 @@ export { ZORA_COMPONENT_REGISTRY } from './features/registry/public';
 export * from './readerFree';
 export type {
   FlowExecutionOverlayProps,
+  FlowExecutionStep,
   FlowInspectorDataSection,
   FlowInspectorField,
   FlowInspectorProps,
   FlowNodePaletteItem,
   FlowNodePaletteProps,
   FlowOutlineItem,
+  FlowPublicDiagnostic,
+  FlowPublicDiagnosticCode,
+  FlowTrustedTrace,
 } from './types/flow-ui';
 export type { ZoraComponentRegistry } from './types/registry';

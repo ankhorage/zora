@@ -1,11 +1,8 @@
 import type {
   FlowDataRef,
-  FlowError,
   FlowExecutionStatus,
   FlowNode,
   FlowNodeConfigValue,
-  FlowStepSnapshot,
-  FlowTraceEvent,
 } from '@ankhorage/contracts/flow';
 
 import type { ZoraBaseProps } from './base';
@@ -74,12 +71,41 @@ export interface FlowNodePaletteProps extends ZoraBaseProps {
   readonly onInsert?: (itemId: string) => void;
 }
 
+/** An allowlisted diagnostic code whose public message is owned by ZORA. */
+export type FlowPublicDiagnosticCode =
+  'FLOW_EXECUTION_FAILED' | 'FLOW_EXECUTION_TIMED_OUT' | 'FLOW_STEP_FAILED' | 'FLOW_STEP_TIMED_OUT';
+
+/** A host-projected diagnostic that never carries provider-controlled error text. */
+export interface FlowPublicDiagnostic {
+  readonly code: FlowPublicDiagnosticCode;
+  readonly retryable?: boolean;
+}
+
+/** A trace entry whose optional detail was explicitly projected and redacted by a trusted host. */
+export interface FlowTrustedTrace {
+  readonly timestamp: string;
+  readonly level: 'debug' | 'error' | 'info' | 'warn';
+  readonly trustedMessage?: string;
+}
+
+/** A presentation-safe step projection that deliberately excludes raw Flow errors and traces. */
+export interface FlowExecutionStep {
+  readonly id: string;
+  readonly nodeId: string;
+  readonly status: FlowExecutionStatus;
+  readonly attempt: number;
+  readonly diagnostic?: FlowPublicDiagnostic;
+  readonly inputPortIds?: readonly string[];
+  readonly outputPortIds?: readonly string[];
+  readonly trace?: readonly FlowTrustedTrace[];
+}
+
 /** Controlled properties for the inspector and mobile selected-node sheet. */
 export interface FlowInspectorProps extends ZoraBaseProps {
   readonly node: FlowNode | null;
   readonly fields?: readonly FlowInspectorField[];
   readonly values?: Readonly<Record<string, FlowNodeConfigValue | undefined>>;
-  readonly step?: FlowStepSnapshot;
+  readonly step?: FlowExecutionStep;
   readonly outline?: readonly FlowOutlineItem[];
   readonly selectedNodeId?: string;
   readonly disabled?: boolean;
@@ -90,16 +116,16 @@ export interface FlowInspectorProps extends ZoraBaseProps {
 /** Controlled execution-state presentation for a run or its individual steps. */
 export interface FlowExecutionOverlayProps extends ZoraBaseProps {
   readonly status: FlowExecutionStatus;
-  readonly steps: readonly FlowStepSnapshot[];
-  readonly error?: FlowError;
-  readonly trace?: readonly FlowTraceEvent[];
+  readonly steps: readonly FlowExecutionStep[];
+  readonly error?: FlowPublicDiagnostic;
+  readonly trace?: readonly FlowTrustedTrace[];
   readonly progress?: Readonly<{
     readonly value: number;
     readonly max?: number;
     readonly label?: string;
   }>;
-  readonly onStepPress?: (step: FlowStepSnapshot) => void;
-  readonly onTracePress?: (trace: FlowTraceEvent) => void;
+  readonly onStepPress?: (step: FlowExecutionStep) => void;
+  readonly onTracePress?: (trace: FlowTrustedTrace) => void;
 }
 
 /** A redaction-safe value shown in a trace or inspector input/output section. */

@@ -3,10 +3,12 @@ import React from 'react';
 import { Platform, Pressable } from 'react-native';
 
 import type {
+  FlowExecutionStep,
   FlowInspectorField,
   FlowInspectorProps,
   FlowOutlineItem,
 } from '../../../../types/flow-ui';
+import { flowPublicDiagnostic } from '../../../../utils/flowPublicDiagnostic';
 import { BottomSheet } from '../../../bottom-sheet/public';
 import { Card } from '../../../card/public';
 import { Field } from '../../../form/public';
@@ -197,37 +199,52 @@ function FlowInspectorFieldControl({
   );
 }
 
-/** Presents redaction-safe step input, output, error, and trace metadata without decoding secrets. */
+/** Presents host-projected step input, output, diagnostics, and trusted trace metadata. */
 function FlowStepDetails({ step }: { readonly step: NonNullable<FlowInspectorProps['step']> }) {
   return (
     <View gap="xs">
       <Heading level={4}>Execution</Heading>
       <Text>{`${step.status} · Attempt ${step.attempt}`}</Text>
-      {step.error ? <Text color="error">{`${step.error.code}: ${step.error.message}`}</Text> : null}
-      <FlowStepDataSection label="Input" values={step.input} />
-      <FlowStepDataSection label="Output" values={step.output} />
+      {step.diagnostic ? <FlowStepDiagnostic diagnostic={step.diagnostic} /> : null}
+      <FlowStepDataSection label="Input" portIds={step.inputPortIds} />
+      <FlowStepDataSection label="Output" portIds={step.outputPortIds} />
       {step.trace?.map((event, index) => (
         <Text key={`${event.timestamp}-${index}`} emphasis="muted" variant="caption">
-          {`${event.timestamp} · ${event.level} · ${event.message}`}
+          {formatTrustedTrace(event)}
         </Text>
       ))}
     </View>
   );
 }
 
+/** Renders a ZORA-owned public diagnostic instead of a raw FlowError. */
+function FlowStepDiagnostic({
+  diagnostic,
+}: {
+  readonly diagnostic: NonNullable<FlowExecutionStep['diagnostic']>;
+}) {
+  const publicDiagnostic = flowPublicDiagnostic(diagnostic);
+  return <Text color="error">{`${publicDiagnostic.code}: ${publicDiagnostic.message}`}</Text>;
+}
+
+/** Formats only a trace's explicit trusted projection and its useful metadata. */
+function formatTrustedTrace(trace: NonNullable<FlowExecutionStep['trace']>[number]): string {
+  return [trace.timestamp, trace.level, trace.trustedMessage].filter(Boolean).join(' · ');
+}
+
 /** Lists input or output port references while retaining opaque artifact and secret-safe boundaries. */
 function FlowStepDataSection({
   label,
-  values,
+  portIds,
 }: {
   readonly label: string;
-  readonly values: Readonly<Record<string, unknown>> | undefined;
+  readonly portIds: readonly string[] | undefined;
 }) {
-  if (!values || Object.keys(values).length === 0) return null;
+  if (!portIds || portIds.length === 0) return null;
   return (
     <View gap="xxs">
       <Text weight="semiBold">{label}</Text>
-      {Object.keys(values).map((portId) => (
+      {portIds.map((portId) => (
         <Text key={portId} emphasis="muted" variant="caption">
           {portId}
         </Text>
