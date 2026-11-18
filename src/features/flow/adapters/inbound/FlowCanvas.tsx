@@ -48,7 +48,8 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       if (port.direction === 'output') pendingSourceRef.current = address;
       return;
     }
-    controllerRef.current.connect(pendingSource, address);
+    const rejection = controllerRef.current.connect(pendingSource, address);
+    if (rejection) current.onConnectionRejected?.(pendingSource, address, rejection);
     pendingSourceRef.current = null;
   }, []);
   const setZoom = React.useCallback(
