@@ -4,6 +4,7 @@ import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
   ScrollView,
+  type ScrollViewInstance,
   type ViewStyle,
 } from 'react-native';
 
@@ -62,7 +63,7 @@ function ContentRailCarousel({
 }: ContentRailProps) {
   const { theme } = useZoraTheme();
   const items = React.Children.toArray(children);
-  const scrollViewRef = React.useRef<ScrollView>(null);
+  const scrollViewRef = React.useRef<ScrollViewInstance>(null);
   const lastRangeRef = React.useRef<ContentRailVisibleRangeChangeEvent | null>(null);
   const logicalOffsetRef = React.useRef(0);
   const rtlInitializedRef = React.useRef(false);

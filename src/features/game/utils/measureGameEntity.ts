@@ -1,10 +1,10 @@
-import type { View } from 'react-native';
+import type { ViewInstance } from 'react-native';
 
 import type { GameMeasurementBounds } from '../../../types/gameRuntime';
 
 /*** Measure one rendered React Native or React Native Web game entity in window coordinates. */
 export function measureGameEntity(
-  element: View | null,
+  element: ViewInstance | null,
 ): Promise<GameMeasurementBounds | undefined> {
   if (element === null) return Promise.resolve(undefined);
 
