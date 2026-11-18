@@ -73,8 +73,8 @@ async function testGraphViewChromiumAsync() {
     await browser.clickAsync(dependency.position.x, dependency.position.y, 1, { ctrlKey: true });
     const toggled = await browser.waitForInteractionStateAsync(
       (state) =>
-        state.events.filter((event) => event.id === 'dependency' && event.type === 'press').length ===
-          1 &&
+        state.events.filter((event) => event.id === 'dependency' && event.type === 'press')
+          .length === 1 &&
         state.selectedNodeIds.includes('src') &&
         state.selectedNodeIds.includes('dependency'),
     );
@@ -100,8 +100,8 @@ async function testGraphViewChromiumAsync() {
     await browser.clickAsync(dependency.position.x, dependency.position.y, 1, { metaKey: true });
     const metaToggled = await browser.waitForInteractionStateAsync(
       (state) =>
-        state.events.filter((event) => event.id === 'dependency' && event.type === 'press').length ===
-          2 &&
+        state.events.filter((event) => event.id === 'dependency' && event.type === 'press')
+          .length === 2 &&
         state.selectedNodeIds.includes('src') &&
         state.selectedNodeIds.includes('dependency'),
     );
