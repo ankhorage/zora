@@ -1,7 +1,3 @@
-export { ColorHueScale } from './ColorHueScale';
-export { ColorPicker } from './ColorPicker';
-export { ColorTone } from './ColorTone';
-export { ColorWheel } from './ColorWheel';
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
@@ -13,3 +9,7 @@ export type {
   ColorWheelProps,
   ColorWheelSelection,
 } from '../../types/color';
+export { ColorHueScale } from './ColorHueScale';
+export { ColorPicker } from './ColorPicker';
+export { ColorTone } from './ColorTone';
+export { ColorWheel } from './ColorWheel';

@@ -1,5 +1,5 @@
-import { Pressable } from '@ankhorage/surface';
 import { COLOR_SWATCH_STEPS, generateColorSwatch } from '@ankhorage/color-theory';
+import { Pressable } from '@ankhorage/surface';
 
 import type { ColorHueScaleProps } from '../../types/color';
 import { View } from '../layout/public';

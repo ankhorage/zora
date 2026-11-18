@@ -1,5 +1,5 @@
-import { expect, test } from 'bun:test';
 import { isHexColor, parseHexColorOrThrow } from '@ankhorage/color-theory';
+import { expect, test } from 'bun:test';
 
 import { resolveColorAtHue } from './resolveColorAtHue';
 import { resolveColorHue } from './resolveColorHue';

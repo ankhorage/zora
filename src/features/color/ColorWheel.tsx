@@ -1,9 +1,5 @@
+import { generateHarmonyRoleColors, type HexColor } from '@ankhorage/color-theory';
 import { Button } from '@ankhorage/surface';
-import {
-  generateHarmonyRoleColors,
-  type ColorHarmony,
-  type HexColor,
-} from '@ankhorage/color-theory';
 import React from 'react';
 import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
 
