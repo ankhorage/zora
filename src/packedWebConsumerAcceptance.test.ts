@@ -42,3 +42,20 @@ test(
   },
   { timeout: 120_000 },
 );
+
+/** Verifies Flow diagnostics stay redacted in an independent packed React Native Web consumer. */
+test(
+  'does not render untrusted Flow error or trace text in the packed RNW consumer',
+  () => {
+    const subprocess = Bun.spawnSync({
+      cmd: [process.execPath, 'scripts/verify-packed-web-consumer.ts', '--skip-build', '--flow-ui'],
+      stderr: 'pipe',
+      stdout: 'pipe',
+    });
+    const output = `${subprocess.stdout.toString()}\n${subprocess.stderr.toString()}`;
+
+    expect(subprocess.exitCode, output).toBe(0);
+    expect(output).toContain('Packed ZORA RNW Flow UI consumer redaction boundary passed.');
+  },
+  { timeout: 120_000 },
+);
