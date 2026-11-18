@@ -8,6 +8,8 @@ import { ColorWheel } from './ColorWheel';
 import { resolveColorHue } from './utils/resolveColorHue';
 import { resolveOklchColor } from './utils/resolveOklchColor';
 
+const MAX_TONE_COLORS = 4;
+
 /*** Selects consumer-provided OKLCH tone targets while keeping hue adjustable. */
 export const ColorTone = withZoraThemeScope(ColorToneInner);
 
@@ -25,7 +27,13 @@ function ColorToneInner({
 }: ColorToneProps) {
   const [editingColorIndex, setEditingColorIndex] = React.useState(0);
   const selectedTone = tones.find((tone) => tone.id === value?.toneId);
-  const selectedColor = value?.colors.at(editingColorIndex) ?? value?.colors.at(0);
+  const colors = value
+    ? selectionMode === 'single'
+      ? value.colors.slice(0, 1)
+      : value.colors.slice(0, MAX_TONE_COLORS)
+    : [];
+  const currentEditingColorIndex = Math.min(editingColorIndex, Math.max(0, colors.length - 1));
+  const selectedColor = colors.at(currentEditingColorIndex);
   const selectTone = (tone: ColorToneProps['tones'][number]) => {
     const hue = selectedColor ? resolveColorHue(selectedColor) : 0;
     setEditingColorIndex(0);
@@ -60,15 +68,15 @@ function ColorToneInner({
       {selectedTone && selectedColor && value ? (
         <>
           <View direction="row" gap="xs" wrap="wrap">
-            {value.colors.map((color, index) => (
+            {colors.map((color, index) => (
               <Pressable
                 key={`${color}-${index}`}
                 accessibilityLabel={`Selected ${selectedTone.accent} color ${index + 1}: ${color}`}
                 accessibilityRole="radio"
-                accessibilityState={{ checked: editingColorIndex === index }}
+                accessibilityState={{ checked: currentEditingColorIndex === index }}
                 bg={color}
                 borderColor="border"
-                borderWidth={editingColorIndex === index ? 3 : 1}
+                borderWidth={currentEditingColorIndex === index ? 3 : 1}
                 disabled={interactionPolicy === 'passive'}
                 height={44}
                 onPress={() => setEditingColorIndex(index)}
@@ -78,16 +86,28 @@ function ColorToneInner({
             ))}
             {selectionMode === 'multiple' ? (
               <Button
-                disabled={interactionPolicy === 'passive'}
+                disabled={interactionPolicy === 'passive' || colors.length >= MAX_TONE_COLORS}
                 onPress={() => {
-                  setEditingColorIndex(value.colors.length);
+                  setEditingColorIndex(colors.length);
                   onChange({
                     toneId: selectedTone.id,
-                    colors: [...value.colors, resolveOklchColor(selectedTone.accentTarget, 0)],
+                    colors: [...colors, resolveOklchColor(selectedTone.accentTarget, 0)],
                   });
                 }}
               >
                 Add color
+              </Button>
+            ) : null}
+            {selectionMode === 'multiple' && colors.length > 1 ? (
+              <Button
+                disabled={interactionPolicy === 'passive'}
+                onPress={() => {
+                  const nextColors = colors.filter((_, index) => index !== currentEditingColorIndex);
+                  setEditingColorIndex(Math.min(currentEditingColorIndex, nextColors.length - 1));
+                  onChange({ toneId: selectedTone.id, colors: nextColors });
+                }}
+              >
+                Remove color
               </Button>
             ) : null}
           </View>
@@ -101,8 +121,8 @@ function ColorToneInner({
               );
               onChange({
                 toneId: selectedTone.id,
-                colors: value.colors.map((entry, index) =>
-                  index === editingColorIndex ? nextColor : entry,
+                colors: colors.map((entry, index) =>
+                  index === currentEditingColorIndex ? nextColor : entry,
                 ),
               });
             }}

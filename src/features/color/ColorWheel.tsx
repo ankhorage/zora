@@ -1,5 +1,9 @@
-import { generateHarmonyRoleColors, type HexColor } from '@ankhorage/color-theory';
-import { Button } from '@ankhorage/surface';
+import {
+  generateHarmonyRoleColors,
+  isHexColor,
+  type HexColor,
+} from '@ankhorage/color-theory';
+import { Button, TextInput } from '@ankhorage/surface';
 import React from 'react';
 import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
 
@@ -34,7 +38,10 @@ function ColorWheelInner({
   testID,
 }: ColorWheelProps) {
   const hue = resolveColorHue(value);
-  const chroma = resolveWheelChroma(value);
+  const components = resolveWheelColorComponents(value);
+  const chroma = components.chroma;
+  const [hexInput, setHexInput] = React.useState<string>(value);
+  React.useEffect(() => setHexInput(value), [value]);
   const harmonyColors = harmony ? generateHarmonyRoleColors(value, harmony).colors : [];
   const selectedPoint = resolveWheelPoint(hue, Math.min(1, chroma / WHEEL_MAX_CHROMA));
   const harmonyPoints = harmonyColors.map((color) => resolveWheelPoint(color.hueDegrees));
@@ -46,6 +53,14 @@ function ColorWheelInner({
       harmony,
     });
   };
+  const changeLightness = (offset: number) =>
+    onChange({
+      color: resolveOklchColor(
+        { chroma, lightness: Math.max(0, Math.min(1, components.lightness + offset)) },
+        hue,
+      ),
+      harmony,
+    });
 
   return (
     <View align="center" gap="sm" testID={testID}>
@@ -109,6 +124,29 @@ function ColorWheelInner({
           />
         </Svg>
       </ColorWheelKeyboardProxy>
+      <View direction="row" gap="xs" wrap="wrap">
+        <Button
+          disabled={interactionPolicy === 'passive' || components.lightness <= 0}
+          onPress={() => changeLightness(-0.05)}
+        >
+          Lightness -
+        </Button>
+        <Button
+          disabled={interactionPolicy === 'passive' || components.lightness >= 1}
+          onPress={() => changeLightness(0.05)}
+        >
+          Lightness +
+        </Button>
+      </View>
+      <TextInput
+        accessibilityLabel="Color hex value"
+        disabled={interactionPolicy === 'passive'}
+        onChangeText={(nextValue) => {
+          setHexInput(nextValue);
+          if (isHexColor(nextValue)) onChange({ color: nextValue, harmony });
+        }}
+        value={hexInput}
+      />
       {harmonies ? (
         <View direction="row" gap="xs" wrap="wrap">
           <Button
