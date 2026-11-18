@@ -12,7 +12,7 @@ export type ZoraContentWidth = 'narrow' | 'default' | 'wide';
 
 export interface ViewProps extends ZoraBaseProps, Omit<SurfaceViewProps, 'mode' | 'themeId'> {}
 export interface ScrollViewProps
-  extends ZoraBaseProps, Omit<SurfaceScrollViewProps, 'mode' | 'themeId'> {}
+  extends ZoraBaseProps, Omit<SurfaceScrollViewProps, 'mode' | 'testID' | 'themeId'> {}
 export interface DividerProps
   extends ZoraBaseProps, Omit<SurfaceDividerProps, 'mode' | 'themeId'> {}
 export interface GridProps extends ZoraBaseProps, Omit<SurfaceGridProps, 'mode' | 'themeId'> {}

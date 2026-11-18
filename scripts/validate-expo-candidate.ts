@@ -16,11 +16,13 @@ import { assert } from './utils/assert';
 
 interface CandidateFixture {
   readonly doctor: boolean;
+  readonly expoSdk?: '58';
   readonly expectedWebRoutes?: readonly string[];
   readonly name: string;
   readonly nativeFonts: boolean;
   readonly nativePrebuild: boolean;
   readonly project: string;
+  readonly typecheckOnly?: boolean;
 }
 
 type JsonObject = Record<string, unknown>;
@@ -61,6 +63,15 @@ const RESTAURANT_WEB_ROUTES = [
 const FORBIDDEN_ROUTER_HELPER_ROUTES = ['/ExampleAppBar', '/useZoraIconFonts'] as const;
 
 const FIXTURES: readonly CandidateFixture[] = [
+  {
+    doctor: false,
+    expoSdk: '58',
+    name: 'grid-workspaces-rn-088',
+    nativeFonts: false,
+    nativePrebuild: false,
+    project: 'examples/grid-workspaces',
+    typecheckOnly: true,
+  },
   {
     doctor: true,
     name: 'game-presentation',
@@ -180,7 +191,11 @@ function copyCleanProject(source: string, destination: string): void {
   });
 }
 
-function configureCandidateFixture(fixtureRoot: string, candidatePath: string): void {
+function configureCandidateFixture(
+  fixture: CandidateFixture,
+  fixtureRoot: string,
+  candidatePath: string,
+): void {
   const packageJsonPath = join(fixtureRoot, 'package.json');
   const packageJson = readJsonObject(packageJsonPath);
   const dependencies = requireObject(packageJson.dependencies, `${packageJsonPath} dependencies`);
@@ -188,6 +203,21 @@ function configureCandidateFixture(fixtureRoot: string, candidatePath: string): 
   // This file: dependency exists only in the disposable acceptance fixture. Committed
   // example manifests continue to reference the latest released ZORA package.
   dependencies['@ankhorage/zora'] = `file:${candidatePath}`;
+  if (fixture.expoSdk === '58') {
+    dependencies['@react-native/metro-config'] = '0.88.1';
+    dependencies.expo = '58.0.0';
+    dependencies['expo-build-properties'] = '58.0.0';
+    dependencies.react = '19.3.0';
+    dependencies['react-dom'] = '19.3.0';
+    dependencies['react-native'] = '0.88.1';
+    dependencies['react-native-web'] = '0.21.4';
+
+    const development = requireObject(
+      packageJson.devDependencies,
+      `${packageJsonPath} devDependencies`,
+    );
+    development['@types/react'] = '19.3.0';
+  }
   writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
 
   const tsconfigPath = join(fixtureRoot, 'tsconfig.json');
@@ -406,7 +436,7 @@ try {
     const exportRoot = join(temporaryRoot, `${fixture.name}-web`);
 
     copyCleanProject(sourceRoot, fixtureRoot);
-    configureCandidateFixture(fixtureRoot, candidatePath);
+    configureCandidateFixture(fixture, fixtureRoot, candidatePath);
 
     run(['bun', 'install'], fixtureRoot);
     rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
@@ -414,6 +444,10 @@ try {
 
     verifyCandidateGraph(fixtureRoot, candidatePath, candidateVersion, expectedSurfaceRange);
     run(['bun', 'run', 'typecheck'], fixtureRoot);
+    if (fixture.typecheckOnly) {
+      console.log(`Candidate-backed ${fixture.name} typecheck passed.`);
+      continue;
+    }
     run(['bun', 'x', 'expo', 'install', '--check'], fixtureRoot);
 
     verifyNpmPeerGraph(fixtureRoot, join(temporaryRoot, `${fixture.name}-npm`));

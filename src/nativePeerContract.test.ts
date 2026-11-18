@@ -2,14 +2,23 @@ import { readFile } from 'node:fs/promises';
 
 import { expect, test } from 'bun:test';
 
-const EXPO_57_NATIVE_PEER_VERSIONS = {
+const NATIVE_PEER_CONTRACTS = [
+  {
+    react: '19.2.3',
+    'react-native': '0.86.3',
+  },
+  {
+    react: '19.3.0',
+    'react-native': '0.88.1',
+  },
+] as const;
+
+const SHARED_NATIVE_PEER_VERSIONS = {
   '@react-native-vector-icons/fontawesome': '13.1.4',
   '@react-native-vector-icons/fontawesome5': '13.1.4',
   '@react-native-vector-icons/fontawesome6': '13.1.4',
   '@react-native-vector-icons/ionicons': '13.1.4',
   '@react-native-vector-icons/material-design-icons': '13.1.4',
-  react: '19.2.3',
-  'react-native': '0.86.3',
   'react-native-gesture-handler': '2.32.0',
   'react-native-reanimated': '4.5.1',
   'react-native-safe-area-context': '5.7.0',
@@ -37,7 +46,7 @@ test('root-entry native imports expose only required portable peers', async () =
   expect(isRecord(peerDependencies) && peerDependencies['@expo/vector-icons']).toBeUndefined();
 });
 
-test('declares a jointly satisfiable Expo 57 native peer contract with Surface', async () => {
+test('declares jointly satisfiable Expo 57 and Expo 58 native peer contracts with Surface', async () => {
   const packageJson = JSON.parse(
     await readFile(new URL('../package.json', import.meta.url), 'utf8'),
   ) as unknown;
@@ -70,13 +79,15 @@ test('declares a jointly satisfiable Expo 57 native peer contract with Surface',
   const zoraPeers = new Map(Object.entries(peerDependencies));
   const surfacePeers = new Map(Object.entries(surfacePackageJson.peerDependencies));
 
-  for (const [name, version] of Object.entries(EXPO_57_NATIVE_PEER_VERSIONS)) {
-    const zoraRange = zoraPeers.get(name);
-    const surfaceRange = surfacePeers.get(name);
+  for (const contract of NATIVE_PEER_CONTRACTS) {
+    for (const [name, version] of Object.entries({ ...SHARED_NATIVE_PEER_VERSIONS, ...contract })) {
+      const zoraRange = zoraPeers.get(name);
+      const surfaceRange = surfacePeers.get(name);
 
-    expect(typeof zoraRange).toBe('string');
-    expect(typeof surfaceRange).toBe('string');
-    expect(Bun.semver.satisfies(version, zoraRange as string)).toBe(true);
-    expect(Bun.semver.satisfies(version, surfaceRange as string)).toBe(true);
+      expect(typeof zoraRange).toBe('string');
+      expect(typeof surfaceRange).toBe('string');
+      expect(Bun.semver.satisfies(version, zoraRange as string)).toBe(true);
+      expect(Bun.semver.satisfies(version, surfaceRange as string)).toBe(true);
+    }
   }
 });

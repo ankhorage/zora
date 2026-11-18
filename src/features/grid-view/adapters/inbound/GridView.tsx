@@ -15,11 +15,10 @@ import {
   ScrollView as NativeScrollView,
   Text as NativeText,
   View as NativeView,
-  type ScrollViewInstance,
-  type ViewInstance,
 } from 'react-native';
 
 import type { GridScrollAxis, GridScrollSync, GridViewProps } from '../../../../types/grid-view';
+import type { ReactNativeComponentInstance } from '../../../../types/react-native';
 import { createGridScrollSync } from '../../application/createGridScrollSync';
 
 type PinchGesture = Readonly<{ distance: number; focalPoint: GridPoint }>;
@@ -60,9 +59,11 @@ export function GridView({
   const [uncontrolledViewport, setUncontrolledViewport] = React.useState(() =>
     createInitialViewport(width, height, zoom, defaultViewport),
   );
-  const horizontalScrollRef = React.useRef<ScrollViewInstance>(null);
-  const verticalScrollRef = React.useRef<ScrollViewInstance>(null);
-  const gridRef = React.useRef<ViewInstance>(null);
+  const horizontalScrollRef =
+    React.useRef<ReactNativeComponentInstance<typeof NativeScrollView>>(null);
+  const verticalScrollRef =
+    React.useRef<ReactNativeComponentInstance<typeof NativeScrollView>>(null);
+  const gridRef = React.useRef<ReactNativeComponentInstance<typeof NativeView>>(null);
   const panRef = React.useRef<(displacement: GridPoint) => void>(() => undefined);
   const scrollSyncRef = React.useRef<GridScrollSync | undefined>(undefined);
   const pinchGestureRef = React.useRef<PinchGesture | undefined>(undefined);
