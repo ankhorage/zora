@@ -350,9 +350,9 @@ function verifyRouterRouteSurface(exportRoot: string, expectedRoutes: readonly s
   console.log(`Verified Router route surface: ${actualRoutes.join(', ')}`);
 }
 
-function prebuildNativeProject(fixtureRoot: string): void {
+function prebuildNativeProject(fixtureRoot: string, platform: 'android' | 'ios'): void {
   run(
-    ['bun', 'x', 'expo', 'prebuild', '--platform', 'ios', '--no-install', '--clean'],
+    ['bun', 'x', 'expo', 'prebuild', '--platform', platform, '--no-install', '--clean'],
     fixtureRoot,
   );
 }
@@ -409,7 +409,6 @@ try {
     configureCandidateFixture(fixtureRoot, candidatePath);
 
     run(['bun', 'install'], fixtureRoot);
-    run(['bun', 'x', 'expo', 'install', '--fix'], fixtureRoot);
     rmSync(join(fixtureRoot, 'node_modules'), { force: true, recursive: true });
     run(['bun', 'install', '--frozen-lockfile'], fixtureRoot);
 
@@ -436,11 +435,15 @@ try {
     }
 
     if (fixture.nativePrebuild) {
-      prebuildNativeProject(fixtureRoot);
+      prebuildNativeProject(fixtureRoot, 'ios');
     }
 
     if (fixture.nativeFonts) {
       verifyNativeFonts(fixtureRoot);
+    }
+
+    if (fixture.nativePrebuild) {
+      prebuildNativeProject(fixtureRoot, 'android');
     }
 
     console.log(`Candidate-backed ${fixture.name} Web export passed: ${exportRoot}`);

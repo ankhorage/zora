@@ -1,5 +1,41 @@
 # Changelog
 
+## 27.3.0
+
+### Minor Changes
+
+- 845a331: Add the GraphView `preserve-positions` topology update policy for stable incremental graph updates.
+
+## 27.2.6
+
+### Patch Changes
+
+- 9e199ee: Update dependencies: `@ankhorage/runtime`.
+
+## 27.2.5
+
+### Patch Changes
+
+- 1537dad: Rebuild standalone web checkbox artifacts with Surface accessibility fixes for checked ARIA state and Space-key activation.
+
+## 27.2.4
+
+### Patch Changes
+
+- 031712f: Update dependencies: `@ankhorage/runtime`.
+
+## 27.2.3
+
+### Patch Changes
+
+- 8c412b3: Update dependencies: `@ankhorage/runtime`.
+
+## 27.2.2
+
+### Patch Changes
+
+- 02b9712: Update dependencies: `@ankhorage/runtime`.
+
 ## 27.2.1
 
 ### Patch Changes
