@@ -14,7 +14,7 @@ export function bindGraphEvents(
   callbacksRef: { current: GraphViewCallbacks },
   controller: GraphViewController,
   onRuntimeChange: () => void,
-  readLatestPointerDown: () => unknown = () => null,
+  readLatestPointerDown: (event: EventObject) => unknown = () => null,
 ) {
   const nodeHandlers = bindElementEvents(
     cy,
@@ -56,7 +56,7 @@ function bindElementEvents(
   selector: ElementSelector,
   callbacksRef: { current: GraphViewCallbacks },
   onRuntimeChange: () => void,
-  readLatestPointerDown: () => unknown,
+  readLatestPointerDown: (event: EventObject) => unknown,
 ): readonly BoundElementHandler[] {
   return EVENT_TYPES.map(([cytoscapeEvent, type]) => {
     const handler = (event: EventObject) => {
@@ -65,7 +65,12 @@ function bindElementEvents(
       emitElementEvent(
         callbacksRef.current,
         selector,
-        createElementEvent(event, target.id(), type, readLatestPointerDown()),
+        createElementEvent(
+          event,
+          target.id(),
+          type,
+          type === 'press' ? readLatestPointerDown(event) : null,
+        ),
       );
       onRuntimeChange();
     };

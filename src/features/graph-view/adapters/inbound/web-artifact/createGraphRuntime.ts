@@ -54,6 +54,7 @@ interface GraphRuntimeState {
   readonly generationRef: { current: number };
   readonly geometryRef: { current: string | null };
   readonly hoveredNodeIds: Set<string>;
+  readonly initialLayoutScheduledRef: { current: boolean };
   readonly latestUpdateRef: { current: GraphRuntimeUpdate | null };
   readonly layoutRef: { current: ReturnType<typeof runGraphLayout> | null };
   readonly layoutRunningRef: { current: boolean };
@@ -74,7 +75,7 @@ interface GraphRuntimeState {
 export function createGraphRuntime(
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
-  readLatestPointerDown: () => unknown,
+  readLatestPointerDown: (event: unknown) => unknown = () => null,
 ): GraphRuntime {
   const cy = cytoscape({
     container,
@@ -102,7 +103,7 @@ function createRuntimeState(
   cy: Core,
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
-  readLatestPointerDown: () => unknown,
+  readLatestPointerDown: (event: unknown) => unknown,
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
   const viewport = createGraphController(cy, fitPaddingRef, (options) =>
@@ -123,6 +124,7 @@ function createRuntimeState(
     generationRef: { current: 0 },
     geometryRef: { current: null as string | null },
     hoveredNodeIds: new Set<string>(),
+    initialLayoutScheduledRef: { current: false },
     latestUpdateRef: { current: null as GraphRuntimeUpdate | null },
     layoutRef: { current: null as ReturnType<typeof runGraphLayout> | null },
     layoutRunningRef,
@@ -259,6 +261,29 @@ function getRetainedNodeIds(
 
 /*** Start a generation-safe layout whose completion is the only normal automatic fit trigger. */
 function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
+  if (!state.readyRef.current) {
+    scheduleInitialLayout(state);
+    return;
+  }
+  startGraphLayout(state, input);
+}
+
+/*** Coalesce progressive pre-ready topology updates before the initial layout can complete. */
+function scheduleInitialLayout(state: GraphRuntimeState) {
+  if (state.initialLayoutScheduledRef.current) return;
+  state.initialLayoutScheduledRef.current = true;
+  scheduleGraphFrame(() => {
+    scheduleGraphFrame(() => {
+      state.initialLayoutScheduledRef.current = false;
+      const input = state.latestUpdateRef.current;
+      if (input === null || state.cy.destroyed() || state.readyRef.current) return;
+      startGraphLayout(state, input);
+    });
+  });
+}
+
+/*** Start one layout generation after its input has reached the runtime owner. */
+function startGraphLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.pendingInitialFitRef.current = false;
   const generation = state.generationRef.current + 1;
   state.generationRef.current = generation;
