@@ -147,6 +147,7 @@ function writeConsumer(root: string, tarball: string): void {
 
 class Chrome {
   private id = 0;
+  private readonly runtimeMessages: string[] = [];
   private readonly pending = new Map<number, (value: any) => void>();
   private constructor(
     private readonly process: ReturnType<typeof Bun.spawn>,
@@ -154,6 +155,19 @@ class Chrome {
   ) {
     socket.onmessage = (event) => {
       const message = JSON.parse(String(event.data));
+      if (message.method === 'Runtime.consoleAPICalled')
+        this.runtimeMessages.push(
+          message.params.args
+            .map((argument: { value?: unknown }) => String(argument.value ?? ''))
+            .join(' '),
+        );
+      if (message.method === 'Runtime.exceptionThrown')
+        this.runtimeMessages.push(
+          String(
+            message.params.exceptionDetails.exception?.description ??
+              message.params.exceptionDetails.text,
+          ),
+        );
       const resolve = this.pending.get(message.id);
       if (resolve) {
         this.pending.delete(message.id);
@@ -200,7 +214,7 @@ class Chrome {
       if (await this.evaluateAsync(expression)) return;
       await Bun.sleep(100);
     }
-    throw new Error(`Timed out: ${expression}`);
+    throw new Error(`Timed out: ${expression}\n${this.runtimeMessages.join('\n')}`);
   }
   async clickAsync(selector: string, x = 0.5, y = 0.5, text?: string) {
     const rect = await this.resolvePointAsync(selector, x, y, text);
