@@ -52,6 +52,7 @@ function FlowInspectorInner({
     return (
       <View gap="s" testID={testID}>
         <FlowOutline
+          disabled={disabled || interactionPolicy === 'passive'}
           items={outline}
           onSelectionChange={onNodeSelectionChange}
           selectedNodeId={selectedNodeId}
@@ -62,6 +63,8 @@ function FlowInspectorInner({
           onDismiss={() => onNodeSelectionChange?.(null)}
           open={node !== null}
           snapPoints={['60%', '90%']}
+          keyboardBehavior="interactive"
+          keyboardBlurBehavior="restore"
         >
           {content}
         </BottomSheet>
@@ -135,6 +138,7 @@ function FlowInspectorFieldControl({
     const checked = valueText === 'true';
     return (
       <Pressable
+        accessibilityLabel={field.label}
         accessibilityRole="checkbox"
         accessibilityState={{ checked, disabled }}
         disabled={disabled}
@@ -255,10 +259,12 @@ function FlowStepDataSection({
 
 /** Provides a touch-accessible node outline for narrow native workflow screens. */
 function FlowOutline({
+  disabled,
   items,
   selectedNodeId,
   onSelectionChange,
 }: {
+  readonly disabled: boolean;
   readonly items: readonly FlowOutlineItem[];
   readonly selectedNodeId: string | undefined;
   readonly onSelectionChange: FlowInspectorProps['onNodeSelectionChange'];
@@ -270,10 +276,10 @@ function FlowOutline({
           accessibilityLabel={`${item.title}${item.status ? `, ${item.status}` : ''}`}
           accessibilityRole="button"
           accessibilityState={{
-            disabled: item.disabled === true,
+            disabled: disabled || item.disabled === true,
             selected: item.id === selectedNodeId,
           }}
-          disabled={item.disabled}
+          disabled={disabled || item.disabled}
           key={item.id}
           onPress={() => onSelectionChange?.(item.id)}
           style={{ minHeight: 44 }}
