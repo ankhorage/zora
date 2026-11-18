@@ -8,9 +8,9 @@ import type {
   FlowInspectorProps,
   FlowOutlineItem,
 } from '../../../../types/flow-ui';
-import { flowPublicDiagnostic } from '../../../flow-execution/application/flowPublicDiagnostic';
 import { BottomSheet } from '../../../bottom-sheet/public';
 import { Card } from '../../../card/public';
+import { flowPublicDiagnostic } from '../../../flow-execution/application/flowPublicDiagnostic';
 import { Field } from '../../../form/public';
 import { TextInput } from '../../../form/text-input/public';
 import { View } from '../../../layout/public';

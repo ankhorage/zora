@@ -3,9 +3,9 @@ import React from 'react';
 import { Pressable } from 'react-native';
 
 import type { FlowExecutionOverlayProps, FlowExecutionStep } from '../../../../types/flow-ui';
-import { flowPublicDiagnostic } from '../../../flow-execution/application/flowPublicDiagnostic';
 import { Badge } from '../../../badge/public';
 import { Card } from '../../../card/public';
+import { flowPublicDiagnostic } from '../../../flow-execution/application/flowPublicDiagnostic';
 import { View } from '../../../layout/public';
 import { Progress } from '../../../progress/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
