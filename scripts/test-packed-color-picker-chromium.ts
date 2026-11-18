@@ -168,6 +168,15 @@ class Chrome {
               message.params.exceptionDetails.text,
           ),
         );
+      if (message.method === 'Network.loadingFailed')
+        this.runtimeMessages.push(
+          `Network load failed: ${message.params.errorText} (${message.params.type})`,
+        );
+      if (message.method === 'Network.responseReceived') {
+        const { response } = message.params;
+        if (response.url.endsWith('/app.js'))
+          this.runtimeMessages.push(`App response: ${response.status} ${response.mimeType}`);
+      }
       const resolve = this.pending.get(message.id);
       if (resolve) {
         this.pending.delete(message.id);
@@ -196,6 +205,7 @@ class Chrome {
     });
     const chrome = new Chrome(process, socket);
     await chrome.sendAsync('Runtime.enable');
+    await chrome.sendAsync('Network.enable');
     return chrome;
   }
   async navigateAsync(url: string) {
