@@ -42,7 +42,10 @@ async function testPackedColorPickerChromiumAsync() {
     fetch: (request) =>
       new URL(request.url).pathname === '/app.js'
         ? new Response(Bun.file(join(consumerRoot, 'app.js')))
-        : new Response('<div id="root"></div><script type="module" src="/app.js"></script>'),
+        : new Response(
+            '<div id="root"></div><script type="module" src="/app.js"></script>',
+            { headers: { 'content-type': 'text/html; charset=utf-8' } },
+          ),
     port: 0,
   });
   const browser = await Chrome.createAsync();
