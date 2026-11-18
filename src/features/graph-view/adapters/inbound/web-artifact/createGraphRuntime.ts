@@ -74,6 +74,7 @@ interface GraphRuntimeState {
 export function createGraphRuntime(
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
+  readLatestPointerDown: () => unknown,
 ): GraphRuntime {
   const cy = cytoscape({
     container,
@@ -83,7 +84,7 @@ export function createGraphRuntime(
     selectionType: 'additive',
     userPanningEnabled: true,
   });
-  const state = createRuntimeState(cy, container, callbacksRef);
+  const state = createRuntimeState(cy, container, callbacksRef, readLatestPointerDown);
 
   return {
     destroy: () => destroyRuntime(state),
@@ -101,6 +102,7 @@ function createRuntimeState(
   cy: Core,
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
+  readLatestPointerDown: () => unknown,
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
   const viewport = createGraphController(cy, fitPaddingRef, (options) =>
@@ -134,8 +136,12 @@ function createRuntimeState(
     relayoutScheduledRef: { current: false },
     renderedNodeListeners,
   };
-  const unbindEvents = bindGraphEvents(cy, callbacksRef, controller, () =>
-    emitRenderedNodes(stateBase),
+  const unbindEvents = bindGraphEvents(
+    cy,
+    callbacksRef,
+    controller,
+    () => emitRenderedNodes(stateBase),
+    readLatestPointerDown,
   );
   const resizeObserver = createGraphResizeObserver({
     container,

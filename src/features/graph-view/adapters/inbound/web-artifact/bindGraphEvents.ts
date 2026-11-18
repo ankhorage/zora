@@ -14,9 +14,22 @@ export function bindGraphEvents(
   callbacksRef: { current: GraphViewCallbacks },
   controller: GraphViewController,
   onRuntimeChange: () => void,
+  readLatestPointerDown: () => unknown,
 ) {
-  const nodeHandlers = bindElementEvents(cy, 'node', callbacksRef, onRuntimeChange);
-  const edgeHandlers = bindElementEvents(cy, 'edge', callbacksRef, onRuntimeChange);
+  const nodeHandlers = bindElementEvents(
+    cy,
+    'node',
+    callbacksRef,
+    onRuntimeChange,
+    readLatestPointerDown,
+  );
+  const edgeHandlers = bindElementEvents(
+    cy,
+    'edge',
+    callbacksRef,
+    onRuntimeChange,
+    readLatestPointerDown,
+  );
   const viewportHandler = () => {
     callbacksRef.current.onViewportChange?.(controller.getViewport());
     onRuntimeChange();
@@ -43,6 +56,7 @@ function bindElementEvents(
   selector: ElementSelector,
   callbacksRef: { current: GraphViewCallbacks },
   onRuntimeChange: () => void,
+  readLatestPointerDown: () => unknown,
 ): readonly BoundElementHandler[] {
   return EVENT_TYPES.map(([cytoscapeEvent, type]) => {
     const handler = (event: EventObject) => {
@@ -51,7 +65,7 @@ function bindElementEvents(
       emitElementEvent(
         callbacksRef.current,
         selector,
-        createElementEvent(event, target.id(), type),
+        createElementEvent(event, target.id(), type, readLatestPointerDown()),
       );
       onRuntimeChange();
     };
@@ -65,12 +79,13 @@ function createElementEvent(
   event: EventObject,
   id: string,
   type: GraphViewElementEventType,
+  nativeEvent: unknown,
 ): GraphViewElementEvent {
   if (type !== 'press') return { id, type };
   return {
     id,
     type,
-    selectionIntent: resolveSelectionEventIntent(event, 'pointer'),
+    selectionIntent: resolveSelectionEventIntent(event, 'pointer', nativeEvent),
   };
 }
 

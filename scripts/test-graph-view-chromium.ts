@@ -113,6 +113,17 @@ async function testGraphViewChromiumAsync() {
       metaToggled.events.filter(isDependencyPress).at(-1)?.selectionIntent === 'toggle',
       `Cytoscape tap did not preserve Meta selection intent: ${JSON.stringify(metaToggled.events)}`,
     );
+    await browser.clickAsync(source.position.x, source.position.y, 1, { metaKey: true });
+    const deselected = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.events.filter((event) => event.id === 'src' && event.type === 'press').length === 3 &&
+        state.selectedNodeIds.length === 1 &&
+        state.selectedNodeIds[0] === 'dependency',
+    );
+    assert(
+      deselected.events.filter(isSourcePress).at(-1)?.selectionIntent === 'toggle',
+      `Native Meta-click did not preserve toggle intent for deselection: ${JSON.stringify(deselected.events)}`,
+    );
     await browser.clickAsync(source.position.x, source.position.y, 2);
     const afterInteraction = await browser.waitForInteractionStateAsync(
       (state) => state.events.filter(isSourceDoublePress).length === 1,

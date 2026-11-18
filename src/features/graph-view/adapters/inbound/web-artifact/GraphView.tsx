@@ -37,11 +37,19 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  */
 export function GraphView(props: GraphViewProps) {
   const hostRef = React.useRef<HTMLDivElement | null>(null);
-  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props, hostRef);
+  const latestPointerDownRef = React.useRef<unknown>(null);
+  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(
+    props,
+    hostRef,
+    latestPointerDownRef,
+  );
 
   return (
     <div
       ref={hostRef}
+      onPointerDown={(event) => {
+        latestPointerDownRef.current = event.nativeEvent;
+      }}
       aria-label={props.ariaLabel ?? 'Graph'}
       className={props.className}
       role="application"
@@ -77,13 +85,14 @@ GraphView.events = GRAPH_VIEW_EVENTS;
 function useGraphViewRuntime(
   props: GraphViewProps,
   hostRef: React.RefObject<HTMLDivElement | null>,
+  latestPointerDownRef: { current: unknown },
 ) {
   const containerRef = React.useRef<GraphContainer | null>(null);
   const runtimeRef = React.useRef<GraphRuntime | null>(null);
   const callbacksRef = useGraphCallbacksRef(props, hostRef);
   const [renderedNodes, setRenderedNodes] = React.useState<readonly GraphViewRenderedNode[]>([]);
 
-  useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef);
+  useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef, latestPointerDownRef);
   useRuntimeGraphUpdate(runtimeRef, props);
   useRuntimeSelection(runtimeRef, props.selectedNodeIds);
   useRenderedNodeSubscription(runtimeRef, props.renderNode, setRenderedNodes);
@@ -139,17 +148,18 @@ function useRuntimeLifecycle(
   containerRef: { current: GraphContainer | null },
   runtimeRef: { current: GraphRuntime | null },
   callbacksRef: { current: GraphViewCallbacks },
+  latestPointerDownRef: { current: unknown },
 ) {
   React.useEffect(() => {
     const container = containerRef.current;
     if (container === null) return;
-    const runtime = createGraphRuntime(container, callbacksRef);
+    const runtime = createGraphRuntime(container, callbacksRef, () => latestPointerDownRef.current);
     runtimeRef.current = runtime;
     return () => {
       runtime.destroy();
       runtimeRef.current = null;
     };
-  }, [callbacksRef, containerRef, runtimeRef]);
+  }, [callbacksRef, containerRef, latestPointerDownRef, runtimeRef]);
 }
 
 /*** Synchronize graph data and layout policy without exposing Cytoscape to React. */
