@@ -38,7 +38,9 @@ function ColorToneInner({
             borderWidth={selected ? 3 : 1}
             disabled={interactionPolicy === 'passive'}
             height={44}
-            onPress={() => onChange(resolveToneSelection(tone.id, value, selectionMode, tones, hue))}
+            onPress={() =>
+              onChange(resolveToneSelection(tone.id, value, selectionMode, tones, hue))
+            }
             radius="md"
             width={44}
           />

@@ -48,7 +48,10 @@ function ColorWheelInner({
         onPress={(event) => {
           if (interactionPolicy === 'passive') return;
           const { locationX, locationY } = event.nativeEvent;
-          onChange({ color: resolveColorAtHue(value, resolvePointerHue(locationX, locationY)), harmony });
+          onChange({
+            color: resolveColorAtHue(value, resolvePointerHue(locationX, locationY)),
+            harmony,
+          });
         }}
         width={WHEEL_SIZE}
       >
@@ -63,20 +66,28 @@ function ColorWheelInner({
             strokeWidth={2}
           />
         ) : (
-          harmonyPoints.slice(1).map((point, index) => (
-            <Line
-              key={`${point.x}-${point.y}`}
-              stroke="currentColor"
-              strokeWidth={2}
-              x1={harmonyPoints[index]?.x}
-              x2={point.x}
-              y1={harmonyPoints[index]?.y}
-              y2={point.y}
-            />
-          ))
+          harmonyPoints
+            .slice(1)
+            .map((point, index) => (
+              <Line
+                key={`${point.x}-${point.y}`}
+                stroke="currentColor"
+                strokeWidth={2}
+                x1={harmonyPoints[index]?.x}
+                x2={point.x}
+                y1={harmonyPoints[index]?.y}
+                y2={point.y}
+              />
+            ))
         )}
         {harmonyPoints.map((point) => (
-          <Circle cx={point.x} cy={point.y} fill="currentColor" key={`${point.x}-${point.y}`} r={5} />
+          <Circle
+            cx={point.x}
+            cy={point.y}
+            fill="currentColor"
+            key={`${point.x}-${point.y}`}
+            r={5}
+          />
         ))}
         <Circle
           cx={selectedPoint.x}
@@ -113,7 +124,11 @@ function ColorWheelInner({
 }
 
 /*** Build the wheel's OKLCH segments from the existing conversion tool. */
-function resolveWheelSegments(): readonly { readonly color: HexColor; readonly hue: number; readonly path: string }[] {
+function resolveWheelSegments(): readonly {
+  readonly color: HexColor;
+  readonly hue: number;
+  readonly path: string;
+}[] {
   return Array.from({ length: WHEEL_SEGMENT_COUNT }, (_, index) => {
     const hue = (index * 360) / WHEEL_SEGMENT_COUNT;
     return {
