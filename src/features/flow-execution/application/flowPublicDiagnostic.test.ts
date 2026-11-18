@@ -6,7 +6,7 @@ describe('flowPublicDiagnostic', () => {
   test.each(['constructor', '__proto__'])(
     'falls back for the untyped JavaScript key %s',
     (code) => {
-      const diagnostic = Reflect.apply(flowPublicDiagnostic, undefined, [{ code }]);
+      const diagnostic: unknown = Reflect.apply(flowPublicDiagnostic, undefined, [{ code }]);
 
       expect(diagnostic).toEqual({
         code: 'FLOW_EXECUTION_FAILED',
