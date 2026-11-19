@@ -381,7 +381,7 @@ const reviewNode: FlowNodeData = {
       label: 'Approval',
     },
   ],
-  position: { x: 250, y: 180 },
+  position: { x: 430, y: 300 },
   title: 'Review',
 };
 
@@ -458,7 +458,7 @@ document.head.insertAdjacentHTML(
       .flow-editor__header { align-items: flex-start; border-radius: 14px; flex-direction: column; gap: 12px; padding: 16px; }
       .flow-editor__header h1 { font-size: 21px; }
       .flow-editor__status { max-width: none; width: 100%; }
-      .flow-editor__palette { max-height: 185px; overflow: auto; }
+      .flow-editor__palette { overflow: visible; }
       .flow-editor__canvas { display: none; }
       .flow-editor__inspector { max-height: none; order: 3; }
       [data-testid="flow-editor-inspector-outline"] {
