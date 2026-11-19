@@ -300,7 +300,11 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
     { id: 'group-odd', label: 'odd repositories' },
     ...visibleRepositories.map((node) =>
       node.id === 'repository-0' && labelExpanded
-        ? { ...node, label: 'repository-0 has a genuinely longer label' }
+        ? {
+            ...node,
+            classes: 'expanded',
+            label: 'repository-0 has a genuinely longer label',
+          }
         : node,
     ),
   ];
@@ -353,7 +357,15 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
         selectedNodeIds={selectedRepositoryIds}
         sizeNodesToLabels
         style={{ height: 360, width: 960 }}
-        styleRules={paintTheme === 'dark' ? darkStyleRules : lightStyleRules}
+        styleRules={
+          labelExpanded
+            ? paintTheme === 'dark'
+              ? expandedDarkStyleRules
+              : expandedLightStyleRules
+            : paintTheme === 'dark'
+              ? darkStyleRules
+              : lightStyleRules
+        }
         topologyUpdatePolicy="preserve-positions"
         onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
         onReady={(nextController) => {
@@ -407,6 +419,16 @@ const lightStyleRules = [
     },
   },
   { selector: 'node:selected', style: { 'outline-color': '#f97316', 'outline-width': 3 } },
+];
+
+const expandedDarkStyleRules = [
+  ...darkStyleRules,
+  { selector: 'node.expanded', style: { padding: 18 } },
+];
+
+const expandedLightStyleRules = [
+  ...lightStyleRules,
+  { selector: 'node.expanded', style: { padding: 18 } },
 ];
 
 const styleRules = darkStyleRules;
