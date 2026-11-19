@@ -71,9 +71,9 @@ jobs:
       - name: Validate Ankhorage repository
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
-            bun ./dist/cli/standalone.js validate .
+            bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.29 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.1 validate . --enforce-repository-metadata
           fi
 
       - name: Run lint
@@ -100,38 +100,23 @@ jobs:
             echo "No knip:check script found; skipping."
           fi
 
-      - name: Run tests
-        run: |
-          if node -e "const p=require('./package.json'); process.exit(p.scripts?.test ? 0 : 1)"; then
-            bun run test
-          else
-            echo "No test script found; skipping."
-          fi
+      - name: Analyze test impact
+        id: impact
+        env:
+          ANKH_CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: bun .github/scripts/ci-impact.ts plan
 
-      - name: Verify Chromium executable
-        run: |
-          chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$chrome_bin" ]; then
-            echo "No supported Chromium executable is available on the Ubuntu runner." >&2
-            exit 1
-          fi
-          "$chrome_bin" --version
-          echo "CHROME_BIN=$chrome_bin" >> "$GITHUB_ENV"
+      - name: Run unit tests
+        if: steps.impact.outputs.unit != 'skip'
+        run: bun .github/scripts/ci-impact.ts unit
 
-      - name: Run Chromium GraphView acceptance
-        run: bun run test:graph-view:chromium
+      - name: Run E2E tests
+        if: steps.impact.outputs.e2e != 'skip'
+        run: bun .github/scripts/ci-impact.ts e2e
 
-      - name: Run Chromium ChessBoard acceptance
-        run: bun run test:chess:chromium
-
-      - name: Run packed Chromium Checkbox acceptance
-        run: bun run test:checkbox:chromium
-
-      - name: Run packed Chromium ColorPicker acceptance
-        run: bun run test:color-picker:chromium
-
-      - name: Run packed Next production consumer acceptance
-        run: bun run test:packed-next-web-consumer
+      - name: Run Smoke tests
+        if: steps.impact.outputs.smoke != 'skip'
+        run: bun .github/scripts/ci-impact.ts smoke
 
       - name: Run typecheck
         run: |
