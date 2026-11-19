@@ -154,15 +154,17 @@ function writeFixture(
   writeFileSync(
     join(root, 'app', '_layout.tsx'),
     `${zoraImport}
+import { createZoraThemeConfig } from '@ankhorage/zora/theme';
 import { Stack } from 'expo-router';
 
 function RootContent() {
   const { mode } = useZoraTheme();
+  const themeConfig = createZoraThemeConfig();
   ${registry}
   const RuntimeCard = registry.Card;
   const RuntimeText = registry.Text;
   const metadataCount = Object.keys(ZORA_COMPONENT_META).length + Object.keys(ZORA_THEME_RECIPE_META).length;
-  return <AppShell><RuntimeCard><RuntimeText>Reader-free runtime acceptance</RuntimeText><RuntimeText>{mode}</RuntimeText><RuntimeText>{metadataCount}</RuntimeText>${links}${reader}</RuntimeCard></AppShell>;
+  return <AppShell><RuntimeCard><RuntimeText>Reader-free runtime acceptance</RuntimeText><RuntimeText>{mode}</RuntimeText><RuntimeText>{themeConfig.id}</RuntimeText><RuntimeText>{metadataCount}</RuntimeText>${links}${reader}</RuntimeCard></AppShell>;
 }
 
 export default function RootLayout() {
@@ -174,6 +176,24 @@ export default function RootLayout() {
     join(root, 'app', 'index.tsx'),
     'export default function Index() { return null; }\n',
   );
+}
+
+function verifyThemePackageConditions(root: string): void {
+  const packageJson = readJson(join(root, 'node_modules', '@ankhorage', 'zora', 'package.json'));
+  const exports = object(packageJson.exports, 'packed ZORA exports');
+  const packageRoot = object(exports['.'], 'packed ZORA root export');
+  const theme = object(exports['./theme'], 'packed ZORA theme export');
+
+  for (const condition of ['browser', 'react-native']) {
+    assert(
+      packageRoot[condition] === './dist/index.js',
+      `Packed ZORA root ${condition} condition must resolve compiled artifacts.`,
+    );
+    assert(
+      theme[condition] === './dist/features/theme/public.js',
+      `Packed ZORA theme ${condition} condition must resolve compiled artifacts.`,
+    );
+  }
 }
 
 async function dynamicPortAsync(): Promise<number> {
@@ -481,6 +501,16 @@ async function verifyLiveVariantAsync(
       observations,
       response,
     } = await waitForBundleAsync(bundleUrl, metroProcess, logs);
+    const nativeBundleUrl = `${rootUrl}/node_modules/expo-router/entry.bundle?platform=ios&dev=true&minify=false`;
+    const nativeBundle = await waitForBundleAsync(nativeBundleUrl, metroProcess, logs);
+    assert(
+      nativeBundle.response.status === 200,
+      `${label} native Metro bundle returned HTTP ${nativeBundle.response.status}.`,
+    );
+    logs.push(
+      `native theme bundle: ${nativeBundle.response.status} ${nativeBundle.response.statusText}; ${nativeBundle.response.url}\n`,
+    );
+    console.log(`${label}: native Metro ${nativeBundle.response.status}.`);
     const hasPdfWorker = /pdfjs-dist|pdf\.worker|@ankhorage\/reader/u.test(source);
     const evidence = [
       `request URL: ${bundleUrl}`,
@@ -603,6 +633,7 @@ try {
       installedCandidate.version === candidateVersion,
       `${label} resolved unexpected ZORA package version ${String(installedCandidate.version)}.`,
     );
+    verifyThemePackageConditions(root);
     console.log(
       `${label}: resolved @ankhorage/zora@${installedCandidate.version} from file:${candidatePath}.`,
     );

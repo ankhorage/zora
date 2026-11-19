@@ -1,5 +1,5 @@
 import { strict as assert } from 'node:assert';
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -7,6 +7,17 @@ const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-web-consumer-'));
 const skipBuild = process.argv.includes('--skip-build');
 const authoring = process.argv.includes('--authoring');
+const surfaceVersion = readSurfaceVersion();
+
+/*** Read the Surface contract consumed by the packed ZORA package. */
+function readSurfaceVersion(): string {
+  const packageJson = JSON.parse(readFileSync(join(repositoryRoot, 'package.json'), 'utf8')) as {
+    readonly dependencies?: Readonly<Record<string, unknown>>;
+  };
+  const version = packageJson.dependencies?.['@ankhorage/surface'];
+  if (typeof version !== 'string') throw new Error('Expected a declared Surface dependency.');
+  return version;
+}
 
 /*** Run one consumer-boundary command and retain its output on failure. */
 function run(
@@ -36,7 +47,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
         type: 'module',
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
-          '@ankhorage/surface': '9.5.10',
+          '@ankhorage/surface': surfaceVersion,
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',

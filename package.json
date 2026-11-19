@@ -64,43 +64,43 @@
   ],
   "exports": {
     ".": {
-      "react-native": "./src/index.ts",
-      "browser": "./src/index.ts",
+      "react-native": "./dist/index.js",
+      "browser": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./bottom-sheet": {
-      "react-native": "./src/features/bottom-sheet/public.ts",
-      "browser": "./src/features/bottom-sheet/public.ts",
+      "react-native": "./dist/features/bottom-sheet/public.js",
+      "browser": "./dist/features/bottom-sheet/public.js",
       "types": "./dist/features/bottom-sheet/public.d.ts",
       "import": "./dist/features/bottom-sheet/public.js",
       "default": "./dist/features/bottom-sheet/public.js"
     },
     "./uploader": {
-      "react-native": "./src/features/uploader/public.ts",
-      "browser": "./src/features/uploader/public.ts",
+      "react-native": "./dist/features/uploader/public.js",
+      "browser": "./dist/features/uploader/public.js",
       "types": "./dist/features/uploader/public.d.ts",
       "import": "./dist/features/uploader/public.js",
       "default": "./dist/features/uploader/public.js"
     },
     "./metadata": {
-      "react-native": "./src/features/registry/index.ts",
-      "browser": "./src/features/registry/index.ts",
+      "react-native": "./dist/features/registry/index.js",
+      "browser": "./dist/features/registry/index.js",
       "types": "./dist/features/registry/index.d.ts",
       "import": "./dist/features/registry/index.js",
       "default": "./dist/features/registry/index.js"
     },
     "./registry": {
-      "react-native": "./src/features/registry/readerFreeRegistry.ts",
-      "browser": "./src/features/registry/readerFreeRegistry.ts",
+      "react-native": "./dist/features/registry/readerFreeRegistry.js",
+      "browser": "./dist/features/registry/readerFreeRegistry.js",
       "types": "./dist/features/registry/readerFreeRegistry.d.ts",
       "import": "./dist/features/registry/readerFreeRegistry.js",
       "default": "./dist/features/registry/readerFreeRegistry.js"
     },
     "./reader-free": {
-      "react-native": "./src/readerFree.ts",
-      "browser": "./src/readerFree.ts",
+      "react-native": "./dist/readerFree.js",
+      "browser": "./dist/readerFree.js",
       "types": "./dist/readerFree.d.ts",
       "import": "./dist/readerFree.js",
       "default": "./dist/readerFree.js"
@@ -112,14 +112,14 @@
     },
     "./theme": {
       "bun": "./src/features/theme/public.ts",
-      "react-native": "./src/features/theme/public.ts",
-      "browser": "./src/features/theme/public.ts",
+      "react-native": "./dist/features/theme/public.js",
+      "browser": "./dist/features/theme/public.js",
       "types": "./dist/features/theme/public.d.ts",
       "import": "./dist/features/theme/public.js",
       "default": "./dist/features/theme/public.js"
     },
     "./authoring": {
-      "react-native": "./src/authoring.ts",
+      "react-native": "./dist/authoring.js",
       "browser": "./web-dist/authoring/index.js",
       "types": "./web-dist/authoring/index.d.ts",
       "import": "./dist/authoring.js",
@@ -159,6 +159,7 @@
     "test:packed-next-web-consumer": "bun scripts/verify-packed-next-web-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
     "test:checkbox:chromium": "bun scripts/test-packed-checkbox-chromium.ts",
+    "test:packed-theme-consumer": "bun scripts/verify-packed-theme-consumer.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
     "test:graph-view:chromium": "bun scripts/test-graph-view-chromium.ts",
     "test:color-picker:chromium": "bun scripts/test-packed-color-picker-chromium.ts",

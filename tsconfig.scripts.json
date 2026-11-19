@@ -16,6 +16,7 @@
   },
   "include": [
     "scripts/build-web-components.ts",
+    "scripts/verify-packed-theme-consumer.ts",
     "scripts/validate-example-projects.ts",
     "scripts/validate-expo-candidate.ts",
     "scripts/validate-reader-free-expo.ts"
