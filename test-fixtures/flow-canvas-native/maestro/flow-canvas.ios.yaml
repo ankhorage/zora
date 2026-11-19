@@ -21,6 +21,7 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
 - assertVisible: 'source-unchanged-on-viewport-change=true'
+- assertVisible: 'Target task: Input'
 - tapOn: 'Target task: Input'
 - assertVisible: 'event=connect'
 - tapOn: 'Connection source-target'

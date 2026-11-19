@@ -21,6 +21,13 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
 - assertVisible: 'source-unchanged-on-viewport-change=true'
+# The first horizontal pan clips the target input below the viewport. Pan the real empty
+# right edge upward before connecting, so the port is genuinely visible and tappable.
+- swipe:
+    start: '95%, 85%'
+    end: '95%, 55%'
+    duration: 500
+- assertVisible: 'Target task: Input'
 - tapOn: 'Target task: Input'
 - assertVisible: 'event=connect'
 - tapOn: 'Connection source-target'
