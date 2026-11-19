@@ -113,6 +113,17 @@ async function testGraphViewChromiumAsync() {
       metaToggled.events.filter(isDependencyPress).at(-1)?.selectionIntent === 'toggle',
       `Cytoscape tap did not preserve Meta selection intent: ${JSON.stringify(metaToggled.events)}`,
     );
+    await browser.clickAsync(source.position.x, source.position.y, 1, { metaKey: true });
+    const deselected = await browser.waitForInteractionStateAsync(
+      (state) =>
+        state.events.filter((event) => event.id === 'src' && event.type === 'press').length === 3 &&
+        state.selectedNodeIds.length === 1 &&
+        state.selectedNodeIds[0] === 'dependency',
+    );
+    assert(
+      deselected.events.filter(isSourcePress).at(-1)?.selectionIntent === 'toggle',
+      `Native Meta-click did not preserve toggle intent for deselection: ${JSON.stringify(deselected.events)}`,
+    );
     await browser.clickAsync(source.position.x, source.position.y, 2);
     const afterInteraction = await browser.waitForInteractionStateAsync(
       (state) => state.events.filter(isSourceDoublePress).length === 1,
@@ -153,6 +164,28 @@ async function testGraphViewChromiumAsync() {
       const pannedViewport = requireViewport(panned);
       const before = requireMeasurement(panned);
       const layoutCompletions = panned.layoutCompletions;
+      await browser.togglePaintAsync(repositoryCount);
+      const lightPaint = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.paintTheme === 'light',
+      );
+      assert(
+        JSON.stringify(requireMeasurement(lightPaint)) === JSON.stringify(before) &&
+          JSON.stringify(requireViewport(lightPaint)) === JSON.stringify(pannedViewport) &&
+          lightPaint.layoutCompletions === layoutCompletions,
+        `Light paint update changed public geometry or restarted ELK at ${repositoryCount}.`,
+      );
+      await browser.togglePaintAsync(repositoryCount);
+      const darkPaint = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.paintTheme === 'dark',
+      );
+      assert(
+        JSON.stringify(requireMeasurement(darkPaint)) === JSON.stringify(before) &&
+          JSON.stringify(requireViewport(darkPaint)) === JSON.stringify(pannedViewport) &&
+          darkPaint.layoutCompletions === layoutCompletions,
+        `Dark paint update changed public geometry or restarted ELK at ${repositoryCount}.`,
+      );
       await browser.reselectAsync(repositoryCount);
       const reselected = await browser.waitForScenarioAsync(
         repositoryCount,
@@ -207,6 +240,15 @@ async function testGraphViewChromiumAsync() {
       assert(
         fitted.controllerChanges === 0,
         `Explicit fit replaced the controller at ${repositoryCount}.`,
+      );
+      await browser.growLabelAsync(repositoryCount);
+      const geometryChanged = await browser.waitForScenarioAsync(
+        repositoryCount,
+        (state) => state.labelExpanded && state.layoutCompletions > layoutCompletions,
+      );
+      assert(
+        geometryChanged.layoutCompletions > layoutCompletions,
+        `Longer label did not restart ELK at ${repositoryCount}.`,
       );
     }
     assert(
@@ -303,8 +345,10 @@ function assertNarrowViewportFit(state: InteractionAcceptanceState): void {
 
 interface GraphAcceptanceState {
   readonly controllerChanges: number;
+  readonly labelExpanded: boolean;
   readonly layoutCompletions: number;
   readonly measurement: GraphMeasurement | null;
+  readonly paintTheme: 'dark' | 'light';
   readonly repositoryIds: readonly string[];
   readonly selectedRepositoryIds: readonly string[];
   readonly selectionTransitions: number;
@@ -569,8 +613,16 @@ class ChromeSession {
     await this.evaluateAsync(`window.graphAcceptance?.reselect(${repositoryCount}) ?? false`);
   }
 
+  async togglePaintAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.togglePaint(${repositoryCount}) ?? false`);
+  }
+
   async fitAsync(repositoryCount: number): Promise<void> {
     await this.evaluateAsync(`window.graphAcceptance?.fit(${repositoryCount}) ?? false`);
+  }
+
+  async growLabelAsync(repositoryCount: number): Promise<void> {
+    await this.evaluateAsync(`window.graphAcceptance?.growLabel(${repositoryCount}) ?? false`);
   }
 
   close(): void {

@@ -1,5 +1,23 @@
 # Changelog
 
+## 27.4.3
+
+### Patch Changes
+
+- 45d8aa9: Keep GraphView label sizing stable when renderer metrics contain floating-point noise above whole pixels.
+
+## 27.4.2
+
+### Patch Changes
+
+- 956067d: Update dependencies: `@ankhorage/surface`.
+
+## 27.4.1
+
+### Patch Changes
+
+- fc3a199: Preserve native Control and Command modifier intent for GraphView node selection callbacks.
+
 ## 27.4.0
 
 ### Minor Changes

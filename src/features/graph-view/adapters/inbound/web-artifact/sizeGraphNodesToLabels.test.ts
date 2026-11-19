@@ -36,3 +36,35 @@ test('uses rendered label bounds, retains padding, and releases sizing when disa
     cy.destroy();
   }
 });
+
+test('keeps mathematically whole fractional label metrics idempotent while growing for real fractions', () => {
+  const cy = cytoscape({
+    headless: true,
+    styleEnabled: true,
+    elements: [{ data: { id: 'fractional-label' } }],
+    style: [{ selector: 'node', style: { width: 30, height: 20 } }],
+  });
+  const sized = new Set<string>();
+  const node = cy.getElementById('fractional-label');
+  const bounds = { height: 18.000000000000004, width: 50.00000000000001 };
+  node.boundingBox = () => ({
+    x1: 0,
+    x2: bounds.width,
+    y1: 0,
+    y2: bounds.height,
+    w: bounds.width,
+    h: bounds.height,
+  });
+  try {
+    sizeGraphNodesToLabels(cy, sized, true);
+    expect(node.width()).toBe(50);
+    expect(node.height()).toBe(18);
+    sizeGraphNodesToLabels(cy, sized, true);
+    expect(node.width()).toBe(50);
+    bounds.width = 50.0001;
+    sizeGraphNodesToLabels(cy, sized, true);
+    expect(node.width()).toBe(51);
+  } finally {
+    cy.destroy();
+  }
+});

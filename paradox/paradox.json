@@ -17,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.4.0",
+      "value": "v27.4.3",
       "color": "cb3837"
     },
     {
@@ -3175,6 +3175,14 @@
       ]
     },
     {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "createGraphPointerDownReader"
+      ]
+    },
+    {
       "path": "src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -3296,6 +3304,7 @@
       "path": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
@@ -69343,7 +69352,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 20,
+        "line": 33,
         "column": 9
       }
     },
@@ -69354,7 +69363,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 41,
+        "line": 54,
         "column": 1
       }
     },
@@ -69365,7 +69374,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 48,
+        "line": 62,
         "column": 11
       }
     },
@@ -69376,7 +69385,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 64,
+        "line": 83,
         "column": 1
       }
     },
@@ -69387,7 +69396,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 78,
+        "line": 98,
         "column": 1
       }
     },
@@ -69398,7 +69407,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 89,
+        "line": 109,
         "column": 1
       }
     },
@@ -69409,7 +69418,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts",
-        "line": 102,
+        "line": 122,
         "column": 1
       }
     },
@@ -69689,6 +69698,50 @@
       }
     },
     {
+      "name": "createGraphPointerDownReader",
+      "description": "Correlate one native pointer-down snapshot with its renderer activation without retaining stale modifiers.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "matchesPointerActivation",
+      "description": "Match only the same browser pointer so unrelated renderer events cannot inherit modifiers.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+        "line": 24,
+        "column": 1
+      }
+    },
+    {
+      "name": "createPointerDownSnapshot",
+      "description": "Retain a browser pointer event only when it provides a stable pointer identity.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "readRendererPointerId",
+      "description": "Read Cytoscape's underlying browser event without trusting programmatic event shapes.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
       "name": "createGraphResizeObserver",
       "description": "Observe settled container resizing without racing an active layout generation.",
       "see": [],
@@ -69761,7 +69814,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 74,
+        "line": 75,
         "column": 1
       }
     },
@@ -69772,7 +69825,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 100,
+        "line": 102,
         "column": 1
       }
     },
@@ -69783,7 +69836,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 165,
+        "line": 173,
         "column": 1
       }
     },
@@ -69794,7 +69847,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 230,
+        "line": 238,
         "column": 1
       }
     },
@@ -69805,7 +69858,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 244,
+        "line": 252,
         "column": 1
       }
     },
@@ -69816,7 +69869,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 255,
+        "line": 263,
+        "column": 1
+      }
+    },
+    {
+      "name": "scheduleInitialLayout",
+      "description": "Coalesce progressive pre-ready topology updates before the initial layout can complete.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 272,
+        "column": 1
+      }
+    },
+    {
+      "name": "startGraphLayout",
+      "description": "Start one layout generation after its input has reached the runtime owner.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 286,
         "column": 1
       }
     },
@@ -69827,7 +69902,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 276,
+        "line": 307,
         "column": 1
       }
     },
@@ -69838,7 +69913,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 317,
+        "line": 348,
         "column": 1
       }
     },
@@ -69849,7 +69924,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 343,
+        "line": 374,
         "column": 1
       }
     },
@@ -69860,7 +69935,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 351,
+        "line": 382,
         "column": 1
       }
     },
@@ -69871,7 +69946,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 375,
+        "line": 406,
         "column": 1
       }
     },
@@ -69882,7 +69957,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 389,
+        "line": 420,
         "column": 1
       }
     },
@@ -69893,7 +69968,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 398,
+        "line": 429,
         "column": 1
       }
     },
@@ -69904,7 +69979,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 403,
+        "line": 434,
         "column": 1
       }
     },
@@ -69915,7 +69990,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 413,
+        "line": 444,
         "column": 1
       }
     },
@@ -69926,7 +70001,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 426,
+        "line": 457,
         "column": 1
       }
     },
@@ -69937,7 +70012,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 438,
+        "line": 469,
         "column": 1
       }
     },
@@ -69948,7 +70023,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 447,
+        "line": 478,
         "column": 1
       }
     },
@@ -69959,7 +70034,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 461,
+        "line": 492,
         "column": 1
       }
     },
@@ -69970,7 +70045,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 466,
+        "line": 497,
         "column": 1
       }
     },
@@ -70344,7 +70419,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 38,
+        "line": 39,
         "column": 1
       }
     },
@@ -70355,7 +70430,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 77,
+        "line": 87,
         "column": 1
       }
     },
@@ -70366,7 +70441,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 96,
+        "line": 107,
         "column": 1
       }
     },
@@ -70377,7 +70452,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 138,
+        "line": 149,
         "column": 1
       }
     },
@@ -70388,7 +70463,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 156,
+        "line": 168,
         "column": 1
       }
     },
@@ -70399,7 +70474,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 217,
+        "line": 229,
         "column": 1
       }
     },
@@ -70410,7 +70485,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 227,
+        "line": 239,
         "column": 1
       }
     },
@@ -70421,7 +70496,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 243,
+        "line": 255,
         "column": 1
       }
     },
@@ -70432,7 +70507,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 259,
+        "line": 271,
         "column": 1
       }
     },
@@ -70587,6 +70662,17 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
         "line": 9,
+        "column": 1
+      }
+    },
+    {
+      "name": "getStableLabelDimension",
+      "description": "Round upward while discarding only floating-point noise above whole label pixels.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+        "line": 40,
         "column": 1
       }
     },
@@ -72566,7 +72652,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/selection/application/resolveSelectionEventIntent.ts",
-        "line": 32,
+        "line": 46,
         "column": 1
       }
     },
@@ -72577,7 +72663,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/selection/application/resolveSelectionEventIntent.ts",
-        "line": 40,
+        "line": 54,
         "column": 1
       }
     },
@@ -72588,7 +72674,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/selection/application/resolveSelectionEventIntent.ts",
-        "line": 47,
+        "line": 61,
         "column": 1
       }
     },
@@ -83537,6 +83623,11 @@
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "toPath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
@@ -90134,6 +90225,12 @@
       },
       {
         "fromSymbol": "handler",
+        "toSymbol": "readLatestPointerDown",
+        "callExpression": "readLatestPointerDown",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
+      },
+      {
+        "fromSymbol": "handler",
         "toSymbol": "onRuntimeChange",
         "callExpression": "onRuntimeChange",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/bindGraphEvents.ts"
@@ -90451,6 +90548,36 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"
       },
       {
+        "fromSymbol": "read",
+        "toSymbol": "matchesPointerActivation",
+        "callExpression": "matchesPointerActivation",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"
+      },
+      {
+        "fromSymbol": "write",
+        "toSymbol": "createPointerDownSnapshot",
+        "callExpression": "createPointerDownSnapshot",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"
+      },
+      {
+        "fromSymbol": "matchesPointerActivation",
+        "toSymbol": "readRendererPointerId",
+        "callExpression": "readRendererPointerId",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"
+      },
+      {
+        "fromSymbol": "createPointerDownSnapshot",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"
+      },
+      {
+        "fromSymbol": "readRendererPointerId",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"
+      },
+      {
         "fromSymbol": "createGraphResizeObserver",
         "toSymbol": "readResizeObserverConstructor",
         "callExpression": "readResizeObserverConstructor",
@@ -90728,6 +90855,36 @@
       },
       {
         "fromSymbol": "startCurrentLayout",
+        "toSymbol": "scheduleInitialLayout",
+        "callExpression": "scheduleInitialLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "startCurrentLayout",
+        "toSymbol": "startGraphLayout",
+        "callExpression": "startGraphLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "scheduleInitialLayout",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "toSymbol": "startGraphLayout",
+        "callExpression": "startGraphLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "startGraphLayout",
         "toSymbol": "runGraphLayout",
         "callExpression": "runGraphLayout",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
@@ -91184,6 +91341,12 @@
       },
       {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "write",
+        "callExpression": "pointerDownReader.write",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
         "toSymbol": "handleOverlayNodeEvent",
         "callExpression": "runtimeRef.current?.handleOverlayNodeEvent",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
@@ -91367,6 +91530,12 @@
         "toSymbol": "frame",
         "callExpression": "frame",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+        "toSymbol": "getStableLabelDimension",
+        "callExpression": "getStableLabelDimension",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"
       },
       {
         "fromSymbol": "syncGraphElements",
