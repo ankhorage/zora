@@ -60,15 +60,15 @@ function FlowNodeInner(props: FlowNodeProps) {
       style={{
         backgroundColor: theme.semantics.neutral.surface,
         borderColor: props.selected ? theme.colors.primary : theme.semantics.neutral.divider,
-        borderRadius: 12,
+        borderRadius: 14,
         borderWidth: 2,
         elevation: props.selected ? 4 : 1,
         left: props.node.position.x,
         minWidth: 224,
         position: 'absolute',
         shadowColor: theme.semantics.neutral.text,
-        shadowOpacity: props.selected ? 0.16 : 0.08,
-        shadowRadius: 8,
+        shadowOpacity: props.selected ? 0.2 : 0.1,
+        shadowRadius: props.selected ? 14 : 9,
         top: props.node.position.y,
       }}
     >
@@ -107,7 +107,14 @@ function FlowNodeInner(props: FlowNodeProps) {
         }}
         onResponderTerminationRequest={() => false}
         onStartShouldSetResponderCapture={() => !props.readOnly && !props.node.disabled}
-        style={{ padding: 12 }}
+        style={{
+          backgroundColor: props.selected
+            ? theme.colors.primary
+            : theme.semantics.neutral.surfaceHover,
+          borderTopLeftRadius: 12,
+          borderTopRightRadius: 12,
+          padding: 12,
+        }}
       >
         <View>
           <Pressable
@@ -125,11 +132,25 @@ function FlowNodeInner(props: FlowNodeProps) {
               props.onNodePress(props.node.id);
             }}
           >
-            <Text style={{ color: theme.semantics.neutral.text, fontSize: 16, fontWeight: '700' }}>
+            <Text
+              style={{
+                color: props.selected
+                  ? theme.semantics.surface.default
+                  : theme.semantics.neutral.text,
+                fontSize: 16,
+                fontWeight: '700',
+              }}
+            >
               {props.node.title}
             </Text>
             {props.node.description ? (
-              <Text style={{ color: theme.semantics.neutral.textMuted }}>
+              <Text
+                style={{
+                  color: props.selected
+                    ? theme.semantics.surface.default
+                    : theme.semantics.neutral.textMuted,
+                }}
+              >
                 {props.node.description}
               </Text>
             ) : null}
@@ -137,7 +158,7 @@ function FlowNodeInner(props: FlowNodeProps) {
         </View>
         {props.children}
       </View>
-      <View style={{ gap: 4, paddingHorizontal: 12 }}>
+      <View style={{ gap: 4, paddingHorizontal: 12, paddingVertical: 8 }}>
         {props.node.ports.map((port) => (
           <View
             key={port.id}
