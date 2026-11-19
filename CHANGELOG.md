@@ -1,5 +1,102 @@
 # Changelog
 
+## 27.4.3
+
+### Patch Changes
+
+- 45d8aa9: Keep GraphView label sizing stable when renderer metrics contain floating-point noise above whole pixels.
+
+## 27.4.2
+
+### Patch Changes
+
+- 956067d: Update dependencies: `@ankhorage/surface`.
+
+## 27.4.1
+
+### Patch Changes
+
+- fc3a199: Preserve native Control and Command modifier intent for GraphView node selection callbacks.
+
+## 27.4.0
+
+### Minor Changes
+
+- 5f86e60: Add controlled ColorPicker, ColorWheel, ColorTone, and ColorHueScale components for Web and React Native consumers.
+
+## 27.3.9
+
+### Patch Changes
+
+- 4559a1b: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+- 32f62b5: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.8
+
+### Patch Changes
+
+- 785ffd3: Update dependencies: `@ankhorage/contracts`.
+
+## 27.3.7
+
+### Patch Changes
+
+- 251c24b: Correct native component-ref type contracts while retaining the supported Expo 57 peer contract.
+
+## 27.3.6
+
+### Patch Changes
+
+- d4852ec: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+
+## 27.3.5
+
+### Patch Changes
+
+- 96458c3: Update dependencies: `@ankhorage/surface`.
+
+## 27.3.4
+
+### Patch Changes
+
+- 5b1a6fc: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.3
+
+### Patch Changes
+
+- 5aca94e: Render the published web ActivityIndicator with deterministic server-side dimensions and semantic theme colors before hydration.
+
+## 27.3.2
+
+### Patch Changes
+
+- 9f7f408: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.1
+
+### Patch Changes
+
+- facab24: Update dependencies: `@ankhorage/runtime`.
+
+## 27.3.0
+
+### Minor Changes
+
+- 845a331: Add the GraphView `preserve-positions` topology update policy for stable incremental graph updates.
+
+## 27.2.6
+
+### Patch Changes
+
+- 9e199ee: Update dependencies: `@ankhorage/runtime`.
+
+## 27.2.5
+
+### Patch Changes
+
+- 1537dad: Rebuild standalone web checkbox artifacts with Surface accessibility fixes for checked ARIA state and Space-key activation.
+
 ## 27.2.4
 
 ### Patch Changes

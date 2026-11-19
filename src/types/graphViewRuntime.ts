@@ -3,6 +3,7 @@ import type {
   GraphViewLayoutName,
   GraphViewNode,
   GraphViewStyleRule,
+  GraphViewTopologyUpdatePolicy,
 } from './graph-view';
 
 export interface GraphRuntimeUpdate {
@@ -20,4 +21,5 @@ export interface GraphRuntimeUpdate {
   readonly richNodeRendering: boolean;
   readonly spacingFactor?: number;
   readonly styleRules?: readonly GraphViewStyleRule[];
+  readonly topologyUpdatePolicy?: GraphViewTopologyUpdatePolicy;
 }

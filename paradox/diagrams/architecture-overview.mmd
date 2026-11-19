@@ -44,6 +44,10 @@ graph TD
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"]
+  package__ankhorage_zora -.-> module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
   package__ankhorage_zora -.-> module_src_features_activity_indicator_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
@@ -471,6 +475,61 @@ graph TD
   module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
   module_src_features_collection_editor_public_ts["src/features/collection-editor/public.ts"]
   package__ankhorage_zora -.-> module_src_features_collection_editor_public_ts
+  module_src_features_color_ColorHueScale_tsx["src/features/color/ColorHueScale.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorHueScale_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_typography_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorPicker_tsx["src/features/color/ColorPicker.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorPicker_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHueScale_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_tabs_public_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorTone_tsx["src/features/color/ColorTone.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheel_tsx["src/features/color/ColorWheel.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx["src/features/color/ColorWheelKeyboardProxy.native.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_native_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_tsx["src/features/color/ColorWheelKeyboardProxy.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx["src/features/color/ColorWheelKeyboardProxy.web.tsx"]
+  package__ankhorage_zora -.-> module_src_features_color_ColorWheelKeyboardProxy_web_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_public_ts["src/features/color/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_public_ts
+  module_src_features_color_utils_resolveColorAtHue_ts["src/features/color/utils/resolveColorAtHue.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveColorAtHue_ts
+  module_src_features_color_utils_resolveColorHue_ts["src/features/color/utils/resolveColorHue.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_utils_resolveOklchColor_ts["src/features/color/utils/resolveOklchColor.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_utils_resolveOklchColor_ts --> module_src_types_color_ts
+  module_src_features_color_utils_resolveWheelColor_ts["src/features/color/utils/resolveWheelColor.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveWheelColor_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveWheelColorComponents_ts
+  module_src_features_color_utils_resolveWheelColorComponents_ts["src/features/color/utils/resolveWheelColorComponents.ts"]
+  package__ankhorage_zora -.-> module_src_features_color_utils_resolveWheelColorComponents_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx["src/features/content-rail/adapters/inbound/ContentRail.tsx"]
   package__ankhorage_zora -.-> module_src_features_content_rail_adapters_inbound_ContentRail_tsx
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
@@ -484,6 +543,7 @@ graph TD
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_typography_public_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_content_rail_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_react_native_ts
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx["src/features/content-rail/adapters/inbound/ContentRailFlow.tsx"]
   package__ankhorage_zora -.-> module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_features_theme_composition_useZoraTheme_ts
@@ -715,6 +775,7 @@ graph TD
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_typography_public_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_types_radio_ts
+  module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_types_react_native_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx["src/features/form/radio/adapters/inbound/RadioOptionControl.tsx"]
   package__ankhorage_zora -.-> module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_form_radio_utils_handleRadioOptionKeyDown_ts
@@ -722,6 +783,7 @@ graph TD
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_icon_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_typography_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_types_radio_ts
+  module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_types_react_native_ts
   module_src_features_form_radio_constants_ts["src/features/form/radio/constants.ts"]
   package__ankhorage_zora -.-> module_src_features_form_radio_constants_ts
   module_src_features_form_radio_public_ts["src/features/form/radio/public.ts"]
@@ -846,6 +908,7 @@ graph TD
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityMeasurement_ts
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_react_native_ts
   module_src_features_game_adapters_inbound_GameField_tsx["src/features/game/adapters/inbound/GameField.tsx"]
   package__ankhorage_zora -.-> module_src_features_game_adapters_inbound_GameField_tsx
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_layout_public_ts
@@ -916,6 +979,7 @@ graph TD
   module_src_features_game_utils_measureGameEntity_ts["src/features/game/utils/measureGameEntity.ts"]
   package__ankhorage_zora -.-> module_src_features_game_utils_measureGameEntity_ts
   module_src_features_game_utils_measureGameEntity_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_utils_measureGameEntity_ts --> module_src_types_react_native_ts
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts["src/features/game/utils/resolveGameEntityMotionPlan.ts"]
   package__ankhorage_zora -.-> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts --> module_src_types_gamePresentation_ts
@@ -936,6 +1000,7 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_game_utils_useGameEntityMeasurement_ts
   module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_composition_GameRuntimeContext_ts
   module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_utils_measureGameEntity_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_types_react_native_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts["src/features/game/utils/useGameEntityMotionProgress.ts"]
   package__ankhorage_zora -.-> module_src_features_game_utils_useGameEntityMotionProgress_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
@@ -973,6 +1038,8 @@ graph TD
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts --> module_src_types_graphViewRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts"]
   package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphPointerDownReader_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"]
+  package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphPointerDownReader_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"]
   package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_scheduleGraphFrame_ts
@@ -986,6 +1053,7 @@ graph TD
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_registerGraphLayouts_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts
@@ -1022,6 +1090,7 @@ graph TD
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx["src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"]
   package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphPointerDownReader_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
@@ -1031,6 +1100,9 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts["src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts"]
+  package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts["src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts"]
   package__ankhorage_zora -.-> module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts --> module_src_types_graph_view_ts
@@ -1066,6 +1138,7 @@ graph TD
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_features_grid_interactions_adapters_inbound_useGridInteractionScrollLock_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_features_grid_interactions_application_createGridInteractionsController_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_types_grid_interactions_ts
+  module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_types_react_native_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_native_tsx["src/features/grid-interactions/adapters/inbound/GridInteractionsKeyboardProxy.native.tsx"]
   package__ankhorage_zora -.-> module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_native_tsx
   module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_native_tsx --> module_src_types_grid_interactions_ts
@@ -1127,6 +1200,7 @@ graph TD
   package__ankhorage_zora -.-> module_src_features_grid_view_adapters_inbound_GridView_tsx
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_features_grid_view_application_createGridScrollSync_ts
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_grid_view_ts
+  module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_react_native_ts
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx["src/features/grid-view/adapters/inbound/TileGrid.tsx"]
   package__ankhorage_zora -.-> module_src_features_grid_view_adapters_inbound_TileGrid_tsx
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_features_grid_view_adapters_inbound_GridView_tsx
@@ -2376,6 +2450,9 @@ graph TD
   module_src_types_collection_editor_ts["src/types/collection-editor.ts"]
   package__ankhorage_zora -.-> module_src_types_collection_editor_ts
   module_src_types_collection_editor_ts --> module_src_types_base_ts
+  module_src_types_color_ts["src/types/color.ts"]
+  package__ankhorage_zora -.-> module_src_types_color_ts
+  module_src_types_color_ts --> module_src_types_base_ts
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   package__ankhorage_zora -.-> module_src_types_content_rail_ts
   module_src_types_content_rail_ts --> module_src_types_base_ts
@@ -2517,6 +2594,8 @@ graph TD
   module_src_types_rating_ts --> module_src_types_base_ts
   module_src_types_rating_ts --> module_src_types_control_ts
   module_src_types_rating_ts --> module_src_types_theme_ts
+  module_src_types_react_native_ts["src/types/react-native.ts"]
+  package__ankhorage_zora -.-> module_src_types_react_native_ts
   module_src_types_reader_ts["src/types/reader.ts"]
   package__ankhorage_zora -.-> module_src_types_reader_ts
   module_src_types_reader_ts --> module_src_types_base_ts

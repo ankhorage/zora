@@ -15,6 +15,20 @@ export {
   ThemeEditorAdapter,
 } from './authoring';
 export type {
+  ColorHueScaleProps,
+  ColorPickerProps,
+  ColorPickerSelection,
+  ColorPickerTab,
+  ColorPickerValue,
+  ColorToneDefinition,
+  ColorToneProps,
+  ColorToneSelection,
+  ColorToneTarget,
+  ColorWheelProps,
+  ColorWheelSelection,
+} from './features/color/public';
+export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
+export type {
   ReaderColorScheme,
   ReaderDocumentFormat,
   ReaderErrorCode,

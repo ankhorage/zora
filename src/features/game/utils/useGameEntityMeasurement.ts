@@ -1,12 +1,13 @@
 import React from 'react';
 import type { View } from 'react-native';
 
+import type { ReactNativeComponentInstance } from '../../../types/react-native';
 import { GameRuntimeContext } from '../composition/GameRuntimeContext';
 import { measureGameEntity } from './measureGameEntity';
 
 /*** Register one optional measurable GameEntity view inside its local Game scope. */
 export function useGameEntityMeasurement(
-  elementRef: React.RefObject<View | null>,
+  elementRef: React.RefObject<ReactNativeComponentInstance<typeof View> | null>,
   measurementId: string | undefined,
 ): void {
   const runtime = React.useContext(GameRuntimeContext);

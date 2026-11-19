@@ -2,6 +2,7 @@ import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type React from 'react';
 
 export type GraphViewLayoutName = 'breadthfirst' | 'circle' | 'concentric' | 'elk' | 'grid';
+export type GraphViewTopologyUpdatePolicy = 'preserve-positions';
 export type GraphViewElementEventType =
   'press' | 'double-press' | 'select' | 'unselect' | 'pointer-enter' | 'pointer-leave';
 
@@ -104,6 +105,12 @@ export interface GraphViewProps {
   readonly edges: readonly GraphViewEdge[];
   readonly layout?: GraphViewLayoutName;
   readonly layoutOptions?: Readonly<Record<string, unknown>>;
+  /**
+   * Preserve the settled viewport and retained-node positions during controlled topology updates.
+   * New nodes receive a deterministic initial position; call controller.fit() or change layout to
+   * intentionally fit or relayout the graph. Without this opt-in, topology changes relayout.
+   */
+  readonly topologyUpdatePolicy?: GraphViewTopologyUpdatePolicy;
   readonly spacingFactor?: number;
   readonly styleRules?: readonly GraphViewStyleRule[];
   readonly selectedNodeIds?: readonly string[];

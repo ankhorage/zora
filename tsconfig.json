@@ -17,7 +17,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["culori", "node"],
     "rootDir": "src",
     "outDir": "dist"
   },

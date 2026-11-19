@@ -30,7 +30,7 @@ const RNVI_PLUGINS = [
   '@react-native-vector-icons/ionicons',
 ] as const;
 const EXPO_57_GRID_WORKSPACES_CONTRACT = {
-  expo: '~57.0.30',
+  expo: '~57.0.33',
   metroConfig: '0.86.3',
   typesReact: '~19.2.18',
 } as const;

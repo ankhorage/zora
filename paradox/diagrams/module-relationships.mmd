@@ -11,6 +11,7 @@ graph LR
   module_src_features_accordion_public_ts["src/features/accordion/public.ts"]
   module_src_features_activity_indicator_activityIndicatorMeta_ts["src/features/activity-indicator/activityIndicatorMeta.ts"]
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/ActivityIndicator.tsx"]
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx["src/features/activity-indicator/adapters/inbound/web-artifact/ActivityIndicator.tsx"]
   module_src_features_activity_indicator_public_ts["src/features/activity-indicator/public.ts"]
   module_src_features_app_bar_adapters_inbound_AppBar_tsx["src/features/app-bar/adapters/inbound/AppBar.tsx"]
   module_src_features_app_bar_appBarMeta_ts["src/features/app-bar/appBarMeta.ts"]
@@ -100,6 +101,19 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx["src/features/collection-editor/adapters/inbound/CollectionEditor.tsx"]
   module_src_features_collection_editor_meta_ts["src/features/collection-editor/meta.ts"]
   module_src_features_collection_editor_public_ts["src/features/collection-editor/public.ts"]
+  module_src_features_color_ColorHueScale_tsx["src/features/color/ColorHueScale.tsx"]
+  module_src_features_color_ColorPicker_tsx["src/features/color/ColorPicker.tsx"]
+  module_src_features_color_ColorTone_tsx["src/features/color/ColorTone.tsx"]
+  module_src_features_color_ColorWheel_tsx["src/features/color/ColorWheel.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx["src/features/color/ColorWheelKeyboardProxy.native.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_tsx["src/features/color/ColorWheelKeyboardProxy.tsx"]
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx["src/features/color/ColorWheelKeyboardProxy.web.tsx"]
+  module_src_features_color_public_ts["src/features/color/public.ts"]
+  module_src_features_color_utils_resolveColorAtHue_ts["src/features/color/utils/resolveColorAtHue.ts"]
+  module_src_features_color_utils_resolveColorHue_ts["src/features/color/utils/resolveColorHue.ts"]
+  module_src_features_color_utils_resolveOklchColor_ts["src/features/color/utils/resolveOklchColor.ts"]
+  module_src_features_color_utils_resolveWheelColor_ts["src/features/color/utils/resolveWheelColor.ts"]
+  module_src_features_color_utils_resolveWheelColorComponents_ts["src/features/color/utils/resolveWheelColorComponents.ts"]
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx["src/features/content-rail/adapters/inbound/ContentRail.tsx"]
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx["src/features/content-rail/adapters/inbound/ContentRailFlow.tsx"]
   module_src_features_content_rail_constants_ts["src/features/content-rail/constants.ts"]
@@ -225,6 +239,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_compactGraphSpacing_ts["src/features/graph-view/adapters/inbound/web-artifact/compactGraphSpacing.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphController_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphLoopSizer_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphLoopSizer.ts"]
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphPointerDownReader_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphPointerDownReader.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphResizeObserver_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphResizeObserver.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphSpacingEvaluator_ts["src/features/graph-view/adapters/inbound/web-artifact/createGraphSpacingEvaluator.ts"]
@@ -237,6 +252,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx["src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"]
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx["src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"]
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts["src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"]
+  module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts["src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts["src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_registerGraphLayouts_ts["src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts"]
   module_src_features_graph_view_adapters_inbound_web_artifact_runDetachedGraphLayout_ts["src/features/graph-view/adapters/inbound/web-artifact/runDetachedGraphLayout.ts"]
@@ -535,6 +551,7 @@ graph LR
   module_src_types_chip_group_ts["src/types/chip-group.ts"]
   module_src_types_chip_ts["src/types/chip.ts"]
   module_src_types_collection_editor_ts["src/types/collection-editor.ts"]
+  module_src_types_color_ts["src/types/color.ts"]
   module_src_types_content_rail_ts["src/types/content-rail.ts"]
   module_src_types_control_ts["src/types/control.ts"]
   module_src_types_data_table_ts["src/types/data-table.ts"]
@@ -575,6 +592,7 @@ graph LR
   module_src_types_provider_ts["src/types/provider.ts"]
   module_src_types_radio_ts["src/types/radio.ts"]
   module_src_types_rating_ts["src/types/rating.ts"]
+  module_src_types_react_native_ts["src/types/react-native.ts"]
   module_src_types_reader_ts["src/types/reader.ts"]
   module_src_types_registry_ts["src/types/registry.ts"]
   module_src_types_scanner_ts["src/types/scanner.ts"]
@@ -619,6 +637,8 @@ graph LR
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_activity_indicator_adapters_inbound_ActivityIndicator_tsx --> module_src_types_activity_indicator_ts
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_activity_indicator_adapters_inbound_web_artifact_ActivityIndicator_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_button_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_layout_public_ts
   module_src_features_app_bar_adapters_inbound_AppBar_tsx --> module_src_features_popover_menu_public_ts
@@ -868,6 +888,35 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_features_typography_public_ts
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_types_collection_editor_ts
   module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_typography_public_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHueScale_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_tabs_public_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveColorHue_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColor_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheelKeyboardProxy_native_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelKeyboardProxy_web_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_utils_resolveOklchColor_ts --> module_src_types_color_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveWheelColorComponents_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_button_public_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_content_rail_utils_resolveContentRailItemWidth_ts
@@ -879,6 +928,7 @@ graph LR
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_features_typography_public_ts
   module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_content_rail_ts
+  module_src_features_content_rail_adapters_inbound_ContentRail_tsx --> module_src_types_react_native_ts
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_content_rail_adapters_inbound_ContentRailFlow_tsx --> module_src_types_content_rail_ts
   module_src_features_content_rail_contentRailMeta_ts --> module_src_constants_authoring_ts
@@ -996,11 +1046,13 @@ graph LR
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_theme_composition_useZoraThemeRecipe_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_features_typography_public_ts
   module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_types_radio_ts
+  module_src_features_form_radio_adapters_inbound_RadioGroup_tsx --> module_src_types_react_native_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_form_radio_utils_handleRadioOptionKeyDown_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_form_radio_utils_resolveRadioOptionColors_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_icon_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_features_typography_public_ts
   module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_types_radio_ts
+  module_src_features_form_radio_adapters_inbound_RadioOptionControl_tsx --> module_src_types_react_native_ts
   module_src_features_form_radio_radioMeta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_form_radio_radioMeta_ts --> module_src_types_authoring_ts
   module_src_features_form_radio_themeRecipeMeta_ts --> module_src_features_theme_colorModel_ts
@@ -1061,6 +1113,7 @@ graph LR
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_game_utils_useGameEntityMeasurement_ts
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_gamePresentation_ts
+  module_src_features_game_adapters_inbound_GameEntity_tsx --> module_src_types_react_native_ts
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_layout_public_ts
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_game_adapters_inbound_GameField_tsx --> module_src_types_gamePresentation_ts
@@ -1093,6 +1146,7 @@ graph LR
   module_src_features_game_meta_gameMeta_ts --> module_src_types_authoring_ts
   module_src_features_game_meta_gameOverlayMeta_ts --> module_src_types_authoring_ts
   module_src_features_game_utils_measureGameEntity_ts --> module_src_types_gameRuntime_ts
+  module_src_features_game_utils_measureGameEntity_ts --> module_src_types_react_native_ts
   module_src_features_game_utils_resolveGameEntityMotionPlan_ts --> module_src_types_gamePresentation_ts
   module_src_features_game_utils_toGamePercentage_ts --> module_src_features_game_utils_clampGamePercentage_ts
   module_src_features_game_utils_useAnimatedGameEntityValue_ts --> module_src_types_gamePresentation_ts
@@ -1103,6 +1157,7 @@ graph LR
   module_src_features_game_utils_useGameEntityAnimatedStyle_ts --> module_src_types_gamePresentation_ts
   module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_composition_GameRuntimeContext_ts
   module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_features_game_utils_measureGameEntity_ts
+  module_src_features_game_utils_useGameEntityMeasurement_ts --> module_src_types_react_native_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_features_game_utils_resolveGameEntityMotionPlan_ts
   module_src_features_game_utils_useGameEntityMotionProgress_ts --> module_src_types_gamePresentation_ts
   module_src_features_gradient_adapters_inbound_Gradient_tsx --> module_src_features_gradient_adapters_inbound_GradientRendererContext_tsx
@@ -1129,6 +1184,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphGeometryKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_registerGraphLayouts_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts
@@ -1147,6 +1203,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --> module_src_features_selection_application_resolveSelectionEventIntent_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx --> module_src_types_graph_view_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphPointerDownReader_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphRuntime_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_createGraphViewDomCallbacks_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_features_graph_view_adapters_inbound_web_artifact_GraphNodeOverlay_tsx
@@ -1154,6 +1211,7 @@ graph LR
   module_src_features_graph_view_adapters_inbound_web_artifact_GraphView_tsx --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_getGraphTopologyKey_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_hasGraphLayoutChanged_ts --> module_src_types_graphViewRuntime_ts
+  module_src_features_graph_view_adapters_inbound_web_artifact_placeAddedGraphNodes_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_readGraphRenderedNodes_ts --> module_src_types_graph_view_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_features_graph_view_adapters_inbound_web_artifact_runDetachedGraphLayout_ts
   module_src_features_graph_view_adapters_inbound_web_artifact_runGraphLayout_ts --> module_src_types_graph_view_ts
@@ -1165,6 +1223,7 @@ graph LR
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_features_grid_interactions_adapters_inbound_useGridInteractionScrollLock_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_features_grid_interactions_application_createGridInteractionsController_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_types_grid_interactions_ts
+  module_src_features_grid_interactions_adapters_inbound_GridInteractions_tsx --> module_src_types_react_native_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_native_tsx --> module_src_types_grid_interactions_ts
   module_src_features_grid_interactions_adapters_inbound_GridInteractionsKeyboardProxy_web_tsx --> module_src_types_grid_interactions_ts
   module_src_features_grid_interactions_adapters_inbound_resolveGridInteractionPointer_ts --> module_src_types_grid_interactions_ts
@@ -1190,6 +1249,7 @@ graph LR
   module_src_features_grid_rulers_meta_ts --> module_src_types_authoring_ts
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_features_grid_view_application_createGridScrollSync_ts
   module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_grid_view_ts
+  module_src_features_grid_view_adapters_inbound_GridView_tsx --> module_src_types_react_native_ts
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_features_grid_view_adapters_inbound_GridView_tsx
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_features_grid_view_application_layoutTileGrid_ts
   module_src_features_grid_view_adapters_inbound_TileGrid_tsx --> module_src_types_grid_view_ts
@@ -1904,6 +1964,7 @@ graph LR
   module_src_types_chip_ts --> module_src_types_control_ts
   module_src_types_chip_ts --> module_src_types_theme_ts
   module_src_types_collection_editor_ts --> module_src_types_base_ts
+  module_src_types_color_ts --> module_src_types_base_ts
   module_src_types_content_rail_ts --> module_src_types_base_ts
   module_src_types_data_table_ts --> module_src_types_base_ts
   module_src_types_data_table_ts --> module_src_types_popover_menu_ts
