@@ -3,6 +3,7 @@
   "packageId": "@ankhorage/zora",
   "description": "Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.",
   "purpose": "Give independently released applications a reusable, cross-platform presentation layer with explicit public entrypoints for components, themes, registries, readers, and authoring controls.",
+  "productDocumentation": null,
   "collaborators": true,
   "donation": {
     "account": "ankhorage"
@@ -17,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.4.3",
+      "value": "v27.4.4",
       "color": "cb3837"
     },
     {
