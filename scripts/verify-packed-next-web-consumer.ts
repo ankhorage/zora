@@ -16,6 +16,7 @@ type SpinnerMeasurement = Readonly<{
 }>;
 
 type LoadingRegionMeasurement = Readonly<{
+  readonly display: string;
   readonly height: number;
   readonly left: number;
   readonly top: number;
@@ -71,6 +72,7 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
           next: '16.0.0',
           react: '19.2.3',
           'react-dom': '19.2.3',
+          'react-native-web': '0.21.4',
         },
         devDependencies: {
           '@types/react': '19.3.0',
@@ -89,6 +91,18 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><head><link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" rel="icon" /></head><body>{children}<ReactNativeWebStyleSheet /></body></html>;
 }\n`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'next.config.ts'),
+    `import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  transpilePackages: ['@ankhorage/surface', '@ankhorage/zora'],
+  turbopack: { resolveAlias: { 'react-native': 'react-native-web' } },
+};
+
+export default nextConfig;
+`,
   );
   writeFileSync(
     join(consumerRoot, 'tsconfig.json'),
@@ -155,14 +169,20 @@ function assertServerHtml(html: string) {
     assert.match(html, /height:20px/);
     assert.match(html, /width:20px/);
   }
-  assert.match(html, /data-testid="light-loading-region"[^>]*display:flex/);
-  assert.match(html, /data-testid="dark-loading-region"[^>]*display:flex/);
+  assert.match(
+    html,
+    /<div[^>]*style="[^"]*display:flex[^"]*"[^>]*data-testid="light-loading-region"/,
+  );
+  assert.match(
+    html,
+    /<div[^>]*style="[^"]*display:flex[^"]*"[^>]*data-testid="dark-loading-region"/,
+  );
   assert.match(html, /id="react-native-stylesheet"/);
   assert.match(html, /role="progressbar"/);
   assert.match(html, /aria-label="Loading"/);
   assert.match(html, /prefers-reduced-motion: reduce/);
   assert.match(html, /<svg/);
-  assert.doesNotMatch(html, /r-width-|react-native-web/i);
+  assert.doesNotMatch(html, /r-width-/i);
 }
 
 /*** Test all mode, size, and viewport combinations before and after React hydration. */
@@ -217,7 +237,7 @@ async function assertMeasurementsAsync(
     const region = await browser.measureRegionAsync(regionId);
     assert.equal(measurement.width, 20, `${viewport} ${phase} ${testId} width changed.`);
     assert.equal(measurement.height, 20, `${viewport} ${phase} ${testId} height changed.`);
-    assert.equal(measurement.display, 'flex', `${viewport} ${phase} ${regionId} is not flex.`);
+    assert.equal(region.display, 'flex', `${viewport} ${phase} ${regionId} is not flex.`);
     assert.equal(region.height, viewportHeight, `${viewport} ${phase} ${regionId} height changed.`);
     assert.equal(
       measurement.left + measurement.width / 2,
@@ -317,7 +337,7 @@ class ChromeSession {
   }
   async measureRegionAsync(testId: string): Promise<LoadingRegionMeasurement> {
     return this.evaluateAsync(
-      `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const rect = node.getBoundingClientRect(); return { height: rect.height, left: rect.left, top: rect.top, width: rect.width }; })()`,
+      `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const rect = node.getBoundingClientRect(); return { display: getComputedStyle(node).display, height: rect.height, left: rect.left, top: rect.top, width: rect.width }; })()`,
     );
   }
   async progressbarAccessibleNamesAsync(): Promise<readonly string[]> {
@@ -434,8 +454,8 @@ function assertPublishedSurfaceGraph(consumerRoot: string): void {
 
   assert.equal(
     consumerPackage.dependencies?.['@ankhorage/surface'],
-    undefined,
-    'The Next consumer must resolve Surface through ZORA, not a direct pin.',
+    '9.5.20',
+    'The Next consumer must use the verified Surface release that provides ReactNativeWebStyleSheet.',
   );
   assert.match(
     surfaceRange ?? '',
@@ -445,6 +465,11 @@ function assertPublishedSurfaceGraph(consumerRoot: string): void {
   assert.ok(
     surfacePackage.version && Bun.semver.satisfies(surfacePackage.version, surfaceRange),
     `Resolved Surface ${surfacePackage.version ?? 'version'} is outside ZORA's published ${surfaceRange} range.`,
+  );
+  assert.equal(
+    surfacePackage.version,
+    '9.5.20',
+    'The Next consumer did not install the verified Surface SSR release.',
   );
 }
 
