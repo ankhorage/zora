@@ -73,7 +73,17 @@ function FlowInspectorInner({
   }
   return (
     <View gap="s" testID={testID}>
-      {content}
+      {outline.length > 0 ? (
+        <View testID={testID ? `${testID}-outline` : undefined}>
+          <FlowOutline
+            disabled={disabled || interactionPolicy === 'passive'}
+            items={outline}
+            onSelectionChange={onNodeSelectionChange}
+            selectedNodeId={selectedNodeId}
+          />
+        </View>
+      ) : null}
+      <View testID={testID ? `${testID}-content` : undefined}>{content}</View>
     </View>
   );
 }
