@@ -38,4 +38,6 @@ export default createKnipConfig({
     'paradox.config.ts',
     'prettier.local.config.js',
   ],
+  // The repository-local zora-designer skill dynamically loads this published owner API.
+  ignoreDependencies: ['@ankhorage/templates'],
 });
