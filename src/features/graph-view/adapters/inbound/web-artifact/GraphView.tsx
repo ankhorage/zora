@@ -8,6 +8,7 @@ import type {
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
 import { GRAPH_VIEW_EVENTS } from '../../../constants/events';
+import { createGraphPointerDownReader } from './createGraphPointerDownReader';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
 import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
@@ -37,11 +38,20 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  */
 export function GraphView(props: GraphViewProps) {
   const hostRef = React.useRef<HTMLDivElement | null>(null);
-  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(props, hostRef);
+  const pointerDownReader = React.useMemo(createGraphPointerDownReader, []);
+  const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(
+    props,
+    hostRef,
+    pointerDownReader,
+  );
 
   return (
     <div
       ref={hostRef}
+      onPointerDown={(event) => {
+        pointerDownReader.write(event.nativeEvent);
+      }}
+      onPointerCancel={pointerDownReader.clear}
       aria-label={props.ariaLabel ?? 'Graph'}
       className={props.className}
       role="application"
@@ -77,13 +87,14 @@ GraphView.events = GRAPH_VIEW_EVENTS;
 function useGraphViewRuntime(
   props: GraphViewProps,
   hostRef: React.RefObject<HTMLDivElement | null>,
+  pointerDownReader: ReturnType<typeof createGraphPointerDownReader>,
 ) {
   const containerRef = React.useRef<GraphContainer | null>(null);
   const runtimeRef = React.useRef<GraphRuntime | null>(null);
   const callbacksRef = useGraphCallbacksRef(props, hostRef);
   const [renderedNodes, setRenderedNodes] = React.useState<readonly GraphViewRenderedNode[]>([]);
 
-  useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef);
+  useRuntimeLifecycle(containerRef, runtimeRef, callbacksRef, pointerDownReader);
   useRuntimeGraphUpdate(runtimeRef, props);
   useRuntimeSelection(runtimeRef, props.selectedNodeIds);
   useRenderedNodeSubscription(runtimeRef, props.renderNode, setRenderedNodes);
@@ -139,17 +150,18 @@ function useRuntimeLifecycle(
   containerRef: { current: GraphContainer | null },
   runtimeRef: { current: GraphRuntime | null },
   callbacksRef: { current: GraphViewCallbacks },
+  pointerDownReader: ReturnType<typeof createGraphPointerDownReader>,
 ) {
   React.useEffect(() => {
     const container = containerRef.current;
     if (container === null) return;
-    const runtime = createGraphRuntime(container, callbacksRef);
+    const runtime = createGraphRuntime(container, callbacksRef, pointerDownReader.read);
     runtimeRef.current = runtime;
     return () => {
       runtime.destroy();
       runtimeRef.current = null;
     };
-  }, [callbacksRef, containerRef, runtimeRef]);
+  }, [callbacksRef, containerRef, pointerDownReader, runtimeRef]);
 }
 
 /*** Synchronize graph data and layout policy without exposing Cytoscape to React. */

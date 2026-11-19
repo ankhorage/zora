@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import type { GraphViewController, GraphViewElementEvent } from '../src/types/graph-view';
-import { GraphView } from '../src/features/graph-view/adapters/inbound/web-artifact/GraphView';
+import { GraphView } from '@ankhorage/zora/web/graph-view';
+import type { GraphViewController, GraphViewElementEvent } from '@ankhorage/zora/web/graph-view';
 
 interface ScenarioState {
   readonly controllerChanges: number;

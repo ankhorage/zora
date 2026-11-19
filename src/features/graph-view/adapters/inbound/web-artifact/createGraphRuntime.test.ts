@@ -328,9 +328,12 @@ test('forwards semantic selection intent from rich-node press events', async () 
 
 test('settles the pending initial layout when presentation changes before readiness', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { ready: 0, sort: 0 };
+  const calls = { completed: 0, ready: 0, sort: 0 };
   const runtime = createGraphRuntime(undefined, {
     current: {
+      onLayoutComplete: () => {
+        calls.completed += 1;
+      },
       onReady: (controller) => {
         calls.ready += 1;
         ready.resolve(controller);
@@ -351,11 +354,11 @@ test('settles the pending initial layout when presentation changes before readin
   };
   try {
     runtime.update(input);
-    const sortCount = calls.sort;
     runtime.update({ ...input, nodes: [{ id: 'a', classes: 'hovered' }, { id: 'b' }] });
     await ready.promise;
     expect(calls.ready).toBe(1);
-    expect(calls.sort).toBe(sortCount);
+    expect(calls.completed).toBe(1);
+    expect(calls.sort).toBeGreaterThan(0);
   } finally {
     runtime.destroy();
   }
@@ -363,8 +366,15 @@ test('settles the pending initial layout when presentation changes before readin
 
 test('lays out 0 → 1 → 5 topology updates before preserve-positions becomes active', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { sort: 0 };
-  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const calls = { completed: 0, sort: 0 };
+  const runtime = createGraphRuntime(undefined, {
+    current: {
+      onLayoutComplete: () => {
+        calls.completed += 1;
+      },
+      onReady: ready.resolve,
+    },
+  });
   const layoutOptions = {
     sort: () => {
       calls.sort += 1;
@@ -385,7 +395,7 @@ test('lays out 0 → 1 → 5 topology updates before preserve-positions becomes 
     runtime.update({ ...input, nodes: fiveNodes });
     const controller = await ready.promise;
 
-    expect(calls.sort).toBeGreaterThan(0);
+    expect(calls.completed).toBe(1);
     expect(controller.measureNodes?.(fiveNodes.map((node) => node.id))?.nodes).toHaveLength(5);
   } finally {
     runtime.destroy();

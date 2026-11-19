@@ -11,18 +11,32 @@ import type { SelectionIntent } from '@ankhorage/utility/selection';
 export function resolveSelectionEventIntent(
   event: unknown,
   fallbackKind: SelectionActivationKind,
+  nativeEvent: unknown = {},
 ): SelectionIntent {
   const source = readEventSource(event);
   const kind: SelectionActivationKind = isTouchActivation(source) ? 'touch' : fallbackKind;
   const sourceModifiers = readInteractionModifiers(source);
   const wrapperModifiers = readInteractionModifiers(event);
+  const nativeModifiers = readInteractionModifiers(nativeEvent);
   const input: SelectionInteractionInput = {
     kind,
     modifiers: {
-      altKey: sourceModifiers.altKey === true || wrapperModifiers.altKey === true,
-      ctrlKey: sourceModifiers.ctrlKey === true || wrapperModifiers.ctrlKey === true,
-      metaKey: sourceModifiers.metaKey === true || wrapperModifiers.metaKey === true,
-      shiftKey: sourceModifiers.shiftKey === true || wrapperModifiers.shiftKey === true,
+      altKey:
+        sourceModifiers.altKey === true ||
+        wrapperModifiers.altKey === true ||
+        nativeModifiers.altKey === true,
+      ctrlKey:
+        sourceModifiers.ctrlKey === true ||
+        wrapperModifiers.ctrlKey === true ||
+        nativeModifiers.ctrlKey === true,
+      metaKey:
+        sourceModifiers.metaKey === true ||
+        wrapperModifiers.metaKey === true ||
+        nativeModifiers.metaKey === true,
+      shiftKey:
+        sourceModifiers.shiftKey === true ||
+        wrapperModifiers.shiftKey === true ||
+        nativeModifiers.shiftKey === true,
     },
   };
   return resolveSelectionIntent(input);
