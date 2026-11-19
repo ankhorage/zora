@@ -7,7 +7,9 @@ import type { GraphViewController, GraphViewElementEvent } from '@ankhorage/zora
 interface ScenarioState {
   readonly controllerChanges: number;
   readonly layoutCompletions: number;
+  readonly labelExpanded: boolean;
   readonly measurement: ReturnType<NonNullable<GraphViewController['measureNodes']>>;
+  readonly paintTheme: 'dark' | 'light';
   readonly repositoryIds: readonly string[];
   readonly selectedRepositoryIds: readonly string[];
   readonly selectionTransitions: number;
@@ -37,12 +39,14 @@ declare global {
   interface Window {
     graphAcceptance?: {
       fit(repositoryCount: number): void;
+      growLabel(repositoryCount: number): void;
       read(repositoryCount: number): ScenarioState | null;
       readInteraction(): InteractionScenarioState | null;
       readProgressive(): ProgressiveScenarioState | null;
       remove(repositoryCount: number): void;
       restore(repositoryCount: number): void;
       reselect(repositoryCount: number): void;
+      togglePaint(repositoryCount: number): void;
       setViewport(
         repositoryCount: number,
         viewport: {
@@ -61,10 +65,12 @@ const scenarioActions = new Map<
   number,
   {
     fit(): void;
+    growLabel(): void;
     read(): ScenarioState;
     remove(): void;
     restore(): void;
     reselect(): void;
+    togglePaint(): void;
     setViewport(viewport: {
       readonly pan: { readonly x: number; readonly y: number };
       readonly zoom: number;
@@ -103,12 +109,14 @@ function GraphViewChromiumAcceptance() {
   useEffect(() => {
     window.graphAcceptance = {
       fit: (repositoryCount) => scenarioActions.get(repositoryCount)?.fit(),
+      growLabel: (repositoryCount) => scenarioActions.get(repositoryCount)?.growLabel(),
       read: (repositoryCount) => scenarioActions.get(repositoryCount)?.read() ?? null,
       readInteraction: () => interactionScenarioAction?.read() ?? null,
       readProgressive: () => progressiveScenarioAction?.read() ?? null,
       remove: (repositoryCount) => scenarioActions.get(repositoryCount)?.remove(),
       restore: (repositoryCount) => scenarioActions.get(repositoryCount)?.restore(),
       reselect: (repositoryCount) => scenarioActions.get(repositoryCount)?.reselect(),
+      togglePaint: (repositoryCount) => scenarioActions.get(repositoryCount)?.togglePaint(),
       setViewport: (repositoryCount, viewport) =>
         scenarioActions.get(repositoryCount)?.setViewport(viewport),
     };
@@ -283,12 +291,18 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
     'repository-0',
   ]);
   const [selectionTransitions, setSelectionTransitions] = useState(0);
+  const [paintTheme, setPaintTheme] = useState<'dark' | 'light'>('dark');
+  const [labelExpanded, setLabelExpanded] = useState(false);
   const visibleRepositories = repositories.filter((node) => visibleRepositoryIds.includes(node.id));
   const repositoryIds = visibleRepositories.map((node) => node.id);
   const nodes = [
     { id: 'group-even', label: 'even repositories' },
     { id: 'group-odd', label: 'odd repositories' },
-    ...visibleRepositories,
+    ...visibleRepositories.map((node) =>
+      node.id === 'repository-0' && labelExpanded
+        ? { ...node, label: 'repository-0 has a genuinely longer label' }
+        : node,
+    ),
   ];
   const edges = visibleRepositories.slice(1).map((node, index) => ({
     id: `dependency-${index}`,
@@ -298,12 +312,15 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
   const controller = controllers.get(repositoryCount) ?? null;
   scenarioActions.set(repositoryCount, {
     fit: () => controller?.fit(),
+    growLabel: () => setLabelExpanded(true),
     read: () => {
       const currentController = controllers.get(repositoryCount);
       return {
         controllerChanges: controllerChanges.get(repositoryCount) ?? 0,
         layoutCompletions,
+        labelExpanded,
         measurement: currentController?.measureNodes?.(repositoryIds) ?? null,
+        paintTheme,
         repositoryIds,
         selectedRepositoryIds,
         selectionTransitions,
@@ -320,6 +337,7 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
       });
     },
     restore: () => setVisibleRepositoryIds(repositories.map((node) => node.id)),
+    togglePaint: () => setPaintTheme((theme) => (theme === 'dark' ? 'light' : 'dark')),
     setViewport: (viewport) => {
       controller?.setZoom(viewport.zoom);
       controller?.setPan(viewport.pan);
@@ -335,7 +353,7 @@ function StableTopologyScenario({ repositoryCount }: { readonly repositoryCount:
         selectedNodeIds={selectedRepositoryIds}
         sizeNodesToLabels
         style={{ height: 360, width: 960 }}
-        styleRules={styleRules}
+        styleRules={paintTheme === 'dark' ? darkStyleRules : lightStyleRules}
         topologyUpdatePolicy="preserve-positions"
         onLayoutComplete={() => setLayoutCompletions((count) => count + 1)}
         onReady={(nextController) => {
@@ -361,7 +379,7 @@ function createRepositories(repositoryCount: number) {
   }));
 }
 
-const styleRules = [
+const darkStyleRules = [
   {
     selector: 'node',
     style: {
@@ -375,6 +393,23 @@ const styleRules = [
   },
   { selector: 'node:selected', style: { 'outline-color': '#f97316', 'outline-width': 3 } },
 ];
+
+const lightStyleRules = [
+  {
+    selector: 'node',
+    style: {
+      'background-color': '#e2e8f0',
+      'border-width': 2,
+      color: '#0f172a',
+      'font-size': 16,
+      label: 'data(label)',
+      padding: 12,
+    },
+  },
+  { selector: 'node:selected', style: { 'outline-color': '#f97316', 'outline-width': 3 } },
+];
+
+const styleRules = darkStyleRules;
 
 document.body.style.margin = '0';
 const host = document.createElement('div');

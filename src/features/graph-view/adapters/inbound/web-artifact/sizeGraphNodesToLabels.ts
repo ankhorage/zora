@@ -22,8 +22,8 @@ export function sizeGraphNodesToLabels(cy: Core, sizedNodeIds: Set<string>, enab
       includeUnderlays: false,
     });
     if (bounds.w <= 0 || bounds.h <= 0) return;
-    const width = Math.ceil(bounds.w);
-    const height = Math.ceil(bounds.h);
+    const width = getStableLabelDimension(bounds.w);
+    const height = getStableLabelDimension(bounds.h);
     if (node.width() !== width || node.height() !== height) node.style({ width, height });
     visibleIds.add(node.id());
   });
@@ -34,4 +34,9 @@ export function sizeGraphNodesToLabels(cy: Core, sizedNodeIds: Set<string>, enab
     }
   }
   for (const id of visibleIds) sizedNodeIds.add(id);
+}
+
+/*** Round upward while discarding only floating-point noise above whole label pixels. */
+function getStableLabelDimension(dimension: number): number {
+  return Math.ceil(dimension - Number.EPSILON * Math.max(1, dimension));
 }
