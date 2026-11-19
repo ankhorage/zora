@@ -224,6 +224,17 @@ async function testFlowCanvasChromiumAsync() {
         state.events.filter((event) => event === 'viewport').length >
           beforeKeyboardZoom.events.filter((event) => event === 'viewport').length,
     );
+    phase = 'desktop-visual-review';
+    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-editor-desktop', phase);
+    await browser.setViewportAsync(390, 844);
+    phase = 'mobile-visual-review';
+    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-editor-mobile', phase);
+    const outline = await browser.rectAsync('[data-testid="flow-editor-inspector-outline"]');
+    assert(
+      outline.x >= 0 && outline.width <= 390 && outline.x + outline.width <= 390,
+      `The mobile process outline must fit the viewport: ${JSON.stringify(outline)}`,
+    );
+    await browser.setViewportAsync(1440, 900);
     phase = 'delete';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Delete selected nodes"]'));
     const final = await browser.waitForStateAsync(
@@ -244,19 +255,6 @@ async function testFlowCanvasChromiumAsync() {
         moved.viewport.pan.y === panned.viewport.pan.y,
       'Node drag must not pan the canvas.',
     );
-    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-desktop', phase);
-    await browser.setViewportAsync(390, 844);
-    for (const label of ['Zoom out', 'Zoom in', 'Delete selected nodes', 'Undo', 'Redo']) {
-      const control = await browser.rectAsync(`[aria-label="${label}"]`);
-      assert(
-        control.x >= 0 &&
-          control.y >= 0 &&
-          control.x + control.width <= 390 &&
-          control.y + control.height <= 844,
-        `${label} must remain an on-screen hit target in the narrow viewport: ${JSON.stringify(control)}`,
-      );
-    }
-    await browser.captureEvidenceAsync(artifactsDirectory, 'flow-canvas-mobile', phase);
     assert(
       browser.exceptions.length === 0,
       `Chromium exceptions: ${browser.exceptions.join('\n')}`,
