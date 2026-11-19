@@ -109,7 +109,10 @@ function FlowCanvasInner(props: FlowCanvasProps) {
   return (
     <View
       style={{
-        backgroundColor: theme.semantics.surface.default,
+        backgroundColor: theme.semantics.neutral.surfaceHover,
+        borderColor: theme.semantics.neutral.divider,
+        borderRadius: 14,
+        borderWidth: 1,
         flex: 1,
         minHeight: 360,
         overflow: 'hidden',
@@ -130,10 +133,7 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       <View
         ref={canvasRef}
         testID={props.testID ? `${props.testID}-viewport` : undefined}
-        style={{
-          flex: 1,
-          minHeight: 300,
-        }}
+        style={{ backgroundColor: theme.semantics.surface.default, flex: 1, minHeight: 300 }}
       >
         <View
           accessible={false}
@@ -216,8 +216,20 @@ interface FlowToolbarProps {
 
 /** Present keyboard-accessible viewport and history controls. */
 function FlowToolbar(props: FlowToolbarProps) {
+  const { theme } = useZoraTheme();
   return (
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, padding: 10, width: '100%' }}>
+    <View
+      style={{
+        backgroundColor: theme.semantics.surface.default,
+        borderBottomColor: theme.semantics.neutral.divider,
+        borderBottomWidth: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 8,
+        padding: 10,
+        width: '100%',
+      }}
+    >
       <FlowControl label="Zoom out" onPress={props.onZoomOut} />
       <FlowControl label="Zoom in" onPress={props.onZoomIn} />
       <FlowControl
@@ -253,8 +265,12 @@ function FlowControl(props: {
       accessibilityState={{ disabled: props.disabled }}
       disabled={props.disabled}
       style={{
-        backgroundColor: theme.colors.primary,
-        borderRadius: 8,
+        backgroundColor: props.disabled
+          ? theme.semantics.neutral.surfaceHover
+          : theme.semantics.neutral.surface,
+        borderColor: props.disabled ? theme.semantics.neutral.divider : theme.colors.primary,
+        borderRadius: 9,
+        borderWidth: 1,
         justifyContent: 'center',
         minHeight: 44,
         minWidth: 44,
@@ -263,7 +279,15 @@ function FlowControl(props: {
       }}
       onPress={props.onPress}
     >
-      <Text style={{ color: theme.semantics.surface.default }}>{props.label}</Text>
+      <Text
+        style={{
+          color: props.disabled ? theme.semantics.neutral.textMuted : theme.colors.primary,
+          fontSize: 12,
+          fontWeight: '700',
+        }}
+      >
+        {props.label}
+      </Text>
     </Pressable>
   );
 }
