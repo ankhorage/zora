@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.1
+
+### Patch Changes
+
+- fc3a199: Preserve native Control and Command modifier intent for GraphView node selection callbacks.
+
 ## 27.4.0
 
 ### Minor Changes
