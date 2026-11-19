@@ -41,6 +41,24 @@ jobs:
           echo "::error title=Renovate Sync App repository access required::Could not create the scoped Ankhorage release token for ${GITHUB_REPOSITORY}. Ensure the ankhorage-renovate-sync GitHub App is installed and authorized for this repository, then rerun Release. Bootstrap policy: https://github.com/ankhorage/renovate/issues/115"
           exit 1
 
+      - name: Create the Renovate snapshot token
+        id: renovate-snapshot-token
+        if: vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true'
+        continue-on-error: true
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
+          private-key: ${{ secrets.ANKHORAGE_RENOVATE_SYNC_PRIVATE_KEY }}
+          owner: ankhorage
+          repositories: renovate
+          permission-contents: write
+
+      - name: Diagnose unavailable Renovate snapshot token
+        if: vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.renovate-snapshot-token.outcome == 'failure'
+        run: |
+          echo "::error title=Renovate snapshot access required::Could not create the Renovate-scoped token needed to dispatch and read the durable release-wave ACK. Ensure the ankhorage-renovate-sync GitHub App has Contents: write access to ankhorage/renovate, then rerun Release."
+          exit 1
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -76,6 +94,14 @@ jobs:
             bun run build
           else
             echo "No build script found; skipping."
+          fi
+
+      - name: Validate owner-defined packed consumer
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['test:packed-consumer'] ? 0 : 1)"; then
+            bun run test:packed-consumer
+          else
+            echo "No packed consumer test declared; skipping."
           fi
 
       - name: Verify npm release baseline
@@ -193,10 +219,66 @@ jobs:
       - name: Validate release contract
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
-            bun ./dist/cli/standalone.js validate .
+            bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.29 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.1 validate . --enforce-repository-metadata
           fi
+
+      - name: Determine immutable pre-publish release intent
+        id: pre-publish-release-intent
+        if: hashFiles('.changeset/config.json') != '' && vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.published-release-recovery.outputs.recovery != 'true'
+        run: |
+          changesets_status_path="$RUNNER_TEMP/changesets-status.json"
+          bun ./node_modules/.bin/changeset status --output="$changesets_status_path" >/dev/null
+          release_intent="$(CHANGESETS_STATUS_PATH="$changesets_status_path" node -e '
+            const { readFileSync } = require("node:fs");
+            const status = JSON.parse(readFileSync(process.env.CHANGESETS_STATUS_PATH, "utf8"));
+            if (!Array.isArray(status.releases)) {
+              throw new Error("Changesets status is missing an explicit releases list.");
+            }
+            if (status.releases.length > 1) {
+              throw new Error("Changesets status must contain exactly one release or an explicit empty list.");
+            }
+            process.stdout.write(status.releases.length === 0 ? "false" : "true");
+          '")"
+          echo "release_intent=$release_intent" >> "$GITHUB_OUTPUT"
+
+      - name: Acknowledge immutable pre-publish release-wave snapshot
+        if: hashFiles('.changeset/config.json') != '' && vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.published-release-recovery.outputs.recovery != 'true' && steps.pre-publish-release-intent.outputs.release_intent == 'true'
+        env:
+          GITHUB_TOKEN: ${{ steps.renovate-snapshot-token.outputs.token }}
+          RELEASE_WAVE_STATE_BRANCH: ${{ vars.ANKHORAGE_RELEASE_WAVE_STATE_BRANCH }}
+        run: |
+          test -n "$RELEASE_WAVE_STATE_BRANCH" || { echo "::error title=Release-wave state branch required::Provision the Renovate state branch before enabling the pre-publish gate."; exit 1; }
+          source_sha="$(git rev-parse HEAD)"
+          changesets_status_path="$RUNNER_TEMP/changesets-status.json"
+          test -f "$changesets_status_path" || { echo '::error title=Changesets status missing::Release intent evidence was not retained.'; exit 1; }
+          changesets_status_hash="$(sha256sum "$changesets_status_path" | cut -d ' ' -f 1)"
+          request_id="${GITHUB_REPOSITORY//\//-}-${source_sha}-${changesets_status_hash}"
+          payload="$(REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" node -e 'console.log(JSON.stringify({event_type:"pre-publish-release-wave-snapshot",client_payload:{requestId:process.env.REQUEST_ID,sourceRepository:process.env.GITHUB_REPOSITORY,sourceSha:process.env.SOURCE_SHA,changesetsStatusHash:process.env.CHANGESETS_STATUS_HASH}}))')"
+          REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" \
+            curl --fail-with-body --retry 3 --retry-all-errors -X POST -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' "https://api.github.com/repos/ankhorage/renovate/dispatches" -d "$payload"
+          for attempt in $(seq 1 30); do
+            ack_path="$RUNNER_TEMP/release-wave-ack.json"
+            ack_status="$(curl --silent --show-error --output "$ack_path" --write-out '%{http_code}' -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' "https://api.github.com/repos/ankhorage/renovate/contents/.github/release-wave-publisher-snapshot-acks/${request_id}.json?ref=${RELEASE_WAVE_STATE_BRANCH}")" || { echo '::error title=Release-wave ACK read failed::Could not read the durable Renovate ACK.'; exit 1; }
+            if [ "$ack_status" = 200 ]; then
+              ack="$(cat "$ack_path")"
+            elif [ "$ack_status" = 404 ]; then
+              ack=""
+            else
+              cat "$ack_path"
+              echo "::error title=Release-wave ACK read rejected::Renovate returned HTTP ${ack_status} while reading the durable ACK."
+              exit 1
+            fi
+            if [ -n "$ack" ] && ACK="$ack" REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" node -e 'const ack=JSON.parse(Buffer.from(JSON.parse(process.env.ACK).content,"base64").toString("utf8")); if (ack.requestId!==process.env.REQUEST_ID || ack.sourceSha!==process.env.SOURCE_SHA || ack.changesetsStatusHash!==process.env.CHANGESETS_STATUS_HASH || !/^[a-f0-9]{64}$/.test(ack.epochId)) process.exit(1);'; then break; fi
+            [ "$attempt" = 30 ] && { echo "::error title=Release-wave ACK timeout::No matching durable Renovate ACK arrived."; exit 1; }
+            sleep 2
+          done
+          test "$(git rev-parse HEAD)" = "$source_sha" || { echo '::error title=Source changed::Release source changed while awaiting ACK.'; exit 1; }
+          changesets_recheck_path="$RUNNER_TEMP/changesets-status-recheck.json"
+          bun ./node_modules/.bin/changeset status --output="$changesets_recheck_path" >/dev/null
+          latest_hash="$(sha256sum "$changesets_recheck_path" | cut -d ' ' -f 1)"
+          test "$latest_hash" = "$changesets_status_hash" || { echo '::error title=Changesets changed::Release intent changed while awaiting ACK.'; exit 1; }
 
       - name: Version packages directly on main
         id: release
@@ -227,19 +309,24 @@ jobs:
                 exit 1
               fi
 
-              if [ -n "$tagged_sha" ]; then
+              if [ "$HIGHEST_PUBLISHED_VERSION" != "$current_version" ]; then
+                release_sha="$(git rev-parse HEAD)"
+                echo "Completing unpublished ${release_tag} from current main ${release_sha} without another version bump."
+              elif [ -n "$tagged_sha" ]; then
                 echo "Release tag ${release_tag} already points to ${release_sha}; resuming idempotent finalization."
               else
                 echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
               fi
 
-              if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+              if [ "$HIGHEST_PUBLISHED_VERSION" = "$current_version" ] && (! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]); then
                 git status --short
                 echo "::error title=Release recovery requires a clean worktree::A release preparation step modified the checkout before recovery. Refusing to discard changes while switching to canonical release commit $release_sha."
                 exit 1
               fi
 
-              git checkout --detach "$release_sha"
+              if [ "$HIGHEST_PUBLISHED_VERSION" = "$current_version" ]; then
+                git checkout --detach "$release_sha"
+              fi
               echo "versioned=true" >> "$GITHUB_OUTPUT"
               echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
               echo "package_version=$current_version" >> "$GITHUB_OUTPUT"
@@ -314,6 +401,7 @@ jobs:
           fi
           pack_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-pack.XXXXXX")"
           install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-install.XXXXXX")"
+          optional_install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-optional-install.XXXXXX")"
           npm pack --ignore-scripts --pack-destination "$pack_dir" >/dev/null
           artifact="$(find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -print -quit)"
           if [ -z "$artifact" ]; then
@@ -366,16 +454,20 @@ jobs:
           const isPlatformOnlyRuntimeTarget = (target) =>
             declaresCondition(target, platformConditions) &&
             !declaresCondition(target, explicitServerConditions);
-          const selectLoader = (target) => {
-            if (isPlatformOnlyRuntimeTarget(target)) return undefined;
-            if (supportsLoader(target, importConditions)) return 'import';
-            if (supportsLoader(target, requireConditions)) return 'require';
-            return undefined;
+          const selectLoaders = (target) => {
+            if (isPlatformOnlyRuntimeTarget(target)) return [];
+            return [
+              ['import', importConditions],
+              ['require', requireConditions],
+            ].flatMap(([loader, conditions]) =>
+              supportsLoader(target, conditions) ? [loader] : [],
+            );
           };
           const records = [];
           const addEntrypoint = (specifier, target) => {
-            const loader = selectLoader(target);
-            if (loader !== undefined) records.push(`${loader}|${specifier}`);
+            for (const loader of selectLoaders(target)) {
+              records.push(`${loader}|${specifier}`);
+            }
           };
           const exportsMap = pkg.exports;
           if (exportsMap === undefined) {
@@ -399,6 +491,29 @@ jobs:
           const output = records.sort();
           process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
           NODE
+
+            root_runtime_entrypoints="$(awk -F '|' -v package_name="$package_name" '$2 == package_name { print }' runtime-entrypoints.txt)"
+            if [ -n "$root_runtime_entrypoints" ]; then
+              (
+                cd "$optional_install_dir"
+                printf '{"name":"standalone-optional-consumer","private":true,"version":"0.0.0"}\n' > package.json
+                bun add "$artifact" --ignore-scripts --omit optional
+                printf '%s\n' "$root_runtime_entrypoints" | while IFS='|' read -r root_runtime_loader root_runtime_specifier; do
+                  case "$root_runtime_loader" in
+                    import)
+                      PACKAGE_SPECIFIER="$root_runtime_specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)'
+                      ;;
+                    require)
+                      PACKAGE_SPECIFIER="$root_runtime_specifier" node -e 'require(process.env.PACKAGE_SPECIFIER)'
+                      ;;
+                    *)
+                      echo "::error title=Unsupported packed root loader::Unexpected loader '$root_runtime_loader' for $root_runtime_specifier."
+                      exit 1
+                      ;;
+                  esac
+                done
+              )
+            fi
 
             PACKAGE_NAME="$package_name" CAPABILITY_MODULE_PATH="$capability_module_path" node --input-type=module - <<'NODE'
           import { readFileSync } from 'node:fs';

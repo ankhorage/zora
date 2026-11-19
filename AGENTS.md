@@ -6,7 +6,38 @@
 
 Package: `@ankhorage/zora`
 
-Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.
+Title: ZORA
+
+Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.
+
+Purpose: Give independently released applications a reusable, cross-platform presentation layer with explicit public entrypoints for components, themes, registries, readers, and authoring controls.
+
+Audience:
+
+- React Native and React Native Web application authors who need reusable Ankhorage UI components.
+- Maintainers integrating published ZORA components, themes, registries, readers, or authoring controls into independent applications.
+
+## Scope and boundaries
+
+Responsibilities:
+
+- Publish React Native and React Native Web UI components and their public props through explicit package entrypoints.
+- Provide theme primitives, component registries, reader surfaces, and selected feature-specific UI entrypoints.
+- Compose UI behavior on the published @ankhorage/surface foundation and declared React Native peer dependencies.
+
+Boundaries:
+
+- Does not own application-specific business workflows, persistence, deployment, authentication providers, or infrastructure operations.
+- Does not execute capabilities or replace the runtime that interprets application descriptors.
+- Does not require consumers to use an Ankhorage application, repository, or unpublished sibling source.
+
+Architecture role: Reusable cross-platform UI and design-system library with feature-owned components and explicit public package subpaths.
+
+Architectural invariants:
+
+- Consumers use published package entrypoints and declared dependencies rather than sibling source imports.
+- React, React Native, and platform-specific integration remain declared peer or package dependencies at the UI boundary.
+- Application workflows and provider-specific side effects remain outside the component library.
 
 ## Current architecture only
 
@@ -64,6 +95,26 @@ Paradox `/*** ... */` comments in `src` and leading `@usage` comments in real
 `examples/<example>/...` source files, plus any repository-owned manual documentation outside the
 generated output. The managed release workflow runs `bun run docs` after the package version bump
 and commits the regenerated artifacts in the release commit.
+
+## GitHub task lifecycle and workspace cleanup
+
+- **Start.** Treat each issue implementation, PR implementation, review, and change request (CR)
+  as an independent task. Fetch the current remote default branch and read the applicable issue,
+  PR, HEAD, review feedback, and CI state. Use a fresh, uniquely named task checkout or worktree.
+  Concurrent tasks must have distinct writable checkout, temporary, build, and cache paths.
+- **CRs.** Fetch and check out the current remote PR branch in the new workspace. Preserve PR
+  history and scope. Push corrections to the existing PR branch.
+- **Delivery.** Run applicable checks. Commit and push all intended changes, then verify that
+  GitHub has the intended commit on the correct remote branch. Report the exact HEAD, checks, CI,
+  findings, and blockers. Report acceptance that was not run as unverified. Read-only reviews hand
+  off their findings without creating a commit. Merge requires explicit authorization.
+- **Cleanup.** After handoff, resolve every candidate path and remove only task-owned directories
+  whose resolved paths are strictly under the resolved system path for `/tmp` (`/private/tmp` on
+  macOS). Refuse candidates that resolve outside that boundary, including through a symlink. Use
+  Git-aware removal for worktrees. Preserve workspaces outside the boundary, shared directories,
+  other tasks' directories, uncommitted changes, and unpushed commits. If blocked, persist
+  recoverable work first and document what must be retained. Report whether cleanup succeeded, was
+  skipped, or was blocked.
 
 ## Pull requests
 
