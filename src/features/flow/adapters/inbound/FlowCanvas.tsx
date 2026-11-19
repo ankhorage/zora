@@ -224,7 +224,6 @@ function FlowToolbar(props: FlowToolbarProps) {
         borderBottomColor: theme.semantics.neutral.divider,
         borderBottomWidth: 1,
         flexDirection: 'row',
-        flexShrink: 0,
         flexWrap: 'wrap',
         gap: 8,
         padding: 10,

@@ -30,6 +30,13 @@ appId: dev.ankhorage.zora.flowacceptance
 - tapOn: 'Zoom in'
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
+# Move the dragged source away from the wrapped toolbar through the empty right canvas
+# before tapping Undo, rather than allowing the node to intercept the native control.
+- swipe:
+    start: '90%, 65%'
+    end: '90%, 90%'
+    duration: 500
+- assertVisible: 'Undo'
 - tapOn: 'Undo'
 - assertVisible: 'event=undo'
 - assertVisible: 'undo-count=1'
