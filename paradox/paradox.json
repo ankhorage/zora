@@ -17,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.4.2",
+      "value": "v27.4.3",
       "color": "cb3837"
     },
     {
@@ -70666,6 +70666,17 @@
       }
     },
     {
+      "name": "getStableLabelDimension",
+      "description": "Round upward while discarding only floating-point noise above whole label pixels.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+        "line": 40,
+        "column": 1
+      }
+    },
+    {
       "name": "syncGraphElements",
       "description": "Reconciles graph data in one batch while retaining positions, selection and element identity.\nDo not replace this with remove-all/add-all: presentation updates must not discard interaction\nstate or force the runtime to rebuild the graph. Use direct ID lookups for obsolete metadata;\nper-element selector scans would add avoidable work. Runtime tests cover hover/selection updates.",
       "see": [],
@@ -91519,6 +91530,12 @@
         "toSymbol": "frame",
         "callExpression": "frame",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/scheduleGraphFrame.ts"
+      },
+      {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts",
+        "toSymbol": "getStableLabelDimension",
+        "callExpression": "getStableLabelDimension",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/sizeGraphNodesToLabels.ts"
       },
       {
         "fromSymbol": "syncGraphElements",

@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.3
+
+### Patch Changes
+
+- 45d8aa9: Keep GraphView label sizing stable when renderer metrics contain floating-point noise above whole pixels.
+
 ## 27.4.2
 
 ### Patch Changes
