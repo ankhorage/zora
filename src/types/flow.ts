@@ -1,6 +1,5 @@
-import type React from 'react';
-
 import type { FlowPortDescriptor } from '@ankhorage/contracts/flow';
+import type React from 'react';
 
 import type { ZoraBaseProps } from './base';
 

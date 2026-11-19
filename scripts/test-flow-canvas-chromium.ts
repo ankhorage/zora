@@ -6,19 +6,23 @@ import { assert } from './utils/assert';
 
 type Rect = Readonly<{ height: number; width: number; x: number; y: number }>;
 type FlowState = Readonly<{
+  approval: 'not_required' | 'pending';
   connections: number;
   events: readonly string[];
   nodeMoveChanges: number;
   nodes: readonly { id: string; x: number; y: number }[];
+  rejection: string | null;
   selected: readonly string[];
-  viewportChanges: number;
+  undoDepth: number;
   viewport: { pan: { x: number; y: number }; zoom: number };
 }>;
 type JsonRecord = Record<string, unknown>;
 
 const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-flow-canvas-chromium-'));
-const artifactsDirectory = process.env.FLOW_ARTIFACT_DIR ?? join(temporaryRoot, 'artifacts');
+const artifactsDirectory =
+  process.env.FLOW_ARTIFACT_DIR ??
+  mkdtempSync(join(tmpdir(), 'zora-flow-canvas-chromium-artifacts-'));
 const chromiumCommand =
   process.env.CHROME_BIN ??
   (process.platform === 'darwin'
@@ -29,7 +33,23 @@ const reactNativeSvgWebEntry = Bun.resolveSync(
   'react-native-svg/lib/module/index.js',
   repositoryRoot,
 );
+const webSourceEntries: Readonly<Record<string, string>> = {
+  '@ankhorage/zora/web/flow-execution-overlay': resolve(
+    repositoryRoot,
+    'src/features/flow-execution-overlay/public.ts',
+  ),
+  '@ankhorage/zora/web/flow-inspector': resolve(
+    repositoryRoot,
+    'src/features/flow-inspector/public.ts',
+  ),
+  '@ankhorage/zora/web/flow-node-palette': resolve(
+    repositoryRoot,
+    'src/features/flow-node-palette/public.ts',
+  ),
+  '@ankhorage/zora/web/runtime': resolve(repositoryRoot, 'src/features/theme/runtime.ts'),
+};
 const manualPreview = process.env.FLOW_CHROMIUM_PREVIEW === '1';
+const forceAssertionFailure = process.env.FLOW_FORCE_ASSERTION_FAILURE === '1';
 
 /*** Exercise controlled FlowCanvas interactions through real Chromium pointer and keyboard input. */
 async function testFlowCanvasChromiumAsync() {
@@ -43,6 +63,10 @@ async function testFlowCanvasChromiumAsync() {
       {
         name: 'react-native-web',
         setup(build) {
+          build.onResolve({ filter: /^@ankhorage\/zora\/web\// }, (args) => {
+            const sourceEntry = webSourceEntries[args.path];
+            return sourceEntry ? { path: sourceEntry } : undefined;
+          });
           build.onResolve({ filter: /^react-native$/ }, () => ({ path: reactNativeWebEntry }));
           build.onResolve({ filter: /^react-native-svg$/ }, () => ({
             path: reactNativeSvgWebEntry,
@@ -82,82 +106,138 @@ async function testFlowCanvasChromiumAsync() {
   let passed = false;
   try {
     browser = await ChromeSession.createAsync(await dynamicPortAsync());
+    await browser.setViewportAsync(1440, 900);
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     await browser.installDiagnosticsAsync();
-    const initial = await browser.waitForStateAsync((state) => state.nodes.length === 2);
-    let source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
-    let target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
-    let canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
-    await browser.assertPathAnchorsAsync(source, target, canvas, initial.viewport);
+    const initial = await browser.waitForStateAsync((state) => state.nodes.length === 0);
+    if (forceAssertionFailure) {
+      phase = 'forced-failure';
+      assert(false, 'Forced FlowCanvas assertion failure.');
+    }
     phase = 'insert';
-    await browser.clickAsync(await browser.rectAsync('[aria-label="Insert task"]'));
+    await browser.clickAsync(
+      await browser.rectAsync('[data-testid="flow-editor-palette-request"]'),
+    );
+    await browser.clickAsync(await browser.rectAsync('[data-testid="flow-editor-palette-review"]'));
+    await browser.waitForStateAsync((state) => state.nodes.length === 2);
+    phase = 'select-configure';
+    const requestNode = await browser.rectAsync('[data-testid="flow-node-request-1"]');
+    console.log(`FlowCanvas selection target: ${JSON.stringify(requestNode)}`);
+    await browser.clickAsync(requestNode);
+    await browser.waitForStateAsync((state) => state.selected.includes('request-1'));
+    assert(
+      (await browser.textAsync('[data-testid="flow-editor-inspector"]')).includes('Request'),
+      'The inspector must visibly receive the selected Request node.',
+    );
+    await browser.clickAsync(await browser.rectAsync('[aria-label="Needs approval"]'));
+    await browser.waitForStateAsync((state) => state.events.includes('configure:needsApproval'));
+    assert(
+      (await browser.textAsync('[data-testid="flow-approval-state"]')).includes('pending'),
+      'The editor must visibly project its pending approval state.',
+    );
+    assert(
+      (await browser.textAsync('[data-testid="flow-editor-execution"]')).includes(
+        'waiting for approval',
+      ),
+      'The execution overlay must visibly project the approval-waiting state.',
+    );
+    let source = await browser.rectAsync('[data-testid="flow-port-request-1-request"]');
+    let target = await browser.rectAsync('[data-testid="flow-port-review-1-request"]');
+    let canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
+    phase = 'reject-incompatible';
+    await browser.clickAsync(source);
+    await browser.clickAsync(await browser.rectAsync('[data-testid="flow-port-review-1-score"]'));
+    await browser.waitForStateAsync((state) => state.rejection === 'connection_types_incompatible');
+    assert(
+      (await browser.textAsync('[data-testid="flow-validation"]')).includes(
+        'connection_types_incompatible',
+      ),
+      'The incompatible port rejection must be visible.',
+    );
+    phase = 'connect-compatible';
+    await browser.clickAsync(source);
+    await browser.clickAsync(target);
+    const connected = await browser.waitForStateAsync((state) => state.connections === 1);
+    assert(
+      (await browser.textAsync('[data-testid="flow-validation"]')).includes('compatible graph'),
+      'The compatible graph validation must be visible.',
+    );
+    await browser.assertPathAnchorsAsync(source, target, canvas, connected.viewport);
     phase = 'pan';
     await browser.dragFromAsync(canvas.x + 24, canvas.y + canvas.height - 24, 32, -24);
     const panned = await browser.waitForStateAsync(
       (state) =>
-        state.viewport.pan.x === initial.viewport.pan.x + 32 &&
-        state.viewport.pan.y === initial.viewport.pan.y - 24 &&
-        state.viewportChanges === initial.viewportChanges + 2,
+        state.viewport.pan.x === connected.viewport.pan.x + 32 &&
+        state.viewport.pan.y === connected.viewport.pan.y - 24,
     );
     assert(
-      JSON.stringify(panned.nodes) === JSON.stringify(initial.nodes),
+      JSON.stringify(panned.nodes) === JSON.stringify(connected.nodes),
       'Canvas pan must not move nodes.',
     );
+    assert(
+      panned.events.filter((event) => event === 'viewport').length >
+        connected.events.filter((event) => event === 'viewport').length,
+      'Canvas pan must invoke the controlled viewport callback.',
+    );
     phase = 'select';
-    await browser.clickAsync(await browser.rectAsync('[role="button"][aria-label="Source"]'));
-    await browser.waitForStateAsync((state) => state.selected.includes('source'));
+    await browser.clickAsync(await browser.rectAsync('[role="button"][aria-label="Request"]'));
+    await browser.waitForStateAsync((state) => state.selected.includes('request-1'));
     const beforeNodeDrag = await browser.readStateAsync();
     phase = 'drag';
     await browser.dragAsync(
-      await browser.rectAsync('[role="button"][aria-label="Source"]'),
+      await browser.rectAsync('[role="button"][aria-label="Request"]'),
       96,
       -48,
     );
     const moved = await browser.waitForStateAsync(
       (state) =>
-        state.nodes.find((node) => node.id === 'source')?.x !==
-          beforeNodeDrag.nodes.find((node) => node.id === 'source')?.x &&
+        state.nodes.find((node) => node.id === 'request-1')?.x !==
+          beforeNodeDrag.nodes.find((node) => node.id === 'request-1')?.x &&
         state.viewport.pan.x === beforeNodeDrag.viewport.pan.x &&
         state.viewport.pan.y === beforeNodeDrag.viewport.pan.y &&
-        state.viewportChanges === beforeNodeDrag.viewportChanges &&
         state.nodeMoveChanges > beforeNodeDrag.nodeMoveChanges,
     );
-    source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
-    target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
+    source = await browser.rectAsync('[data-testid="flow-port-request-1-request"]');
+    target = await browser.rectAsync('[data-testid="flow-port-review-1-request"]');
     canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');
     await browser.assertPathAnchorsAsync(source, target, canvas, moved.viewport);
-    phase = 'disconnect-initial';
-    await browser.clickAsync(await browser.rectAsync('[aria-label="Connection source-target"]'));
-    await browser.waitForStateAsync((state) => state.connections === 0);
-    phase = 'connect';
-    source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
-    target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
-    await browser.clickAsync(source);
-    await browser.clickAsync(target);
-    await browser.waitForStateAsync((state) => state.connections === 1);
-    phase = 'disconnect-created';
-    await browser.clickAsync(await browser.rectAsync('[aria-label="Connection source-target"]'));
-    await browser.waitForStateAsync((state) => state.connections === 0);
     phase = 'zoom';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Zoom in"]'));
     await browser.waitForStateAsync((state) => state.viewport.zoom > initial.viewport.zoom);
     phase = 'undo';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Undo"]'));
+    const undone = await browser.waitForStateAsync(
+      (state) => state.events.includes('undo') && state.viewport.zoom === moved.viewport.zoom,
+    );
+    phase = 'redo';
+    await browser.clickAsync(await browser.rectAsync('[aria-label="Redo"]'));
+    await browser.waitForStateAsync(
+      (state) => state.events.includes('redo') && state.viewport.zoom > undone.viewport.zoom,
+    );
     phase = 'keyboard-zoom';
+    const beforeKeyboardZoom = await browser.readStateAsync();
     await browser.focusAsync('[aria-label="Zoom in"]');
     await browser.keyAsync('Enter');
+    const keyboardZoomed = await browser.waitForStateAsync(
+      (state) =>
+        state.viewport.zoom > beforeKeyboardZoom.viewport.zoom &&
+        state.events.filter((event) => event === 'viewport').length >
+          beforeKeyboardZoom.events.filter((event) => event === 'viewport').length,
+    );
     phase = 'delete';
     await browser.clickAsync(await browser.rectAsync('[aria-label="Delete selected nodes"]'));
     const final = await browser.waitForStateAsync(
       (state) =>
-        state.events.includes('insert') &&
+        state.events.includes('insert:request') &&
+        state.events.includes('insert:review') &&
+        state.events.includes('configure:needsApproval') &&
+        state.events.includes('reject:connection_types_incompatible') &&
         state.events.includes('connect') &&
-        state.events.includes('disconnect') &&
         state.events.includes('delete') &&
         state.events.includes('undo') &&
         state.events.includes('move') &&
-        !state.nodes.some((node) => node.id === 'source') &&
-        state.viewport.zoom > 1,
+        !state.nodes.some((node) => node.id === 'request-1') &&
+        state.viewport.zoom === keyboardZoomed.viewport.zoom,
     );
     assert(
       moved.viewport.pan.x === panned.viewport.pan.x &&
@@ -187,12 +267,13 @@ async function testFlowCanvasChromiumAsync() {
     );
     passed = true;
     console.log(`Chromium FlowCanvas acceptance passed: ${JSON.stringify(final)}`);
+    console.log(`FlowCanvas evidence retained in ${artifactsDirectory}`);
   } catch (error) {
     failure = error;
     throw error;
   } finally {
     if (!passed) {
-      if (browser) await browser.captureFailureEvidenceAsync(artifactsDirectory, phase);
+      if (browser) await browser.captureFailureEvidenceAsync(artifactsDirectory, phase, failure);
       else captureStartupFailureEvidence(artifactsDirectory, phase, failure);
     }
     browser?.close();
@@ -299,8 +380,23 @@ class ChromeSession {
     });
   }
   async keyAsync(key: string) {
-    await this.sendAsync('Input.dispatchKeyEvent', { key, type: 'keyDown' });
-    await this.sendAsync('Input.dispatchKeyEvent', { key, type: 'keyUp' });
+    const keyCode = key === 'Enter' ? 13 : undefined;
+    await this.sendAsync('Input.dispatchKeyEvent', {
+      code: key,
+      key,
+      nativeVirtualKeyCode: keyCode,
+      text: key === 'Enter' ? '\r' : undefined,
+      type: 'keyDown',
+      unmodifiedText: key === 'Enter' ? '\r' : undefined,
+      windowsVirtualKeyCode: keyCode,
+    });
+    await this.sendAsync('Input.dispatchKeyEvent', {
+      code: key,
+      key,
+      nativeVirtualKeyCode: keyCode,
+      type: 'keyUp',
+      windowsVirtualKeyCode: keyCode,
+    });
   }
   async rectAsync(selector: string) {
     const deadline = Date.now() + 30_000;
@@ -342,6 +438,11 @@ class ChromeSession {
     );
     assert(state !== null, 'FlowCanvas controlled host state is unavailable.');
     return state;
+  }
+  async textAsync(selector: string) {
+    return this.evaluateAsync<string>(
+      `(() => document.querySelector(${JSON.stringify(selector)})?.textContent ?? '')()`,
+    );
   }
   async assertPathAnchorsAsync(
     source: Rect,
@@ -391,7 +492,7 @@ class ChromeSession {
           tagName: target.tagName,
           testId: target.closest('[data-testid]')?.getAttribute('data-testid') ?? null,
         } : null;
-        for (const type of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'click']) {
+        for (const type of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'click', 'keydown', 'keyup']) {
           document.addEventListener(type, (event) => diagnostics.push({ target: describe(event.target), type }), true);
         }
         return true;
@@ -410,9 +511,15 @@ class ChromeSession {
     mkdirSync(directory, { recursive: true });
     writeFileSync(join(directory, `${name}.json`), JSON.stringify(evidence, null, 2));
   }
-  async captureFailureEvidenceAsync(directory: string, phase: string) {
+  async captureFailureEvidenceAsync(directory: string, phase: string, failure: unknown) {
     try {
       await this.captureEvidenceAsync(directory, 'flow-canvas-failure', phase);
+      const evidencePath = join(directory, 'flow-canvas-failure.json');
+      const evidence = JSON.parse(await Bun.file(evidencePath).text()) as JsonRecord;
+      writeFileSync(
+        evidencePath,
+        JSON.stringify({ ...evidence, failure: String(failure) }, null, 2),
+      );
     } catch (error) {
       mkdirSync(directory, { recursive: true });
       writeFileSync(join(directory, 'flow-canvas-failure.txt'), String(error));
@@ -427,7 +534,7 @@ class ChromeSession {
       );
       last = state;
       if (state !== null && predicate(state)) return state;
-      await this.evaluateAsync('new Promise((resolve) => requestAnimationFrame(resolve))');
+      await Bun.sleep(25);
     }
     throw new Error(`Timed out waiting for FlowCanvas state: ${JSON.stringify(last)}`);
   }
@@ -514,8 +621,16 @@ async function waitForAsync(url: string): Promise<void> {
 function isRecord(value: unknown): value is JsonRecord {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
+let runnerFailure: unknown = null;
 try {
   await testFlowCanvasChromiumAsync();
+} catch (error) {
+  runnerFailure = error;
+  console.error(error);
 } finally {
   rmSync(temporaryRoot, { force: true, recursive: true });
+}
+if (runnerFailure !== null) {
+  console.error(`FlowCanvas evidence retained in ${artifactsDirectory}`);
+  process.exit(1);
 }

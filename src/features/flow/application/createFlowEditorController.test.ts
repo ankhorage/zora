@@ -67,11 +67,13 @@ test('connects only an enabled output to an input on a different node', () => {
 });
 
 test('rejects an output and input whose published Contracts schema types do not overlap', () => {
+  const [sourceNode, targetNode] = nodes;
+  if (!sourceNode || !targetNode) throw new Error('Flow test nodes are required.');
   const controller = createFlowEditorController(
     createProps({
       nodes: [
         {
-          ...nodes[0]!,
+          ...sourceNode,
           ports: [
             {
               data: { schema: { type: 'string' } },
@@ -82,7 +84,7 @@ test('rejects an output and input whose published Contracts schema types do not 
           ],
         },
         {
-          ...nodes[1]!,
+          ...targetNode,
           ports: [
             {
               data: { schema: { type: 'number' } },
