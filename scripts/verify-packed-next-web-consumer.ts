@@ -6,9 +6,19 @@ import { join, resolve } from 'node:path';
 type SpinnerMeasurement = Readonly<{
   readonly animation: string;
   readonly color: string;
+  readonly display: string;
   readonly height: number;
   readonly hydrated: string | null;
+  readonly left: number;
   readonly role: string | null;
+  readonly top: number;
+  readonly width: number;
+}>;
+
+type LoadingRegionMeasurement = Readonly<{
+  readonly height: number;
+  readonly left: number;
+  readonly top: number;
   readonly width: number;
 }>;
 
@@ -57,6 +67,7 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
         scripts: { build: 'next build', start: 'next start' },
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
+          '@ankhorage/surface': '9.5.20',
           next: '16.0.0',
           react: '19.2.3',
           'react-dom': '19.2.3',
@@ -73,7 +84,11 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
   );
   writeFileSync(
     join(consumerRoot, 'app', 'layout.tsx'),
-    `export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><head><link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" rel="icon" /></head><body>{children}</body></html>; }\n`,
+    `import { ReactNativeWebStyleSheet } from '@ankhorage/surface';
+
+export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><head><link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" rel="icon" /></head><body>{children}<ReactNativeWebStyleSheet /></body></html>;
+}\n`,
   );
   writeFileSync(
     join(consumerRoot, 'tsconfig.json'),
@@ -105,11 +120,12 @@ function writeConsumer(consumerRoot: string, tarballPath: string) {
     `'use client';
 import { useEffect } from 'react';
 import { ActivityIndicator } from '@ankhorage/zora/web/activity-indicator';
+import { View } from '@ankhorage/zora/web/view';
 import { ZoraProvider } from '@ankhorage/zora/web/runtime';
 
 export default function Page() {
   useEffect(() => document.documentElement.setAttribute('data-hydrated', 'true'), []);
-  return <main><span id="dark-small-label">Dark mode loading</span><ZoraProvider mode="light"><ActivityIndicator size="small" testID="light-small" /><ActivityIndicator aria-label="Publishing results" size="large" testID="light-large" /></ZoraProvider><ZoraProvider mode="dark"><ActivityIndicator aria-labelledby="dark-small-label" size="small" testID="dark-small" /><ActivityIndicator size="large" testID="dark-large" /></ZoraProvider></main>;
+  return <main><ZoraProvider mode="light"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="light-loading-region"><ActivityIndicator size="small" testID="light-spinner" /></View></ZoraProvider><ZoraProvider mode="dark"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="dark-loading-region"><ActivityIndicator size="small" testID="dark-spinner" /></View></ZoraProvider></main>;
 }
 `,
   );
@@ -134,20 +150,16 @@ async function waitForHttpAsync(url: string): Promise<void> {
 
 /*** Assert the server response carries all deterministic spinner invariants before browser JavaScript. */
 function assertServerHtml(html: string) {
-  for (const [testId, dimension] of [
-    ['light-small', 20],
-    ['light-large', 36],
-    ['dark-small', 20],
-    ['dark-large', 36],
-  ] as const) {
+  for (const testId of ['light-spinner', 'dark-spinner']) {
     assert.match(html, new RegExp(`data-testid=\\"${testId}\\"`));
-    assert.match(html, new RegExp(`height:${dimension}px`));
-    assert.match(html, new RegExp(`width:${dimension}px`));
+    assert.match(html, /height:20px/);
+    assert.match(html, /width:20px/);
   }
+  assert.match(html, /data-testid="light-loading-region"[^>]*display:flex/);
+  assert.match(html, /data-testid="dark-loading-region"[^>]*display:flex/);
+  assert.match(html, /id="react-native-stylesheet"/);
   assert.match(html, /role="progressbar"/);
   assert.match(html, /aria-label="Loading"/);
-  assert.match(html, /aria-label="Publishing results"/);
-  assert.match(html, /aria-labelledby="dark-small-label"/);
   assert.match(html, /prefers-reduced-motion: reduce/);
   assert.match(html, /<svg/);
   assert.doesNotMatch(html, /r-width-|react-native-web/i);
@@ -165,13 +177,13 @@ async function assertBrowserMatrixAsync(url: string) {
       await browser.setScriptsEnabledAsync(false);
       await browser.navigateAsync(url);
       await browser.waitForDocumentAsync();
-      await assertMeasurementsAsync(browser, viewport.label, 'server');
+      await assertMeasurementsAsync(browser, viewport.label, 'server', viewport.height);
       await browser.setScriptsEnabledAsync(true);
       await browser.navigateAsync(url);
       await browser.waitForHydrationAsync();
-      await assertMeasurementsAsync(browser, viewport.label, 'hydrated');
+      await assertMeasurementsAsync(browser, viewport.label, 'hydrated', viewport.height);
       await browser.emulateReducedMotionAsync();
-      const animation = await browser.measureAsync('light-small');
+      const animation = await browser.measureAsync('light-spinner');
       assert.equal(animation.animation, 'none', `${viewport.label} reduced motion still animates.`);
       await browser.clearReducedMotionAsync();
     }
@@ -191,16 +203,32 @@ async function assertBrowserMatrixAsync(url: string) {
 }
 
 /*** Assert semantic presentation and fixed bounds for each published spinner size and theme scope. */
-async function assertMeasurementsAsync(browser: ChromeSession, viewport: string, phase: string) {
-  for (const [testId, dimension] of [
-    ['light-small', 20],
-    ['light-large', 36],
-    ['dark-small', 20],
-    ['dark-large', 36],
+async function assertMeasurementsAsync(
+  browser: ChromeSession,
+  viewport: string,
+  phase: string,
+  viewportHeight: number,
+) {
+  for (const [regionId, testId] of [
+    ['light-loading-region', 'light-spinner'],
+    ['dark-loading-region', 'dark-spinner'],
   ] as const) {
     const measurement = await browser.measureAsync(testId);
-    assert.equal(measurement.width, dimension, `${viewport} ${phase} ${testId} width changed.`);
-    assert.equal(measurement.height, dimension, `${viewport} ${phase} ${testId} height changed.`);
+    const region = await browser.measureRegionAsync(regionId);
+    assert.equal(measurement.width, 20, `${viewport} ${phase} ${testId} width changed.`);
+    assert.equal(measurement.height, 20, `${viewport} ${phase} ${testId} height changed.`);
+    assert.equal(measurement.display, 'flex', `${viewport} ${phase} ${regionId} is not flex.`);
+    assert.equal(region.height, viewportHeight, `${viewport} ${phase} ${regionId} height changed.`);
+    assert.equal(
+      measurement.left + measurement.width / 2,
+      region.left + region.width / 2,
+      `${viewport} ${phase} ${testId} is not horizontally centered.`,
+    );
+    assert.equal(
+      measurement.top + measurement.height / 2,
+      region.top + region.height / 2,
+      `${viewport} ${phase} ${testId} is not vertically centered.`,
+    );
     assert.equal(
       measurement.role,
       'progressbar',
@@ -211,7 +239,7 @@ async function assertMeasurementsAsync(browser: ChromeSession, viewport: string,
   }
   assert.deepEqual(
     (await browser.progressbarAccessibleNamesAsync()).sort(),
-    ['Dark mode loading', 'Loading', 'Loading', 'Publishing results'].sort(),
+    ['Loading', 'Loading'],
     `${viewport} ${phase} progressbars do not expose their expected accessible names.`,
   );
 }
@@ -284,7 +312,12 @@ class ChromeSession {
   }
   async measureAsync(testId: string): Promise<SpinnerMeasurement> {
     return this.evaluateAsync(
-      `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const style = getComputedStyle(node); const svg = node.querySelector('svg'); return { animation: svg ? getComputedStyle(svg).animationName : '', color: svg?.querySelector('circle')?.getAttribute('stroke') ?? '', height: node.getBoundingClientRect().height, hydrated: document.documentElement.getAttribute('data-hydrated'), role: node.getAttribute('role'), width: node.getBoundingClientRect().width }; })()`,
+      `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); const svg = node.querySelector('svg'); return { animation: svg ? getComputedStyle(svg).animationName : '', color: svg?.querySelector('circle')?.getAttribute('stroke') ?? '', display: style.display, height: rect.height, hydrated: document.documentElement.getAttribute('data-hydrated'), left: rect.left, role: node.getAttribute('role'), top: rect.top, width: rect.width }; })()`,
+    );
+  }
+  async measureRegionAsync(testId: string): Promise<LoadingRegionMeasurement> {
+    return this.evaluateAsync(
+      `(() => { const node = document.querySelector('[data-testid="${testId}"]'); if (!node) throw new Error('missing ${testId}'); const rect = node.getBoundingClientRect(); return { height: rect.height, left: rect.left, top: rect.top, width: rect.width }; })()`,
     );
   }
   async progressbarAccessibleNamesAsync(): Promise<readonly string[]> {
