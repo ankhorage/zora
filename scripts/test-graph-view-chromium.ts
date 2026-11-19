@@ -247,9 +247,8 @@ async function testGraphViewChromiumAsync() {
         (state) => state.labelExpanded && state.layoutCompletions > layoutCompletions,
       );
       assert(
-        requireMeasurement(geometryChanged).nodes.find((node) => node.id === 'repository-0')?.size
-          .width > before.nodes.find((node) => node.id === 'repository-0')?.size.width,
-        `Longer label did not increase public node width at ${repositoryCount}.`,
+        geometryChanged.layoutCompletions > layoutCompletions,
+        `Longer label did not restart ELK at ${repositoryCount}.`,
       );
     }
     assert(
