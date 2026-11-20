@@ -114,6 +114,19 @@ jobs:
         if: steps.impact.outputs.e2e != 'skip'
         run: bun .github/scripts/ci-impact.ts e2e
 
+      - name: Run Chromium FlowCanvas acceptance
+        env:
+          FLOW_ARTIFACT_DIR: ${{ runner.temp }}/flow-canvas-artifacts
+        run: bun run test:flow-canvas:chromium
+
+      - name: Upload FlowCanvas acceptance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-canvas-chromium-artifacts
+          path: ${{ runner.temp }}/flow-canvas-artifacts
+          if-no-files-found: warn
+
       - name: Run Smoke tests
         if: steps.impact.outputs.smoke != 'skip'
         run: bun .github/scripts/ci-impact.ts smoke

@@ -1,0 +1,55 @@
+appId: dev.ankhorage.zora.flowacceptance
+---
+# Drag from the source header; then pan from the empty upper-right canvas, above the moved source node.
+- launchApp:
+    clearState: false
+- assertVisible: 'Source task'
+- assertVisible: 'Target task'
+- tapOn: 'Source task'
+- assertVisible: 'selection=source'
+- swipe:
+    start: '45%, 74%'
+    end: '60%, 67%'
+    duration: 500
+- assertVisible: 'source-moved=true'
+- assertVisible: 'viewport=0,0,1'
+- tapOn: 'Source task: Output'
+- swipe:
+    start: '95%, 60%'
+    end: '20%, 60%'
+    duration: 500
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+- assertVisible: 'source-unchanged-on-viewport-change=true'
+# The first horizontal pan clips the target input below the viewport. Pan the real empty
+# right edge upward before connecting, so the port is genuinely visible and tappable.
+- swipe:
+    start: '95%, 85%'
+    end: '95%, 55%'
+    duration: 500
+- assertVisible: 'Target task: Input'
+- tapOn: 'Target task: Input'
+- assertVisible: 'event=connect'
+- tapOn: 'Connection source-target'
+- assertVisible: 'connections=0'
+- assertVisible: 'event=disconnect'
+- tapOn: 'Zoom in'
+- assertVisible: 'event=viewport'
+- assertVisible: 'viewport-panned=true'
+# The dragged source now overlaps the wrapped toolbar. Pan the empty right canvas downward
+# to move that node clear of Undo before interacting with the native control.
+- swipe:
+    start: '95%, 65%'
+    end: '95%, 90%'
+    duration: 500
+- assertVisible: 'Undo'
+- tapOn: 'Undo'
+- assertVisible: 'event=undo'
+- assertVisible: 'undo-count=1'
+- tapOn: 'Redo'
+- assertVisible: 'event=redo'
+- assertVisible: 'redo-count=1'
+- tapOn: 'Delete selected nodes'
+- assertVisible: 'event=delete'
+- assertNotVisible: 'Source task'
+- takeScreenshot: flow-canvas-native
