@@ -59,6 +59,7 @@ const RESTAURANT_WEB_ROUTES = [
   '/reservations',
 ] as const;
 const FORBIDDEN_ROUTER_HELPER_ROUTES = ['/ExampleAppBar', '/useZoraIconFonts'] as const;
+const MINIMUM_SURFACE_VERSION = '9.5.17';
 
 const FIXTURES: readonly CandidateFixture[] = [
   {
@@ -273,6 +274,10 @@ function verifyCandidateGraph(
   assert(
     Bun.semver.satisfies(installedSurfaceVersion, installedSurfaceRange),
     `Installed Surface ${installedSurfaceVersion} does not satisfy ${installedSurfaceRange}.`,
+  );
+  assert(
+    Bun.semver.satisfies(installedSurfaceVersion, `>=${MINIMUM_SURFACE_VERSION}`),
+    `Packed candidate requires Surface ${MINIMUM_SURFACE_VERSION} or newer for the native BottomSheet SSR fix, received ${installedSurfaceVersion}.`,
   );
 
   const installedZoraRealPath = realpathSync(installedZoraRoot);
