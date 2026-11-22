@@ -9,6 +9,19 @@ import type {
   FlowPortAddress,
 } from '../../../../types/flow';
 import { Card } from '../../../card/public';
+import completedStatusSource from '../../../flow-status/assets/completed.svg';
+import waitingStatusSource from '../../../flow-status/assets/waiting.svg';
+import aiAgentNodeKindSource from '../../../icon/assets/flow/node-kinds/ai-agent.svg';
+import analyticsNodeKindSource from '../../../icon/assets/flow/node-kinds/analytics.svg';
+import approvalNodeKindSource from '../../../icon/assets/flow/node-kinds/approval.svg';
+import conditionNodeKindSource from '../../../icon/assets/flow/node-kinds/condition.svg';
+import contentInputNodeKindSource from '../../../icon/assets/flow/node-kinds/content-input.svg';
+import loopNodeKindSource from '../../../icon/assets/flow/node-kinds/loop.svg';
+import manualNodeKindSource from '../../../icon/assets/flow/node-kinds/manual.svg';
+import publishNodeKindSource from '../../../icon/assets/flow/node-kinds/publish.svg';
+import transformNodeKindSource from '../../../icon/assets/flow/node-kinds/transform.svg';
+import triggerNodeKindSource from '../../../icon/assets/flow/node-kinds/trigger.svg';
+import webhookNodeKindSource from '../../../icon/assets/flow/node-kinds/webhook.svg';
 import { Icon } from '../../../icon/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
@@ -42,6 +55,7 @@ function FlowNodeInner(props: FlowNodeProps) {
   const pointerSelectionHandled = React.useRef(false);
   const portRefs = React.useRef(new Map<string, View | null>());
   const { theme } = useZoraTheme();
+  const accessibilityLabel = resolveFlowNodeAccessibilityLabel(props.node);
   const reportPortAnchor = React.useCallback(
     (address: FlowPortAddress) => {
       const port = portRefs.current.get(address.portId);
@@ -88,10 +102,7 @@ function FlowNodeInner(props: FlowNodeProps) {
         }}
       >
         <View
-          accessible
-          accessibilityLabel={props.node.title}
-          accessibilityRole="summary"
-          accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
+          accessible={false}
           collapsable={false}
           onResponderGrant={(event) => {
             dragCancelled.current = false;
@@ -131,9 +142,13 @@ function FlowNodeInner(props: FlowNodeProps) {
         >
           <View>
             <Pressable
-              accessibilityLabel={props.node.title}
+              aria-selected={props.selected}
+              accessibilityLabel={accessibilityLabel}
               accessibilityRole="button"
-              accessibilityState={{ disabled: props.node.disabled, selected: props.selected }}
+              accessibilityState={{
+                disabled: props.readOnly || props.node.disabled,
+                selected: props.selected,
+              }}
               disabled={props.readOnly ? true : props.node.disabled}
               testID={`flow-node-${props.node.id}`}
               accessibilityHint="Select this node. Drag to move it."
@@ -254,32 +269,44 @@ function FlowNodeInner(props: FlowNodeProps) {
   );
 }
 
+/*** Describe the caller-supplied Flow presentation once at its actionable accessibility boundary. */
+function resolveFlowNodeAccessibilityLabel(node: FlowNodeData): string {
+  switch (node.presentation?.status) {
+    case 'completed':
+      return `${node.title}. Completed`;
+    case 'waiting':
+      return `${node.title}. Waiting for review`;
+    default:
+      return node.title;
+  }
+}
+
 /*** Resolve a reviewed Flow node-kind SVG without creating a package-wide icon registry. */
 function resolveFlowNodeKindSource(nodeKind: FlowNodeKind) {
   switch (nodeKind) {
     case 'trigger':
     case 'schedule':
-      return require('../../../icon/assets/flow/node-kinds/trigger.svg');
+      return triggerNodeKindSource;
     case 'webhook':
-      return require('../../../icon/assets/flow/node-kinds/webhook.svg');
+      return webhookNodeKindSource;
     case 'manual':
-      return require('../../../icon/assets/flow/node-kinds/manual.svg');
+      return manualNodeKindSource;
     case 'content-input':
-      return require('../../../icon/assets/flow/node-kinds/content-input.svg');
+      return contentInputNodeKindSource;
     case 'transform':
-      return require('../../../icon/assets/flow/node-kinds/transform.svg');
+      return transformNodeKindSource;
     case 'ai-agent':
-      return require('../../../icon/assets/flow/node-kinds/ai-agent.svg');
+      return aiAgentNodeKindSource;
     case 'approval':
-      return require('../../../icon/assets/flow/node-kinds/approval.svg');
+      return approvalNodeKindSource;
     case 'publish':
-      return require('../../../icon/assets/flow/node-kinds/publish.svg');
+      return publishNodeKindSource;
     case 'analytics':
-      return require('../../../icon/assets/flow/node-kinds/analytics.svg');
+      return analyticsNodeKindSource;
     case 'condition':
-      return require('../../../icon/assets/flow/node-kinds/condition.svg');
+      return conditionNodeKindSource;
     case 'loop':
-      return require('../../../icon/assets/flow/node-kinds/loop.svg');
+      return loopNodeKindSource;
   }
 }
 
@@ -287,8 +314,8 @@ function resolveFlowNodeKindSource(nodeKind: FlowNodeKind) {
 function resolveFlowNodeStatusSource(status: FlowNodePresentationStatus) {
   switch (status) {
     case 'completed':
-      return require('../../../flow-status/assets/completed.svg');
+      return completedStatusSource;
     case 'waiting':
-      return require('../../../flow-status/assets/waiting.svg');
+      return waitingStatusSource;
   }
 }
