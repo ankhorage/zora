@@ -1,5 +1,11 @@
 import type { ReactNode } from 'react';
-import type { ImageResizeMode, ImageSourcePropType, ImageStyle, StyleProp, ViewStyle } from 'react-native';
+import type {
+  ImageResizeMode,
+  ImageSourcePropType,
+  ImageStyle,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 /** A platform-neutral image reference. App-specific image optimizers use renderImage. */
 export interface HeroBackgroundSlide {

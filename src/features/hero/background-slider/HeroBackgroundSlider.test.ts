@@ -1,8 +1,7 @@
+import { HeroBackgroundSlider } from '@ankhorage/zora/web/hero-background-slider';
 import { expect, test } from 'bun:test';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-
-import { HeroBackgroundSlider } from '@ankhorage/zora/web/hero-background-slider';
 
 test('renders no background or progress when there are no slides', () => {
   const output = renderToStaticMarkup(React.createElement(HeroBackgroundSlider, { slides: [] }));
@@ -14,7 +13,7 @@ test('supports consumer-owned optimized images and hides progress for a single s
     React.createElement(HeroBackgroundSlider, {
       slides: [{ source: '/one.jpg', alt: 'One' }],
       testID: 'hero',
-      renderImage: (slide) => React.createElement('img', { src: String(slide.source), alt: '' }),
+      renderImage: (slide) => React.createElement('img', { src: typeof slide.source === 'string' ? slide.source : '', alt: '' }),
     }),
   );
   expect(output).toContain('/one.jpg');
@@ -24,7 +23,7 @@ test('supports consumer-owned optimized images and hides progress for a single s
 test('renders all image layers and an optional progress indicator for a slideshow', () => {
   const slides = [{ source: '/one.jpg' }, { source: '/two.jpg' }];
   const renderImage = (slide: { source: unknown }) =>
-    React.createElement('img', { src: String(slide.source), alt: '' });
+    React.createElement('img', { src: typeof slide.source === 'string' ? slide.source : '', alt: '' });
   const output = renderToStaticMarkup(
     React.createElement(HeroBackgroundSlider, {
       slides,

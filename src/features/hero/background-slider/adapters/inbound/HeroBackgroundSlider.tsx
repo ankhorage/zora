@@ -4,10 +4,10 @@ import {
   Animated,
   Easing,
   Image,
-  Pressable,
-  StyleSheet,
   type ImageResizeMode,
   type ImageSourcePropType,
+  Pressable,
+  StyleSheet,
 } from 'react-native';
 
 import type {
@@ -51,7 +51,7 @@ export function HeroBackgroundSlider({
   const duration = Math.max(1, intervalMs);
   const canAdvance = loop || activeIndex < slides.length - 1;
   const shouldPlay = autoPlay && !paused && slides.length > 1 && canAdvance;
-  const progress = React.useRef(new Animated.Value(0)).current;
+  const [progress] = React.useState(() => new Animated.Value(0));
 
   React.useEffect(() => {
     if (!shouldPlay || (index !== undefined && onIndexChange === undefined)) return;
@@ -91,6 +91,7 @@ export function HeroBackgroundSlider({
         <HeroBackgroundSlideLayer
           key={slideIndex}
           active={activeIndex === slideIndex}
+          animate={slides.length > 1}
           enterDurationMs={enterDurationMs}
           exitDurationMs={exitDurationMs}
           imageStyle={imageStyle}
@@ -143,6 +144,7 @@ interface HeroBackgroundSlideLayerProps {
   readonly slide: HeroBackgroundSlide;
   readonly slideIndex: number;
   readonly active: boolean;
+  readonly animate: boolean;
   readonly enterDurationMs: number;
   readonly exitDurationMs: number;
   readonly initialScale: number;
@@ -157,6 +159,7 @@ function HeroBackgroundSlideLayer({
   slide,
   slideIndex,
   active,
+  animate,
   enterDurationMs,
   exitDurationMs,
   initialScale,
@@ -165,14 +168,14 @@ function HeroBackgroundSlideLayer({
   imageStyle,
   renderImage,
 }: HeroBackgroundSlideLayerProps) {
-  const opacity = React.useRef(new Animated.Value(active ? 1 : 0)).current;
-  const scale = React.useRef(new Animated.Value(active ? initialScale : 1)).current;
+  const [opacity] = React.useState(() => new Animated.Value(active && !animate ? 1 : 0));
+  const [scale] = React.useState(() => new Animated.Value(active && animate ? initialScale : 1));
   const wasActive = React.useRef(active);
 
   React.useEffect(() => {
     opacity.stopAnimation();
     scale.stopAnimation();
-    if (reducedMotion) {
+    if (!animate || reducedMotion) {
       opacity.setValue(active ? 1 : 0);
       scale.setValue(1);
     } else if (active) {
@@ -205,7 +208,7 @@ function HeroBackgroundSlideLayer({
       opacity.stopAnimation();
       scale.stopAnimation();
     };
-  }, [active, enterDurationMs, exitDurationMs, initialScale, opacity, reducedMotion, scale]);
+  }, [active, animate, enterDurationMs, exitDurationMs, initialScale, opacity, reducedMotion, scale]);
 
   return (
     <Animated.View
