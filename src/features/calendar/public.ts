@@ -1,4 +1,11 @@
 export type {
+  CalendarDensity,
+  CalendarProps,
+  CalendarView,
+  CalendarWeekStart,
+} from '../../types/calendar';
+export { Calendar } from './adapters/inbound/Calendar';
+export type {
   TemporalAllDayEvent,
   TemporalAllDayRange,
   TemporalAvailability,
