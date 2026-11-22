@@ -104,7 +104,7 @@ function renderDefaultCell(value: unknown): React.ReactNode {
 
 /** Reads a manifest cell field without accepting executable accessor behavior. */
 function resolveCellField<TRow extends object>(row: TRow, field: keyof TRow): unknown {
-  return row[field];
+  return Object.getOwnPropertyDescriptor(row, field)?.value;
 }
 
 /** Resolves a row value into a string suitable for portable text and URL presentation. */

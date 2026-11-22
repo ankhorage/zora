@@ -5,11 +5,11 @@ export type {
   DataTableColumnAlign,
   DataTableDensity,
   DataTableProps,
-  DataTableRowActivateEvent,
   DataTableRowAction,
+  DataTableRowActivateEvent,
   DataTableRowField,
+  DataTableSelectionChangeEvent,
   DataTableSortDirection,
   DataTableSortState,
-  DataTableSelectionChangeEvent,
 } from '../../types/data-table';
 export { DataTable } from './adapters/inbound/DataTable';

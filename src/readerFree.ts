@@ -171,12 +171,12 @@ export type {
   DataTableColumnAlign,
   DataTableDensity,
   DataTableProps,
-  DataTableRowActivateEvent,
   DataTableRowAction,
+  DataTableRowActivateEvent,
   DataTableRowField,
+  DataTableSelectionChangeEvent,
   DataTableSortDirection,
   DataTableSortState,
-  DataTableSelectionChangeEvent,
 } from './features/data-table/public';
 export { DataTable } from './features/data-table/public';
 export {
