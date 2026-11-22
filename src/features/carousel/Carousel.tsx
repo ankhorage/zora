@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  AccessibilityInfo,
   Animated,
-  Easing,
   Image,
   Pressable,
   StyleSheet,
@@ -12,6 +10,7 @@ import {
 
 import type { CarouselProps, CarouselSlide, CarouselTransition } from '../../types/carousel';
 import { useZoraTheme } from '../theme/composition/useZoraTheme';
+import { useCarouselPlayback } from './useCarouselPlayback';
 
 /***
  * Present images, arbitrary React content, or both as a cross-platform slideshow.
@@ -20,12 +19,12 @@ import { useZoraTheme } from '../theme/composition/useZoraTheme';
 export function Carousel({
   slides,
   index,
-  defaultIndex = 0,
+  defaultIndex,
   onIndexChange,
-  autoPlay = true,
-  paused = false,
-  loop = true,
-  intervalMs = 6000,
+  autoPlay,
+  paused,
+  loop,
+  intervalMs,
   transition = 'fade',
   enterDurationMs = 1200,
   exitDurationMs = 800,
@@ -55,57 +54,31 @@ export function Carousel({
   testID,
 }: CarouselProps) {
   const { theme } = useZoraTheme();
-  const [uncontrolledIndex, setUncontrolledIndex] = React.useState(defaultIndex);
-  const [direction, setDirection] = React.useState<1 | -1>(1);
   const [width, setWidth] = React.useState(0);
-  const [progress] = React.useState(() => new Animated.Value(0));
-  const systemReducedMotion = useSystemReducedMotion();
-  const shouldReduceMotion = reducedMotion ?? systemReducedMotion;
-  const activeIndex = normalizeIndex(index ?? uncontrolledIndex, slides.length);
-  const duration = Math.max(1, intervalMs);
-  const controlledWithoutHandler = index !== undefined && onIndexChange === undefined;
-  const canAdvance = loop || activeIndex < slides.length - 1;
-  const shouldPlay =
-    autoPlay && !paused && slides.length > 1 && canAdvance && !controlledWithoutHandler;
-
-  const navigate = React.useCallback(
-    (target: number, nextDirection: 1 | -1) => {
-      if (slides.length < 2 || controlledWithoutHandler) return;
-      const next = loop
-        ? (target + slides.length) % slides.length
-        : normalizeIndex(target, slides.length);
-      if (next === activeIndex) return;
-      setDirection(nextDirection);
-      if (index === undefined) setUncontrolledIndex(next);
-      onIndexChange?.(next);
-    },
-    [activeIndex, controlledWithoutHandler, index, loop, onIndexChange, slides.length],
-  );
-
-  React.useEffect(() => {
-    if (!shouldPlay) return;
-    const timeout = setTimeout(() => navigate(activeIndex + 1, 1), duration);
-    return () => clearTimeout(timeout);
-  }, [activeIndex, duration, navigate, shouldPlay]);
-
-  React.useEffect(() => {
-    progress.stopAnimation();
-    progress.setValue(0);
-    if (!shouldPlay || shouldReduceMotion) return;
-    const animation = Animated.timing(progress, {
-      toValue: 1,
-      duration,
-      easing: Easing.linear,
-      useNativeDriver: false,
-    });
-    animation.start();
-    return () => animation.stop();
-  }, [activeIndex, duration, progress, shouldPlay, shouldReduceMotion]);
+  const {
+    activeIndex,
+    controlledWithoutHandler,
+    direction,
+    loop: enabledLoop,
+    navigate,
+    progress,
+    shouldReduceMotion,
+  } = useCarouselPlayback({
+      slides,
+      index,
+      defaultIndex,
+      onIndexChange,
+      autoPlay,
+      paused,
+      loop,
+      intervalMs,
+      reducedMotion,
+  });
 
   if (slides.length === 0) return null;
 
-  const canPrevious = loop || activeIndex > 0;
-  const canNext = loop || activeIndex < slides.length - 1;
+  const canPrevious = enabledLoop || activeIndex > 0;
+  const canNext = enabledLoop || activeIndex < slides.length - 1;
   const markerColor = activeIndicatorColor ?? theme.colors.primary;
   const idleMarkerColor = inactiveIndicatorColor ?? theme.semantics.neutral.divider;
 
@@ -503,19 +476,3 @@ const styles = StyleSheet.create({
   progress: { position: 'absolute', bottom: 0, left: 0, right: 0, overflow: 'hidden' },
 });
 
-/*** Clamp an index safely when a consumer replaces the slide collection. */
-function normalizeIndex(value: number, count: number): number {
-  if (count <= 0 || !Number.isFinite(value)) return 0;
-  return Math.min(Math.max(Math.trunc(value), 0), count - 1);
-}
-
-/*** Observe the platform-level reduced-motion preference on native and web. */
-function useSystemReducedMotion(): boolean {
-  const [reduced, setReduced] = React.useState(false);
-  React.useEffect(() => {
-    void AccessibilityInfo.isReduceMotionEnabled().then(setReduced);
-    const listener = AccessibilityInfo.addEventListener('reduceMotionChanged', setReduced);
-    return () => listener.remove();
-  }, []);
-  return reduced;
-}
