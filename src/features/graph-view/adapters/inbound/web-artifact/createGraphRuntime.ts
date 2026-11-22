@@ -84,6 +84,7 @@ export function createGraphRuntime(
     minZoom: 0.05,
     maxZoom: 2,
     selectionType: 'additive',
+    styleEnabled: true,
     userPanningEnabled: true,
   });
   const state = createRuntimeState(cy, container, callbacksRef, readLatestPointerDown);
@@ -191,7 +192,6 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
-      if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
     }
     if (
       previous?.styleRules !== input.styleRules ||
@@ -201,6 +201,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
     }
   });
+  if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
   sizeGraphNodesToLabels(
     state.cy,
     state.labelSizedNodeIds,
@@ -272,7 +273,7 @@ function beginPreservedTopologyMeasurementWindow(
   });
 }
 
-/*** Limit stable-update geometry checks to nodes that existed before reconciliation. */
+/*** Limit stable-update geometry checks to retained leaves with independently stable positions. */
 function getRetainedNodeIds(
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
@@ -280,7 +281,14 @@ function getRetainedNodeIds(
 ): ReadonlySet<string> | null {
   if (!preservesTopology || previous === null) return null;
   const nextNodeIds = new Set(input.nodes.map((node) => node.id));
-  return new Set(previous.nodes.map((node) => node.id).filter((id) => nextNodeIds.has(id)));
+  const nextParentIds = new Set(
+    input.nodes.flatMap((node) => (node.parentId === undefined ? [] : [node.parentId])),
+  );
+  return new Set(
+    previous.nodes
+      .map((node) => node.id)
+      .filter((id) => nextNodeIds.has(id) && !nextParentIds.has(id)),
+  );
 }
 
 /*** Start a generation-safe layout whose completion is the only normal automatic fit trigger. */

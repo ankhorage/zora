@@ -159,7 +159,9 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
     runtime.setNodeSize('repository-0', { height: 24, width: 48 });
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    expect(controller.measureNodes?.(retainedIds)).toEqual(before);
+    expect(
+      controller.measureNodes?.(retainedIds)?.nodes.map(({ id, position }) => ({ id, position })),
+    ).toEqual(before?.nodes.map(({ id, position }) => ({ id, position })));
     expect(controller.getViewport()).toEqual(viewport);
     expect(calls.ready).toBe(1);
     expect(calls.complete).toBe(1);
@@ -167,6 +169,66 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
   } finally {
     runtime.destroy();
   }
+});
+
+test('keeps added compound targets inside a preserved user viewport without relayout', async () => {
+  await withGraphViewportAsync(async () => {
+    const ready = Promise.withResolvers<GraphViewController>();
+    const calls = { ready: 0, sort: 0 };
+    const controllers: GraphViewController[] = [];
+    const runtime = createGraphRuntime(undefined, {
+      current: {
+        onReady: (controller) => {
+          calls.ready += 1;
+          controllers.push(controller);
+          ready.resolve(controller);
+        },
+      },
+    });
+    const input = {
+      nodes: [{ id: 'README' }, { id: 'src' }],
+      edges: [],
+      layout: 'grid' as const,
+      layoutOptions: {
+        sort: () => {
+          calls.sort += 1;
+          return 0;
+        },
+      },
+      richNodeRendering: false,
+      topologyUpdatePolicy: 'preserve-positions' as const,
+    };
+    try {
+      runtime.update(input);
+      const controller = await ready.promise;
+      controller.fit();
+      controller.setZoom(0.8);
+      controller.setPan({ x: -40, y: -30 });
+      const viewport = controller.getViewport();
+      const retainedPosition = controller.measureNodes?.(['README']);
+      const sortCount = calls.sort;
+
+      runtime.update({
+        ...input,
+        nodes: [
+          { id: 'README' },
+          { id: 'src' },
+          { id: 'src.features', parentId: 'src' },
+          { id: 'src.features.nested', parentId: 'src.features' },
+        ],
+      });
+
+      expect(controller.getViewport()).toEqual(viewport);
+      expect(viewport).toEqual({ zoom: 0.8, pan: { x: -40, y: -30 } });
+      expect(controller.measureNodes?.(['README'])).toEqual(retainedPosition);
+      expect(calls.ready).toBe(1);
+      expect(controllers).toEqual([controller]);
+      expect(calls.sort).toBe(sortCount);
+      expectCompoundMeasurementsToFitViewport(controller, ['src.features', 'src.features.nested']);
+    } finally {
+      runtime.destroy();
+    }
+  });
 });
 
 test('lays out a late initial rich-node measurement without a topology change', async () => {
@@ -293,6 +355,51 @@ function expectMeasuredNodesToFit(controller: GraphViewController, nodeIds: read
     expect(node.position.y - node.size.height / 2).toBeGreaterThanOrEqual(0);
     expect(node.position.x + node.size.width / 2).toBeLessThanOrEqual(measurement.viewport.width);
     expect(node.position.y + node.size.height / 2).toBeLessThanOrEqual(measurement.viewport.height);
+  }
+}
+
+function expectCompoundMeasurementsToFitViewport(
+  controller: GraphViewController,
+  nodeIds: readonly string[],
+) {
+  const measurement = controller.measureNodes?.(nodeIds);
+  expect(measurement).not.toBeNull();
+  if (measurement === null) return;
+  expect(measurement.viewport).toEqual({ width: 992, height: 440 });
+  expect(measurement.nodes).toHaveLength(2);
+  expect(measurement.nodes.map((node) => node.id)).toEqual(nodeIds);
+  for (const node of measurement.nodes) {
+    expect(Number.isFinite(node.position.x)).toBe(true);
+    expect(Number.isFinite(node.position.y)).toBe(true);
+    expect(node.size.width).toBeGreaterThan(0);
+    expect(node.size.height).toBeGreaterThan(0);
+    const left = node.position.x - node.size.width / 2;
+    const right = node.position.x + node.size.width / 2;
+    const top = node.position.y - node.size.height / 2;
+    const bottom = node.position.y + node.size.height / 2;
+    expect(left).toBeGreaterThanOrEqual(0);
+    expect(right).toBeLessThanOrEqual(measurement.viewport.width);
+    expect(top).toBeGreaterThanOrEqual(0);
+    expect(bottom).toBeLessThanOrEqual(measurement.viewport.height);
+    expect(node.position.x).toBeGreaterThanOrEqual(left);
+    expect(node.position.x).toBeLessThanOrEqual(right);
+    expect(node.position.y).toBeGreaterThanOrEqual(top);
+    expect(node.position.y).toBeLessThanOrEqual(bottom);
+  }
+}
+
+async function withGraphViewportAsync(run: () => Promise<void>) {
+  const probe = cytoscape({ headless: true });
+  const core = Object.getPrototypeOf(probe) as { height: () => number; width: () => number };
+  probe.destroy();
+  const { height, width } = core;
+  core.height = () => 440;
+  core.width = () => 992;
+  try {
+    await run();
+  } finally {
+    core.height = height;
+    core.width = width;
   }
 }
 
