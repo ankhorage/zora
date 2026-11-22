@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.8
+
+### Patch Changes
+
+- aa49904: Update dependencies: `@ankhorage/color-theory`.
+
 ## 27.4.7
 
 ### Patch Changes
