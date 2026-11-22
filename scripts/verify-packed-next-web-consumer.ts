@@ -139,7 +139,7 @@ import { ZoraProvider } from '@ankhorage/zora/web/runtime';
 
 export default function Page() {
   useEffect(() => document.documentElement.setAttribute('data-hydrated', 'true'), []);
-  return <main><ZoraProvider mode="light"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="light-loading-region"><ActivityIndicator size="small" testID="light-spinner" /></View></ZoraProvider><ZoraProvider mode="dark"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="dark-loading-region"><ActivityIndicator size="small" testID="dark-spinner" /></View></ZoraProvider></main>;
+  return <main><ZoraProvider mode="light"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="light-loading-region"><ActivityIndicator size="small" testID="light-spinner" /></View></ZoraProvider><ZoraProvider mode="dark"><View align="center" flex={1} justify="center" style={{ height: '100vh' }} testID="dark-loading-region"><ActivityIndicator size="small" testID="dark-spinner" /></View></ZoraProvider><span id="dark-small-label">Dark mode loading</span><ZoraProvider mode="light"><ActivityIndicator size="small" testID="light-small" /><ActivityIndicator aria-label="Publishing results" size="large" testID="light-large" /></ZoraProvider><ZoraProvider mode="dark"><ActivityIndicator aria-labelledby="dark-small-label" size="small" testID="dark-small" /><ActivityIndicator size="large" testID="dark-large" /></ZoraProvider></main>;
 }
 `,
   );
@@ -164,10 +164,17 @@ async function waitForHttpAsync(url: string): Promise<void> {
 
 /*** Assert the server response carries all deterministic spinner invariants before browser JavaScript. */
 function assertServerHtml(html: string) {
-  for (const testId of ['light-spinner', 'dark-spinner']) {
+  for (const [testId, dimension] of [
+    ['light-spinner', 20],
+    ['dark-spinner', 20],
+    ['light-small', 20],
+    ['light-large', 36],
+    ['dark-small', 20],
+    ['dark-large', 36],
+  ] as const) {
     assert.match(html, new RegExp(`data-testid=\\"${testId}\\"`));
-    assert.match(html, /height:20px/);
-    assert.match(html, /width:20px/);
+    assert.match(html, new RegExp(`height:${dimension}px`));
+    assert.match(html, new RegExp(`width:${dimension}px`));
   }
   assert.match(
     html,
@@ -180,6 +187,8 @@ function assertServerHtml(html: string) {
   assert.match(html, /id="react-native-stylesheet"/);
   assert.match(html, /role="progressbar"/);
   assert.match(html, /aria-label="Loading"/);
+  assert.match(html, /aria-label="Publishing results"/);
+  assert.match(html, /aria-labelledby="dark-small-label"/);
   assert.match(html, /prefers-reduced-motion: reduce/);
   assert.match(html, /<svg/);
   assert.doesNotMatch(html, /r-width-/i);
@@ -198,10 +207,12 @@ async function assertBrowserMatrixAsync(url: string) {
       await browser.navigateAsync(url);
       await browser.waitForDocumentAsync();
       await assertMeasurementsAsync(browser, viewport.label, 'server', viewport.height);
+      await assertIndicatorVariantsAsync(browser, viewport.label, 'server');
       await browser.setScriptsEnabledAsync(true);
       await browser.navigateAsync(url);
       await browser.waitForHydrationAsync();
       await assertMeasurementsAsync(browser, viewport.label, 'hydrated', viewport.height);
+      await assertIndicatorVariantsAsync(browser, viewport.label, 'hydrated');
       await browser.emulateReducedMotionAsync();
       const animation = await browser.measureAsync('light-spinner');
       assert.equal(animation.animation, 'none', `${viewport.label} reduced motion still animates.`);
@@ -259,9 +270,34 @@ async function assertMeasurementsAsync(
   }
   assert.deepEqual(
     (await browser.progressbarAccessibleNamesAsync()).sort(),
-    ['Loading', 'Loading'],
+    ['Dark mode loading', 'Loading', 'Loading', 'Loading', 'Loading', 'Publishing results'].sort(),
     `${viewport} ${phase} progressbars do not expose their expected accessible names.`,
   );
+}
+
+/*** Preserve packed public ActivityIndicator size and accessible-name coverage beside the View SSR region. */
+async function assertIndicatorVariantsAsync(
+  browser: ChromeSession,
+  viewport: string,
+  phase: string,
+) {
+  for (const [testId, dimension] of [
+    ['light-small', 20],
+    ['light-large', 36],
+    ['dark-small', 20],
+    ['dark-large', 36],
+  ] as const) {
+    const measurement = await browser.measureAsync(testId);
+    assert.equal(measurement.width, dimension, `${viewport} ${phase} ${testId} width changed.`);
+    assert.equal(measurement.height, dimension, `${viewport} ${phase} ${testId} height changed.`);
+    assert.equal(
+      measurement.role,
+      'progressbar',
+      `${viewport} ${phase} ${testId} lacks semantics.`,
+    );
+    assert.notEqual(measurement.color, '', `${viewport} ${phase} ${testId} lacks theme color.`);
+    if (phase === 'hydrated') assert.equal(measurement.hydrated, 'true');
+  }
 }
 
 /*** Drive Chromium through CDP so server-only and hydrated frames use the same real browser engine. */
