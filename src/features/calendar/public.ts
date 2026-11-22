@@ -4,7 +4,6 @@ export type {
   CalendarView,
   CalendarWeekStart,
 } from '../../types/calendar';
-export { Calendar } from './adapters/inbound/Calendar';
 export type {
   TemporalAllDayEvent,
   TemporalAllDayRange,
@@ -27,3 +26,4 @@ export type {
   TemporalTimeZone,
   TemporalTone,
 } from '../../types/temporal';
+export { Calendar } from './adapters/inbound/Calendar';

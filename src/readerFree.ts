@@ -92,6 +92,13 @@ export type {
   TemporalTimeZone,
   TemporalTone,
 } from './features/calendar/public';
+export {
+  Calendar,
+  type CalendarDensity,
+  type CalendarProps,
+  type CalendarView,
+  type CalendarWeekStart,
+} from './features/calendar/public';
 export type { CardProps } from './features/card/public';
 export type { MediaCardImageProps, MediaCardProps } from './features/card/public';
 export type { MetricCardProps } from './features/card/public';
@@ -147,13 +154,6 @@ export type {
   CollectionEditorRenderItemProps,
 } from './features/collection-editor/public';
 export { CollectionEditor } from './features/collection-editor/public';
-export {
-  Calendar,
-  type CalendarDensity,
-  type CalendarProps,
-  type CalendarView,
-  type CalendarWeekStart,
-} from './features/calendar/public';
 export type {
   ContentRailControlPressEvent,
   ContentRailDirection,

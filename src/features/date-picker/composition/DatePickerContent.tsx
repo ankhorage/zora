@@ -1,8 +1,8 @@
 import React from 'react';
 
 import type { DatePickerProps } from '../../../types/date-picker';
-import { Calendar } from '../../calendar/public';
 import { Button } from '../../button/public';
+import { Calendar } from '../../calendar/public';
 import { View } from '../../layout/public';
 import { PickerHeader } from '../../picker/composition/PickerHeader';
 import { parseLocalDate } from '../utils/localDate';

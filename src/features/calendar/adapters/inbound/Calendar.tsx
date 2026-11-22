@@ -130,16 +130,20 @@ function CalendarInner({
             maxDate,
             minDate,
           });
+          const selectCell = () => {
+            if (!cell.inDisplayedMonth) setDisplayedMonth(cell.date);
+            onSelectedDateChange?.(cell.date);
+          };
           return (
             <Button
               accessibilityState={{ disabled, selected }}
               color={selected ? 'primary' : 'neutral'}
               disabled={disabled}
               interactionPolicy={interactionPolicy}
-              onPress={() => onSelectedDateChange?.(cell.date)}
+              onPress={selectCell}
               size="s"
-              testID={testID ? `${testID}-day-${cell.date.getDate()}` : undefined}
-              variant={selected ? 'solid' : 'ghost'}
+              testID={testID ? `${testID}-day-${cell.id}` : undefined}
+              variant={selected ? 'solid' : cell.inDisplayedMonth ? 'ghost' : 'outline'}
             >
               {cell.date.getDate()}
             </Button>
