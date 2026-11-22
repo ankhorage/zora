@@ -28,13 +28,14 @@ If the current repository is `ankhorage/contracts`, apply only this profile:
 After enforcing this profile, stop before the remaining source-layout, implementation, utility,
 and migration rules; they do not apply to `ankhorage/contracts`.
 
-## Required skills
+## Architecture reference
 
-Before structural work outside `ankhorage/contracts`, read the repository `AGENTS.md`, inspect its
-source tree and public exports, then load the required Hexagonal Architecture skill from the
-repository root. Do not resolve it relative to this skill's own installation location:
+Before authorized structural work outside `ankhorage/contracts`, read the repository
+`AGENTS.md`, inspect its source tree and public exports, and consult
+`references/hexagonal-architecture.md` relative to this skill.
 
-1. `<repo-root>/.agents/skills/hexagonal-architecture/SKILL.md`
+This unmodified vendor document is reference material, not an independently selectable Agent Skill.
+Its examples do not authorize additional refactoring, migrations, dependencies, or tests.
 
 ## Architecture profiles and source layout
 
@@ -184,8 +185,9 @@ and do not create repo-local aliases around the shared implementation. For
 every function that could reasonably be reused across repositories, you MUST first inspect the
 published `@ankhorage/utility` public API and its owning topic. Reuse the existing export when its
 semantics match. If the function is missing and is generic without product, manifest, or framework
-policy, implement, test, and export it from the appropriate Utility topic, then consume that public
-export through a declared dependency. Do not duplicate it locally or add a forwarding wrapper.
+policy, report the missing canonical Utility API. If resolving it requires changing another
+repository or adding an unapproved dependency, STOP and obtain explicit user authorization.
+Do not duplicate the implementation locally or add a forwarding wrapper.
 `isRecord` from `@ankhorage/utility/object` is one motivating example of this general rule, not a
 special case.
 
@@ -202,5 +204,5 @@ Separate the decisions for functions and types: reusable functions belong to Uti
 repo-local type groups belong to `src/types/`; repo-crossing types belong to Contracts. Respect
 release boundaries and obtain approval for additional package changes when they exceed the task.
 
-This skill defines the target architecture. Schedule repository migrations separately and in this
-order: Studio, Deploy, Infra, Repository, Navigator, Surface, ZORA.
+This skill defines the target architecture. Do not start migrations or coordinated
+cross-repository changes without an explicitly authorized task.
