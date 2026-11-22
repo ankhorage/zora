@@ -83,19 +83,22 @@ test('publishes SSR-safe ordinary UI through canonical web subpaths', async () =
 
 /** Renders the generated public web entrypoints without a native runtime host. */
 test('resolves ThemeModeToggle through the canonical package web subpath', async () => {
-  const { ThemeModeToggle } = await import('@ankhorage/zora/web/theme-mode-toggle');
+  const ThemeModeToggle = await loadWebComponentAsync(
+    '@ankhorage/zora/web/theme-mode-toggle',
+    'ThemeModeToggle',
+  );
   expect(ThemeModeToggle).toBeDefined();
   const headlessFacade = await Bun.file('src/features/theme/public.ts').text();
   expect(headlessFacade).not.toContain('ThemeModeToggle');
 });
 
 test('SSR-renders ordinary UI from its public web subpaths', async () => {
-  const [{ ZoraProvider }, { AppShell }, { Button }, { Screen }, { Text }] = await Promise.all([
-    import('@ankhorage/zora/web/runtime'),
-    import('@ankhorage/zora/web/app-shell'),
-    import('@ankhorage/zora/web/button'),
-    import('@ankhorage/zora/web/screen'),
-    import('@ankhorage/zora/web/text'),
+  const [ZoraProvider, AppShell, Button, Screen, Text] = await Promise.all([
+    loadWebComponentAsync('@ankhorage/zora/web/runtime', 'ZoraProvider'),
+    loadWebComponentAsync('@ankhorage/zora/web/app-shell', 'AppShell'),
+    loadWebComponentAsync('@ankhorage/zora/web/button', 'Button'),
+    loadWebComponentAsync('@ankhorage/zora/web/screen', 'Screen'),
+    loadWebComponentAsync('@ankhorage/zora/web/text', 'Text'),
   ]);
   const markup = renderToStaticMarkup(
     React.createElement(
@@ -132,6 +135,29 @@ test('publishes the independent color controls through canonical web subpaths', 
   expect(ColorTone).toBeDefined();
   expect(ColorHueScale).toBeDefined();
 });
+/** Loads one public web component and rejects an incomplete package boundary before rendering it. */
+async function loadWebComponentAsync(
+  specifier: string,
+  exportName: string,
+): Promise<React.ComponentType> {
+  const module: unknown = await import(specifier);
+  const exported = readModuleExport(module, exportName);
+  if (!isReactComponent(exported)) {
+    throw new Error(`Expected ${exportName} from ${specifier} to be a React component.`);
+  }
+  return exported;
+}
+
+/** Reads one named export from an untyped runtime module without treating arbitrary input as a map. */
+function readModuleExport(module: unknown, exportName: string): unknown {
+  if (typeof module !== 'object' || module === null) return undefined;
+  return Object.entries(module).find(([name]) => name === exportName)?.[1];
+}
+
+/** Narrows the React component representation exposed by the package's public ESM boundary. */
+function isReactComponent(value: unknown): value is React.ComponentType {
+  return typeof value === 'function';
+}
 
 /** Verifies that the authoring boundary delegates its portable controls to released Surface. */
 test('publishes browser-safe authoring controls through the released Surface boundary', async () => {
