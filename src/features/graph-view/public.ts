@@ -1,11 +1,15 @@
 export type {
   GraphViewCallbacks,
+  GraphViewCanonicalEdgeData,
+  GraphViewCanonicalGraphProps,
+  GraphViewCanonicalNodeData,
   GraphViewController,
   GraphViewDomControllerEventDetail,
   GraphViewEdge,
   GraphViewElementEvent,
   GraphViewElementEventType,
   GraphViewFitOptions,
+  GraphViewInput,
   GraphViewLayoutName,
   GraphViewMeasurement,
   GraphViewNode,
@@ -18,6 +22,7 @@ export type {
   GraphViewStyleRule,
   GraphViewTopologyUpdatePolicy,
   GraphViewViewport,
+  ResolvedGraphViewProps,
 } from '../../types/graph-view';
 export { GraphView } from './adapters/inbound/web-artifact/GraphView';
 export { GRAPH_VIEW_EVENTS } from './constants/events';
