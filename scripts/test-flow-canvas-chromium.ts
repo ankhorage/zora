@@ -84,7 +84,17 @@ async function testFlowCanvasChromiumAsync() {
     browser = await ChromeSession.createAsync(await dynamicPortAsync());
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     await browser.installDiagnosticsAsync();
-    const initial = await browser.waitForStateAsync((state) => state.nodes.length === 2);
+    const initial = await browser.waitForStateAsync((state) => state.nodes.length === 3);
+    await browser.rectAsync('[data-testid="flow-node-source-icon"]');
+    await browser.rectAsync('[data-testid="flow-node-source-status"]');
+    await browser.rectAsync('[data-testid="flow-node-target-icon"]');
+    await browser.rectAsync('[data-testid="flow-node-target-status"]');
+    assert(
+      (await browser.evaluateAsync<boolean>(
+        'document.querySelector("[data-testid=flow-node-unadorned-status]") === null',
+      )) === true,
+      'A node without a presentation status must not render a status badge.',
+    );
     let source = await browser.rectAsync('[data-testid="flow-port-source-out"]');
     let target = await browser.rectAsync('[data-testid="flow-port-target-in"]');
     let canvas = await browser.rectAsync('[data-testid="flow-canvas-viewport"]');

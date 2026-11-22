@@ -5,4 +5,6 @@ test('exposes the shared flow canvas and node components through its public faca
 
   expect(facade).toContain("export { FlowCanvas } from './adapters/inbound/FlowCanvas';");
   expect(facade).toContain("export { FlowNode } from './adapters/inbound/FlowNode';");
+  expect(facade).toContain('FlowNodePresentation');
+  expect(facade).toContain('FlowNodePresentationStatus');
 });
