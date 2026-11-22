@@ -426,14 +426,21 @@ function DataTableMobile<TRow extends object>({
   rowActions,
   rowId,
   rowKey,
+  selectedRowIds,
+  onSelectedRowIdsChange,
   testID,
   interactionPolicy,
 }: DataTableProps<TRow>) {
   const [primaryColumn, ...detailColumns] = columns;
+  const controlledSelectedRowIds = selectedRowIds ?? [];
+  const selectedRowIdSet = new Set(controlledSelectedRowIds);
+  const selectionEnabled = selectedRowIds !== undefined;
+  const selectionDisabled = interactionPolicy === 'passive' || onSelectedRowIdsChange === undefined;
 
   return (
     <View gap="s">
       {rows.map((row, rowIndex) => {
+        const currentRowId = resolveDataTableRowKey(row, rowIndex, rowKey, rowId);
         const title = primaryColumn
           ? renderCell(primaryColumn, row, rowIndex)
           : `Row ${rowIndex + 1}`;
@@ -444,11 +451,29 @@ function DataTableMobile<TRow extends object>({
             actions={actions}
             compact
             interactionPolicy={interactionPolicy}
-            key={resolveDataTableRowKey(row, rowIndex, rowKey, rowId)}
+            key={currentRowId}
             testID={testID ? `${testID}-card-${rowIndex}` : undefined}
             title={title}
           >
             <View gap="s">
+              {selectionEnabled ? (
+                <Checkbox
+                  accessibilityLabel={`Select row ${currentRowId}`}
+                  checked={selectedRowIdSet.has(currentRowId)}
+                  disabled={selectionDisabled}
+                  interactionPolicy={interactionPolicy}
+                  onCheckedChange={(nextSelected) => {
+                    if (selectionDisabled) return;
+                    onSelectedRowIdsChange(
+                      resolveNextSelectedRowIds(
+                        controlledSelectedRowIds,
+                        currentRowId,
+                        nextSelected,
+                      ),
+                    );
+                  }}
+                />
+              ) : null}
               {detailColumns.map((column) => (
                 <View gap="xxs" key={column.id}>
                   <Text emphasis="muted" variant="caption" weight="semiBold">

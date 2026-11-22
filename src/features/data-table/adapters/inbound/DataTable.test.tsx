@@ -3,6 +3,8 @@ import { Window } from 'happy-dom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 
+let mobilePresentation = false;
+
 const browser = new Window();
 const globals = ['window', 'document', 'Node', 'navigator', 'IS_REACT_ACT_ENVIRONMENT'] as const;
 const previousGlobals = globals.map(
@@ -37,7 +39,23 @@ await mock.module('../../../button/public', () => ({
   ),
   IconButton: ({ onPress }: { onPress?: () => void }) => <button onClick={onPress} />,
 }));
-await mock.module('../../../card/public', () => ({ Card: View }));
+await mock.module('../../../card/public', () => ({
+  Card: ({
+    actions,
+    children,
+    title,
+  }: {
+    actions?: React.ReactNode;
+    children?: React.ReactNode;
+    title?: React.ReactNode;
+  }) => (
+    <div>
+      {title}
+      {actions}
+      {children}
+    </div>
+  ),
+}));
 await mock.module('../../../empty-state/public', () => ({ EmptyState: View }));
 await mock.module('../../../form/checkbox/public', () => ({
   Checkbox: ({
@@ -70,7 +88,9 @@ await mock.module('../../../typography/public', () => ({
   Text: ({ children }: { children?: React.ReactNode }) => <span>{children}</span>,
 }));
 await mock.module('@ankhorage/surface', () => ({
-  Show: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
+  Show: ({ children, fallback }: { children?: React.ReactNode; fallback?: React.ReactNode }) => (
+    <>{mobilePresentation ? fallback : children}</>
+  ),
 }));
 
 const { DataTable } = await import('./DataTable');
@@ -176,6 +196,46 @@ test('keeps controlled selection visibly disabled in passive mode', async () => 
     checkbox?.click();
     expect(changes).toEqual([]);
   } finally {
+    await mounted.unmount();
+    mounted.host.remove();
+  }
+});
+
+test('uses desktop stable row ids and the controlled callback in mobile cards', async () => {
+  mobilePresentation = true;
+  const mounted = mount();
+  const changes: string[][] = [];
+
+  try {
+    await mounted.render(
+      <DataTable
+        columns={[
+          { accessor: 'name', header: 'Company', id: 'company' },
+          { accessor: 'location', header: 'Location', id: 'location' },
+        ]}
+        onSelectedRowIdsChange={(selectedRowIds) => changes.push([...selectedRowIds])}
+        rowId={(row) => `company-${row.id}`}
+        rows={[
+          { id: 'acme', location: 'Zurich', name: 'Acme' },
+          { id: 'zora', location: 'Bern', name: 'ZORA' },
+        ]}
+        selectedRowIds={['company-acme']}
+      />,
+    );
+
+    const selected = mounted.host.querySelector<HTMLButtonElement>(
+      '[aria-label="Select row company-acme"]',
+    );
+    const unselected = mounted.host.querySelector<HTMLButtonElement>(
+      '[aria-label="Select row company-zora"]',
+    );
+    expect(selected?.getAttribute('aria-checked')).toBe('true');
+    expect(unselected?.getAttribute('aria-checked')).toBe('false');
+
+    unselected?.click();
+    expect(changes).toEqual([['company-acme', 'company-zora']]);
+  } finally {
+    mobilePresentation = false;
     await mounted.unmount();
     mounted.host.remove();
   }
