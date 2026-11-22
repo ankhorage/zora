@@ -1,15 +1,11 @@
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 
 import { toPortablePath } from '@ankhorage/utility/node/path';
 import * as ts from 'typescript';
 
 import { createWebBuildPlugins } from './createWebBuildPlugins';
-import type {
-  WebArtifactManifestEntry,
-  WebArtifactRuntimeExport,
-  WebArtifactTarget,
-} from './types';
+import type { WebArtifactManifestEntry, WebArtifactTarget } from './types';
 
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
@@ -274,7 +270,7 @@ function collectRuntimeImports(root: ts.SourceFile): readonly string[] {
   return specifiers.filter((specifier) => !specifier.startsWith('.') && !specifier.startsWith('/'));
 }
 
-/*** Preserve specialized declarations plus any public types omitted by their runtime override. */
+/*** Materialize each component declaration and its precise local type dependency closure. */
 async function writeDeclaration(
   target: WebArtifactTarget,
   outputDirectory: string,
@@ -282,25 +278,15 @@ async function writeDeclaration(
   const outputFile = `${target.exportName}.d.ts`;
   const outputPath = join(outputDirectory, outputFile);
   if (target.declarationSource === undefined) {
-    const types = target.typeExports.map(({ exportName }) => exportName);
-    const declarations = target.runtimeExports.map((runtimeExport) =>
-      createPublicRuntimeDeclaration(runtimeExport, types),
-    );
-    await writeFile(outputPath, [...declarations, ''].join('\n'), 'utf8');
-    return [outputFile];
-  }
-  if (target.typeExports.length === 0) {
-    await copyFile(target.declarationSource, outputPath);
-    return [outputFile];
+    throw new Error(`Missing declaration owner for ZORA web component ${target.component}.`);
   }
 
   const groups = groupTypeExports(target);
+  const dependencies = new DeclarationDependencies(outputDirectory, target.exportName);
   const supports = await Promise.all(
     groups.map(async ({ declarationSource, exportNames }, index) => {
       const supportFile = `${target.exportName}.types-${index}.d.ts`;
-      const supportSource = await readFile(declarationSource, 'utf8');
-      assertStandaloneDeclaration(supportSource, declarationSource);
-      await writeFile(join(outputDirectory, supportFile), supportSource, 'utf8');
+      await dependencies.write(declarationSource, supportFile, new Set(exportNames));
       return {
         exportNames,
         supportFile,
@@ -310,26 +296,93 @@ async function writeDeclaration(
     }),
   );
 
-  const runtimeSource = publicDeclarationSurface(
-    await readFile(target.declarationSource, 'utf8'),
+  const runtimeSource = await dependencies.materialize(
     target.declarationSource,
-  );
-  const rewritten = supports.reduce(
-    (source, support) =>
-      replaceDeclarationSpecifier(source, support.originalSpecifier, support.localSpecifier),
-    runtimeSource,
-  );
-  assertStandaloneDeclaration(
-    rewritten,
-    target.declarationSource,
-    supports.map(({ localSpecifier }) => localSpecifier),
+    new Map(
+      supports.map(({ originalSpecifier, localSpecifier }) => [originalSpecifier, localSpecifier]),
+    ),
+    new Set(target.runtimeExports.map(({ exportName }) => exportName)),
   );
   const reexports = supports.map(
     ({ exportNames, localSpecifier }) =>
       `export type { ${exportNames.join(', ')} } from '${localSpecifier}';`,
   );
-  await writeFile(outputPath, `${rewritten.trim()}\n${reexports.join('\n')}\n`, 'utf8');
-  return [outputFile, ...supports.map(({ supportFile }) => supportFile)];
+  await writeFile(outputPath, `${runtimeSource.trim()}\n${reexports.join('\n')}\n`, 'utf8');
+  return [outputFile, ...dependencies.files()];
+}
+
+/*** Writes a declaration module graph locally while preserving only named public type owners. */
+class DeclarationDependencies {
+  readonly #files = new Set<string>();
+  readonly #written = new Map<string, string>();
+  #nextDependency = 0;
+
+  constructor(
+    private readonly outputDirectory: string,
+    private readonly componentName: string,
+  ) {}
+
+  /*** Materialize one dependency under a stable local declaration filename. */
+  async write(
+    sourcePath: string,
+    outputFile: string,
+    exportNames: ReadonlySet<string> | undefined,
+  ): Promise<void> {
+    const key = declarationDependencyKey(sourcePath, exportNames);
+    this.#written.set(key, outputFile);
+    const source = await this.materialize(sourcePath, undefined, exportNames);
+    await writeFile(join(this.outputDirectory, outputFile), `${source.trim()}\n`, 'utf8');
+    this.#files.add(outputFile);
+  }
+
+  /*** Return all declaration files written for one web component entrypoint. */
+  files(): readonly string[] {
+    return [...this.#files].sort();
+  }
+
+  /*** Reduce one declaration module to its public surface and locally resolve its relative imports. */
+  async materialize(
+    sourcePath: string,
+    replacements: ReadonlyMap<string, string> | undefined,
+    exportNames?: ReadonlySet<string>,
+  ): Promise<string> {
+    const source = await readFile(sourcePath, 'utf8');
+    const surface = publicDeclarationSurface(source, sourcePath, exportNames);
+    const localImports = declarationLocalImports(surface, sourcePath);
+    const localReplacements = new Map(replacements);
+    for (const localImport of localImports) {
+      if (localReplacements.has(localImport.specifier)) continue;
+      const outputFile = await this.writeDependency(localImport);
+      localReplacements.set(localImport.specifier, `./${outputFile.replace(/\.d\.ts$/u, '')}`);
+    }
+    const rewritten = [...localReplacements.entries()].reduce(
+      (current, [from, to]) => replaceDeclarationSpecifierIfPresent(current, from, to),
+      surface,
+    );
+    assertStandaloneDeclaration(rewritten, sourcePath, [...localReplacements.values()]);
+    return rewritten;
+  }
+
+  /*** Assign and write the local declaration module needed by one relative import. */
+  async writeDependency(localImport: DeclarationLocalImport): Promise<string> {
+    const sourcePath = await resolveDeclarationDependency(
+      localImport.sourcePath,
+      localImport.specifier,
+    );
+    const key = declarationDependencyKey(sourcePath, localImport.exportNames);
+    const existing = this.#written.get(key);
+    if (existing !== undefined) return existing;
+    const outputFile = `${this.componentName}.dependency-${this.#nextDependency}.d.ts`;
+    this.#nextDependency += 1;
+    await this.write(sourcePath, outputFile, localImport.exportNames);
+    return outputFile;
+  }
+}
+
+interface DeclarationLocalImport {
+  readonly exportNames: ReadonlySet<string> | undefined;
+  readonly sourcePath: string;
+  readonly specifier: string;
 }
 
 /*** Group public type exports by their canonical emitted declaration owner. */
@@ -361,29 +414,167 @@ function replaceDeclarationSpecifier(source: string, from: string, to: string): 
   return replaced;
 }
 
+/*** Rewrite a facade-associated support declaration only when its runtime declaration consumes it. */
+function replaceDeclarationSpecifierIfPresent(source: string, from: string, to: string): string {
+  const replaced = source.replaceAll(`'${from}'`, `'${to}'`).replaceAll(`"${from}"`, `"${to}"`);
+  return replaced;
+}
+
+/*** Resolve the emitted declaration file owned by one relative declaration import. */
+async function resolveDeclarationDependency(fromFile: string, specifier: string): Promise<string> {
+  const basePath = resolve(dirname(fromFile), specifier);
+  const candidates = [basePath, `${basePath}.d.ts`, join(basePath, 'index.d.ts')];
+  for (const candidate of candidates) {
+    try {
+      await access(candidate);
+      return candidate;
+    } catch {
+      // Continue through the declaration module resolution candidates.
+    }
+  }
+  throw new Error(`Could not resolve ZORA declaration dependency "${specifier}" from ${fromFile}.`);
+}
+
+/*** Derive a stable cache key for a declaration module and its selected named exports. */
+function declarationDependencyKey(
+  sourcePath: string,
+  exportNames: ReadonlySet<string> | undefined,
+): string {
+  return `${sourcePath}\0${exportNames === undefined ? '*' : [...exportNames].sort().join(',')}`;
+}
+
+/*** Find local declaration imports that the reduced public declaration surface still needs. */
+function declarationLocalImports(
+  source: string,
+  sourcePath: string,
+): readonly DeclarationLocalImport[] {
+  const file = ts.createSourceFile(sourcePath, source, ts.ScriptTarget.Latest, true);
+  return file.statements.flatMap((statement) => {
+    if (!ts.isImportDeclaration(statement) || !ts.isStringLiteral(statement.moduleSpecifier))
+      return [];
+    const specifier = statement.moduleSpecifier.text;
+    if (!specifier.startsWith('.')) return [];
+    return [
+      {
+        exportNames: importedDeclarationNames(statement),
+        sourcePath,
+        specifier,
+      },
+    ];
+  });
+}
+
+/*** Identify the named exports required through one declaration import when they are statically known. */
+function importedDeclarationNames(
+  statement: ts.ImportDeclaration,
+): ReadonlySet<string> | undefined {
+  const bindings = statement.importClause?.namedBindings;
+  if (bindings === undefined || ts.isNamespaceImport(bindings)) return undefined;
+  return new Set(
+    bindings.elements.map((binding) => binding.propertyName?.text ?? binding.name.text),
+  );
+}
+
 /*** Keep only exported declarations and imports required by that public declaration surface. */
-function publicDeclarationSurface(source: string, path: string): string {
+function publicDeclarationSurface(
+  source: string,
+  path: string,
+  exportNames?: ReadonlySet<string>,
+): string {
   const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
-  const exported = file.statements.filter(isPublicDeclarationStatement);
-  const publicText = exported.map((statement) => statement.getText(file)).join('\n');
+  const exported = file.statements.filter((statement) =>
+    isSelectedPublicDeclarationStatement(statement, exportNames),
+  );
+  const publicText = exported
+    .map((statement) => publicDeclarationText(statement, file, exportNames))
+    .join('\n');
   const imports = file.statements.filter(
     (statement): statement is ts.ImportDeclaration =>
       ts.isImportDeclaration(statement) &&
       importBindingNames(statement).some((name) => publicText.includes(name)),
   );
   return [...imports, ...exported]
-    .map((statement) => statement.getFullText(file).trim())
+    .map((statement) =>
+      ts.isImportDeclaration(statement)
+        ? statement.getFullText(file).trim()
+        : publicDeclarationText(statement, file, exportNames),
+    )
     .filter(Boolean)
     .join('\n\n');
 }
 
+/*** Render a selected public declaration without retaining sibling names from a facade export list. */
+function publicDeclarationText(
+  statement: ts.Statement,
+  file: ts.SourceFile,
+  exportNames: ReadonlySet<string> | undefined,
+): string {
+  if (
+    exportNames !== undefined &&
+    ts.isExportDeclaration(statement) &&
+    statement.exportClause !== undefined &&
+    ts.isNamedExports(statement.exportClause) &&
+    statement.moduleSpecifier !== undefined
+  ) {
+    const elements = statement.exportClause.elements.filter((element) =>
+      exportNames.has(element.name.text),
+    );
+    const rendered = elements.map((element) => {
+      const prefix = element.isTypeOnly ? 'type ' : '';
+      const original = element.propertyName === undefined ? '' : `${element.propertyName.text} as `;
+      return `${prefix}${original}${element.name.text}`;
+    });
+    return `export { ${rendered.join(', ')} } from ${statement.moduleSpecifier.getText(file)};`;
+  }
+  return statement.getFullText(file).trim();
+}
+
 /*** Identify declarations that belong to the emitted module's public contract. */
+function isSelectedPublicDeclarationStatement(
+  statement: ts.Statement,
+  exportNames: ReadonlySet<string> | undefined,
+): boolean {
+  if (!isPublicDeclarationStatement(statement)) return false;
+  if (exportNames === undefined) return true;
+  if (ts.isExportDeclaration(statement)) {
+    const clause = statement.exportClause;
+    return (
+      clause !== undefined &&
+      ts.isNamedExports(clause) &&
+      clause.elements.some((element) => exportNames.has(element.name.text))
+    );
+  }
+  const name = declarationName(statement);
+  return name !== undefined && exportNames.has(name);
+}
+
+/*** Identify whether one declaration statement participates in the emitted module's public contract. */
 function isPublicDeclarationStatement(statement: ts.Statement): boolean {
   if (ts.isExportDeclaration(statement)) return true;
   return (
     ts.canHaveModifiers(statement) &&
     (ts.getModifiers(statement)?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword) ?? false)
   );
+}
+
+/*** Read the direct public declaration name when a statement owns one. */
+function declarationName(statement: ts.Statement): string | undefined {
+  if (
+    ts.isFunctionDeclaration(statement) ||
+    ts.isClassDeclaration(statement) ||
+    ts.isInterfaceDeclaration(statement) ||
+    ts.isTypeAliasDeclaration(statement) ||
+    ts.isEnumDeclaration(statement)
+  ) {
+    return statement.name?.text;
+  }
+  if (ts.isVariableStatement(statement)) {
+    const declaration = statement.declarationList.declarations.at(0);
+    return declaration !== undefined && ts.isIdentifier(declaration.name)
+      ? declaration.name.text
+      : undefined;
+  }
+  return undefined;
 }
 
 /*** Read local binding identifiers introduced by one declaration import. */
@@ -416,24 +607,6 @@ function assertStandaloneDeclaration(
       `ZORA web declaration retained local dependencies in ${path}: ${localSpecifiers.join(', ')}`,
     );
   }
-}
-
-/*** Emit one exact public declaration and its component-owned public types. */
-function createPublicRuntimeDeclaration(
-  runtimeExport: WebArtifactRuntimeExport,
-  typeExports: readonly string[],
-): string {
-  const propsType = typeExports.find(
-    (typeExport) => typeExport.endsWith('Props') && typeExport.startsWith(runtimeExport.exportName),
-  );
-  const typeReexport =
-    typeExports.length === 0
-      ? ''
-      : `export type { ${typeExports.join(', ')} } from '@ankhorage/zora';\n`;
-  const typeImport =
-    propsType === undefined ? '' : `import type { ${propsType} } from '@ankhorage/zora';\n`;
-  const props = propsType ?? 'Record<string, unknown>';
-  return `${typeImport}import type React from 'react';\n${typeReexport}export declare const ${runtimeExport.exportName}: React.ComponentType<${props}>;`;
 }
 
 /*** Describe the generated provider's web-facing props without owner package imports. */

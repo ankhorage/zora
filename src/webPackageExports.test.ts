@@ -26,6 +26,7 @@ interface WebArtifactManifest {
   readonly artifacts: readonly {
     readonly component: string;
     readonly exportName: string;
+    readonly files: readonly string[];
   }[];
 }
 
@@ -34,7 +35,7 @@ test('isolates every generated component web runtime and declaration entrypoint'
   const manifest = (await Bun.file('web-dist/manifest.json').json()) as WebArtifactManifest;
 
   await Promise.all(
-    manifest.artifacts.map(async ({ component, exportName }) => {
+    manifest.artifacts.map(async ({ component, exportName, files }) => {
       const directory = join('web-dist', 'components', component);
       const [runtimeEntry, declarationEntry] = await Promise.all([
         Bun.file(join(directory, 'index.js')).text(),
@@ -53,8 +54,46 @@ test('isolates every generated component web runtime and declaration entrypoint'
         `export { ${exportName} } from './${exportName}';\n`,
       );
       expect(declarationEntry, component).not.toContain('export *');
+      for (const declaration of files.filter((file) => file.endsWith('.d.ts'))) {
+        expect(await Bun.file(join('web-dist', declaration)).text(), declaration).not.toContain(
+          "from '@ankhorage/zora'",
+        );
+      }
     }),
   );
+});
+
+/** Verifies that shared feature facades retain exact component-specific declaration contracts. */
+test('keeps shared facade component type exports isolated and portable', async () => {
+  const contracts = [
+    ['grid-view', 'GridView', 'GridViewProps'],
+    ['tile-grid', 'TileGrid', 'TileGridProps'],
+    ['tabs', 'Tabs', 'TabsProps'],
+    ['tab', 'Tab', 'TabProps'],
+    ['tab-list', 'TabList', 'TabListProps'],
+    ['tab-panel', 'TabPanel', 'TabPanelProps'],
+  ] as const;
+
+  await Promise.all(
+    contracts.map(async ([component, runtimeExport, typeExport]) => {
+      const declaration = await Bun.file(
+        join('web-dist', 'components', component, 'index.d.ts'),
+      ).text();
+      expect(declaration, component).toBe(
+        `export { ${runtimeExport} } from './${runtimeExport}';\nexport type { ${typeExport} } from './${runtimeExport}';\n`,
+      );
+      expect(declaration, component).not.toContain("@ankhorage/zora'");
+    }),
+  );
+
+  const gridViewDeclaration = await Bun.file(
+    join('web-dist', 'components', 'grid-view', 'index.d.ts'),
+  ).text();
+  const tileGridDeclaration = await Bun.file(
+    join('web-dist', 'components', 'tile-grid', 'index.d.ts'),
+  ).text();
+  expect(gridViewDeclaration).not.toContain('TileGrid');
+  expect(tileGridDeclaration).not.toContain('GridView');
 });
 
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
