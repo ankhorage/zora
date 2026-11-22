@@ -20,8 +20,10 @@ test('renders a bounded generated Tabs panel containing the canonical ScrollView
   const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
     ZoraProvider: typeof ZoraProviderComponent;
   };
-  const { Tabs, TabPanel } = (await load('components/tabs/index.js')) as {
+  const { Tabs } = (await load('components/tabs/index.js')) as {
     Tabs: typeof TabsComponent;
+  };
+  const { TabPanel } = (await load('components/tab-panel/index.js')) as {
     TabPanel: typeof TabPanelComponent;
   };
   const { ScrollView } = (await load('components/scroll-view/index.js')) as {
@@ -62,9 +64,13 @@ test('forwards filled tab distribution and trailing tab content through the gene
   const { ZoraProvider } = (await load('runtime/ZoraProvider.js')) as {
     ZoraProvider: typeof ZoraProviderComponent;
   };
-  const { Tab, TabList, Tabs } = (await load('components/tabs/index.js')) as {
+  const { Tab } = (await load('components/tab/index.js')) as {
     Tab: typeof TabComponent;
+  };
+  const { TabList } = (await load('components/tab-list/index.js')) as {
     TabList: typeof TabListComponent;
+  };
+  const { Tabs } = (await load('components/tabs/index.js')) as {
     Tabs: typeof TabsComponent;
   };
   const markup = renderToStaticMarkup(

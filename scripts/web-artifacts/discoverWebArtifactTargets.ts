@@ -17,8 +17,11 @@ export async function discoverWebArtifactTargets(
   paths: DiscoveryPaths,
 ): Promise<readonly WebArtifactTarget[]> {
   const publicEntries = await discoverPublicFeatureEntries(paths.featuresRoot);
-  const compilerOptions = readCompilerOptions(paths.repositoryRoot);
-  const program = ts.createProgram([...publicEntries], compilerOptions);
+  const compilerConfiguration = readCompilerConfiguration(paths.repositoryRoot);
+  const program = ts.createProgram(
+    [...new Set([...compilerConfiguration.fileNames, ...publicEntries])],
+    compilerConfiguration.options,
+  );
   const checker = program.getTypeChecker();
   const candidates = (
     await Promise.all(
@@ -77,58 +80,88 @@ async function discoverEntryTargets(
       },
     ];
   });
-  const facadeRuntimeExports = runtimeExports.map(({ exportName, runtimeKind }) => ({
-    exportName,
-    runtimeKind,
-  }));
-
   return await Promise.all(
     runtimeExports.map(async ({ exportName, resolvedSymbol, runtimeKind }) => {
       const override = await resolveWebArtifactOverride(publicEntry, exportName);
+      const implementationPath = override ?? resolveSymbolSourceFile(resolvedSymbol);
+      const sourceOwnedImplementation = isSourceOwnedPath(implementationPath, paths.sourceRoot);
       return {
         component: toKebabCase(exportName),
-        declarationSource:
-          override === undefined ? undefined : toDistDeclarationPath(override, paths),
+        declarationSource: toDistDeclarationPath(
+          sourceOwnedImplementation ? implementationPath : publicEntry,
+          paths,
+        ),
         exportName,
         featurePath,
         runtimeKind,
-        runtimeExports:
-          override === undefined ? facadeRuntimeExports : [{ exportName, runtimeKind }],
+        runtimeExports: [{ exportName, runtimeKind }],
         sourceEntry: override ?? publicEntry,
         sourceKind: override === undefined ? 'public' : 'web-artifact',
         typeExports:
           override === undefined
-            ? []
-            : discoverMissingTypeExports(checker, moduleSymbol, override, paths),
+            ? discoverAssociatedTypeExports(
+                checker,
+                program,
+                moduleSymbol,
+                sourceOwnedImplementation ? implementationPath : publicEntry,
+                paths,
+                runtimeExports.length === 1,
+              )
+            : discoverAssociatedTypeExports(
+                checker,
+                program,
+                moduleSymbol,
+                override,
+                paths,
+                runtimeExports.length === 1,
+              ),
         symbolIdentity: resolveSymbolIdentity(resolvedSymbol),
       } satisfies DiscoveredTarget;
     }),
   );
 }
 
+/*** Determine whether a resolved declaration belongs to this package's source tree. */
+function isSourceOwnedPath(path: string, sourceRoot: string): boolean {
+  const sourceRelative = toPortablePath(relative(sourceRoot, path));
+  return sourceRelative !== '..' && !sourceRelative.startsWith('../');
+}
+
 interface DiscoveredTarget extends WebArtifactTarget {
   readonly symbolIdentity: string;
 }
 
-/*** Preserve public type exports missing from a specialized browser implementation. */
-function discoverMissingTypeExports(
+/*** Preserve the canonical facade contract for one-component features and implementation-owned types otherwise. */
+function discoverAssociatedTypeExports(
   checker: ts.TypeChecker,
+  program: ts.Program,
   publicModuleSymbol: ts.Symbol,
-  override: string,
+  implementationPath: string,
   paths: DiscoveryPaths,
+  ownsWholeFacadeTypeContract: boolean,
 ): WebArtifactTarget['typeExports'] {
-  const overrideExports = readDeclaredExportNames(override);
+  const importedTypeSymbols = discoverImportedTypeSymbols(checker, program, implementationPath);
+  const implementationTypeExports = discoverImplementationTypeExports(
+    checker,
+    program,
+    implementationPath,
+    paths,
+  );
+  const implementationTypeNames = new Set(
+    implementationTypeExports.map(({ exportName }) => exportName),
+  );
 
-  return checker
+  const facadeTypeExports = checker
     .getExportsOfModule(publicModuleSymbol)
     .flatMap((exportSymbol) => {
       const exportName = exportSymbol.getName();
-      if (overrideExports.has(exportName)) return [];
       const resolvedSymbol =
         exportSymbol.flags & ts.SymbolFlags.Alias
           ? checker.getAliasedSymbol(exportSymbol)
           : exportSymbol;
       if ((resolvedSymbol.flags & ts.SymbolFlags.Type) === 0) return [];
+      if (implementationTypeNames.has(exportName)) return [];
+      if (!ownsWholeFacadeTypeContract && !importedTypeSymbols.has(resolvedSymbol)) return [];
       const declaration = resolvedSymbol.declarations?.at(0);
       if (declaration === undefined) return [];
       const sourcePath = declaration.getSourceFile().fileName;
@@ -140,40 +173,99 @@ function discoverMissingTypeExports(
           exportName,
         },
       ];
+    });
+  return [...facadeTypeExports, ...implementationTypeExports]
+    .filter(
+      (item, index, items) =>
+        items.findIndex(
+          (candidate) =>
+            candidate.declarationSource === item.declarationSource &&
+            candidate.exportName === item.exportName,
+        ) === index,
+    )
+    .sort((left, right) =>
+      left.exportName === right.exportName
+        ? left.declarationSource.localeCompare(right.declarationSource)
+        : left.exportName.localeCompare(right.exportName),
+    );
+}
+
+/*** Preserve public types declared directly by a specialized browser implementation. */
+function discoverImplementationTypeExports(
+  checker: ts.TypeChecker,
+  program: ts.Program,
+  implementationPath: string,
+  paths: DiscoveryPaths,
+): WebArtifactTarget['typeExports'] {
+  const source = program.getSourceFile(implementationPath);
+  if (source === undefined) {
+    throw new Error(`Could not load ZORA web implementation: ${implementationPath}`);
+  }
+  const moduleSymbol = checker.getSymbolAtLocation(source);
+  if (moduleSymbol === undefined) return [];
+
+  return checker
+    .getExportsOfModule(moduleSymbol)
+    .flatMap((exportSymbol) => {
+      const resolvedSymbol =
+        exportSymbol.flags & ts.SymbolFlags.Alias
+          ? checker.getAliasedSymbol(exportSymbol)
+          : exportSymbol;
+      const declaration = resolvedSymbol.declarations?.at(0);
+      if (
+        (resolvedSymbol.flags & ts.SymbolFlags.Type) === 0 ||
+        declaration === undefined ||
+        declaration.getSourceFile() !== source
+      ) {
+        return [];
+      }
+      return [
+        {
+          declarationSource: toDistDeclarationPath(implementationPath, paths),
+          exportName: exportSymbol.getName(),
+        },
+      ];
     })
     .sort((left, right) => left.exportName.localeCompare(right.exportName));
 }
 
-/*** Read named declarations exported directly by one specialized browser source file. */
-function readDeclaredExportNames(path: string): ReadonlySet<string> {
-  const source = ts.sys.readFile(path);
-  if (source === undefined) throw new Error(`Could not read ZORA web artifact: ${path}`);
-  const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
+/*** Find the exact type symbols imported by one component implementation. */
+function discoverImportedTypeSymbols(
+  checker: ts.TypeChecker,
+  program: ts.Program,
+  implementationPath: string,
+): ReadonlySet<ts.Symbol> {
+  const source = program.getSourceFile(implementationPath);
+  if (source === undefined) {
+    throw new Error(`Could not load ZORA web implementation: ${implementationPath}`);
+  }
   return new Set(
-    file.statements.flatMap((statement) => {
-      if (
-        !ts.canHaveModifiers(statement) ||
-        !ts.getModifiers(statement)?.some(({ kind }) => kind === ts.SyntaxKind.ExportKeyword)
-      ) {
-        return [];
-      }
-      if (
-        ts.isFunctionDeclaration(statement) ||
-        ts.isClassDeclaration(statement) ||
-        ts.isInterfaceDeclaration(statement) ||
-        ts.isTypeAliasDeclaration(statement) ||
-        ts.isEnumDeclaration(statement)
-      ) {
-        return statement.name === undefined ? [] : [statement.name.text];
-      }
-      if (ts.isVariableStatement(statement)) {
-        return statement.declarationList.declarations.flatMap(({ name }) =>
-          ts.isIdentifier(name) ? [name.text] : [],
-        );
-      }
-      return [];
+    source.statements.flatMap((statement) => {
+      if (!ts.isImportDeclaration(statement)) return [];
+      const clause = statement.importClause;
+      if (clause === undefined) return [];
+      const bindings = clause.namedBindings;
+      if (bindings === undefined || ts.isNamespaceImport(bindings)) return [];
+      return bindings.elements.flatMap((binding) => {
+        if (!clause.isTypeOnly && !binding.isTypeOnly) return [];
+        const symbol = checker.getSymbolAtLocation(binding.name);
+        const resolved =
+          symbol !== undefined && symbol.flags & ts.SymbolFlags.Alias
+            ? checker.getAliasedSymbol(symbol)
+            : symbol;
+        return resolved === undefined ? [] : [resolved];
+      });
     }),
   );
+}
+
+/*** Resolve the implementation source file that owns one discovered runtime symbol. */
+function resolveSymbolSourceFile(symbol: ts.Symbol): string {
+  const declaration = symbol.valueDeclaration ?? symbol.declarations?.at(0);
+  if (declaration === undefined) {
+    throw new Error(`Could not resolve ZORA web implementation for ${symbol.getName()}.`);
+  }
+  return declaration.getSourceFile().fileName;
 }
 
 /*** Resolve an optional convention-based standalone browser implementation. */
@@ -201,14 +293,14 @@ function toDistDeclarationPath(sourcePath: string, paths: DiscoveryPaths): strin
   return join(paths.repositoryRoot, 'dist', relativeSource);
 }
 
-/*** Read repository compiler options for accurate feature export resolution. */
-function readCompilerOptions(repositoryRoot: string): ts.CompilerOptions {
+/*** Read the repository compilation graph for accurate feature export resolution. */
+function readCompilerConfiguration(repositoryRoot: string): ts.ParsedCommandLine {
   const configPath = join(repositoryRoot, 'tsconfig.json');
   const config = ts.readConfigFile(configPath, ts.sys.readFile);
   if (config.error !== undefined) {
     throw new Error(ts.flattenDiagnosticMessageText(config.error.messageText, '\n'));
   }
-  return ts.parseJsonConfigFileContent(config.config, ts.sys, repositoryRoot).options;
+  return ts.parseJsonConfigFileContent(config.config, ts.sys, repositoryRoot);
 }
 
 /*** Classify a runtime export for its dependency-free generated declaration. */
