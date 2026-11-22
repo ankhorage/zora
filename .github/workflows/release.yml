@@ -565,8 +565,21 @@ jobs:
               (
                 cd "$platform_dir"
                 bun install --ignore-scripts
+                metro_runtime_dependency="$(node - <<'NODE'
+          const { readFileSync } = require('node:fs');
+          const expo = JSON.parse(readFileSync('./node_modules/expo/package.json', 'utf8'));
+          const bundled = JSON.parse(readFileSync('./node_modules/expo/bundledNativeModules.json', 'utf8'));
+          const peerRange = expo.peerDependencies?.['@expo/metro-runtime'];
+          const compatibleRange = bundled['@expo/metro-runtime'];
+          if (typeof peerRange !== 'string' || peerRange.length === 0 || typeof compatibleRange !== 'string' || compatibleRange.length === 0) {
+            throw new Error('Expo platform verification requires the published Expo metadata for @expo/metro-runtime.');
+          }
+          process.stdout.write(`@expo/metro-runtime@${compatibleRange}`);
+          NODE
+                )"
+                bun add "$metro_runtime_dependency" --ignore-scripts
                 bun add "$artifact" --ignore-scripts
-                node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
+                node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
                 "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
               )
             }
