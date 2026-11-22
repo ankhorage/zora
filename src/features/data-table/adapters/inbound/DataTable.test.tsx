@@ -244,7 +244,24 @@ test('uses desktop stable row ids and the controlled callback in mobile cards', 
       <DataTable
         columns={[
           {
-            cell: { kind: 'company', logo: 'logo', name: 'name', website: 'website' },
+            cell: {
+              align: 'center',
+              children: [
+                { alt: 'name', kind: 'image', source: 'logo' },
+                {
+                  children: [
+                    { kind: 'text', value: 'name', weight: 'bold' },
+                    { href: 'website', kind: 'link', variant: 'caption' },
+                  ],
+                  direction: 'column',
+                  gap: 'xxs',
+                  kind: 'stack',
+                },
+              ],
+              direction: 'row',
+              gap: 's',
+              kind: 'stack',
+            },
             header: 'Company',
             id: 'company',
           },
@@ -304,6 +321,42 @@ test('uses desktop stable row ids and the controlled callback in mobile cards', 
     expect(openedUrls).toEqual(['https://acme.test']);
   } finally {
     mobilePresentation = false;
+    await mounted.unmount();
+    mounted.host.remove();
+  }
+});
+
+test('navigates only valid HTTP and HTTPS portable links', async () => {
+  const mounted = mount();
+  openedUrls.splice(0, openedUrls.length);
+
+  try {
+    await mounted.render(
+      <DataTable
+        columns={[
+          {
+            cell: { href: 'website', kind: 'link', label: 'name' },
+            header: 'Website',
+            id: 'website',
+          },
+        ]}
+        rowKey="id"
+        rows={[
+          { id: 'http', name: 'HTTP', website: 'http://example.test' },
+          { id: 'https', name: 'HTTPS', website: 'https://example.test/path' },
+          { id: 'javascript', name: 'JavaScript', website: 'javascript:alert(1)' },
+          { id: 'data', name: 'Data', website: 'data:text/html,unsafe' },
+          { id: 'custom', name: 'Custom', website: 'acme://unsafe' },
+          { id: 'malformed', name: 'Malformed', website: 'https://' },
+        ]}
+      />,
+    );
+
+    const links = [...mounted.host.querySelectorAll<HTMLButtonElement>('[role="link"]')];
+    expect(links.map((link) => link.textContent)).toEqual(['HTTP', 'HTTPS']);
+    links.forEach((link) => link.click());
+    expect(openedUrls).toEqual(['http://example.test', 'https://example.test/path']);
+  } finally {
     await mounted.unmount();
     mounted.host.remove();
   }

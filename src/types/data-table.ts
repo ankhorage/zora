@@ -3,6 +3,7 @@ import type React from 'react';
 
 import type { ZoraBaseProps } from './base';
 import type { PopoverMenuActionIntent } from './popover-menu';
+import type { TextVariant } from './text';
 
 export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableDensity = 'comfortable' | 'compact';
@@ -11,7 +12,7 @@ export type DataTableSortDirection = 'asc' | 'desc';
 /** A portable reference to a string-valued row field used by a manifest cell. */
 export type DataTableRowField<TRow extends object> = Extract<keyof TRow, string>;
 
-/** Serializable image, text, link, and company presentations for a DataTable column. */
+/** Serializable rich presentations for a DataTable column. */
 export type DataTableCellSpec<TRow extends object> =
   | {
       readonly kind: 'image';
@@ -22,18 +23,20 @@ export type DataTableCellSpec<TRow extends object> =
       readonly kind: 'text';
       readonly value: DataTableRowField<TRow>;
       readonly weight?: 'regular' | 'medium' | 'semiBold' | 'bold';
+      readonly variant?: TextVariant;
     }
   | {
       readonly kind: 'link';
       readonly href: DataTableRowField<TRow>;
       readonly label?: DataTableRowField<TRow>;
+      readonly variant?: TextVariant;
     }
   | {
-      readonly kind: 'company';
-      readonly logo: DataTableRowField<TRow>;
-      readonly name: DataTableRowField<TRow>;
-      readonly website: DataTableRowField<TRow>;
-      readonly logoAlt?: DataTableRowField<TRow>;
+      readonly kind: 'stack';
+      readonly direction: 'row' | 'column';
+      readonly align?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline';
+      readonly gap?: 'xxs' | 'xs' | 's' | 'm' | 'l';
+      readonly children: readonly DataTableCellSpec<TRow>[];
     };
 
 export interface DataTableSortState {

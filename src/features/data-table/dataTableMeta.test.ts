@@ -16,7 +16,7 @@ test('describes serializable controlled selection and row activation manifest ev
       selectionChange: { payloadFields: [{ path: 'selectedRowIds', type: 'unknown' }] },
     },
   });
-  expect(dataTableMeta.props.columns.itemSchema?.find(({ key }) => key === 'cell')).toEqual({
+  expect(dataTableMeta.props.columns.itemSchema.find(({ key }) => key === 'cell')).toEqual({
     key: 'cell',
     schema: { category: 'Content', label: 'Portable cell presentation', type: 'object' },
   });

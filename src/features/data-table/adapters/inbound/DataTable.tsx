@@ -13,13 +13,12 @@ import type {
   DataTableRowAction,
   DataTableSortDirection,
 } from '../../../../types/data-table';
-import { Button } from '../../../button/public';
-import { IconButton } from '../../../button/public';
+import { Button, IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { EmptyState } from '../../../empty-state/public';
 import { Checkbox } from '../../../form/checkbox/public';
-import { View } from '../../../layout/public';
 import { Image } from '../../../image/public';
+import { View } from '../../../layout/public';
 import { PopoverMenu, type PopoverMenuAction } from '../../../popover-menu/public';
 import { SkeletonList } from '../../../skeleton/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
@@ -113,9 +112,22 @@ function resolveCellString(value: unknown): string | undefined {
   return typeof value === 'string' || typeof value === 'number' ? String(value) : undefined;
 }
 
-/** Opens a portable website cell through React Native's platform URL boundary. */
+/*** Resolves an untrusted row value to the HTTP(S) URL accepted by the platform navigation boundary. */
+function resolveExternalWebsiteUrl(url: string): string | undefined {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:' ? url : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Opens a validated portable website cell through React Native's platform URL boundary. */
 function openExternalUrl(url: string): void {
-  void Linking.openURL(url);
+  const externalUrl = resolveExternalWebsiteUrl(url);
+  if (externalUrl) {
+    void Linking.openURL(externalUrl);
+  }
 }
 
 /** Renders one serializable manifest cell specification with canonical ZORA primitives. */
@@ -131,16 +143,17 @@ function renderPortableCell<TRow extends object>(
     }
     case 'text':
       return (
-        <Text variant="bodySmall" weight={cell.weight}>
+        <Text variant={cell.variant ?? 'bodySmall'} weight={cell.weight}>
           {renderDefaultCell(resolveCellField(row, cell.value))}
         </Text>
       );
     case 'link': {
       const href = resolveCellString(resolveCellField(row, cell.href));
       const label = resolveCellString(resolveCellField(row, cell.label ?? cell.href)) ?? href;
-      return href ? (
-        <Pressable accessibilityRole="link" onPress={() => openExternalUrl(href)}>
-          <Text color="primary" variant="bodySmall" weight="medium">
+      const externalUrl = href ? resolveExternalWebsiteUrl(href) : undefined;
+      return externalUrl ? (
+        <Pressable accessibilityRole="link" onPress={() => openExternalUrl(externalUrl)}>
+          <Text color="primary" variant={cell.variant ?? 'bodySmall'} weight="medium">
             {label}
           </Text>
         </Pressable>
@@ -148,29 +161,14 @@ function renderPortableCell<TRow extends object>(
         <Text variant="bodySmall">—</Text>
       );
     }
-    case 'company': {
-      const logo = resolveCellString(resolveCellField(row, cell.logo));
-      const name = resolveCellString(resolveCellField(row, cell.name));
-      const website = resolveCellString(resolveCellField(row, cell.website));
-      const logoAlt = resolveCellString(resolveCellField(row, cell.logoAlt ?? cell.name));
+    case 'stack':
       return (
-        <View align="center" direction="row" gap="s">
-          <Image alt={logoAlt} height={32} radius="s" source={logo} width={32} />
-          <View gap="xxs">
-            <Text variant="bodySmall" weight="bold">
-              {name ?? '—'}
-            </Text>
-            {website ? (
-              <Pressable accessibilityRole="link" onPress={() => openExternalUrl(website)}>
-                <Text color="primary" variant="caption" weight="medium">
-                  {website}
-                </Text>
-              </Pressable>
-            ) : null}
-          </View>
+        <View align={cell.align} direction={cell.direction} gap={cell.gap}>
+          {cell.children.map((child, index) => (
+            <React.Fragment key={`cell-${index}`}>{renderPortableCell(child, row)}</React.Fragment>
+          ))}
         </View>
       );
-    }
   }
 }
 
