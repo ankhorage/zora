@@ -64,7 +64,7 @@ function FlowNodeInner(props: FlowNodeProps) {
         borderWidth: 2,
         elevation: props.selected ? 4 : 1,
         left: props.node.position.x,
-        minWidth: 224,
+        width: 224,
         position: 'absolute',
         shadowColor: theme.semantics.neutral.text,
         shadowOpacity: props.selected ? 0.2 : 0.1,
