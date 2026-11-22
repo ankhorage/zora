@@ -140,9 +140,23 @@ function FlowInspectorFieldControl({
   const valueText = readInlineValue(value);
   const commit = (next: string) => {
     if (disabled) return;
-    const normalized = field.kind === 'number' ? Number(next) : next;
-    if (field.kind === 'number' && !Number.isFinite(normalized)) return;
-    onValueChange?.(field.id, { kind: 'inline', value: normalized });
+    if (field.kind === 'number') {
+      if (next.trim().length === 0) {
+        onValueChange?.(field.id, undefined);
+        return;
+      }
+      const normalized = Number(next);
+      if (
+        !Number.isFinite(normalized) ||
+        (field.minimum !== undefined && normalized < field.minimum) ||
+        (field.maximum !== undefined && normalized > field.maximum)
+      ) {
+        return;
+      }
+      onValueChange?.(field.id, { kind: 'inline', value: normalized });
+      return;
+    }
+    onValueChange?.(field.id, { kind: 'inline', value: next });
   };
   if (field.kind === 'boolean') {
     const checked = valueText === 'true';

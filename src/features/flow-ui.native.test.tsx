@@ -202,7 +202,7 @@ test('sends typed inspector changes through the controlled native callbacks', as
     await mounted.render(
       <FlowInspector
         fields={[
-          { id: 'retries', kind: 'number', label: 'Retries' },
+          { id: 'retries', kind: 'number', label: 'Retries', maximum: 3, minimum: 2 },
           { id: 'enabled', kind: 'boolean', label: 'Enabled' },
           {
             id: 'mode',
@@ -220,6 +220,8 @@ test('sends typed inspector changes through the controlled native callbacks', as
     );
     await mounted.renderSheet();
 
+    nativeTextInputs[0]?.onChangeText?.('1');
+    nativeTextInputs[0]?.onChangeText?.('4');
     nativeTextInputs[0]?.onChangeText?.('2');
     await mounted.click('Enabled');
     await mounted.click('Mode');
