@@ -510,7 +510,12 @@ export {
   type TimePickerProps,
   type TimePickerValue,
 } from './features/time-picker/public';
-export type { TimelineItem, TimelineProps } from './features/timeline/public';
+export type {
+  TimelineItem,
+  TimelineManifestItem,
+  TimelineManifestProps,
+  TimelineProps,
+} from './features/timeline/public';
 export { Timeline } from './features/timeline/public';
 export type {
   ToastController,
