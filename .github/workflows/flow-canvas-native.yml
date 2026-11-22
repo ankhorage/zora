@@ -27,12 +27,26 @@ jobs:
           chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
           test -n "$chrome_bin"
           CHROME_BIN="$chrome_bin" bun run benchmark:flow-canvas
+      - name: Run Chromium FlowCanvas acceptance
+        env:
+          FLOW_ARTIFACT_DIR: ${{ runner.temp }}/flow-canvas-artifacts
+        run: |
+          chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          test -n "$chrome_bin"
+          CHROME_BIN="$chrome_bin" bun run test:flow-canvas:chromium
       - name: Upload FlowCanvas benchmark artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: flow-canvas-benchmark
           path: ${{ runner.temp }}/flow-canvas-benchmark
+          if-no-files-found: warn
+      - name: Upload FlowCanvas Chromium acceptance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flow-canvas-chromium-artifacts
+          path: ${{ runner.temp }}/flow-canvas-artifacts
           if-no-files-found: warn
 
   android:
