@@ -55,6 +55,7 @@ export function GridView({
   onVisibleItemIdsChange,
   renderItem,
   testID,
+  viewportInteraction = 'enabled',
 }: GridViewProps) {
   const [uncontrolledViewport, setUncontrolledViewport] = React.useState(() =>
     createInitialViewport(width, height, zoom, defaultViewport),
@@ -100,6 +101,7 @@ export function GridView({
   const previousVisibleIdsRef = React.useRef<readonly string[]>([]);
   const uncontrolled = controlledViewport === undefined;
   const interactive = interactionPolicy !== 'passive';
+  const viewportInteractive = interactive && viewportInteraction === 'enabled';
 
   const publish = React.useCallback(
     (nextViewport: GridViewport) => {
@@ -314,7 +316,7 @@ export function GridView({
         if (wasPinching) syncScrollPosition();
       }}
       onTouchMove={(event) => {
-        if (!interactive) return;
+        if (!viewportInteractive) return;
         measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {
           const previous = pinchGestureRef.current;
           pinchGestureRef.current = pinch;
@@ -338,7 +340,7 @@ export function GridView({
         ref={horizontalScrollRef}
         testID={testID ? `${testID}-horizontal-scroll` : undefined}
         horizontal
-        scrollEnabled={interactive && !isPinching}
+        scrollEnabled={viewportInteractive && !isPinching}
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator
         style={{ height, width }}
@@ -353,7 +355,7 @@ export function GridView({
         <NativeScrollView
           ref={verticalScrollRef}
           testID={testID ? `${testID}-vertical-scroll` : undefined}
-          scrollEnabled={interactive && !isPinching}
+          scrollEnabled={viewportInteractive && !isPinching}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator
           style={{ height, width: scrollMapping.horizontal.contentSize }}
@@ -394,7 +396,7 @@ export function GridView({
           </NativeView>
         </NativeScrollView>
       </NativeScrollView>
-      {interactive ? (
+      {viewportInteractive ? (
         <NativeView accessibilityLabel="Viewport controls" style={controlsStyle}>
           <NativePressable
             accessibilityLabel="Pan left"

@@ -46,6 +46,10 @@ export interface DataTableProps<TRow extends object> extends ZoraBaseProps {
   rows: readonly TRow[];
   rowId?: (row: TRow, index: number) => string;
   rowKey?: keyof TRow;
+  /** Controlled identifiers for rows selected with the optional checkbox column. */
+  selectedRowIds?: readonly string[];
+  /** Receives the next controlled selection after a row or visible-row toggle. */
+  onSelectedRowIdsChange?: (selectedRowIds: readonly string[]) => void;
   rowActions?: (row: TRow, index: number) => readonly DataTableRowAction<TRow>[];
   sort?: DataTableSortState;
   onSortChange?: (sort: DataTableSortState) => void;

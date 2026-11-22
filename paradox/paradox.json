@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.5.2",
+      "value": "v27.6.0",
       "color": "cb3837"
     },
     {
@@ -1062,10 +1062,63 @@
       ]
     },
     {
+      "path": "src/features/calendar/adapters/inbound/Calendar.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/button/public.ts",
+        "src/features/calendar/application/createCalendarMonth.ts",
+        "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "src/features/grid-view/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/typography/public.ts",
+        "src/types/calendar.ts"
+      ],
+      "exports": [
+        "Calendar"
+      ]
+    },
+    {
+      "path": "src/features/calendar/application/createCalendarMonth.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/calendar.ts"
+      ],
+      "exports": [
+        "CalendarMonthCell",
+        "createCalendarMonth"
+      ]
+    },
+    {
+      "path": "src/features/calendar/application/isCalendarDateDisabled.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/calendar.ts"
+      ],
+      "exports": [
+        "isCalendarDateDisabled"
+      ]
+    },
+    {
+      "path": "src/features/calendar/calendarMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/authoring.ts"
+      ],
+      "exports": [
+        "calendarMeta"
+      ]
+    },
+    {
       "path": "src/features/calendar/public.ts",
       "isEntrypoint": false,
       "dependencies": [],
       "exports": [
+        "Calendar",
+        "CalendarDensity",
+        "CalendarProps",
+        "CalendarView",
+        "CalendarWeekStart",
         "TemporalAllDayEvent",
         "TemporalAllDayRange",
         "TemporalAvailability",
@@ -1833,6 +1886,7 @@
         "src/features/card/public.ts",
         "src/features/data-table/utils/resolveDataTableRowKey.ts",
         "src/features/empty-state/public.ts",
+        "src/features/form/checkbox/public.ts",
         "src/features/layout/public.ts",
         "src/features/popover-menu/public.ts",
         "src/features/skeleton/public.ts",
@@ -1923,10 +1977,10 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/button/public.ts",
+        "src/features/calendar/public.ts",
         "src/features/date-picker/utils/localDate.ts",
         "src/features/layout/public.ts",
         "src/features/picker/composition/PickerHeader.tsx",
-        "src/features/typography/public.ts",
         "src/types/date-picker.ts"
       ],
       "exports": [
@@ -4877,6 +4931,7 @@
         "src/features/button/buttonGroupMeta.ts",
         "src/features/button/buttonMeta.ts",
         "src/features/button/iconButtonMeta.ts",
+        "src/features/calendar/calendarMeta.ts",
         "src/features/card/cardMeta.ts",
         "src/features/card/mediaCardMeta.ts",
         "src/features/card/metricCardMeta.ts",
@@ -5093,6 +5148,7 @@
         "src/features/bottom-sheet/public.ts",
         "src/features/breadcrumbs/public.ts",
         "src/features/button/public.ts",
+        "src/features/calendar/public.ts",
         "src/features/card/public.ts",
         "src/features/chat/public.ts",
         "src/features/chess/public.ts",
@@ -6258,6 +6314,7 @@
       "dependencies": [
         "src/features/icon/public.ts",
         "src/features/icon/utils/resolveIconSize.ts",
+        "src/features/image/public.ts",
         "src/features/layout/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
         "src/features/theme/composition/useZoraTheme.ts",
@@ -6845,6 +6902,11 @@
         "ButtonGroupOrientation",
         "ButtonGroupProps",
         "ButtonProps",
+        "Calendar",
+        "CalendarDensity",
+        "CalendarProps",
+        "CalendarView",
+        "CalendarWeekStart",
         "CameraPermissionStatus",
         "CameraPermissionView",
         "CameraPermissionViewProps",
@@ -7407,6 +7469,11 @@
         "ButtonGroupOrientation",
         "ButtonGroupProps",
         "ButtonProps",
+        "Calendar",
+        "CalendarDensity",
+        "CalendarProps",
+        "CalendarView",
+        "CalendarWeekStart",
         "CameraPermissionStatus",
         "CameraPermissionView",
         "CameraPermissionViewProps",
@@ -8089,6 +8156,19 @@
       "exports": [
         "ButtonProps",
         "ZoraButtonVariant"
+      ]
+    },
+    {
+      "path": "src/types/calendar.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/base.ts"
+      ],
+      "exports": [
+        "CalendarDensity",
+        "CalendarProps",
+        "CalendarView",
+        "CalendarWeekStart"
       ]
     },
     {
@@ -9098,6 +9178,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/types/base.ts",
+        "src/types/image.ts",
         "src/types/theme.ts"
       ],
       "exports": [
@@ -13080,6 +13161,247 @@
           "description": null
         }
       ],
+      "structuredRows": []
+    },
+    {
+      "name": "Calendar",
+      "title": null,
+      "description": "Renders a locale-aware, accessible month calendar using canonical GridView geometry.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 17,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CalendarDensity",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/calendar.ts",
+      "sourceLocation": {
+        "filePath": "src/types/calendar.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CalendarProps",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/calendar.ts",
+      "sourceLocation": {
+        "filePath": "src/types/calendar.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "CalendarDensity",
+        "CalendarWeekStart",
+        "ZoraThemeMode"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "defaultDisplayedMonth",
+          "kind": "property",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "density",
+          "kind": "property",
+          "type": "CalendarDensity | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabledDates",
+          "kind": "property",
+          "type": "readonly Date[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "displayedMonth",
+          "kind": "property",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isDateDisabled",
+          "kind": "property",
+          "type": "((date: Date) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "locale",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "maxDate",
+          "kind": "property",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minDate",
+          "kind": "property",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDisplayedMonthChange",
+          "kind": "property",
+          "type": "((month: Date) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectedDateChange",
+          "kind": "property",
+          "type": "((date: Date) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "selectedDate",
+          "kind": "property",
+          "type": "Date | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "view",
+          "kind": "property",
+          "type": "\"month\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "weekStartsOn",
+          "kind": "property",
+          "type": "CalendarWeekStart | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "CalendarView",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/calendar.ts",
+      "sourceLocation": {
+        "filePath": "src/types/calendar.ts",
+        "line": 4,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CalendarWeekStart",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/calendar.ts",
+      "sourceLocation": {
+        "filePath": "src/types/calendar.ts",
+        "line": 5,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
       "structuredRows": []
     },
     {
@@ -17596,7 +17918,7 @@
     {
       "name": "DataTable",
       "title": null,
-      "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
+      "description": "Displays structured tabular data with responsive columns and optional controlled row selection.",
       "isReadme": false,
       "see": [],
       "security": [],
@@ -17604,7 +17926,7 @@
       "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 28,
+        "line": 29,
         "column": 14
       },
       "exportPaths": [
@@ -17884,6 +18206,13 @@
           "description": null
         },
         {
+          "name": "onSelectedRowIdsChange",
+          "kind": "property",
+          "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onSortChange",
           "kind": "property",
           "type": "((sort: DataTableSortState) => void) | undefined",
@@ -17916,6 +18245,13 @@
           "kind": "property",
           "type": "readonly TRow[]",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "selectedRowIds",
+          "kind": "property",
+          "type": "readonly string[] | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -23538,10 +23874,10 @@
       ],
       "signatures": [
         {
-          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+          "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n  viewportInteraction = 'enabled',\n}: GridViewProps) => React.JSX.Element",
           "parameters": [
             {
-              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
+              "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n  viewportInteraction = 'enabled',\n}",
               "type": "GridViewProps",
               "required": true,
               "description": null
@@ -23699,6 +24035,13 @@
           "name": "viewportConstraints",
           "kind": "property",
           "type": "GridViewportConstraints | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportInteraction",
+          "kind": "property",
+          "type": "\"enabled\" | \"locked\" | undefined",
           "required": false,
           "description": null
         },
@@ -40085,7 +40428,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 44,
+        "line": 46,
         "column": 1
       },
       "exportPaths": [
@@ -40115,7 +40458,7 @@
       "modulePath": "src/types/grid-view.ts",
       "sourceLocation": {
         "filePath": "src/types/grid-view.ts",
-        "line": 49,
+        "line": 51,
         "column": 1
       },
       "exportPaths": [
@@ -40551,7 +40894,7 @@
       "modulePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
       "sourceLocation": {
         "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-        "line": 127,
+        "line": 148,
         "column": 14
       },
       "exportPaths": [
@@ -40573,13 +40916,16 @@
       "modulePath": "src/types/timeline.ts",
       "sourceLocation": {
         "filePath": "src/types/timeline.ts",
-        "line": 7,
+        "line": 8,
         "column": 1
       },
       "exportPaths": [
         "src/index.ts"
       ],
-      "relatedSymbols": [],
+      "relatedSymbols": [
+        "SurfaceImageSource",
+        "UploadAsset"
+      ],
       "signatures": [],
       "members": [
         {
@@ -40601,6 +40947,20 @@
           "kind": "property",
           "type": "string",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "marker",
+          "kind": "property",
+          "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "markerAlt",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -40645,7 +41005,7 @@
       "modulePath": "src/types/timeline.ts",
       "sourceLocation": {
         "filePath": "src/types/timeline.ts",
-        "line": 17,
+        "line": 20,
         "column": 1
       },
       "exportPaths": [
@@ -43079,7 +43439,7 @@
       "modulePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
-        "line": 236,
+        "line": 238,
         "column": 14
       },
       "exportPaths": [
@@ -43145,7 +43505,7 @@
       "modulePath": "src/features/registry/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/componentMeta.ts",
-        "line": 116,
+        "line": 117,
         "column": 14
       },
       "exportPaths": [
@@ -48763,6 +49123,132 @@
       ]
     },
     {
+      "name": "Calendar",
+      "description": "Renders a locale-aware, accessible month calendar using canonical GridView geometry.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "modulePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 17,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "props": [
+        {
+          "name": "defaultDisplayedMonth",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "density",
+          "type": "CalendarDensity | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "disabledDates",
+          "type": "readonly Date[] | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "displayedMonth",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "isDateDisabled",
+          "type": "((date: Date) => boolean) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "locale",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "maxDate",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "minDate",
+          "type": "Date | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDisplayedMonthChange",
+          "type": "((month: Date) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectedDateChange",
+          "type": "((date: Date) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "selectedDate",
+          "type": "Date | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "view",
+          "type": "\"month\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "CalendarWeekStart | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "CameraPermissionView",
       "description": "ZORA-owned camera permission state for scanner flows.\n\nNative permission APIs stay in app adapters. This component renders the\nrequest, denied, requesting, and manual-entry surfaces consistently.",
       "isReadme": false,
@@ -50936,14 +51422,14 @@
     },
     {
       "name": "DataTable",
-      "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
+      "description": "Displays structured tabular data with responsive columns and optional controlled row selection.",
       "isReadme": false,
       "see": [],
       "security": [],
       "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 28,
+        "line": 29,
         "column": 14
       },
       "exportPaths": [
@@ -51005,6 +51491,12 @@
           "description": null
         },
         {
+          "name": "onSelectedRowIdsChange",
+          "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onSortChange",
           "type": "((sort: DataTableSortState) => void) | undefined",
           "required": false,
@@ -51032,6 +51524,12 @@
           "name": "rows",
           "type": "readonly TRow[]",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "selectedRowIds",
+          "type": "readonly string[] | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -54268,6 +54766,13 @@
           "name": "viewportConstraints",
           "type": "GridViewportConstraints | undefined",
           "required": false,
+          "description": null
+        },
+        {
+          "name": "viewportInteraction",
+          "type": "'enabled' | 'locked' | undefined",
+          "required": false,
+          "defaultValue": "'enabled'",
           "description": null
         },
         {
@@ -64635,7 +65140,7 @@
       "modulePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
       "sourceLocation": {
         "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-        "line": 127,
+        "line": 148,
         "column": 14
       },
       "exportPaths": [
@@ -66641,6 +67146,193 @@
       }
     },
     {
+      "name": "CalendarInner",
+      "description": "Connects controlled Calendar state to the shared month grid presentation.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "selectCell",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 133,
+        "column": 17
+      }
+    },
+    {
+      "name": "createWeekdayLabels",
+      "description": "Produces the ordered weekday labels for one local calendar week.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 161,
+        "column": 1
+      }
+    },
+    {
+      "name": "addMonths",
+      "description": "Moves a local month without carrying a day-of-month overflow into the target month.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 175,
+        "column": 1
+      }
+    },
+    {
+      "name": "startOfLocalMonth",
+      "description": "Normalizes a value to the first local day of its month.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 180,
+        "column": 1
+      }
+    },
+    {
+      "name": "formatCalendarDate",
+      "description": "Formats a Date as a timezone-independent local calendar identifier.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 185,
+        "column": 1
+      }
+    },
+    {
+      "name": "compareLocalDates",
+      "description": "Compares local calendar dates using their canonical date-only identifiers.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 193,
+        "column": 1
+      }
+    },
+    {
+      "name": "monthIntersectsRange",
+      "description": "Reports whether a candidate month contains at least one date inside the configured range.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 198,
+        "column": 1
+      }
+    },
+    {
+      "name": "isSameLocalDay",
+      "description": "Reports whether two values identify the same local calendar day.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 212,
+        "column": 1
+      }
+    },
+    {
+      "name": "formatMonthLabel",
+      "description": "Formats a display month with the caller's locale.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "line": 217,
+        "column": 1
+      }
+    },
+    {
+      "name": "createCalendarMonth",
+      "description": "Creates the fixed six-week local-date month geometry shared by every Calendar density.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/createCalendarMonth.ts",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "formatLocalDate",
+      "description": "Formats a Date as a timezone-independent local calendar identifier.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/createCalendarMonth.ts",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
+      "name": "startOfLocalMonth",
+      "description": "Normalizes a value to the first local day of its month.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/createCalendarMonth.ts",
+        "line": 36,
+        "column": 1
+      }
+    },
+    {
+      "name": "isCalendarDateDisabled",
+      "description": "Resolves whether local-date range and disabled-date policy prevent selecting a calendar day.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "compareLocalDates",
+      "description": "Compares values by local calendar date rather than their instant or time of day.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "line": 26,
+        "column": 1
+      }
+    },
+    {
+      "name": "startOfLocalDay",
+      "description": "Removes a time-of-day component while retaining the caller's local calendar date.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "line": 31,
+        "column": 1
+      }
+    },
+    {
+      "name": "formatCalendarDate",
+      "description": "Formats a Date as a timezone-independent local calendar identifier.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "line": 36,
+        "column": 1
+      }
+    },
+    {
       "name": "CardInner",
       "description": null,
       "see": [],
@@ -67747,7 +68439,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 30,
+        "line": 31,
         "column": 1
       }
     },
@@ -67758,7 +68450,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 42,
+        "line": 43,
         "column": 1
       }
     },
@@ -67769,7 +68461,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 54,
+        "line": 55,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveSelectionColumnStyle",
+      "description": "Resolves the compact, fixed width reserved for the optional selection control.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 66,
         "column": 1
       }
     },
@@ -67780,7 +68483,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 64,
+        "line": 70,
         "column": 1
       }
     },
@@ -67791,7 +68494,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 70,
+        "line": 76,
         "column": 1
       }
     },
@@ -67802,7 +68505,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 78,
+        "line": 84,
         "column": 1
       }
     },
@@ -67813,7 +68516,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 98,
+        "line": 104,
         "column": 1
       }
     },
@@ -67824,7 +68527,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 111,
+        "line": 117,
         "column": 1
       }
     },
@@ -67835,7 +68538,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 120,
+        "line": 126,
         "column": 1
       }
     },
@@ -67846,7 +68549,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 136,
+        "line": 142,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveNextSelectedRowIds",
+      "description": "Applies a single row checkbox change to controlled DataTable selection.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 149,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveNextVisibleSelection",
+      "description": "Applies the header checkbox change to the currently visible DataTable rows.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 160,
         "column": 1
       }
     },
@@ -67857,7 +68582,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 143,
+        "line": 172,
         "column": 1
       }
     },
@@ -67868,7 +68593,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 159,
+        "line": 188,
         "column": 1
       }
     },
@@ -67879,7 +68604,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 197,
+        "line": 226,
         "column": 1
       }
     },
@@ -67890,7 +68615,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 261,
+        "line": 311,
         "column": 1
       }
     },
@@ -67901,7 +68626,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 324,
+        "line": 423,
         "column": 1
       }
     },
@@ -67912,7 +68637,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 375,
+        "line": 499,
         "column": 1
       }
     },
@@ -67951,144 +68676,12 @@
     },
     {
       "name": "DatePickerContent",
-      "description": "Renders the shared calendar content used by native BottomSheet and web Popover hosts.",
+      "description": "Hosts the shared compact Calendar inside the existing DatePicker overlay surfaces.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 14,
-        "column": 1
-      }
-    },
-    {
-      "name": "DatePickerMonthNavigation",
-      "description": "Renders previous and next month controls for the calendar.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 66,
-        "column": 1
-      }
-    },
-    {
-      "name": "DatePickerWeekdays",
-      "description": "Renders weekday headings for the calendar grid.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 110,
-        "column": 1
-      }
-    },
-    {
-      "name": "DatePickerCalendar",
-      "description": "Renders selectable day cells for the current calendar month.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 125,
-        "column": 1
-      }
-    },
-    {
-      "name": "isSameLocalDay",
-      "description": "Compares a serialized date to one local calendar day.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 168,
-        "column": 1
-      }
-    },
-    {
-      "name": "startOfLocalDay",
-      "description": "Normalizes a Date to the start of its local calendar day.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 173,
-        "column": 1
-      }
-    },
-    {
-      "name": "isBeforeLocalDay",
-      "description": "Reports whether one local calendar day precedes another.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 178,
-        "column": 1
-      }
-    },
-    {
-      "name": "isAfterLocalDay",
-      "description": "Reports whether one local calendar day follows another.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 183,
-        "column": 1
-      }
-    },
-    {
-      "name": "isDateDisabled",
-      "description": "Reports whether a date falls outside the configured picker range.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 188,
-        "column": 1
-      }
-    },
-    {
-      "name": "formatMonthLabel",
-      "description": "Formats the current calendar month for the picker heading.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 199,
-        "column": 1
-      }
-    },
-    {
-      "name": "createMonthDays",
-      "description": "Builds the padded calendar grid for one month.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 204,
-        "column": 1
-      }
-    },
-    {
-      "name": "resolveInitialMonth",
-      "description": "Resolves the month initially shown by the calendar.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 218,
-        "column": 1
-      }
-    },
-    {
-      "name": "canNavigateToMonth",
-      "description": "Reports whether the configured range intersects a candidate month.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "line": 224,
+        "line": 11,
         "column": 1
       }
     },
@@ -69837,7 +70430,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 75,
+        "line": 76,
         "column": 1
       }
     },
@@ -69848,7 +70441,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 102,
+        "line": 103,
         "column": 1
       }
     },
@@ -69859,7 +70452,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 173,
+        "line": 175,
         "column": 1
       }
     },
@@ -69870,7 +70463,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 238,
+        "line": 241,
+        "column": 1
+      }
+    },
+    {
+      "name": "beginPreservedTopologyMeasurementWindow",
+      "description": "Retain measurements emitted by the overlay commit that follows one controlled topology update.\nA later resize remains geometry input and therefore schedules its normal relayout.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 258,
         "column": 1
       }
     },
@@ -69881,7 +70485,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 252,
+        "line": 276,
         "column": 1
       }
     },
@@ -69892,7 +70496,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 263,
+        "line": 287,
         "column": 1
       }
     },
@@ -69903,7 +70507,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 272,
+        "line": 296,
         "column": 1
       }
     },
@@ -69914,7 +70518,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 286,
+        "line": 310,
         "column": 1
       }
     },
@@ -69925,7 +70529,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 307,
+        "line": 331,
         "column": 1
       }
     },
@@ -69936,7 +70540,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 348,
+        "line": 372,
         "column": 1
       }
     },
@@ -69947,7 +70551,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 374,
+        "line": 398,
         "column": 1
       }
     },
@@ -69958,7 +70562,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 382,
+        "line": 406,
         "column": 1
       }
     },
@@ -69969,7 +70573,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 406,
+        "line": 430,
         "column": 1
       }
     },
@@ -69980,7 +70584,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 420,
+        "line": 444,
         "column": 1
       }
     },
@@ -69991,7 +70595,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 429,
+        "line": 454,
         "column": 1
       }
     },
@@ -70002,7 +70606,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 434,
+        "line": 459,
         "column": 1
       }
     },
@@ -70013,7 +70617,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 444,
+        "line": 469,
         "column": 1
       }
     },
@@ -70024,7 +70628,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 457,
+        "line": 482,
         "column": 1
       }
     },
@@ -70035,7 +70639,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 469,
+        "line": 494,
         "column": 1
       }
     },
@@ -70046,7 +70650,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 478,
+        "line": 503,
         "column": 1
       }
     },
@@ -70057,7 +70661,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 492,
+        "line": 517,
         "column": 1
       }
     },
@@ -70068,7 +70672,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 497,
+        "line": 522,
         "column": 1
       }
     },
@@ -71113,7 +71717,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 114,
+        "line": 116,
         "column": 9
       }
     },
@@ -71124,7 +71728,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 116,
+        "line": 118,
         "column": 9
       }
     },
@@ -71135,7 +71739,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 162,
+        "line": 164,
         "column": 9
       }
     },
@@ -71146,7 +71750,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 286,
+        "line": 288,
         "column": 9
       }
     },
@@ -71157,7 +71761,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 450,
+        "line": 452,
         "column": 1
       }
     },
@@ -71168,7 +71772,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 467,
+        "line": 469,
         "column": 1
       }
     },
@@ -71179,7 +71783,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 475,
+        "line": 477,
         "column": 1
       }
     },
@@ -71190,7 +71794,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 522,
+        "line": 524,
         "column": 1
       }
     },
@@ -71201,7 +71805,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 538,
+        "line": 540,
         "column": 1
       }
     },
@@ -71212,7 +71816,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 550,
+        "line": 552,
         "column": 1
       }
     },
@@ -71223,7 +71827,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/grid-view/adapters/inbound/GridView.tsx",
-        "line": 573,
+        "line": 575,
         "column": 1
       }
     },
@@ -73819,7 +74423,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-        "line": 14,
+        "line": 15,
         "column": 1
       }
     },
@@ -73830,7 +74434,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-        "line": 40,
+        "line": 41,
         "column": 1
       }
     },
@@ -73841,7 +74445,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-        "line": 52,
+        "line": 57,
         "column": 9
       }
     },
@@ -75451,6 +76055,11 @@
         "sourcePath": "src/types/button.ts"
       },
       {
+        "fromPath": "src/types/calendar.ts",
+        "toPath": "src/types/base.ts",
+        "sourcePath": "src/types/calendar.ts"
+      },
+      {
         "fromPath": "src/types/card.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/card.ts"
@@ -75947,6 +76556,11 @@
       },
       {
         "fromPath": "src/types/timeline.ts",
+        "toPath": "src/types/image.ts",
+        "sourcePath": "src/types/timeline.ts"
+      },
+      {
+        "fromPath": "src/types/timeline.ts",
         "toPath": "src/types/theme.ts",
         "sourcePath": "src/types/timeline.ts"
       },
@@ -76296,8 +76910,23 @@
         "sourcePath": "src/features/button/public.ts"
       },
       {
+        "fromPath": "src/features/calendar/calendarMeta.ts",
+        "toPath": "src/types/authoring.ts",
+        "sourcePath": "src/features/calendar/calendarMeta.ts"
+      },
+      {
+        "fromPath": "src/features/calendar/public.ts",
+        "toPath": "src/types/calendar.ts",
+        "sourcePath": "src/features/calendar/public.ts"
+      },
+      {
         "fromPath": "src/features/calendar/public.ts",
         "toPath": "src/types/temporal.ts",
+        "sourcePath": "src/features/calendar/public.ts"
+      },
+      {
+        "fromPath": "src/features/calendar/public.ts",
+        "toPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
         "sourcePath": "src/features/calendar/public.ts"
       },
       {
@@ -77502,6 +78131,11 @@
       },
       {
         "fromPath": "src/features/registry/componentMeta.ts",
+        "toPath": "src/features/calendar/calendarMeta.ts",
+        "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/features/registry/componentMeta.ts",
         "toPath": "src/features/card/cardMeta.ts",
         "sourcePath": "src/features/registry/componentMeta.ts"
       },
@@ -78088,6 +78722,11 @@
       {
         "fromPath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
         "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts"
+      },
+      {
+        "fromPath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
+        "toPath": "src/features/calendar/public.ts",
         "sourcePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts"
       },
       {
@@ -78971,6 +79610,16 @@
         "sourcePath": "src/features/button/utils/themeRecipeMeta.ts"
       },
       {
+        "fromPath": "src/features/calendar/application/createCalendarMonth.ts",
+        "toPath": "src/types/calendar.ts",
+        "sourcePath": "src/features/calendar/application/createCalendarMonth.ts"
+      },
+      {
+        "fromPath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "toPath": "src/types/calendar.ts",
+        "sourcePath": "src/features/calendar/application/isCalendarDateDisabled.ts"
+      },
+      {
         "fromPath": "src/features/card/utils/resolveCardThemeRecipe.ts",
         "toPath": "src/types/card.ts",
         "sourcePath": "src/features/card/utils/resolveCardThemeRecipe.ts"
@@ -79057,17 +79706,17 @@
       },
       {
         "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
+        "toPath": "src/features/calendar/public.ts",
+        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
+      },
+      {
+        "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
       },
       {
         "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
         "toPath": "src/features/picker/composition/PickerHeader.tsx",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromPath": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toPath": "src/features/typography/public.ts",
         "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
       },
       {
@@ -80331,6 +80980,46 @@
         "sourcePath": "src/features/button/adapters/inbound/IconButton.tsx"
       },
       {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/types/calendar.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/grid-view/public.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/calendar/application/createCalendarMonth.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromPath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toPath": "src/features/calendar/application/isCalendarDateDisabled.ts",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
         "fromPath": "src/features/card/adapters/inbound/Card.tsx",
         "toPath": "src/types/card.ts",
         "sourcePath": "src/features/card/adapters/inbound/Card.tsx"
@@ -80833,6 +81522,11 @@
       {
         "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toPath": "src/features/empty-state/public.ts",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toPath": "src/features/form/checkbox/public.ts",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -82952,6 +83646,11 @@
       },
       {
         "fromPath": "src/features/timeline/adapters/inbound/Timeline.tsx",
+        "toPath": "src/features/image/public.ts",
+        "sourcePath": "src/features/timeline/adapters/inbound/Timeline.tsx"
+      },
+      {
+        "fromPath": "src/features/timeline/adapters/inbound/Timeline.tsx",
         "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/timeline/adapters/inbound/Timeline.tsx"
       },
@@ -84269,6 +84968,42 @@
         "sourcePath": "src/features/button/utils/resolveButtonThemeRecipe.ts"
       },
       {
+        "fromSymbol": "createCalendarMonth",
+        "toSymbol": "startOfLocalMonth",
+        "callExpression": "startOfLocalMonth",
+        "sourcePath": "src/features/calendar/application/createCalendarMonth.ts"
+      },
+      {
+        "fromSymbol": "src/features/calendar/application/createCalendarMonth.ts",
+        "toSymbol": "formatLocalDate",
+        "callExpression": "formatLocalDate",
+        "sourcePath": "src/features/calendar/application/createCalendarMonth.ts"
+      },
+      {
+        "fromSymbol": "isCalendarDateDisabled",
+        "toSymbol": "compareLocalDates",
+        "callExpression": "compareLocalDates",
+        "sourcePath": "src/features/calendar/application/isCalendarDateDisabled.ts"
+      },
+      {
+        "fromSymbol": "isCalendarDateDisabled",
+        "toSymbol": "formatCalendarDate",
+        "callExpression": "formatCalendarDate",
+        "sourcePath": "src/features/calendar/application/isCalendarDateDisabled.ts"
+      },
+      {
+        "fromSymbol": "isCalendarDateDisabled",
+        "toSymbol": "isDateDisabled",
+        "callExpression": "isDateDisabled",
+        "sourcePath": "src/features/calendar/application/isCalendarDateDisabled.ts"
+      },
+      {
+        "fromSymbol": "compareLocalDates",
+        "toSymbol": "startOfLocalDay",
+        "callExpression": "startOfLocalDay",
+        "sourcePath": "src/features/calendar/application/isCalendarDateDisabled.ts"
+      },
+      {
         "fromSymbol": "resolveCardThemeRecipe",
         "toSymbol": "readTone",
         "callExpression": "readTone",
@@ -84414,104 +85149,8 @@
       },
       {
         "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "resolveInitialMonth",
-        "callExpression": "resolveInitialMonth",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "createMonthDays",
-        "callExpression": "createMonthDays",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
         "toSymbol": "parseLocalDate",
         "callExpression": "parseLocalDate",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "DatePickerMonthNavigation",
-        "toSymbol": "canNavigateToMonth",
-        "callExpression": "canNavigateToMonth",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "onMonthChange",
-        "callExpression": "onMonthChange",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "DatePickerMonthNavigation",
-        "toSymbol": "formatMonthLabel",
-        "callExpression": "formatMonthLabel",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "isSameLocalDay",
-        "callExpression": "isSameLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "isDateDisabled",
-        "callExpression": "isDateDisabled",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "src/features/date-picker/composition/DatePickerContent.tsx",
-        "toSymbol": "onSelect",
-        "callExpression": "onSelect",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "isSameLocalDay",
-        "toSymbol": "formatLocalDate",
-        "callExpression": "formatLocalDate",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "isBeforeLocalDay",
-        "toSymbol": "startOfLocalDay",
-        "callExpression": "startOfLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "isAfterLocalDay",
-        "toSymbol": "startOfLocalDay",
-        "callExpression": "startOfLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "isDateDisabled",
-        "toSymbol": "isBeforeLocalDay",
-        "callExpression": "isBeforeLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "isDateDisabled",
-        "toSymbol": "isAfterLocalDay",
-        "callExpression": "isAfterLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "resolveInitialMonth",
-        "toSymbol": "parseLocalDate",
-        "callExpression": "parseLocalDate",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "canNavigateToMonth",
-        "toSymbol": "isAfterLocalDay",
-        "callExpression": "isAfterLocalDay",
-        "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
-      },
-      {
-        "fromSymbol": "canNavigateToMonth",
-        "toSymbol": "isBeforeLocalDay",
-        "callExpression": "isBeforeLocalDay",
         "sourcePath": "src/features/date-picker/composition/DatePickerContent.tsx"
       },
       {
@@ -86399,6 +87038,120 @@
         "sourcePath": "src/features/button/adapters/inbound/IconButton.tsx"
       },
       {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "startOfLocalMonth",
+        "callExpression": "startOfLocalMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "CalendarInner",
+        "toSymbol": "startOfLocalMonth",
+        "callExpression": "startOfLocalMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "createCalendarMonth",
+        "callExpression": "createCalendarMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "createWeekdayLabels",
+        "callExpression": "createWeekdayLabels",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "setUncontrolledDisplayedMonth",
+        "callExpression": "setUncontrolledDisplayedMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "onDisplayedMonthChange",
+        "callExpression": "onDisplayedMonthChange",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "CalendarInner",
+        "toSymbol": "addMonths",
+        "callExpression": "addMonths",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "CalendarInner",
+        "toSymbol": "monthIntersectsRange",
+        "callExpression": "monthIntersectsRange",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "setDisplayedMonth",
+        "callExpression": "setDisplayedMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "CalendarInner",
+        "toSymbol": "formatMonthLabel",
+        "callExpression": "formatMonthLabel",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "isSameLocalDay",
+        "callExpression": "isSameLocalDay",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "src/features/calendar/adapters/inbound/Calendar.tsx",
+        "toSymbol": "isCalendarDateDisabled",
+        "callExpression": "isCalendarDateDisabled",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "selectCell",
+        "toSymbol": "setDisplayedMonth",
+        "callExpression": "setDisplayedMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "selectCell",
+        "toSymbol": "onSelectedDateChange",
+        "callExpression": "onSelectedDateChange",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "compareLocalDates",
+        "toSymbol": "formatCalendarDate",
+        "callExpression": "formatCalendarDate",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "monthIntersectsRange",
+        "toSymbol": "startOfLocalMonth",
+        "callExpression": "startOfLocalMonth",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "monthIntersectsRange",
+        "toSymbol": "compareLocalDates",
+        "callExpression": "compareLocalDates",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
+        "fromSymbol": "isSameLocalDay",
+        "toSymbol": "formatCalendarDate",
+        "callExpression": "formatCalendarDate",
+        "sourcePath": "src/features/calendar/adapters/inbound/Calendar.tsx"
+      },
+      {
         "fromSymbol": "src/features/card/adapters/inbound/Card.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
@@ -87083,6 +87836,12 @@
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
+        "fromSymbol": "DataTableHeader",
+        "toSymbol": "resolveSelectionColumnStyle",
+        "callExpression": "resolveSelectionColumnStyle",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
         "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toSymbol": "resolveCellStyle",
         "callExpression": "resolveCellStyle",
@@ -87116,6 +87875,42 @@
         "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toSymbol": "resolveDataTableRowKey",
         "callExpression": "resolveDataTableRowKey",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "rowActions",
+        "callExpression": "rowActions",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "onAllVisibleSelectedChange",
+        "toSymbol": "onSelectedRowIdsChange",
+        "callExpression": "onSelectedRowIdsChange",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "onAllVisibleSelectedChange",
+        "toSymbol": "resolveNextVisibleSelection",
+        "callExpression": "resolveNextVisibleSelection",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "resolveSelectionColumnStyle",
+        "callExpression": "resolveSelectionColumnStyle",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "onSelectedRowIdsChange",
+        "callExpression": "onSelectedRowIdsChange",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "resolveNextSelectedRowIds",
+        "callExpression": "resolveNextSelectedRowIds",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -90870,6 +91665,12 @@
       },
       {
         "fromSymbol": "updateRuntime",
+        "toSymbol": "beginPreservedTopologyMeasurementWindow",
+        "callExpression": "beginPreservedTopologyMeasurementWindow",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
         "toSymbol": "getRetainedNodeIds",
         "callExpression": "getRetainedNodeIds",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
@@ -90950,6 +91751,18 @@
         "fromSymbol": "updateRuntime",
         "toSymbol": "startCurrentLayout",
         "callExpression": "startCurrentLayout",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "beginPreservedTopologyMeasurementWindow",
+        "toSymbol": "getGraphTopologyKey",
+        "callExpression": "getGraphTopologyKey",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "beginPreservedTopologyMeasurementWindow",
+        "toSymbol": "scheduleGraphFrame",
+        "callExpression": "scheduleGraphFrame",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -93087,6 +93900,26 @@
         "fromSymbol": "TemporalTimedEvent",
         "toType": "Z",
         "sourcePath": "src/types/temporal.ts"
+      },
+      {
+        "fromSymbol": "CalendarProps",
+        "toType": "CalendarDensity",
+        "sourcePath": "src/types/calendar.ts"
+      },
+      {
+        "fromSymbol": "CalendarProps",
+        "toType": "CalendarWeekStart",
+        "sourcePath": "src/types/calendar.ts"
+      },
+      {
+        "fromSymbol": "CalendarProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/calendar.ts"
+      },
+      {
+        "fromSymbol": "CalendarProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/calendar.ts"
       },
       {
         "fromSymbol": "CardProps",
@@ -96974,6 +97807,16 @@
         "sourcePath": "src/types/timeline.ts"
       },
       {
+        "fromSymbol": "TimelineItem",
+        "toType": "SurfaceImageSource",
+        "sourcePath": "src/types/timeline.ts"
+      },
+      {
+        "fromSymbol": "TimelineItem",
+        "toType": "UploadAsset",
+        "sourcePath": "src/types/timeline.ts"
+      },
+      {
         "fromSymbol": "TimelineProps",
         "toType": "InteractionPolicy",
         "sourcePath": "src/types/timeline.ts"
@@ -97599,19 +98442,19 @@
       {
         "fromComponent": "GridView",
         "toComponent": "NativeView",
-        "jsxElement": "<NativeView\n      ref={gridRef}\n      accessibilityLabel=\"Interactive grid viewport\"\n      onLayout={refreshViewportOrigin}\n      onTouchEnd={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchCancel={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchMove={(event) => {\n        if (!interactive) return;\n        measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {\n          const previous = pinchGestureRef.current;\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n          if (!pinch || !previous) return;\n          zoomAt(pinch.focalPoint, pinch.distance / previous.distance);\n        });\n      }}\n      onTouchStart={(event) => {\n        const session = pinchSessionRef.current + 1;\n        pinchSessionRef.current = session;\n        measurePinchGesture([...event.nativeEvent.touches], session, (pinch) => {\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n        });\n      }}\n      style={{ height, overflow: 'hidden', width }}\n      testID={testID}\n    >",
+        "jsxElement": "<NativeView\n      ref={gridRef}\n      accessibilityLabel=\"Interactive grid viewport\"\n      onLayout={refreshViewportOrigin}\n      onTouchEnd={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchCancel={() => {\n        const wasPinching = pinchGestureRef.current !== undefined;\n        pinchMeasurementRef.current += 1;\n        pinchSessionRef.current += 1;\n        pinchGestureRef.current = undefined;\n        setIsPinching(false);\n        if (wasPinching) syncScrollPosition();\n      }}\n      onTouchMove={(event) => {\n        if (!viewportInteractive) return;\n        measurePinchGesture([...event.nativeEvent.touches], pinchSessionRef.current, (pinch) => {\n          const previous = pinchGestureRef.current;\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n          if (!pinch || !previous) return;\n          zoomAt(pinch.focalPoint, pinch.distance / previous.distance);\n        });\n      }}\n      onTouchStart={(event) => {\n        const session = pinchSessionRef.current + 1;\n        pinchSessionRef.current = session;\n        measurePinchGesture([...event.nativeEvent.touches], session, (pinch) => {\n          pinchGestureRef.current = pinch;\n          setIsPinching(pinch !== undefined);\n        });\n      }}\n      style={{ height, overflow: 'hidden', width }}\n      testID={testID}\n    >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n        ref={horizontalScrollRef}\n        testID={testID ? `${testID}-horizontal-scroll` : undefined}\n        horizontal\n        scrollEnabled={interactive && !isPinching}\n        scrollEventThrottle={16}\n        showsHorizontalScrollIndicator\n        style={{ height, width }}\n        onMomentumScrollEnd={(event) =>\n          scrollSyncRef.current?.scrollEnded('x', event.nativeEvent.contentOffset.x)\n        }\n        onScroll={(event) => handleNativeScroll('x', event.nativeEvent.contentOffset.x)}\n        onScrollBeginDrag={(event) =>\n          scrollSyncRef.current?.dragBegan('x', event.nativeEvent.contentOffset.x)\n        }\n      >",
+        "jsxElement": "<NativeScrollView\n        ref={horizontalScrollRef}\n        testID={testID ? `${testID}-horizontal-scroll` : undefined}\n        horizontal\n        scrollEnabled={viewportInteractive && !isPinching}\n        scrollEventThrottle={16}\n        showsHorizontalScrollIndicator\n        style={{ height, width }}\n        onMomentumScrollEnd={(event) =>\n          scrollSyncRef.current?.scrollEnded('x', event.nativeEvent.contentOffset.x)\n        }\n        onScroll={(event) => handleNativeScroll('x', event.nativeEvent.contentOffset.x)}\n        onScrollBeginDrag={(event) =>\n          scrollSyncRef.current?.dragBegan('x', event.nativeEvent.contentOffset.x)\n        }\n      >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {
         "fromComponent": "GridView",
         "toComponent": "NativeScrollView",
-        "jsxElement": "<NativeScrollView\n          ref={verticalScrollRef}\n          testID={testID ? `${testID}-vertical-scroll` : undefined}\n          scrollEnabled={interactive && !isPinching}\n          scrollEventThrottle={16}\n          showsVerticalScrollIndicator\n          style={{ height, width: scrollMapping.horizontal.contentSize }}\n          onMomentumScrollEnd={(event) =>\n            scrollSyncRef.current?.scrollEnded('y', event.nativeEvent.contentOffset.y)\n          }\n          onScroll={(event) => handleNativeScroll('y', event.nativeEvent.contentOffset.y)}\n          onScrollBeginDrag={(event) =>\n            scrollSyncRef.current?.dragBegan('y', event.nativeEvent.contentOffset.y)\n          }\n        >",
+        "jsxElement": "<NativeScrollView\n          ref={verticalScrollRef}\n          testID={testID ? `${testID}-vertical-scroll` : undefined}\n          scrollEnabled={viewportInteractive && !isPinching}\n          scrollEventThrottle={16}\n          showsVerticalScrollIndicator\n          style={{ height, width: scrollMapping.horizontal.contentSize }}\n          onMomentumScrollEnd={(event) =>\n            scrollSyncRef.current?.scrollEnded('y', event.nativeEvent.contentOffset.y)\n          }\n          onScroll={(event) => handleNativeScroll('y', event.nativeEvent.contentOffset.y)}\n          onScrollBeginDrag={(event) =>\n            scrollSyncRef.current?.dragBegan('y', event.nativeEvent.contentOffset.y)\n          }\n        >",
         "sourcePath": "src/features/grid-view/adapters/inbound/GridView.tsx"
       },
       {

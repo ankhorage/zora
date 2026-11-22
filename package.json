@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "27.5.2",
+  "version": "27.6.0",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -168,7 +168,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.10.5",
+    "@ankhorage/devtools": "^2.10.9",
     "@ankhorage/paradox": "^0.6.0",
     "@react-native-vector-icons/fontawesome": "^14.0.0",
     "@react-native-vector-icons/fontawesome5": "^14.0.0",

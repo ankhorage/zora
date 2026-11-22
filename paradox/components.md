@@ -749,6 +749,35 @@ Export paths: `src/index.ts`
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
 
+## Calendar
+
+Source: `src/features/calendar/adapters/inbound/Calendar.tsx:17:14`
+
+Renders a locale-aware, accessible month calendar using canonical GridView geometry.
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| defaultDisplayedMonth | `Date \| undefined` | no | — |  |
+| density | `CalendarDensity \| undefined` | no | — |  |
+| disabledDates | `readonly Date[] \| undefined` | no | — |  |
+| displayedMonth | `Date \| undefined` | no | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| inverted | `boolean \| undefined` | no | — |  |
+| isDateDisabled | `((date: Date) => boolean) \| undefined` | no | — |  |
+| locale | `string \| undefined` | no | — |  |
+| maxDate | `Date \| undefined` | no | — |  |
+| minDate | `Date \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDisplayedMonthChange | `((month: Date) => void) \| undefined` | no | — |  |
+| onSelectedDateChange | `((date: Date) => void) \| undefined` | no | — |  |
+| selectedDate | `Date \| null \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+| view | `"month" \| undefined` | no | — |  |
+| weekStartsOn | `CalendarWeekStart \| undefined` | no | — |  |
+
 ## CameraPermissionView
 
 Source: `src/features/scanner/adapters/inbound/CameraPermissionView.tsx:112:14`
@@ -1245,9 +1274,9 @@ Export paths: `src/index.ts`
 
 ## DataTable
 
-Source: `src/features/data-table/adapters/inbound/DataTable.tsx:28:14`
+Source: `src/features/data-table/adapters/inbound/DataTable.tsx:29:14`
 
-Displays structured tabular data with responsive desktop/mobile layouts.
+Displays structured tabular data with responsive columns and optional controlled row selection.
 
 Export paths: `src/index.ts`
 
@@ -1262,11 +1291,13 @@ Export paths: `src/index.ts`
 | loading | `boolean \| undefined` | no | — |  |
 | loadingRows | `number \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onSelectedRowIdsChange | `((selectedRowIds: readonly string[]) => void) \| undefined` | no | — |  |
 | onSortChange | `((sort: DataTableSortState) => void) \| undefined` | no | — |  |
 | rowActions | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no | — |  |
 | rowId | `((row: TRow, index: number) => string) \| undefined` | no | — |  |
 | rowKey | `keyof TRow \| undefined` | no | — |  |
 | rows | `readonly TRow[]` | yes | — |  |
+| selectedRowIds | `readonly string[] \| undefined` | no | — |  |
 | sort | `DataTableSortState \| undefined` | no | — |  |
 | testID | `string \| undefined` | no | — |  |
 | themeId | `string \| undefined` | no | — |  |
@@ -2017,6 +2048,7 @@ Export paths: `src/index.ts`
 | themeId | `ZoraThemeId \| undefined` | no | — |  |
 | viewport | `GridViewport \| undefined` | no | — |  |
 | viewportConstraints | `GridViewportConstraints \| undefined` | no | — |  |
+| viewportInteraction | `'enabled' \| 'locked' \| undefined` | no | `'enabled'` |  |
 | width | `number` | yes | — |  |
 | zoom | `number \| undefined` | no | `1` |  |
 | zoomLimits | `GridZoomLimits \| undefined` | no | — |  |
@@ -4266,7 +4298,7 @@ Export paths: `src/index.ts`
 
 ## Timeline
 
-Source: `src/features/timeline/adapters/inbound/Timeline.tsx:127:14`
+Source: `src/features/timeline/adapters/inbound/Timeline.tsx:148:14`
 
 Timeline pattern for displaying a sequence of events.
 

@@ -62,6 +62,7 @@ interface GraphRuntimeState {
   readonly labelSizedNodeIds: Set<string>;
   readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
   readonly pendingInitialFitRef: { current: boolean };
+  readonly preservedTopologyMeasurementRef: { current: boolean };
   readonly readyRef: { current: boolean };
   readonly settledLayoutRef: { current: GraphRuntimeUpdate['layout'] | null };
   readonly settledTopologyRef: { current: string | null };
@@ -133,6 +134,7 @@ function createRuntimeState(
     labelSizedNodeIds: new Set<string>(),
     loopSizer: createGraphLoopSizer(cy),
     pendingInitialFitRef: { current: false },
+    preservedTopologyMeasurementRef: { current: false },
     readyRef,
     settledLayoutRef: { current: null as GraphRuntimeUpdate['layout'] | null },
     settledTopologyRef: { current: null as string | null },
@@ -183,6 +185,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.viewport.configure(input);
   const preservesTopology = shouldPreserveTopology(state, previous, input);
+  beginPreservedTopologyMeasurementWindow(state, previous, input, preservesTopology);
   const retainedNodeIds = getRetainedNodeIds(previous, input, preservesTopology);
   const retainedGeometry =
     retainedNodeIds === null ? null : getGraphGeometryKey(state.cy, retainedNodeIds);
@@ -247,6 +250,27 @@ function shouldPreserveTopology(
     !state.pendingInitialFitRef.current &&
     input.topologyUpdatePolicy === 'preserve-positions'
   );
+}
+
+/***
+ * Retain measurements emitted by the overlay commit that follows one controlled topology update.
+ * A later resize remains geometry input and therefore schedules its normal relayout.
+ */
+function beginPreservedTopologyMeasurementWindow(
+  state: GraphRuntimeState,
+  previous: GraphRuntimeUpdate | null,
+  input: GraphRuntimeUpdate,
+  preservesTopology: boolean,
+) {
+  const topologyChanged =
+    previous !== null &&
+    getGraphTopologyKey(previous.nodes, previous.edges) !==
+      getGraphTopologyKey(input.nodes, input.edges);
+  state.preservedTopologyMeasurementRef.current = preservesTopology && topologyChanged;
+  if (!state.preservedTopologyMeasurementRef.current) return;
+  scheduleGraphFrame(() => {
+    state.preservedTopologyMeasurementRef.current = false;
+  });
 }
 
 /*** Limit stable-update geometry checks to retained leaves with independently stable positions. */
@@ -430,6 +454,7 @@ function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) 
   if (previous?.width === size.width && previous.height === size.height) return;
   state.nodeSizes.set(id, size);
   applyNodeSize(state.cy, id, size);
+  if (state.preservedTopologyMeasurementRef.current) return;
   scheduleMeasuredNodeRelayout(state);
 }
 

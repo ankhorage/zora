@@ -935,6 +935,61 @@ Source: `src/types/button.ts:10:1`
 | wrap | property | `Responsive<"wrap" \| "nowrap"> \| undefined` | no |  |
 | zIndex | property | `Responsive<number> \| undefined` | no |  |
 
+## Calendar
+
+Kind: `value`
+Module: `src/features/calendar/adapters/inbound/Calendar.tsx`
+Source: `src/features/calendar/adapters/inbound/Calendar.tsx:17:14`
+
+Renders a locale-aware, accessible month calendar using canonical GridView geometry.
+
+## CalendarDensity
+
+Kind: `unknown`
+Module: `src/types/calendar.ts`
+Source: `src/types/calendar.ts:3:1`
+
+## CalendarProps
+
+Kind: `type`
+Module: `src/types/calendar.ts`
+Source: `src/types/calendar.ts:8:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| defaultDisplayedMonth | property | `Date \| undefined` | no |  |
+| density | property | `CalendarDensity \| undefined` | no |  |
+| disabledDates | property | `readonly Date[] \| undefined` | no |  |
+| displayedMonth | property | `Date \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| isDateDisabled | property | `((date: Date) => boolean) \| undefined` | no |  |
+| locale | property | `string \| undefined` | no |  |
+| maxDate | property | `Date \| undefined` | no |  |
+| minDate | property | `Date \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onDisplayedMonthChange | property | `((month: Date) => void) \| undefined` | no |  |
+| onSelectedDateChange | property | `((date: Date) => void) \| undefined` | no |  |
+| selectedDate | property | `Date \| null \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+| view | property | `"month" \| undefined` | no |  |
+| weekStartsOn | property | `CalendarWeekStart \| undefined` | no |  |
+
+## CalendarView
+
+Kind: `unknown`
+Module: `src/types/calendar.ts`
+Source: `src/types/calendar.ts:4:1`
+
+## CalendarWeekStart
+
+Kind: `unknown`
+Module: `src/types/calendar.ts`
+Source: `src/types/calendar.ts:5:1`
+
 ## CameraPermissionStatus
 
 Kind: `unknown`
@@ -2072,9 +2127,9 @@ Convert the concise ZORA design seed into canonical persisted theme source.
 
 Kind: `value`
 Module: `src/features/data-table/adapters/inbound/DataTable.tsx`
-Source: `src/features/data-table/adapters/inbound/DataTable.tsx:28:14`
+Source: `src/features/data-table/adapters/inbound/DataTable.tsx:29:14`
 
-Displays structured tabular data with responsive desktop/mobile layouts.
+Displays structured tabular data with responsive columns and optional controlled row selection.
 
 ## DataTableCellContext
 
@@ -2141,11 +2196,13 @@ Source: `src/types/data-table.ts:44:1`
 | loading | property | `boolean \| undefined` | no |  |
 | loadingRows | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onSelectedRowIdsChange | property | `((selectedRowIds: readonly string[]) => void) \| undefined` | no |  |
 | onSortChange | property | `((sort: DataTableSortState) => void) \| undefined` | no |  |
 | rowActions | property | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no |  |
 | rowId | property | `((row: TRow, index: number) => string) \| undefined` | no |  |
 | rowKey | property | `keyof TRow \| undefined` | no |  |
 | rows | property | `readonly TRow[]` | yes |  |
+| selectedRowIds | property | `readonly string[] \| undefined` | no |  |
 | sort | property | `DataTableSortState \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
 | themeId | property | `string \| undefined` | no |  |
@@ -3487,6 +3544,7 @@ Renders a controlled or uncontrolled, virtualized 2D world through the canonical
   onVisibleItemIdsChange,
   renderItem,
   testID,
+  viewportInteraction = 'enabled',
 }: GridViewProps) => React.JSX.Element`
   - {
   items,
@@ -3507,6 +3565,7 @@ Renders a controlled or uncontrolled, virtualized 2D world through the canonical
   onVisibleItemIdsChange,
   renderItem,
   testID,
+  viewportInteraction = 'enabled',
 }: `GridViewProps`
   - returns: `React.JSX.Element`
 
@@ -3538,6 +3597,7 @@ Source: `src/types/grid-view.ts:12:1`
 | themeId | property | `string \| undefined` | no |  |
 | viewport | property | `GridViewport \| undefined` | no |  |
 | viewportConstraints | property | `GridViewportConstraints \| undefined` | no |  |
+| viewportInteraction | property | `"enabled" \| "locked" \| undefined` | no |  |
 | width | property | `number` | yes |  |
 | zoom | property | `number \| undefined` | no |  |
 | zoomLimits | property | `GridZoomLimits \| undefined` | no |  |
@@ -7300,7 +7360,7 @@ Composes a responsive, virtualized tile presentation over the generic GridView r
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:44:1`
+Source: `src/types/grid-view.ts:46:1`
 
 ### Members
 
@@ -7312,7 +7372,7 @@ Source: `src/types/grid-view.ts:44:1`
 
 Kind: `type`
 Module: `src/types/grid-view.ts`
-Source: `src/types/grid-view.ts:49:1`
+Source: `src/types/grid-view.ts:51:1`
 
 ### Members
 
@@ -7441,7 +7501,7 @@ Source: `src/types/time-grid.ts:16:1`
 
 Kind: `value`
 Module: `src/features/timeline/adapters/inbound/Timeline.tsx`
-Source: `src/features/timeline/adapters/inbound/Timeline.tsx:127:14`
+Source: `src/features/timeline/adapters/inbound/Timeline.tsx:148:14`
 
 Timeline pattern for displaying a sequence of events.
 
@@ -7449,7 +7509,7 @@ Timeline pattern for displaying a sequence of events.
 
 Kind: `type`
 Module: `src/types/timeline.ts`
-Source: `src/types/timeline.ts:7:1`
+Source: `src/types/timeline.ts:8:1`
 
 ### Members
 
@@ -7458,6 +7518,8 @@ Source: `src/types/timeline.ts:7:1`
 | description | property | `React.ReactNode` | no |  |
 | icon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | id | property | `string` | yes |  |
+| marker | property | `import("@ankhorage/surface").SurfaceImageSource \| import("./upload").UploadAsset \| null \| undefined` | no |  |
+| markerAlt | property | `string \| undefined` | no |  |
 | meta | property | `React.ReactNode` | no |  |
 | status | property | `"error" \| "primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "info" \| "danger" \| undefined` | no |  |
 | testID | property | `string \| undefined` | no |  |
@@ -7467,7 +7529,7 @@ Source: `src/types/timeline.ts:7:1`
 
 Kind: `type`
 Module: `src/types/timeline.ts`
-Source: `src/types/timeline.ts:17:1`
+Source: `src/types/timeline.ts:20:1`
 
 ### Members
 
@@ -8089,7 +8151,7 @@ Applies optional theme and polarity overrides to any ZORA component.
 
 Kind: `value`
 Module: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts:236:14`
+Source: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts:238:14`
 
 The core ZORA runtime component registry, excluding separately selected feature entries such as Reader.
 
@@ -8109,7 +8171,7 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:116:14`
+Source: `src/features/registry/componentMeta.ts:117:14`
 
 ## ZORA_COMPONENT_REGISTRY
 

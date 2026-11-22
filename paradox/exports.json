@@ -3922,6 +3922,247 @@
     "structuredRows": []
   },
   {
+    "name": "Calendar",
+    "title": null,
+    "description": "Renders a locale-aware, accessible month calendar using canonical GridView geometry.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+    "sourceLocation": {
+      "filePath": "src/features/calendar/adapters/inbound/Calendar.tsx",
+      "line": 17,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CalendarDensity",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/calendar.ts",
+    "sourceLocation": {
+      "filePath": "src/types/calendar.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CalendarProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/calendar.ts",
+    "sourceLocation": {
+      "filePath": "src/types/calendar.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "CalendarDensity",
+      "CalendarWeekStart",
+      "ZoraThemeMode"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "defaultDisplayedMonth",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "density",
+        "kind": "property",
+        "type": "CalendarDensity | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "disabledDates",
+        "kind": "property",
+        "type": "readonly Date[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "displayedMonth",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "interactionPolicy",
+        "kind": "property",
+        "type": "InteractionPolicy | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "inverted",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "isDateDisabled",
+        "kind": "property",
+        "type": "((date: Date) => boolean) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "locale",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "maxDate",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "minDate",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "mode",
+        "kind": "property",
+        "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onDisplayedMonthChange",
+        "kind": "property",
+        "type": "((month: Date) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSelectedDateChange",
+        "kind": "property",
+        "type": "((date: Date) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "selectedDate",
+        "kind": "property",
+        "type": "Date | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "testID",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "themeId",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "view",
+        "kind": "property",
+        "type": "\"month\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "weekStartsOn",
+        "kind": "property",
+        "type": "CalendarWeekStart | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "CalendarView",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/calendar.ts",
+    "sourceLocation": {
+      "filePath": "src/types/calendar.ts",
+      "line": 4,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "CalendarWeekStart",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/calendar.ts",
+    "sourceLocation": {
+      "filePath": "src/types/calendar.ts",
+      "line": 5,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "CameraPermissionStatus",
     "title": null,
     "description": null,
@@ -8435,7 +8676,7 @@
   {
     "name": "DataTable",
     "title": null,
-    "description": "Displays structured tabular data with responsive desktop/mobile layouts.",
+    "description": "Displays structured tabular data with responsive columns and optional controlled row selection.",
     "isReadme": false,
     "see": [],
     "security": [],
@@ -8443,7 +8684,7 @@
     "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
     "sourceLocation": {
       "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-      "line": 28,
+      "line": 29,
       "column": 14
     },
     "exportPaths": [
@@ -8723,6 +8964,13 @@
         "description": null
       },
       {
+        "name": "onSelectedRowIdsChange",
+        "kind": "property",
+        "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "onSortChange",
         "kind": "property",
         "type": "((sort: DataTableSortState) => void) | undefined",
@@ -8755,6 +9003,13 @@
         "kind": "property",
         "type": "readonly TRow[]",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "selectedRowIds",
+        "kind": "property",
+        "type": "readonly string[] | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -14377,10 +14632,10 @@
     ],
     "signatures": [
       {
-        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}: GridViewProps) => React.JSX.Element",
+        "label": "({\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n  viewportInteraction = 'enabled',\n}: GridViewProps) => React.JSX.Element",
         "parameters": [
           {
-            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n}",
+            "name": "{\n  items,\n  contentWidth,\n  contentHeight,\n  width,\n  height,\n  viewport: controlledViewport,\n  defaultViewport,\n  viewportConstraints,\n  zoomLimits,\n  zoom = 1,\n  overscanPixels = 160,\n  focusedItemId,\n  revealPaddingPixels = 8,\n  interactionPolicy,\n  onViewportChange,\n  onVisibleItemIdsChange,\n  renderItem,\n  testID,\n  viewportInteraction = 'enabled',\n}",
             "type": "GridViewProps",
             "required": true,
             "description": null
@@ -14538,6 +14793,13 @@
         "name": "viewportConstraints",
         "kind": "property",
         "type": "GridViewportConstraints | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "viewportInteraction",
+        "kind": "property",
+        "type": "\"enabled\" | \"locked\" | undefined",
         "required": false,
         "description": null
       },
@@ -30924,7 +31186,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 44,
+      "line": 46,
       "column": 1
     },
     "exportPaths": [
@@ -30954,7 +31216,7 @@
     "modulePath": "src/types/grid-view.ts",
     "sourceLocation": {
       "filePath": "src/types/grid-view.ts",
-      "line": 49,
+      "line": 51,
       "column": 1
     },
     "exportPaths": [
@@ -31390,7 +31652,7 @@
     "modulePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
     "sourceLocation": {
       "filePath": "src/features/timeline/adapters/inbound/Timeline.tsx",
-      "line": 127,
+      "line": 148,
       "column": 14
     },
     "exportPaths": [
@@ -31412,13 +31674,16 @@
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
       "filePath": "src/types/timeline.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "SurfaceImageSource",
+      "UploadAsset"
+    ],
     "signatures": [],
     "members": [
       {
@@ -31440,6 +31705,20 @@
         "kind": "property",
         "type": "string",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "marker",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "markerAlt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -31484,7 +31763,7 @@
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
       "filePath": "src/types/timeline.ts",
-      "line": 17,
+      "line": 20,
       "column": 1
     },
     "exportPaths": [
@@ -33918,7 +34197,7 @@
     "modulePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
-      "line": 236,
+      "line": 238,
       "column": 14
     },
     "exportPaths": [
@@ -33984,7 +34263,7 @@
     "modulePath": "src/features/registry/componentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/componentMeta.ts",
-      "line": 116,
+      "line": 117,
       "column": 14
     },
     "exportPaths": [
