@@ -1,17 +1,40 @@
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+import { isSerializableValue } from '@ankhorage/contracts';
 import { expect, test } from 'bun:test';
 import { Window } from 'happy-dom';
 import React, { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import type { TimelineProps } from '../../../../types/timeline';
+import type { TimelineManifestProps, TimelineProps } from '../../../../types/timeline';
 import type { ZoraProvider as ZoraProviderComponent } from '../../../theme/runtime';
 import type { Timeline as TimelineComponent } from './Timeline';
 
 const webDistRoot = join(import.meta.dir, '../../../../../web-dist');
+
+test('accepts ordered JSON-safe manifest items with media marker references', () => {
+  const props = {
+    compact: false,
+    items: [
+      {
+        id: 'acquired',
+        title: 'Company acquired',
+        description: 'The acquisition completed.',
+        meta: '2026-11-22T09:00:00Z',
+        marker: { mediaId: 'acquisition-logo' },
+        markerAlt: 'Acquired company logo',
+        status: 'success',
+      },
+      { id: 'integrated', title: 'Company integrated', status: 'primary' },
+    ],
+  } satisfies TimelineManifestProps;
+
+  expect(isSerializableValue(props)).toBe(true);
+  expect(props.items.map((item) => item.id)).toEqual(['acquired', 'integrated']);
+  expect(props.items[0]?.marker).toEqual({ mediaId: 'acquisition-logo' });
+});
 
 async function loadTimeline() {
   const [timelineModule, themeModule] = await Promise.all([
