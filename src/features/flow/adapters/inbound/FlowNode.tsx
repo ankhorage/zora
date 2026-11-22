@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import type { ZoraBaseProps } from '../../../../types/base';
 import type {
@@ -93,12 +93,12 @@ function FlowNodeInner(props: FlowNodeProps) {
           borderColor: props.selected
             ? theme.semantics.selection.border
             : theme.semantics.neutral.divider,
-          borderRadius: 14,
-          borderWidth: 2,
-          elevation: props.selected ? 4 : 1,
+          borderRadius: 12,
+          borderWidth: props.selected ? 2 : 1,
+          elevation: props.selected ? 3 : 1,
           shadowColor: theme.semantics.neutral.text,
-          shadowOpacity: props.selected ? 0.2 : 0.1,
-          shadowRadius: props.selected ? 14 : 9,
+          shadowOpacity: props.selected ? 0.16 : 0.08,
+          shadowRadius: props.selected ? 10 : 6,
         }}
       >
         <View
@@ -135,9 +135,9 @@ function FlowNodeInner(props: FlowNodeProps) {
           onStartShouldSetResponderCapture={() => !props.readOnly && !props.node.disabled}
           style={{
             backgroundColor: theme.semantics.surface.default,
-            borderTopLeftRadius: 12,
-            borderTopRightRadius: 12,
-            padding: 12,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            padding: 8,
           }}
         >
           <View>
@@ -152,7 +152,7 @@ function FlowNodeInner(props: FlowNodeProps) {
               disabled={props.readOnly ? true : props.node.disabled}
               testID={`flow-node-${props.node.id}`}
               accessibilityHint="Select this node. Drag to move it."
-              style={{ flexDirection: 'row', gap: 10 }}
+              style={{ alignItems: 'flex-start', flexDirection: 'row', gap: 8 }}
               onPress={() => {
                 if (pointerSelectionHandled.current) {
                   pointerSelectionHandled.current = false;
@@ -167,16 +167,16 @@ function FlowNodeInner(props: FlowNodeProps) {
                   style={{
                     alignItems: 'center',
                     backgroundColor: theme.semantics.brand.softBg,
-                    borderRadius: 12,
-                    height: 42,
+                    borderRadius: 10,
+                    height: 36,
                     justifyContent: 'center',
-                    minWidth: 42,
-                    width: 42,
+                    minWidth: 36,
+                    width: 36,
                   }}
                 >
                   <Icon
                     color={theme.semantics.brand.onSoftText}
-                    size={24}
+                    size={20}
                     source={resolveFlowNodeKindSource(props.node.presentation.nodeKind)}
                     testID={`flow-node-${props.node.id}-icon`}
                   />
@@ -189,7 +189,7 @@ function FlowNodeInner(props: FlowNodeProps) {
                   paddingRight: props.node.presentation?.status ? 4 : 0,
                 }}
               >
-                <ZoraText numberOfLines={2} variant="body" weight="bold">
+                <ZoraText ellipsizeMode="tail" numberOfLines={1} variant="body" weight="bold">
                   {props.node.title}
                 </ZoraText>
                 {props.node.description ? (
@@ -205,7 +205,7 @@ function FlowNodeInner(props: FlowNodeProps) {
               </View>
               {props.node.presentation?.status ? (
                 <Icon
-                  size={18}
+                  size={16}
                   source={resolveFlowNodeStatusSource(props.node.presentation.status)}
                   testID={`flow-node-${props.node.id}-status`}
                 />
@@ -214,14 +214,14 @@ function FlowNodeInner(props: FlowNodeProps) {
           </View>
           {props.children}
         </View>
-        <View style={{ gap: 4, paddingHorizontal: 12, paddingVertical: 8 }}>
+        <View style={{ paddingHorizontal: 4 }}>
           {props.node.ports.map((port) => (
             <View
               key={port.id}
               style={{
                 alignItems: 'center',
                 flexDirection: 'row',
-                minHeight: 44,
+                height: 44,
                 justifyContent: port.direction === 'input' ? 'flex-start' : 'flex-end',
               }}
             >
@@ -236,30 +236,31 @@ function FlowNodeInner(props: FlowNodeProps) {
                 disabled={props.readOnly || port.disabled}
                 testID={`flow-port-${props.node.id}-${port.id}`}
                 style={{
-                  backgroundColor:
-                    port.direction === 'input'
-                      ? theme.semantics.neutral.surfaceHover
-                      : theme.colors.primary,
-                  borderRadius: 999,
-                  minHeight: 44,
-                  minWidth: 44,
-                  paddingHorizontal: 10,
+                  alignItems: 'center',
+                  height: 44,
                   justifyContent: 'center',
+                  width: 44,
                 }}
                 onLayout={() => reportPortAnchor({ nodeId: props.node.id, portId: port.id })}
                 onPress={() => props.onPortPress({ nodeId: props.node.id, portId: port.id })}
               >
-                <Text
+                <View
+                  accessible={false}
                   style={{
-                    color:
+                    backgroundColor:
                       port.direction === 'input'
-                        ? theme.colors.primary
-                        : theme.semantics.surface.default,
-                    fontSize: 12,
+                        ? theme.semantics.surface.default
+                        : theme.semantics.brand.base,
+                    borderColor:
+                      port.direction === 'input'
+                        ? theme.semantics.brand.outline
+                        : theme.semantics.brand.base,
+                    borderRadius: 6,
+                    borderWidth: 2,
+                    height: 12,
+                    width: 12,
                   }}
-                >
-                  {port.label}
-                </Text>
+                />
               </Pressable>
             </View>
           ))}

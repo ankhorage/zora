@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { ZoraProvider } from '@ankhorage/zora';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
+import { flowTheme } from './flowTheme';
+
 type GraphSize = 25 | 200 | 1000;
 
 const graphSizes: readonly GraphSize[] = [25, 200, 1000];
@@ -52,7 +54,7 @@ function FlowCanvasBenchmark() {
     };
   }, [connections, nodes, viewport]);
   return (
-    <ZoraProvider>
+    <ZoraProvider theme={flowTheme}>
       <FlowCanvas
         connections={connections}
         nodes={nodes}

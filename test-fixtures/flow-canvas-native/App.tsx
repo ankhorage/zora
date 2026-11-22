@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ZoraProvider } from '@ankhorage/zora/reader-free';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
+import { flowTheme } from './flowTheme';
+
 const initialNodes = [
   {
     id: 'source',
@@ -44,7 +46,7 @@ export default function App() {
   const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
 
   return (
-    <ZoraProvider>
+    <ZoraProvider theme={flowTheme}>
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
         <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
           <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>

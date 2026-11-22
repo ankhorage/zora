@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { ZoraProvider } from '@ankhorage/zora';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
+import { flowTheme } from './flowTheme';
+
 type FlowState = Readonly<{
   readonly connections: number;
   readonly events: readonly string[];
@@ -87,7 +89,7 @@ function FlowCanvasChromiumAcceptance() {
   }, [connections, events, nodeMoveChanges, nodes, selected, viewport, viewportChanges]);
   const record = (event: string) => setEvents((current) => [...current, event]);
   return (
-    <ZoraProvider>
+    <ZoraProvider theme={flowTheme}>
       <FlowCanvas
         canRedo
         canUndo

@@ -94,6 +94,23 @@ describe('FlowNode presentation', () => {
       browserWindow.close();
     }
   });
+
+  test('keeps compact visible port points inside 44dp accessible hit targets', async () => {
+    const browserWindow = await renderFlowNode({
+      ports: [{ direction: 'output', id: 'out', label: 'Output' }],
+    });
+
+    try {
+      const port = browserWindow.document.querySelector('[data-testid="flow-port-node-out"]');
+      expect(port?.getAttribute('aria-label')).toBe('Start process: Output');
+      expect(port?.textContent).toBe('');
+      expect(port?.getAttribute('style')).toContain('height:44px');
+      expect(port?.getAttribute('style')).toContain('width:44px');
+      expect(port?.querySelector('[style*="width:12px"]')).not.toBeNull();
+    } finally {
+      browserWindow.close();
+    }
+  });
 });
 
 /*** Render the public web FlowNode implementation through its production theme boundary. */
