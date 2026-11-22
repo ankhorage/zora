@@ -138,7 +138,7 @@ test('keeps GraphView facade-owned public types on its canonical web subpath', a
   expect(declaration).toBe(
     [
       "export { GraphView } from './GraphView';",
-      "export type { GraphViewCallbacks, GraphViewController, GraphViewDomControllerEventDetail, GraphViewEdge, GraphViewElementEvent, GraphViewElementEventType, GraphViewFitOptions, GraphViewLayoutName, GraphViewMeasurement, GraphViewNode, GraphViewNodeMeasurement, GraphViewNodeRenderContext, GraphViewPoint, GraphViewProps, GraphViewRenderedNode, GraphViewSize, GraphViewStyleRule, GraphViewTopologyUpdatePolicy, GraphViewViewport } from './GraphView';",
+      "export type { GraphViewCallbacks, GraphViewCanonicalEdgeData, GraphViewCanonicalGraphProps, GraphViewCanonicalNodeData, GraphViewController, GraphViewDomControllerEventDetail, GraphViewEdge, GraphViewElementEvent, GraphViewElementEventType, GraphViewFitOptions, GraphViewInput, GraphViewLayoutName, GraphViewMeasurement, GraphViewNode, GraphViewNodeMeasurement, GraphViewNodeRenderContext, GraphViewPoint, GraphViewProps, GraphViewRenderedNode, GraphViewSize, GraphViewStyleRule, GraphViewTopologyUpdatePolicy, GraphViewViewport, ResolvedGraphViewProps } from './GraphView';",
       '',
     ].join('\n'),
   );

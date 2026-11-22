@@ -523,12 +523,17 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
     join(consumerRoot, 'web-contract.ts'),
     `import {
   GraphView,
+  type GraphViewCanonicalEdgeData,
+  type GraphViewCanonicalGraphProps,
+  type GraphViewCanonicalNodeData,
   type GraphViewController,
   type GraphViewEdge,
   type GraphViewFitOptions,
+  type GraphViewInput,
   type GraphViewLayoutName,
   type GraphViewProps,
   type GraphViewViewport,
+  type ResolvedGraphViewProps,
 } from '@ankhorage/zora/web/graph-view';
 import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
 import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
@@ -569,9 +574,14 @@ const contracts = [
 ] as const;
 const props = {} as {
   graphController: GraphViewController;
+  graphCanonicalEdge: GraphViewCanonicalEdgeData;
+  graphCanonicalGraph: GraphViewCanonicalGraphProps;
+  graphCanonicalNode: GraphViewCanonicalNodeData;
   graphEdge: GraphViewEdge;
   graphFitOptions: GraphViewFitOptions;
+  graphInput: GraphViewInput;
   graphLayoutName: GraphViewLayoutName;
+  graphResolved: ResolvedGraphViewProps;
   graphViewport: GraphViewViewport;
   graph: GraphViewProps;
   grid: GridViewProps;
