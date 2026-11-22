@@ -40,6 +40,11 @@ import { ComponentFormsSection } from './sections/componentForms';
 import { FoundationPrimitivesSection } from './sections/foundationPrimitives';
 import { LayoutsShowcaseSection } from './sections/layoutsShowcase';
 
+const WORKSPACE_SVG_ICON = {
+  source:
+    'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath fill="%23000" d="M3 5a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Z"/%3E%3C/svg%3E',
+} as const;
+
 export function ComponentsPage() {
   const [tab, setTab] = React.useState('overview');
   const [select, setSelect] = React.useState('starter');
@@ -371,6 +376,7 @@ export function ComponentsPage() {
             description="Basic form controls for search, selection, and text entry."
           />
           <Select
+            leadingIcon={WORKSPACE_SVG_ICON}
             value={select}
             onValueChange={setSelect}
             options={[

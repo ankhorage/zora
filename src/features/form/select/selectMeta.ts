@@ -122,6 +122,13 @@ export const selectMeta = {
       default: 'Select',
       authoring: { authority: 'instance' },
     },
+    leadingIcon: {
+      type: 'media',
+      category: 'Content',
+      label: 'Leading SVG icon',
+      mediaKinds: ['image'],
+      authoring: { authority: 'instance' },
+    },
     required: {
       type: 'boolean',
       category: 'State',

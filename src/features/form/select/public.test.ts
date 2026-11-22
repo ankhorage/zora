@@ -23,3 +23,14 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   expect(native).toContain("contentMode: 'direct'");
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
 });
+
+test('Select exposes and forwards a serializable leading SVG icon through the shared trigger', async () => {
+  const [selectTypes, selectTrigger] = await Promise.all([
+    Bun.file('src/types/select.ts').text(),
+    Bun.file('src/features/form/select/composition/SelectTrigger.tsx').text(),
+  ]);
+
+  expect(selectTypes).toContain("import type { ButtonIconSpec } from '@ankhorage/surface';");
+  expect(selectTypes).toContain('leadingIcon?: ButtonIconSpec;');
+  expect(selectTrigger).toContain('leadingIcon={props.leadingIcon}');
+});
