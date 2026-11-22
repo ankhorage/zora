@@ -192,12 +192,31 @@ function readStringChange(
 /*** Load adapter modules with inert ZORA controls so unit assertions stay at the public callback boundary. */
 async function loadAdapters(): Promise<LoadedAdapters> {
   const build = await Bun.build({
-    entrypoints: [new URL('../../../../authoring.ts', import.meta.url).pathname],
+    entrypoints: ['authoring-adapter-test-entry'],
     target: 'bun',
     plugins: [
       {
         name: 'inert-zora-authoring-controls',
         setup(builder) {
+          builder.onResolve({ filter: /^authoring-adapter-test-entry$/u }, () => ({
+            path: 'authoring-adapter-test-entry',
+            namespace: 'authoring-adapter-test-entry',
+          }));
+          builder.onLoad(
+            {
+              filter: /^authoring-adapter-test-entry$/u,
+              namespace: 'authoring-adapter-test-entry',
+            },
+            () => ({
+              loader: 'ts',
+              contents: `
+                export { AuthoringBindingEditorAdapter } from ${JSON.stringify(new URL('./AuthoringBindingEditorAdapter.tsx', import.meta.url).pathname)};
+                export { AuthoringPropertyInspectorAdapter } from ${JSON.stringify(new URL('./AuthoringPropertyInspectorAdapter.tsx', import.meta.url).pathname)};
+                export { AuthoringSelectionAdapter } from ${JSON.stringify(new URL('./AuthoringSelectionAdapter.tsx', import.meta.url).pathname)};
+                export { ThemeEditorAdapter } from ${JSON.stringify(new URL('./ThemeEditorAdapter.tsx', import.meta.url).pathname)};
+              `,
+            }),
+          );
           builder.onResolve(
             {
               filter:
