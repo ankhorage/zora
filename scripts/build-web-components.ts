@@ -1,4 +1,4 @@
-import { copyFile, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 
@@ -63,8 +63,4 @@ async function buildAuthoringArtifact(): Promise<void> {
     jsx: { runtime: 'automatic', importSource: 'react' },
   });
   if (!result.success) throw new Error(`Could not build ZORA authoring artifact:\n${result.logs}`);
-  await copyFile(
-    join(repositoryRoot, 'dist', 'authoring.browser.d.ts'),
-    join(outputDirectory, 'index.d.ts'),
-  );
 }
