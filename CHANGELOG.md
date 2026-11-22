@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.9
+
+### Patch Changes
+
+- 6db0f71: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`.
+
 ## 27.4.8
 
 ### Patch Changes
