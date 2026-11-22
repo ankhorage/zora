@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ZoraProvider } from '@ankhorage/zora';
+import { ZoraProvider } from '@ankhorage/zora/reader-free';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
 const initialNodes = [

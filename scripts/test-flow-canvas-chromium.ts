@@ -128,11 +128,7 @@ async function testFlowCanvasChromiumAsync() {
     await browser.waitForStateAsync((state) => state.selected.includes('source'));
     const beforeNodeDrag = await browser.readStateAsync();
     phase = 'drag';
-    await browser.dragAsync(
-      await browser.rectAsync('[data-testid="flow-node-source"]'),
-      96,
-      -48,
-    );
+    await browser.dragAsync(await browser.rectAsync('[data-testid="flow-node-source"]'), 96, -48);
     const moved = await browser.waitForStateAsync(
       (state) =>
         state.nodes.find((node) => node.id === 'source')?.x !==
