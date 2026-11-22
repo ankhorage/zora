@@ -3,8 +3,8 @@ import React from 'react';
 
 import type {
   GraphViewCallbacks,
+  GraphViewInput,
   GraphViewNode,
-  GraphViewProps,
   GraphViewRenderedNode,
 } from '../../../../../types/graph-view';
 import { GRAPH_VIEW_EVENTS } from '../../../constants/events';
@@ -12,6 +12,7 @@ import { createGraphPointerDownReader } from './createGraphPointerDownReader';
 import { createGraphRuntime, type GraphRuntime } from './createGraphRuntime';
 import { createGraphViewDomCallbacks } from './createGraphViewDomCallbacks';
 import { GraphNodeOverlay } from './GraphNodeOverlay';
+import { resolveGraphViewProps } from './resolveGraphViewProps';
 
 type GraphContainer = NonNullable<CytoscapeOptions['container']>;
 
@@ -36,11 +37,12 @@ type GraphContainer = NonNullable<CytoscapeOptions['container']>;
  * local grid. Use an explicit controller fit or a layout change when a complete rearrangement is
  * intentional.
  */
-export function GraphView(props: GraphViewProps) {
+export function GraphView(props: GraphViewInput) {
+  const resolvedProps = React.useMemo(() => resolveGraphViewProps(props), [props]);
   const hostRef = React.useRef<HTMLDivElement | null>(null);
   const pointerDownReader = React.useMemo(createGraphPointerDownReader, []);
   const { containerRef, renderedNodes, runtimeRef } = useGraphViewRuntime(
-    props,
+    resolvedProps,
     hostRef,
     pointerDownReader,
   );
@@ -52,8 +54,8 @@ export function GraphView(props: GraphViewProps) {
         pointerDownReader.write(event.nativeEvent);
       }}
       onPointerCancel={pointerDownReader.clear}
-      aria-label={props.ariaLabel ?? 'Graph'}
-      className={props.className}
+      aria-label={resolvedProps.ariaLabel ?? 'Graph'}
+      className={resolvedProps.className}
       role="application"
       style={{
         height: '100%',
@@ -61,15 +63,15 @@ export function GraphView(props: GraphViewProps) {
         minWidth: 0,
         position: 'relative',
         width: '100%',
-        ...props.style,
+        ...resolvedProps.style,
       }}
     >
       <div ref={containerRef} style={{ height: '100%', width: '100%' }} />
-      {props.renderNode ? (
+      {resolvedProps.renderNode ? (
         <GraphNodeOverlay
-          nodes={props.nodes}
+          nodes={resolvedProps.nodes}
           renderedNodes={renderedNodes}
-          renderNode={props.renderNode}
+          renderNode={resolvedProps.renderNode}
           onNodeEvent={(id, type, selectionIntent) =>
             runtimeRef.current?.handleOverlayNodeEvent(id, type, selectionIntent)
           }
@@ -85,7 +87,7 @@ GraphView.events = GRAPH_VIEW_EVENTS;
 
 /*** Compose React synchronization around the single imperative graph runtime. */
 function useGraphViewRuntime(
-  props: GraphViewProps,
+  props: ReturnType<typeof resolveGraphViewProps>,
   hostRef: React.RefObject<HTMLDivElement | null>,
   pointerDownReader: ReturnType<typeof createGraphPointerDownReader>,
 ) {
@@ -105,7 +107,7 @@ function useGraphViewRuntime(
 
 /*** Keep the callback ref current without mutating refs during render. */
 function useGraphCallbacksRef(
-  props: GraphViewProps,
+  props: ReturnType<typeof resolveGraphViewProps>,
   hostRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const callbacksRef = React.useRef<GraphViewCallbacks>(
@@ -167,7 +169,7 @@ function useRuntimeLifecycle(
 /*** Synchronize graph data and layout policy without exposing Cytoscape to React. */
 function useRuntimeGraphUpdate(
   runtimeRef: { current: GraphRuntime | null },
-  props: GraphViewProps,
+  props: ReturnType<typeof resolveGraphViewProps>,
 ) {
   const {
     edges,
@@ -238,7 +240,7 @@ function useRuntimeSelection(
 /*** Subscribe the optional rich-node overlay to rendered runtime positions. */
 function useRenderedNodeSubscription(
   runtimeRef: { current: GraphRuntime | null },
-  renderNode: GraphViewProps['renderNode'],
+  renderNode: ReturnType<typeof resolveGraphViewProps>['renderNode'],
   setRenderedNodes: (nodes: readonly GraphViewRenderedNode[]) => void,
 ) {
   React.useEffect(() => {
@@ -255,7 +257,7 @@ function useRenderedNodeSubscription(
 function useKnownNodeSizes(
   runtimeRef: { current: GraphRuntime | null },
   nodes: readonly GraphViewNode[],
-  getNodeSize: GraphViewProps['getNodeSize'],
+  getNodeSize: ReturnType<typeof resolveGraphViewProps>['getNodeSize'],
 ) {
   React.useEffect(() => {
     const runtime = runtimeRef.current;
@@ -268,7 +270,7 @@ function useKnownNodeSizes(
 }
 
 /*** Read callback props for the initial runtime callback-ref value. */
-function readCallbacks(props: GraphViewProps): GraphViewCallbacks {
+function readCallbacks(props: ReturnType<typeof resolveGraphViewProps>): GraphViewCallbacks {
   return {
     onEdgeEvent: props.onEdgeEvent,
     onLayoutComplete: props.onLayoutComplete,
