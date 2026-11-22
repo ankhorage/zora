@@ -20,7 +20,7 @@ jobs:
       versioned: ${{ steps.release.outputs.versioned }}
       package_name: ${{ steps.release.outputs.package_name }}
       package_version: ${{ steps.release.outputs.package_version }}
-      release_sha: ${{ steps.release.outputs.release_sha }}
+      release_sha: ${{ steps.commit-release.outputs.release_sha }}
 
     steps:
       - name: Create the scoped release token
@@ -280,7 +280,7 @@ jobs:
           latest_hash="$(sha256sum "$changesets_recheck_path" | cut -d ' ' -f 1)"
           test "$latest_hash" = "$changesets_status_hash" || { echo '::error title=Changesets changed::Release intent changed while awaiting ACK.'; exit 1; }
 
-      - name: Version packages directly on main
+      - name: Prepare versioned release candidate
         id: release
         if: hashFiles('.changeset/config.json') != ''
         env:
@@ -371,16 +371,6 @@ jobs:
             exit 0
           fi
 
-          git config user.name "ankhorage-renovate-sync[bot]"
-          git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
-          git add --all
-          git commit -m "chore(release): version packages [skip ci]"
-          if ! git push origin HEAD:main; then
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
-
           if [ "$before_version" = "$after_version" ]; then
             echo "versioned=false" >> "$GITHUB_OUTPUT"
           else
@@ -398,6 +388,9 @@ jobs:
           bun install --ignore-scripts
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.build?0:1)"; then
             bun run build
+          fi
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['test:packed-consumer'] ? 0 : 1)"; then
+            bun run test:packed-consumer
           fi
           pack_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-pack.XXXXXX")"
           install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-install.XXXXXX")"
@@ -692,6 +685,22 @@ jobs:
               echo "Declared binary $binary_path started without a missing-runtime-dependency failure (exit $binary_status)."
             done < binary-paths.txt
           )
+
+      - name: Commit verified release candidate
+        id: commit-release
+        if: steps.release.outputs.versioned == 'true'
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            git config user.name "ankhorage-renovate-sync[bot]"
+            git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
+            git add --all
+            git commit -m "chore(release): version packages [skip ci]"
+            git push origin HEAD:main
+          fi
+          echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+          echo "package_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+          echo "release_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Publish unpublished packages
         if: hashFiles('.changeset/config.json') != ''
