@@ -85,7 +85,7 @@ export function HeroBackgroundSlider({
       accessible={false}
       pointerEvents="none"
       testID={testID}
-      style={[StyleSheet.absoluteFillObject, { overflow: 'hidden' }, style]}
+      style={[StyleSheet.absoluteFill, { overflow: 'hidden' }, style]}
     >
       {slides.map((slide, slideIndex) => (
         <HeroBackgroundSlideLayer
@@ -211,7 +211,7 @@ function HeroBackgroundSlideLayer({
     <Animated.View
       accessible={false}
       pointerEvents="none"
-      style={[StyleSheet.absoluteFillObject, { opacity, transform: [{ scale }] }]}
+      style={[StyleSheet.absoluteFill, { opacity, transform: [{ scale }] }]}
     >
       {renderImage ? (
         renderImage(slide, slideIndex)
@@ -220,7 +220,7 @@ function HeroBackgroundSlideLayer({
           accessible={false}
           source={resolveSource(slide.source)}
           resizeMode={resizeMode}
-          style={[StyleSheet.absoluteFillObject, imageStyle]}
+          style={[StyleSheet.absoluteFill, imageStyle]}
         />
       )}
     </Animated.View>
