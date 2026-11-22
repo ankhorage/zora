@@ -67,6 +67,7 @@ import { gridMeta } from '../layout/gridMeta';
 import { screenMeta } from '../layout/screenMeta';
 import { scrollViewMeta } from '../layout/scrollViewMeta';
 import { viewMeta } from '../layout/viewMeta';
+import { masterDetailMeta } from '../master-detail/masterDetailMeta';
 import { flatListMeta } from '../list/flatListMeta';
 import { listItemMeta, listMeta, listSectionMeta } from '../list/meta';
 import { sectionListMeta } from '../list/sectionListMeta';
@@ -156,6 +157,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   IconButton: iconButtonMeta,
   Image: imageMeta,
   KeyboardAvoidingView: keyboardAvoidingViewMeta,
+  MasterDetail: masterDetailMeta,
   TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
   MetricCard: metricCardMeta,

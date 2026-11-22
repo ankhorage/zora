@@ -54,6 +54,8 @@ test('existing interactive authoring retains bindings in core metadata', () => {
     type: 'object',
   });
   expect(meta.BottomSheet?.bindings?.props?.open?.value.type).toBe('boolean');
+  expect(meta.MasterDetail?.bindings?.props?.activePane?.value.type).toBe('string');
+  expect(meta.MasterDetail?.bindings?.props?.activePane?.acceptsTransforms).toBe(true);
 });
 
 test('final ownership data components retain bindings in core metadata', () => {

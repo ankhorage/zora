@@ -238,6 +238,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Chip',
       'ChipGroup',
       'DataTable',
+      'MasterDetail',
       'DatePicker',
       'Pagination',
       'Rating',
@@ -477,6 +478,23 @@ describe('ZORA_COMPONENT_META invariants', () => {
       keyboardVerticalOffset: 0,
     });
     expect(keyboardAvoidingView.props.behavior?.enum).toEqual(['height', 'position', 'padding']);
+  });
+
+  test('MasterDetail retains Navigator-owned compact state and serializable layout slots', () => {
+    const masterDetail = ZORA_COMPONENT_META.MasterDetail;
+    expect(masterDetail.directManifestNode).toBe(true);
+    expect(masterDetail.allowedChildren).toEqual([]);
+    expect(masterDetail.props.activePane?.enum).toEqual(['master', 'detail']);
+    expect(masterDetail.props.masterWidth?.enum).toEqual([25, 30, 35, 40]);
+    expect(masterDetail.slots).toMatchObject({
+      master: { label: 'Master list' },
+      detail: { label: 'Detail' },
+    });
+    expect(masterDetail.bindings?.props?.activePane).toMatchObject({
+      acceptsFallback: true,
+      acceptsTransforms: true,
+      value: { type: 'string' },
+    });
   });
 
   test('Progress is a direct manifest leaf with serializable defaults', () => {
