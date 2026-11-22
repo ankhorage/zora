@@ -144,6 +144,19 @@ test('keeps GraphView facade-owned public types on its canonical web subpath', a
   );
 });
 
+/** Verifies that a public type may retain an unexported same-module declaration dependency. */
+test('materializes GraphView private declaration dependencies without exporting them', async () => {
+  const declaration = await Bun.file(
+    join('web-dist', 'components', 'graph-view', 'GraphView.types-0.d.ts'),
+  ).text();
+
+  expect(declaration).toContain('interface GraphViewSharedProps {');
+  expect(declaration).not.toContain('export interface GraphViewSharedProps');
+  expect(declaration).toContain('GraphViewProps extends GraphViewSharedProps');
+  expect(declaration).toContain('GraphViewCanonicalGraphProps extends GraphViewSharedProps');
+  expect(declaration).toContain('Pick<\n  GraphViewSharedProps');
+});
+
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
 test('publishes SSR-safe ordinary UI through canonical web subpaths', async () => {
   const packageJson = (await Bun.file('package.json').json()) as {

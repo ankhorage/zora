@@ -514,14 +514,14 @@ function selectedPublicDeclarations(
   exportNames: ReadonlySet<string> | undefined,
 ): readonly ts.Statement[] {
   const publicDeclarations = file.statements.filter(isPublicDeclarationStatement);
-  if (exportNames === undefined) return publicDeclarations;
-
   const selected = new Set(
-    publicDeclarations.filter((statement) =>
-      isSelectedPublicDeclarationStatement(statement, exportNames),
-    ),
+    exportNames === undefined
+      ? publicDeclarations
+      : publicDeclarations.filter((statement) =>
+          isSelectedPublicDeclarationStatement(statement, exportNames),
+        ),
   );
-  const directDeclarations = publicDeclarations.flatMap((statement) => {
+  const directDeclarations = file.statements.flatMap((statement) => {
     const name = declarationName(statement);
     return name === undefined ? [] : [{ name, statement }];
   });
@@ -535,7 +535,7 @@ function selectedPublicDeclarations(
       expanded = true;
     }
   }
-  return publicDeclarations.filter((statement) => selected.has(statement));
+  return file.statements.filter((statement) => selected.has(statement));
 }
 
 /*** Render a selected public declaration without retaining sibling names from a facade export list. */

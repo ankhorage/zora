@@ -505,10 +505,10 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
       {
         compilerOptions: {
           jsx: 'react-jsx',
-          module: 'ESNext',
-          moduleResolution: 'bundler',
+          module: 'NodeNext',
+          moduleResolution: 'NodeNext',
           noEmit: true,
-          skipLibCheck: true,
+          skipLibCheck: false,
           strict: true,
           target: 'ES2022',
           types: ['react'],
@@ -535,6 +535,9 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
   type GraphViewViewport,
   type ResolvedGraphViewProps,
 } from '@ankhorage/zora/web/graph-view';
+import { Breadcrumbs, type BreadcrumbsProps } from '@ankhorage/zora/web/breadcrumbs';
+import { Button, type ButtonProps } from '@ankhorage/zora/web/button';
+import { Checkbox, type CheckboxProps } from '@ankhorage/zora/web/checkbox';
 import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
 import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
 import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
@@ -547,6 +550,29 @@ import {
   type TreeViewProps,
 } from '@ankhorage/zora/web/tree-view';
 import { TileGrid, type TileGridProps } from '@ankhorage/zora/web/tile-grid';
+import { View, type ViewProps } from '@ankhorage/zora/web/view';
+
+const graphProps: GraphViewProps = {
+  ariaLabel: 'Dependency graph',
+  edges: [],
+  layout: 'grid',
+  nodes: [{ id: 'root' }],
+  onNodeEvent: () => undefined,
+  topologyUpdatePolicy: 'preserve-positions',
+};
+const canonicalGraphProps: GraphViewCanonicalGraphProps = {
+  ariaLabel: 'Canonical dependency graph',
+  graph: { edges: [], nodes: [] },
+  layout: 'circle',
+};
+const graphEvents: 'zora-graph-view-ready' = GraphView.events.ready;
+const componentContracts = [Breadcrumbs, Button, Checkbox, View] as const;
+const componentProps = {} as {
+  breadcrumbs: BreadcrumbsProps;
+  button: ButtonProps;
+  checkbox: CheckboxProps;
+  view: ViewProps;
+};
 
 const treeNode: TreeItemNode<'root'> = {
   id: 'root',
@@ -599,6 +625,11 @@ type GridViewDoesNotExposeTileGrid = import('@ankhorage/zora/web/grid-view').Til
 type TabsDoesNotExposeTabPanel = import('@ankhorage/zora/web/tabs').TabPanelProps;
 
 void contracts;
+void canonicalGraphProps;
+void componentContracts;
+void componentProps;
+void graphEvents;
+void graphProps;
 void props;
 void treeProps;
 `,
