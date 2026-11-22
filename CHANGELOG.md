@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.5.3
+
+### Patch Changes
+
+- 4d2ea38: Fix the published theme entrypoint's Node ESM module specifiers.
+- 1ce4016: Resolve theme imports from TypeScript source in Expo Metro while emitting explicit Node ESM JavaScript specifiers.
+
 ## 27.5.2
 
 ### Patch Changes
