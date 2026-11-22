@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.4.10
+
+### Patch Changes
+
+- a887aae: Update dependencies: `@ankhorage/runtime`.
+
 ## 27.4.9
 
 ### Patch Changes
