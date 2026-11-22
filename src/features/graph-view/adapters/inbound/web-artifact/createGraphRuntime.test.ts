@@ -111,8 +111,18 @@ test('fits changed topology but preserves viewport and avoids relayout for highl
 
 test('preserves a stable topology removal without relayout, fit, or retained-node movement', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { sort: 0 };
-  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const calls = { complete: 0, ready: 0, sort: 0 };
+  const runtime = createGraphRuntime(undefined, {
+    current: {
+      onLayoutComplete: () => {
+        calls.complete += 1;
+      },
+      onReady: (controller) => {
+        calls.ready += 1;
+        ready.resolve(controller);
+      },
+    },
+  });
   const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
   const input = {
     nodes,
@@ -127,7 +137,7 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
         return 0;
       },
     },
-    richNodeRendering: false,
+    richNodeRendering: true,
     topologyUpdatePolicy: 'preserve-positions' as const,
   };
   try {
@@ -146,10 +156,99 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       nodes: nodes.slice(0, -1),
       edges: input.edges.slice(0, -1),
     });
+    runtime.setNodeSize('repository-0', { height: 24, width: 48 });
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     expect(controller.measureNodes?.(retainedIds)).toEqual(before);
     expect(controller.getViewport()).toEqual(viewport);
+    expect(calls.ready).toBe(1);
+    expect(calls.complete).toBe(1);
     expect(calls.sort).toBe(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
+test('lays out a late initial rich-node measurement without a topology change', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const completed = Promise.withResolvers<void>();
+  const calls = { sort: 0 };
+  const callbacks: { current: GraphViewCallbacks } = { current: { onReady: ready.resolve } };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const input = {
+    nodes: [{ id: 'a' }, { id: 'b' }],
+    edges: [{ source: 'a', target: 'b' }],
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: true,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    await ready.promise;
+    const sortCount = calls.sort;
+    callbacks.current = { onLayoutComplete: () => completed.resolve() };
+
+    runtime.setNodeSize('a', { height: 24, width: 48 });
+    await completed.promise;
+
+    expect(calls.sort).toBeGreaterThan(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
+test('keeps explicit fit and layout available after preserving a rich-node topology removal', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const completed = Promise.withResolvers<void>();
+  const calls = { sort: 0 };
+  const callbacks: { current: GraphViewCallbacks } = { current: { onReady: ready.resolve } };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
+  const input = {
+    nodes,
+    edges: nodes.slice(1).flatMap((node, index) => {
+      const source = nodes.at(index);
+      return source ? [{ id: `dependency-${index}`, source: source.id, target: node.id }] : [];
+    }),
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: true,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    const controller = await ready.promise;
+    controller.setZoom(0.7);
+    controller.setPan({ x: 40, y: 30 });
+    const preservedInput = {
+      ...input,
+      nodes: nodes.slice(0, -1),
+      edges: input.edges.slice(0, -1),
+    };
+    runtime.update(preservedInput);
+    runtime.setNodeSize('repository-0', { height: 24, width: 48 });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    const preservedSorts = calls.sort;
+    const preservedViewport = controller.getViewport();
+
+    controller.fit();
+    expect(controller.getViewport()).not.toEqual(preservedViewport);
+    callbacks.current = { onLayoutComplete: () => completed.resolve() };
+    runtime.update({ ...preservedInput, layout: 'circle' });
+    await completed.promise;
+
+    expect(calls.sort).toBeGreaterThan(preservedSorts);
   } finally {
     runtime.destroy();
   }
