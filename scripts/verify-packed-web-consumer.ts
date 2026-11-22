@@ -445,7 +445,7 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
           module: 'ESNext',
           moduleResolution: 'bundler',
           noEmit: true,
-          skipLibCheck: true,
+          skipLibCheck: false,
           strict: true,
           target: 'ES2022',
           types: ['react'],
@@ -458,7 +458,15 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
   );
   writeFileSync(
     join(consumerRoot, 'web-contract.ts'),
-    `import { GraphView, type GraphViewProps } from '@ankhorage/zora/web/graph-view';
+    `import {
+  GraphView,
+  type GraphViewController,
+  type GraphViewEdge,
+  type GraphViewFitOptions,
+  type GraphViewLayoutName,
+  type GraphViewProps,
+  type GraphViewViewport,
+} from '@ankhorage/zora/web/graph-view';
 import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
 import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
 import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
@@ -497,6 +505,11 @@ const contracts = [
   TreeView,
 ] as const;
 const props = {} as {
+  graphController: GraphViewController;
+  graphEdge: GraphViewEdge;
+  graphFitOptions: GraphViewFitOptions;
+  graphLayoutName: GraphViewLayoutName;
+  graphViewport: GraphViewViewport;
   graph: GraphViewProps;
   grid: GridViewProps;
   tab: TabProps;

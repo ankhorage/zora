@@ -130,6 +130,20 @@ test('keeps specialized browser component types on their canonical web subpaths'
   );
 });
 
+/** Verifies that one-component feature facades retain their complete public supporting type contract. */
+test('keeps GraphView facade-owned public types on its canonical web subpath', async () => {
+  const declaration = await Bun.file(
+    join('web-dist', 'components', 'graph-view', 'index.d.ts'),
+  ).text();
+  expect(declaration).toBe(
+    [
+      "export { GraphView } from './GraphView';",
+      "export type { GraphViewCallbacks, GraphViewController, GraphViewDomControllerEventDetail, GraphViewEdge, GraphViewElementEvent, GraphViewElementEventType, GraphViewFitOptions, GraphViewLayoutName, GraphViewMeasurement, GraphViewNode, GraphViewNodeMeasurement, GraphViewNodeRenderContext, GraphViewPoint, GraphViewProps, GraphViewRenderedNode, GraphViewSize, GraphViewStyleRule, GraphViewTopologyUpdatePolicy, GraphViewViewport } from './GraphView';",
+      '',
+    ].join('\n'),
+  );
+});
+
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
 test('publishes SSR-safe ordinary UI through canonical web subpaths', async () => {
   const packageJson = (await Bun.file('package.json').json()) as {

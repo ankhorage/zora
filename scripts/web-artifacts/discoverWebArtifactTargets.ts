@@ -105,8 +105,16 @@ async function discoverEntryTargets(
                 moduleSymbol,
                 sourceOwnedImplementation ? implementationPath : publicEntry,
                 paths,
+                runtimeExports.length === 1,
               )
-            : discoverAssociatedTypeExports(checker, program, moduleSymbol, override, paths),
+            : discoverAssociatedTypeExports(
+                checker,
+                program,
+                moduleSymbol,
+                override,
+                paths,
+                runtimeExports.length === 1,
+              ),
         symbolIdentity: resolveSymbolIdentity(resolvedSymbol),
       } satisfies DiscoveredTarget;
     }),
@@ -123,13 +131,14 @@ interface DiscoveredTarget extends WebArtifactTarget {
   readonly symbolIdentity: string;
 }
 
-/*** Preserve only facade types imported by one component implementation at the symbol level. */
+/*** Preserve the canonical facade contract for one-component features and implementation-owned types otherwise. */
 function discoverAssociatedTypeExports(
   checker: ts.TypeChecker,
   program: ts.Program,
   publicModuleSymbol: ts.Symbol,
   implementationPath: string,
   paths: DiscoveryPaths,
+  ownsWholeFacadeTypeContract: boolean,
 ): WebArtifactTarget['typeExports'] {
   const importedTypeSymbols = discoverImportedTypeSymbols(checker, program, implementationPath);
   const implementationTypeExports = discoverImplementationTypeExports(
@@ -137,6 +146,9 @@ function discoverAssociatedTypeExports(
     program,
     implementationPath,
     paths,
+  );
+  const implementationTypeNames = new Set(
+    implementationTypeExports.map(({ exportName }) => exportName),
   );
 
   const facadeTypeExports = checker
@@ -148,7 +160,8 @@ function discoverAssociatedTypeExports(
           ? checker.getAliasedSymbol(exportSymbol)
           : exportSymbol;
       if ((resolvedSymbol.flags & ts.SymbolFlags.Type) === 0) return [];
-      if (!importedTypeSymbols.has(resolvedSymbol)) return [];
+      if (implementationTypeNames.has(exportName)) return [];
+      if (!ownsWholeFacadeTypeContract && !importedTypeSymbols.has(resolvedSymbol)) return [];
       const declaration = resolvedSymbol.declarations?.at(0);
       if (declaration === undefined) return [];
       const sourcePath = declaration.getSourceFile().fileName;
