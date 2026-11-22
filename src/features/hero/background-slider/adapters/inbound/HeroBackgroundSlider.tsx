@@ -14,6 +14,7 @@ import type {
   HeroBackgroundSlide,
   HeroBackgroundSliderProps,
 } from '../../../../../types/hero-background-slider';
+import { useZoraTheme } from '../../../../theme/composition/useZoraTheme';
 
 /***
  * Cross-platform background slideshow with synchronized index reporting.
@@ -34,8 +35,8 @@ export function HeroBackgroundSlider({
   reducedMotion,
   showProgress = true,
   progressHeight = 4,
-  progressTrackColor = 'rgba(255,255,255,0.2)',
-  progressIndicatorColor = '#ffffff',
+  progressTrackColor,
+  progressIndicatorColor,
   progressTrackStyle,
   progressIndicatorStyle,
   resizeMode = 'cover',
@@ -44,6 +45,7 @@ export function HeroBackgroundSlider({
   renderImage,
   testID,
 }: HeroBackgroundSliderProps) {
+  const { theme } = useZoraTheme();
   const [uncontrolledIndex, setUncontrolledIndex] = React.useState(defaultIndex);
   const systemReducedMotion = useSystemReducedMotion();
   const shouldReduceMotion = reducedMotion ?? systemReducedMotion;
@@ -114,7 +116,7 @@ export function HeroBackgroundSlider({
               left: 0,
               right: 0,
               height: progressHeight,
-              backgroundColor: progressTrackColor,
+              backgroundColor: progressTrackColor ?? theme.semantics.neutral.divider,
               overflow: 'hidden',
               zIndex: 10,
             },
@@ -129,7 +131,7 @@ export function HeroBackgroundSlider({
                   outputRange: ['0%', '100%'],
                 }),
                 height: '100%',
-                backgroundColor: progressIndicatorColor,
+                backgroundColor: progressIndicatorColor ?? theme.colors.primary,
               },
               progressIndicatorStyle,
             ]}
