@@ -22,6 +22,41 @@ const authoringControls = [
   'View',
 ] as const;
 
+interface WebArtifactManifest {
+  readonly artifacts: readonly {
+    readonly component: string;
+    readonly exportName: string;
+  }[];
+}
+
+/** Verifies that each generated package subpath exposes exactly its discovered component contract. */
+test('isolates every generated component web runtime and declaration entrypoint', async () => {
+  const manifest = (await Bun.file('web-dist/manifest.json').json()) as WebArtifactManifest;
+
+  await Promise.all(
+    manifest.artifacts.map(async ({ component, exportName }) => {
+      const directory = join('web-dist', 'components', component);
+      const [runtimeEntry, declarationEntry] = await Promise.all([
+        Bun.file(join(directory, 'index.js')).text(),
+        Bun.file(join(directory, 'index.d.ts')).text(),
+      ]);
+      const artifact = (await import(`@ankhorage/zora/web/${component}`)) as Record<
+        string,
+        unknown
+      >;
+
+      expect(Object.keys(artifact).sort(), component).toEqual([exportName]);
+      expect(runtimeEntry, component).toBe(
+        `'use client';\nexport { ${exportName} } from './${exportName}.js';\n`,
+      );
+      expect(declarationEntry, component).toStartWith(
+        `export { ${exportName} } from './${exportName}';\n`,
+      );
+      expect(declarationEntry, component).not.toContain('export *');
+    }),
+  );
+});
+
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
 test('publishes SSR-safe ordinary UI through canonical web subpaths', async () => {
   const packageJson = (await Bun.file('package.json').json()) as {

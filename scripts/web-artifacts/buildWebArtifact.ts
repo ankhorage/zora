@@ -89,15 +89,19 @@ export async function buildWebArtifact(
 
 /*** Give each selected component one stable directory import and type entry. */
 async function writeAlias(target: WebArtifactTarget, outputDirectory: string): Promise<void> {
+  const typeAlias =
+    target.typeExports.length === 0
+      ? ''
+      : `export type { ${target.typeExports.map(({ exportName }) => exportName).join(', ')} } from './${target.exportName}';\n`;
   await Promise.all([
     writeFile(
       join(outputDirectory, 'index.js'),
-      `'use client';\nexport * from './${target.exportName}.js';\n`,
+      `'use client';\nexport { ${target.exportName} } from './${target.exportName}.js';\n`,
       'utf8',
     ),
     writeFile(
       join(outputDirectory, 'index.d.ts'),
-      `export * from './${target.exportName}';\n`,
+      `export { ${target.exportName} } from './${target.exportName}';\n${typeAlias}`,
       'utf8',
     ),
   ]);
@@ -278,12 +282,11 @@ async function writeDeclaration(
   const outputFile = `${target.exportName}.d.ts`;
   const outputPath = join(outputDirectory, outputFile);
   if (target.declarationSource === undefined) {
-    const declarations = target.runtimeExports.map(createPortableRuntimeDeclaration);
-    await writeFile(
-      outputPath,
-      ["import type React from 'react';", '', ...declarations, ''].join('\n'),
-      'utf8',
+    const types = target.typeExports.map(({ exportName }) => exportName);
+    const declarations = target.runtimeExports.map((runtimeExport) =>
+      createPublicRuntimeDeclaration(runtimeExport, types),
     );
+    await writeFile(outputPath, [...declarations, ''].join('\n'), 'utf8');
     return [outputFile];
   }
   if (target.typeExports.length === 0) {
@@ -415,15 +418,22 @@ function assertStandaloneDeclaration(
   }
 }
 
-/*** Emit a portable declaration without requiring full ZORA or Surface packages. */
-function createPortableRuntimeDeclaration(runtimeExport: WebArtifactRuntimeExport): string {
-  if (runtimeExport.runtimeKind === 'component') {
-    return `export declare const ${runtimeExport.exportName}: React.ComponentType<Record<string, unknown>>;`;
-  }
-  if (runtimeExport.runtimeKind === 'callable') {
-    return `export declare const ${runtimeExport.exportName}: (...args: unknown[]) => unknown;`;
-  }
-  return `export declare const ${runtimeExport.exportName}: unknown;`;
+/*** Emit one exact public declaration and its component-owned public types. */
+function createPublicRuntimeDeclaration(
+  runtimeExport: WebArtifactRuntimeExport,
+  typeExports: readonly string[],
+): string {
+  const propsType = typeExports.find(
+    (typeExport) => typeExport.endsWith('Props') && typeExport.startsWith(runtimeExport.exportName),
+  );
+  const typeReexport =
+    typeExports.length === 0
+      ? ''
+      : `export type { ${typeExports.join(', ')} } from '@ankhorage/zora';\n`;
+  const typeImport =
+    propsType === undefined ? '' : `import type { ${propsType} } from '@ankhorage/zora';\n`;
+  const props = propsType ?? 'Record<string, unknown>';
+  return `${typeImport}import type React from 'react';\n${typeReexport}export declare const ${runtimeExport.exportName}: React.ComponentType<${props}>;`;
 }
 
 /*** Describe the generated provider's web-facing props without owner package imports. */
