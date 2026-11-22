@@ -4,18 +4,13 @@ import {
   Animated,
   Easing,
   Image,
-  type ImageSourcePropType,
   Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-import type {
-  CarouselProps,
-  CarouselSlide,
-  CarouselTransition,
-} from '../../types/carousel';
+import type { CarouselProps, CarouselSlide, CarouselTransition } from '../../types/carousel';
 import { useZoraTheme } from '../theme/composition/useZoraTheme';
 
 /***
@@ -70,7 +65,8 @@ export function Carousel({
   const duration = Math.max(1, intervalMs);
   const controlledWithoutHandler = index !== undefined && onIndexChange === undefined;
   const canAdvance = loop || activeIndex < slides.length - 1;
-  const shouldPlay = autoPlay && !paused && slides.length > 1 && canAdvance && !controlledWithoutHandler;
+  const shouldPlay =
+    autoPlay && !paused && slides.length > 1 && canAdvance && !controlledWithoutHandler;
 
   const navigate = React.useCallback(
     (target: number, nextDirection: 1 | -1) => {
@@ -139,93 +135,52 @@ export function Carousel({
           width={width}
         />
       ))}
-      {showArrows && slides.length > 1 ? (
-        <View pointerEvents="box-none" style={[styles.controls, controlsStyle]}>
-          <Pressable
-            accessibilityLabel={previousLabel}
-            accessibilityRole="button"
-            disabled={!canPrevious || controlledWithoutHandler}
-            onPress={() => navigate(activeIndex - 1, -1)}
-            style={[
-              styles.control,
-              { backgroundColor: controlBackgroundColor ?? theme.semantics.surface.raised },
-            ]}
-            testID={testID ? `${testID}-previous` : undefined}
-          >
-            <Text style={{ color: controlColor ?? theme.semantics.content.default, fontSize: 30 }}>
-              {'‹'}
-            </Text>
-          </Pressable>
-          <Pressable
-            accessibilityLabel={nextLabel}
-            accessibilityRole="button"
-            disabled={!canNext || controlledWithoutHandler}
-            onPress={() => navigate(activeIndex + 1, 1)}
-            style={[styles.control, { backgroundColor: controlBackgroundColor ?? theme.semantics.surface.raised }]}
-            testID={testID ? `${testID}-next` : undefined}
-          >
-            <Text style={{ color: controlColor ?? theme.semantics.content.default, fontSize: 30 }}>
-              {'›'}
-            </Text>
-          </Pressable>
-        </View>
-      ) : null}
-      {showIndicators && slides.length > 1 ? (
-        <View pointerEvents="box-none" style={[styles.indicators, indicatorsStyle]}>
-          {slides.map((slide, slideIndex) => (
-            <Pressable
-              key={slide.key}
-              accessibilityLabel={`Go to slide ${slideIndex + 1} of ${slides.length}`}
-              accessibilityRole="button"
-              accessibilityState={{ selected: slideIndex === activeIndex }}
-              disabled={controlledWithoutHandler}
-              onPress={() => navigate(slideIndex, slideIndex < activeIndex ? -1 : 1)}
-              style={[
-                styles.indicator,
-                {
-                  backgroundColor: slideIndex === activeIndex ? markerColor : idleMarkerColor,
-                  width: slideIndex === activeIndex ? 24 : 8,
-                },
-              ]}
-              testID={testID ? `${testID}-indicator-${slideIndex}` : undefined}
-            />
-          ))}
-        </View>
-      ) : null}
-      {showProgress && slides.length > 1 ? (
-        <View
-          pointerEvents="none"
-          style={[
-            styles.progress,
-            {
-              height: progressHeight,
-              backgroundColor: progressTrackColor ?? theme.semantics.neutral.divider,
-            },
-            progressTrackStyle,
-          ]}
-          testID={testID ? `${testID}-progress` : undefined}
-        >
-          <Animated.View
-            style={[
-              {
-                height: '100%',
-                width: progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }),
-                backgroundColor: progressIndicatorColor ?? theme.colors.primary,
-              },
-              progressIndicatorStyle,
-            ]}
-          />
-        </View>
-      ) : null}
+      <CarouselControls
+        activeIndex={activeIndex}
+        canNext={canNext}
+        canPrevious={canPrevious}
+        controlBackgroundColor={controlBackgroundColor ?? theme.semantics.surface.raised}
+        controlColor={controlColor ?? theme.semantics.content.default}
+        controlledWithoutHandler={controlledWithoutHandler}
+        controlsStyle={controlsStyle}
+        navigate={navigate}
+        nextLabel={nextLabel}
+        previousLabel={previousLabel}
+        show={showArrows && slides.length > 1}
+        testID={testID}
+      />
+      <CarouselIndicators
+        activeIndex={activeIndex}
+        activeColor={markerColor}
+        controlledWithoutHandler={controlledWithoutHandler}
+        idleColor={idleMarkerColor}
+        indicatorsStyle={indicatorsStyle}
+        navigate={navigate}
+        show={showIndicators && slides.length > 1}
+        slides={slides}
+        testID={testID}
+      />
+      <CarouselProgress
+        height={progressHeight}
+        indicatorColor={progressIndicatorColor ?? theme.colors.primary}
+        indicatorStyle={progressIndicatorStyle}
+        progress={progress}
+        show={showProgress && slides.length > 1}
+        testID={testID}
+        trackColor={progressTrackColor ?? theme.semantics.neutral.divider}
+        trackStyle={progressTrackStyle}
+      />
     </View>
   );
 }
 
-interface CarouselLayerProps
-  extends Pick<
-    CarouselProps,
-    'enterDurationMs' | 'exitDurationMs' | 'imageStyle' | 'initialScale' | 'renderImage' | 'resizeMode'
-  > {
+interface CarouselLayerProps {
+  readonly enterDurationMs?: CarouselProps['enterDurationMs'];
+  readonly exitDurationMs?: CarouselProps['exitDurationMs'];
+  readonly imageStyle: CarouselProps['imageStyle'];
+  readonly initialScale?: CarouselProps['initialScale'];
+  readonly renderImage: CarouselProps['renderImage'];
+  readonly resizeMode: CarouselProps['resizeMode'];
   readonly slide: CarouselSlide;
   readonly slideIndex: number;
   readonly active: boolean;
@@ -256,7 +211,9 @@ function CarouselLayer({
   width,
 }: CarouselLayerProps) {
   const [opacity] = React.useState(() => new Animated.Value(active && !animateOnMount ? 1 : 0));
-  const [scale] = React.useState(() => new Animated.Value(active && animateOnMount ? initialScale : 1));
+  const [scale] = React.useState(
+    () => new Animated.Value(active && animateOnMount ? initialScale : 1),
+  );
   const [offset] = React.useState(() => new Animated.Value(0));
   const hasMounted = React.useRef(false);
 
@@ -361,6 +318,156 @@ function CarouselLayer({
       ) : null}
       {slide.content}
     </Animated.View>
+  );
+}
+
+interface CarouselNavigationProps {
+  readonly activeIndex: number;
+  readonly navigate: (index: number, direction: 1 | -1) => void;
+  readonly controlledWithoutHandler: boolean;
+  readonly testID: CarouselProps['testID'];
+}
+
+interface CarouselControlsProps extends CarouselNavigationProps {
+  readonly show: boolean;
+  readonly canPrevious: boolean;
+  readonly canNext: boolean;
+  readonly previousLabel: string;
+  readonly nextLabel: string;
+  readonly controlColor: string;
+  readonly controlBackgroundColor: string;
+  readonly controlsStyle: CarouselProps['controlsStyle'];
+}
+
+/*** Render optional previous/next buttons without coupling the slide content to navigation. */
+function CarouselControls({
+  activeIndex,
+  canNext,
+  canPrevious,
+  controlBackgroundColor,
+  controlColor,
+  controlledWithoutHandler,
+  controlsStyle,
+  navigate,
+  nextLabel,
+  previousLabel,
+  show,
+  testID,
+}: CarouselControlsProps) {
+  if (!show) return null;
+  const buttonStyle = [styles.control, { backgroundColor: controlBackgroundColor }];
+  const labelStyle = { color: controlColor, fontSize: 30 };
+  return (
+    <View pointerEvents="box-none" style={[styles.controls, controlsStyle]}>
+      <Pressable
+        accessibilityLabel={previousLabel}
+        accessibilityRole="button"
+        disabled={!canPrevious || controlledWithoutHandler}
+        onPress={() => navigate(activeIndex - 1, -1)}
+        style={buttonStyle}
+        testID={testID ? `${testID}-previous` : undefined}
+      >
+        <Text style={labelStyle}>{'‹'}</Text>
+      </Pressable>
+      <Pressable
+        accessibilityLabel={nextLabel}
+        accessibilityRole="button"
+        disabled={!canNext || controlledWithoutHandler}
+        onPress={() => navigate(activeIndex + 1, 1)}
+        style={buttonStyle}
+        testID={testID ? `${testID}-next` : undefined}
+      >
+        <Text style={labelStyle}>{'›'}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+interface CarouselIndicatorsProps extends CarouselNavigationProps {
+  readonly show: boolean;
+  readonly slides: CarouselProps['slides'];
+  readonly activeColor: string;
+  readonly idleColor: string;
+  readonly indicatorsStyle: CarouselProps['indicatorsStyle'];
+}
+
+/*** Render accessible selection dots for the currently controlled slide. */
+function CarouselIndicators({
+  activeIndex,
+  activeColor,
+  controlledWithoutHandler,
+  idleColor,
+  indicatorsStyle,
+  navigate,
+  show,
+  slides,
+  testID,
+}: CarouselIndicatorsProps) {
+  if (!show) return null;
+  return (
+    <View pointerEvents="box-none" style={[styles.indicators, indicatorsStyle]}>
+      {slides.map((slide, slideIndex) => (
+        <Pressable
+          key={slide.key}
+          accessibilityLabel={`Go to slide ${slideIndex + 1} of ${slides.length}`}
+          accessibilityRole="button"
+          accessibilityState={{ selected: slideIndex === activeIndex }}
+          disabled={controlledWithoutHandler}
+          onPress={() => navigate(slideIndex, slideIndex < activeIndex ? -1 : 1)}
+          style={[
+            styles.indicator,
+            {
+              backgroundColor: slideIndex === activeIndex ? activeColor : idleColor,
+              width: slideIndex === activeIndex ? 24 : 8,
+            },
+          ]}
+          testID={testID ? `${testID}-indicator-${slideIndex}` : undefined}
+        />
+      ))}
+    </View>
+  );
+}
+
+interface CarouselProgressProps {
+  readonly show: boolean;
+  readonly height: number;
+  readonly trackColor: string;
+  readonly indicatorColor: string;
+  readonly trackStyle: CarouselProps['progressTrackStyle'];
+  readonly indicatorStyle: CarouselProps['progressIndicatorStyle'];
+  readonly progress: Animated.Value;
+  readonly testID: CarouselProps['testID'];
+}
+
+/*** Render an optional linear autoplay timer without adding any required UI to slides. */
+function CarouselProgress({
+  height,
+  indicatorColor,
+  indicatorStyle,
+  progress,
+  show,
+  testID,
+  trackColor,
+  trackStyle,
+}: CarouselProgressProps) {
+  if (!show) return null;
+  return (
+    <View
+      pointerEvents="none"
+      style={[styles.progress, { height, backgroundColor: trackColor }, trackStyle]}
+      testID={testID ? `${testID}-progress` : undefined}
+    >
+      <Animated.View
+        style={[
+          {
+            height: '100%',
+            width: progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }),
+            backgroundColor: indicatorColor,
+          },
+          indicatorStyle,
+        ]}
+      />
+    </View>
   );
 }
 

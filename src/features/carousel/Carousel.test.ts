@@ -44,7 +44,10 @@ test('supports arbitrary React content without requiring image sources', () => {
 });
 
 test('renders configurable accessible arrows, indicators and progress', () => {
-  const slides = [{ key: 'one', source: '/one.jpg' }, { key: 'two', source: '/two.jpg' }];
+  const slides = [
+    { key: 'one', source: '/one.jpg' },
+    { key: 'two', source: '/two.jpg' },
+  ];
   const html = renderCarousel({
     slides,
     showArrows: true,
