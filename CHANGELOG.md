@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.5.1
+
+### Patch Changes
+
+- 96c1049: Restrict generated web component subpaths to their intended component runtime and associated public types.
+
 ## 27.5.0
 
 ### Minor Changes
