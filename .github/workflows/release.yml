@@ -467,7 +467,7 @@ jobs:
           const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
-          const requireConditions = new Set(['default', 'node', 'require']);
+          const requireConditions = new Set(['require']);
           const reactNativeConditions = new Set(['react-native']);
           const platformConditions = new Set(['browser', 'react-native']);
           const explicitServerConditions = new Set(['bun', 'node']);
