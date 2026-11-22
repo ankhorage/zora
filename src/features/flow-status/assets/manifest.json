@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "designSource": {
+    "name": "Ankhorage Process Engine Showcase.png",
+    "resolution": [1448, 1086],
+    "sha256": "7069dfce205fb3238f270d2a8ee4b81f415c956a8e9878b778ca5a90ec8d096c"
+  },
+  "scope": "presentation-only",
+  "assets": [
+    {
+      "id": "completed",
+      "label": "Completed",
+      "file": "completed.svg",
+      "source": "reference-canvas",
+      "colorRole": "success",
+      "description": "Completion confirmed: green circle with white checkmark"
+    },
+    {
+      "id": "waiting",
+      "label": "Waiting for review",
+      "file": "waiting.svg",
+      "source": "reference-canvas",
+      "colorRole": "attention",
+      "description": "Waiting for action: amber outlined clock"
+    }
+  ],
+  "proposals": {
+    "included": false,
+    "reason": "ZORA has no approved public Flow lifecycle contract to map optional status glyphs to."
+  },
+  "notes": [
+    "Assets are presentation references only and do not add a Flow status field, runtime state, or public API.",
+    "The process-wide Draft chip in the reference is not a node execution status.",
+    "A caller must explicitly supply a status presentation; absence of a status never implies completed."
+  ]
+}
