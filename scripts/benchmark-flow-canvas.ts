@@ -219,8 +219,8 @@ class BenchmarkBrowser {
     });
     const browser = new BenchmarkBrowser(process, socket);
     await Promise.all(
-      ['Log.enable', 'Network.enable', 'Page.enable', 'Performance.enable', 'Runtime.enable'].map((method) =>
-        browser.sendAsync(method),
+      ['Log.enable', 'Network.enable', 'Page.enable', 'Performance.enable', 'Runtime.enable'].map(
+        (method) => browser.sendAsync(method),
       ),
     );
     return browser;
@@ -244,7 +244,7 @@ class BenchmarkBrowser {
     const beforePan = await this.readStateAsync();
     const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
     const panStart = performance.now();
-    await this.dragFromAsync(background.x, background.y, 24, 16);
+    await this.dragFromAsync(background.x, background.y, 32, -24);
     try {
       await this.waitForStateAsync(
         (state) =>
@@ -423,8 +423,10 @@ class BenchmarkBrowser {
       params?: unknown;
       result?: unknown;
     };
-    if (message.method === 'Runtime.exceptionThrown') this.exceptions.push(JSON.stringify(message.params));
-    if (message.method === 'Network.loadingFailed') this.networkFailures.push(JSON.stringify(message.params));
+    if (message.method === 'Runtime.exceptionThrown')
+      this.exceptions.push(JSON.stringify(message.params));
+    if (message.method === 'Network.loadingFailed')
+      this.networkFailures.push(JSON.stringify(message.params));
     if (
       message.method === 'Log.entryAdded' &&
       typeof message.params === 'object' &&

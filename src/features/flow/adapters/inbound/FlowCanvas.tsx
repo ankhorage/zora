@@ -133,26 +133,26 @@ function FlowCanvasInner(props: FlowCanvasProps) {
       <View
         ref={canvasRef}
         testID={props.testID ? `${props.testID}-viewport` : undefined}
+        onResponderGrant={(event) => {
+          panStart.current = {
+            pan: propsRef.current.viewport.pan,
+            x: event.nativeEvent.pageX,
+            y: event.nativeEvent.pageY,
+          };
+        }}
+        onResponderMove={updatePan}
+        onResponderRelease={() => {
+          panStart.current = null;
+        }}
+        onResponderTerminate={() => {
+          panStart.current = null;
+        }}
+        onStartShouldSetResponder={() => true}
         style={{ backgroundColor: theme.semantics.surface.default, flex: 1, minHeight: 300 }}
       >
         <View
           accessible={false}
           collapsable={false}
-          onResponderGrant={(event) => {
-            panStart.current = {
-              pan: propsRef.current.viewport.pan,
-              x: event.nativeEvent.pageX,
-              y: event.nativeEvent.pageY,
-            };
-          }}
-          onResponderMove={updatePan}
-          onResponderRelease={() => {
-            panStart.current = null;
-          }}
-          onResponderTerminate={() => {
-            panStart.current = null;
-          }}
-          onStartShouldSetResponder={() => true}
           style={{ bottom: 0, left: 0, position: 'absolute', right: 0, top: 0, zIndex: 0 }}
           testID={props.testID ? `${props.testID}-background` : undefined}
         />
