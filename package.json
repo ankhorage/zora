@@ -661,6 +661,55 @@
         }
       },
       {
+        "id": "dataTable.rowActivate",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Activate row",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "rowId": {
+                "type": "string",
+                "title": "Row ID"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dataTable.selectionChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Selection change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "selectedRowIds": {
+                "title": "Selected row IDs"
+              }
+            }
+          }
+        }
+      },
+      {
         "id": "dataTable.sortChange",
         "owner": "@ankhorage/zora",
         "access": [
