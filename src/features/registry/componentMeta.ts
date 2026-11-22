@@ -19,6 +19,7 @@ import { breadcrumbsMeta } from '../breadcrumbs/breadcrumbsMeta';
 import { buttonGroupMeta } from '../button/buttonGroupMeta';
 import { buttonMeta } from '../button/buttonMeta';
 import { iconButtonMeta } from '../button/iconButtonMeta';
+import { calendarMeta } from '../calendar/calendarMeta';
 import { cardMeta } from '../card/cardMeta';
 import { mediaCardMeta } from '../card/mediaCardMeta';
 import { metricCardMeta } from '../card/metricCardMeta';
@@ -131,6 +132,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Button: buttonMeta,
   ButtonGroup: buttonGroupMeta,
   Card: cardMeta,
+  Calendar: calendarMeta,
   Checkbox: checkboxMeta,
   CheckboxGroup: checkboxGroupMeta,
   Chip: chipMeta,
