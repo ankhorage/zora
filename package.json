@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "27.5.0",
+  "version": "27.5.2",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -165,6 +165,7 @@
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
     "test:packed-next-web-consumer": "bun scripts/verify-packed-next-web-consumer.ts",
+    "test:packed-theme-consumer": "bun scripts/verify-packed-theme-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
     "test:checkbox:chromium": "bun scripts/test-packed-checkbox-chromium.ts",
     "test:chess:chromium": "bun scripts/test-chess-chromium.ts",
@@ -177,7 +178,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.10.2",
+    "@ankhorage/devtools": "^2.10.4",
     "@ankhorage/paradox": "^0.6.0",
     "@ankhorage/templates": "^12.0.3",
     "@react-native-vector-icons/fontawesome": "^14.0.0",

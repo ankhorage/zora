@@ -1,5 +1,17 @@
 # Changelog
 
+## 27.5.2
+
+### Patch Changes
+
+- 1f3022d: Rebuild the public web View artifact with Surface SSR flex layout support.
+
+## 27.5.1
+
+### Patch Changes
+
+- 96c1049: Restrict generated web component subpaths to their intended component runtime and associated public types.
+
 ## 27.5.0
 
 ### Minor Changes
