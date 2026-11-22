@@ -146,6 +146,8 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       nodes: nodes.slice(0, -1),
       edges: input.edges.slice(0, -1),
     });
+    runtime.setNodeSize('repository-0', { height: 24, width: 48 });
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     expect(controller.measureNodes?.(retainedIds)).toEqual(before);
     expect(controller.getViewport()).toEqual(viewport);

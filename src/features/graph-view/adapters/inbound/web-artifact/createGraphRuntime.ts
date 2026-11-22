@@ -422,7 +422,17 @@ function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) 
   if (previous?.width === size.width && previous.height === size.height) return;
   state.nodeSizes.set(id, size);
   applyNodeSize(state.cy, id, size);
+  if (preservesSettledTopology(state)) return;
   scheduleMeasuredNodeRelayout(state);
+}
+
+/*** Retain a user-owned stable topology when late rich-node measurements arrive. */
+function preservesSettledTopology(state: GraphRuntimeState): boolean {
+  return (
+    state.readyRef.current &&
+    !state.pendingInitialFitRef.current &&
+    state.latestUpdateRef.current?.topologyUpdatePolicy === 'preserve-positions'
+  );
 }
 
 /*** Apply every known rich-node size after Cytoscape elements are replaced. */
