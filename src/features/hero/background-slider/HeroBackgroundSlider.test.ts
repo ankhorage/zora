@@ -24,14 +24,14 @@ test('renders no background or progress when there are no slides', () => {
 
 test('supports consumer-owned optimized images and hides progress for a single slide', () => {
   const output = renderHero({
-      slides: [{ source: '/one.jpg', alt: 'One' }],
-      testID: 'hero',
-      renderImage: (slide) =>
-        React.createElement('img', {
-          src: typeof slide.source === 'string' ? slide.source : '',
-          alt: '',
-        }),
-    });
+    slides: [{ source: '/one.jpg', alt: 'One' }],
+    testID: 'hero',
+    renderImage: (slide) =>
+      React.createElement('img', {
+        src: typeof slide.source === 'string' ? slide.source : '',
+        alt: '',
+      }),
+  });
   expect(output).toContain('/one.jpg');
   expect(output).not.toContain('hero-progress');
 });
@@ -44,19 +44,19 @@ test('renders all image layers and an optional progress indicator for a slidesho
       alt: '',
     });
   const output = renderHero({
-      slides,
-      testID: 'hero',
-      renderImage,
-    });
+    slides,
+    testID: 'hero',
+    renderImage,
+  });
   expect(output).toContain('/one.jpg');
   expect(output).toContain('/two.jpg');
   expect(output).toContain('hero-progress');
 
   const withoutProgress = renderHero({
-      slides,
-      showProgress: false,
-      testID: 'hero',
-      renderImage,
-    });
+    slides,
+    showProgress: false,
+    testID: 'hero',
+    renderImage,
+  });
   expect(withoutProgress).not.toContain('hero-progress');
 });
