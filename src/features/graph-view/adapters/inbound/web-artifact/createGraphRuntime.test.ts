@@ -155,6 +155,56 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
   }
 });
 
+test('keeps added compound geometry measurable without moving the fitted viewport', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const calls = { ready: 0, sort: 0 };
+  const runtime = createGraphRuntime(undefined, {
+    current: {
+      onReady: (controller) => {
+        calls.ready += 1;
+        ready.resolve(controller);
+      },
+    },
+  });
+  const input = {
+    nodes: [{ id: 'src' }],
+    edges: [],
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: false,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    const controller = await ready.promise;
+    controller.fit();
+    controller.setPan({ x: -40, y: -30 });
+    const viewport = controller.getViewport();
+    const sortCount = calls.sort;
+
+    runtime.update({
+      ...input,
+      nodes: [
+        { id: 'src' },
+        { id: 'src.features', parentId: 'src' },
+        { id: 'src.features.nested', parentId: 'src.features' },
+      ],
+    });
+
+    expect(controller.getViewport()).toEqual(viewport);
+    expect(calls.ready).toBe(1);
+    expect(calls.sort).toBe(sortCount);
+    expectCompoundMeasurementsToBeUsable(controller, ['src.features', 'src.features.nested']);
+  } finally {
+    runtime.destroy();
+  }
+});
+
 test('fits a changed layout algorithm even when visible topology is unchanged', async () => {
   const initial = Promise.withResolvers<GraphViewController>();
   const completed = Promise.withResolvers<GraphViewController>();
@@ -194,6 +244,22 @@ function expectMeasuredNodesToFit(controller: GraphViewController, nodeIds: read
     expect(node.position.y - node.size.height / 2).toBeGreaterThanOrEqual(0);
     expect(node.position.x + node.size.width / 2).toBeLessThanOrEqual(measurement.viewport.width);
     expect(node.position.y + node.size.height / 2).toBeLessThanOrEqual(measurement.viewport.height);
+  }
+}
+
+function expectCompoundMeasurementsToBeUsable(
+  controller: GraphViewController,
+  nodeIds: readonly string[],
+) {
+  const measurement = controller.measureNodes?.(nodeIds);
+  expect(measurement).not.toBeNull();
+  if (measurement === null) return;
+  expect(measurement.nodes).toHaveLength(2);
+  for (const node of measurement.nodes) {
+    expect(Number.isFinite(node.position.x)).toBe(true);
+    expect(Number.isFinite(node.position.y)).toBe(true);
+    expect(node.size.width).toBeGreaterThan(0);
+    expect(node.size.height).toBeGreaterThan(0);
   }
 }
 

@@ -188,7 +188,6 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
-      if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
     }
     if (
       previous?.styleRules !== input.styleRules ||
@@ -198,6 +197,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
     }
   });
+  if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
   sizeGraphNodesToLabels(
     state.cy,
     state.labelSizedNodeIds,
