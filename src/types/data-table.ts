@@ -8,6 +8,34 @@ export type DataTableColumnAlign = 'start' | 'center' | 'end';
 export type DataTableDensity = 'comfortable' | 'compact';
 export type DataTableSortDirection = 'asc' | 'desc';
 
+/** A portable reference to a string-valued row field used by a manifest cell. */
+export type DataTableRowField<TRow extends object> = Extract<keyof TRow, string>;
+
+/** Serializable image, text, link, and company presentations for a DataTable column. */
+export type DataTableCellSpec<TRow extends object> =
+  | {
+      readonly kind: 'image';
+      readonly source: DataTableRowField<TRow>;
+      readonly alt?: DataTableRowField<TRow>;
+    }
+  | {
+      readonly kind: 'text';
+      readonly value: DataTableRowField<TRow>;
+      readonly weight?: 'regular' | 'medium' | 'semiBold' | 'bold';
+    }
+  | {
+      readonly kind: 'link';
+      readonly href: DataTableRowField<TRow>;
+      readonly label?: DataTableRowField<TRow>;
+    }
+  | {
+      readonly kind: 'company';
+      readonly logo: DataTableRowField<TRow>;
+      readonly name: DataTableRowField<TRow>;
+      readonly website: DataTableRowField<TRow>;
+      readonly logoAlt?: DataTableRowField<TRow>;
+    };
+
 export interface DataTableSortState {
   columnId: string;
   direction: DataTableSortDirection;
@@ -28,7 +56,17 @@ export interface DataTableColumn<TRow extends object> {
   width?: number;
   minWidth?: number;
   sortable?: boolean;
+  /** Portable manifest presentation. Takes precedence over the default accessor rendering. */
+  cell?: DataTableCellSpec<TRow>;
   renderCell?: (context: DataTableCellContext<TRow>) => React.ReactNode;
+}
+
+export interface DataTableSelectionChangeEvent {
+  readonly selectedRowIds: readonly string[];
+}
+
+export interface DataTableRowActivateEvent {
+  readonly rowId: string;
 }
 
 export interface DataTableRowAction<TRow extends object> {
@@ -50,6 +88,10 @@ export interface DataTableProps<TRow extends object> extends ZoraBaseProps {
   selectedRowIds?: readonly string[];
   /** Receives the next controlled selection after a row or visible-row toggle. */
   onSelectedRowIdsChange?: (selectedRowIds: readonly string[]) => void;
+  /** Emits the serializable controlled selection payload used by AppManifest events. */
+  onSelectionChange?: (event: DataTableSelectionChangeEvent) => void;
+  /** Emits a row activation independently of checkbox selection. */
+  onRowActivate?: (event: DataTableRowActivateEvent) => void;
   rowActions?: (row: TRow, index: number) => readonly DataTableRowAction<TRow>[];
   sort?: DataTableSortState;
   onSortChange?: (sort: DataTableSortState) => void;

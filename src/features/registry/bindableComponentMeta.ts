@@ -330,7 +330,7 @@ export const ZORA_BINDABLE_COMPONENT_META = {
   DataTable: {
     name: 'DataTable',
     category: 'component',
-    description: 'Renders tabular records.',
+    description: 'Renders tabular records with portable selection and activation events.',
     directManifestNode: true,
     allowedChildren: [],
     bindings: {
@@ -338,22 +338,39 @@ export const ZORA_BINDABLE_COMPONENT_META = {
         rows: {
           label: 'Rows',
           description: 'Rows rendered by the table.',
-          value: {
-            type: 'array',
-            itemType: 'record',
-          },
+          value: { type: 'array', itemType: 'record' },
           acceptsFallback: true,
           acceptsTransforms: true,
+        },
+        selectedRowIds: {
+          label: 'Selected row IDs',
+          description: 'Controlled stable row identities selected with the checkbox column.',
+          value: { type: 'array', itemType: 'string' },
+          acceptsFallback: true,
+          acceptsTransforms: true,
+        },
+      },
+      events: {
+        selectionChange: {
+          label: 'Selection change',
+          payload: {
+            eventType: 'dataTable.selectionChange',
+            fields: [{ path: 'selectedRowIds', type: 'unknown', label: 'Selected row IDs' }],
+          },
+        },
+        rowActivate: {
+          label: 'Activate row',
+          payload: {
+            eventType: 'dataTable.rowActivate',
+            fields: [{ path: 'rowId', type: 'string', label: 'Row ID' }],
+          },
         },
       },
     },
     props: {
       inverted: INVERTED_POLARITY_PROP,
-      rows: {
-        type: 'array',
-        category: 'Data',
-        label: 'Rows',
-      },
+      rows: { type: 'array', category: 'Data', label: 'Rows' },
+      selectedRowIds: { type: 'array', category: 'Selection', label: 'Selected row IDs' },
     },
   },
   Reader: {

@@ -32,12 +32,34 @@ const View = ({
   </div>
 );
 
-await mock.module('react-native', () => ({ ScrollView: View }));
+const openedUrls: string[] = [];
+
+await mock.module('react-native', () => ({
+  Linking: { openURL: (url: string) => openedUrls.push(url) },
+  Pressable: ({
+    accessibilityLabel,
+    accessibilityRole,
+    children,
+    onPress,
+  }: {
+    accessibilityLabel?: string;
+    accessibilityRole?: string;
+    children?: React.ReactNode;
+    onPress?: () => void;
+  }) => (
+    <button aria-label={accessibilityLabel} onClick={onPress} role={accessibilityRole}>
+      {children}
+    </button>
+  ),
+  ScrollView: View,
+}));
 await mock.module('../../../button/public', () => ({
   Button: ({ children, onPress }: { children?: React.ReactNode; onPress?: () => void }) => (
     <button onClick={onPress}>{children}</button>
   ),
-  IconButton: ({ onPress }: { onPress?: () => void }) => <button onClick={onPress} />,
+  IconButton: ({ label, onPress }: { label?: string; onPress?: () => void }) => (
+    <button aria-label={label} onClick={onPress} />
+  ),
 }));
 await mock.module('../../../card/public', () => ({
   Card: ({
@@ -78,6 +100,9 @@ await mock.module('../../../form/checkbox/public', () => ({
     />
   ),
 }));
+await mock.module('../../../image/public', () => ({
+  Image: ({ alt, source }: { alt?: string; source?: string }) => <img alt={alt} src={source} />,
+}));
 await mock.module('../../../layout/public', () => ({ View }));
 await mock.module('../../../popover-menu/public', () => ({ PopoverMenu: View }));
 await mock.module('../../../skeleton/public', () => ({ SkeletonList: View }));
@@ -85,7 +110,9 @@ await mock.module('../../../theme/adapters/inbound/withZoraThemeScope', () => ({
   withZoraThemeScope: <P,>(Component: React.ComponentType<P>) => Component,
 }));
 await mock.module('../../../typography/public', () => ({
-  Text: ({ children }: { children?: React.ReactNode }) => <span>{children}</span>,
+  Text: ({ children, weight }: { children?: React.ReactNode; weight?: string }) => (
+    <span data-weight={weight}>{children}</span>
+  ),
 }));
 await mock.module('@ankhorage/surface', () => ({
   Show: ({ children, fallback }: { children?: React.ReactNode; fallback?: React.ReactNode }) => (
@@ -119,6 +146,7 @@ function mount() {
 test('uses stable row identities for controlled checkbox and all-visible selection', async () => {
   const mounted = mount();
   const changes: string[][] = [];
+  const activations: { rowId: string }[] = [];
   const onSelectedRowIdsChange = (selectedRowIds: readonly string[]) =>
     changes.push([...selectedRowIds]);
 
@@ -127,6 +155,7 @@ test('uses stable row identities for controlled checkbox and all-visible selecti
       <DataTable
         columns={[{ accessor: 'name', header: 'Company', id: 'company' }]}
         onSelectedRowIdsChange={onSelectedRowIdsChange}
+        onRowActivate={(event) => activations.push(event)}
         rowKey="id"
         rows={[
           { id: 'acme', name: 'Acme' },
@@ -150,6 +179,8 @@ test('uses stable row identities for controlled checkbox and all-visible selecti
       ['acme', 'zora'],
       ['acme', 'zora'],
     ]);
+    mounted.host.querySelector<HTMLButtonElement>('[aria-label="Activate row acme"]')?.click();
+    expect(activations).toEqual([{ rowId: 'acme' }]);
 
     await mounted.render(
       <DataTable
@@ -205,19 +236,39 @@ test('uses desktop stable row ids and the controlled callback in mobile cards', 
   mobilePresentation = true;
   const mounted = mount();
   const changes: string[][] = [];
+  const selectionEvents: { selectedRowIds: readonly string[] }[] = [];
+  const activationEvents: { rowId: string }[] = [];
 
   try {
     await mounted.render(
       <DataTable
         columns={[
-          { accessor: 'name', header: 'Company', id: 'company' },
+          {
+            cell: { kind: 'company', logo: 'logo', name: 'name', website: 'website' },
+            header: 'Company',
+            id: 'company',
+          },
           { accessor: 'location', header: 'Location', id: 'location' },
         ]}
         onSelectedRowIdsChange={(selectedRowIds) => changes.push([...selectedRowIds])}
+        onRowActivate={(event) => activationEvents.push(event)}
+        onSelectionChange={(event) => selectionEvents.push(event)}
         rowId={(row) => `company-${row.id}`}
         rows={[
-          { id: 'acme', location: 'Zurich', name: 'Acme' },
-          { id: 'zora', location: 'Bern', name: 'ZORA' },
+          {
+            id: 'acme',
+            location: 'Zurich',
+            logo: 'https://example.test/acme.png',
+            name: 'Acme',
+            website: 'https://acme.test',
+          },
+          {
+            id: 'zora',
+            location: 'Bern',
+            logo: 'https://example.test/zora.png',
+            name: 'ZORA',
+            website: 'https://zora.test',
+          },
         ]}
         selectedRowIds={['company-acme']}
       />,
@@ -234,6 +285,23 @@ test('uses desktop stable row ids and the controlled callback in mobile cards', 
 
     unselected?.click();
     expect(changes).toEqual([['company-acme', 'company-zora']]);
+    expect(selectionEvents).toEqual([{ selectedRowIds: ['company-acme', 'company-zora'] }]);
+    expect(JSON.stringify(selectionEvents[0])).toBe(
+      '{"selectedRowIds":["company-acme","company-zora"]}',
+    );
+
+    const activation = mounted.host.querySelector<HTMLButtonElement>(
+      '[aria-label="Activate row company-acme"]',
+    );
+    activation?.click();
+    expect(activationEvents).toEqual([{ rowId: 'company-acme' }]);
+    expect(mounted.host.querySelector('img')?.getAttribute('src')).toBe(
+      'https://example.test/acme.png',
+    );
+    expect(mounted.host.querySelector('[data-weight="bold"]')?.textContent).toBe('Acme');
+    const companyLink = mounted.host.querySelector<HTMLButtonElement>('[role="link"]');
+    companyLink?.click();
+    expect(openedUrls).toEqual(['https://acme.test']);
   } finally {
     mobilePresentation = false;
     await mounted.unmount();
