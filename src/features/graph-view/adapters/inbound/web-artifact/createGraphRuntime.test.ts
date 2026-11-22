@@ -111,8 +111,18 @@ test('fits changed topology but preserves viewport and avoids relayout for highl
 
 test('preserves a stable topology removal without relayout, fit, or retained-node movement', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { sort: 0 };
-  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const calls = { complete: 0, ready: 0, sort: 0 };
+  const runtime = createGraphRuntime(undefined, {
+    current: {
+      onLayoutComplete: () => {
+        calls.complete += 1;
+      },
+      onReady: (controller) => {
+        calls.ready += 1;
+        ready.resolve(controller);
+      },
+    },
+  });
   const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
   const input = {
     nodes,
@@ -127,7 +137,7 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
         return 0;
       },
     },
-    richNodeRendering: false,
+    richNodeRendering: true,
     topologyUpdatePolicy: 'preserve-positions' as const,
   };
   try {
@@ -146,10 +156,161 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       nodes: nodes.slice(0, -1),
       edges: input.edges.slice(0, -1),
     });
+    runtime.setNodeSize('repository-0', { height: 24, width: 48 });
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
-    expect(controller.measureNodes?.(retainedIds)).toEqual(before);
+    expect(
+      controller.measureNodes?.(retainedIds)?.nodes.map(({ id, position }) => ({ id, position })),
+    ).toEqual(before?.nodes.map(({ id, position }) => ({ id, position })));
     expect(controller.getViewport()).toEqual(viewport);
+    expect(calls.ready).toBe(1);
+    expect(calls.complete).toBe(1);
     expect(calls.sort).toBe(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
+test('keeps added compound targets inside a preserved user viewport without relayout', async () => {
+  await withGraphViewportAsync(async () => {
+    const ready = Promise.withResolvers<GraphViewController>();
+    const calls = { ready: 0, sort: 0 };
+    const controllers: GraphViewController[] = [];
+    const runtime = createGraphRuntime(undefined, {
+      current: {
+        onReady: (controller) => {
+          calls.ready += 1;
+          controllers.push(controller);
+          ready.resolve(controller);
+        },
+      },
+    });
+    const input = {
+      nodes: [{ id: 'README' }, { id: 'src' }],
+      edges: [],
+      layout: 'grid' as const,
+      layoutOptions: {
+        sort: () => {
+          calls.sort += 1;
+          return 0;
+        },
+      },
+      richNodeRendering: false,
+      topologyUpdatePolicy: 'preserve-positions' as const,
+    };
+    try {
+      runtime.update(input);
+      const controller = await ready.promise;
+      controller.fit();
+      controller.setZoom(0.8);
+      controller.setPan({ x: -40, y: -30 });
+      const viewport = controller.getViewport();
+      const retainedPosition = controller.measureNodes?.(['README']);
+      const sortCount = calls.sort;
+
+      runtime.update({
+        ...input,
+        nodes: [
+          { id: 'README' },
+          { id: 'src' },
+          { id: 'src.features', parentId: 'src' },
+          { id: 'src.features.nested', parentId: 'src.features' },
+        ],
+      });
+
+      expect(controller.getViewport()).toEqual(viewport);
+      expect(viewport).toEqual({ zoom: 0.8, pan: { x: -40, y: -30 } });
+      expect(controller.measureNodes?.(['README'])).toEqual(retainedPosition);
+      expect(calls.ready).toBe(1);
+      expect(controllers).toEqual([controller]);
+      expect(calls.sort).toBe(sortCount);
+      expectCompoundMeasurementsToFitViewport(controller, ['src.features', 'src.features.nested']);
+    } finally {
+      runtime.destroy();
+    }
+  });
+});
+
+test('lays out a late initial rich-node measurement without a topology change', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const completed = Promise.withResolvers<void>();
+  const calls = { sort: 0 };
+  const callbacks: { current: GraphViewCallbacks } = { current: { onReady: ready.resolve } };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const input = {
+    nodes: [{ id: 'a' }, { id: 'b' }],
+    edges: [{ source: 'a', target: 'b' }],
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: true,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    await ready.promise;
+    const sortCount = calls.sort;
+    callbacks.current = { onLayoutComplete: () => completed.resolve() };
+
+    runtime.setNodeSize('a', { height: 24, width: 48 });
+    await completed.promise;
+
+    expect(calls.sort).toBeGreaterThan(sortCount);
+  } finally {
+    runtime.destroy();
+  }
+});
+
+test('keeps explicit fit and layout available after preserving a rich-node topology removal', async () => {
+  const ready = Promise.withResolvers<GraphViewController>();
+  const completed = Promise.withResolvers<void>();
+  const calls = { sort: 0 };
+  const callbacks: { current: GraphViewCallbacks } = { current: { onReady: ready.resolve } };
+  const runtime = createGraphRuntime(undefined, callbacks);
+  const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
+  const input = {
+    nodes,
+    edges: nodes.slice(1).flatMap((node, index) => {
+      const source = nodes.at(index);
+      return source ? [{ id: `dependency-${index}`, source: source.id, target: node.id }] : [];
+    }),
+    layout: 'grid' as const,
+    layoutOptions: {
+      sort: () => {
+        calls.sort += 1;
+        return 0;
+      },
+    },
+    richNodeRendering: true,
+    topologyUpdatePolicy: 'preserve-positions' as const,
+  };
+  try {
+    runtime.update(input);
+    const controller = await ready.promise;
+    controller.setZoom(0.7);
+    controller.setPan({ x: 40, y: 30 });
+    const preservedInput = {
+      ...input,
+      nodes: nodes.slice(0, -1),
+      edges: input.edges.slice(0, -1),
+    };
+    runtime.update(preservedInput);
+    runtime.setNodeSize('repository-0', { height: 24, width: 48 });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    const preservedSorts = calls.sort;
+    const preservedViewport = controller.getViewport();
+
+    controller.fit();
+    expect(controller.getViewport()).not.toEqual(preservedViewport);
+    callbacks.current = { onLayoutComplete: () => completed.resolve() };
+    runtime.update({ ...preservedInput, layout: 'circle' });
+    await completed.promise;
+
+    expect(calls.sort).toBeGreaterThan(preservedSorts);
   } finally {
     runtime.destroy();
   }
@@ -194,6 +355,51 @@ function expectMeasuredNodesToFit(controller: GraphViewController, nodeIds: read
     expect(node.position.y - node.size.height / 2).toBeGreaterThanOrEqual(0);
     expect(node.position.x + node.size.width / 2).toBeLessThanOrEqual(measurement.viewport.width);
     expect(node.position.y + node.size.height / 2).toBeLessThanOrEqual(measurement.viewport.height);
+  }
+}
+
+function expectCompoundMeasurementsToFitViewport(
+  controller: GraphViewController,
+  nodeIds: readonly string[],
+) {
+  const measurement = controller.measureNodes?.(nodeIds);
+  expect(measurement).not.toBeNull();
+  if (measurement === null) return;
+  expect(measurement.viewport).toEqual({ width: 992, height: 440 });
+  expect(measurement.nodes).toHaveLength(2);
+  expect(measurement.nodes.map((node) => node.id)).toEqual(nodeIds);
+  for (const node of measurement.nodes) {
+    expect(Number.isFinite(node.position.x)).toBe(true);
+    expect(Number.isFinite(node.position.y)).toBe(true);
+    expect(node.size.width).toBeGreaterThan(0);
+    expect(node.size.height).toBeGreaterThan(0);
+    const left = node.position.x - node.size.width / 2;
+    const right = node.position.x + node.size.width / 2;
+    const top = node.position.y - node.size.height / 2;
+    const bottom = node.position.y + node.size.height / 2;
+    expect(left).toBeGreaterThanOrEqual(0);
+    expect(right).toBeLessThanOrEqual(measurement.viewport.width);
+    expect(top).toBeGreaterThanOrEqual(0);
+    expect(bottom).toBeLessThanOrEqual(measurement.viewport.height);
+    expect(node.position.x).toBeGreaterThanOrEqual(left);
+    expect(node.position.x).toBeLessThanOrEqual(right);
+    expect(node.position.y).toBeGreaterThanOrEqual(top);
+    expect(node.position.y).toBeLessThanOrEqual(bottom);
+  }
+}
+
+async function withGraphViewportAsync(run: () => Promise<void>) {
+  const probe = cytoscape({ headless: true });
+  const core = Object.getPrototypeOf(probe) as { height: () => number; width: () => number };
+  probe.destroy();
+  const { height, width } = core;
+  core.height = () => 440;
+  core.width = () => 992;
+  try {
+    await run();
+  } finally {
+    core.height = height;
+    core.width = width;
   }
 }
 
@@ -328,9 +534,12 @@ test('forwards semantic selection intent from rich-node press events', async () 
 
 test('settles the pending initial layout when presentation changes before readiness', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { ready: 0, sort: 0 };
+  const calls = { completed: 0, ready: 0, sort: 0 };
   const runtime = createGraphRuntime(undefined, {
     current: {
+      onLayoutComplete: () => {
+        calls.completed += 1;
+      },
       onReady: (controller) => {
         calls.ready += 1;
         ready.resolve(controller);
@@ -351,11 +560,11 @@ test('settles the pending initial layout when presentation changes before readin
   };
   try {
     runtime.update(input);
-    const sortCount = calls.sort;
     runtime.update({ ...input, nodes: [{ id: 'a', classes: 'hovered' }, { id: 'b' }] });
     await ready.promise;
     expect(calls.ready).toBe(1);
-    expect(calls.sort).toBe(sortCount);
+    expect(calls.completed).toBe(1);
+    expect(calls.sort).toBeGreaterThan(0);
   } finally {
     runtime.destroy();
   }
@@ -363,8 +572,15 @@ test('settles the pending initial layout when presentation changes before readin
 
 test('lays out 0 → 1 → 5 topology updates before preserve-positions becomes active', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
-  const calls = { sort: 0 };
-  const runtime = createGraphRuntime(undefined, { current: { onReady: ready.resolve } });
+  const calls = { completed: 0, sort: 0 };
+  const runtime = createGraphRuntime(undefined, {
+    current: {
+      onLayoutComplete: () => {
+        calls.completed += 1;
+      },
+      onReady: ready.resolve,
+    },
+  });
   const layoutOptions = {
     sort: () => {
       calls.sort += 1;
@@ -385,7 +601,7 @@ test('lays out 0 → 1 → 5 topology updates before preserve-positions becomes 
     runtime.update({ ...input, nodes: fiveNodes });
     const controller = await ready.promise;
 
-    expect(calls.sort).toBeGreaterThan(0);
+    expect(calls.completed).toBe(1);
     expect(controller.measureNodes?.(fiveNodes.map((node) => node.id))?.nodes).toHaveLength(5);
   } finally {
     runtime.destroy();

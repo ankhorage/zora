@@ -54,6 +54,7 @@ interface GraphRuntimeState {
   readonly generationRef: { current: number };
   readonly geometryRef: { current: string | null };
   readonly hoveredNodeIds: Set<string>;
+  readonly initialLayoutScheduledRef: { current: boolean };
   readonly latestUpdateRef: { current: GraphRuntimeUpdate | null };
   readonly layoutRef: { current: ReturnType<typeof runGraphLayout> | null };
   readonly layoutRunningRef: { current: boolean };
@@ -61,6 +62,7 @@ interface GraphRuntimeState {
   readonly labelSizedNodeIds: Set<string>;
   readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
   readonly pendingInitialFitRef: { current: boolean };
+  readonly preservedTopologyMeasurementRef: { current: boolean };
   readonly readyRef: { current: boolean };
   readonly settledLayoutRef: { current: GraphRuntimeUpdate['layout'] | null };
   readonly settledTopologyRef: { current: string | null };
@@ -74,6 +76,7 @@ interface GraphRuntimeState {
 export function createGraphRuntime(
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
+  readLatestPointerDown: (event: unknown) => unknown = () => null,
 ): GraphRuntime {
   const cy = cytoscape({
     container,
@@ -81,9 +84,10 @@ export function createGraphRuntime(
     minZoom: 0.05,
     maxZoom: 2,
     selectionType: 'additive',
+    styleEnabled: true,
     userPanningEnabled: true,
   });
-  const state = createRuntimeState(cy, container, callbacksRef);
+  const state = createRuntimeState(cy, container, callbacksRef, readLatestPointerDown);
 
   return {
     destroy: () => destroyRuntime(state),
@@ -101,6 +105,7 @@ function createRuntimeState(
   cy: Core,
   container: GraphContainer,
   callbacksRef: { current: GraphViewCallbacks },
+  readLatestPointerDown: (event: unknown) => unknown,
 ): GraphRuntimeState {
   const fitPaddingRef = { current: 50 };
   const viewport = createGraphController(cy, fitPaddingRef, (options) =>
@@ -121,6 +126,7 @@ function createRuntimeState(
     generationRef: { current: 0 },
     geometryRef: { current: null as string | null },
     hoveredNodeIds: new Set<string>(),
+    initialLayoutScheduledRef: { current: false },
     latestUpdateRef: { current: null as GraphRuntimeUpdate | null },
     layoutRef: { current: null as ReturnType<typeof runGraphLayout> | null },
     layoutRunningRef,
@@ -128,14 +134,19 @@ function createRuntimeState(
     labelSizedNodeIds: new Set<string>(),
     loopSizer: createGraphLoopSizer(cy),
     pendingInitialFitRef: { current: false },
+    preservedTopologyMeasurementRef: { current: false },
     readyRef,
     settledLayoutRef: { current: null as GraphRuntimeUpdate['layout'] | null },
     settledTopologyRef: { current: null as string | null },
     relayoutScheduledRef: { current: false },
     renderedNodeListeners,
   };
-  const unbindEvents = bindGraphEvents(cy, callbacksRef, controller, () =>
-    emitRenderedNodes(stateBase),
+  const unbindEvents = bindGraphEvents(
+    cy,
+    callbacksRef,
+    controller,
+    () => emitRenderedNodes(stateBase),
+    readLatestPointerDown,
   );
   const resizeObserver = createGraphResizeObserver({
     container,
@@ -174,13 +185,13 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.fitPaddingRef.current = input.fitPadding ?? 50;
   state.viewport.configure(input);
   const preservesTopology = shouldPreserveTopology(state, previous, input);
+  beginPreservedTopologyMeasurementWindow(state, previous, input, preservesTopology);
   const retainedNodeIds = getRetainedNodeIds(previous, input, preservesTopology);
   const retainedGeometry =
     retainedNodeIds === null ? null : getGraphGeometryKey(state.cy, retainedNodeIds);
   state.cy.batch(() => {
     if (previous?.nodes !== input.nodes || previous.edges !== input.edges) {
       syncGraphElements(state.cy, input.nodes, input.edges);
-      if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
     }
     if (
       previous?.styleRules !== input.styleRules ||
@@ -190,6 +201,7 @@ function updateRuntime(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
       applyGraphStyles(state.cy, input.styleRules, input.richNodeRendering);
     }
   });
+  if (preservesTopology) placeAddedGraphNodes(state.cy, previous?.nodes ?? [], input.nodes);
   sizeGraphNodesToLabels(
     state.cy,
     state.labelSizedNodeIds,
@@ -240,7 +252,28 @@ function shouldPreserveTopology(
   );
 }
 
-/*** Limit stable-update geometry checks to nodes that existed before reconciliation. */
+/***
+ * Retain measurements emitted by the overlay commit that follows one controlled topology update.
+ * A later resize remains geometry input and therefore schedules its normal relayout.
+ */
+function beginPreservedTopologyMeasurementWindow(
+  state: GraphRuntimeState,
+  previous: GraphRuntimeUpdate | null,
+  input: GraphRuntimeUpdate,
+  preservesTopology: boolean,
+) {
+  const topologyChanged =
+    previous !== null &&
+    getGraphTopologyKey(previous.nodes, previous.edges) !==
+      getGraphTopologyKey(input.nodes, input.edges);
+  state.preservedTopologyMeasurementRef.current = preservesTopology && topologyChanged;
+  if (!state.preservedTopologyMeasurementRef.current) return;
+  scheduleGraphFrame(() => {
+    state.preservedTopologyMeasurementRef.current = false;
+  });
+}
+
+/*** Limit stable-update geometry checks to retained leaves with independently stable positions. */
 function getRetainedNodeIds(
   previous: GraphRuntimeUpdate | null,
   input: GraphRuntimeUpdate,
@@ -248,11 +281,41 @@ function getRetainedNodeIds(
 ): ReadonlySet<string> | null {
   if (!preservesTopology || previous === null) return null;
   const nextNodeIds = new Set(input.nodes.map((node) => node.id));
-  return new Set(previous.nodes.map((node) => node.id).filter((id) => nextNodeIds.has(id)));
+  const nextParentIds = new Set(
+    input.nodes.flatMap((node) => (node.parentId === undefined ? [] : [node.parentId])),
+  );
+  return new Set(
+    previous.nodes
+      .map((node) => node.id)
+      .filter((id) => nextNodeIds.has(id) && !nextParentIds.has(id)),
+  );
 }
 
 /*** Start a generation-safe layout whose completion is the only normal automatic fit trigger. */
 function startCurrentLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
+  if (!state.readyRef.current) {
+    scheduleInitialLayout(state);
+    return;
+  }
+  startGraphLayout(state, input);
+}
+
+/*** Coalesce progressive pre-ready topology updates before the initial layout can complete. */
+function scheduleInitialLayout(state: GraphRuntimeState) {
+  if (state.initialLayoutScheduledRef.current) return;
+  state.initialLayoutScheduledRef.current = true;
+  scheduleGraphFrame(() => {
+    scheduleGraphFrame(() => {
+      state.initialLayoutScheduledRef.current = false;
+      const input = state.latestUpdateRef.current;
+      if (input === null || state.cy.destroyed() || state.readyRef.current) return;
+      startGraphLayout(state, input);
+    });
+  });
+}
+
+/*** Start one layout generation after its input has reached the runtime owner. */
+function startGraphLayout(state: GraphRuntimeState, input: GraphRuntimeUpdate) {
   state.pendingInitialFitRef.current = false;
   const generation = state.generationRef.current + 1;
   state.generationRef.current = generation;
@@ -391,6 +454,7 @@ function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) 
   if (previous?.width === size.width && previous.height === size.height) return;
   state.nodeSizes.set(id, size);
   applyNodeSize(state.cy, id, size);
+  if (state.preservedTopologyMeasurementRef.current) return;
   scheduleMeasuredNodeRelayout(state);
 }
 

@@ -10,8 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ankhorage/zora": "^27.3.7",
-    "@react-native-picker/picker": "2.11.4",
+    "@ankhorage/zora": "^27.6.1",
+    "@react-native-picker/picker": "2.13.0",
     "@react-native-vector-icons/fontawesome": "^14.0.0",
     "@react-native-vector-icons/fontawesome5": "^14.0.0",
     "@react-native-vector-icons/fontawesome6": "^14.0.0",

@@ -194,12 +194,19 @@ function measureRenderedNodes(cy: Core, nodeIds: readonly string[]): GraphViewMe
   const nodes = [...new Set(nodeIds)].flatMap((id) => {
     const node = cy.getElementById(id);
     if (!node.isNode()) return [];
+    const bounds = node.isParent() ? node.renderedBoundingBox() : null;
 
     return [
       {
         id,
-        position: node.renderedPosition(),
-        size: { width: node.renderedOuterWidth(), height: node.renderedOuterHeight() },
+        position:
+          bounds === null
+            ? node.renderedPosition()
+            : { x: bounds.x1 + bounds.w / 2, y: bounds.y1 + bounds.h / 2 },
+        size:
+          bounds === null
+            ? { width: node.renderedOuterWidth(), height: node.renderedOuterHeight() }
+            : { width: bounds.w, height: bounds.h },
       },
     ];
   });

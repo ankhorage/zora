@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "designSource": {
+    "name": "Ankhorage Process Engine Showcase.png",
+    "resolution": [1448, 1086],
+    "sha256": "7069dfce205fb3238f270d2a8ee4b81f415c956a8e9878b778ca5a90ec8d096c"
+  },
+  "issue": "https://github.com/ankhorage/zora/issues/1275",
+  "license": {
+    "glyphs": "Original Ankhorage artwork; no third-party glyphs are reused.",
+    "license": "MIT"
+  },
+  "style": {
+    "viewBox": "0 0 24 24",
+    "referenceStrokeColor": "#7439F5",
+    "strokeWidth": 1.85,
+    "strokeLinecap": "round",
+    "strokeLinejoin": "round",
+    "color": "currentColor",
+    "backgroundOwner": "FlowNode container, not the SVG"
+  },
+  "nodeKinds": [
+    {
+      "id": "trigger",
+      "label": "Trigger",
+      "file": "node-kinds/trigger.svg",
+      "source": "reference-canvas",
+      "description": "A lightning bolt for initiating a process"
+    },
+    {
+      "id": "schedule",
+      "label": "Schedule",
+      "file": "node-kinds/trigger.svg",
+      "source": "reference-palette",
+      "aliasOf": "trigger",
+      "description": "Same lightning glyph as Trigger; do not duplicate the asset"
+    },
+    {
+      "id": "webhook",
+      "label": "Webhook",
+      "file": "node-kinds/webhook.svg",
+      "source": "reference-palette",
+      "description": "Three connected webhook endpoints"
+    },
+    {
+      "id": "manual",
+      "label": "Manual",
+      "file": "node-kinds/manual.svg",
+      "source": "reference-palette",
+      "description": "Play/start process triangle"
+    },
+    {
+      "id": "content-input",
+      "label": "Content Input",
+      "file": "node-kinds/content-input.svg",
+      "source": "reference-canvas",
+      "description": "Outlined document with folded corner"
+    },
+    {
+      "id": "transform",
+      "label": "Transform",
+      "file": "node-kinds/transform.svg",
+      "source": "reference-canvas",
+      "description": "Three layered transform planes"
+    },
+    {
+      "id": "ai-agent",
+      "label": "AI Agent",
+      "file": "node-kinds/ai-agent.svg",
+      "source": "reference-canvas",
+      "description": "Large sparkle paired with a small sparkle"
+    },
+    {
+      "id": "approval",
+      "label": "Approval",
+      "file": "node-kinds/approval.svg",
+      "source": "reference-canvas",
+      "description": "Person with a circular head and shoulder outline"
+    },
+    {
+      "id": "publish",
+      "label": "Publish",
+      "file": "node-kinds/publish.svg",
+      "source": "reference-canvas",
+      "description": "Upward publish arrow from a tray"
+    },
+    {
+      "id": "analytics",
+      "label": "Analytics",
+      "file": "node-kinds/analytics.svg",
+      "source": "reference-canvas",
+      "description": "Three ascending performance bars"
+    },
+    {
+      "id": "condition",
+      "label": "Condition",
+      "file": "node-kinds/condition.svg",
+      "source": "reference-palette",
+      "description": "Branch condition shown as a diamond"
+    },
+    {
+      "id": "loop",
+      "label": "Loop",
+      "file": "node-kinds/loop.svg",
+      "source": "reference-palette",
+      "description": "Two circular repeat arrows"
+    },
+    {
+      "id": "http-request",
+      "label": "HTTP Request",
+      "file": "node-kinds/http-request.svg",
+      "source": "proposed",
+      "description": "Globe for external HTTP requests"
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "file": "node-kinds/database.svg",
+      "source": "proposed",
+      "description": "Cylinder for data storage"
+    },
+    {
+      "id": "filter",
+      "label": "Filter",
+      "file": "node-kinds/filter.svg",
+      "source": "proposed",
+      "description": "Funnel for routing by criteria"
+    },
+    {
+      "id": "notification",
+      "label": "Notification",
+      "file": "node-kinds/notification.svg",
+      "source": "proposed",
+      "description": "Notification bell"
+    },
+    {
+      "id": "delay",
+      "label": "Delay",
+      "file": "node-kinds/delay.svg",
+      "source": "proposed",
+      "description": "Clock for timed delay"
+    },
+    {
+      "id": "merge",
+      "label": "Merge",
+      "file": "node-kinds/merge.svg",
+      "source": "proposed",
+      "description": "Two branches merging into one"
+    },
+    {
+      "id": "split",
+      "label": "Split",
+      "file": "node-kinds/split.svg",
+      "source": "proposed",
+      "description": "One branch splitting into two"
+    },
+    {
+      "id": "code",
+      "label": "Code",
+      "file": "node-kinds/code.svg",
+      "source": "proposed",
+      "description": "Code angle brackets"
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "file": "node-kinds/email.svg",
+      "source": "proposed",
+      "description": "Envelope"
+    },
+    {
+      "id": "end",
+      "label": "End",
+      "file": "node-kinds/end.svg",
+      "source": "proposed",
+      "description": "Solid stop-square boundary"
+    }
+  ],
+  "notes": [
+    "The canvas glyph is canonical where the reference canvas and palette disagree: Transform uses layers, AI Agent uses sparkles, and Approval uses a person.",
+    "Proposed kinds are visual options only. They do not add Flow runtime values, persisted Contracts, rendering behavior, or a generic icon registry.",
+    "Each standalone SVG includes a title and description. A consuming UI must still provide an accessibility label for meaningful icons or hide decorative icons from the accessibility tree.",
+    "The SVGs contain only glyphs. A FlowNode or palette container owns the backing tile and theme-specific color."
+  ]
+}

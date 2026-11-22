@@ -3,6 +3,7 @@ import {
   AppShell,
   BottomSheet,
   Button,
+  Calendar,
   DatePicker,
   Screen,
   ScreenSection,
@@ -78,6 +79,11 @@ function UsageContent() {
         Show toast
       </Button>
       <DatePicker label="Date" onValueChange={setDate} value={date} />
+      <Calendar
+        defaultDisplayedMonth={new Date(2026, 10, 1)}
+        onSelectedDateChange={(selectedDate) => setDate(selectedDate.toISOString().slice(0, 10))}
+        selectedDate={date ? new Date(`${date}T12:00:00`) : null}
+      />
       <TimePicker label="Time" onValueChange={setTime} value={time} />
     </View>
   );

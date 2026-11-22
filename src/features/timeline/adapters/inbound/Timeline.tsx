@@ -5,6 +5,7 @@ import type { ZoraColor } from '../../../../types/theme';
 import type { TimelineItem, TimelineProps } from '../../../../types/timeline';
 import { Icon } from '../../../icon/public';
 import { resolveIconSize } from '../../../icon/utils/resolveIconSize';
+import { Image } from '../../../image/public';
 import { View } from '../../../layout/public';
 import { withZoraThemeScope } from '../../../theme/adapters/inbound/withZoraThemeScope';
 import { useZoraTheme } from '../../../theme/composition/useZoraTheme';
@@ -47,53 +48,77 @@ function TimelineInner({
 }: TimelineProps) {
   const { theme } = useZoraTheme();
   const gap = compact ? 'm' : 'l';
-  const connectorHeight = compact ? 20 : 36;
+  const iconMarkerSize = 20;
+  const imageMarkerSize = compact ? 28 : 40;
+  const markerColumnWidth = items.some((item) => item.marker !== undefined && item.marker !== null)
+    ? imageMarkerSize
+    : iconMarkerSize;
 
   const renderItem = (item: TimelineItem, index: number) => {
     const status = item.status ?? 'neutral';
     const role = resolveRoleSemantics(theme, status);
     const showConnector = index < items.length - 1;
+    const hasMarker = item.marker !== undefined && item.marker !== null;
     const iconSize = Math.max(12, resolveIconSize('s'));
 
     return (
       <View
         direction="row"
         key={item.id}
-        align="flex-start"
+        align="stretch"
         gap="m"
         testID={item.testID}
         wrap="nowrap"
       >
-        <View align="center" flexShrink={0} gap="xs" style={{ width: 24 }}>
-          <View
-            bg={status === 'neutral' ? theme.semantics.neutral.surface : role.softBg}
-            borderColor={status === 'neutral' ? theme.semantics.neutral.divider : role.base}
-            borderWidth={1}
-            height={20}
-            radius="full"
-            width={20}
-            style={{ alignItems: 'center', justifyContent: 'center' }}
-          >
-            {item.icon ? (
-              <Icon
-                {...item.icon}
-                color={status === 'neutral' ? theme.semantics.content.muted : role.base}
-                size={iconSize}
+        <View align="center" flexShrink={0} style={{ width: markerColumnWidth }}>
+          {hasMarker ? (
+            <View
+              bg={status === 'neutral' ? theme.semantics.neutral.surface : role.softBg}
+              borderColor={status === 'neutral' ? theme.semantics.neutral.divider : role.base}
+              borderWidth={1}
+              height={imageMarkerSize}
+              overflow="hidden"
+              radius="l"
+              width={imageMarkerSize}
+            >
+              <Image
+                alt={item.markerAlt}
+                height={imageMarkerSize}
+                source={item.marker}
+                width={imageMarkerSize}
               />
-            ) : null}
-          </View>
+            </View>
+          ) : (
+            <View
+              bg={status === 'neutral' ? theme.semantics.neutral.surface : role.softBg}
+              borderColor={status === 'neutral' ? theme.semantics.neutral.divider : role.base}
+              borderWidth={1}
+              height={iconMarkerSize}
+              radius="full"
+              width={iconMarkerSize}
+              style={{ alignItems: 'center', justifyContent: 'center' }}
+            >
+              {item.icon ? (
+                <Icon
+                  {...item.icon}
+                  color={status === 'neutral' ? theme.semantics.content.muted : role.base}
+                  size={iconSize}
+                />
+              ) : null}
+            </View>
+          )}
 
           {showConnector ? (
             <View
               bg={theme.semantics.neutral.divider}
-              height={connectorHeight}
+              flex={1}
               radius="full"
               style={{ width: 2 }}
             />
           ) : null}
         </View>
 
-        <View flex={1} gap="xs" testID={testID}>
+        <View flex={1} gap="xs" pb={showConnector ? gap : undefined} testID={testID}>
           <View direction="row" align="flex-start" gap="s" justify="space-between" wrap="wrap">
             <Heading level={compact ? 4 : 3}>{item.title}</Heading>
             {item.meta ? (
@@ -112,11 +137,7 @@ function TimelineInner({
     );
   };
 
-  return (
-    <View gap={gap} testID={testID}>
-      {items.map(renderItem)}
-    </View>
-  );
+  return <View testID={testID}>{items.map(renderItem)}</View>;
 }
 
 /***

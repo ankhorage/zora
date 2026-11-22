@@ -20,6 +20,7 @@ import { Badge } from '../badge/public';
 import { BottomSheet } from '../bottom-sheet/public';
 import { Breadcrumbs } from '../breadcrumbs/public';
 import { Button, ButtonGroup, IconButton } from '../button/public';
+import { Calendar } from '../calendar/public';
 import { Card, MediaCard, MetricCard, PostCard, ProductCard } from '../card/public';
 import { ChatListItem, MessageBubble } from '../chat/public';
 import { ChessBoard, OpeningBook } from '../chess/public';
@@ -123,6 +124,7 @@ const _ZORA_BASE_COMPONENT_REGISTRY = {
   Button,
   ButtonGroup,
   Card,
+  Calendar,
   Checkbox,
   CheckboxGroup,
   Chip,

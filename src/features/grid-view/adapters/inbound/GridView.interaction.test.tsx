@@ -11,7 +11,8 @@ import type { GridView as GridViewComponent } from './GridView';
 import type { TileGrid as TileGridComponent } from './TileGrid';
 
 const webDistRoot = join(import.meta.dir, '../../../../../web-dist');
-const load = () => import(pathToFileURL(join(webDistRoot, 'components/grid-view/index.js')).href);
+const load = (component = 'grid-view') =>
+  import(pathToFileURL(join(webDistRoot, 'components', component, 'index.js')).href);
 const items: readonly GridRectItem[] = [
   { height: 20, id: 'near', width: 20, x: 10, y: 10 },
   { height: 20, id: 'far', width: 20, x: 300, y: 300 },
@@ -258,7 +259,7 @@ test('maps centered bounds and overscroll to native positions and preserves a lo
 });
 
 test('uses default viewport scale when laying out TileGrid columns', async () => {
-  const { TileGrid } = (await load()) as { TileGrid: typeof TileGridComponent };
+  const { TileGrid } = (await load('tile-grid')) as { TileGrid: typeof TileGridComponent };
   await withBrowserAsync(async (_browserWindow, host) => {
     const root = createRoot(host);
     try {
@@ -282,7 +283,7 @@ test('uses default viewport scale when laying out TileGrid columns', async () =>
 });
 
 test('keeps TileGrid placement synchronized with uncontrolled and controlled GridView zoom', async () => {
-  const { TileGrid } = (await load()) as { TileGrid: typeof TileGridComponent };
+  const { TileGrid } = (await load('tile-grid')) as { TileGrid: typeof TileGridComponent };
   const tileItems = ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id }));
   await withBrowserAsync(async (_browserWindow, host) => {
     const uncontrolledColumns: number[] = [];

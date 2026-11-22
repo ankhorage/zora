@@ -35,6 +35,8 @@ export interface GridViewProps extends ZoraBaseProps {
   focusedItemId?: string;
   /** Pixel inset retained around a revealed focused item. */
   revealPaddingPixels?: number;
+  /** Keeps the rendered viewport fixed while preserving interaction within rendered items. */
+  viewportInteraction?: 'enabled' | 'locked';
   onViewportChange?: (viewport: GridViewport) => void;
   onVisibleItemIdsChange?: (ids: readonly string[]) => void;
   renderItem: (item: GridRectItem) => React.ReactNode;

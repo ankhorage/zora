@@ -12,6 +12,7 @@ describe('resolveSelectionEventIntent', () => {
     expect(resolveSelectionEventIntent({ nativeEvent: { ctrlKey: true } }, 'pointer')).toBe(
       'toggle',
     );
+    expect(resolveSelectionEventIntent({}, 'pointer', { ctrlKey: true })).toBe('toggle');
   });
 
   test('toggles pointer events reported as touch', () => {

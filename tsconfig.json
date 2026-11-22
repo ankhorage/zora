@@ -6,6 +6,7 @@
     "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "rewriteRelativeImportExtensions": true,
     "jsx": "react-native",
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -17,7 +18,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["culori", "node"],
     "rootDir": "src",
     "outDir": "dist"
   },

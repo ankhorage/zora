@@ -1,5 +1,121 @@
 # Changelog
 
+## 27.6.1
+
+### Patch Changes
+
+- ac807a7: Keep added compound graph nodes reachable during preserved-position topology updates.
+
+## 27.6.0
+
+### Minor Changes
+
+- 0529559: Add a public, locale-aware month Calendar backed by GridView and compose DatePicker from its compact presentation.
+- 63e83b0: Add controlled DataTable checkbox row selection and let table columns fit their container unless an explicit width requires overflow.
+- 28930cc: Add optional image and SVG markers to Timeline items and keep connectors continuous for variable-height event content.
+
+### Patch Changes
+
+- 3cf2e7f: Preserve settled GraphView positions and viewport when rich-node measurement follows a controlled topology update.
+
+## 27.5.3
+
+### Patch Changes
+
+- 4d2ea38: Fix the published theme entrypoint's Node ESM module specifiers.
+- 1ce4016: Resolve theme imports from TypeScript source in Expo Metro while emitting explicit Node ESM JavaScript specifiers.
+
+## 27.5.2
+
+### Patch Changes
+
+- 1f3022d: Rebuild the public web View artifact with Surface SSR flex layout support.
+
+## 27.5.1
+
+### Patch Changes
+
+- 96c1049: Restrict generated web component subpaths to their intended component runtime and associated public types.
+
+## 27.5.0
+
+### Minor Changes
+
+- 546ca96: Add canonical `@ankhorage/graph` input support to GraphView.
+
+## 27.4.10
+
+### Patch Changes
+
+- a887aae: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.9
+
+### Patch Changes
+
+- 6db0f71: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`.
+
+## 27.4.8
+
+### Patch Changes
+
+- aa49904: Update dependencies: `@ankhorage/color-theory`.
+
+## 27.4.7
+
+### Patch Changes
+
+- 1b12432: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.6
+
+### Patch Changes
+
+- 69c15fd: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.5
+
+### Patch Changes
+
+- fa26a5b: Update dependencies: `@ankhorage/contracts`.
+
+## 27.4.4
+
+### Patch Changes
+
+- af0099d: Update dependencies: `@ankhorage/surface`.
+
+## 27.4.3
+
+### Patch Changes
+
+- 45d8aa9: Keep GraphView label sizing stable when renderer metrics contain floating-point noise above whole pixels.
+
+## 27.4.2
+
+### Patch Changes
+
+- 956067d: Update dependencies: `@ankhorage/surface`.
+
+## 27.4.1
+
+### Patch Changes
+
+- fc3a199: Preserve native Control and Command modifier intent for GraphView node selection callbacks.
+
+## 27.4.0
+
+### Minor Changes
+
+- 5f86e60: Add controlled ColorPicker, ColorWheel, ColorTone, and ColorHueScale components for Web and React Native consumers.
+
+## 27.3.9
+
+### Patch Changes
+
+- 4559a1b: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+- 32f62b5: Update dependencies: `@ankhorage/runtime`.
+
 ## 27.3.8
 
 ### Patch Changes

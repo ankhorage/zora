@@ -20,7 +20,7 @@ jobs:
       versioned: ${{ steps.release.outputs.versioned }}
       package_name: ${{ steps.release.outputs.package_name }}
       package_version: ${{ steps.release.outputs.package_version }}
-      release_sha: ${{ steps.release.outputs.release_sha }}
+      release_sha: ${{ steps.commit-release.outputs.release_sha }}
 
     steps:
       - name: Create the scoped release token
@@ -39,6 +39,24 @@ jobs:
         if: steps.release-token.outcome == 'failure'
         run: |
           echo "::error title=Renovate Sync App repository access required::Could not create the scoped Ankhorage release token for ${GITHUB_REPOSITORY}. Ensure the ankhorage-renovate-sync GitHub App is installed and authorized for this repository, then rerun Release. Bootstrap policy: https://github.com/ankhorage/renovate/issues/115"
+          exit 1
+
+      - name: Create the Renovate snapshot token
+        id: renovate-snapshot-token
+        if: vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true'
+        continue-on-error: true
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
+          private-key: ${{ secrets.ANKHORAGE_RENOVATE_SYNC_PRIVATE_KEY }}
+          owner: ankhorage
+          repositories: renovate
+          permission-contents: write
+
+      - name: Diagnose unavailable Renovate snapshot token
+        if: vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.renovate-snapshot-token.outcome == 'failure'
+        run: |
+          echo "::error title=Renovate snapshot access required::Could not create the Renovate-scoped token needed to dispatch and read the durable release-wave ACK. Ensure the ankhorage-renovate-sync GitHub App has Contents: write access to ankhorage/renovate, then rerun Release."
           exit 1
 
       - name: Checkout repository
@@ -76,6 +94,14 @@ jobs:
             bun run build
           else
             echo "No build script found; skipping."
+          fi
+
+      - name: Validate owner-defined packed consumer
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['test:packed-consumer'] ? 0 : 1)"; then
+            bun run test:packed-consumer
+          else
+            echo "No packed consumer test declared; skipping."
           fi
 
       - name: Verify npm release baseline
@@ -193,12 +219,68 @@ jobs:
       - name: Validate release contract
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
-            bun ./dist/cli/standalone.js validate .
+            bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.14.29 validate .
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.6 validate . --enforce-repository-metadata
           fi
 
-      - name: Version packages directly on main
+      - name: Determine immutable pre-publish release intent
+        id: pre-publish-release-intent
+        if: hashFiles('.changeset/config.json') != '' && vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.published-release-recovery.outputs.recovery != 'true'
+        run: |
+          changesets_status_path="$RUNNER_TEMP/changesets-status.json"
+          bun ./node_modules/.bin/changeset status --output="$changesets_status_path" >/dev/null
+          release_intent="$(CHANGESETS_STATUS_PATH="$changesets_status_path" node -e '
+            const { readFileSync } = require("node:fs");
+            const status = JSON.parse(readFileSync(process.env.CHANGESETS_STATUS_PATH, "utf8"));
+            if (!Array.isArray(status.releases)) {
+              throw new Error("Changesets status is missing an explicit releases list.");
+            }
+            if (status.releases.length > 1) {
+              throw new Error("Changesets status must contain exactly one release or an explicit empty list.");
+            }
+            process.stdout.write(status.releases.length === 0 ? "false" : "true");
+          '")"
+          echo "release_intent=$release_intent" >> "$GITHUB_OUTPUT"
+
+      - name: Acknowledge immutable pre-publish release-wave snapshot
+        if: hashFiles('.changeset/config.json') != '' && vars.ANKHORAGE_PRE_PUBLISH_SNAPSHOT_GATE_ENABLED == 'true' && steps.published-release-recovery.outputs.recovery != 'true' && steps.pre-publish-release-intent.outputs.release_intent == 'true'
+        env:
+          GITHUB_TOKEN: ${{ steps.renovate-snapshot-token.outputs.token }}
+          RELEASE_WAVE_STATE_BRANCH: ${{ vars.ANKHORAGE_RELEASE_WAVE_STATE_BRANCH }}
+        run: |
+          test -n "$RELEASE_WAVE_STATE_BRANCH" || { echo "::error title=Release-wave state branch required::Provision the Renovate state branch before enabling the pre-publish gate."; exit 1; }
+          source_sha="$(git rev-parse HEAD)"
+          changesets_status_path="$RUNNER_TEMP/changesets-status.json"
+          test -f "$changesets_status_path" || { echo '::error title=Changesets status missing::Release intent evidence was not retained.'; exit 1; }
+          changesets_status_hash="$(sha256sum "$changesets_status_path" | cut -d ' ' -f 1)"
+          request_id="${GITHUB_REPOSITORY//\//-}-${source_sha}-${changesets_status_hash}"
+          payload="$(REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" node -e 'console.log(JSON.stringify({event_type:"pre-publish-release-wave-snapshot",client_payload:{requestId:process.env.REQUEST_ID,sourceRepository:process.env.GITHUB_REPOSITORY,sourceSha:process.env.SOURCE_SHA,changesetsStatusHash:process.env.CHANGESETS_STATUS_HASH}}))')"
+          REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" \
+            curl --fail-with-body --retry 3 --retry-all-errors -X POST -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' "https://api.github.com/repos/ankhorage/renovate/dispatches" -d "$payload"
+          for attempt in $(seq 1 30); do
+            ack_path="$RUNNER_TEMP/release-wave-ack.json"
+            ack_status="$(curl --silent --show-error --output "$ack_path" --write-out '%{http_code}' -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' "https://api.github.com/repos/ankhorage/renovate/contents/.github/release-wave-publisher-snapshot-acks/${request_id}.json?ref=${RELEASE_WAVE_STATE_BRANCH}")" || { echo '::error title=Release-wave ACK read failed::Could not read the durable Renovate ACK.'; exit 1; }
+            if [ "$ack_status" = 200 ]; then
+              ack="$(cat "$ack_path")"
+            elif [ "$ack_status" = 404 ]; then
+              ack=""
+            else
+              cat "$ack_path"
+              echo "::error title=Release-wave ACK read rejected::Renovate returned HTTP ${ack_status} while reading the durable ACK."
+              exit 1
+            fi
+            if [ -n "$ack" ] && ACK="$ack" REQUEST_ID="$request_id" SOURCE_SHA="$source_sha" CHANGESETS_STATUS_HASH="$changesets_status_hash" node -e 'const ack=JSON.parse(Buffer.from(JSON.parse(process.env.ACK).content,"base64").toString("utf8")); if (ack.requestId!==process.env.REQUEST_ID || ack.sourceSha!==process.env.SOURCE_SHA || ack.changesetsStatusHash!==process.env.CHANGESETS_STATUS_HASH || !/^[a-f0-9]{64}$/.test(ack.epochId)) process.exit(1);'; then break; fi
+            [ "$attempt" = 30 ] && { echo "::error title=Release-wave ACK timeout::No matching durable Renovate ACK arrived."; exit 1; }
+            sleep 2
+          done
+          test "$(git rev-parse HEAD)" = "$source_sha" || { echo '::error title=Source changed::Release source changed while awaiting ACK.'; exit 1; }
+          changesets_recheck_path="$RUNNER_TEMP/changesets-status-recheck.json"
+          bun ./node_modules/.bin/changeset status --output="$changesets_recheck_path" >/dev/null
+          latest_hash="$(sha256sum "$changesets_recheck_path" | cut -d ' ' -f 1)"
+          test "$latest_hash" = "$changesets_status_hash" || { echo '::error title=Changesets changed::Release intent changed while awaiting ACK.'; exit 1; }
+
+      - name: Prepare versioned release candidate
         id: release
         if: hashFiles('.changeset/config.json') != ''
         env:
@@ -227,19 +309,24 @@ jobs:
                 exit 1
               fi
 
-              if [ -n "$tagged_sha" ]; then
+              if [ "$HIGHEST_PUBLISHED_VERSION" != "$current_version" ]; then
+                release_sha="$(git rev-parse HEAD)"
+                echo "Completing unpublished ${release_tag} from current main ${release_sha} without another version bump."
+              elif [ -n "$tagged_sha" ]; then
                 echo "Release tag ${release_tag} already points to ${release_sha}; resuming idempotent finalization."
               else
                 echo "Recovering canonical release commit $release_sha for version $current_version without another version bump."
               fi
 
-              if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+              if [ "$HIGHEST_PUBLISHED_VERSION" = "$current_version" ] && (! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]); then
                 git status --short
                 echo "::error title=Release recovery requires a clean worktree::A release preparation step modified the checkout before recovery. Refusing to discard changes while switching to canonical release commit $release_sha."
                 exit 1
               fi
 
-              git checkout --detach "$release_sha"
+              if [ "$HIGHEST_PUBLISHED_VERSION" = "$current_version" ]; then
+                git checkout --detach "$release_sha"
+              fi
               echo "versioned=true" >> "$GITHUB_OUTPUT"
               echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
               echo "package_version=$current_version" >> "$GITHUB_OUTPUT"
@@ -284,16 +371,6 @@ jobs:
             exit 0
           fi
 
-          git config user.name "ankhorage-renovate-sync[bot]"
-          git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
-          git add --all
-          git commit -m "chore(release): version packages [skip ci]"
-          if ! git push origin HEAD:main; then
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
-
           if [ "$before_version" = "$after_version" ]; then
             echo "versioned=false" >> "$GITHUB_OUTPUT"
           else
@@ -312,8 +389,12 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.build?0:1)"; then
             bun run build
           fi
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['test:packed-consumer'] ? 0 : 1)"; then
+            bun run test:packed-consumer
+          fi
           pack_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-pack.XXXXXX")"
           install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-install.XXXXXX")"
+          optional_install_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-optional-install.XXXXXX")"
           npm pack --ignore-scripts --pack-destination "$pack_dir" >/dev/null
           artifact="$(find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -print -quit)"
           if [ -z "$artifact" ]; then
@@ -322,6 +403,51 @@ jobs:
           fi
           printf '{"name":"standalone-consumer","private":true,"version":"0.0.0"}\n' > "$install_dir/package.json"
           package_name="$(node -p "require('./package.json').name")"
+          platform_toolchain_dependencies="$(node - <<'NODE'
+          const { readFileSync } = require('node:fs');
+          const manifest = JSON.parse(readFileSync('package.json', 'utf8'));
+          const dependencies = manifest.dependencies ?? {};
+          const peerDependencies = manifest.peerDependencies ?? {};
+          const declared = dependencies.expo ?? peerDependencies.expo;
+          const expoDeclarations = [dependencies.expo, peerDependencies.expo];
+          const expoMajors = expoDeclarations.map((range) => {
+            if (range === undefined) return undefined;
+            const explicit = typeof range === 'string'
+              ? /^(?:~|\^)?(\d+)\.(\d+)\.(\d+)$/.exec(range)
+              : null;
+            if (explicit === null) throw new Error('Expo must have an explicit bounded SDK version.');
+            return Number(explicit[1]);
+          });
+          const expoModuleDeclarations = [
+            ['dependencies', dependencies],
+            ['peerDependencies', peerDependencies],
+          ].flatMap(([source, contract]) => Object.entries(contract)
+            .filter(([name]) => name === 'expo' || name.startsWith('expo-'))
+            .map(([name, range]) => `${source}.${name}=${String(range)}`));
+          const sdkMajors = new Set([dependencies, peerDependencies].flatMap((contract) => Object.entries(contract))
+            .filter(([name]) => name.startsWith('expo-'))
+            .flatMap(([, range]) => {
+              const match = typeof range === 'string'
+                ? /^(?:~|\^)?(\d+)\.0\.\d+$/.exec(range)
+                : null;
+              const major = match ? Number(match[1]) : 0;
+              return major >= 50 ? [major] : [];
+            }));
+          for (const major of expoMajors) if (major !== undefined) sdkMajors.add(major);
+          if (sdkMajors.size > 1) {
+            throw new Error(`Conflicting Expo SDK majors in the published package dependency contract: ${expoModuleDeclarations.join(', ')}.`);
+          }
+          const major = [...sdkMajors][0];
+          const expo = declared ?? (major === undefined ? undefined : '~' + major + '.0.0');
+          const react = dependencies.react ?? peerDependencies.react;
+          const reactNative = dependencies['react-native'] ?? peerDependencies['react-native'];
+          if (expo === undefined && react === undefined && reactNative === undefined) process.exit(0);
+          if (typeof expo !== 'string' || typeof react !== 'string' || typeof reactNative !== 'string') {
+            throw new Error(`Expo platform verification requires declared Expo, React, and React Native versions; received Expo=${String(expo)}, React=${String(react)}, React Native=${String(reactNative)}.`);
+          }
+          process.stdout.write(JSON.stringify({ expo, react, 'react-native': reactNative }));
+          NODE
+          )"
           capability_module_path="$(node --input-type=module -e "import { createRequire } from 'node:module'; console.log(createRequire(import.meta.resolve('@ankhorage/devtools/cli')).resolve('@ankhorage/capability'))")"
           (
             cd "$install_dir"
@@ -341,7 +467,8 @@ jobs:
           const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
-          const requireConditions = new Set(['default', 'node', 'require']);
+          const requireConditions = new Set(['require']);
+          const reactNativeConditions = new Set(['react-native']);
           const platformConditions = new Set(['browser', 'react-native']);
           const explicitServerConditions = new Set(['bun', 'node']);
           const supportsLoader = (target, conditions) => {
@@ -366,16 +493,23 @@ jobs:
           const isPlatformOnlyRuntimeTarget = (target) =>
             declaresCondition(target, platformConditions) &&
             !declaresCondition(target, explicitServerConditions);
-          const selectLoader = (target) => {
-            if (isPlatformOnlyRuntimeTarget(target)) return undefined;
-            if (supportsLoader(target, importConditions)) return 'import';
-            if (supportsLoader(target, requireConditions)) return 'require';
-            return undefined;
+          const isReactNativePlatformOnlyRuntimeTarget = (target) =>
+            isPlatformOnlyRuntimeTarget(target) && declaresCondition(target, reactNativeConditions);
+          const selectLoaders = (target) => {
+            if (isReactNativePlatformOnlyRuntimeTarget(target)) return ['react-native'];
+            if (isPlatformOnlyRuntimeTarget(target)) return [];
+            return [
+              ['import', importConditions],
+              ['require', requireConditions],
+            ].flatMap(([loader, conditions]) =>
+              supportsLoader(target, conditions) ? [loader] : [],
+            );
           };
           const records = [];
           const addEntrypoint = (specifier, target) => {
-            const loader = selectLoader(target);
-            if (loader !== undefined) records.push(`${loader}|${specifier}`);
+            for (const loader of selectLoaders(target)) {
+              records.push(`${loader}|${specifier}`);
+            }
           };
           const exportsMap = pkg.exports;
           if (exportsMap === undefined) {
@@ -399,6 +533,102 @@ jobs:
           const output = records.sort();
           process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
           NODE
+
+            verify_react_native_export() {
+              consumer_dir="$1"
+              specifier="$2"
+              platform_dir="$(mktemp -d "${consumer_dir}/packed-platform.XXXXXX")"
+              platform_output_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-platform-output.XXXXXX")"
+              platform_temporary_directory="$(mktemp -d "${platform_dir}/tmp.XXXXXX")"
+              printf '{"expo":{"name":"packed-platform-verification","slug":"packed-platform-verification"}}\n' > "$platform_dir/app.json"
+              APP_DIR="$platform_dir" PACKAGE_SPECIFIER="$specifier" PLATFORM_TOOLCHAIN_DEPENDENCIES="$platform_toolchain_dependencies" node - <<'NODE'
+          const { writeFileSync } = require('node:fs');
+          const { join } = require('node:path');
+          const appDir = process.env.APP_DIR;
+          const specifier = process.env.PACKAGE_SPECIFIER;
+          const dependencies = process.env.PLATFORM_TOOLCHAIN_DEPENDENCIES;
+          if (typeof appDir !== 'string' || typeof specifier !== 'string' || typeof dependencies !== 'string') {
+            throw new Error('The platform verification app, package specifier, and toolchain are required.');
+          }
+          const toolchain = JSON.parse(dependencies);
+          writeFileSync(
+            join(appDir, 'package.json'),
+            `${JSON.stringify({
+              dependencies: toolchain,
+              main: './App.tsx',
+              name: 'packed-platform-verification',
+              private: true,
+              version: '0.0.0',
+            })}\n`,
+          );
+          writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
+          NODE
+              (
+                cd "$platform_dir"
+                bun install --ignore-scripts
+                metro_runtime_dependency="$(node - <<'NODE'
+          const { readFileSync } = require('node:fs');
+          const expo = JSON.parse(readFileSync('./node_modules/expo/package.json', 'utf8'));
+          const bundled = JSON.parse(readFileSync('./node_modules/expo/bundledNativeModules.json', 'utf8'));
+          const peerRange = expo.peerDependencies?.['@expo/metro-runtime'];
+          const compatibleRange = bundled['@expo/metro-runtime'];
+          if (typeof peerRange !== 'string' || peerRange.length === 0 || typeof compatibleRange !== 'string' || compatibleRange.length === 0) {
+            throw new Error('Expo platform verification requires the published Expo metadata for @expo/metro-runtime.');
+          }
+          process.stdout.write(`@expo/metro-runtime@${compatibleRange}`);
+          NODE
+                )"
+                bun add "$metro_runtime_dependency" --ignore-scripts
+                bun add "$artifact" --ignore-scripts
+                node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
+                TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
+              )
+            }
+
+            root_runtime_entrypoints="$(awk -F '|' -v package_name="$package_name" '$2 == package_name { print }' runtime-entrypoints.txt)"
+            if [ -n "$root_runtime_entrypoints" ]; then
+              (
+                cd "$optional_install_dir"
+                printf '{"name":"standalone-optional-consumer","private":true,"version":"0.0.0"}\n' > package.json
+                bun add "$artifact" --ignore-scripts --omit optional
+                printf '%s\n' "$root_runtime_entrypoints" | while IFS='|' read -r root_runtime_loader root_runtime_specifier; do
+                  case "$root_runtime_loader" in
+                    react-native)
+                      if verify_react_native_export "$optional_install_dir" "$root_runtime_specifier"; then
+                        echo "Verified React Native optional-isolation export $root_runtime_specifier with Expo."
+                        continue
+                      fi
+                      echo "::error title=Packed optional-isolation React Native export failed::$root_runtime_specifier could not compile with Expo."
+                      exit 1
+                      ;;
+                    import)
+                      root_runtime_log="$(mktemp "${RUNNER_TEMP}/standalone-optional-runtime.XXXXXX")"
+                      if PACKAGE_SPECIFIER="$root_runtime_specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)' >"$root_runtime_log" 2>&1; then
+                        continue
+                      fi
+
+                      if grep -Fq 'react-native/index.js' "$root_runtime_log" && grep -Fq 'Unexpected typeof' "$root_runtime_log"; then
+                        if verify_react_native_export "$optional_install_dir" "$root_runtime_specifier"; then
+                          echo "Verified React Native optional-isolation export $root_runtime_specifier with Expo."
+                          continue
+                        fi
+                      fi
+
+                      cat "$root_runtime_log"
+                      echo "::error title=Packed optional-isolation root export failed::$root_runtime_specifier could not load with Bun or compile with Expo."
+                      exit 1
+                      ;;
+                    require)
+                      PACKAGE_SPECIFIER="$root_runtime_specifier" node -e 'require(process.env.PACKAGE_SPECIFIER)'
+                      ;;
+                    *)
+                      echo "::error title=Unsupported packed root loader::Unexpected loader '$root_runtime_loader' for $root_runtime_specifier."
+                      exit 1
+                      ;;
+                  esac
+                done
+              )
+            fi
 
             PACKAGE_NAME="$package_name" CAPABILITY_MODULE_PATH="$capability_module_path" node --input-type=module - <<'NODE'
           import { readFileSync } from 'node:fs';
@@ -432,6 +662,14 @@ jobs:
                 continue
               fi
               case "$loader" in
+                react-native)
+                  if verify_react_native_export "$install_dir" "$specifier"; then
+                    echo "Verified React Native export $specifier with Expo."
+                    continue
+                  fi
+                  echo "::error title=Packed React Native export failed::$specifier could not compile with Expo."
+                  exit 1
+                  ;;
                 import)
                   runtime_log="$(mktemp "${RUNNER_TEMP}/standalone-runtime.XXXXXX")"
                   if PACKAGE_SPECIFIER="$specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)' >"$runtime_log" 2>&1; then
@@ -439,32 +677,7 @@ jobs:
                   fi
 
                   if grep -Fq 'react-native/index.js' "$runtime_log" && grep -Fq 'Unexpected typeof' "$runtime_log"; then
-                    platform_dir="$(mktemp -d "${install_dir}/packed-platform.XXXXXX")"
-                    platform_output_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-platform-output.XXXXXX")"
-                    printf '{"expo":{"name":"packed-platform-verification","slug":"packed-platform-verification"}}\n' > "$platform_dir/app.json"
-                    APP_DIR="$platform_dir" PACKAGE_SPECIFIER="$specifier" node - <<'NODE'
-          const { writeFileSync } = require('node:fs');
-          const { join } = require('node:path');
-          const appDir = process.env.APP_DIR;
-          const specifier = process.env.PACKAGE_SPECIFIER;
-          if (typeof appDir !== 'string' || typeof specifier !== 'string') {
-            throw new Error('The platform verification app and package specifier are required.');
-          }
-          writeFileSync(
-            join(appDir, 'package.json'),
-            `${JSON.stringify({
-              main: './App.tsx',
-              name: 'packed-platform-verification',
-              private: true,
-              version: '0.0.0',
-            })}\n`,
-          );
-          writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
-          NODE
-                    if (
-                      cd "$platform_dir"
-                      "$install_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
-                    ); then
+                    if verify_react_native_export "$install_dir" "$specifier"; then
                       echo "Verified React Native export $specifier with Expo."
                       continue
                     fi
@@ -537,6 +750,22 @@ jobs:
               echo "Declared binary $binary_path started without a missing-runtime-dependency failure (exit $binary_status)."
             done < binary-paths.txt
           )
+
+      - name: Commit verified release candidate
+        id: commit-release
+        if: steps.release.outputs.versioned == 'true'
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            git config user.name "ankhorage-renovate-sync[bot]"
+            git config user.email "ankhorage-renovate-sync[bot]@users.noreply.github.com"
+            git add --all
+            git commit -m "chore(release): version packages [skip ci]"
+            git push origin HEAD:main
+          fi
+          echo "package_name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+          echo "package_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+          echo "release_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Publish unpublished packages
         if: hashFiles('.changeset/config.json') != ''

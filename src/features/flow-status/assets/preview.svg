@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="220" viewBox="0 0 480 220" role="img" aria-labelledby="title desc">
+  <title id="title">Flow node status icon reference sheet</title>
+  <desc id="desc">The two node-status icons evidenced by the approved Process Engine canvas: completed and waiting for review.</desc>
+  <rect width="480" height="220" rx="16" fill="#FFFFFF"/>
+  <text x="24" y="36" fill="#241B3D" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Flow node status icons</text>
+  <text x="24" y="60" fill="#625B76" font-family="system-ui, sans-serif" font-size="13">Reference-grounded node presentation only</text>
+  <g transform="translate(24 88)">
+    <rect width="204" height="108" rx="12" fill="#F8F6FC" stroke="#DDD8E8"/>
+    <circle cx="42" cy="40" r="20" fill="#34B96B"/>
+    <path d="m31.8 40.4 6.2 6.2 13.2-13.6" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.8"/>
+    <text x="76" y="39" fill="#241B3D" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Completed</text>
+    <text x="76" y="62" fill="#625B76" font-family="system-ui, sans-serif" font-size="12">success · reference canvas</text>
+  </g>
+  <g transform="translate(252 88)">
+    <rect width="204" height="108" rx="12" fill="#F8F6FC" stroke="#DDD8E8"/>
+    <circle cx="42" cy="40" r="20" fill="#FFF9E7" stroke="#D29A0C" stroke-width="4"/>
+    <path d="M42 28v12l8 5.2" fill="none" stroke="#D29A0C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.4"/>
+    <text x="76" y="39" fill="#241B3D" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Waiting</text>
+    <text x="76" y="62" fill="#625B76" font-family="system-ui, sans-serif" font-size="12">attention · reference canvas</text>
+  </g>
+</svg>

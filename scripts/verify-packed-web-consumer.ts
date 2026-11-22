@@ -1,5 +1,13 @@
 import { strict as assert } from 'node:assert';
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -43,11 +51,63 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
           'react-dom': '19.2.3',
           ...(authoring || flowUi ? { 'react-native-web': '0.21.4', vite: '8.3.8' } : {}),
         },
+        devDependencies: {
+          '@types/react': '19.3.0',
+          typescript: '~6.0.3',
+        },
       },
       null,
       2,
     )}\n`,
   );
+}
+
+/*** Verify the packed generated declaration graph before skipping third-party declaration bodies. */
+function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
+  const packageRoot = join(consumerRoot, 'node_modules', '@ankhorage', 'zora');
+  const webDistRoot = join(packageRoot, 'web-dist');
+  const manifest = JSON.parse(readFileSync(join(webDistRoot, 'manifest.json'), 'utf8')) as {
+    readonly artifacts: readonly {
+      readonly component: string;
+      readonly files: readonly string[];
+    }[];
+  };
+  const declarationFiles = manifest.artifacts.flatMap(({ component, files }) => {
+    const artifactRoot = join(webDistRoot, 'components', component);
+    const entrypoint = join(artifactRoot, 'index.d.ts');
+    assert.ok(existsSync(entrypoint), `Missing packed ZORA declaration entrypoint: ${entrypoint}`);
+    return files.filter((file) => file.endsWith('.d.ts')).map((file) => ({ artifactRoot, file }));
+  });
+  declarationFiles.push({
+    artifactRoot: join(webDistRoot, 'runtime'),
+    file: 'runtime/ZoraProvider.d.ts',
+  });
+
+  for (const { artifactRoot, file } of declarationFiles) {
+    const declarationPath = resolve(webDistRoot, file);
+    assert.ok(
+      declarationPath.startsWith(`${artifactRoot}/`),
+      `ZORA declaration escapes its packed artifact: ${file}`,
+    );
+    assert.ok(existsSync(declarationPath), `Missing packed ZORA declaration: ${file}`);
+    const declaration = readFileSync(declarationPath, 'utf8');
+    assert.doesNotMatch(declaration, /from\s+['"]@ankhorage\/zora['"]/u);
+    for (const match of declaration.matchAll(
+      /(?:from\s+|import\(\s*)['"](\.{1,2}\/[^'"]+)['"]/gu,
+    )) {
+      const specifier = match[1];
+      assert.notEqual(specifier, undefined);
+      const basePath = resolve(artifactRoot, specifier);
+      assert.ok(
+        basePath.startsWith(`${artifactRoot}/`),
+        `ZORA declaration dependency escapes its packed artifact: ${file} -> ${specifier}`,
+      );
+      assert.ok(
+        [basePath, `${basePath}.d.ts`, join(basePath, 'index.d.ts')].some(existsSync),
+        `Unresolved packed ZORA declaration dependency: ${file} -> ${specifier}`,
+      );
+    }
+  }
 }
 
 /*** Write the React Native Web resolver configuration used by packed presentation consumers. */
@@ -432,6 +492,13 @@ Object.assign(globalThis, {
 
 assert.equal(existsSync(join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'node_modules', 'react')), false);
 assert.equal(typeof GraphView, 'function');
+const canonicalGraphView = React.createElement(GraphView, {
+  graph: {
+    nodes: [{ id: 1, labels: ['Package'], data: { name: 'zora' } }],
+    edges: [],
+  },
+});
+assert.equal(canonicalGraphView.props.graph.nodes[0].id, 1);
 
 function ThemeProbe() {
   const { mode } = useZoraTheme();
@@ -513,6 +580,114 @@ console.log('Packed ZORA web consumer SSR, hydration, and Select interaction pas
   );
 }
 
+/*** Compile the packed browser declaration contracts without a native consumer dependency graph. */
+function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
+  writeFileSync(
+    join(consumerRoot, 'tsconfig.json'),
+    `${JSON.stringify(
+      {
+        compilerOptions: {
+          jsx: 'react-jsx',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          noEmit: true,
+          skipLibCheck: true,
+          strict: true,
+          target: 'ES2022',
+          types: ['react'],
+        },
+        include: ['web-contract.ts'],
+      },
+      null,
+      2,
+    )}\n`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'web-contract.ts'),
+    `import {
+  GraphView,
+  type GraphViewCanonicalEdgeData,
+  type GraphViewCanonicalGraphProps,
+  type GraphViewCanonicalNodeData,
+  type GraphViewController,
+  type GraphViewEdge,
+  type GraphViewFitOptions,
+  type GraphViewInput,
+  type GraphViewLayoutName,
+  type GraphViewProps,
+  type GraphViewViewport,
+  type ResolvedGraphViewProps,
+} from '@ankhorage/zora/web/graph-view';
+import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
+import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
+import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
+import { TabPanel, type TabPanelProps } from '@ankhorage/zora/web/tab-panel';
+import { Tabs, type TabsProps } from '@ankhorage/zora/web/tabs';
+import {
+  TreeView,
+  type TreeItemNode,
+  type TreeItemRenderProps,
+  type TreeViewProps,
+} from '@ankhorage/zora/web/tree-view';
+import { TileGrid, type TileGridProps } from '@ankhorage/zora/web/tile-grid';
+
+const treeNode: TreeItemNode<'root'> = {
+  id: 'root',
+  label: 'Root',
+};
+const renderTreeItem = (props: TreeItemRenderProps<'root'>): string => props.node.label as string;
+const treeProps: TreeViewProps<'root'> = {
+  nodes: [treeNode],
+  onSelect: (id) => {
+    const rootId: 'root' = id;
+    void rootId;
+  },
+  renderItem: renderTreeItem,
+};
+
+const contracts = [
+  GraphView,
+  GridView,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
+  TileGrid,
+  TreeView,
+] as const;
+const props = {} as {
+  graphController: GraphViewController;
+  graphCanonicalEdge: GraphViewCanonicalEdgeData;
+  graphCanonicalGraph: GraphViewCanonicalGraphProps;
+  graphCanonicalNode: GraphViewCanonicalNodeData;
+  graphEdge: GraphViewEdge;
+  graphFitOptions: GraphViewFitOptions;
+  graphInput: GraphViewInput;
+  graphLayoutName: GraphViewLayoutName;
+  graphResolved: ResolvedGraphViewProps;
+  graphViewport: GraphViewViewport;
+  graph: GraphViewProps;
+  grid: GridViewProps;
+  tab: TabProps;
+  tabList: TabListProps;
+  tabPanel: TabPanelProps;
+  tabs: TabsProps;
+  tileGrid: TileGridProps;
+  tree: TreeViewProps<'root'>;
+};
+
+// @ts-expect-error GridView must not expose TileGrid-only declarations.
+type GridViewDoesNotExposeTileGrid = import('@ankhorage/zora/web/grid-view').TileGridProps;
+// @ts-expect-error Tabs must not expose TabPanel-only declarations.
+type TabsDoesNotExposeTabPanel = import('@ankhorage/zora/web/tabs').TabPanelProps;
+
+void contracts;
+void props;
+void treeProps;
+`,
+  );
+}
+
 try {
   const packageDirectory = join(temporaryRoot, 'package');
   const consumerRoot = join(temporaryRoot, 'consumer');
@@ -531,12 +706,21 @@ try {
   writeConsumerPackage(consumerRoot, join(packageDirectory, tarball));
   if (authoring) writeAuthoringConsumerAcceptance(consumerRoot);
   else if (flowUi) writeFlowUiConsumerAcceptance(consumerRoot);
-  else writeWebConsumerAcceptance(consumerRoot);
+  else {
+    writeWebConsumerAcceptance(consumerRoot);
+    writeWebTypeConsumerAcceptance(consumerRoot);
+  }
   run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
+  if (!authoring) {
+    verifyPackedWebDeclarationClosure(consumerRoot);
+  }
+  if (!authoring && !flowUi) {
+    run(['bunx', 'tsc', '--noEmit'], consumerRoot);
+  }
   if (authoring || flowUi) {
     run(['bunx', 'vite', 'build'], consumerRoot);
     console.log(
