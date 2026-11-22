@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@ankhorage/zora": "^27.4.7",
-    "@react-native-picker/picker": "2.12.0",
+    "@react-native-picker/picker": "2.13.0",
     "@react-native-vector-icons/fontawesome": "^14.0.0",
     "@react-native-vector-icons/fontawesome5": "^14.0.0",
     "@react-native-vector-icons/fontawesome6": "^14.0.0",

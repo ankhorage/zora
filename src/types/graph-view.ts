@@ -1,3 +1,4 @@
+import type { Graph, GraphEdge, GraphId, GraphNode } from '@ankhorage/graph';
 import type { SelectionIntent } from '@ankhorage/utility/selection';
 import type React from 'react';
 
@@ -20,6 +21,20 @@ export interface GraphViewEdge {
   readonly target: string;
   readonly classes?: string;
   readonly data?: Readonly<Record<string, unknown>>;
+}
+
+/*** Preserve one canonical graph node alongside its GraphView presentation projection. */
+export interface GraphViewCanonicalNodeData<NodeData = unknown, NodeId extends GraphId = GraphId> {
+  readonly canonicalNode: GraphNode<NodeData, NodeId>;
+}
+
+/*** Preserve one canonical graph edge alongside its GraphView presentation projection. */
+export interface GraphViewCanonicalEdgeData<
+  EdgeData = unknown,
+  NodeId extends GraphId = GraphId,
+  EdgeId extends GraphId = GraphId,
+> {
+  readonly canonicalEdge: GraphEdge<EdgeData, NodeId, EdgeId>;
 }
 
 export interface GraphViewStyleRule {
@@ -100,9 +115,7 @@ export interface GraphViewDomControllerEventDetail {
   readonly controller: GraphViewController;
 }
 
-export interface GraphViewProps {
-  readonly nodes: readonly GraphViewNode[];
-  readonly edges: readonly GraphViewEdge[];
+interface GraphViewSharedProps {
   readonly layout?: GraphViewLayoutName;
   readonly layoutOptions?: Readonly<Record<string, unknown>>;
   /**
@@ -136,8 +149,28 @@ export interface GraphViewProps {
   readonly onSpacingFactorChange?: (spacingFactor: number) => void;
 }
 
+/*** Retain the original GraphView nodes and edges input contract. */
+export interface GraphViewProps extends GraphViewSharedProps {
+  readonly nodes: readonly GraphViewNode[];
+  readonly edges: readonly GraphViewEdge[];
+  readonly graph?: never;
+}
+
+/*** Accept a published canonical graph without introducing a second domain graph model. */
+export interface GraphViewCanonicalGraphProps extends GraphViewSharedProps {
+  readonly graph: Graph<unknown, unknown, GraphId, GraphId>;
+  readonly nodes?: never;
+  readonly edges?: never;
+}
+
+/*** Accept either the established presentation elements or one canonical Ankhorage graph. */
+export type GraphViewInput = GraphViewProps | GraphViewCanonicalGraphProps;
+
+/*** Describe the resolved element input consumed by the existing GraphView runtime. */
+export type ResolvedGraphViewProps = GraphViewProps;
+
 export type GraphViewCallbacks = Pick<
-  GraphViewProps,
+  GraphViewSharedProps,
   | 'onEdgeEvent'
   | 'onLayoutComplete'
   | 'onNodeEvent'
