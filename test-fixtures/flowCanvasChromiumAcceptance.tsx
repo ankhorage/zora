@@ -25,6 +25,7 @@ declare global {
 const initialNodes = [
   {
     id: 'source',
+    presentation: { nodeKind: 'trigger' as const, status: 'completed' as const },
     ports: [{ direction: 'output' as const, id: 'out', label: 'Source output' }],
     position: { x: 48, y: 96 },
     title: 'Source',
@@ -33,9 +34,16 @@ const initialNodes = [
     description:
       'This deliberately long description proves that measured ports do not assume a fixed node height.',
     id: 'target',
+    presentation: { nodeKind: 'approval' as const, status: 'waiting' as const },
     ports: [{ direction: 'input' as const, id: 'in', label: 'Target input' }],
     position: { x: 420, y: 160 },
     title: 'Target',
+  },
+  {
+    id: 'unadorned',
+    ports: [],
+    position: { x: 700, y: 96 },
+    title: 'Unadorned',
   },
 ];
 

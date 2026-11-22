@@ -33,7 +33,33 @@ export interface FlowNodeData {
   readonly position: FlowPoint;
   readonly ports: readonly FlowPort[];
   readonly description?: string;
+  /** Optional caller-owned visual treatment; it never reports or infers workflow execution. */
+  readonly presentation?: FlowNodePresentation;
   readonly disabled?: boolean;
+}
+
+/** Reference-grounded semantic icons available for Flow node presentation. */
+export type FlowNodeKind =
+  | 'trigger'
+  | 'schedule'
+  | 'webhook'
+  | 'manual'
+  | 'content-input'
+  | 'transform'
+  | 'ai-agent'
+  | 'approval'
+  | 'publish'
+  | 'analytics'
+  | 'condition'
+  | 'loop';
+
+/** Reference-grounded node badge presentations, supplied explicitly by the caller. */
+export type FlowNodePresentationStatus = 'completed' | 'waiting';
+
+/** Presentation-only inputs for a FlowNode; they do not belong to its runtime or persisted graph state. */
+export interface FlowNodePresentation {
+  readonly nodeKind?: FlowNodeKind;
+  readonly status?: FlowNodePresentationStatus;
 }
 
 /** A stable address for a typed flow port. */
