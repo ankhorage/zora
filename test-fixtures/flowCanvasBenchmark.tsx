@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { ZoraProvider } from '@ankhorage/zora';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
 type GraphSize = 25 | 200 | 1000;
@@ -51,20 +52,22 @@ function FlowCanvasBenchmark() {
     };
   }, [connections, nodes, viewport]);
   return (
-    <FlowCanvas
-      connections={connections}
-      nodes={nodes}
-      testID="flow-benchmark"
-      viewport={viewport}
-      onNodesMove={setNodes}
-      onViewportChange={setViewport}
-      onConnect={(source, target) =>
-        setConnections((current) => [
-          ...current,
-          { id: `measured-${source.nodeId}-${target.nodeId}`, source, target },
-        ])
-      }
-    />
+    <ZoraProvider>
+      <FlowCanvas
+        connections={connections}
+        nodes={nodes}
+        testID="flow-benchmark"
+        viewport={viewport}
+        onNodesMove={setNodes}
+        onViewportChange={setViewport}
+        onConnect={(source, target) =>
+          setConnections((current) => [
+            ...current,
+            { id: `measured-${source.nodeId}-${target.nodeId}`, source, target },
+          ])
+        }
+      />
+    </ZoraProvider>
   );
 }
 

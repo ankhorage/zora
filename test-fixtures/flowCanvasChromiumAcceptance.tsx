@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { ZoraProvider } from '@ankhorage/zora';
 import { FlowCanvas } from '@ankhorage/zora/flow';
 
 type FlowState = Readonly<{
@@ -86,55 +87,57 @@ function FlowCanvasChromiumAcceptance() {
   }, [connections, events, nodeMoveChanges, nodes, selected, viewport, viewportChanges]);
   const record = (event: string) => setEvents((current) => [...current, event]);
   return (
-    <FlowCanvas
-      canRedo
-      canUndo
-      connections={connections}
-      nodes={nodes}
-      paletteItems={[{ id: 'task', title: 'Insert task' }]}
-      selectedNodeIds={selected}
-      testID="flow-canvas"
-      viewport={viewport}
-      onConnect={(source, target) => {
-        setConnections([{ id: 'source-target', source, target }]);
-        record('connect');
-      }}
-      onDisconnect={() => {
-        setConnections([]);
-        record('disconnect');
-      }}
-      onInsert={() => {
-        record('insert');
-      }}
-      onNodesDelete={(nodeIds) => {
-        setConnections((current) =>
-          current.filter(
-            (connection) =>
-              !nodeIds.includes(connection.source.nodeId) &&
-              !nodeIds.includes(connection.target.nodeId),
-          ),
-        );
-        setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
-        setSelected([]);
-        record('delete');
-      }}
-      onNodeSelectionChange={(nodeIds) => {
-        setSelected(nodeIds);
-        record(`select:${nodeIds.join(',')}`);
-      }}
-      onNodesMove={(next) => {
-        setNodes(next);
-        setNodeMoveChanges((current) => current + 1);
-        record('move');
-      }}
-      onRedo={() => record('redo')}
-      onUndo={() => record('undo')}
-      onViewportChange={(next) => {
-        setViewport(next);
-        setViewportChanges((current) => current + 1);
-        record('viewport');
-      }}
-    />
+    <ZoraProvider>
+      <FlowCanvas
+        canRedo
+        canUndo
+        connections={connections}
+        nodes={nodes}
+        paletteItems={[{ id: 'task', title: 'Insert task' }]}
+        selectedNodeIds={selected}
+        testID="flow-canvas"
+        viewport={viewport}
+        onConnect={(source, target) => {
+          setConnections([{ id: 'source-target', source, target }]);
+          record('connect');
+        }}
+        onDisconnect={() => {
+          setConnections([]);
+          record('disconnect');
+        }}
+        onInsert={() => {
+          record('insert');
+        }}
+        onNodesDelete={(nodeIds) => {
+          setConnections((current) =>
+            current.filter(
+              (connection) =>
+                !nodeIds.includes(connection.source.nodeId) &&
+                !nodeIds.includes(connection.target.nodeId),
+            ),
+          );
+          setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
+          setSelected([]);
+          record('delete');
+        }}
+        onNodeSelectionChange={(nodeIds) => {
+          setSelected(nodeIds);
+          record(`select:${nodeIds.join(',')}`);
+        }}
+        onNodesMove={(next) => {
+          setNodes(next);
+          setNodeMoveChanges((current) => current + 1);
+          record('move');
+        }}
+        onRedo={() => record('redo')}
+        onUndo={() => record('undo')}
+        onViewportChange={(next) => {
+          setViewport(next);
+          setViewportChanges((current) => current + 1);
+          record('viewport');
+        }}
+      />
+    </ZoraProvider>
   );
 }
 

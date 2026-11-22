@@ -37,12 +37,16 @@ async function testFlowCanvasChromiumAsync() {
   const build = await Bun.build({
     entrypoints: [join(repositoryRoot, 'test-fixtures/flowCanvasChromiumAcceptance.tsx')],
     format: 'esm',
+    loader: { '.svg': 'dataurl' },
     naming: 'flow-canvas-acceptance.js',
     outdir: temporaryRoot,
     plugins: [
       {
         name: 'react-native-web',
         setup(build) {
+          build.onResolve({ filter: /^@ankhorage\/zora$/ }, () => ({
+            path: join(repositoryRoot, 'src/features/theme/runtime.ts'),
+          }));
           build.onResolve({ filter: /^react-native$/ }, () => ({ path: reactNativeWebEntry }));
           build.onResolve({ filter: /^react-native-svg$/ }, () => ({
             path: reactNativeSvgWebEntry,
@@ -90,6 +94,12 @@ async function testFlowCanvasChromiumAsync() {
     await browser.rectAsync('[data-testid="flow-node-target-icon"]');
     await browser.rectAsync('[data-testid="flow-node-target-status"]');
     assert(
+      (await browser.evaluateAsync<string | null>(
+        'document.querySelector("[data-testid=flow-node-source]")?.getAttribute("aria-label") ?? null',
+      )) === 'Source. Completed',
+      'The source node must expose its caller-supplied completed status.',
+    );
+    assert(
       (await browser.evaluateAsync<boolean>(
         'document.querySelector("[data-testid=flow-node-unadorned-status]") === null',
       )) === true,
@@ -114,12 +124,12 @@ async function testFlowCanvasChromiumAsync() {
       'Canvas pan must not move nodes.',
     );
     phase = 'select';
-    await browser.clickAsync(await browser.rectAsync('[role="button"][aria-label="Source"]'));
+    await browser.clickAsync(await browser.rectAsync('[data-testid="flow-node-source"]'));
     await browser.waitForStateAsync((state) => state.selected.includes('source'));
     const beforeNodeDrag = await browser.readStateAsync();
     phase = 'drag';
     await browser.dragAsync(
-      await browser.rectAsync('[role="button"][aria-label="Source"]'),
+      await browser.rectAsync('[data-testid="flow-node-source"]'),
       96,
       -48,
     );
@@ -202,7 +212,7 @@ async function testFlowCanvasChromiumAsync() {
     throw error;
   } finally {
     if (!passed) {
-      if (browser) await browser.captureFailureEvidenceAsync(artifactsDirectory, phase);
+      if (browser) await browser.captureFailureEvidenceAsync(artifactsDirectory, phase, failure);
       else captureStartupFailureEvidence(artifactsDirectory, phase, failure);
     }
     browser?.close();
@@ -408,21 +418,22 @@ class ChromeSession {
       })()`,
     );
   }
-  async captureEvidenceAsync(directory: string, name: string, phase: string) {
+  async captureEvidenceAsync(directory: string, name: string, phase: string, failure?: unknown) {
     await this.screenshotAsync(join(directory, `${name}.png`));
     const evidence = {
       consoleErrors: this.consoleErrors,
       diagnostics: await this.evaluateAsync('window.flowDiagnostics ?? []'),
       exceptions: this.exceptions,
+      ...(failure === undefined ? {} : { failure: String(failure) }),
       phase,
       state: await this.evaluateAsync('window.flowAcceptance?.read() ?? null'),
     };
     mkdirSync(directory, { recursive: true });
     writeFileSync(join(directory, `${name}.json`), JSON.stringify(evidence, null, 2));
   }
-  async captureFailureEvidenceAsync(directory: string, phase: string) {
+  async captureFailureEvidenceAsync(directory: string, phase: string, failure: unknown) {
     try {
-      await this.captureEvidenceAsync(directory, 'flow-canvas-failure', phase);
+      await this.captureEvidenceAsync(directory, 'flow-canvas-failure', phase, failure);
     } catch (error) {
       mkdirSync(directory, { recursive: true });
       writeFileSync(join(directory, 'flow-canvas-failure.txt'), String(error));
