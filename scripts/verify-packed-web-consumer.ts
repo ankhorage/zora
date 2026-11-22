@@ -42,6 +42,10 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
           'react-dom': '19.2.3',
           ...(authoring ? { 'react-native-web': '0.21.4', vite: '8.3.8' } : {}),
         },
+        devDependencies: {
+          '@types/react': '19.3.0',
+          typescript: '~6.0.3',
+        },
       },
       null,
       2,
@@ -430,6 +434,91 @@ console.log('Packed ZORA web consumer SSR, hydration, and Select interaction pas
   );
 }
 
+/*** Compile the packed browser declaration contracts without a native consumer dependency graph. */
+function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
+  writeFileSync(
+    join(consumerRoot, 'tsconfig.json'),
+    `${JSON.stringify(
+      {
+        compilerOptions: {
+          jsx: 'react-jsx',
+          module: 'ESNext',
+          moduleResolution: 'bundler',
+          noEmit: true,
+          skipLibCheck: true,
+          strict: true,
+          target: 'ES2022',
+          types: ['react'],
+        },
+        include: ['web-contract.ts'],
+      },
+      null,
+      2,
+    )}\n`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'web-contract.ts'),
+    `import { GraphView, type GraphViewProps } from '@ankhorage/zora/web/graph-view';
+import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
+import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
+import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
+import { TabPanel, type TabPanelProps } from '@ankhorage/zora/web/tab-panel';
+import { Tabs, type TabsProps } from '@ankhorage/zora/web/tabs';
+import {
+  TreeView,
+  type TreeItemNode,
+  type TreeItemRenderProps,
+  type TreeViewProps,
+} from '@ankhorage/zora/web/tree-view';
+import { TileGrid, type TileGridProps } from '@ankhorage/zora/web/tile-grid';
+
+const treeNode: TreeItemNode<'root'> = {
+  id: 'root',
+  label: 'Root',
+};
+const renderTreeItem = (props: TreeItemRenderProps<'root'>): string => props.node.label as string;
+const treeProps: TreeViewProps<'root'> = {
+  nodes: [treeNode],
+  onSelect: (id) => {
+    const rootId: 'root' = id;
+    void rootId;
+  },
+  renderItem: renderTreeItem,
+};
+
+const contracts = [
+  GraphView,
+  GridView,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
+  TileGrid,
+  TreeView,
+] as const;
+const props = {} as {
+  graph: GraphViewProps;
+  grid: GridViewProps;
+  tab: TabProps;
+  tabList: TabListProps;
+  tabPanel: TabPanelProps;
+  tabs: TabsProps;
+  tileGrid: TileGridProps;
+  tree: TreeViewProps<'root'>;
+};
+
+// @ts-expect-error GridView must not expose TileGrid-only declarations.
+type GridViewDoesNotExposeTileGrid = import('@ankhorage/zora/web/grid-view').TileGridProps;
+// @ts-expect-error Tabs must not expose TabPanel-only declarations.
+type TabsDoesNotExposeTabPanel = import('@ankhorage/zora/web/tabs').TabPanelProps;
+
+void contracts;
+void props;
+void treeProps;
+`,
+  );
+}
+
 try {
   const packageDirectory = join(temporaryRoot, 'package');
   const consumerRoot = join(temporaryRoot, 'consumer');
@@ -447,12 +536,16 @@ try {
   mkdirSync(consumerRoot);
   writeConsumerPackage(consumerRoot, join(packageDirectory, tarball));
   if (authoring) writeAuthoringConsumerAcceptance(consumerRoot);
-  else writeWebConsumerAcceptance(consumerRoot);
+  else {
+    writeWebConsumerAcceptance(consumerRoot);
+    writeWebTypeConsumerAcceptance(consumerRoot);
+  }
   run(['bun', 'install', '--ignore-scripts'], consumerRoot, {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
+  if (!authoring) run(['bunx', 'tsc', '--noEmit'], consumerRoot);
   if (authoring) {
     run(['bunx', 'vite', 'build'], consumerRoot);
     console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');

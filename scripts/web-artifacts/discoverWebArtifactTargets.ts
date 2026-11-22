@@ -132,8 +132,14 @@ function discoverAssociatedTypeExports(
   paths: DiscoveryPaths,
 ): WebArtifactTarget['typeExports'] {
   const importedTypeSymbols = discoverImportedTypeSymbols(checker, program, implementationPath);
+  const implementationTypeExports = discoverImplementationTypeExports(
+    checker,
+    program,
+    implementationPath,
+    paths,
+  );
 
-  return checker
+  const facadeTypeExports = checker
     .getExportsOfModule(publicModuleSymbol)
     .flatMap((exportSymbol) => {
       const exportName = exportSymbol.getName();
@@ -152,6 +158,58 @@ function discoverAssociatedTypeExports(
         {
           declarationSource: toDistDeclarationPath(sourcePath, paths),
           exportName,
+        },
+      ];
+    });
+  return [...facadeTypeExports, ...implementationTypeExports]
+    .filter(
+      (item, index, items) =>
+        items.findIndex(
+          (candidate) =>
+            candidate.declarationSource === item.declarationSource &&
+            candidate.exportName === item.exportName,
+        ) === index,
+    )
+    .sort((left, right) =>
+      left.exportName === right.exportName
+        ? left.declarationSource.localeCompare(right.declarationSource)
+        : left.exportName.localeCompare(right.exportName),
+    );
+}
+
+/*** Preserve public types declared directly by a specialized browser implementation. */
+function discoverImplementationTypeExports(
+  checker: ts.TypeChecker,
+  program: ts.Program,
+  implementationPath: string,
+  paths: DiscoveryPaths,
+): WebArtifactTarget['typeExports'] {
+  const source = program.getSourceFile(implementationPath);
+  if (source === undefined) {
+    throw new Error(`Could not load ZORA web implementation: ${implementationPath}`);
+  }
+  const moduleSymbol = checker.getSymbolAtLocation(source);
+  if (moduleSymbol === undefined) return [];
+
+  return checker
+    .getExportsOfModule(moduleSymbol)
+    .flatMap((exportSymbol) => {
+      const resolvedSymbol =
+        exportSymbol.flags & ts.SymbolFlags.Alias
+          ? checker.getAliasedSymbol(exportSymbol)
+          : exportSymbol;
+      const declaration = resolvedSymbol.declarations?.at(0);
+      if (
+        (resolvedSymbol.flags & ts.SymbolFlags.Type) === 0 ||
+        declaration === undefined ||
+        declaration.getSourceFile() !== source
+      ) {
+        return [];
+      }
+      return [
+        {
+          declarationSource: toDistDeclarationPath(implementationPath, paths),
+          exportName: exportSymbol.getName(),
         },
       ];
     })

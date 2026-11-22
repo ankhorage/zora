@@ -281,7 +281,9 @@ async function writeDeclaration(
     throw new Error(`Missing declaration owner for ZORA web component ${target.component}.`);
   }
 
-  const groups = groupTypeExports(target);
+  const groups = groupTypeExports(target).filter(
+    ({ declarationSource }) => declarationSource !== target.declarationSource,
+  );
   const dependencies = new DeclarationDependencies(outputDirectory, target.exportName);
   const supports = await Promise.all(
     groups.map(async ({ declarationSource, exportNames }, index) => {
@@ -301,7 +303,12 @@ async function writeDeclaration(
     new Map(
       supports.map(({ originalSpecifier, localSpecifier }) => [originalSpecifier, localSpecifier]),
     ),
-    new Set(target.runtimeExports.map(({ exportName }) => exportName)),
+    new Set([
+      ...target.runtimeExports.map(({ exportName }) => exportName),
+      ...target.typeExports
+        .filter(({ declarationSource }) => declarationSource === target.declarationSource)
+        .map(({ exportName }) => exportName),
+    ]),
   );
   const reexports = supports.map(
     ({ exportNames, localSpecifier }) =>
@@ -482,9 +489,7 @@ function publicDeclarationSurface(
   exportNames?: ReadonlySet<string>,
 ): string {
   const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
-  const exported = file.statements.filter((statement) =>
-    isSelectedPublicDeclarationStatement(statement, exportNames),
-  );
+  const exported = selectedPublicDeclarations(file, exportNames);
   const publicText = exported
     .map((statement) => publicDeclarationText(statement, file, exportNames))
     .join('\n');
@@ -501,6 +506,36 @@ function publicDeclarationSurface(
     )
     .filter(Boolean)
     .join('\n\n');
+}
+
+/*** Retain the selected public declarations and their same-module type dependencies. */
+function selectedPublicDeclarations(
+  file: ts.SourceFile,
+  exportNames: ReadonlySet<string> | undefined,
+): readonly ts.Statement[] {
+  const publicDeclarations = file.statements.filter(isPublicDeclarationStatement);
+  if (exportNames === undefined) return publicDeclarations;
+
+  const selected = new Set(
+    publicDeclarations.filter((statement) =>
+      isSelectedPublicDeclarationStatement(statement, exportNames),
+    ),
+  );
+  const directDeclarations = publicDeclarations.flatMap((statement) => {
+    const name = declarationName(statement);
+    return name === undefined ? [] : [{ name, statement }];
+  });
+  let expanded = true;
+  while (expanded) {
+    expanded = false;
+    const selectedText = [...selected].map((statement) => statement.getText(file)).join('\n');
+    for (const { name, statement } of directDeclarations) {
+      if (selected.has(statement) || !new RegExp(`\\b${name}\\b`, 'u').test(selectedText)) continue;
+      selected.add(statement);
+      expanded = true;
+    }
+  }
+  return publicDeclarations.filter((statement) => selected.has(statement));
 }
 
 /*** Render a selected public declaration without retaining sibling names from a facade export list. */

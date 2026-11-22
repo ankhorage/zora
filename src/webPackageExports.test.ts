@@ -94,6 +94,40 @@ test('keeps shared facade component type exports isolated and portable', async (
   ).text();
   expect(gridViewDeclaration).not.toContain('TileGrid');
   expect(tileGridDeclaration).not.toContain('GridView');
+
+  const gridViewTypes = await Bun.file(
+    join('web-dist', 'components', 'grid-view', 'GridView.types-0.d.ts'),
+  ).text();
+  const tileGridTypes = await Bun.file(
+    join('web-dist', 'components', 'tile-grid', 'TileGrid.types-0.d.ts'),
+  ).text();
+  expect(gridViewTypes).not.toContain('TileGrid');
+  expect(tileGridTypes).not.toContain('GridViewProps');
+});
+
+/** Verifies that specialized browser artifacts retain their directly owned public types. */
+test('keeps specialized browser component types on their canonical web subpaths', async () => {
+  const treeViewDeclaration = await Bun.file(
+    join('web-dist', 'components', 'tree-view', 'index.d.ts'),
+  ).text();
+  expect(treeViewDeclaration).toBe(
+    [
+      "export { TreeView } from './TreeView';",
+      "export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './TreeView';",
+      '',
+    ].join('\n'),
+  );
+
+  const activityIndicatorDeclaration = await Bun.file(
+    join('web-dist', 'components', 'activity-indicator', 'index.d.ts'),
+  ).text();
+  expect(activityIndicatorDeclaration).toBe(
+    [
+      "export { ActivityIndicator } from './ActivityIndicator';",
+      "export type { ActivityIndicatorProps } from './ActivityIndicator';",
+      '',
+    ].join('\n'),
+  );
 });
 
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
