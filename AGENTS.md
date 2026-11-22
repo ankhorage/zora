@@ -39,102 +39,236 @@ Architectural invariants:
 - React, React Native, and platform-specific integration remain declared peer or package dependencies at the UI boundary.
 - Application workflows and provider-specific side effects remain outside the component library.
 
-## Current architecture only
+## Task authority and scope
 
-Only the current Ankhorage architecture is valid. Do not add or retain deprecated APIs,
-compatibility aliases, shims, dual old/new paths, historical-state fallbacks, or migrations whose
-sole purpose is supporting obsolete states. Remove superseded implementations instead.
+The user's explicit requirements and acceptance criteria define the
+authorized scope. Scope is frozen unless the user explicitly changes it.
 
-When a canonical change affects another repository, update that repository to the latest released
-public API instead of preserving compatibility locally. Cross-package usage must go through
-published public APIs and declared dependencies, never sibling source files.
+- Implement exactly the requested outcome. Never invent requirements.
+- No unsolicited features, refactoring, redesign, migrations,
+  abstractions, compatibility layers, or architectural improvements.
+- Change only files necessary for the task, including relevant tests,
+  documentation sources, and release metadata.
+- Existing defects, architecture debt, and reviewer suggestions do not
+  authorize additional work.
+- Repository rules and skills define HOW authorized work is implemented,
+  never WHAT additional work may be performed.
+- Never weaken mandatory quality, security, or validation requirements.
 
-Current-runtime error handling and canonical database or infrastructure migrations remain valid
-when they support states that the current architecture can intentionally produce.
+If correct implementation requires work outside scope, STOP.
+Explain the blocker and wait for explicit user instructions.
+Never independently expand scope or improvise workarounds.
 
-## Standalone contract
+STOP always means graceful stop: cease implementation, preserve and
+remotely hand off task work, document blockers, and safely clean up
+according to the delivery rules below.
 
-Every repository managed by `@ankhorage/devtools` is standalone. It must be independently
-installable, buildable, testable, and usable from its own checkout using only declared dependencies
-and explicit configuration. It must not require sibling repositories, sibling source imports,
-`workspace:`, `file:`, or `link:` dependencies to unpublished packages, hidden
-organization-local state, or assumptions about a specific consuming application, infrastructure,
-hosting provider, web server, container runtime, or deployment topology.
+Do not stop for unrelated cosmetic issues or optional improvements.
 
-Published packages are additionally consumer-agnostic and reusable outside Ankhorage.
-Environment- or provider-specific behavior belongs behind explicit configuration and adapters,
-never in the package core.
+## Architecture and dependencies
 
-If an existing repository violates this contract, treat that as architecture debt to remove, not
-as an exception to preserve.
+Only the current Ankhorage architecture is valid.
 
-## Required repository instructions
+- No deprecated APIs, compatibility shims, historical fallbacks,
+  or dual implementation paths.
+- Remove superseded implementations only within authorized work.
+- Temporary migration paths require explicit authorization.
+- Repositories must remain standalone, independently installable,
+  buildable, testable, and usable with declared dependencies.
+- No unpublished sibling sources, workspace/file/link dependencies,
+  hidden organization-local state, or implicit deployment assumptions.
+- Cross-package imports must use published public APIs.
+- Published packages must remain consumer-agnostic.
+- Provider-specific behavior belongs behind explicit boundaries.
 
-Before changing any file, read this `AGENTS.md` completely and inspect `.agents/skills/`.
-Treat skill selection as a mandatory precondition to editing, then follow every selected skill
-through validation and delivery.
+If implementation requires changes in another repository, STOP.
+Identify the repository, required change, and blocker.
+Wait for explicit instructions.
 
-- Load `.agents/skills/ankhorage-coding-rules/SKILL.md` for implementation, refactoring, testing,
-  review, or pull-request delivery work.
-- Load `.agents/skills/ankhorage-project-structure/SKILL.md` when the task changes or reviews
-  directory ownership, package boundaries, public entrypoints, cross-repository ownership, type or
-  utility placement, or source architecture.
-- Load every additional repository-local skill whose description or requirements match the task,
-  including skills required by any selected skill. These rules define mandatory minimums, not an
-  allow-list; do not skip a useful relevant skill merely because it is not named here.
+Report unrelated architecture violations in a PR Conversation comment
+with location, evidence, and impact. Never fix them independently.
+Link directly to the comment in the final chat response.
 
-Do not load unrelated skills merely because they are installed. If the task scope expands, inspect
-`.agents/skills/` again and load the newly relevant skills before continuing. Do not substitute
-remembered, globally installed, or generic guidance for the repository-local versions.
+## Dependencies
+
+- Use `bun install` for development and restoring existing dependencies.
+- Use `bun update` for authorized existing dependency updates.
+- Never add new dependencies without explicit user approval.
+- Never downgrade dependencies.
+- Do not perform dependency migrations or unrelated refactoring.
+- Evaluate reputable existing packages before reimplementing their
+  functionality; propose new dependencies for approval.
+- Keep `package.json` and `bun.lock` synchronized and commit their changes.
+- Use `--frozen-lockfile` for reproducible CI and release builds.
+
+## Managed and generated files
+
+Never directly edit generated or centrally managed files, including
+`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, managed workflows, managed skills,
+and generated documentation.
+
+Read-only inspection is permitted.
+
+Changes require explicit user authorization and must be implemented
+through the canonical owner or generator.
+
+If a protected file needs changes, STOP and report its owner.
+Never modify generated output as a workaround.
+
+## Database and infrastructure
+
+Database schema changes, data migrations, destructive operations,
+and infrastructure mutations require explicit task authorization.
+
+Otherwise STOP and report the proposed changes, impact, risks,
+and rollback requirements.
+
+Never independently modify database structures or existing data.
+
+## Security
+
+All security findings (P0–P3) are hard blockers.
+
+On detection:
+
+- STOP implementation immediately and perform graceful handoff.
+- Report all findings as a prioritized P0–P3 list with evidence.
+- Do not fix, bypass, merge, or deploy.
+- Wait for explicit user instructions.
+
+This includes pre-existing security vulnerabilities.
+
+## Repository instructions and skills
+
+Before editing, read `AGENTS.md` and inspect `.agents/skills/`.
+
+Load:
+
+- `.agents/skills/ankhorage-coding-rules/SKILL.md`
+- `.agents/skills/ankhorage-project-structure/SKILL.md`
+- Additional repository-local skills when applicable or required.
+
+Follow applicable skills without expanding task scope.
+STOP only when implementation would violate a mandatory requirement.
+
+Never substitute generic or remembered instructions for repository-local
+skills.
+
+Skill scripts must use TypeScript (`.ts`) and run with Bun.
+JavaScript skill scripts (`.js`, `.mjs`, `.cjs`) are prohibited.
 
 ## Documentation
 
-`README.md` and the configured Paradox output are generated release artifacts. Never edit them
-manually, and do not regenerate or commit them in ordinary feature pull requests. Update the owning
-Paradox `/*** ... */` comments in `src` and leading `@usage` comments in real
-`examples/<example>/...` source files, plus any repository-owned manual documentation outside the
-generated output. The managed release workflow runs `bun run docs` after the package version bump
-and commits the regenerated artifacts in the release commit.
+`README.md` and configured Paradox output are release-generated artifacts.
+Never edit or commit them in ordinary feature PRs.
 
-## GitHub task lifecycle and workspace cleanup
+Update only relevant Paradox `/*** ... */` comments, real
+`examples/<example>/...` usage sources, and necessary manual documentation.
 
-- **Start.** Treat each issue implementation, PR implementation, review, and change request (CR)
-  as an independent task. Fetch the current remote default branch and read the applicable issue,
-  PR, HEAD, review feedback, and CI state. Use a fresh, uniquely named task checkout or worktree.
-  Concurrent tasks must have distinct writable checkout, temporary, build, and cache paths.
-- **CRs.** Fetch and check out the current remote PR branch in the new workspace. Preserve PR
-  history and scope. Push corrections to the existing PR branch.
-- **Delivery.** Run applicable checks. Commit and push all intended changes, then verify that
-  GitHub has the intended commit on the correct remote branch. Report the exact HEAD, checks, CI,
-  findings, and blockers. Report acceptance that was not run as unverified. Read-only reviews hand
-  off their findings without creating a commit. Merge requires explicit authorization.
-- **Cleanup.** After handoff, resolve every candidate path and remove only task-owned directories
-  whose resolved paths are strictly under the resolved system path for `/tmp` (`/private/tmp` on
-  macOS). Refuse candidates that resolve outside that boundary, including through a symlink. Use
-  Git-aware removal for worktrees. Preserve workspaces outside the boundary, shared directories,
-  other tasks' directories, uncommitted changes, and unpushed commits. If blocked, persist
-  recoverable work first and document what must be retained. Report whether cleanup succeeded, was
-  skipped, or was blocked.
+The release workflow regenerates documentation after the version bump.
+Do not generate unrelated documentation or examples.
 
-## Pull requests
+## Testing, validation and review
 
-Before creating a pull request, run all of these commands in this order and resolve every failure:
+- Create new unit tests only.
+- Never introduce new E2E, smoke, integration, browser, simulator,
+  performance, or other non-unit tests without explicit authorization.
+- Existing tests of all types may be executed, corrected, and extended
+  with directly relevant assertions within the authorized task.
+- Never weaken assertions to conceal regressions.
+- Run applicable mandatory CI checks without weakening or bypassing them.
+- Do not invent additional test matrices or acceptance criteria.
+- Recommend additional non-unit tests in the final handoff if useful.
+  Their non-creation is not a blocker.
 
-```sh
-bun run build
-bun run check-types
-bun run lint
-bun run knip:check
-bun run changeset
-bun run format
-```
+Run existing mandatory build, typecheck, lint, Knip, formatting,
+and other quality checks.
 
-For repositories that use Changesets, run `bun run changeset` only for release-impacting work.
-No Changeset means no release is requested. Never add an empty Changeset to satisfy CI; remove it
-for a no-release pull request, or add explicit release intent before validation.
+- Fix task-introduced failures within scope.
+- Report unrelated or pre-existing failures without fixing them.
+- Do not repeatedly rerun unchanged failures without new evidence.
+- Never disable, bypass, or falsify mandatory checks.
 
-## Skill scripts
+Review against original requirements and mandatory contracts.
 
-Scripts inside an Agent Skill must always be TypeScript files with the `.ts` extension.
-JavaScript skill scripts using `.js`, `.mjs`, or `.cjs` are not allowed. Run TypeScript
-skill scripts with Bun.
+Blocking findings require evidence of incorrect requested behavior,
+introduced regressions, or mandatory contract violations.
+Security findings always follow the Security hard-blocker policy.
+
+Optional improvements and unrelated findings are non-blocking.
+Document them in PR Conversation comments.
+
+Reviewers cannot expand scope or introduce acceptance criteria.
+Report failed and unverified checks accurately.
+
+## GitHub task lifecycle and delivery
+
+Treat each issue, PR, review, and change request as an independent task.
+
+- Fetch current origin/main, issue, PR, HEAD, review, and CI state.
+- Use a fresh isolated checkout or worktree for every task.
+- Isolate concurrent workspaces, builds, temporary files, and caches.
+- Continue change requests on the existing PR branch.
+- Preserve unrelated user work and existing PR history.
+- Use Conventional Commits and PR titles.
+- Assign all issues and PRs to `artiphishle`.
+- Never assign or request PR reviews from any user or team.
+- Leave the requested reviewers list empty; report review readiness in the handoff.
+- Link issues to PRs and close issues only when completed.
+- Never merge without explicit authorization.
+
+Review the final diff and remove unauthorized changes.
+
+For every task with changes, including blocked tasks:
+
+1. Commit all recoverable task changes.
+2. Push to the intended remote branch.
+3. Verify the exact remote HEAD SHA.
+4. Document blockers and findings in the PR.
+5. Keep incomplete or blocked PRs in Draft.
+6. Safely clean up task-owned temporary workspaces.
+
+A recovery commit does not imply successful completion.
+
+If remote persistence is technically impossible, preserve local work
+and report the failed handoff, unpushed commits, and recovery location.
+Never discard unpushed work to satisfy cleanup requirements.
+
+Cleanup may remove only task-owned paths strictly beneath the resolved
+system `/tmp` path (`/private/tmp` on macOS), using Git-aware removal.
+
+Never remove unrelated work, shared paths, or unpersisted data.
+Report cleanup success, failure, or omission.
+
+Read-only reviews report findings without creating commits.
+
+## Pull requests and release preparation
+
+Run applicable mandatory validation:
+
+- `bun run build`
+- `bun run check-types`
+- `bun run lint`
+- `bun run knip:check`
+- Relevant unit tests and existing mandatory tests
+
+Create the required Changeset for release-impacting work.
+No release impact means no Changeset. Never create empty Changesets.
+
+After Changeset creation, run `bun run format` as the final regular
+file-writing validation operation.
+
+Then run applicable read-only checks:
+
+- `bun run format:check`
+- `bun run changeset:status`
+
+Include the Changeset file in formatting.
+Repeat necessary final checks after subsequent file modifications.
+
+Formatting must not introduce unrelated changes into the final diff.
+
+A Draft PR may document blocked or partially verified work.
+Never claim failing or unverified mandatory checks have passed.
+
+Complete the delivery and cleanup process defined above.
