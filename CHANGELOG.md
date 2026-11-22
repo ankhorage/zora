@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.5.0
+
+### Minor Changes
+
+- 546ca96: Add canonical `@ankhorage/graph` input support to GraphView.
+
 ## 27.4.10
 
 ### Patch Changes

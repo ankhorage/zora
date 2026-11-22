@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.4.10",
+      "value": "v27.5.0",
       "color": "cb3837"
     },
     {
@@ -3309,6 +3309,7 @@
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/createGraphViewDomCallbacks.ts",
         "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx",
+        "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
         "src/features/graph-view/constants/events.ts",
         "src/types/graph-view.ts"
       ],
@@ -3353,6 +3354,17 @@
       "dependencies": [],
       "exports": [
         "registerGraphLayouts"
+      ]
+    },
+    {
+      "path": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/graph-view.ts"
+      ],
+      "exports": [
+        "projectCanonicalGraph",
+        "resolveGraphViewProps"
       ]
     },
     {
@@ -3426,12 +3438,16 @@
         "GRAPH_VIEW_EVENTS",
         "GraphView",
         "GraphViewCallbacks",
+        "GraphViewCanonicalEdgeData",
+        "GraphViewCanonicalGraphProps",
+        "GraphViewCanonicalNodeData",
         "GraphViewController",
         "GraphViewDomControllerEventDetail",
         "GraphViewEdge",
         "GraphViewElementEvent",
         "GraphViewElementEventType",
         "GraphViewFitOptions",
+        "GraphViewInput",
         "GraphViewLayoutName",
         "GraphViewMeasurement",
         "GraphViewNode",
@@ -3443,7 +3459,8 @@
         "GraphViewSize",
         "GraphViewStyleRule",
         "GraphViewTopologyUpdatePolicy",
-        "GraphViewViewport"
+        "GraphViewViewport",
+        "ResolvedGraphViewProps"
       ]
     },
     {
@@ -8382,12 +8399,16 @@
       "dependencies": [],
       "exports": [
         "GraphViewCallbacks",
+        "GraphViewCanonicalEdgeData",
+        "GraphViewCanonicalGraphProps",
+        "GraphViewCanonicalNodeData",
         "GraphViewController",
         "GraphViewDomControllerEventDetail",
         "GraphViewEdge",
         "GraphViewElementEvent",
         "GraphViewElementEventType",
         "GraphViewFitOptions",
+        "GraphViewInput",
         "GraphViewLayoutName",
         "GraphViewMeasurement",
         "GraphViewNode",
@@ -8399,7 +8420,8 @@
         "GraphViewSize",
         "GraphViewStyleRule",
         "GraphViewTopologyUpdatePolicy",
-        "GraphViewViewport"
+        "GraphViewViewport",
+        "ResolvedGraphViewProps"
       ]
     },
     {
@@ -70420,7 +70442,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 39,
+        "line": 40,
         "column": 1
       }
     },
@@ -70431,7 +70453,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 87,
+        "line": 89,
         "column": 1
       }
     },
@@ -70442,7 +70464,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 107,
+        "line": 109,
         "column": 1
       }
     },
@@ -70453,7 +70475,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 149,
+        "line": 151,
         "column": 1
       }
     },
@@ -70464,7 +70486,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 168,
+        "line": 170,
         "column": 1
       }
     },
@@ -70475,7 +70497,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 229,
+        "line": 231,
         "column": 1
       }
     },
@@ -70486,7 +70508,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 239,
+        "line": 241,
         "column": 1
       }
     },
@@ -70497,7 +70519,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 255,
+        "line": 257,
         "column": 1
       }
     },
@@ -70508,7 +70530,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
-        "line": 271,
+        "line": 273,
         "column": 1
       }
     },
@@ -70564,6 +70586,72 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts",
         "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveGraphViewProps",
+      "description": "Resolve either supported public GraphView input into the existing renderer element contract.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "projectCanonicalGraph",
+      "description": "Project canonical graph identity and payloads without placing presentation state in the domain.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 21,
+        "column": 1
+      }
+    },
+    {
+      "name": "assertDistinctProjectedElementIds",
+      "description": "Reject canonical IDs that cannot coexist in Cytoscape's shared string identifier space.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 46,
+        "column": 1
+      }
+    },
+    {
+      "name": "compareGraphViewNodes",
+      "description": "Sort projected nodes by their stable renderer identity.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 54,
+        "column": 1
+      }
+    },
+    {
+      "name": "compareGraphViewEdges",
+      "description": "Sort projected edges by identity, then endpoints for deterministic reconciliation.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 59,
+        "column": 1
+      }
+    },
+    {
+      "name": "compareProjectedIds",
+      "description": "Compare projected identifiers without locale-dependent ordering.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "line": 68,
         "column": 1
       }
     },
@@ -83643,6 +83731,11 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
       },
       {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toPath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts",
         "toPath": "src/types/graphViewRuntime.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
@@ -83661,6 +83754,11 @@
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts",
         "toPath": "src/types/graph-view.ts",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts"
+      },
+      {
+        "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts",
+        "toPath": "src/types/graph-view.ts",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts"
       },
       {
         "fromPath": "src/features/graph-view/adapters/inbound/web-artifact/runGraphLayout.ts",
@@ -91335,6 +91433,12 @@
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphNodeOverlay.tsx"
       },
       {
+        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx",
+        "toSymbol": "resolveGraphViewProps",
+        "callExpression": "resolveGraphViewProps",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/GraphView.tsx"
+      },
+      {
         "fromSymbol": "GraphView",
         "toSymbol": "useGraphViewRuntime",
         "callExpression": "useGraphViewRuntime",
@@ -91471,6 +91575,30 @@
         "toSymbol": "cytoscape",
         "callExpression": "cytoscape",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/registerGraphLayouts.ts"
+      },
+      {
+        "fromSymbol": "resolveGraphViewProps",
+        "toSymbol": "projectCanonicalGraph",
+        "callExpression": "projectCanonicalGraph",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts"
+      },
+      {
+        "fromSymbol": "projectCanonicalGraph",
+        "toSymbol": "assertDistinctProjectedElementIds",
+        "callExpression": "assertDistinctProjectedElementIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts"
+      },
+      {
+        "fromSymbol": "compareGraphViewNodes",
+        "toSymbol": "compareProjectedIds",
+        "callExpression": "compareProjectedIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts"
+      },
+      {
+        "fromSymbol": "compareGraphViewEdges",
+        "toSymbol": "compareProjectedIds",
+        "callExpression": "compareProjectedIds",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/resolveGraphViewProps.ts"
       },
       {
         "fromSymbol": "runDetachedGraphLayout",
