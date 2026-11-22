@@ -1,6 +1,5 @@
-import { expect, test } from 'bun:test';
-
 import type { Graph } from '@ankhorage/graph';
+import { expect, test } from 'bun:test';
 
 import type { GraphViewInput, GraphViewProps } from '../../../../../types/graph-view';
 import { projectCanonicalGraph, resolveGraphViewProps } from './resolveGraphViewProps';
