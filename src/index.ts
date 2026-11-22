@@ -28,6 +28,8 @@ export type {
   ColorWheelSelection,
 } from './features/color/public';
 export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
+export type { HeroBackgroundSlide, HeroBackgroundSliderProps } from './features/hero/background-slider/public';
+export { HeroBackgroundSlider } from './features/hero/background-slider/public';
 export type {
   ReaderColorScheme,
   ReaderDocumentFormat,
