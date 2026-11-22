@@ -430,6 +430,7 @@ jobs:
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
           const requireConditions = new Set(['default', 'node', 'require']);
+          const reactNativeConditions = new Set(['react-native']);
           const platformConditions = new Set(['browser', 'react-native']);
           const explicitServerConditions = new Set(['bun', 'node']);
           const supportsLoader = (target, conditions) => {
@@ -454,7 +455,10 @@ jobs:
           const isPlatformOnlyRuntimeTarget = (target) =>
             declaresCondition(target, platformConditions) &&
             !declaresCondition(target, explicitServerConditions);
+          const isReactNativePlatformOnlyRuntimeTarget = (target) =>
+            isPlatformOnlyRuntimeTarget(target) && declaresCondition(target, reactNativeConditions);
           const selectLoaders = (target) => {
+            if (isReactNativePlatformOnlyRuntimeTarget(target)) return ['react-native'];
             if (isPlatformOnlyRuntimeTarget(target)) return [];
             return [
               ['import', importConditions],
@@ -492,6 +496,37 @@ jobs:
           process.stdout.write(output.length === 0 ? '' : `${output.join('\n')}\n`);
           NODE
 
+            verify_react_native_export() {
+              consumer_dir="$1"
+              specifier="$2"
+              platform_dir="$(mktemp -d "${consumer_dir}/packed-platform.XXXXXX")"
+              platform_output_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-platform-output.XXXXXX")"
+              printf '{"expo":{"name":"packed-platform-verification","slug":"packed-platform-verification"}}\n' > "$platform_dir/app.json"
+              APP_DIR="$platform_dir" PACKAGE_SPECIFIER="$specifier" node - <<'NODE'
+          const { writeFileSync } = require('node:fs');
+          const { join } = require('node:path');
+          const appDir = process.env.APP_DIR;
+          const specifier = process.env.PACKAGE_SPECIFIER;
+          if (typeof appDir !== 'string' || typeof specifier !== 'string') {
+            throw new Error('The platform verification app and package specifier are required.');
+          }
+          writeFileSync(
+            join(appDir, 'package.json'),
+            `${JSON.stringify({
+              main: './App.tsx',
+              name: 'packed-platform-verification',
+              private: true,
+              version: '0.0.0',
+            })}\n`,
+          );
+          writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
+          NODE
+              (
+                cd "$platform_dir"
+                "$consumer_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
+              )
+            }
+
             root_runtime_entrypoints="$(awk -F '|' -v package_name="$package_name" '$2 == package_name { print }' runtime-entrypoints.txt)"
             if [ -n "$root_runtime_entrypoints" ]; then
               (
@@ -500,8 +535,30 @@ jobs:
                 bun add "$artifact" --ignore-scripts --omit optional
                 printf '%s\n' "$root_runtime_entrypoints" | while IFS='|' read -r root_runtime_loader root_runtime_specifier; do
                   case "$root_runtime_loader" in
+                    react-native)
+                      if verify_react_native_export "$optional_install_dir" "$root_runtime_specifier"; then
+                        echo "Verified React Native optional-isolation export $root_runtime_specifier with Expo."
+                        continue
+                      fi
+                      echo "::error title=Packed optional-isolation React Native export failed::$root_runtime_specifier could not compile with Expo."
+                      exit 1
+                      ;;
                     import)
-                      PACKAGE_SPECIFIER="$root_runtime_specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)'
+                      root_runtime_log="$(mktemp "${RUNNER_TEMP}/standalone-optional-runtime.XXXXXX")"
+                      if PACKAGE_SPECIFIER="$root_runtime_specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)' >"$root_runtime_log" 2>&1; then
+                        continue
+                      fi
+
+                      if grep -Fq 'react-native/index.js' "$root_runtime_log" && grep -Fq 'Unexpected typeof' "$root_runtime_log"; then
+                        if verify_react_native_export "$optional_install_dir" "$root_runtime_specifier"; then
+                          echo "Verified React Native optional-isolation export $root_runtime_specifier with Expo."
+                          continue
+                        fi
+                      fi
+
+                      cat "$root_runtime_log"
+                      echo "::error title=Packed optional-isolation root export failed::$root_runtime_specifier could not load with Bun or compile with Expo."
+                      exit 1
                       ;;
                     require)
                       PACKAGE_SPECIFIER="$root_runtime_specifier" node -e 'require(process.env.PACKAGE_SPECIFIER)'
@@ -547,6 +604,14 @@ jobs:
                 continue
               fi
               case "$loader" in
+                react-native)
+                  if verify_react_native_export "$install_dir" "$specifier"; then
+                    echo "Verified React Native export $specifier with Expo."
+                    continue
+                  fi
+                  echo "::error title=Packed React Native export failed::$specifier could not compile with Expo."
+                  exit 1
+                  ;;
                 import)
                   runtime_log="$(mktemp "${RUNNER_TEMP}/standalone-runtime.XXXXXX")"
                   if PACKAGE_SPECIFIER="$specifier" bun -e 'await import(process.env.PACKAGE_SPECIFIER)' >"$runtime_log" 2>&1; then
@@ -554,32 +619,7 @@ jobs:
                   fi
 
                   if grep -Fq 'react-native/index.js' "$runtime_log" && grep -Fq 'Unexpected typeof' "$runtime_log"; then
-                    platform_dir="$(mktemp -d "${install_dir}/packed-platform.XXXXXX")"
-                    platform_output_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-platform-output.XXXXXX")"
-                    printf '{"expo":{"name":"packed-platform-verification","slug":"packed-platform-verification"}}\n' > "$platform_dir/app.json"
-                    APP_DIR="$platform_dir" PACKAGE_SPECIFIER="$specifier" node - <<'NODE'
-          const { writeFileSync } = require('node:fs');
-          const { join } = require('node:path');
-          const appDir = process.env.APP_DIR;
-          const specifier = process.env.PACKAGE_SPECIFIER;
-          if (typeof appDir !== 'string' || typeof specifier !== 'string') {
-            throw new Error('The platform verification app and package specifier are required.');
-          }
-          writeFileSync(
-            join(appDir, 'package.json'),
-            `${JSON.stringify({
-              main: './App.tsx',
-              name: 'packed-platform-verification',
-              private: true,
-              version: '0.0.0',
-            })}\n`,
-          );
-          writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
-          NODE
-                    if (
-                      cd "$platform_dir"
-                      "$install_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
-                    ); then
+                    if verify_react_native_export "$install_dir" "$specifier"; then
                       echo "Verified React Native export $specifier with Expo."
                       continue
                     fi
