@@ -21,9 +21,7 @@ test('keeps theme source imports resolvable while emitting Node ESM JavaScript s
   for (const modulePath of sourceModules) {
     const filename = resolve(themeRoot, modulePath);
     const source = readFileSync(filename, 'utf8');
-    const relativeImports = [
-      ...source.matchAll(/\bfrom\s+['"](\.{1,2}\/[^'"]+)['"]/gu),
-    ];
+    const relativeImports = [...source.matchAll(/\bfrom\s+['"](\.{1,2}\/[^'"]+)['"]/gu)];
 
     for (const [, specifier] of relativeImports) {
       expect(specifier?.endsWith('.ts'), `${modulePath}: ${specifier}`).toBe(true);
