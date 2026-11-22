@@ -208,7 +208,16 @@ function HeroBackgroundSlideLayer({
       opacity.stopAnimation();
       scale.stopAnimation();
     };
-  }, [active, animate, enterDurationMs, exitDurationMs, initialScale, opacity, reducedMotion, scale]);
+  }, [
+    active,
+    animate,
+    enterDurationMs,
+    exitDurationMs,
+    initialScale,
+    opacity,
+    reducedMotion,
+    scale,
+  ]);
 
   return (
     <Animated.View

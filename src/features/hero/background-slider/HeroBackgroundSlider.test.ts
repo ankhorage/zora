@@ -13,7 +13,11 @@ test('supports consumer-owned optimized images and hides progress for a single s
     React.createElement(HeroBackgroundSlider, {
       slides: [{ source: '/one.jpg', alt: 'One' }],
       testID: 'hero',
-      renderImage: (slide) => React.createElement('img', { src: typeof slide.source === 'string' ? slide.source : '', alt: '' }),
+      renderImage: (slide) =>
+        React.createElement('img', {
+          src: typeof slide.source === 'string' ? slide.source : '',
+          alt: '',
+        }),
     }),
   );
   expect(output).toContain('/one.jpg');
@@ -23,7 +27,10 @@ test('supports consumer-owned optimized images and hides progress for a single s
 test('renders all image layers and an optional progress indicator for a slideshow', () => {
   const slides = [{ source: '/one.jpg' }, { source: '/two.jpg' }];
   const renderImage = (slide: { source: unknown }) =>
-    React.createElement('img', { src: typeof slide.source === 'string' ? slide.source : '', alt: '' });
+    React.createElement('img', {
+      src: typeof slide.source === 'string' ? slide.source : '',
+      alt: '',
+    });
   const output = renderToStaticMarkup(
     React.createElement(HeroBackgroundSlider, {
       slides,
