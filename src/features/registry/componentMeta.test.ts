@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import { ZORA_COLORS } from '../theme/colorModel';
 import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
 import { ZORA_COMPONENT_META } from '.';
 
@@ -483,7 +484,12 @@ describe('ZORA_COMPONENT_META invariants', () => {
       { key: 'meta', schema: { type: 'string', category: 'Content', label: 'Date and time' } },
       {
         key: 'status',
-        schema: expect.objectContaining({ type: 'enum', label: 'Status' }),
+        schema: {
+          type: 'enum',
+          category: 'State',
+          label: 'Status',
+          enum: ZORA_COLORS,
+        },
       },
       {
         key: 'marker',

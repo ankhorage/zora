@@ -1,5 +1,6 @@
-import { ZORA_COLORS } from '../theme/colorModel';
 import type { ZoraComponentMeta } from '../../types/authoring';
+
+import { ZORA_COLORS } from '../theme/colorModel';
 
 export const timelineMeta = {
   name: 'Timeline',
