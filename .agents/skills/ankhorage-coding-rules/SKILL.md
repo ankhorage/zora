@@ -88,10 +88,12 @@ exceptions or replaced by generic preferences from this skill.
 - Follow the range-shape patterns in the
   [Devtools repository sync test](https://github.com/ankhorage/devtools/blob/main/src/cli/runRepositoryCommand.test.ts)
   and [ZORA PR #313](https://github.com/ankhorage/zora/pull/313).
-- Run focused unit or integration tests before full E2E and smoke suites.
-- Do not rerun an unchanged E2E or smoke failure without a new hypothesis. After two unsuccessful
-  full reruns without a substantive code or configuration change, stop cycling, inspect logs and
-  artifacts, and report the blocker.
+- Create new unit tests only. Existing tests of all types may be executed, corrected, or
+  extended with directly relevant assertions; never weaken assertions to conceal regressions.
+- New integration, E2E, smoke, browser, simulator, performance, or other non-unit tests require
+  explicit user authorization. Never invent additional test matrices.
+- Do not rerun an unchanged failing test without a new hypothesis or substantive change; inspect
+  available logs and artifacts, and report the blocker.
 
 ## Public API and release quality
 

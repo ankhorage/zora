@@ -1,5 +1,47 @@
 # Changelog
 
+## 27.5.0
+
+### Minor Changes
+
+- 546ca96: Add canonical `@ankhorage/graph` input support to GraphView.
+
+## 27.4.10
+
+### Patch Changes
+
+- a887aae: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.9
+
+### Patch Changes
+
+- 6db0f71: Update dependencies: `@ankhorage/contracts`, `@ankhorage/runtime`.
+
+## 27.4.8
+
+### Patch Changes
+
+- aa49904: Update dependencies: `@ankhorage/color-theory`.
+
+## 27.4.7
+
+### Patch Changes
+
+- 1b12432: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.6
+
+### Patch Changes
+
+- 69c15fd: Update dependencies: `@ankhorage/runtime`.
+
+## 27.4.5
+
+### Patch Changes
+
+- fa26a5b: Update dependencies: `@ankhorage/contracts`.
+
 ## 27.4.4
 
 ### Patch Changes

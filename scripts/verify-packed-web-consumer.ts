@@ -349,6 +349,13 @@ Object.assign(globalThis, {
 
 assert.equal(existsSync(join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'node_modules', 'react')), false);
 assert.equal(typeof GraphView, 'function');
+const canonicalGraphView = React.createElement(GraphView, {
+  graph: {
+    nodes: [{ id: 1, labels: ['Package'], data: { name: 'zora' } }],
+    edges: [],
+  },
+});
+assert.equal(canonicalGraphView.props.graph.nodes[0].id, 1);
 
 function ThemeProbe() {
   const { mode } = useZoraTheme();
