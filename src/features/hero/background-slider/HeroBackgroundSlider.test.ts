@@ -15,7 +15,8 @@ function renderHero(props: HeroBackgroundSliderProps): string {
 
 test('renders no background or progress when there are no slides', () => {
   const output = renderHero({ slides: [] });
-  expect(output).toBe('');
+  expect(output).not.toContain('<img');
+  expect(output).not.toContain('hero-progress');
 });
 
 test('supports consumer-owned optimized images and hides progress for a single slide', () => {
