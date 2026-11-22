@@ -14,9 +14,6 @@ export {
   AuthoringSelectionAdapter,
   ThemeEditorAdapter,
 } from './authoring';
-export { FlowExecutionOverlay } from './features/flow-execution-overlay/public';
-export { FlowInspector } from './features/flow-inspector/public';
-export { FlowNodePalette } from './features/flow-node-palette/public';
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
@@ -31,6 +28,9 @@ export type {
   ColorWheelSelection,
 } from './features/color/public';
 export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
+export { FlowExecutionOverlay } from './features/flow-execution-overlay/public';
+export { FlowInspector } from './features/flow-inspector/public';
+export { FlowNodePalette } from './features/flow-node-palette/public';
 export type {
   ReaderColorScheme,
   ReaderDocumentFormat,
