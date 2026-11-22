@@ -16,7 +16,9 @@
   },
   "include": [
     "scripts/build-web-components.ts",
+    "scripts/normalize-node-esm-imports.ts",
     "scripts/validate-example-projects.ts",
+    "scripts/verify-packed-node-esm-consumer.ts",
     "scripts/validate-expo-candidate.ts",
     "scripts/validate-reader-free-expo.ts"
   ]

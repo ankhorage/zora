@@ -141,7 +141,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist web-dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json && bun scripts/build-capabilities.ts && bun scripts/build-web-components.ts",
+    "build": "rm -rf dist web-dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json && bun scripts/build-capabilities.ts && bun scripts/build-web-components.ts && bun scripts/normalize-node-esm-imports.ts",
     "changeset": "ankhorage-changeset",
     "changeset:status": "ankhorage-changeset status --since=origin/main",
     "docs": "paradox",
@@ -155,6 +155,8 @@
     "format:check": "ankhorage-prettier --check .",
     "prepack": "bun run build",
     "test": "bun run build && bun test src examples/grid-workspaces/time examples/grid-workspaces/plugins --isolate",
+    "test:packed-consumer": "bun scripts/verify-packed-node-esm-consumer.ts --skip-build",
+    "test:packed-node-esm-consumer": "bun scripts/verify-packed-node-esm-consumer.ts",
     "test:packed-web-consumer": "bun scripts/verify-packed-web-consumer.ts",
     "test:packed-next-web-consumer": "bun scripts/verify-packed-next-web-consumer.ts",
     "test:packed-authoring-consumer": "bun scripts/verify-packed-web-consumer.ts --authoring",
