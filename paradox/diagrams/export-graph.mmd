@@ -64,6 +64,10 @@ graph LR
   module_src_features_button_utils_resolveButtonRecipe_ts["src/features/button/utils/resolveButtonRecipe.ts"]
   module_src_features_button_utils_resolveButtonThemeRecipe_ts["src/features/button/utils/resolveButtonThemeRecipe.ts"]
   module_src_features_button_utils_themeRecipeMeta_ts["src/features/button/utils/themeRecipeMeta.ts"]
+  module_src_features_calendar_adapters_inbound_Calendar_tsx["src/features/calendar/adapters/inbound/Calendar.tsx"]
+  module_src_features_calendar_application_createCalendarMonth_ts["src/features/calendar/application/createCalendarMonth.ts"]
+  module_src_features_calendar_application_isCalendarDateDisabled_ts["src/features/calendar/application/isCalendarDateDisabled.ts"]
+  module_src_features_calendar_calendarMeta_ts["src/features/calendar/calendarMeta.ts"]
   module_src_features_calendar_public_ts["src/features/calendar/public.ts"]
   module_src_features_card_adapters_inbound_Card_tsx["src/features/card/adapters/inbound/Card.tsx"]
   module_src_features_card_adapters_inbound_MediaCard_tsx["src/features/card/adapters/inbound/MediaCard.tsx"]
@@ -545,6 +549,7 @@ graph LR
   module_src_types_breadcrumbs_ts["src/types/breadcrumbs.ts"]
   module_src_types_button_group_ts["src/types/button-group.ts"]
   module_src_types_button_ts["src/types/button.ts"]
+  module_src_types_calendar_ts["src/types/calendar.ts"]
   module_src_types_card_ts["src/types/card.ts"]
   module_src_types_chat_ts["src/types/chat.ts"]
   module_src_types_checkbox_ts["src/types/checkbox.ts"]
@@ -777,6 +782,19 @@ graph LR
   export_ButtonProps["ButtonProps"]
   module_src_types_button_ts --> export_ButtonProps
   export_ButtonProps -.-> export_ZoraThemeMode
+  export_Calendar["Calendar"]
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> export_Calendar
+  export_CalendarDensity["CalendarDensity"]
+  module_src_types_calendar_ts --> export_CalendarDensity
+  export_CalendarProps["CalendarProps"]
+  module_src_types_calendar_ts --> export_CalendarProps
+  export_CalendarProps -.-> export_CalendarDensity
+  export_CalendarProps -.-> export_CalendarWeekStart
+  export_CalendarProps -.-> export_ZoraThemeMode
+  export_CalendarView["CalendarView"]
+  module_src_types_calendar_ts --> export_CalendarView
+  export_CalendarWeekStart["CalendarWeekStart"]
+  module_src_types_calendar_ts --> export_CalendarWeekStart
   export_CameraPermissionStatus["CameraPermissionStatus"]
   module_src_types_scanner_ts --> export_CameraPermissionStatus
   export_CameraPermissionView["CameraPermissionView"]
@@ -1919,6 +1937,8 @@ graph LR
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> export_Timeline
   export_TimelineItem["TimelineItem"]
   module_src_types_timeline_ts --> export_TimelineItem
+  export_TimelineItem -.-> export_SurfaceImageSource
+  export_TimelineItem -.-> export_UploadAsset
   export_TimelineProps["TimelineProps"]
   module_src_types_timeline_ts --> export_TimelineProps
   export_TimelineProps -.-> export_TimelineItem

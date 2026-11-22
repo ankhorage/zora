@@ -1,5 +1,17 @@
 # Changelog
 
+## 27.6.0
+
+### Minor Changes
+
+- 0529559: Add a public, locale-aware month Calendar backed by GridView and compose DatePicker from its compact presentation.
+- 63e83b0: Add controlled DataTable checkbox row selection and let table columns fit their container unless an explicit width requires overflow.
+- 28930cc: Add optional image and SVG markers to Timeline items and keep connectors continuous for variable-height event content.
+
+### Patch Changes
+
+- 3cf2e7f: Preserve settled GraphView positions and viewport when rich-node measurement follows a controlled topology update.
+
 ## 27.5.3
 
 ### Patch Changes
