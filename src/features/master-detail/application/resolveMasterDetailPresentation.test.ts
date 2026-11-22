@@ -2,7 +2,7 @@ import { expect, test } from 'bun:test';
 
 import { resolveMasterDetailPresentation } from './resolveMasterDetailPresentation';
 
-test('projects Navigator-owned compact route state below the desktop breakpoint', () => {
+test('projects host-owned compact route state below the desktop breakpoint', () => {
   expect(resolveMasterDetailPresentation('base', 'master', 'split')).toBe('master');
   expect(resolveMasterDetailPresentation('sm', 'detail', 'split')).toBe('detail');
 });

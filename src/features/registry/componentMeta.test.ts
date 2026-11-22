@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
 import { ZORA_COMPONENT_META } from '.';
 
@@ -238,7 +239,6 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'Chip',
       'ChipGroup',
       'DataTable',
-      'MasterDetail',
       'DatePicker',
       'Pagination',
       'Rating',
@@ -300,6 +300,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'GameOverlay',
       'Surface',
       'MediaCard',
+      'MasterDetail',
       'FlatList',
       'SectionList',
       'BottomSheet',
@@ -480,16 +481,13 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(keyboardAvoidingView.props.behavior?.enum).toEqual(['height', 'position', 'padding']);
   });
 
-  test('MasterDetail retains Navigator-owned compact state and serializable layout slots', () => {
+  test('MasterDetail uses RuntimeRenderer children for its serializable pane content', () => {
     const masterDetail = ZORA_COMPONENT_META.MasterDetail;
     expect(masterDetail.directManifestNode).toBe(true);
-    expect(masterDetail.allowedChildren).toEqual([]);
+    expect(masterDetail.allowedChildren).toEqual(CONTAINER_ALLOWED_CHILDREN);
     expect(masterDetail.props.activePane?.enum).toEqual(['master', 'detail']);
     expect(masterDetail.props.masterWidth?.enum).toEqual([25, 30, 35, 40]);
-    expect(masterDetail.slots).toMatchObject({
-      master: { label: 'Master list' },
-      detail: { label: 'Detail' },
-    });
+    expect(masterDetail.slots).toBeUndefined();
     expect(masterDetail.bindings?.props?.activePane).toMatchObject({
       acceptsFallback: true,
       acceptsTransforms: true,

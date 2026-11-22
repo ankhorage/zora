@@ -4,7 +4,7 @@ import type { MasterDetailActivePane, MasterDetailDesktopMode } from '../../../t
 
 export type MasterDetailPresentation = 'detail' | 'master' | 'split';
 
-/** Resolves the visual pane projection without changing Navigator-owned route state. */
+/*** Resolves the visual pane projection without changing host-owned route state. */
 export function resolveMasterDetailPresentation(
   breakpoint: Breakpoint,
   activePane: MasterDetailActivePane,

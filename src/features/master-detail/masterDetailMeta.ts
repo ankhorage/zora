@@ -5,23 +5,18 @@ export const masterDetailMeta = {
   name: 'MasterDetail',
   category: 'layout',
   directManifestNode: true,
-  allowedChildren: [],
+  allowedChildren: [...CONTAINER_ALLOWED_CHILDREN],
   description:
-    'Responsive visual projection for Navigator-owned list and detail routes. On expanded widths it displays two independently scrolling panes; on compact widths it displays the pane selected by activePane.',
+    'Responsive visual projection for host-owned list and detail routes. Its first child is the master list and its second child is the detail pane. Place it as a direct child of a non-scrolling Screen. On expanded widths it displays both in independently scrolling panes; on compact widths it displays the pane selected by activePane.',
   blueprint: {
     label: 'Master detail',
     defaultProps: { activePane: 'master', desktopMode: 'split', masterWidth: 30 },
-  },
-  slots: {
-    master: { label: 'Master list', allowedChildren: [...CONTAINER_ALLOWED_CHILDREN] },
-    detail: { label: 'Detail', allowedChildren: [...CONTAINER_ALLOWED_CHILDREN] },
   },
   bindings: {
     props: {
       activePane: {
         label: 'Active compact pane',
-        description:
-          'Bind this to Navigator-owned list or detail route state; ZORA does not navigate.',
+        description: 'Bind this to host-owned list or detail route state; ZORA does not navigate.',
         value: { type: 'string' },
         acceptsFallback: true,
         acceptsTransforms: true,
