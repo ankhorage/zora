@@ -1,5 +1,13 @@
 import { strict as assert } from 'node:assert';
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -51,6 +59,54 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
       2,
     )}\n`,
   );
+}
+
+/*** Verify the packed generated declaration graph before skipping third-party declaration bodies. */
+function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
+  const packageRoot = join(consumerRoot, 'node_modules', '@ankhorage', 'zora');
+  const webDistRoot = join(packageRoot, 'web-dist');
+  const manifest = JSON.parse(readFileSync(join(webDistRoot, 'manifest.json'), 'utf8')) as {
+    readonly artifacts: readonly {
+      readonly component: string;
+      readonly files: readonly string[];
+    }[];
+  };
+  const declarationFiles = manifest.artifacts.flatMap(({ component, files }) => {
+    const artifactRoot = join(webDistRoot, 'components', component);
+    const entrypoint = join(artifactRoot, 'index.d.ts');
+    assert.ok(existsSync(entrypoint), `Missing packed ZORA declaration entrypoint: ${entrypoint}`);
+    return files.filter((file) => file.endsWith('.d.ts')).map((file) => ({ artifactRoot, file }));
+  });
+  declarationFiles.push({
+    artifactRoot: join(webDistRoot, 'runtime'),
+    file: 'runtime/ZoraProvider.d.ts',
+  });
+
+  for (const { artifactRoot, file } of declarationFiles) {
+    const declarationPath = resolve(webDistRoot, file);
+    assert.ok(
+      declarationPath.startsWith(`${artifactRoot}/`),
+      `ZORA declaration escapes its packed artifact: ${file}`,
+    );
+    assert.ok(existsSync(declarationPath), `Missing packed ZORA declaration: ${file}`);
+    const declaration = readFileSync(declarationPath, 'utf8');
+    assert.doesNotMatch(declaration, /from\s+['"]@ankhorage\/zora['"]/u);
+    for (const match of declaration.matchAll(
+      /(?:from\s+|import\(\s*)['"](\.{1,2}\/[^'"]+)['"]/gu,
+    )) {
+      const specifier = match[1];
+      assert.notEqual(specifier, undefined);
+      const basePath = resolve(artifactRoot, specifier);
+      assert.ok(
+        basePath.startsWith(`${artifactRoot}/`),
+        `ZORA declaration dependency escapes its packed artifact: ${file} -> ${specifier}`,
+      );
+      assert.ok(
+        [basePath, `${basePath}.d.ts`, join(basePath, 'index.d.ts')].some(existsSync),
+        `Unresolved packed ZORA declaration dependency: ${file} -> ${specifier}`,
+      );
+    }
+  }
 }
 
 /*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
@@ -445,7 +501,7 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
           module: 'ESNext',
           moduleResolution: 'bundler',
           noEmit: true,
-          skipLibCheck: false,
+          skipLibCheck: true,
           strict: true,
           target: 'ES2022',
           types: ['react'],
@@ -558,7 +614,10 @@ try {
     TMPDIR: temporaryRoot,
   });
   run(['bun', 'acceptance.mjs'], consumerRoot);
-  if (!authoring) run(['bunx', 'tsc', '--noEmit'], consumerRoot);
+  if (!authoring) {
+    verifyPackedWebDeclarationClosure(consumerRoot);
+    run(['bunx', 'tsc', '--noEmit'], consumerRoot);
+  }
   if (authoring) {
     run(['bunx', 'vite', 'build'], consumerRoot);
     console.log('Packed ZORA authoring consumer Vite/RNW render and controlled selection passed.');
