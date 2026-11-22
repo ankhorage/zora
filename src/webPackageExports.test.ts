@@ -17,6 +17,8 @@ const authoringControls = [
   'Card',
   'Field',
   'Pressable',
+  'Select',
+  'Switch',
   'Text',
   'TextInput',
   'View',
@@ -260,5 +262,7 @@ test('publishes browser-safe authoring controls through the released Surface bou
   const entrypoint = await Bun.file(join('src', 'authoring.ts')).text();
   expect(entrypoint).toContain("from '@ankhorage/surface/authoring-controls'");
   for (const control of authoringControls) expect(entrypoint).toContain(control);
+  expect(entrypoint).toContain("from './features/form/select/public'");
+  expect(entrypoint).toContain("from './features/form/switch/public'");
   expect(entrypoint).not.toContain("from './features/theme/runtime'");
 });

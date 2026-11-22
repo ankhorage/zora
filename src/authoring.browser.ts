@@ -1,3 +1,7 @@
+export type { SelectOption, SelectProps } from './features/form/select/public';
+export { Select } from './features/form/select/public';
+export type { SwitchProps } from './features/form/switch/public';
+export { Switch } from './features/form/switch/public';
 export { AuthoringBindingEditorAdapter } from './features/registry/adapters/inbound/AuthoringBindingEditorAdapter';
 export { AuthoringPropertyInspectorAdapter } from './features/registry/adapters/inbound/AuthoringPropertyInspectorAdapter';
 export { AuthoringSelectionAdapter } from './features/registry/adapters/inbound/AuthoringSelectionAdapter';

@@ -144,11 +144,13 @@ import {
   Card,
   Field,
   Pressable,
+  Select,
   Text,
   TextInput,
   ThemeEditorAdapter,
   ThemeProvider,
   View,
+  Switch,
   useTheme,
 } from '@ankhorage/zora/authoring';
 
@@ -163,7 +165,9 @@ export function App() {
   const [containerSelectedScreenId, setContainerSelectedScreenId] = React.useState('first');
   const [containerSelectionNotifications, setContainerSelectionNotifications] = React.useState(0);
   const [disabledSelectionNotifications, setDisabledSelectionNotifications] = React.useState(0);
+  const [layout, setLayout] = React.useState('stack');
   const [name, setName] = React.useState('');
+  const [published, setPublished] = React.useState(false);
   return (
     <ThemeProvider>
       <View gap="m">
@@ -179,6 +183,18 @@ export function App() {
         <Pressable testID="authoring-pressable">
           <Text>Pressable authoring control</Text>
         </Pressable>
+        <Select
+          onValueChange={setLayout}
+          options={[
+            { label: 'Stack', value: 'stack' },
+            { label: 'Grid', value: 'grid' },
+          ]}
+          testID="authoring-layout"
+          value={layout}
+        />
+        <Switch checked={published} onCheckedChange={setPublished} testID="authoring-published">
+          Published
+        </Switch>
         <AuthoringSelectionAdapter
           getItemId={(screen) => screen.id}
           items={screens}
@@ -258,6 +274,8 @@ export const authoringApi = {
   Card,
   Field,
   Pressable,
+  Select,
+  Switch,
   Text,
   TextInput,
   ThemeEditorAdapter,
@@ -311,6 +329,8 @@ try {
     'Card',
     'Field',
     'Pressable',
+    'Select',
+    'Switch',
     'Text',
     'TextInput',
     'ThemeEditorAdapter',
@@ -319,7 +339,7 @@ try {
   ]) assert.equal(typeof authoringApi[name], 'function');
   const authoringDirectory = join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'web-dist', 'authoring');
   const declaration = readFileSync(join(authoringDirectory, 'index.d.ts'), 'utf8');
-  for (const name of ['FieldProps', 'PressableProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
+  for (const name of ['FieldProps', 'PressableProps', 'SelectOption', 'SelectProps', 'SwitchProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
   const artifact = readFileSync(join(authoringDirectory, 'index.js'), 'utf8');
   for (const forbidden of ['AppBar', 'react-native-safe-area-context', 'react-native-gesture-handler', 'codegen']) assert.equal(artifact.includes(forbidden), false);
   const app = React.createElement(App);
@@ -365,6 +385,26 @@ try {
     browser.document.querySelector('[data-testid="authoring-disabled-selection-notifications"]')?.textContent,
     '0',
   );
+  await React.act(async () => {
+    browser.document.querySelector('[data-testid="authoring-layout-trigger"]')?.dispatchEvent(
+      new browser.MouseEvent('click', { bubbles: true }),
+    );
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  const layoutOption = browser.document.querySelector('[data-testid="authoring-layout-option-grid"]');
+  assert.notEqual(layoutOption, null);
+  await React.act(async () => {
+    layoutOption.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.match(browser.document.querySelector('[data-testid="authoring-layout-trigger"]')?.textContent ?? '', /Grid/);
+  const published = browser.document.querySelector('[data-testid="authoring-published"]');
+  assert.notEqual(published, null);
+  await React.act(async () => {
+    published.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.equal(published.getAttribute('aria-checked'), 'true');
   root.unmount();
 } finally {
   await vite.close();
