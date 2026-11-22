@@ -9,11 +9,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 function renderHero(props: HeroBackgroundSliderProps): string {
   return renderToStaticMarkup(
-    React.createElement(
-      ZoraProvider,
-      undefined,
-      React.createElement(HeroBackgroundSlider, props),
-    ),
+    React.createElement(ZoraProvider, undefined, React.createElement(HeroBackgroundSlider, props)),
   );
 }
 
