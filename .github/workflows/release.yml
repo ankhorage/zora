@@ -467,7 +467,7 @@ jobs:
           const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
-          const requireConditions = new Set(['default', 'node', 'require']);
+          const requireConditions = new Set(['require']);
           const reactNativeConditions = new Set(['react-native']);
           const platformConditions = new Set(['browser', 'react-native']);
           const explicitServerConditions = new Set(['bun', 'node']);
@@ -539,6 +539,7 @@ jobs:
               specifier="$2"
               platform_dir="$(mktemp -d "${consumer_dir}/packed-platform.XXXXXX")"
               platform_output_dir="$(mktemp -d "${RUNNER_TEMP}/standalone-platform-output.XXXXXX")"
+              platform_temporary_directory="$(mktemp -d "${platform_dir}/tmp.XXXXXX")"
               printf '{"expo":{"name":"packed-platform-verification","slug":"packed-platform-verification"}}\n' > "$platform_dir/app.json"
               APP_DIR="$platform_dir" PACKAGE_SPECIFIER="$specifier" PLATFORM_TOOLCHAIN_DEPENDENCIES="$platform_toolchain_dependencies" node - <<'NODE'
           const { writeFileSync } = require('node:fs');
@@ -580,7 +581,7 @@ jobs:
                 bun add "$metro_runtime_dependency" --ignore-scripts
                 bun add "$artifact" --ignore-scripts
                 node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
-                "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
+                TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
               )
             }
 
