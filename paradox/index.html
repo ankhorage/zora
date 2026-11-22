@@ -905,7 +905,7 @@
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts">
       src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts
-      <small>1 function</small>
+      <small>2 functions</small>
     </button>
   </li><li>
     <button class="nav-button" type="button" data-target="src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts">
@@ -66679,20 +66679,20 @@ of decorative leaf-background overlap. Locked/large views retain their settled g
     <p>Measure rendered node hit geometry without exposing paint-only outlines or Cytoscape.</p>
 </article><article class="item" data-search="applyZoomLimits src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.">
     <h3>applyZoomLimits</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:210:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:217:1</code></p>
     <p>Keep pointer, wheel, and programmatic zoom on the same limits in the engine&#39;s native units.</p>
 </article><article class="item" data-search="positiveSize src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Ignore invalid optional typography targets at the public configuration boundary.">
     <h3>positiveSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:226:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:233:1</code></p>
     <p>Ignore invalid optional typography targets at the public configuration boundary.</p>
 </article><article class="item" data-search="getNodeFitZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Recompute the fit reference only after layout or resize, never on every pan/zoom event.&#10;Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.">
     <h3>getNodeFitZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:234:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:241:1</code></p>
     <p>Recompute the fit reference only after layout or resize, never on every pan/zoom event.
 Cache the geometry-derived scale in the viewport owner; labels are included, edges excluded.</p>
 </article><article class="item" data-search="setCenteredZoom src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts Zoom around the visible viewport center instead of its top-left corner.">
     <h3>setCenteredZoom</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:245:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts:252:1</code></p>
     <p>Zoom around the visible viewport center instead of its top-left corner.</p>
 </article>
     </section>
@@ -66774,99 +66774,99 @@ Preserve valid dependencies and configured larger loops; do not hide edges or si
     <p>Create one Cytoscape runtime that exclusively owns layout, fit, resize, and disposal.</p>
 </article><article class="item" data-search="createRuntimeState src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Build the mutable state shared by the single graph-runtime owner.">
     <h3>createRuntimeState</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:103:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:104:1</code></p>
     <p>Build the mutable state shared by the single graph-runtime owner.</p>
 </article><article class="item" data-search="updateRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Reconcile presentation in place and relayout only when graph geometry or layout policy changes.&#10;Batch reconciliation and skip layout for presentation-only updates.">
     <h3>updateRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:175:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:176:1</code></p>
     <p>Reconcile presentation in place and relayout only when graph geometry or layout policy changes.
 Batch reconciliation and skip layout for presentation-only updates.</p>
 </article><article class="item" data-search="shouldPreserveTopology src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Preserve only opt-in topology updates after the initial layout and fit have settled.">
     <h3>shouldPreserveTopology</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:241:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:242:1</code></p>
     <p>Preserve only opt-in topology updates after the initial layout and fit have settled.</p>
 </article><article class="item" data-search="beginPreservedTopologyMeasurementWindow src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Retain measurements emitted by the overlay commit that follows one controlled topology update.&#10;A later resize remains geometry input and therefore schedules its normal relayout.">
     <h3>beginPreservedTopologyMeasurementWindow</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:258:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:259:1</code></p>
     <p>Retain measurements emitted by the overlay commit that follows one controlled topology update.
 A later resize remains geometry input and therefore schedules its normal relayout.</p>
-</article><article class="item" data-search="getRetainedNodeIds src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Limit stable-update geometry checks to nodes that existed before reconciliation.">
+</article><article class="item" data-search="getRetainedNodeIds src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Limit stable-update geometry checks to retained leaves with independently stable positions.">
     <h3>getRetainedNodeIds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:276:1</code></p>
-    <p>Limit stable-update geometry checks to nodes that existed before reconciliation.</p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:277:1</code></p>
+    <p>Limit stable-update geometry checks to retained leaves with independently stable positions.</p>
 </article><article class="item" data-search="startCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Start a generation-safe layout whose completion is the only normal automatic fit trigger.">
     <h3>startCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:287:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:295:1</code></p>
     <p>Start a generation-safe layout whose completion is the only normal automatic fit trigger.</p>
 </article><article class="item" data-search="scheduleInitialLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Coalesce progressive pre-ready topology updates before the initial layout can complete.">
     <h3>scheduleInitialLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:296:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:304:1</code></p>
     <p>Coalesce progressive pre-ready topology updates before the initial layout can complete.</p>
 </article><article class="item" data-search="startGraphLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Start one layout generation after its input has reached the runtime owner.">
     <h3>startGraphLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:310:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:318:1</code></p>
     <p>Start one layout generation after its input has reached the runtime owner.</p>
 </article><article class="item" data-search="completeCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Settle only the latest layout generation and fit once from node bounds.&#10;Discard stale completions and avoid repeated automatic fits.">
     <h3>completeCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:331:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:339:1</code></p>
     <p>Settle only the latest layout generation and fit once from node bounds.
 Discard stale completions and avoid repeated automatic fits.</p>
 </article><article class="item" data-search="requestOptimizedFit src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.&#10;Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.">
     <h3>requestOptimizedFit</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:372:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:380:1</code></p>
     <p>Handle explicit readable-fit intent in the runtime owner, never from zoom or React effects.
 Bounded spacing optimization preserves the settled algorithm instead of repeatedly running it.</p>
 </article><article class="item" data-search="stopCurrentLayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Stop the current layout and invalidate every stale completion callback.">
     <h3>stopCurrentLayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:398:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:406:1</code></p>
     <p>Stop the current layout and invalidate every stale completion callback.</p>
 </article><article class="item" data-search="applyGraphStyles src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply consumer styles and hide native node paint only when React rich nodes are active.">
     <h3>applyGraphStyles</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:406:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:414:1</code></p>
     <p>Apply consumer styles and hide native node paint only when React rich nodes are active.</p>
 </article><article class="item" data-search="setSelectedNodeIds src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Synchronize controlled selection without rerunning layout.&#10;Selection updates must not trigger graph reconstruction or layout.">
     <h3>setSelectedNodeIds</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:430:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:438:1</code></p>
     <p>Synchronize controlled selection without rerunning layout.
 Selection updates must not trigger graph reconstruction or layout.</p>
 </article><article class="item" data-search="setNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Persist one rich-node size and schedule at most one relayout for changed geometry.&#10;Ignore unchanged measurements before scheduling layout work.">
     <h3>setNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:444:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:452:1</code></p>
     <p>Persist one rich-node size and schedule at most one relayout for changed geometry.
 Ignore unchanged measurements before scheduling layout work.</p>
 </article><article class="item" data-search="applyKnownNodeSizes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply every known rich-node size after Cytoscape elements are replaced.">
     <h3>applyKnownNodeSizes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:454:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:462:1</code></p>
     <p>Apply every known rich-node size after Cytoscape elements are replaced.</p>
 </article><article class="item" data-search="applyNodeSize src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Apply one measured model-space size as a Cytoscape per-node style bypass.">
     <h3>applyNodeSize</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:459:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:467:1</code></p>
     <p>Apply one measured model-space size as a Cytoscape per-node style bypass.</p>
 </article><article class="item" data-search="scheduleMeasuredNodeRelayout src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Coalesce DOM measurements into one follow-up layout generation.&#10;Keep one scheduled layout per frame instead of one per measured node.">
     <h3>scheduleMeasuredNodeRelayout</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:469:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:477:1</code></p>
     <p>Coalesce DOM measurements into one follow-up layout generation.
 Keep one scheduled layout per frame instead of one per measured node.</p>
 </article><article class="item" data-search="subscribeRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Subscribe one React overlay to rendered node state without exposing the Cytoscape core.">
     <h3>subscribeRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:482:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:490:1</code></p>
     <p>Subscribe one React overlay to rendered node state without exposing the Cytoscape core.</p>
 </article><article class="item" data-search="emitRenderedNodes src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Publish current rendered node positions only to active rich-node subscribers.&#10;Skip snapshot preparation when no overlay is subscribed.">
     <h3>emitRenderedNodes</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:494:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:502:1</code></p>
     <p>Publish current rendered node positions only to active rich-node subscribers.
 Skip snapshot preparation when no overlay is subscribed.</p>
 </article><article class="item" data-search="handleOverlayNodeEvent src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Translate one rich-overlay event back into normal graph selection and callbacks.">
     <h3>handleOverlayNodeEvent</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:503:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:511:1</code></p>
     <p>Translate one rich-overlay event back into normal graph selection and callbacks.</p>
 </article><article class="item" data-search="hasUsableViewport src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Return whether Cytoscape currently has dimensions suitable for fitting.">
     <h3>hasUsableViewport</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:517:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:525:1</code></p>
     <p>Return whether Cytoscape currently has dimensions suitable for fitting.</p>
 </article><article class="item" data-search="destroyRuntime src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts Dispose all runtime resources in the reverse order they were acquired.">
     <h3>destroyRuntime</h3>
-    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:522:1</code></p>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts:530:1</code></p>
     <p>Dispose all runtime resources in the reverse order they were acquired.</p>
 </article>
     </section>
@@ -67131,6 +67131,10 @@ combine this decision with measured geometry in the single runtime owner, not co
     <p>Give stable-topology additions deterministic positions without moving settled nodes.
 This deliberately is not an incremental layout: callers can request a complete layout by
 changing the configured algorithm, while ordinary controlled additions keep the user viewport.</p>
+</article><article class="item" data-search="getVisibleViewportCenter src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts Return the model point at the center of the unchanged visible viewport.">
+    <h3>getVisibleViewportCenter</h3>
+    <p class="muted"><code>src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts:45:1</code></p>
+    <p>Return the model point at the center of the unchanged visible viewport.</p>
 </article>
     </section>
   </section><section id="view-src-features-graph-view-adapters-inbound-web-artifact-readgraphrenderednodes-ts" class="view" data-view="src/features/graph-view/adapters/inbound/web-artifact/readGraphRenderedNodes.ts" hidden>

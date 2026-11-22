@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.6.0",
+      "value": "v27.6.1",
       "color": "cb3837"
     },
     {
@@ -70243,7 +70243,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 210,
+        "line": 217,
         "column": 1
       }
     },
@@ -70254,7 +70254,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 226,
+        "line": 233,
         "column": 1
       }
     },
@@ -70265,7 +70265,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 234,
+        "line": 241,
         "column": 1
       }
     },
@@ -70276,7 +70276,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphController.ts",
-        "line": 245,
+        "line": 252,
         "column": 1
       }
     },
@@ -70441,7 +70441,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 103,
+        "line": 104,
         "column": 1
       }
     },
@@ -70452,7 +70452,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 175,
+        "line": 176,
         "column": 1
       }
     },
@@ -70463,7 +70463,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 241,
+        "line": 242,
         "column": 1
       }
     },
@@ -70474,18 +70474,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 258,
+        "line": 259,
         "column": 1
       }
     },
     {
       "name": "getRetainedNodeIds",
-      "description": "Limit stable-update geometry checks to nodes that existed before reconciliation.",
+      "description": "Limit stable-update geometry checks to retained leaves with independently stable positions.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 276,
+        "line": 277,
         "column": 1
       }
     },
@@ -70496,7 +70496,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 287,
+        "line": 295,
         "column": 1
       }
     },
@@ -70507,7 +70507,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 296,
+        "line": 304,
         "column": 1
       }
     },
@@ -70518,7 +70518,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 310,
+        "line": 318,
         "column": 1
       }
     },
@@ -70529,7 +70529,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 331,
+        "line": 339,
         "column": 1
       }
     },
@@ -70540,7 +70540,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 372,
+        "line": 380,
         "column": 1
       }
     },
@@ -70551,7 +70551,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 398,
+        "line": 406,
         "column": 1
       }
     },
@@ -70562,7 +70562,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 406,
+        "line": 414,
         "column": 1
       }
     },
@@ -70573,7 +70573,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 430,
+        "line": 438,
         "column": 1
       }
     },
@@ -70584,7 +70584,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 444,
+        "line": 452,
         "column": 1
       }
     },
@@ -70595,7 +70595,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 454,
+        "line": 462,
         "column": 1
       }
     },
@@ -70606,7 +70606,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 459,
+        "line": 467,
         "column": 1
       }
     },
@@ -70617,7 +70617,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 469,
+        "line": 477,
         "column": 1
       }
     },
@@ -70628,7 +70628,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 482,
+        "line": 490,
         "column": 1
       }
     },
@@ -70639,7 +70639,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 494,
+        "line": 502,
         "column": 1
       }
     },
@@ -70650,7 +70650,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 503,
+        "line": 511,
         "column": 1
       }
     },
@@ -70661,7 +70661,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 517,
+        "line": 525,
         "column": 1
       }
     },
@@ -70672,7 +70672,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 522,
+        "line": 530,
         "column": 1
       }
     },
@@ -71157,6 +71157,17 @@
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
         "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "getVisibleViewportCenter",
+      "description": "Return the model point at the center of the unchanged visible viewport.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts",
+        "line": 45,
         "column": 1
       }
     },
@@ -91689,12 +91700,6 @@
       },
       {
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "toSymbol": "placeAddedGraphNodes",
-        "callExpression": "placeAddedGraphNodes",
-        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
-      },
-      {
-        "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "reset",
         "callExpression": "state.loopSizer.reset",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
@@ -91703,6 +91708,12 @@
         "fromSymbol": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
         "toSymbol": "applyGraphStyles",
         "callExpression": "applyGraphStyles",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "updateRuntime",
+        "toSymbol": "placeAddedGraphNodes",
+        "callExpression": "placeAddedGraphNodes",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {
@@ -92382,6 +92393,12 @@
         "toSymbol": "getGraphTopologyKey",
         "callExpression": "getGraphTopologyKey",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/hasGraphLayoutChanged.ts"
+      },
+      {
+        "fromSymbol": "placeAddedGraphNodes",
+        "toSymbol": "getVisibleViewportCenter",
+        "callExpression": "getVisibleViewportCenter",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/placeAddedGraphNodes.ts"
       },
       {
         "fromSymbol": "registerGraphLayouts",

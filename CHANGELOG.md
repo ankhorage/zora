@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.6.1
+
+### Patch Changes
+
+- ac807a7: Keep added compound graph nodes reachable during preserved-position topology updates.
+
 ## 27.6.0
 
 ### Minor Changes
