@@ -1,6 +1,6 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# Drag from the source header; the empty canvas pan brings the complete target node into the clipped viewport.
+# Drag from the source header; then pan diagonally through the empty canvas to reveal the target port.
 - launchApp:
     clearState: false
 - assertVisible: 'Source task. Completed'
@@ -15,8 +15,8 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'viewport=0,0,1'
 - tapOn: 'Source task: Output'
 - swipe:
-    start: '90%, 78%'
-    end: '20%, 78%'
+    start: '20%, 78%'
+    end: '45%, 55%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
