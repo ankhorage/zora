@@ -88,7 +88,7 @@ async function writeAlias(target: WebArtifactTarget, outputDirectory: string): P
   const typeAlias =
     target.typeExports.length === 0
       ? ''
-      : `export type { ${target.typeExports.map(({ exportName }) => exportName).join(', ')} } from './${target.exportName}';\n`;
+      : `export type { ${target.typeExports.map(({ exportName }) => exportName).join(', ')} } from './${target.exportName}.js';\n`;
   await Promise.all([
     writeFile(
       join(outputDirectory, 'index.js'),
@@ -97,7 +97,7 @@ async function writeAlias(target: WebArtifactTarget, outputDirectory: string): P
     ),
     writeFile(
       join(outputDirectory, 'index.d.ts'),
-      `export { ${target.exportName} } from './${target.exportName}';\n${typeAlias}`,
+      `export { ${target.exportName} } from './${target.exportName}.js';\n${typeAlias}`,
       'utf8',
     ),
   ]);
@@ -293,7 +293,7 @@ async function writeDeclaration(
         exportNames,
         supportFile,
         originalSpecifier: declarationModuleSpecifier(target.declarationSource!, declarationSource),
-        localSpecifier: `./${supportFile.replace(/\.d\.ts$/u, '')}`,
+        localSpecifier: declarationOutputSpecifier(supportFile),
       };
     }),
   );
@@ -360,7 +360,7 @@ class DeclarationDependencies {
     for (const localImport of localImports) {
       if (localReplacements.has(localImport.specifier)) continue;
       const outputFile = await this.writeDependency(localImport);
-      localReplacements.set(localImport.specifier, `./${outputFile.replace(/\.d\.ts$/u, '')}`);
+      localReplacements.set(localImport.specifier, declarationOutputSpecifier(outputFile));
     }
     const rewritten = [...localReplacements.entries()].reduce(
       (current, [from, to]) => replaceDeclarationSpecifierIfPresent(current, from, to),
@@ -412,6 +412,11 @@ function groupTypeExports(target: WebArtifactTarget) {
 function declarationModuleSpecifier(fromFile: string, toFile: string): string {
   const path = toPortablePath(relative(dirname(fromFile), toFile)).replace(/\.d\.ts$/u, '');
   return path.startsWith('.') ? path : `./${path}`;
+}
+
+/*** Render one generated declaration target as the ESM specifier NodeNext resolves to its declaration. */
+function declarationOutputSpecifier(file: string): string {
+  return `./${file.replace(/\.d\.ts$/u, '')}.js`;
 }
 
 /*** Rewrite one exact local declaration dependency to its colocated materialized support file. */
