@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 850" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="bg" x2="1" y2=".6"><stop stop-color="#121630"/><stop offset=".55" stop-color="#52305d"/><stop offset="1" stop-color="#f18d78"/></linearGradient>
+<linearGradient id="glass" x2=".8" y2="1"><stop stop-color="#ffce96"/><stop offset=".4" stop-color="#fc8d9b"/><stop offset="1" stop-color="#745aaf"/></linearGradient>
+<radialGradient id="flare" cx="72%" cy="58%" r="58%"><stop stop-color="#faad93" stop-opacity=".85"/><stop offset="1" stop-color="#ffb6c3" stop-opacity="0"/></radialGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="35"/></filter></defs>
+<rect width="1600" height="850" fill="url(#bg)"/><path fill="url(#flare)" d="M0 0h1600v850H0z"/>
+<circle cx="1370" cy="350" r="230" fill="#f2a9b7" opacity=".32" filter="url(#blur)"/>
+<g transform="translate(1170 425) rotate(-23)">
+<rect x="-340" y="-300" width="660" height="620" rx="110" fill="#fbd1aa" opacity=".12" stroke="#ffd6c4" stroke-width="3"/>
+<rect x="-260" y="-250" width="545" height="510" rx="90" fill="url(#glass)" opacity=".88"/>
+<rect x="-189" y="-180" width="415" height="380" rx="45" fill="#211d45" opacity=".82"/>
+<path d="M-125-180v380M-50-180v380M25-180v380M100-180v380M175-180v380" stroke="#ffc4b6" opacity=".15" stroke-width="2"/>
+<circle cx="20" cy="-12" r="145" fill="#f5c2a6" opacity=".86"/><circle cx="20" cy="-12" r="82" fill="#7c4b84"/>
+<circle cx="20" cy="-12" r="37" fill="#2b244f"/>
+</g>
+<path d="M710 0C950 90 1110 100 1270 0M885 850C1100 705 1330 692 1600 805" fill="none" stroke="#ffe0d6" stroke-width="2" opacity=".35"/>
+<g fill="#ffe7cf" opacity=".75"><circle cx="919" cy="112" r="5"/><circle cx="1512" cy="165" r="8"/><circle cx="810" cy="680" r="4"/></g>
+<path d="M0 810C420 725 570 790 905 850H0Z" fill="#13142e" opacity=".55"/>
+</svg>
