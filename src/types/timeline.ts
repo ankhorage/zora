@@ -2,6 +2,7 @@ import type { ButtonIconSpec } from '@ankhorage/surface';
 import type React from 'react';
 
 import type { ZoraBaseProps } from './base';
+import type { ImageProps } from './image';
 import type { ZoraColor } from './theme';
 
 export interface TimelineItem {
@@ -11,6 +12,8 @@ export interface TimelineItem {
   meta?: React.ReactNode;
   status?: ZoraColor;
   icon?: ButtonIconSpec;
+  marker?: ImageProps['source'];
+  markerAlt?: string;
   testID?: string;
 }
 
