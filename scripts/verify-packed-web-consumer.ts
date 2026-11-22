@@ -102,7 +102,12 @@ function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
         `ZORA declaration dependency escapes its packed artifact: ${file} -> ${specifier}`,
       );
       assert.ok(
-        [basePath, `${basePath}.d.ts`, join(basePath, 'index.d.ts')].some(existsSync),
+        [
+          basePath,
+          `${basePath}.d.ts`,
+          basePath.replace(/\.js$/u, '.d.ts'),
+          join(basePath, 'index.d.ts'),
+        ].some(existsSync),
         `Unresolved packed ZORA declaration dependency: ${file} -> ${specifier}`,
       );
     }
