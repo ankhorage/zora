@@ -63,13 +63,11 @@ test('renders image markers while retaining icon markers as the fallback', async
     const acquired = browser.document.querySelector('[data-testid="acquired"]');
     const integrated = browser.document.querySelector('[data-testid="integrated"]');
     if (!acquired || !integrated) throw new Error('Expected both Timeline items to render');
-    const imageMarker = acquired.firstElementChild?.firstElementChild;
-    const iconMarker = integrated.firstElementChild?.firstElementChild;
+    const imageMarker = acquired.firstElementChild.firstElementChild;
+    const iconMarker = integrated.firstElementChild.firstElementChild;
 
-    expect(imageMarker).not.toBeNull();
-    expect(imageMarker?.getAttribute('style')).toContain('width:40px');
-    expect(iconMarker).not.toBeNull();
-    expect(iconMarker?.getAttribute('style')).toContain('width:20px');
+    expect(imageMarker.getAttribute('style')).toContain('width:40px');
+    expect(iconMarker.getAttribute('style')).toContain('width:20px');
   } finally {
     browser.close();
   }
