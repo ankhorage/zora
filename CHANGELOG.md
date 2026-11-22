@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.5.2
+
+### Patch Changes
+
+- 1f3022d: Rebuild the public web View artifact with Surface SSR flex layout support.
+
 ## 27.5.1
 
 ### Patch Changes
