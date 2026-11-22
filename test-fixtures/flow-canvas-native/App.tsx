@@ -17,7 +17,7 @@ const initialNodes = [
     id: 'target',
     presentation: { nodeKind: 'approval' as const, status: 'waiting' as const },
     ports: [{ direction: 'input' as const, id: 'in', label: 'Input' }],
-    position: { x: 300, y: 220 },
+    position: { x: 64, y: 300 },
     title: 'Target task',
   },
 ];
