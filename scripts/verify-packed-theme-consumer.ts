@@ -94,7 +94,6 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
           noEmit: true,
           skipLibCheck: false,
           strict: true,
-          types: ['node'],
         },
       },
       null,
