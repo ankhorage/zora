@@ -2,4 +2,4 @@
 '@ankhorage/zora': minor
 ---
 
-Add an optional leading Surface icon source to Select triggers, including SVG media sources.
+Add bold Select trigger labels through Surface's public Button API, alongside optional leading icon sources including SVG media.

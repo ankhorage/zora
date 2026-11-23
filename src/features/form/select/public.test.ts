@@ -10,6 +10,25 @@ test('Select is a direct manifest node with valueChange payload', () => {
   ]);
 });
 
+test('Select registers the optional leading icon as instance-owned media metadata', () => {
+  expect(selectMeta.props.leadingIcon).toEqual({
+    type: 'media',
+    category: 'Content',
+    label: 'Leading SVG icon',
+    mediaKinds: ['image'],
+    authoring: { authority: 'instance' },
+  });
+});
+
+test('Select is exported through its public component entrypoint', async () => {
+  const publicEntry = await Bun.file('src/features/form/select/public.ts').text();
+
+  expect(publicEntry).toContain(
+    "export type { SelectOption, SelectProps } from '../../../types/select';",
+  );
+  expect(publicEntry).toContain("export { Select } from './adapters/inbound/Select';");
+});
+
 test('Select uses web Popover and native BottomSheetFlatList presentation', async () => {
   const [neutral, web, native] = await Promise.all([
     Bun.file('src/features/form/select/adapters/inbound/Select.tsx').text(),
@@ -24,7 +43,7 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
 });
 
-test('Select exposes and forwards a serializable leading SVG icon through the shared trigger', async () => {
+test('Select exposes serializable Surface icon props and forwards bold trigger labels through Button', async () => {
   const [selectTypes, selectTrigger] = await Promise.all([
     Bun.file('src/types/select.ts').text(),
     Bun.file('src/features/form/select/composition/SelectTrigger.tsx').text(),
@@ -33,4 +52,6 @@ test('Select exposes and forwards a serializable leading SVG icon through the sh
   expect(selectTypes).toContain("import type { ButtonIconSpec } from '@ankhorage/surface';");
   expect(selectTypes).toContain('leadingIcon?: ButtonIconSpec;');
   expect(selectTrigger).toContain('leadingIcon={props.leadingIcon}');
+  expect(selectTrigger).toContain('labelWeight="bold"');
+  expect(selectTrigger).not.toContain('<Text');
 });
