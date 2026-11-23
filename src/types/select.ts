@@ -1,3 +1,5 @@
+import type { ButtonIconSpec, ButtonLabelWeight } from '@ankhorage/surface';
+
 import type { ZoraBaseProps } from './base';
 
 export interface SelectOption<TValue extends string = string> {
@@ -15,6 +17,10 @@ export interface SelectProps<TValue extends string = string> extends ZoraBasePro
   helperText?: string;
   errorText?: string;
   placeholder?: string;
+  /** Optional Surface icon source rendered before the trigger label. */
+  leadingIcon?: ButtonIconSpec;
+  /** Optional Surface Button label emphasis; defaults to semiBold. */
+  labelWeight?: ButtonLabelWeight;
   required?: boolean;
   disabled?: boolean;
   readOnly?: boolean;

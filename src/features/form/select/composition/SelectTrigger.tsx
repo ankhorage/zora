@@ -15,6 +15,8 @@ export function SelectTrigger<TValue extends string>({
       disabled={props.disabled}
       fullWidth
       interactionPolicy={props.interactionPolicy}
+      leadingIcon={props.leadingIcon}
+      labelWeight={props.labelWeight ?? 'semiBold'}
       onPress={props.readOnly ? undefined : onPress}
       testID={props.testID ? `${props.testID}-trigger` : undefined}
       trailingIcon={SELECT_CHEVRON_ICON}
