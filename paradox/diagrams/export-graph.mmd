@@ -83,6 +83,9 @@ graph LR
   module_src_features_card_utils_resolveCardThemeRecipe_ts["src/features/card/utils/resolveCardThemeRecipe.ts"]
   module_src_features_card_utils_resolveCardVariant_ts["src/features/card/utils/resolveCardVariant.ts"]
   module_src_features_card_utils_themeRecipeMeta_ts["src/features/card/utils/themeRecipeMeta.ts"]
+  module_src_features_carousel_Carousel_tsx["src/features/carousel/Carousel.tsx"]
+  module_src_features_carousel_public_ts["src/features/carousel/public.ts"]
+  module_src_features_carousel_useCarouselPlayback_ts["src/features/carousel/useCarouselPlayback.ts"]
   module_src_features_chat_adapters_inbound_ChatListItem_tsx["src/features/chat/adapters/inbound/ChatListItem.tsx"]
   module_src_features_chat_adapters_inbound_MessageBubble_tsx["src/features/chat/adapters/inbound/MessageBubble.tsx"]
   module_src_features_chat_chatListItemMeta_ts["src/features/chat/chatListItemMeta.ts"]
@@ -551,6 +554,7 @@ graph LR
   module_src_types_button_ts["src/types/button.ts"]
   module_src_types_calendar_ts["src/types/calendar.ts"]
   module_src_types_card_ts["src/types/card.ts"]
+  module_src_types_carousel_ts["src/types/carousel.ts"]
   module_src_types_chat_ts["src/types/chat.ts"]
   module_src_types_checkbox_ts["src/types/checkbox.ts"]
   module_src_types_chess_ts["src/types/chess.ts"]
@@ -823,6 +827,17 @@ graph LR
   export_CardProps["CardProps"]
   module_src_types_card_ts --> export_CardProps
   export_CardProps -.-> export_ZoraThemeMode
+  export_Carousel["Carousel"]
+  module_src_features_carousel_Carousel_tsx --> export_Carousel
+  export_Carousel -.-> export_CarouselProps
+  export_CarouselProps["CarouselProps"]
+  module_src_types_carousel_ts --> export_CarouselProps
+  export_CarouselProps -.-> export_CarouselSlide
+  export_CarouselProps -.-> export_CarouselTransition
+  export_CarouselSlide["CarouselSlide"]
+  module_src_types_carousel_ts --> export_CarouselSlide
+  export_CarouselTransition["CarouselTransition"]
+  module_src_types_carousel_ts --> export_CarouselTransition
   export_ChatListAvatar["ChatListAvatar"]
   module_src_types_chat_ts --> export_ChatListAvatar
   export_ChatListAvatar -.-> export_AvatarShape

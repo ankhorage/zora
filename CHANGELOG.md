@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.8.0
+
+### Minor Changes
+
+- a72113b: Add the reusable React Native and React Native Web `Carousel` with images or arbitrary slide content, fade/slide/none transitions, controls, timing, progress, controlled index, and a public browser artifact.
+
 ## 27.7.1
 
 ### Patch Changes

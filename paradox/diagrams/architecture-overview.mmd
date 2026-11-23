@@ -394,6 +394,16 @@ graph TD
   module_src_features_card_utils_themeRecipeMeta_ts["src/features/card/utils/themeRecipeMeta.ts"]
   package__ankhorage_zora -.-> module_src_features_card_utils_themeRecipeMeta_ts
   module_src_features_card_utils_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
+  module_src_features_carousel_Carousel_tsx["src/features/carousel/Carousel.tsx"]
+  package__ankhorage_zora -.-> module_src_features_carousel_Carousel_tsx
+  module_src_features_carousel_Carousel_tsx --> module_src_features_carousel_useCarouselPlayback_ts
+  module_src_features_carousel_Carousel_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_carousel_Carousel_tsx --> module_src_types_carousel_ts
+  module_src_features_carousel_public_ts["src/features/carousel/public.ts"]
+  package__ankhorage_zora -.-> module_src_features_carousel_public_ts
+  module_src_features_carousel_useCarouselPlayback_ts["src/features/carousel/useCarouselPlayback.ts"]
+  package__ankhorage_zora -.-> module_src_features_carousel_useCarouselPlayback_ts
+  module_src_features_carousel_useCarouselPlayback_ts --> module_src_types_carousel_ts
   module_src_features_chat_adapters_inbound_ChatListItem_tsx["src/features/chat/adapters/inbound/ChatListItem.tsx"]
   package__ankhorage_zora -.-> module_src_features_chat_adapters_inbound_ChatListItem_tsx
   module_src_features_chat_adapters_inbound_ChatListItem_tsx --> module_src_features_avatar_public_ts
@@ -2458,6 +2468,8 @@ graph TD
   module_src_types_card_ts["src/types/card.ts"]
   package__ankhorage_zora -.-> module_src_types_card_ts
   module_src_types_card_ts --> module_src_types_base_ts
+  module_src_types_carousel_ts["src/types/carousel.ts"]
+  package__ankhorage_zora -.-> module_src_types_carousel_ts
   module_src_types_chat_ts["src/types/chat.ts"]
   package__ankhorage_zora -.-> module_src_types_chat_ts
   module_src_types_chat_ts --> module_src_types_avatar_ts

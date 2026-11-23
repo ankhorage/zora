@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant participant_Carousel as Carousel
+  participant participant_normalizeIndex as normalizeIndex
+  participant participant_useCarouselPlayback as useCarouselPlayback
+  participant participant_useSystemReducedMotion as useSystemReducedMotion
+  participant participant_useTheme as useTheme
+  participant participant_useZoraTheme as useZoraTheme
+  participant_Carousel->>participant_useZoraTheme: useZoraTheme()
+  participant_useZoraTheme->>participant_useTheme: useTheme()
+  participant_useTheme-->>participant_useZoraTheme: return
+  participant_useZoraTheme-->>participant_Carousel: return
+  participant_Carousel->>participant_useCarouselPlayback: useCarouselPlayback()
+  participant_useCarouselPlayback->>participant_useSystemReducedMotion: useSystemReducedMotion()
+  participant_useSystemReducedMotion-->>participant_useCarouselPlayback: return
+  participant_useCarouselPlayback->>participant_normalizeIndex: normalizeIndex()
+  participant_normalizeIndex-->>participant_useCarouselPlayback: return
+  participant_useCarouselPlayback-->>participant_Carousel: return
