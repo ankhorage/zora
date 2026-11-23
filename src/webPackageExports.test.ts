@@ -145,6 +145,26 @@ test('keeps GraphView facade-owned public types on its canonical web subpath', a
   );
 });
 
+/** Verifies that GraphView retains the TypeScript namespace which declares its public static events. */
+test('keeps GraphView static events in its generated web declaration', async () => {
+  const declaration = await Bun.file(
+    join('web-dist', 'components', 'graph-view', 'GraphView.d.ts'),
+  ).text();
+  const source = ts.createSourceFile('GraphView.d.ts', declaration, ts.ScriptTarget.Latest);
+  const graphViewNamespace = source.statements.find(
+    (statement): statement is ts.ModuleDeclaration =>
+      ts.isModuleDeclaration(statement) && statement.name.getText(source) === 'GraphView',
+  );
+
+  expect(graphViewNamespace).toBeDefined();
+  if (graphViewNamespace === undefined) {
+    throw new Error('Missing generated GraphView namespace declaration.');
+  }
+  const events = graphViewNamespace.body?.getText(source) ?? '';
+  expect(events).toContain('events');
+  expect(events).toContain('zora-graph-view-ready');
+});
+
 /** Verifies that a public type may retain an unexported same-module declaration dependency. */
 test('materializes GraphView private declaration dependencies without exporting them', async () => {
   const declaration = await Bun.file(

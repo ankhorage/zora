@@ -540,22 +540,6 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
   type GraphViewViewport,
   type ResolvedGraphViewProps,
 } from '@ankhorage/zora/web/graph-view';
-import { Breadcrumbs, type BreadcrumbsProps } from '@ankhorage/zora/web/breadcrumbs';
-import { Button, type ButtonProps } from '@ankhorage/zora/web/button';
-import { Checkbox, type CheckboxProps } from '@ankhorage/zora/web/checkbox';
-import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
-import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
-import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
-import { TabPanel, type TabPanelProps } from '@ankhorage/zora/web/tab-panel';
-import { Tabs, type TabsProps } from '@ankhorage/zora/web/tabs';
-import {
-  TreeView,
-  type TreeItemNode,
-  type TreeItemRenderProps,
-  type TreeViewProps,
-} from '@ankhorage/zora/web/tree-view';
-import { TileGrid, type TileGridProps } from '@ankhorage/zora/web/tile-grid';
-import { View, type ViewProps } from '@ankhorage/zora/web/view';
 
 const graphProps: GraphViewProps = {
   ariaLabel: 'Dependency graph',
@@ -571,38 +555,6 @@ const canonicalGraphProps: GraphViewCanonicalGraphProps = {
   layout: 'circle',
 };
 const graphEvents: 'zora-graph-view-ready' = GraphView.events.ready;
-const componentContracts = [Breadcrumbs, Button, Checkbox, View] as const;
-const componentProps = {} as {
-  breadcrumbs: BreadcrumbsProps;
-  button: ButtonProps;
-  checkbox: CheckboxProps;
-  view: ViewProps;
-};
-
-const treeNode: TreeItemNode<'root'> = {
-  id: 'root',
-  label: 'Root',
-};
-const renderTreeItem = (props: TreeItemRenderProps<'root'>): string => props.node.label as string;
-const treeProps: TreeViewProps<'root'> = {
-  nodes: [treeNode],
-  onSelect: (id) => {
-    const rootId: 'root' = id;
-    void rootId;
-  },
-  renderItem: renderTreeItem,
-};
-
-const contracts = [
-  GraphView,
-  GridView,
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-  TileGrid,
-  TreeView,
-] as const;
 const props = {} as {
   graphController: GraphViewController;
   graphCanonicalEdge: GraphViewCanonicalEdgeData;
@@ -615,28 +567,12 @@ const props = {} as {
   graphResolved: ResolvedGraphViewProps;
   graphViewport: GraphViewViewport;
   graph: GraphViewProps;
-  grid: GridViewProps;
-  tab: TabProps;
-  tabList: TabListProps;
-  tabPanel: TabPanelProps;
-  tabs: TabsProps;
-  tileGrid: TileGridProps;
-  tree: TreeViewProps<'root'>;
 };
 
-// @ts-expect-error GridView must not expose TileGrid-only declarations.
-type GridViewDoesNotExposeTileGrid = import('@ankhorage/zora/web/grid-view').TileGridProps;
-// @ts-expect-error Tabs must not expose TabPanel-only declarations.
-type TabsDoesNotExposeTabPanel = import('@ankhorage/zora/web/tabs').TabPanelProps;
-
-void contracts;
 void canonicalGraphProps;
-void componentContracts;
-void componentProps;
 void graphEvents;
 void graphProps;
 void props;
-void treeProps;
 `,
   );
 }

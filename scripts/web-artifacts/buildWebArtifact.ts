@@ -603,6 +603,7 @@ function declarationName(statement: ts.Statement): string | undefined {
     ts.isFunctionDeclaration(statement) ||
     ts.isClassDeclaration(statement) ||
     ts.isInterfaceDeclaration(statement) ||
+    ts.isModuleDeclaration(statement) ||
     ts.isTypeAliasDeclaration(statement) ||
     ts.isEnumDeclaration(statement)
   ) {
