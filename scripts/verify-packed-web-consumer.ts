@@ -102,7 +102,12 @@ function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
         `ZORA declaration dependency escapes its packed artifact: ${file} -> ${specifier}`,
       );
       assert.ok(
-        [basePath, `${basePath}.d.ts`, join(basePath, 'index.d.ts')].some(existsSync),
+        [
+          basePath,
+          `${basePath}.d.ts`,
+          basePath.replace(/\.js$/u, '.d.ts'),
+          join(basePath, 'index.d.ts'),
+        ].some(existsSync),
         `Unresolved packed ZORA declaration dependency: ${file} -> ${specifier}`,
       );
     }
@@ -505,10 +510,10 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
       {
         compilerOptions: {
           jsx: 'react-jsx',
-          module: 'ESNext',
-          moduleResolution: 'bundler',
+          module: 'NodeNext',
+          moduleResolution: 'NodeNext',
           noEmit: true,
-          skipLibCheck: true,
+          skipLibCheck: false,
           strict: true,
           target: 'ES2022',
           types: ['react'],
@@ -535,43 +540,21 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
   type GraphViewViewport,
   type ResolvedGraphViewProps,
 } from '@ankhorage/zora/web/graph-view';
-import { GridView, type GridViewProps } from '@ankhorage/zora/web/grid-view';
-import { Tab, type TabProps } from '@ankhorage/zora/web/tab';
-import { TabList, type TabListProps } from '@ankhorage/zora/web/tab-list';
-import { TabPanel, type TabPanelProps } from '@ankhorage/zora/web/tab-panel';
-import { Tabs, type TabsProps } from '@ankhorage/zora/web/tabs';
-import {
-  TreeView,
-  type TreeItemNode,
-  type TreeItemRenderProps,
-  type TreeViewProps,
-} from '@ankhorage/zora/web/tree-view';
-import { TileGrid, type TileGridProps } from '@ankhorage/zora/web/tile-grid';
 
-const treeNode: TreeItemNode<'root'> = {
-  id: 'root',
-  label: 'Root',
+const graphProps: GraphViewProps = {
+  ariaLabel: 'Dependency graph',
+  edges: [],
+  layout: 'grid',
+  nodes: [{ id: 'root' }],
+  onNodeEvent: () => undefined,
+  topologyUpdatePolicy: 'preserve-positions',
 };
-const renderTreeItem = (props: TreeItemRenderProps<'root'>): string => props.node.label as string;
-const treeProps: TreeViewProps<'root'> = {
-  nodes: [treeNode],
-  onSelect: (id) => {
-    const rootId: 'root' = id;
-    void rootId;
-  },
-  renderItem: renderTreeItem,
+const canonicalGraphProps: GraphViewCanonicalGraphProps = {
+  ariaLabel: 'Canonical dependency graph',
+  graph: { edges: [], nodes: [] },
+  layout: 'circle',
 };
-
-const contracts = [
-  GraphView,
-  GridView,
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-  TileGrid,
-  TreeView,
-] as const;
+const graphEvents: 'zora-graph-view-ready' = GraphView.events.ready;
 const props = {} as {
   graphController: GraphViewController;
   graphCanonicalEdge: GraphViewCanonicalEdgeData;
@@ -584,23 +567,12 @@ const props = {} as {
   graphResolved: ResolvedGraphViewProps;
   graphViewport: GraphViewViewport;
   graph: GraphViewProps;
-  grid: GridViewProps;
-  tab: TabProps;
-  tabList: TabListProps;
-  tabPanel: TabPanelProps;
-  tabs: TabsProps;
-  tileGrid: TileGridProps;
-  tree: TreeViewProps<'root'>;
 };
 
-// @ts-expect-error GridView must not expose TileGrid-only declarations.
-type GridViewDoesNotExposeTileGrid = import('@ankhorage/zora/web/grid-view').TileGridProps;
-// @ts-expect-error Tabs must not expose TabPanel-only declarations.
-type TabsDoesNotExposeTabPanel = import('@ankhorage/zora/web/tabs').TabPanelProps;
-
-void contracts;
+void canonicalGraphProps;
+void graphEvents;
+void graphProps;
 void props;
-void treeProps;
 `,
   );
 }

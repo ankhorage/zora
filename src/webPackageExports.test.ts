@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { expect, test } from 'bun:test';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import * as ts from 'typescript';
 
 const forbiddenWebDependencies = [
   'expo-document-picker',
@@ -51,7 +52,7 @@ test('isolates every generated component web runtime and declaration entrypoint'
         `'use client';\nexport { ${exportName} } from './${exportName}.js';\n`,
       );
       expect(declarationEntry, component).toStartWith(
-        `export { ${exportName} } from './${exportName}';\n`,
+        `export { ${exportName} } from './${exportName}.js';\n`,
       );
       expect(declarationEntry, component).not.toContain('export *');
       for (const declaration of files.filter((file) => file.endsWith('.d.ts'))) {
@@ -80,7 +81,7 @@ test('keeps shared facade component type exports isolated and portable', async (
         join('web-dist', 'components', component, 'index.d.ts'),
       ).text();
       expect(declaration, component).toBe(
-        `export { ${runtimeExport} } from './${runtimeExport}';\nexport type { ${typeExport} } from './${runtimeExport}';\n`,
+        `export { ${runtimeExport} } from './${runtimeExport}.js';\nexport type { ${typeExport} } from './${runtimeExport}.js';\n`,
       );
       expect(declaration, component).not.toContain("@ankhorage/zora'");
     }),
@@ -112,8 +113,8 @@ test('keeps specialized browser component types on their canonical web subpaths'
   ).text();
   expect(treeViewDeclaration).toBe(
     [
-      "export { TreeView } from './TreeView';",
-      "export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './TreeView';",
+      "export { TreeView } from './TreeView.js';",
+      "export type { TreeItemNode, TreeItemRenderProps, TreeViewProps } from './TreeView.js';",
       '',
     ].join('\n'),
   );
@@ -123,8 +124,8 @@ test('keeps specialized browser component types on their canonical web subpaths'
   ).text();
   expect(activityIndicatorDeclaration).toBe(
     [
-      "export { ActivityIndicator } from './ActivityIndicator';",
-      "export type { ActivityIndicatorProps } from './ActivityIndicator';",
+      "export { ActivityIndicator } from './ActivityIndicator.js';",
+      "export type { ActivityIndicatorProps } from './ActivityIndicator.js';",
       '',
     ].join('\n'),
   );
@@ -137,11 +138,59 @@ test('keeps GraphView facade-owned public types on its canonical web subpath', a
   ).text();
   expect(declaration).toBe(
     [
-      "export { GraphView } from './GraphView';",
-      "export type { GraphViewCallbacks, GraphViewCanonicalEdgeData, GraphViewCanonicalGraphProps, GraphViewCanonicalNodeData, GraphViewController, GraphViewDomControllerEventDetail, GraphViewEdge, GraphViewElementEvent, GraphViewElementEventType, GraphViewFitOptions, GraphViewInput, GraphViewLayoutName, GraphViewMeasurement, GraphViewNode, GraphViewNodeMeasurement, GraphViewNodeRenderContext, GraphViewPoint, GraphViewProps, GraphViewRenderedNode, GraphViewSize, GraphViewStyleRule, GraphViewTopologyUpdatePolicy, GraphViewViewport, ResolvedGraphViewProps } from './GraphView';",
+      "export { GraphView } from './GraphView.js';",
+      "export type { GraphViewCallbacks, GraphViewCanonicalEdgeData, GraphViewCanonicalGraphProps, GraphViewCanonicalNodeData, GraphViewController, GraphViewDomControllerEventDetail, GraphViewEdge, GraphViewElementEvent, GraphViewElementEventType, GraphViewFitOptions, GraphViewInput, GraphViewLayoutName, GraphViewMeasurement, GraphViewNode, GraphViewNodeMeasurement, GraphViewNodeRenderContext, GraphViewPoint, GraphViewProps, GraphViewRenderedNode, GraphViewSize, GraphViewStyleRule, GraphViewTopologyUpdatePolicy, GraphViewViewport, ResolvedGraphViewProps } from './GraphView.js';",
       '',
     ].join('\n'),
   );
+});
+
+/** Verifies that GraphView retains the TypeScript namespace which declares its public static events. */
+test('keeps GraphView static events in its generated web declaration', async () => {
+  const declaration = await Bun.file(
+    join('web-dist', 'components', 'graph-view', 'GraphView.d.ts'),
+  ).text();
+  const source = ts.createSourceFile('GraphView.d.ts', declaration, ts.ScriptTarget.Latest);
+  const graphViewNamespace = source.statements.find(
+    (statement): statement is ts.ModuleDeclaration =>
+      ts.isModuleDeclaration(statement) && statement.name.getText(source) === 'GraphView',
+  );
+
+  expect(graphViewNamespace).toBeDefined();
+  if (graphViewNamespace === undefined) {
+    throw new Error('Missing generated GraphView namespace declaration.');
+  }
+  const events = graphViewNamespace.body?.getText(source) ?? '';
+  expect(events).toContain('events');
+  expect(events).toContain('zora-graph-view-ready');
+});
+
+/** Verifies that a public type may retain an unexported same-module declaration dependency. */
+test('materializes GraphView private declaration dependencies without exporting them', async () => {
+  const declaration = await Bun.file(
+    join('web-dist', 'components', 'graph-view', 'GraphView.types-0.d.ts'),
+  ).text();
+
+  expect(declaration).toContain('interface GraphViewSharedProps {');
+  expect(declaration).not.toContain('export interface GraphViewSharedProps');
+  expect(declaration).toContain('GraphViewProps extends GraphViewSharedProps');
+  expect(declaration).toContain('GraphViewCanonicalGraphProps extends GraphViewSharedProps');
+  const source = ts.createSourceFile('GraphView.types-0.d.ts', declaration, ts.ScriptTarget.Latest);
+  const callbacks = source.statements.find(
+    (statement): statement is ts.TypeAliasDeclaration =>
+      ts.isTypeAliasDeclaration(statement) && statement.name.text === 'GraphViewCallbacks',
+  );
+  expect(callbacks).toBeDefined();
+  if (callbacks === undefined) throw new Error('Missing generated GraphViewCallbacks declaration.');
+  const references: string[] = [];
+  const visit = (node: ts.Node): void => {
+    if (ts.isTypeReferenceNode(node) && ts.isIdentifier(node.typeName)) {
+      references.push(node.typeName.text);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(callbacks.type);
+  expect(references).toContain('GraphViewSharedProps');
 });
 
 /** Verifies that stable package web subpaths resolve only their requested UI graph. */
