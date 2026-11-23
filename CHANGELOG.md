@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.7.1
+
+### Patch Changes
+
+- 05cb97a: Preserve private same-module declaration dependencies in standalone web component type artifacts.
+
 ## 27.7.0
 
 ### Minor Changes
