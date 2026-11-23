@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Animated,
-  Easing,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Animated, Easing, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { CarouselProps, CarouselSlide, CarouselTransition } from '../../types/carousel';
 import { useZoraTheme } from '../theme/composition/useZoraTheme';
@@ -65,15 +57,15 @@ export function Carousel({
     progress,
     shouldReduceMotion,
   } = useCarouselPlayback({
-      slides,
-      index,
-      defaultIndex,
-      onIndexChange,
-      autoPlay,
-      paused,
-      loop,
-      intervalMs,
-      reducedMotion,
+    slides,
+    index,
+    defaultIndex,
+    onIndexChange,
+    autoPlay,
+    paused,
+    loop,
+    intervalMs,
+    reducedMotion,
   });
 
   if (slides.length === 0) return null;
@@ -476,4 +468,3 @@ const styles = StyleSheet.create({
   indicator: { height: 8, borderRadius: 8 },
   progress: { position: 'absolute', bottom: 0, left: 0, right: 0, overflow: 'hidden' },
 });
-

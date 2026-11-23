@@ -73,17 +73,17 @@ export function useCarouselPlayback({
 }
 
 type CarouselPlaybackOptions = Pick<
-    CarouselProps,
-    | 'slides'
-    | 'index'
-    | 'defaultIndex'
-    | 'onIndexChange'
-    | 'autoPlay'
-    | 'paused'
-    | 'loop'
-    | 'intervalMs'
-    | 'reducedMotion'
-  >;
+  CarouselProps,
+  | 'slides'
+  | 'index'
+  | 'defaultIndex'
+  | 'onIndexChange'
+  | 'autoPlay'
+  | 'paused'
+  | 'loop'
+  | 'intervalMs'
+  | 'reducedMotion'
+>;
 
 /*** Clamp a controlled index whenever the consumer changes the slide collection. */
 function normalizeIndex(value: number, count: number): number {
