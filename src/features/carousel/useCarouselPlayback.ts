@@ -72,8 +72,7 @@ export function useCarouselPlayback({
   } as const;
 }
 
-interface CarouselPlaybackOptions
-  extends Pick<
+type CarouselPlaybackOptions = Pick<
     CarouselProps,
     | 'slides'
     | 'index'
@@ -84,7 +83,7 @@ interface CarouselPlaybackOptions
     | 'loop'
     | 'intervalMs'
     | 'reducedMotion'
-  > {}
+  >;
 
 /*** Clamp a controlled index whenever the consumer changes the slide collection. */
 function normalizeIndex(value: number, count: number): number {
