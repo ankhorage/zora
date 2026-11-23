@@ -88,6 +88,15 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Install declared Playwright Chromium
+        run: |
+          if node -e "const p=require('./package.json'); const sections=['dependencies','devDependencies','optionalDependencies']; process.exit(sections.some((section) => typeof p[section]?.['playwright-core'] === 'string') ? 0 : 1)"; then
+            playwright_cli="$(node -p "require.resolve('playwright-core/cli')")"
+            bun "$playwright_cli" install chromium
+          else
+            echo "No Playwright Core dependency declared; skipping Chromium installation."
+          fi
+
       - name: Build package
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.build ? 0 : 1)"; then
@@ -221,7 +230,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.6 validate . --enforce-repository-metadata
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.12 validate . --enforce-repository-metadata
           fi
 
       - name: Determine immutable pre-publish release intent
@@ -410,6 +419,10 @@ jobs:
           const peerDependencies = manifest.peerDependencies ?? {};
           const declared = dependencies.expo ?? peerDependencies.expo;
           const expoDeclarations = [dependencies.expo, peerDependencies.expo];
+          const declaredContracts = [
+            ['dependencies', dependencies],
+            ['peerDependencies', peerDependencies],
+          ];
           const expoMajors = expoDeclarations.map((range) => {
             if (range === undefined) return undefined;
             const explicit = typeof range === 'string'
@@ -418,19 +431,25 @@ jobs:
             if (explicit === null) throw new Error('Expo must have an explicit bounded SDK version.');
             return Number(explicit[1]);
           });
-          const expoModuleDeclarations = [
-            ['dependencies', dependencies],
-            ['peerDependencies', peerDependencies],
-          ].flatMap(([source, contract]) => Object.entries(contract)
-            .filter(([name]) => name === 'expo' || name.startsWith('expo-'))
+          const expoModuleDeclarations = declaredContracts.flatMap(([source, contract]) => Object.entries(contract)
+            .filter(([name]) => name === 'expo' || name.startsWith('expo-') || name === 'expo-router')
             .map(([name, range]) => `${source}.${name}=${String(range)}`));
-          const sdkMajors = new Set([dependencies, peerDependencies].flatMap((contract) => Object.entries(contract))
-            .filter(([name]) => name.startsWith('expo-'))
-            .flatMap(([, range]) => {
-              const match = typeof range === 'string'
-                ? /^(?:~|\^)?(\d+)\.0\.\d+$/.exec(range)
-                : null;
-              const major = match ? Number(match[1]) : 0;
+          const resolveExpoSdkMajor = (name, range) => {
+            if (typeof range !== 'string') return 0;
+            const exact = /^(?:~|\^)?(\d+)\.0\.\d+$/.exec(range);
+            if (exact !== null) return Number(exact[1]);
+            if (name === 'expo-router') {
+              const bounded = /^>=(\d+)\.0\.0 <(\d+)\.0\.0$/.exec(range);
+              if (bounded !== null && Number(bounded[2]) === Number(bounded[1]) + 1) {
+                return Number(bounded[1]);
+              }
+            }
+            return 0;
+          };
+          const sdkMajors = new Set(declaredContracts.flatMap(([, contract]) => Object.entries(contract))
+            .filter(([name]) => name.startsWith('expo-') || name === 'expo-router')
+            .flatMap(([name, range]) => {
+              const major = resolveExpoSdkMajor(name, range);
               return major >= 50 ? [major] : [];
             }));
           for (const major of expoMajors) if (major !== undefined) sdkMajors.add(major);
@@ -442,10 +461,14 @@ jobs:
           const react = dependencies.react ?? peerDependencies.react;
           const reactNative = dependencies['react-native'] ?? peerDependencies['react-native'];
           if (expo === undefined && react === undefined && reactNative === undefined) process.exit(0);
-          if (typeof expo !== 'string' || typeof react !== 'string' || typeof reactNative !== 'string') {
-            throw new Error(`Expo platform verification requires declared Expo, React, and React Native versions; received Expo=${String(expo)}, React=${String(react)}, React Native=${String(reactNative)}.`);
+          if (typeof react !== 'string' || typeof reactNative !== 'string') {
+            throw new Error(`React Native platform verification requires declared React and React Native versions; received React=${String(react)}, React Native=${String(reactNative)}.`);
           }
-          process.stdout.write(JSON.stringify({ expo, react, 'react-native': reactNative }));
+          process.stdout.write(JSON.stringify({
+            ...(expo === undefined ? {} : { expo }),
+            react,
+            'react-native': reactNative,
+          }));
           NODE
           )"
           capability_module_path="$(node --input-type=module -e "import { createRequire } from 'node:module'; console.log(createRequire(import.meta.resolve('@ankhorage/devtools/cli')).resolve('@ankhorage/capability'))")"
@@ -562,11 +585,18 @@ jobs:
             })}\n`,
           );
           writeFileSync(join(appDir, 'App.tsx'), `export * from ${JSON.stringify(specifier)};\n`);
+          if (typeof toolchain.expo !== 'string') {
+            writeFileSync(
+              join(appDir, 'metro.config.js'),
+              "const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');\n\nmodule.exports = mergeConfig(getDefaultConfig(__dirname), {});\n",
+            );
+          }
           NODE
               (
                 cd "$platform_dir"
                 bun install --ignore-scripts
-                metro_runtime_dependency="$(node - <<'NODE'
+                if node -e "const dependencies=JSON.parse(process.argv[1]); process.exit(typeof dependencies.expo === 'string' ? 0 : 1)" "$platform_toolchain_dependencies"; then
+                  metro_runtime_dependency="$(node - <<'NODE'
           const { readFileSync } = require('node:fs');
           const expo = JSON.parse(readFileSync('./node_modules/expo/package.json', 'utf8'));
           const bundled = JSON.parse(readFileSync('./node_modules/expo/bundledNativeModules.json', 'utf8'));
@@ -577,11 +607,31 @@ jobs:
           }
           process.stdout.write(`@expo/metro-runtime@${compatibleRange}`);
           NODE
-                )"
-                bun add "$metro_runtime_dependency" --ignore-scripts
+                  )"
+                  bun add "$metro_runtime_dependency" --ignore-scripts
+                else
+                  react_native_verification_dependencies="$(node - <<'NODE'
+          const { readFileSync } = require('node:fs');
+          const reactNative = JSON.parse(readFileSync('./node_modules/react-native/package.json', 'utf8'));
+          const match = /^0\.(\d+)\.\d+(?:[-+].*)?$/.exec(reactNative.version);
+          if (match === null || Number(match[1]) < 81 || Number(match[1]) > 88) {
+            throw new Error(`React Native-only platform verification supports resolved React Native 0.81 through 0.88; received ${String(reactNative.version)}.`);
+          }
+          process.stdout.write(`@react-native-community/cli@^20.0.0\n@react-native/metro-config@${reactNative.version}`);
+          NODE
+                  )"
+                  printf '%s\n' "$react_native_verification_dependencies" | while IFS= read -r dependency; do
+                    bun add "$dependency" --ignore-scripts
+                  done
+                fi
                 bun add "$artifact" --ignore-scripts
-                node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
-                TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
+                if node -e "const dependencies=JSON.parse(process.argv[1]); process.exit(typeof dependencies.expo === 'string' ? 0 : 1)" "$platform_toolchain_dependencies"; then
+                  node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
+                  TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
+                else
+                  node -e 'const p=require("./package.json"); for (const name of ["react", "react-native", "@react-native-community/cli", "@react-native/metro-config"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`React Native platform toolchain ${name}: declared ${p.dependencies[name] ?? "temporary verification dependency"}, resolved ${resolved}`); }'
+                  TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/react-native" bundle --entry-file App.tsx --platform ios --bundle-output "$platform_output_dir/index.js" --dev false
+                fi
               )
             }
 
