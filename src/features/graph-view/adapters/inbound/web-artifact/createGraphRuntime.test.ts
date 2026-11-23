@@ -322,6 +322,13 @@ test('keeps explicit fit and layout available after preserving a rich-node topol
     await completed.promise;
 
     expect(calls.sort).toBeGreaterThan(preservedSorts);
+    const explicitLayoutSorts = calls.sort;
+    const measured = Promise.withResolvers<void>();
+    callbacks.current = { onLayoutComplete: () => measured.resolve() };
+    runtime.setNodeSize('repository-1', { height: 24, width: 48 });
+    await measured.promise;
+
+    expect(calls.sort).toBeGreaterThan(explicitLayoutSorts);
   } finally {
     runtime.destroy();
   }

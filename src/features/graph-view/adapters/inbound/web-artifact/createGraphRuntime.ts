@@ -365,6 +365,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.viewport.settle(shouldFit);
     state.settledLayoutRef.current = input.layout;
     state.settledTopologyRef.current = topology;
+    state.preservedTopologyRef.current = false;
     const fitRequest = state.fitRequestRef.current;
     state.fitRequestRef.current = null;
     if (fitRequest) requestOptimizedFit(state, fitRequest);
@@ -463,7 +464,7 @@ function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) 
   scheduleMeasuredNodeRelayout(state);
 }
 
-/*** Retain a user-owned stable topology when rich-node measurements arrive after it settles. */
+/*** Retain a user-owned stable topology until the next layout generation settles. */
 function preservesSettledTopology(state: GraphRuntimeState): boolean {
   return (
     state.readyRef.current &&
