@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Animated,
+  Easing,
   Image,
   Pressable,
   StyleSheet,
