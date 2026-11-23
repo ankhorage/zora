@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.8.0",
+      "value": "v27.9.0",
       "color": "cb3837"
     },
     {
@@ -4417,6 +4417,53 @@
       ]
     },
     {
+      "path": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/layout/public.ts",
+        "src/features/master-detail/application/resolveMasterDetailPresentation.ts",
+        "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/types/master-detail.ts"
+      ],
+      "exports": [
+        "MasterDetail"
+      ]
+    },
+    {
+      "path": "src/features/master-detail/application/resolveMasterDetailPresentation.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/master-detail.ts"
+      ],
+      "exports": [
+        "MasterDetailPresentation",
+        "resolveMasterDetailPresentation"
+      ]
+    },
+    {
+      "path": "src/features/master-detail/masterDetailMeta.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/constants/authoring.ts",
+        "src/types/authoring.ts"
+      ],
+      "exports": [
+        "masterDetailMeta"
+      ]
+    },
+    {
+      "path": "src/features/master-detail/public.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "MasterDetail",
+        "MasterDetailActivePane",
+        "MasterDetailDesktopMode",
+        "MasterDetailMasterWidth",
+        "MasterDetailProps"
+      ]
+    },
+    {
       "path": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
       "isEntrypoint": false,
       "dependencies": [
@@ -5020,6 +5067,7 @@
         "src/features/list/flatListMeta.ts",
         "src/features/list/meta.ts",
         "src/features/list/sectionListMeta.ts",
+        "src/features/master-detail/masterDetailMeta.ts",
         "src/features/matrix-grid/meta.ts",
         "src/features/missing-element/missingElementMeta.ts",
         "src/features/pagination/paginationMeta.ts",
@@ -5216,6 +5264,7 @@
         "src/features/keyboard-avoiding-view/public.ts",
         "src/features/layout/public.ts",
         "src/features/list/public.ts",
+        "src/features/master-detail/public.ts",
         "src/features/matrix-grid/public.ts",
         "src/features/missing-element/public.ts",
         "src/features/pagination/public.ts",
@@ -7159,6 +7208,11 @@
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps",
+        "MasterDetail",
+        "MasterDetailActivePane",
+        "MasterDetailDesktopMode",
+        "MasterDetailMasterWidth",
+        "MasterDetailProps",
         "MatrixGrid",
         "MatrixGridProps",
         "MediaCard",
@@ -7717,6 +7771,11 @@
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps",
+        "MasterDetail",
+        "MasterDetailActivePane",
+        "MasterDetailDesktopMode",
+        "MasterDetailMasterWidth",
+        "MasterDetailProps",
         "MatrixGrid",
         "MatrixGridProps",
         "MediaCard",
@@ -8766,6 +8825,19 @@
         "ManifestListProps",
         "ManifestListSection",
         "ManifestSectionListProps"
+      ]
+    },
+    {
+      "path": "src/types/master-detail.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types/base.ts"
+      ],
+      "exports": [
+        "MasterDetailActivePane",
+        "MasterDetailDesktopMode",
+        "MasterDetailMasterWidth",
+        "MasterDetailProps"
       ]
     },
     {
@@ -27226,6 +27298,185 @@
       "structuredRows": []
     },
     {
+      "name": "MasterDetail",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "line": 10,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "MasterDetailActivePane",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/master-detail.ts",
+      "sourceLocation": {
+        "filePath": "src/types/master-detail.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "MasterDetailDesktopMode",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/master-detail.ts",
+      "sourceLocation": {
+        "filePath": "src/types/master-detail.ts",
+        "line": 9,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "MasterDetailMasterWidth",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/master-detail.ts",
+      "sourceLocation": {
+        "filePath": "src/types/master-detail.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "MasterDetailProps",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/master-detail.ts",
+      "sourceLocation": {
+        "filePath": "src/types/master-detail.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "MasterDetailActivePane",
+        "MasterDetailDesktopMode",
+        "MasterDetailMasterWidth",
+        "ZoraThemeMode"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "activePane",
+          "kind": "property",
+          "type": "MasterDetailActivePane | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "kind": "property",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "desktopMode",
+          "kind": "property",
+          "type": "MasterDetailDesktopMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "kind": "property",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "masterWidth",
+          "kind": "property",
+          "type": "MasterDetailMasterWidth | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "kind": "property",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "MatrixGrid",
       "title": null,
       "description": "A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.",
@@ -32959,7 +33210,7 @@
       "modulePath": "src/features/layout/adapters/inbound/Screen.tsx",
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/Screen.tsx",
-        "line": 50,
+        "line": 53,
         "column": 14
       },
       "exportPaths": [
@@ -44134,7 +44385,7 @@
       "modulePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
-        "line": 238,
+        "line": 240,
         "column": 14
       },
       "exportPaths": [
@@ -44200,7 +44451,7 @@
       "modulePath": "src/features/registry/componentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/componentMeta.ts",
-        "line": 117,
+        "line": 118,
         "column": 14
       },
       "exportPaths": [
@@ -44332,7 +44583,7 @@
       "modulePath": "src/constants/authoring.ts",
       "sourceLocation": {
         "filePath": "src/constants/authoring.ts",
-        "line": 165,
+        "line": 167,
         "column": 14
       },
       "exportPaths": [
@@ -57160,6 +57411,78 @@
       ]
     },
     {
+      "name": "MasterDetail",
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "modulePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "line": 10,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "props": [
+        {
+          "name": "activePane",
+          "type": "MasterDetailActivePane | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "desktopMode",
+          "type": "MasterDetailDesktopMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "interactionPolicy",
+          "type": "InteractionPolicy | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "inverted",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "masterWidth",
+          "type": "MasterDetailMasterWidth | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "testID",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "themeId",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "MatrixGrid",
       "description": "A code-first generic sparse matrix grid; formulas and domain vocabulary remain external.",
       "isReadme": false,
@@ -60198,7 +60521,7 @@
       "modulePath": "src/features/layout/adapters/inbound/Screen.tsx",
       "sourceLocation": {
         "filePath": "src/features/layout/adapters/inbound/Screen.tsx",
-        "line": 50,
+        "line": 53,
         "column": 14
       },
       "exportPaths": [
@@ -73472,6 +73795,50 @@
       }
     },
     {
+      "name": "MasterDetailInner",
+      "description": "Projects the first two children into a desktop split or one compact route pane.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "MasterPane",
+      "description": "Provides the independently bounded master-list scroll region.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "line": 44,
+        "column": 1
+      }
+    },
+    {
+      "name": "DetailPane",
+      "description": "Provides the independently bounded detail scroll region.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "line": 61,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveMasterDetailPresentation",
+      "description": "Resolves the visual pane projection without changing host-owned route state.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/master-detail/application/resolveMasterDetailPresentation.ts",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
       "name": "MatrixGridInner",
       "description": "Compose the canonical GridView around released sparse matrix placement and culling geometry.",
       "see": [],
@@ -76686,6 +77053,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/master-detail/public.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/features/reader/public.ts",
         "sourcePath": "src/index.ts"
       },
@@ -76902,6 +77274,11 @@
       {
         "fromPath": "src/readerFree.ts",
         "toPath": "src/features/list/public.ts",
+        "sourcePath": "src/readerFree.ts"
+      },
+      {
+        "fromPath": "src/readerFree.ts",
+        "toPath": "src/features/master-detail/public.ts",
         "sourcePath": "src/readerFree.ts"
       },
       {
@@ -77438,6 +77815,11 @@
         "fromPath": "src/types/manifest-list.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/manifest-list.ts"
+      },
+      {
+        "fromPath": "src/types/master-detail.ts",
+        "toPath": "src/types/base.ts",
+        "sourcePath": "src/types/master-detail.ts"
       },
       {
         "fromPath": "src/types/matrix-grid.ts",
@@ -79025,6 +79407,26 @@
         "sourcePath": "src/features/list/sectionListMeta.ts"
       },
       {
+        "fromPath": "src/features/master-detail/masterDetailMeta.ts",
+        "toPath": "src/constants/authoring.ts",
+        "sourcePath": "src/features/master-detail/masterDetailMeta.ts"
+      },
+      {
+        "fromPath": "src/features/master-detail/masterDetailMeta.ts",
+        "toPath": "src/types/authoring.ts",
+        "sourcePath": "src/features/master-detail/masterDetailMeta.ts"
+      },
+      {
+        "fromPath": "src/features/master-detail/public.ts",
+        "toPath": "src/types/master-detail.ts",
+        "sourcePath": "src/features/master-detail/public.ts"
+      },
+      {
+        "fromPath": "src/features/master-detail/public.ts",
+        "toPath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "sourcePath": "src/features/master-detail/public.ts"
+      },
+      {
         "fromPath": "src/features/matrix-grid/meta.ts",
         "toPath": "src/types/authoring.ts",
         "sourcePath": "src/features/matrix-grid/meta.ts"
@@ -79546,6 +79948,11 @@
       },
       {
         "fromPath": "src/features/registry/componentMeta.ts",
+        "toPath": "src/features/master-detail/masterDetailMeta.ts",
+        "sourcePath": "src/features/registry/componentMeta.ts"
+      },
+      {
+        "fromPath": "src/features/registry/componentMeta.ts",
         "toPath": "src/features/matrix-grid/meta.ts",
         "sourcePath": "src/features/registry/componentMeta.ts"
       },
@@ -80032,6 +80439,11 @@
       {
         "fromPath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
         "toPath": "src/features/list/public.ts",
+        "sourcePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts"
+      },
+      {
+        "fromPath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts",
+        "toPath": "src/features/master-detail/public.ts",
         "sourcePath": "src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts"
       },
       {
@@ -81268,6 +81680,11 @@
         "fromPath": "src/features/list/utils/resolveListSeparator.ts",
         "toPath": "src/types/list.ts",
         "sourcePath": "src/features/list/utils/resolveListSeparator.ts"
+      },
+      {
+        "fromPath": "src/features/master-detail/application/resolveMasterDetailPresentation.ts",
+        "toPath": "src/types/master-detail.ts",
+        "sourcePath": "src/features/master-detail/application/resolveMasterDetailPresentation.ts"
       },
       {
         "fromPath": "src/features/matrix-grid/application/getMatrixGridNextFocusId.ts",
@@ -83773,6 +84190,26 @@
         "fromPath": "src/features/list/application/use-cases/partitionListSections.ts",
         "toPath": "src/types/manifest-list.ts",
         "sourcePath": "src/features/list/application/use-cases/partitionListSections.ts"
+      },
+      {
+        "fromPath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "toPath": "src/types/master-detail.ts",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
+        "fromPath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
+        "fromPath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
+        "fromPath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "toPath": "src/features/master-detail/application/resolveMasterDetailPresentation.ts",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
       },
       {
         "fromPath": "src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx",
@@ -90482,6 +90919,24 @@
         "sourcePath": "src/features/list/adapters/inbound/SectionList.tsx"
       },
       {
+        "fromSymbol": "src/features/master-detail/adapters/inbound/MasterDetail.tsx",
+        "toSymbol": "withZoraThemeScope",
+        "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
+        "fromSymbol": "MasterDetailInner",
+        "toSymbol": "resolveMasterDetailPresentation",
+        "callExpression": "resolveMasterDetailPresentation",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
+        "fromSymbol": "MasterDetailInner",
+        "toSymbol": "useBreakpoint",
+        "callExpression": "useBreakpoint",
+        "sourcePath": "src/features/master-detail/adapters/inbound/MasterDetail.tsx"
+      },
+      {
         "fromSymbol": "MatrixGridInner",
         "toSymbol": "useZoraTheme",
         "callExpression": "useZoraTheme",
@@ -94340,6 +94795,41 @@
         "fromSymbol": "ColorWheelSelection",
         "toType": "HexColor",
         "sourcePath": "src/types/color.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "InteractionPolicy",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "MasterDetailActivePane",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "MasterDetailDesktopMode",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "MasterDetailMasterWidth",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "React",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "ReactNode",
+        "sourcePath": "src/types/master-detail.ts"
+      },
+      {
+        "fromSymbol": "MasterDetailProps",
+        "toType": "ZoraThemeMode",
+        "sourcePath": "src/types/master-detail.ts"
       },
       {
         "fromSymbol": "ReaderErrorEvent",

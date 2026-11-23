@@ -2413,6 +2413,24 @@ Export paths: `src/index.ts`
 | themeId | `string \| undefined` | no | — |  |
 | title | `React.ReactNode` | no | — |  |
 
+## MasterDetail
+
+Source: `src/features/master-detail/adapters/inbound/MasterDetail.tsx:10:14`
+
+Export paths: `src/index.ts`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| activePane | `MasterDetailActivePane \| undefined` | no | — |  |
+| children | `React.ReactNode` | no | — |  |
+| desktopMode | `MasterDetailDesktopMode \| undefined` | no | — |  |
+| interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
+| inverted | `boolean \| undefined` | no | — |  |
+| masterWidth | `MasterDetailMasterWidth \| undefined` | no | — |  |
+| mode | `ZoraThemeMode \| undefined` | no | — |  |
+| testID | `string \| undefined` | no | — |  |
+| themeId | `string \| undefined` | no | — |  |
+
 ## MatrixGrid
 
 Source: `src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx:243:14`
@@ -3121,7 +3139,7 @@ Export paths: `src/index.ts`
 
 ## Screen
 
-Source: `src/features/layout/adapters/inbound/Screen.tsx:50:14`
+Source: `src/features/layout/adapters/inbound/Screen.tsx:53:14`
 
 Screen content boundary with independent width policy and scroll ownership.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.9.0
+
+### Minor Changes
+
+- 4e4c0f1: Add a manifest-authorable responsive MasterDetail presentation with ordered children, 30/70 desktop panes, and host-controlled compact pane projection.
+
 ## 27.8.0
 
 ### Minor Changes

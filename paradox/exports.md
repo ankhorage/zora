@@ -4351,6 +4351,50 @@ Source: `src/types/manifest-list.ts:30:1`
 | themeId | property | `string \| undefined` | no |  |
 | windowSize | property | `number \| undefined` | no |  |
 
+## MasterDetail
+
+Kind: `value`
+Module: `src/features/master-detail/adapters/inbound/MasterDetail.tsx`
+Source: `src/features/master-detail/adapters/inbound/MasterDetail.tsx:10:14`
+
+## MasterDetailActivePane
+
+Kind: `unknown`
+Module: `src/types/master-detail.ts`
+Source: `src/types/master-detail.ts:6:1`
+
+## MasterDetailDesktopMode
+
+Kind: `unknown`
+Module: `src/types/master-detail.ts`
+Source: `src/types/master-detail.ts:9:1`
+
+## MasterDetailMasterWidth
+
+Kind: `unknown`
+Module: `src/types/master-detail.ts`
+Source: `src/types/master-detail.ts:12:1`
+
+## MasterDetailProps
+
+Kind: `type`
+Module: `src/types/master-detail.ts`
+Source: `src/types/master-detail.ts:19:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| activePane | property | `MasterDetailActivePane \| undefined` | no |  |
+| children | property | `React.ReactNode` | no |  |
+| desktopMode | property | `MasterDetailDesktopMode \| undefined` | no |  |
+| interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
+| inverted | property | `boolean \| undefined` | no |  |
+| masterWidth | property | `MasterDetailMasterWidth \| undefined` | no |  |
+| mode | property | `ZoraThemeMode \| undefined` | no |  |
+| testID | property | `string \| undefined` | no |  |
+| themeId | property | `string \| undefined` | no |  |
+
 ## MatrixGrid
 
 Kind: `value`
@@ -5717,7 +5761,7 @@ Source: `src/types/scanner.ts:13:1`
 
 Kind: `value`
 Module: `src/features/layout/adapters/inbound/Screen.tsx`
-Source: `src/features/layout/adapters/inbound/Screen.tsx:50:14`
+Source: `src/features/layout/adapters/inbound/Screen.tsx:53:14`
 
 Screen content boundary with independent width policy and scroll ownership.
 
@@ -8375,7 +8419,7 @@ Applies optional theme and polarity overrides to any ZORA component.
 
 Kind: `value`
 Module: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts`
-Source: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts:238:14`
+Source: `src/features/registry/ZORA_BASE_COMPONENT_REGISTRY.ts:240:14`
 
 The core ZORA runtime component registry, excluding separately selected feature entries such as Reader.
 
@@ -8395,7 +8439,7 @@ Source: `src/features/theme/colorModel.ts:12:14`
 
 Kind: `value`
 Module: `src/features/registry/componentMeta.ts`
-Source: `src/features/registry/componentMeta.ts:117:14`
+Source: `src/features/registry/componentMeta.ts:118:14`
 
 ## ZORA_COMPONENT_REGISTRY
 
@@ -8433,7 +8477,7 @@ Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/constants/authoring.ts`
-Source: `src/constants/authoring.ts:165:14`
+Source: `src/constants/authoring.ts:167:14`
 
 ## ZoraBaseProps
 
