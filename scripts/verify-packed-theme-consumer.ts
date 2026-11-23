@@ -109,6 +109,14 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
     join(consumerRoot, 'acceptance.mjs'),
     "import assert from 'node:assert/strict';\nimport { compileZoraTheme } from '@ankhorage/zora/theme';\nassert.equal(typeof compileZoraTheme, 'function');\n",
   );
+  writeFileSync(
+    join(consumerRoot, 'app.json'),
+    `${JSON.stringify({ expo: { name: 'zora-packed-theme-consumer', slug: 'zora-packed-theme-consumer' } })}\n`,
+  );
+  writeFileSync(
+    join(consumerRoot, 'App.tsx'),
+    "import { compileZoraTheme } from '@ankhorage/zora/theme';\n\nvoid compileZoraTheme;\nexport default function App() { return null; }\n",
+  );
 }
 
 try {
@@ -134,7 +142,10 @@ try {
   run(['node', 'acceptance.mjs'], consumerRoot);
   run(['bun', 'acceptance.mjs'], consumerRoot);
   run(['bunx', 'tsc', '--noEmit'], consumerRoot);
-  console.log('Packed ZORA theme consumer Expo TypeScript, Node ESM, and Bun resolution passed.');
+  run(['bunx', 'expo', 'export', '--platform', 'ios', '--output-dir', 'dist-ios'], consumerRoot);
+  console.log(
+    'Packed ZORA theme consumer Expo TypeScript, Node ESM, Bun, and Metro iOS resolution passed.',
+  );
 } finally {
   rmSync(temporaryRoot, { force: true, recursive: true });
 }
