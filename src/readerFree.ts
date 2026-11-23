@@ -323,13 +323,6 @@ export {
   type KeyboardAvoidingViewProps,
 } from './features/keyboard-avoiding-view/public';
 export type {
-  MasterDetailActivePane,
-  MasterDetailDesktopMode,
-  MasterDetailMasterWidth,
-  MasterDetailProps,
-} from './features/master-detail/public';
-export { MasterDetail } from './features/master-detail/public';
-export type {
   AppShellProps,
   DividerProps,
   GridProps,
@@ -353,6 +346,13 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { List, ListItem, ListSection } from './features/list/public';
+export type {
+  MasterDetailActivePane,
+  MasterDetailDesktopMode,
+  MasterDetailMasterWidth,
+  MasterDetailProps,
+} from './features/master-detail/public';
+export { MasterDetail } from './features/master-detail/public';
 export type { MatrixGridProps } from './features/matrix-grid/public';
 export { MatrixGrid } from './features/matrix-grid/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
