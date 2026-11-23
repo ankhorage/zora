@@ -1,4 +1,4 @@
-import { Field } from '@ankhorage/surface';
+import { Field } from '@ankhorage/surface/authoring-controls';
 import type React from 'react';
 
 import type { SelectProps } from '../../../../types/select';

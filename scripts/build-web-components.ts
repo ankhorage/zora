@@ -52,7 +52,13 @@ async function buildAuthoringArtifact(): Promise<void> {
     format: 'esm',
     naming: 'index.js',
     conditions: ['browser', 'import', 'default'],
-    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    external: [
+      '@ankhorage/surface/authoring-controls',
+      'react',
+      'react/*',
+      'react-dom',
+      'react-dom/*',
+    ],
     plugins: createWebBuildPlugins({ sourceRoot, surfacePackageRoot }),
     jsx: { runtime: 'automatic', importSource: 'react' },
   });

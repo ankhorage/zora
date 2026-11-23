@@ -1,9 +1,7 @@
-import { Popover } from '@ankhorage/surface';
+import { Popover, Surface, View } from '@ankhorage/surface/authoring-controls';
 import React from 'react';
 
 import type { SelectProps } from '../../../../../types/select';
-import { View } from '../../../../layout/public';
-import { Surface } from '../../../../surface/public';
 import { withZoraThemeScope } from '../../../../theme/adapters/inbound/withZoraThemeScope';
 import { SelectField } from '../../composition/SelectField';
 import { SelectOptionRow } from '../../composition/SelectOptionRow';

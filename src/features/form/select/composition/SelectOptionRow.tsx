@@ -1,5 +1,5 @@
 import type { SelectOption, SelectProps } from '../../../../types/select';
-import { Button } from '../../../button/public';
+import { Button } from '@ankhorage/surface/authoring-controls';
 
 const SELECTED_ICON = { name: 'checkmark' } as const;
 

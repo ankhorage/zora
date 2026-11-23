@@ -18,7 +18,7 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   ]);
 
   expect(neutral).toContain("export { Select } from './Select.web';");
-  expect(web).toContain("import { Popover } from '@ankhorage/surface';");
+  expect(web).toContain("from '@ankhorage/surface/authoring-controls';");
   expect(native).toContain('<BottomSheetFlatList');
   expect(native).toContain("contentMode: 'direct'");
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
