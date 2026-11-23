@@ -89,10 +89,7 @@ function CarouselExample() {
           <p className="scene__number">{story.number} / 04</p>
           <h2>{story.title}</h2>
           <p className="scene__description">{story.description}</p>
-          <button
-            className="scene__cta"
-            onClick={() => setIndex((current) => (current + 1) % 4)}
-          >
+          <button className="scene__cta" onClick={() => setIndex((current) => (current + 1) % 4)}>
             Explore the next story <span aria-hidden="true">↗</span>
           </button>
         </div>
