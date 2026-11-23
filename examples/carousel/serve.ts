@@ -1,5 +1,7 @@
 import { resolve } from 'node:path';
 
+import { carouselExampleCss } from './carouselExampleCss';
+
 const rootDirectory = resolve(import.meta.dir, '../..');
 const media = new Set(['01-horizon.svg', '02-orbit.svg', '03-form.svg', '04-platform.svg']);
 const build = Bun.spawnSync({
@@ -23,7 +25,7 @@ if (!bundle.success) {
 const jsOutput = bundle.outputs.find((output) => output.path.endsWith('.js'));
 if (!jsOutput) throw new Error('Carousel browser example bundle was not emitted.');
 const js = await jsOutput.text();
-const css = await Bun.file(resolve(import.meta.dir, 'styles.css')).text();
+const css = carouselExampleCss;
 const html = [
   '<!doctype html>',
   '<html lang="en">',

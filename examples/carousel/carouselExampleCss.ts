@@ -1,3 +1,5 @@
+/*** Provide a self-contained browser stylesheet for the interactive Carousel demo. */
+export const carouselExampleCss = `
 :root { color-scheme:dark; font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#091323; color:#eef7ff; font-synthesis:none; }
 * { box-sizing:border-box; }
 html { min-width:320px; }
@@ -59,3 +61,4 @@ button:focus-visible {outline:2px solid #7ce7f0;outline-offset:4px}
 @media(max-width:1060px){.settings {grid-template-columns:1fr 1fr}.settings__group--toggles {grid-column:1/-1}.scene__body {padding:0 77px;}.studio-bar>div:first-child {display:flex;flex-direction:column;gap:8px;}}
 @media(max-width:700px){.page {width:calc(100% - 30px);}.masthead {min-height:80px}.masthead__meta{display:none}.intro {padding:32px 0 25px;align-items:flex-start}.intro h1 {margin-top:11px}.intro p{font-size:13px;max-width:320px}.intro__counter {display:none}.carousel-frame {height:590px;border-radius:17px}.scene__top {padding:24px}.scene__eyebrow{font-size:9px}.scene__edition{display:none}.scene__body {padding:0 27px 70px}.scene h2 {font-size:clamp(46px,12vw,76px);max-width:440px}.scene__description{font-size:15px;line-height:1.55;max-width:430px;margin:23px 0}.scene__bottom{padding:22px;font-size:9px}.scene__bottom span:last-child{display:none}.studio-bar{padding:22px 0}.studio-bar>div:first-child span{font-size:12px}.active-story{display:none}.settings {gap:20px;grid-template-columns:1fr 1fr}.settings__group--toggles {grid-column:1/-1}.segmented button{min-width:44px;padding:9px}.footer{font-size:9px;line-height:1.5;}.footer span:last-child{display:none}}
 @media(max-width:380px){.settings {grid-template-columns:1fr}.settings__group--toggles{grid-column:1}.scene h2{font-size:43px}.scene__body {padding:0 24px 60px}.scene__cta{font-size:12px}.carousel-frame {height:560px}}
+`;
