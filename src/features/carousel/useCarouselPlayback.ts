@@ -55,7 +55,8 @@ export function useCarouselPlayback({
       toValue: 1,
       duration,
       easing: Easing.linear,
-      useNativeDriver: false,
+      useNativeDriver: true,
+      isInteraction: false,
     });
     animation.start();
     return () => animation.stop();
