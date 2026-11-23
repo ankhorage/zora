@@ -319,6 +319,13 @@ export {
   type KeyboardAvoidingViewProps,
 } from './features/keyboard-avoiding-view/public';
 export type {
+  MasterDetailActivePane,
+  MasterDetailDesktopMode,
+  MasterDetailMasterWidth,
+  MasterDetailProps,
+} from './features/master-detail/public';
+export { MasterDetail } from './features/master-detail/public';
+export type {
   AppShellProps,
   DividerProps,
   GridProps,
