@@ -1,4 +1,4 @@
-import type { ZoraTheme } from '../../types/theme.ts';
+import type { ZoraTheme } from '../../types/theme.js';
 
 export const zoraDefaultTheme: ZoraTheme = {
   id: 'zora',
