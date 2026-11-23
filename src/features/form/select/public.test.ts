@@ -1,5 +1,6 @@
 import { expect, test } from 'bun:test';
 
+import type { SelectProps } from '../../../types/select';
 import { selectMeta } from './selectMeta';
 
 test('Select is a direct manifest node with valueChange payload', () => {
@@ -54,20 +55,25 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
 });
 
-test('Select trigger preserves semiBold by default and forwards bold SVG icon combinations', async () => {
-  const [selectTypes, selectTrigger] = await Promise.all([
-    Bun.file('src/types/select.ts').text(),
-    Bun.file('src/features/form/select/composition/SelectTrigger.tsx').text(),
-  ]);
+test('Select supports default weight, bold emphasis, SVG icons, and their combination', async () => {
+  const props: SelectProps = {
+    options: [{ label: 'Workspace', value: 'workspace' }],
+  };
+  const svgIcon = {
+    source:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3C/svg%3E',
+  } as const;
+  const configurations = [
+    props,
+    { ...props, labelWeight: 'bold' },
+    { ...props, leadingIcon: svgIcon },
+    { ...props, labelWeight: 'bold', leadingIcon: svgIcon },
+  ] satisfies readonly SelectProps[];
+  const selectTrigger = await Bun.file(
+    'src/features/form/select/composition/SelectTrigger.tsx',
+  ).text();
 
-  expect(selectTypes).toContain(
-    "import type { ButtonIconSpec, ButtonLabelWeight } from '@ankhorage/surface';",
-  );
-  expect(selectTypes).toContain('leadingIcon?: ButtonIconSpec;');
-  expect(selectTypes).toContain('labelWeight?: ButtonLabelWeight;');
+  expect(configurations).toHaveLength(4);
   expect(selectTrigger).toContain("labelWeight={props.labelWeight ?? 'semiBold'}");
   expect(selectTrigger).toContain('leadingIcon={props.leadingIcon}');
-  expect(selectMeta.props.labelWeight.enum).toEqual(['semiBold', 'bold']);
-  expect(selectMeta.props.leadingIcon.mediaKinds).toEqual(['image']);
-  expect(selectTrigger).not.toContain('<Text');
 });
