@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.6.1",
+      "value": "v27.7.1",
       "color": "cb3837"
     },
     {
@@ -1887,6 +1887,7 @@
         "src/features/data-table/utils/resolveDataTableRowKey.ts",
         "src/features/empty-state/public.ts",
         "src/features/form/checkbox/public.ts",
+        "src/features/image/public.ts",
         "src/features/layout/public.ts",
         "src/features/popover-menu/public.ts",
         "src/features/skeleton/public.ts",
@@ -1915,11 +1916,15 @@
       "exports": [
         "DataTable",
         "DataTableCellContext",
+        "DataTableCellSpec",
         "DataTableColumn",
         "DataTableColumnAlign",
         "DataTableDensity",
         "DataTableProps",
         "DataTableRowAction",
+        "DataTableRowActivateEvent",
+        "DataTableRowField",
+        "DataTableSelectionChangeEvent",
         "DataTableSortDirection",
         "DataTableSortState"
       ]
@@ -6330,6 +6335,7 @@
       "path": "src/features/timeline/meta.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/theme/colorModel.ts",
         "src/types/authoring.ts"
       ],
       "exports": [
@@ -6343,6 +6349,8 @@
       "exports": [
         "Timeline",
         "TimelineItem",
+        "TimelineManifestItem",
+        "TimelineManifestProps",
         "TimelineProps"
       ]
     },
@@ -6982,11 +6990,15 @@
         "createZoraThemeConfig",
         "DataTable",
         "DataTableCellContext",
+        "DataTableCellSpec",
         "DataTableColumn",
         "DataTableColumnAlign",
         "DataTableDensity",
         "DataTableProps",
         "DataTableRowAction",
+        "DataTableRowActivateEvent",
+        "DataTableRowField",
+        "DataTableSelectionChangeEvent",
         "DataTableSortDirection",
         "DataTableSortState",
         "DatePicker",
@@ -7315,6 +7327,8 @@
         "TimeGridProps",
         "Timeline",
         "TimelineItem",
+        "TimelineManifestItem",
+        "TimelineManifestProps",
         "TimelineProps",
         "TimePicker",
         "TimePickerProps",
@@ -7534,11 +7548,15 @@
         "createZoraThemeConfig",
         "DataTable",
         "DataTableCellContext",
+        "DataTableCellSpec",
         "DataTableColumn",
         "DataTableColumnAlign",
         "DataTableDensity",
         "DataTableProps",
         "DataTableRowAction",
+        "DataTableRowActivateEvent",
+        "DataTableRowField",
+        "DataTableSelectionChangeEvent",
         "DataTableSortDirection",
         "DataTableSortState",
         "DatePicker",
@@ -7851,6 +7869,8 @@
         "TimeGridProps",
         "Timeline",
         "TimelineItem",
+        "TimelineManifestItem",
+        "TimelineManifestProps",
         "TimelineProps",
         "TimePicker",
         "TimePickerProps",
@@ -8323,15 +8343,20 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/types/base.ts",
-        "src/types/popover-menu.ts"
+        "src/types/popover-menu.ts",
+        "src/types/text.ts"
       ],
       "exports": [
         "DataTableCellContext",
+        "DataTableCellSpec",
         "DataTableColumn",
         "DataTableColumnAlign",
         "DataTableDensity",
         "DataTableProps",
         "DataTableRowAction",
+        "DataTableRowActivateEvent",
+        "DataTableRowField",
+        "DataTableSelectionChangeEvent",
         "DataTableSortDirection",
         "DataTableSortState"
       ]
@@ -9183,6 +9208,8 @@
       ],
       "exports": [
         "TimelineItem",
+        "TimelineManifestItem",
+        "TimelineManifestProps",
         "TimelineProps"
       ]
     },
@@ -17926,7 +17953,7 @@
       "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 29,
+        "line": 30,
         "column": 14
       },
       "exportPaths": [
@@ -17948,7 +17975,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 16,
+        "line": 47,
         "column": 1
       },
       "exportPaths": [
@@ -17991,6 +18018,28 @@
       "structuredRows": []
     },
     {
+      "name": "DataTableCellSpec",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/data-table.ts",
+      "sourceLocation": {
+        "filePath": "src/types/data-table.ts",
+        "line": 16,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "DataTableColumn",
       "title": null,
       "description": null,
@@ -18001,7 +18050,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 23,
+        "line": 54,
         "column": 1
       },
       "exportPaths": [
@@ -18009,6 +18058,7 @@
       ],
       "relatedSymbols": [
         "DataTableCellContext",
+        "DataTableCellSpec",
         "DataTableColumnAlign"
       ],
       "signatures": [],
@@ -18024,6 +18074,13 @@
           "name": "align",
           "kind": "property",
           "type": "DataTableColumnAlign | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "cell",
+          "kind": "property",
+          "type": "DataTableCellSpec<TRow> | undefined",
           "required": false,
           "description": null
         },
@@ -18083,7 +18140,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 7,
+        "line": 8,
         "column": 1
       },
       "exportPaths": [
@@ -18105,7 +18162,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 8,
+        "line": 9,
         "column": 1
       },
       "exportPaths": [
@@ -18127,7 +18184,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 44,
+        "line": 85,
         "column": 1
       },
       "exportPaths": [
@@ -18137,6 +18194,8 @@
         "DataTableColumn",
         "DataTableDensity",
         "DataTableRowAction",
+        "DataTableRowActivateEvent",
+        "DataTableSelectionChangeEvent",
         "DataTableSortState",
         "ZoraThemeMode"
       ],
@@ -18206,9 +18265,23 @@
           "description": null
         },
         {
+          "name": "onRowActivate",
+          "kind": "property",
+          "type": "((event: DataTableRowActivateEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onSelectedRowIdsChange",
           "kind": "property",
           "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectionChange",
+          "kind": "property",
+          "type": "((event: DataTableSelectionChangeEvent) => void) | undefined",
           "required": false,
           "description": null
         },
@@ -18289,7 +18362,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 34,
+        "line": 75,
         "column": 1
       },
       "exportPaths": [
@@ -18353,6 +18426,88 @@
       "structuredRows": []
     },
     {
+      "name": "DataTableRowActivateEvent",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/data-table.ts",
+      "sourceLocation": {
+        "filePath": "src/types/data-table.ts",
+        "line": 71,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "rowId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "DataTableRowField",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/types/data-table.ts",
+      "sourceLocation": {
+        "filePath": "src/types/data-table.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "DataTableSelectionChangeEvent",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/data-table.ts",
+      "sourceLocation": {
+        "filePath": "src/types/data-table.ts",
+        "line": 67,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "selectedRowIds",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "DataTableSortDirection",
       "title": null,
       "description": null,
@@ -18363,7 +18518,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 9,
+        "line": 10,
         "column": 1
       },
       "exportPaths": [
@@ -18385,7 +18540,7 @@
       "modulePath": "src/types/data-table.ts",
       "sourceLocation": {
         "filePath": "src/types/data-table.ts",
-        "line": 11,
+        "line": 42,
         "column": 1
       },
       "exportPaths": [
@@ -40916,7 +41071,7 @@
       "modulePath": "src/types/timeline.ts",
       "sourceLocation": {
         "filePath": "src/types/timeline.ts",
-        "line": 8,
+        "line": 26,
         "column": 1
       },
       "exportPaths": [
@@ -40995,6 +41150,117 @@
       "structuredRows": []
     },
     {
+      "name": "TimelineManifestItem",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/timeline.ts",
+      "sourceLocation": {
+        "filePath": "src/types/timeline.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "description",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "marker",
+          "kind": "property",
+          "type": "MediaAssetReference | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "markerAlt",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "meta",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "status",
+          "kind": "property",
+          "type": "\"error\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"info\" | \"danger\" | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "title",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "TimelineManifestProps",
+      "title": null,
+      "description": null,
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/types/timeline.ts",
+      "sourceLocation": {
+        "filePath": "src/types/timeline.ts",
+        "line": 21,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "TimelineManifestItem"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "compact",
+          "kind": "property",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "items",
+          "kind": "property",
+          "type": "readonly TimelineManifestItem[]",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
       "name": "TimelineProps",
       "title": null,
       "description": null,
@@ -41005,7 +41271,7 @@
       "modulePath": "src/types/timeline.ts",
       "sourceLocation": {
         "filePath": "src/types/timeline.ts",
-        "line": 20,
+        "line": 38,
         "column": 1
       },
       "exportPaths": [
@@ -43637,7 +43903,7 @@
       "modulePath": "src/constants/authoring.ts",
       "sourceLocation": {
         "filePath": "src/constants/authoring.ts",
-        "line": 163,
+        "line": 165,
         "column": 14
       },
       "exportPaths": [
@@ -43719,7 +43985,7 @@
       "modulePath": "src/features/registry/bindableComponentMeta.ts",
       "sourceLocation": {
         "filePath": "src/features/registry/bindableComponentMeta.ts",
-        "line": 463,
+        "line": 480,
         "column": 1
       },
       "exportPaths": [
@@ -51429,7 +51695,7 @@
       "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 29,
+        "line": 30,
         "column": 14
       },
       "exportPaths": [
@@ -51491,8 +51757,20 @@
           "description": null
         },
         {
+          "name": "onRowActivate",
+          "type": "((event: DataTableRowActivateEvent) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "onSelectedRowIdsChange",
           "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onSelectionChange",
+          "type": "((event: DataTableSelectionChangeEvent) => void) | undefined",
           "required": false,
           "description": null
         },
@@ -68439,7 +68717,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 31,
+        "line": 32,
         "column": 1
       }
     },
@@ -68450,7 +68728,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 43,
+        "line": 44,
         "column": 1
       }
     },
@@ -68461,7 +68739,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 55,
+        "line": 56,
         "column": 1
       }
     },
@@ -68472,7 +68750,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 66,
+        "line": 67,
         "column": 1
       }
     },
@@ -68483,7 +68761,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 70,
+        "line": 71,
         "column": 1
       }
     },
@@ -68494,7 +68772,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 76,
+        "line": 77,
         "column": 1
       }
     },
@@ -68505,34 +68783,45 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 84,
+        "line": 85,
         "column": 1
       }
     },
     {
-      "name": "createCellContext",
+      "name": "resolveCellField",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 104,
+        "line": 106,
         "column": 1
       }
     },
     {
-      "name": "renderCell",
+      "name": "resolveCellString",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 117,
+        "line": 111,
         "column": 1
       }
     },
     {
-      "name": "renderTableCell",
+      "name": "resolveExternalWebsiteUrl",
+      "description": "Resolves an untrusted row value to the HTTP(S) URL accepted by the platform navigation boundary.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 116,
+        "column": 1
+      }
+    },
+    {
+      "name": "openExternalUrl",
       "description": null,
       "see": [],
       "security": [],
@@ -68543,13 +68832,57 @@
       }
     },
     {
+      "name": "renderPortableCell",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 134,
+        "column": 1
+      }
+    },
+    {
+      "name": "createCellContext",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 175,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderCell",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 188,
+        "column": 1
+      }
+    },
+    {
+      "name": "renderTableCell",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 199,
+        "column": 1
+      }
+    },
+    {
       "name": "resolveNextSortDirection",
       "description": null,
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 142,
+        "line": 214,
         "column": 1
       }
     },
@@ -68560,7 +68893,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 149,
+        "line": 221,
         "column": 1
       }
     },
@@ -68571,7 +68904,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 160,
+        "line": 232,
+        "column": 1
+      }
+    },
+    {
+      "name": "emitSelectionChange",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "line": 244,
         "column": 1
       }
     },
@@ -68582,7 +68926,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 172,
+        "line": 254,
         "column": 1
       }
     },
@@ -68593,7 +68937,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 188,
+        "line": 270,
         "column": 1
       }
     },
@@ -68604,7 +68948,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 226,
+        "line": 308,
         "column": 1
       }
     },
@@ -68615,7 +68959,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 311,
+        "line": 393,
         "column": 1
       }
     },
@@ -68626,7 +68970,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 423,
+        "line": 525,
         "column": 1
       }
     },
@@ -68637,7 +68981,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "line": 499,
+        "line": 624,
         "column": 1
       }
     },
@@ -76156,6 +76500,11 @@
         "sourcePath": "src/types/data-table.ts"
       },
       {
+        "fromPath": "src/types/data-table.ts",
+        "toPath": "src/types/text.ts",
+        "sourcePath": "src/types/data-table.ts"
+      },
+      {
         "fromPath": "src/types/date-picker.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/date-picker.ts"
@@ -79401,6 +79750,11 @@
         "sourcePath": "src/features/timeline/meta.ts"
       },
       {
+        "fromPath": "src/features/timeline/meta.ts",
+        "toPath": "src/features/theme/colorModel.ts",
+        "sourcePath": "src/features/timeline/meta.ts"
+      },
+      {
         "fromPath": "src/features/timeline/public.ts",
         "toPath": "src/types/timeline.ts",
         "sourcePath": "src/features/timeline/public.ts"
@@ -81538,6 +81892,11 @@
       {
         "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toPath": "src/features/form/checkbox/public.ts",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromPath": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toPath": "src/features/image/public.ts",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -87769,6 +88128,48 @@
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
+        "fromSymbol": "openExternalUrl",
+        "toSymbol": "resolveExternalWebsiteUrl",
+        "callExpression": "resolveExternalWebsiteUrl",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderPortableCell",
+        "toSymbol": "resolveCellString",
+        "callExpression": "resolveCellString",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderPortableCell",
+        "toSymbol": "resolveCellField",
+        "callExpression": "resolveCellField",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderPortableCell",
+        "toSymbol": "renderDefaultCell",
+        "callExpression": "renderDefaultCell",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderPortableCell",
+        "toSymbol": "resolveExternalWebsiteUrl",
+        "callExpression": "resolveExternalWebsiteUrl",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "openExternalUrl",
+        "callExpression": "openExternalUrl",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "renderPortableCell",
+        "callExpression": "renderPortableCell",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
         "fromSymbol": "createCellContext",
         "toSymbol": "resolveAccessorValue",
         "callExpression": "resolveAccessorValue",
@@ -87788,6 +88189,12 @@
       },
       {
         "fromSymbol": "renderCell",
+        "toSymbol": "renderPortableCell",
+        "callExpression": "renderPortableCell",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderCell",
         "toSymbol": "renderDefaultCell",
         "callExpression": "renderDefaultCell",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
@@ -87806,6 +88213,12 @@
       },
       {
         "fromSymbol": "renderTableCell",
+        "toSymbol": "renderPortableCell",
+        "callExpression": "renderPortableCell",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "renderTableCell",
         "toSymbol": "resolveTextAlign",
         "callExpression": "resolveTextAlign",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
@@ -87820,6 +88233,18 @@
         "fromSymbol": "renderTableCell",
         "toSymbol": "resolveAccessorValue",
         "callExpression": "resolveAccessorValue",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "emitSelectionChange",
+        "toSymbol": "onSelectedRowIdsChange",
+        "callExpression": "onSelectedRowIdsChange",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "emitSelectionChange",
+        "toSymbol": "onSelectionChange",
+        "callExpression": "onSelectionChange",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -87896,8 +88321,8 @@
       },
       {
         "fromSymbol": "onAllVisibleSelectedChange",
-        "toSymbol": "onSelectedRowIdsChange",
-        "callExpression": "onSelectedRowIdsChange",
+        "toSymbol": "emitSelectionChange",
+        "callExpression": "emitSelectionChange",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -87914,8 +88339,8 @@
       },
       {
         "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
-        "toSymbol": "onSelectedRowIdsChange",
-        "callExpression": "onSelectedRowIdsChange",
+        "toSymbol": "emitSelectionChange",
+        "callExpression": "emitSelectionChange",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -87928,6 +88353,12 @@
         "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
         "toSymbol": "renderTableCell",
         "callExpression": "renderTableCell",
+        "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
+      },
+      {
+        "fromSymbol": "src/features/data-table/adapters/inbound/DataTable.tsx",
+        "toSymbol": "onRowActivate",
+        "callExpression": "onRowActivate",
         "sourcePath": "src/features/data-table/adapters/inbound/DataTable.tsx"
       },
       {
@@ -94500,6 +94931,11 @@
       },
       {
         "fromSymbol": "DataTableColumn",
+        "toType": "DataTableCellSpec",
+        "sourcePath": "src/types/data-table.ts"
+      },
+      {
+        "fromSymbol": "DataTableColumn",
         "toType": "DataTableColumnAlign",
         "sourcePath": "src/types/data-table.ts"
       },
@@ -94531,6 +94967,16 @@
       {
         "fromSymbol": "DataTableProps",
         "toType": "DataTableRowAction",
+        "sourcePath": "src/types/data-table.ts"
+      },
+      {
+        "fromSymbol": "DataTableProps",
+        "toType": "DataTableRowActivateEvent",
+        "sourcePath": "src/types/data-table.ts"
+      },
+      {
+        "fromSymbol": "DataTableProps",
+        "toType": "DataTableSelectionChangeEvent",
         "sourcePath": "src/types/data-table.ts"
       },
       {
@@ -97831,6 +98277,16 @@
       {
         "fromSymbol": "TimelineItem",
         "toType": "UploadAsset",
+        "sourcePath": "src/types/timeline.ts"
+      },
+      {
+        "fromSymbol": "TimelineManifestItem",
+        "toType": "MediaAssetReference",
+        "sourcePath": "src/types/timeline.ts"
+      },
+      {
+        "fromSymbol": "TimelineManifestProps",
+        "toType": "TimelineManifestItem",
         "sourcePath": "src/types/timeline.ts"
       },
       {

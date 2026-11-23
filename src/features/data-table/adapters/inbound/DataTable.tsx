@@ -1,10 +1,11 @@
 import type { InteractionPolicy } from '@ankhorage/surface';
 import { Show } from '@ankhorage/surface';
 import React from 'react';
-import { ScrollView, type ViewStyle } from 'react-native';
+import { Linking, Pressable, ScrollView, type ViewStyle } from 'react-native';
 
 import type {
   DataTableCellContext,
+  DataTableCellSpec,
   DataTableColumn,
   DataTableColumnAlign,
   DataTableDensity,
@@ -12,11 +13,11 @@ import type {
   DataTableRowAction,
   DataTableSortDirection,
 } from '../../../../types/data-table';
-import { Button } from '../../../button/public';
-import { IconButton } from '../../../button/public';
+import { Button, IconButton } from '../../../button/public';
 import { Card } from '../../../card/public';
 import { EmptyState } from '../../../empty-state/public';
 import { Checkbox } from '../../../form/checkbox/public';
+import { Image } from '../../../image/public';
 import { View } from '../../../layout/public';
 import { PopoverMenu, type PopoverMenuAction } from '../../../popover-menu/public';
 import { SkeletonList } from '../../../skeleton/public';
@@ -101,6 +102,76 @@ function renderDefaultCell(value: unknown): React.ReactNode {
   return '—';
 }
 
+/** Reads a manifest cell field without accepting executable accessor behavior. */
+function resolveCellField<TRow extends object>(row: TRow, field: keyof TRow): unknown {
+  return Object.getOwnPropertyDescriptor(row, field)?.value;
+}
+
+/** Resolves a row value into a string suitable for portable text and URL presentation. */
+function resolveCellString(value: unknown): string | undefined {
+  return typeof value === 'string' || typeof value === 'number' ? String(value) : undefined;
+}
+
+/*** Resolves an untrusted row value to the HTTP(S) URL accepted by the platform navigation boundary. */
+function resolveExternalWebsiteUrl(url: string): string | undefined {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:' ? url : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Opens a validated portable website cell through React Native's platform URL boundary. */
+function openExternalUrl(url: string): void {
+  const externalUrl = resolveExternalWebsiteUrl(url);
+  if (externalUrl) {
+    void Linking.openURL(externalUrl);
+  }
+}
+
+/** Renders one serializable manifest cell specification with canonical ZORA primitives. */
+function renderPortableCell<TRow extends object>(
+  cell: DataTableCellSpec<TRow>,
+  row: TRow,
+): React.ReactNode {
+  switch (cell.kind) {
+    case 'image': {
+      const source = resolveCellString(resolveCellField(row, cell.source));
+      const alt = resolveCellString(resolveCellField(row, cell.alt ?? cell.source));
+      return <Image alt={alt} height={32} radius="s" source={source} width={32} />;
+    }
+    case 'text':
+      return (
+        <Text variant={cell.variant ?? 'bodySmall'} weight={cell.weight}>
+          {renderDefaultCell(resolveCellField(row, cell.value))}
+        </Text>
+      );
+    case 'link': {
+      const href = resolveCellString(resolveCellField(row, cell.href));
+      const label = resolveCellString(resolveCellField(row, cell.label ?? cell.href)) ?? href;
+      const externalUrl = href ? resolveExternalWebsiteUrl(href) : undefined;
+      return externalUrl ? (
+        <Pressable accessibilityRole="link" onPress={() => openExternalUrl(externalUrl)}>
+          <Text color="primary" variant={cell.variant ?? 'bodySmall'} weight="medium">
+            {label}
+          </Text>
+        </Pressable>
+      ) : (
+        <Text variant="bodySmall">—</Text>
+      );
+    }
+    case 'stack':
+      return (
+        <View align={cell.align} direction={cell.direction} gap={cell.gap}>
+          {cell.children.map((child, index) => (
+            <React.Fragment key={`cell-${index}`}>{renderPortableCell(child, row)}</React.Fragment>
+          ))}
+        </View>
+      );
+  }
+}
+
 function createCellContext<TRow extends object>(
   column: DataTableColumn<TRow>,
   row: TRow,
@@ -120,7 +191,9 @@ function renderCell<TRow extends object>(
   rowIndex: number,
 ) {
   const context = createCellContext(column, row, rowIndex);
-  return column.renderCell ? column.renderCell(context) : renderDefaultCell(context.value);
+  if (column.renderCell) return column.renderCell(context);
+  if (column.cell) return renderPortableCell(column.cell, row);
+  return renderDefaultCell(context.value);
 }
 
 function renderTableCell<TRow extends object>(
@@ -128,9 +201,8 @@ function renderTableCell<TRow extends object>(
   row: TRow,
   rowIndex: number,
 ) {
-  if (column.renderCell) {
-    return column.renderCell(createCellContext(column, row, rowIndex));
-  }
+  if (column.renderCell) return column.renderCell(createCellContext(column, row, rowIndex));
+  if (column.cell) return renderPortableCell(column.cell, row);
 
   return (
     <Text align={resolveTextAlign(column.align)} variant="bodySmall">
@@ -166,6 +238,16 @@ function resolveNextVisibleSelection(
   return selected
     ? [...new Set([...selectedRowIds, ...visibleRowIds])]
     : selectedRowIds.filter((selectedRowId) => !visibleRowIdSet.has(selectedRowId));
+}
+
+/** Emits both the established controlled callback and its portable manifest event counterpart. */
+function emitSelectionChange<TRow extends object>(
+  selectedRowIds: readonly string[],
+  onSelectedRowIdsChange: DataTableProps<TRow>['onSelectedRowIdsChange'],
+  onSelectionChange: DataTableProps<TRow>['onSelectionChange'],
+): void {
+  onSelectedRowIdsChange?.(selectedRowIds);
+  onSelectionChange?.({ selectedRowIds });
 }
 
 /*** Maps row-scoped DataTable actions into the shared PopoverMenu action contract. */
@@ -316,6 +398,8 @@ function DataTableDesktop<TRow extends object>({
   rowKey,
   selectedRowIds,
   onSelectedRowIdsChange,
+  onSelectionChange,
+  onRowActivate,
   sort,
   onSortChange,
   density,
@@ -327,7 +411,9 @@ function DataTableDesktop<TRow extends object>({
   const controlledSelectedRowIds = selectedRowIds ?? [];
   const selectedRowIdSet = new Set(controlledSelectedRowIds);
   const selectionEnabled = selectedRowIds !== undefined;
-  const selectionDisabled = interactionPolicy === 'passive' || onSelectedRowIdsChange === undefined;
+  const selectionDisabled =
+    interactionPolicy === 'passive' ||
+    (onSelectedRowIdsChange === undefined && onSelectionChange === undefined);
   const hasRowActions = rows.some((row, rowIndex) => (rowActions?.(row, rowIndex).length ?? 0) > 0);
   const selection = selectionEnabled
     ? {
@@ -335,8 +421,10 @@ function DataTableDesktop<TRow extends object>({
         disabled: selectionDisabled,
         onAllVisibleSelectedChange: (selected: boolean) => {
           if (selectionDisabled) return;
-          onSelectedRowIdsChange(
+          emitSelectionChange(
             resolveNextVisibleSelection(controlledSelectedRowIds, rowIds, selected),
+            onSelectedRowIdsChange,
+            onSelectionChange,
           );
         },
       }
@@ -379,27 +467,41 @@ function DataTableDesktop<TRow extends object>({
                           interactionPolicy={interactionPolicy}
                           onCheckedChange={(nextSelected) => {
                             if (selectionDisabled) return;
-                            onSelectedRowIdsChange(
+                            emitSelectionChange(
                               resolveNextSelectedRowIds(
                                 controlledSelectedRowIds,
                                 currentRowId,
                                 nextSelected,
                               ),
+                              onSelectedRowIdsChange,
+                              onSelectionChange,
                             );
                           }}
                         />
                       </View>
                     ) : null}
-                    {columns.map((column) => (
-                      <View
-                        key={column.id}
-                        px={padding.px}
-                        py={padding.py}
-                        style={resolveCellStyle(column)}
-                      >
-                        {renderTableCell(column, row, rowIndex)}
-                      </View>
-                    ))}
+                    <View direction="row" style={{ flexGrow: 1, flexShrink: 1 }}>
+                      {columns.map((column) => (
+                        <View
+                          key={column.id}
+                          px={padding.px}
+                          py={padding.py}
+                          style={resolveCellStyle(column)}
+                        >
+                          {renderTableCell(column, row, rowIndex)}
+                        </View>
+                      ))}
+                    </View>
+                    {onRowActivate ? (
+                      <IconButton
+                        icon={{ name: 'arrow-forward' }}
+                        interactionPolicy={interactionPolicy}
+                        label={`Activate row ${currentRowId}`}
+                        onPress={() => onRowActivate({ rowId: currentRowId })}
+                        size="s"
+                        variant="ghost"
+                      />
+                    ) : null}
                     {hasRowActions ? (
                       <View
                         px={padding.px}
@@ -428,6 +530,8 @@ function DataTableMobile<TRow extends object>({
   rowKey,
   selectedRowIds,
   onSelectedRowIdsChange,
+  onSelectionChange,
+  onRowActivate,
   testID,
   interactionPolicy,
 }: DataTableProps<TRow>) {
@@ -435,7 +539,9 @@ function DataTableMobile<TRow extends object>({
   const controlledSelectedRowIds = selectedRowIds ?? [];
   const selectedRowIdSet = new Set(controlledSelectedRowIds);
   const selectionEnabled = selectedRowIds !== undefined;
-  const selectionDisabled = interactionPolicy === 'passive' || onSelectedRowIdsChange === undefined;
+  const selectionDisabled =
+    interactionPolicy === 'passive' ||
+    (onSelectedRowIdsChange === undefined && onSelectionChange === undefined);
 
   return (
     <View gap="s">
@@ -445,10 +551,27 @@ function DataTableMobile<TRow extends object>({
           ? renderCell(primaryColumn, row, rowIndex)
           : `Row ${rowIndex + 1}`;
         const actions = renderRowActions({ row, rowActions, rowIndex, testID, interactionPolicy });
+        const rowActivation = onRowActivate ? (
+          <IconButton
+            icon={{ name: 'arrow-forward' }}
+            interactionPolicy={interactionPolicy}
+            label={`Activate row ${currentRowId}`}
+            onPress={() => onRowActivate({ rowId: currentRowId })}
+            size="s"
+            variant="ghost"
+          />
+        ) : null;
 
         return (
           <Card
-            actions={actions}
+            actions={
+              rowActivation || actions ? (
+                <View direction="row" gap="xs">
+                  {rowActivation}
+                  {actions}
+                </View>
+              ) : null
+            }
             compact
             interactionPolicy={interactionPolicy}
             key={currentRowId}
@@ -464,12 +587,14 @@ function DataTableMobile<TRow extends object>({
                   interactionPolicy={interactionPolicy}
                   onCheckedChange={(nextSelected) => {
                     if (selectionDisabled) return;
-                    onSelectedRowIdsChange(
+                    emitSelectionChange(
                       resolveNextSelectedRowIds(
                         controlledSelectedRowIds,
                         currentRowId,
                         nextSelected,
                       ),
+                      onSelectedRowIdsChange,
+                      onSelectionChange,
                     );
                   }}
                 />
@@ -479,7 +604,7 @@ function DataTableMobile<TRow extends object>({
                   <Text emphasis="muted" variant="caption" weight="semiBold">
                     {column.header}
                   </Text>
-                  {column.renderCell ? (
+                  {column.renderCell || column.cell ? (
                     renderCell(column, row, rowIndex)
                   ) : (
                     <Text variant="bodySmall">

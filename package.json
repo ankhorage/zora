@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/zora",
   "type": "module",
-  "version": "27.6.1",
+  "version": "27.7.1",
   "description": "Opinionated React Native and React Native Web UI kit built on @ankhorage/surface.",
   "homepage": "https://github.com/ankhorage/zora#readme",
   "bugs": {
@@ -655,6 +655,55 @@
               "itemCount": {
                 "type": "number",
                 "title": "Item count"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dataTable.rowActivate",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Activate row",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "rowId": {
+                "type": "string",
+                "title": "Row ID"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dataTable.selectionChange",
+        "owner": "@ankhorage/zora",
+        "access": [
+          "emit"
+        ],
+        "binding": {
+          "kind": "event",
+          "bindableAs": [
+            "source"
+          ]
+        },
+        "label": "Selection change",
+        "output": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "selectedRowIds": {
+                "title": "Selected row IDs"
               }
             }
           }

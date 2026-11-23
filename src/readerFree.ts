@@ -166,11 +166,15 @@ export type {
 export { ContentRail } from './features/content-rail/public';
 export type {
   DataTableCellContext,
+  DataTableCellSpec,
   DataTableColumn,
   DataTableColumnAlign,
   DataTableDensity,
   DataTableProps,
   DataTableRowAction,
+  DataTableRowActivateEvent,
+  DataTableRowField,
+  DataTableSelectionChangeEvent,
   DataTableSortDirection,
   DataTableSortState,
 } from './features/data-table/public';
@@ -517,7 +521,12 @@ export {
   type TimePickerProps,
   type TimePickerValue,
 } from './features/time-picker/public';
-export type { TimelineItem, TimelineProps } from './features/timeline/public';
+export type {
+  TimelineItem,
+  TimelineManifestItem,
+  TimelineManifestProps,
+  TimelineProps,
+} from './features/timeline/public';
 export { Timeline } from './features/timeline/public';
 export type {
   ToastController,
