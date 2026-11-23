@@ -27,13 +27,15 @@ await mock.module('@ankhorage/surface', () => ({
     children,
     flex,
     minHeight,
+    minWidth,
     testID,
   }: React.PropsWithChildren<{
     readonly flex?: number;
     readonly minHeight?: number;
+    readonly minWidth?: number;
     readonly testID?: string;
   }>) => (
-    <div data-flex={flex} data-min-height={minHeight} data-view={testID}>
+    <div data-flex={flex} data-min-height={minHeight} data-min-width={minWidth} data-view={testID}>
       {children}
     </div>
   ),
@@ -96,6 +98,8 @@ test('renders both serializable MasterDetail children through RuntimeRenderer in
   expect(markup).toContain('data-scroll="workspace-detail"');
   expect(markup.match(/data-scroll=/gu)).toHaveLength(2);
   expect(markup).toContain('data-min-height="0"');
+  expect(markup).toContain('data-view="screen"');
+  expect(markup).toContain('data-min-width="0"');
 });
 
 test('projects the same Runtime children through host-owned compact pane state', () => {
