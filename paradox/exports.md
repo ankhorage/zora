@@ -894,6 +894,7 @@ Source: `src/types/button.ts:10:1`
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | justify | property | `Responsive<"center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly"> \| undefined` | no |  |
+| labelWeight | property | `ButtonLabelWeight \| undefined` | no |  |
 | leadingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | left | property | `Responsive<number> \| undefined` | no |  |
 | loading | property | `boolean \| undefined` | no |  |
@@ -1688,7 +1689,7 @@ Source: `src/types/chess.ts:25:1`
 | Name | Kind | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | cell | property | `ChessBoardCell` | yes |  |
-| color | property | `"white" \| "black"` | yes |  |
+| color | property | `"black" \| "white"` | yes |  |
 | piece | property | `string` | yes |  |
 
 ## Chip
@@ -5903,7 +5904,7 @@ Source: `src/types/layout.ts:14:1`
 | horizontal | property | `boolean \| null \| undefined` | no |  |
 | id | property | `string \| undefined` | no |  |
 | importantForAccessibility | property | `"auto" \| "yes" \| "no" \| "no-hide-descendants" \| undefined` | no |  |
-| indicatorStyle | property | `"default" \| "white" \| "black" \| undefined` | no |  |
+| indicatorStyle | property | `"black" \| "default" \| "white" \| undefined` | no |  |
 | innerViewRef | property | `React.RefObject<View> \| undefined` | no |  |
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
@@ -6227,7 +6228,7 @@ Source: `src/types/selection.ts:9:1`
 
 Kind: `type`
 Module: `src/types/select.ts`
-Source: `src/types/select.ts:3:1`
+Source: `src/types/select.ts:5:1`
 
 ### Members
 
@@ -6241,7 +6242,7 @@ Source: `src/types/select.ts:3:1`
 
 Kind: `type`
 Module: `src/types/select.ts`
-Source: `src/types/select.ts:9:1`
+Source: `src/types/select.ts:11:1`
 
 ### Members
 
@@ -6255,6 +6256,8 @@ Source: `src/types/select.ts:9:1`
 | invalid | property | `boolean \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | label | property | `string \| undefined` | no |  |
+| labelWeight | property | `ButtonLabelWeight \| undefined` | no |  |
+| leadingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onValueChange | property | `((value: TValue) => void) \| undefined` | no |  |
 | options | property | `readonly SelectOption<TValue>[]` | yes |  |

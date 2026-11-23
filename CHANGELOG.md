@@ -1,5 +1,23 @@
 # Changelog
 
+## 27.10.0
+
+### Minor Changes
+
+- e91154e: Add optional Select trigger label emphasis through Surface's public Button API, alongside optional leading icon sources including SVG media.
+
+### Patch Changes
+
+- 7e04bf1: Fix strict TypeScript resolution for source-backed theme exports.
+- 1469d13: Update dependencies: `@ankhorage/contracts`.
+- 679d0a2: Update dependencies: `@ankhorage/surface`.
+- d831be0: Update dependencies: `@ankhorage/contracts`.
+- a63192b: Update dependencies: `@ankhorage/surface`.
+- ae4dcb9: Update dependencies: `@ankhorage/contracts`.
+- 3487a4f: Update dependencies: `@ankhorage/contracts`, `@ankhorage/surface`.
+- 77b10dd: Update dependencies: `@ankhorage/runtime`, `@ankhorage/surface`.
+- 59e8b16: Preserve Metro resolution for the packed theme entrypoint while retaining Node, Bun, and TypeScript package targets.
+
 ## 27.9.0
 
 ### Minor Changes
