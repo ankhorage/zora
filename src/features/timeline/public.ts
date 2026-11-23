@@ -1,2 +1,7 @@
-export type { TimelineItem, TimelineProps } from '../../types/timeline';
+export type {
+  TimelineItem,
+  TimelineManifestItem,
+  TimelineManifestProps,
+  TimelineProps,
+} from '../../types/timeline';
 export { Timeline } from './adapters/inbound/Timeline';

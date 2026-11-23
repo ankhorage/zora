@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import { ZORA_COLORS } from '../theme/colorModel';
 import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
 import { ZORA_COMPONENT_META } from '.';
 
@@ -285,6 +286,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'TimePicker',
       'TabletopTable',
       'PokerTrainingTable',
+      'Timeline',
     ]);
 
     const expectedContainerNodes = new Set([
@@ -464,6 +466,49 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.ThemeModeToggle.directManifestNode).toBe(true);
     expect(ZORA_COMPONENT_META.ThemeModeToggle.allowedChildren).toEqual([]);
     expect(ZORA_COMPONENT_META.ThemeModeToggle.blueprint?.defaultProps).toEqual({ size: 'm' });
+  });
+
+  test('Timeline is a direct manifest leaf with portable dated marker items', () => {
+    const timeline = ZORA_COMPONENT_META.Timeline;
+
+    expect(timeline.directManifestNode).toBe(true);
+    expect(timeline.allowedChildren).toEqual([]);
+    expect(timeline.blueprint?.defaultProps).toEqual({ items: [] });
+    expect(timeline.props.items?.itemSchema).toEqual([
+      { key: 'id', schema: { type: 'string', category: 'Identity', label: 'Event ID' } },
+      { key: 'title', schema: { type: 'string', category: 'Content', label: 'Title' } },
+      {
+        key: 'description',
+        schema: { type: 'string', category: 'Content', label: 'Description' },
+      },
+      { key: 'meta', schema: { type: 'string', category: 'Content', label: 'Date and time' } },
+      {
+        key: 'status',
+        schema: {
+          type: 'enum',
+          category: 'State',
+          label: 'Status',
+          enum: ZORA_COLORS,
+        },
+      },
+      {
+        key: 'marker',
+        schema: {
+          type: 'media',
+          category: 'Content',
+          label: 'SVG or image marker',
+          mediaKinds: ['image'],
+        },
+      },
+      {
+        key: 'markerAlt',
+        schema: {
+          type: 'string',
+          category: 'Accessibility',
+          label: 'Marker alternative text',
+        },
+      },
+    ]);
   });
 
   test('KeyboardAvoidingView is a direct manifest container with native behavior props', () => {
