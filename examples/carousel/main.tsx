@@ -109,21 +109,31 @@ function CarouselExample() {
       <header className="masthead">
         <div className="brand">
           <span className="brand__mark">Z</span>
-          <span className="brand__name">ZORA <small>COMPONENT LAB</small></span>
+          <span className="brand__name">
+            ZORA <small>COMPONENT LAB</small>
+          </span>
         </div>
-        <span className="masthead__meta">REACT NATIVE <b>+</b> WEB / INTERACTIVE EXAMPLE</span>
+        <span className="masthead__meta">
+          REACT NATIVE <b>+</b> WEB / INTERACTIVE EXAMPLE
+        </span>
       </header>
       <div className="intro">
         <div>
-          <div className="kicker"><span /> THE PRESENTATION COLLECTION</div>
-          <h1>Stories in motion<span>.</span></h1>
+          <div className="kicker">
+            <span /> THE PRESENTATION COLLECTION
+          </div>
+          <h1>
+            Stories in motion<span>.</span>
+          </h1>
           <p>
             One reusable Carousel. Four original visual worlds. Infinite ways to tell your story.
           </p>
         </div>
         <div className="intro__counter">
           <span>NOW SHOWING</span>
-          <strong>0{index + 1} <i>/ 04</i></strong>
+          <strong>
+            0{index + 1} <i>/ 04</i>
+          </strong>
         </div>
       </div>
       <div className="carousel-frame">
