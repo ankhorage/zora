@@ -111,6 +111,8 @@ test('fits changed topology but preserves viewport and avoids relayout for highl
 
 test('preserves a stable topology removal without relayout, fit, or retained-node movement', async () => {
   const ready = Promise.withResolvers<GraphViewController>();
+  const controllers: GraphViewController[] = [];
+  const snapshots: (readonly GraphViewRenderedNode[])[] = [];
   const calls = { complete: 0, ready: 0, sort: 0 };
   const runtime = createGraphRuntime(undefined, {
     current: {
@@ -119,10 +121,12 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       },
       onReady: (controller) => {
         calls.ready += 1;
+        controllers.push(controller);
         ready.resolve(controller);
       },
     },
   });
+  const unsubscribe = runtime.subscribeRenderedNodes((nodes) => snapshots.push(nodes));
   const nodes = Array.from({ length: 87 }, (_, index) => ({ id: `repository-${index}` }));
   const input = {
     nodes,
@@ -156,6 +160,10 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       nodes: nodes.slice(0, -1),
       edges: input.edges.slice(0, -1),
     });
+    expect(
+      controller.measureNodes?.(retainedIds)?.nodes.map(({ id, position }) => ({ id, position })),
+    ).toEqual(before?.nodes.map(({ id, position }) => ({ id, position })));
+    await new Promise((resolve) => setTimeout(resolve, 0));
     runtime.setNodeSize('repository-0', { height: 24, width: 48 });
     await new Promise((resolve) => setTimeout(resolve, 0));
 
@@ -163,10 +171,13 @@ test('preserves a stable topology removal without relayout, fit, or retained-nod
       controller.measureNodes?.(retainedIds)?.nodes.map(({ id, position }) => ({ id, position })),
     ).toEqual(before?.nodes.map(({ id, position }) => ({ id, position })));
     expect(controller.getViewport()).toEqual(viewport);
+    expect(snapshots.at(-1)?.find((node) => node.id === 'repository-0')?.selected).toBe(true);
     expect(calls.ready).toBe(1);
+    expect(controllers).toEqual([controller]);
     expect(calls.complete).toBe(1);
     expect(calls.sort).toBe(sortCount);
   } finally {
+    unsubscribe();
     runtime.destroy();
   }
 });
