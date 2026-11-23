@@ -5,6 +5,8 @@ export default createKnipConfig({
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
     'examples/basic-app/App.tsx',
+    'examples/carousel/main.tsx',
+    'examples/carousel/serve.ts',
     'examples/game-presentation/index.ts',
     'examples/grid-workspaces/index.ts',
     'src/features/**/public.ts',

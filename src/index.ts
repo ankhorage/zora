@@ -14,6 +14,8 @@ export {
   AuthoringSelectionAdapter,
   ThemeEditorAdapter,
 } from './authoring';
+export type { CarouselProps, CarouselSlide, CarouselTransition } from './features/carousel/public';
+export { Carousel } from './features/carousel/public';
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
