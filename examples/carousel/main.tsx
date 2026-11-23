@@ -89,7 +89,10 @@ function CarouselExample() {
           <p className="scene__number">{story.number} / 04</p>
           <h2>{story.title}</h2>
           <p className="scene__description">{story.description}</p>
-          <button className="scene__cta" onClick={() => setIndex((current) => (current + 1) % 4)}>
+          <button
+            className="scene__cta"
+            onClick={() => setIndex((current) => (current + 1) % 4)}
+          >
             Explore the next story <span aria-hidden="true">↗</span>
           </button>
         </div>
@@ -114,7 +117,9 @@ function CarouselExample() {
         <div>
           <div className="kicker"><span /> THE PRESENTATION COLLECTION</div>
           <h1>Stories in motion<span>.</span></h1>
-          <p>One reusable Carousel. Four original visual worlds. Infinite ways to tell your story.</p>
+          <p>
+            One reusable Carousel. Four original visual worlds. Infinite ways to tell your story.
+          </p>
         </div>
         <div className="intro__counter">
           <span>NOW SHOWING</span>
@@ -217,12 +222,7 @@ interface ToggleProps {
 /*** Accessible option control for the executable example only. */
 function Toggle({ label, value, onChange }: ToggleProps) {
   return (
-    <button
-      className="toggle"
-      role="switch"
-      aria-checked={value}
-      onClick={() => onChange(!value)}
-    >
+    <button className="toggle" role="switch" aria-checked={value} onClick={() => onChange(!value)}>
       <span className={value ? 'toggle__switch is-on' : 'toggle__switch'} />
       {label}
     </button>
