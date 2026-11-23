@@ -1,10 +1,11 @@
-import { Button } from '@ankhorage/surface';
 import React from 'react';
 
 import type { ColorPickerProps, ColorPickerTab, ColorPickerValue } from '../../types/color';
+import { IconButton } from '../button/public';
 import { View } from '../layout/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { Text } from '../typography/public';
 import { ColorHueScale } from './ColorHueScale';
 import { ColorTone } from './ColorTone';
 import { ColorWheel } from './ColorWheel';
@@ -30,33 +31,38 @@ function ColorPickerInner({
 }: ColorPickerProps) {
   if (tabs.length === 0) throw new Error('ColorPicker requires at least one tab.');
   if (!tabs.includes(value.tab)) throw new Error('ColorPicker value must be configured in tabs.');
+  const previewColor = resolvePickerPreviewColor(value);
 
   return (
     <View
+      alignSelf="center"
       bg="surfaceRaised"
       borderColor="border"
       borderWidth={1}
+      flexShrink={1}
       gap="sm"
+      maxWidth={400}
       p="md"
       radius="lg"
       testID={testID}
+      width="100%"
     >
       <View align="center" direction="row" justify="space-between">
         <View align="center" direction="row" gap="sm">
+          <Text variant="lead" weight="semiBold">
+            Color
+          </Text>
           <View
-            bg={value.wheel.color}
+            bg={previewColor}
             borderColor="border"
             borderWidth={1}
-            height={32}
+            height={38}
             radius="sm"
-            width={32}
+            width={38}
           />
-          <Button variant="ghost">Color</Button>
         </View>
         {onDismiss ? (
-          <Button onPress={onDismiss} variant="ghost">
-            Close
-          </Button>
+          <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
         ) : null}
       </View>
       <Tabs
@@ -88,6 +94,13 @@ function ColorPickerInner({
 /*** Check whether a Surface tab value belongs to the configured picker vocabulary. */
 function isColorPickerTab(value: string): value is ColorPickerTab {
   return value === 'wheel' || value === 'tone' || value === 'hue';
+}
+
+/*** Resolves the visible active-tab color without introducing a second picker state. */
+function resolvePickerPreviewColor(value: ColorPickerValue) {
+  if (value.tab === 'hue') return value.hue;
+  if (value.tab === 'tone') return value.tone?.colors.at(0) ?? value.wheel.color;
+  return value.wheel.color;
 }
 
 /*** Resolve the configured control for one picker tab without adding fallback feature modes. */

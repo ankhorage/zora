@@ -46,7 +46,7 @@ function ColorHueScaleInner({
             height={48}
             onPress={() => onChange(color)}
             radius="sm"
-            width={48}
+            width="18%"
           >
             <Text align="center" variant="caption">
               {step}
