@@ -23,35 +23,37 @@ function ColorHueScaleInner({
   const swatches = Object.entries(swatch);
 
   return (
-    <View
-      accessibilityLabel="Color scale previews; choose a preview as the next 500 base color"
-      direction="row"
-      gap="xs"
-      testID={testID}
-      wrap="wrap"
-    >
-      {swatches.map(([step, color]) => (
-        <Pressable
-          key={step}
-          accessibilityLabel={
-            Number(step) === 500
-              ? `Current editable base color 500: ${color}`
-              : `Use generated ${step} preview ${color} as the next base color 500`
-          }
-          bg={color}
-          borderColor="border"
-          borderWidth={Number(step) === 500 ? 3 : 1}
-          disabled={interactionPolicy === 'passive'}
-          height={48}
-          onPress={() => onChange(color)}
-          radius="sm"
-          width={48}
-        >
-          <Text align="center" variant="caption">
-            {step}
-          </Text>
-        </Pressable>
-      ))}
+    <View bg="surfaceRaised" gap="sm" p="sm" radius="md" testID={testID}>
+      <Text variant="label">Hue scale</Text>
+      <View
+        accessibilityLabel="Color scale previews; choose a preview as the next 500 base color"
+        direction="row"
+        gap="xs"
+        wrap="wrap"
+      >
+        {swatches.map(([step, color]) => (
+          <Pressable
+            key={step}
+            accessibilityLabel={
+              Number(step) === 500
+                ? `Current editable base color 500: ${color}`
+                : `Use generated ${step} preview ${color} as the next base color 500`
+            }
+            bg={color}
+            borderColor="border"
+            borderWidth={Number(step) === 500 ? 3 : 1}
+            disabled={interactionPolicy === 'passive'}
+            height={48}
+            onPress={() => onChange(color)}
+            radius="sm"
+            width={48}
+          >
+            <Text align="center" variant="caption">
+              {step}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
     </View>
   );
 }

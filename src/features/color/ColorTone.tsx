@@ -4,6 +4,7 @@ import React from 'react';
 import type { ColorToneProps } from '../../types/color';
 import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { Text } from '../typography/public';
 import { ColorWheel } from './ColorWheel';
 import { resolveColorHue } from './utils/resolveColorHue';
 import { resolveOklchColor } from './utils/resolveOklchColor';
@@ -41,7 +42,8 @@ function ColorToneInner({
   };
 
   return (
-    <View gap="sm" testID={testID}>
+    <View bg="surfaceRaised" gap="sm" p="sm" radius="md" testID={testID}>
+      <Text variant="label">Tone</Text>
       <View direction="row" wrap="wrap" gap="sm">
         {tones.map((tone) => {
           const selected = value?.toneId === tone.id;

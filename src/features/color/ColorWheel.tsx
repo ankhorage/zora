@@ -1,7 +1,17 @@
 import { generateHarmonyRoleColors, type HexColor, isHexColor } from '@ankhorage/color-theory';
 import { Button, TextInput } from '@ankhorage/surface';
 import React from 'react';
-import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
+import {
+  Circle,
+  Defs,
+  Line,
+  LinearGradient,
+  Path,
+  Polygon,
+  Rect,
+  Stop,
+  Svg,
+} from 'react-native-svg';
 
 import type { ColorWheelProps } from '../../types/color';
 import { View } from '../layout/public';
@@ -46,12 +56,9 @@ function ColorWheelInner({
       harmony,
     });
   };
-  const changeLightness = (offset: number) =>
+  const changeLightness = (nextLightness: number) =>
     onChange({
-      color: resolveOklchColor(
-        { chroma, lightness: Math.max(0, Math.min(1, lightness + offset)) },
-        hue,
-      ),
+      color: resolveOklchColor({ chroma, lightness: Math.max(0, Math.min(1, nextLightness)) }, hue),
       harmony,
     });
 
@@ -121,20 +128,13 @@ function ColorWheelInner({
           />
         </Svg>
       </ColorWheelKeyboardProxy>
-      <View direction="row" gap="xs" wrap="wrap">
-        <Button
-          disabled={interactionPolicy === 'passive' || lightness <= 0}
-          onPress={() => changeLightness(-0.05)}
-        >
-          Lightness -
-        </Button>
-        <Button
-          disabled={interactionPolicy === 'passive' || lightness >= 1}
-          onPress={() => changeLightness(0.05)}
-        >
-          Lightness +
-        </Button>
-      </View>
+      <ColorLightnessSlider
+        chroma={chroma}
+        disabled={interactionPolicy === 'passive'}
+        hue={hue}
+        lightness={lightness}
+        onChange={changeLightness}
+      />
       <ColorHexInput
         disabled={interactionPolicy === 'passive'}
         harmony={harmony}
@@ -164,6 +164,53 @@ function ColorWheelInner({
         </View>
       ) : null}
     </View>
+  );
+}
+
+/*** Renders a continuous OKLCH lightness track without adding a second color persistence model. */
+function ColorLightnessSlider({
+  chroma,
+  disabled,
+  hue,
+  lightness,
+  onChange,
+}: {
+  readonly chroma: number;
+  readonly disabled: boolean;
+  readonly hue: number;
+  readonly lightness: number;
+  readonly onChange: (lightness: number) => void;
+}) {
+  const changeAt = (locationX: number) => {
+    if (!disabled) onChange(Math.max(0, Math.min(1, locationX / WHEEL_SIZE)));
+  };
+  return (
+    <Svg accessibilityLabel="Color lightness" height={36} width={WHEEL_SIZE}>
+      <Defs>
+        <LinearGradient id="color-lightness" x1="0" x2="1" y1="0" y2="0">
+          <Stop offset="0" stopColor={resolveOklchColor({ chroma, lightness: 0 }, hue)} />
+          <Stop offset="1" stopColor={resolveOklchColor({ chroma, lightness: 1 }, hue)} />
+        </LinearGradient>
+      </Defs>
+      <Rect fill="url(#color-lightness)" height={10} rx={5} y={13} width={WHEEL_SIZE} />
+      <Circle
+        cx={lightness * WHEEL_SIZE}
+        cy={18}
+        fill="white"
+        r={10}
+        stroke="currentColor"
+        strokeWidth={2}
+      />
+      <Rect
+        fill="transparent"
+        height={36}
+        onResponderGrant={(event) => changeAt(event.nativeEvent.locationX)}
+        onResponderMove={(event) => changeAt(event.nativeEvent.locationX)}
+        onResponderRelease={(event) => changeAt(event.nativeEvent.locationX)}
+        onStartShouldSetResponder={() => !disabled}
+        width={WHEEL_SIZE}
+      />
+    </Svg>
   );
 }
 
