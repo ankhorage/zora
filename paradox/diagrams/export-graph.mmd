@@ -64,6 +64,10 @@ graph LR
   module_src_features_button_utils_resolveButtonRecipe_ts["src/features/button/utils/resolveButtonRecipe.ts"]
   module_src_features_button_utils_resolveButtonThemeRecipe_ts["src/features/button/utils/resolveButtonThemeRecipe.ts"]
   module_src_features_button_utils_themeRecipeMeta_ts["src/features/button/utils/themeRecipeMeta.ts"]
+  module_src_features_calendar_adapters_inbound_Calendar_tsx["src/features/calendar/adapters/inbound/Calendar.tsx"]
+  module_src_features_calendar_application_createCalendarMonth_ts["src/features/calendar/application/createCalendarMonth.ts"]
+  module_src_features_calendar_application_isCalendarDateDisabled_ts["src/features/calendar/application/isCalendarDateDisabled.ts"]
+  module_src_features_calendar_calendarMeta_ts["src/features/calendar/calendarMeta.ts"]
   module_src_features_calendar_public_ts["src/features/calendar/public.ts"]
   module_src_features_card_adapters_inbound_Card_tsx["src/features/card/adapters/inbound/Card.tsx"]
   module_src_features_card_adapters_inbound_MediaCard_tsx["src/features/card/adapters/inbound/MediaCard.tsx"]
@@ -79,6 +83,9 @@ graph LR
   module_src_features_card_utils_resolveCardThemeRecipe_ts["src/features/card/utils/resolveCardThemeRecipe.ts"]
   module_src_features_card_utils_resolveCardVariant_ts["src/features/card/utils/resolveCardVariant.ts"]
   module_src_features_card_utils_themeRecipeMeta_ts["src/features/card/utils/themeRecipeMeta.ts"]
+  module_src_features_carousel_Carousel_tsx["src/features/carousel/Carousel.tsx"]
+  module_src_features_carousel_public_ts["src/features/carousel/public.ts"]
+  module_src_features_carousel_useCarouselPlayback_ts["src/features/carousel/useCarouselPlayback.ts"]
   module_src_features_chat_adapters_inbound_ChatListItem_tsx["src/features/chat/adapters/inbound/ChatListItem.tsx"]
   module_src_features_chat_adapters_inbound_MessageBubble_tsx["src/features/chat/adapters/inbound/MessageBubble.tsx"]
   module_src_features_chat_chatListItemMeta_ts["src/features/chat/chatListItemMeta.ts"]
@@ -338,6 +345,10 @@ graph LR
   module_src_features_list_sectionListMeta_ts["src/features/list/sectionListMeta.ts"]
   module_src_features_list_utils_resolveListItemTitleLineCount_ts["src/features/list/utils/resolveListItemTitleLineCount.ts"]
   module_src_features_list_utils_resolveListSeparator_ts["src/features/list/utils/resolveListSeparator.ts"]
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx["src/features/master-detail/adapters/inbound/MasterDetail.tsx"]
+  module_src_features_master_detail_application_resolveMasterDetailPresentation_ts["src/features/master-detail/application/resolveMasterDetailPresentation.ts"]
+  module_src_features_master_detail_masterDetailMeta_ts["src/features/master-detail/masterDetailMeta.ts"]
+  module_src_features_master_detail_public_ts["src/features/master-detail/public.ts"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx["src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_native_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.native.tsx"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.tsx"]
@@ -545,7 +556,9 @@ graph LR
   module_src_types_breadcrumbs_ts["src/types/breadcrumbs.ts"]
   module_src_types_button_group_ts["src/types/button-group.ts"]
   module_src_types_button_ts["src/types/button.ts"]
+  module_src_types_calendar_ts["src/types/calendar.ts"]
   module_src_types_card_ts["src/types/card.ts"]
+  module_src_types_carousel_ts["src/types/carousel.ts"]
   module_src_types_chat_ts["src/types/chat.ts"]
   module_src_types_checkbox_ts["src/types/checkbox.ts"]
   module_src_types_chess_ts["src/types/chess.ts"]
@@ -580,6 +593,7 @@ graph LR
   module_src_types_list_ts["src/types/list.ts"]
   module_src_types_manifest_bottom_sheet_ts["src/types/manifest-bottom-sheet.ts"]
   module_src_types_manifest_list_ts["src/types/manifest-list.ts"]
+  module_src_types_master_detail_ts["src/types/master-detail.ts"]
   module_src_types_matrix_grid_ts["src/types/matrix-grid.ts"]
   module_src_types_media_card_ts["src/types/media-card.ts"]
   module_src_types_metric_card_ts["src/types/metric-card.ts"]
@@ -777,6 +791,19 @@ graph LR
   export_ButtonProps["ButtonProps"]
   module_src_types_button_ts --> export_ButtonProps
   export_ButtonProps -.-> export_ZoraThemeMode
+  export_Calendar["Calendar"]
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> export_Calendar
+  export_CalendarDensity["CalendarDensity"]
+  module_src_types_calendar_ts --> export_CalendarDensity
+  export_CalendarProps["CalendarProps"]
+  module_src_types_calendar_ts --> export_CalendarProps
+  export_CalendarProps -.-> export_CalendarDensity
+  export_CalendarProps -.-> export_CalendarWeekStart
+  export_CalendarProps -.-> export_ZoraThemeMode
+  export_CalendarView["CalendarView"]
+  module_src_types_calendar_ts --> export_CalendarView
+  export_CalendarWeekStart["CalendarWeekStart"]
+  module_src_types_calendar_ts --> export_CalendarWeekStart
   export_CameraPermissionStatus["CameraPermissionStatus"]
   module_src_types_scanner_ts --> export_CameraPermissionStatus
   export_CameraPermissionView["CameraPermissionView"]
@@ -805,6 +832,17 @@ graph LR
   export_CardProps["CardProps"]
   module_src_types_card_ts --> export_CardProps
   export_CardProps -.-> export_ZoraThemeMode
+  export_Carousel["Carousel"]
+  module_src_features_carousel_Carousel_tsx --> export_Carousel
+  export_Carousel -.-> export_CarouselProps
+  export_CarouselProps["CarouselProps"]
+  module_src_types_carousel_ts --> export_CarouselProps
+  export_CarouselProps -.-> export_CarouselSlide
+  export_CarouselProps -.-> export_CarouselTransition
+  export_CarouselSlide["CarouselSlide"]
+  module_src_types_carousel_ts --> export_CarouselSlide
+  export_CarouselTransition["CarouselTransition"]
+  module_src_types_carousel_ts --> export_CarouselTransition
   export_ChatListAvatar["ChatListAvatar"]
   module_src_types_chat_ts --> export_ChatListAvatar
   export_ChatListAvatar -.-> export_AvatarShape
@@ -1001,9 +1039,12 @@ graph LR
   export_DataTableCellContext["DataTableCellContext"]
   module_src_types_data_table_ts --> export_DataTableCellContext
   export_DataTableCellContext -.-> export_DataTableColumn
+  export_DataTableCellSpec["DataTableCellSpec"]
+  module_src_types_data_table_ts --> export_DataTableCellSpec
   export_DataTableColumn["DataTableColumn"]
   module_src_types_data_table_ts --> export_DataTableColumn
   export_DataTableColumn -.-> export_DataTableCellContext
+  export_DataTableColumn -.-> export_DataTableCellSpec
   export_DataTableColumn -.-> export_DataTableColumnAlign
   export_DataTableColumnAlign["DataTableColumnAlign"]
   module_src_types_data_table_ts --> export_DataTableColumnAlign
@@ -1014,11 +1055,19 @@ graph LR
   export_DataTableProps -.-> export_DataTableColumn
   export_DataTableProps -.-> export_DataTableDensity
   export_DataTableProps -.-> export_DataTableRowAction
+  export_DataTableProps -.-> export_DataTableRowActivateEvent
+  export_DataTableProps -.-> export_DataTableSelectionChangeEvent
   export_DataTableProps -.-> export_DataTableSortState
   export_DataTableProps -.-> export_ZoraThemeMode
   export_DataTableRowAction["DataTableRowAction"]
   module_src_types_data_table_ts --> export_DataTableRowAction
   export_DataTableRowAction -.-> export_PopoverMenuActionIntent
+  export_DataTableRowActivateEvent["DataTableRowActivateEvent"]
+  module_src_types_data_table_ts --> export_DataTableRowActivateEvent
+  export_DataTableRowField["DataTableRowField"]
+  module_src_types_data_table_ts --> export_DataTableRowField
+  export_DataTableSelectionChangeEvent["DataTableSelectionChangeEvent"]
+  module_src_types_data_table_ts --> export_DataTableSelectionChangeEvent
   export_DataTableSortDirection["DataTableSortDirection"]
   module_src_types_data_table_ts --> export_DataTableSortDirection
   export_DataTableSortState["DataTableSortState"]
@@ -1349,6 +1398,20 @@ graph LR
   module_src_types_manifest_list_ts --> export_ManifestSectionListProps
   export_ManifestSectionListProps -.-> export_ManifestListSection
   export_ManifestSectionListProps -.-> export_ZoraThemeMode
+  export_MasterDetail["MasterDetail"]
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx --> export_MasterDetail
+  export_MasterDetailActivePane["MasterDetailActivePane"]
+  module_src_types_master_detail_ts --> export_MasterDetailActivePane
+  export_MasterDetailDesktopMode["MasterDetailDesktopMode"]
+  module_src_types_master_detail_ts --> export_MasterDetailDesktopMode
+  export_MasterDetailMasterWidth["MasterDetailMasterWidth"]
+  module_src_types_master_detail_ts --> export_MasterDetailMasterWidth
+  export_MasterDetailProps["MasterDetailProps"]
+  module_src_types_master_detail_ts --> export_MasterDetailProps
+  export_MasterDetailProps -.-> export_MasterDetailActivePane
+  export_MasterDetailProps -.-> export_MasterDetailDesktopMode
+  export_MasterDetailProps -.-> export_MasterDetailMasterWidth
+  export_MasterDetailProps -.-> export_ZoraThemeMode
   export_MatrixGrid["MatrixGrid"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> export_MatrixGrid
   export_MatrixGridProps["MatrixGridProps"]
@@ -1919,6 +1982,13 @@ graph LR
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> export_Timeline
   export_TimelineItem["TimelineItem"]
   module_src_types_timeline_ts --> export_TimelineItem
+  export_TimelineItem -.-> export_SurfaceImageSource
+  export_TimelineItem -.-> export_UploadAsset
+  export_TimelineManifestItem["TimelineManifestItem"]
+  module_src_types_timeline_ts --> export_TimelineManifestItem
+  export_TimelineManifestProps["TimelineManifestProps"]
+  module_src_types_timeline_ts --> export_TimelineManifestProps
+  export_TimelineManifestProps -.-> export_TimelineManifestItem
   export_TimelineProps["TimelineProps"]
   module_src_types_timeline_ts --> export_TimelineProps
   export_TimelineProps -.-> export_TimelineItem

@@ -1,5 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
+import { ZORA_COLORS } from '../theme/colorModel';
 import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
 import { ZORA_COMPONENT_META } from '.';
 
@@ -285,6 +287,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'TimePicker',
       'TabletopTable',
       'PokerTrainingTable',
+      'Timeline',
     ]);
 
     const expectedContainerNodes = new Set([
@@ -299,6 +302,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'GameOverlay',
       'Surface',
       'MediaCard',
+      'MasterDetail',
       'FlatList',
       'SectionList',
       'BottomSheet',
@@ -466,6 +470,49 @@ describe('ZORA_COMPONENT_META invariants', () => {
     expect(ZORA_COMPONENT_META.ThemeModeToggle.blueprint?.defaultProps).toEqual({ size: 'm' });
   });
 
+  test('Timeline is a direct manifest leaf with portable dated marker items', () => {
+    const timeline = ZORA_COMPONENT_META.Timeline;
+
+    expect(timeline.directManifestNode).toBe(true);
+    expect(timeline.allowedChildren).toEqual([]);
+    expect(timeline.blueprint?.defaultProps).toEqual({ items: [] });
+    expect(timeline.props.items?.itemSchema).toEqual([
+      { key: 'id', schema: { type: 'string', category: 'Identity', label: 'Event ID' } },
+      { key: 'title', schema: { type: 'string', category: 'Content', label: 'Title' } },
+      {
+        key: 'description',
+        schema: { type: 'string', category: 'Content', label: 'Description' },
+      },
+      { key: 'meta', schema: { type: 'string', category: 'Content', label: 'Date and time' } },
+      {
+        key: 'status',
+        schema: {
+          type: 'enum',
+          category: 'State',
+          label: 'Status',
+          enum: ZORA_COLORS,
+        },
+      },
+      {
+        key: 'marker',
+        schema: {
+          type: 'media',
+          category: 'Content',
+          label: 'SVG or image marker',
+          mediaKinds: ['image'],
+        },
+      },
+      {
+        key: 'markerAlt',
+        schema: {
+          type: 'string',
+          category: 'Accessibility',
+          label: 'Marker alternative text',
+        },
+      },
+    ]);
+  });
+
   test('KeyboardAvoidingView is a direct manifest container with native behavior props', () => {
     const keyboardAvoidingView = ZORA_COMPONENT_META.KeyboardAvoidingView;
 
@@ -477,6 +524,20 @@ describe('ZORA_COMPONENT_META invariants', () => {
       keyboardVerticalOffset: 0,
     });
     expect(keyboardAvoidingView.props.behavior?.enum).toEqual(['height', 'position', 'padding']);
+  });
+
+  test('MasterDetail uses RuntimeRenderer children for its serializable pane content', () => {
+    const masterDetail = ZORA_COMPONENT_META.MasterDetail;
+    expect(masterDetail.directManifestNode).toBe(true);
+    expect(masterDetail.allowedChildren).toEqual(CONTAINER_ALLOWED_CHILDREN);
+    expect(masterDetail.props.activePane?.enum).toEqual(['master', 'detail']);
+    expect(masterDetail.props.masterWidth?.enum).toEqual([25, 30, 35, 40]);
+    expect(masterDetail.slots).toBeUndefined();
+    expect(masterDetail.bindings?.props?.activePane).toMatchObject({
+      acceptsFallback: true,
+      acceptsTransforms: true,
+      value: { type: 'string' },
+    });
   });
 
   test('Progress is a direct manifest leaf with serializable defaults', () => {

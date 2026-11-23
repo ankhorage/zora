@@ -8,6 +8,7 @@ const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-theme-consumer-'))
 const skipBuild = process.argv.includes('--skip-build');
 const nodeTypesVersion = readDevelopmentDependencyVersion('@types/node');
 const reactTypesVersion = readDevelopmentDependencyVersion('@types/react');
+const expoVersion = readInstalledPackageVersion('expo');
 const peerDependencies = readPeerDependencies();
 const typescriptVersion = readDevelopmentDependencyVersion('typescript');
 
@@ -20,6 +21,17 @@ function readDevelopmentDependencyVersion(dependency: string): string {
   if (typeof version !== 'string')
     throw new Error(`Expected a declared ${dependency} development dependency.`);
   return version;
+}
+
+/*** Read one installed Expo version used to prove source-backed consumer compatibility. */
+function readInstalledPackageVersion(dependency: string): string {
+  const packageJson = JSON.parse(
+    readFileSync(join(repositoryRoot, 'node_modules', dependency, 'package.json'), 'utf8'),
+  ) as { readonly version?: unknown };
+  if (typeof packageJson.version !== 'string') {
+    throw new Error(`Expected installed ${dependency} package metadata.`);
+  }
+  return packageJson.version;
 }
 
 /*** Read the ZORA peer contract required to typecheck its public declarations. */
@@ -51,7 +63,7 @@ function run(
   assert.equal(result.exitCode, 0, `${command.join(' ')} failed:\n${output}`);
 }
 
-/*** Create a NodeNext consumer that uses only ZORA's public theme subpath. */
+/*** Create a strict Expo and Node ESM consumer that uses only ZORA's public theme subpath. */
 function writeConsumer(consumerRoot: string, tarballPath: string): void {
   writeFileSync(
     join(consumerRoot, 'package.json'),
@@ -65,6 +77,7 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
           ...peerDependencies,
           '@types/node': nodeTypesVersion,
           '@types/react': reactTypesVersion,
+          expo: expoVersion,
           typescript: typescriptVersion,
         },
       },
@@ -76,9 +89,8 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
     join(consumerRoot, 'tsconfig.json'),
     `${JSON.stringify(
       {
+        extends: 'expo/tsconfig.base',
         compilerOptions: {
-          module: 'NodeNext',
-          moduleResolution: 'NodeNext',
           noEmit: true,
           skipLibCheck: false,
           strict: true,
@@ -122,7 +134,7 @@ try {
   run(['node', 'acceptance.mjs'], consumerRoot);
   run(['bun', 'acceptance.mjs'], consumerRoot);
   run(['bunx', 'tsc', '--noEmit'], consumerRoot);
-  console.log('Packed ZORA theme consumer Node ESM, Bun, and NodeNext resolution passed.');
+  console.log('Packed ZORA theme consumer Expo TypeScript, Node ESM, and Bun resolution passed.');
 } finally {
   rmSync(temporaryRoot, { force: true, recursive: true });
 }

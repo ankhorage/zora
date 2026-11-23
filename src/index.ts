@@ -14,6 +14,8 @@ export {
   AuthoringSelectionAdapter,
   ThemeEditorAdapter,
 } from './authoring';
+export type { CarouselProps, CarouselSlide, CarouselTransition } from './features/carousel/public';
+export { Carousel } from './features/carousel/public';
 export type {
   ColorHueScaleProps,
   ColorPickerProps,
@@ -28,6 +30,13 @@ export type {
   ColorWheelSelection,
 } from './features/color/public';
 export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
+export type {
+  MasterDetailActivePane,
+  MasterDetailDesktopMode,
+  MasterDetailMasterWidth,
+  MasterDetailProps,
+} from './features/master-detail/public';
+export { MasterDetail } from './features/master-detail/public';
 export type {
   ReaderColorScheme,
   ReaderDocumentFormat,

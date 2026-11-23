@@ -19,8 +19,11 @@ function ScreenInner({
   const content = (
     <View
       alignSelf="center"
+      flex={scroll ? undefined : 1}
       gap="l"
       maxWidth={resolvePageMaxWidth(width)}
+      minHeight={scroll ? undefined : 0}
+      minWidth={scroll ? undefined : 0}
       px={{ base: 16, md: 24, lg: 32 }}
       py="xl"
       testID={testID}

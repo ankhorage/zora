@@ -1,5 +1,55 @@
 # Changelog
 
+## 27.9.0
+
+### Minor Changes
+
+- 4e4c0f1: Add a manifest-authorable responsive MasterDetail presentation with ordered children, 30/70 desktop panes, and host-controlled compact pane projection.
+
+## 27.8.0
+
+### Minor Changes
+
+- a72113b: Add the reusable React Native and React Native Web `Carousel` with images or arbitrary slide content, fade/slide/none transitions, controls, timing, progress, controlled index, and a public browser artifact.
+
+## 27.7.1
+
+### Patch Changes
+
+- 05cb97a: Preserve private same-module declaration dependencies in standalone web component type artifacts.
+
+## 27.7.0
+
+### Minor Changes
+
+- 3df7c3f: Add portable DataTable rich-cell descriptors, controlled selection events, and row activation events for AppManifest consumers.
+- a9ae155: Expose Timeline as a serializable AppManifest component with portable event items and media markers.
+
+## 27.6.1
+
+### Patch Changes
+
+- ac807a7: Keep added compound graph nodes reachable during preserved-position topology updates.
+
+## 27.6.0
+
+### Minor Changes
+
+- 0529559: Add a public, locale-aware month Calendar backed by GridView and compose DatePicker from its compact presentation.
+- 63e83b0: Add controlled DataTable checkbox row selection and let table columns fit their container unless an explicit width requires overflow.
+- 28930cc: Add optional image and SVG markers to Timeline items and keep connectors continuous for variable-height event content.
+
+### Patch Changes
+
+- 3cf2e7f: Preserve settled GraphView positions and viewport when rich-node measurement follows a controlled topology update.
+
+## 27.5.3
+
+### Patch Changes
+
+- 4d2ea38: Fix the published theme entrypoint's Node ESM module specifiers.
+- 1ce4016: Resolve theme imports from TypeScript source in Expo Metro while emitting explicit Node ESM JavaScript specifiers.
+
 ## 27.5.2
 
 ### Patch Changes

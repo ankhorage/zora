@@ -92,6 +92,13 @@ export type {
   TemporalTimeZone,
   TemporalTone,
 } from './features/calendar/public';
+export {
+  Calendar,
+  type CalendarDensity,
+  type CalendarProps,
+  type CalendarView,
+  type CalendarWeekStart,
+} from './features/calendar/public';
 export type { CardProps } from './features/card/public';
 export type { MediaCardImageProps, MediaCardProps } from './features/card/public';
 export type { MetricCardProps } from './features/card/public';
@@ -159,11 +166,15 @@ export type {
 export { ContentRail } from './features/content-rail/public';
 export type {
   DataTableCellContext,
+  DataTableCellSpec,
   DataTableColumn,
   DataTableColumnAlign,
   DataTableDensity,
   DataTableProps,
   DataTableRowAction,
+  DataTableRowActivateEvent,
+  DataTableRowField,
+  DataTableSelectionChangeEvent,
   DataTableSortDirection,
   DataTableSortState,
 } from './features/data-table/public';
@@ -335,6 +346,13 @@ export type {
 } from './features/list/public';
 export { FlatList, SectionList } from './features/list/public';
 export { List, ListItem, ListSection } from './features/list/public';
+export type {
+  MasterDetailActivePane,
+  MasterDetailDesktopMode,
+  MasterDetailMasterWidth,
+  MasterDetailProps,
+} from './features/master-detail/public';
+export { MasterDetail } from './features/master-detail/public';
 export type { MatrixGridProps } from './features/matrix-grid/public';
 export { MatrixGrid } from './features/matrix-grid/public';
 export { MissingElement, type MissingElementProps } from './features/missing-element/public';
@@ -503,7 +521,12 @@ export {
   type TimePickerProps,
   type TimePickerValue,
 } from './features/time-picker/public';
-export type { TimelineItem, TimelineProps } from './features/timeline/public';
+export type {
+  TimelineItem,
+  TimelineManifestItem,
+  TimelineManifestProps,
+  TimelineProps,
+} from './features/timeline/public';
 export { Timeline } from './features/timeline/public';
 export type {
   ToastController,

@@ -19,6 +19,7 @@ import { breadcrumbsMeta } from '../breadcrumbs/breadcrumbsMeta';
 import { buttonGroupMeta } from '../button/buttonGroupMeta';
 import { buttonMeta } from '../button/buttonMeta';
 import { iconButtonMeta } from '../button/iconButtonMeta';
+import { calendarMeta } from '../calendar/calendarMeta';
 import { cardMeta } from '../card/cardMeta';
 import { mediaCardMeta } from '../card/mediaCardMeta';
 import { metricCardMeta } from '../card/metricCardMeta';
@@ -69,6 +70,7 @@ import { viewMeta } from '../layout/viewMeta';
 import { flatListMeta } from '../list/flatListMeta';
 import { listItemMeta, listMeta, listSectionMeta } from '../list/meta';
 import { sectionListMeta } from '../list/sectionListMeta';
+import { masterDetailMeta } from '../master-detail/masterDetailMeta';
 import { matrixGridMeta } from '../matrix-grid/meta';
 import { missingElementMeta } from '../missing-element/missingElementMeta';
 import { paginationMeta } from '../pagination/paginationMeta';
@@ -131,6 +133,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   Button: buttonMeta,
   ButtonGroup: buttonGroupMeta,
   Card: cardMeta,
+  Calendar: calendarMeta,
   Checkbox: checkboxMeta,
   CheckboxGroup: checkboxGroupMeta,
   Chip: chipMeta,
@@ -154,6 +157,7 @@ export const ZORA_COMPONENT_META: ZoraComponentMetaRegistry = finalizeFeatureMet
   IconButton: iconButtonMeta,
   Image: imageMeta,
   KeyboardAvoidingView: keyboardAvoidingViewMeta,
+  MasterDetail: masterDetailMeta,
   TextInput: textInputMeta,
   MediaCard: mediaCardMeta,
   MetricCard: metricCardMeta,

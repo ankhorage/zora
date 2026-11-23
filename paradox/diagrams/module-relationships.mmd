@@ -64,6 +64,10 @@ graph LR
   module_src_features_button_utils_resolveButtonRecipe_ts["src/features/button/utils/resolveButtonRecipe.ts"]
   module_src_features_button_utils_resolveButtonThemeRecipe_ts["src/features/button/utils/resolveButtonThemeRecipe.ts"]
   module_src_features_button_utils_themeRecipeMeta_ts["src/features/button/utils/themeRecipeMeta.ts"]
+  module_src_features_calendar_adapters_inbound_Calendar_tsx["src/features/calendar/adapters/inbound/Calendar.tsx"]
+  module_src_features_calendar_application_createCalendarMonth_ts["src/features/calendar/application/createCalendarMonth.ts"]
+  module_src_features_calendar_application_isCalendarDateDisabled_ts["src/features/calendar/application/isCalendarDateDisabled.ts"]
+  module_src_features_calendar_calendarMeta_ts["src/features/calendar/calendarMeta.ts"]
   module_src_features_calendar_public_ts["src/features/calendar/public.ts"]
   module_src_features_card_adapters_inbound_Card_tsx["src/features/card/adapters/inbound/Card.tsx"]
   module_src_features_card_adapters_inbound_MediaCard_tsx["src/features/card/adapters/inbound/MediaCard.tsx"]
@@ -79,6 +83,9 @@ graph LR
   module_src_features_card_utils_resolveCardThemeRecipe_ts["src/features/card/utils/resolveCardThemeRecipe.ts"]
   module_src_features_card_utils_resolveCardVariant_ts["src/features/card/utils/resolveCardVariant.ts"]
   module_src_features_card_utils_themeRecipeMeta_ts["src/features/card/utils/themeRecipeMeta.ts"]
+  module_src_features_carousel_Carousel_tsx["src/features/carousel/Carousel.tsx"]
+  module_src_features_carousel_public_ts["src/features/carousel/public.ts"]
+  module_src_features_carousel_useCarouselPlayback_ts["src/features/carousel/useCarouselPlayback.ts"]
   module_src_features_chat_adapters_inbound_ChatListItem_tsx["src/features/chat/adapters/inbound/ChatListItem.tsx"]
   module_src_features_chat_adapters_inbound_MessageBubble_tsx["src/features/chat/adapters/inbound/MessageBubble.tsx"]
   module_src_features_chat_chatListItemMeta_ts["src/features/chat/chatListItemMeta.ts"]
@@ -338,6 +345,10 @@ graph LR
   module_src_features_list_sectionListMeta_ts["src/features/list/sectionListMeta.ts"]
   module_src_features_list_utils_resolveListItemTitleLineCount_ts["src/features/list/utils/resolveListItemTitleLineCount.ts"]
   module_src_features_list_utils_resolveListSeparator_ts["src/features/list/utils/resolveListSeparator.ts"]
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx["src/features/master-detail/adapters/inbound/MasterDetail.tsx"]
+  module_src_features_master_detail_application_resolveMasterDetailPresentation_ts["src/features/master-detail/application/resolveMasterDetailPresentation.ts"]
+  module_src_features_master_detail_masterDetailMeta_ts["src/features/master-detail/masterDetailMeta.ts"]
+  module_src_features_master_detail_public_ts["src/features/master-detail/public.ts"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx["src/features/matrix-grid/adapters/inbound/MatrixGrid.tsx"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_native_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.native.tsx"]
   module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_tsx["src/features/matrix-grid/adapters/inbound/MatrixGridKeyboardProxy.tsx"]
@@ -545,7 +556,9 @@ graph LR
   module_src_types_breadcrumbs_ts["src/types/breadcrumbs.ts"]
   module_src_types_button_group_ts["src/types/button-group.ts"]
   module_src_types_button_ts["src/types/button.ts"]
+  module_src_types_calendar_ts["src/types/calendar.ts"]
   module_src_types_card_ts["src/types/card.ts"]
+  module_src_types_carousel_ts["src/types/carousel.ts"]
   module_src_types_chat_ts["src/types/chat.ts"]
   module_src_types_checkbox_ts["src/types/checkbox.ts"]
   module_src_types_chess_ts["src/types/chess.ts"]
@@ -580,6 +593,7 @@ graph LR
   module_src_types_list_ts["src/types/list.ts"]
   module_src_types_manifest_bottom_sheet_ts["src/types/manifest-bottom-sheet.ts"]
   module_src_types_manifest_list_ts["src/types/manifest-list.ts"]
+  module_src_types_master_detail_ts["src/types/master-detail.ts"]
   module_src_types_matrix_grid_ts["src/types/matrix-grid.ts"]
   module_src_types_media_card_ts["src/types/media-card.ts"]
   module_src_types_metric_card_ts["src/types/metric-card.ts"]
@@ -781,6 +795,17 @@ graph LR
   module_src_features_button_utils_resolveButtonThemeRecipe_ts --> module_src_types_theme_ts
   module_src_features_button_utils_themeRecipeMeta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_button_utils_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_button_public_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_calendar_application_createCalendarMonth_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_calendar_application_isCalendarDateDisabled_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_grid_view_public_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_layout_public_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_features_typography_public_ts
+  module_src_features_calendar_adapters_inbound_Calendar_tsx --> module_src_types_calendar_ts
+  module_src_features_calendar_application_createCalendarMonth_ts --> module_src_types_calendar_ts
+  module_src_features_calendar_application_isCalendarDateDisabled_ts --> module_src_types_calendar_ts
+  module_src_features_calendar_calendarMeta_ts --> module_src_types_authoring_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_resolveCardThemeRecipe_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_resolveCardVariant_ts
   module_src_features_card_adapters_inbound_Card_tsx --> module_src_features_card_utils_themeRecipeMeta_ts
@@ -833,6 +858,10 @@ graph LR
   module_src_features_card_utils_resolveCardThemeRecipe_ts --> module_src_types_card_ts
   module_src_features_card_utils_resolveCardVariant_ts --> module_src_types_card_ts
   module_src_features_card_utils_themeRecipeMeta_ts --> module_src_types_theme_recipe_ts
+  module_src_features_carousel_Carousel_tsx --> module_src_features_carousel_useCarouselPlayback_ts
+  module_src_features_carousel_Carousel_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_carousel_Carousel_tsx --> module_src_types_carousel_ts
+  module_src_features_carousel_useCarouselPlayback_ts --> module_src_types_carousel_ts
   module_src_features_chat_adapters_inbound_ChatListItem_tsx --> module_src_features_avatar_public_ts
   module_src_features_chat_adapters_inbound_ChatListItem_tsx --> module_src_features_badge_public_ts
   module_src_features_chat_adapters_inbound_ChatListItem_tsx --> module_src_features_layout_public_ts
@@ -941,6 +970,8 @@ graph LR
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_card_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_data_table_utils_resolveDataTableRowKey_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_empty_state_public_ts
+  module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_form_checkbox_public_ts
+  module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_image_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_layout_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_popover_menu_public_ts
   module_src_features_data_table_adapters_inbound_DataTable_tsx --> module_src_features_skeleton_public_ts
@@ -963,10 +994,10 @@ graph LR
   module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_date_picker_adapters_inbound_DatePicker_web_tsx --> module_src_types_date_picker_ts
   module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_button_public_ts
+  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_calendar_public_ts
   module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_date_picker_utils_localDate_ts
   module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_layout_public_ts
   module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_picker_composition_PickerHeader_tsx
-  module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_features_typography_public_ts
   module_src_features_date_picker_composition_DatePickerContent_tsx --> module_src_types_date_picker_ts
   module_src_features_date_picker_composition_DatePickerField_tsx --> module_src_features_picker_composition_PickerField_tsx
   module_src_features_date_picker_composition_DatePickerField_tsx --> module_src_types_date_picker_ts
@@ -1366,6 +1397,13 @@ graph LR
   module_src_features_list_sectionListMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_features_list_sectionListMeta_ts --> module_src_types_authoring_ts
   module_src_features_list_utils_resolveListSeparator_ts --> module_src_types_list_ts
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx --> module_src_features_layout_public_ts
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx --> module_src_features_master_detail_application_resolveMasterDetailPresentation_ts
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_master_detail_adapters_inbound_MasterDetail_tsx --> module_src_types_master_detail_ts
+  module_src_features_master_detail_application_resolveMasterDetailPresentation_ts --> module_src_types_master_detail_ts
+  module_src_features_master_detail_masterDetailMeta_ts --> module_src_constants_authoring_ts
+  module_src_features_master_detail_masterDetailMeta_ts --> module_src_types_authoring_ts
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_grid_view_public_ts
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_matrix_grid_adapters_inbound_MatrixGridKeyboardProxy_tsx
   module_src_features_matrix_grid_adapters_inbound_MatrixGrid_tsx --> module_src_features_matrix_grid_adapters_inbound_useMatrixGridKeyboardFocus_ts
@@ -1481,6 +1519,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_button_buttonGroupMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_button_buttonMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_button_iconButtonMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_calendar_calendarMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_card_cardMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_card_mediaCardMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_card_metricCardMeta_ts
@@ -1531,6 +1570,7 @@ graph LR
   module_src_features_registry_componentMeta_ts --> module_src_features_list_flatListMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_list_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_list_sectionListMeta_ts
+  module_src_features_registry_componentMeta_ts --> module_src_features_master_detail_masterDetailMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_matrix_grid_meta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_missing_element_missingElementMeta_ts
   module_src_features_registry_componentMeta_ts --> module_src_features_pagination_paginationMeta_ts
@@ -1588,6 +1628,7 @@ graph LR
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_bottom_sheet_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_breadcrumbs_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_button_public_ts
+  module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_calendar_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_card_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_chat_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_chess_public_ts
@@ -1617,6 +1658,7 @@ graph LR
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_keyboard_avoiding_view_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_layout_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_list_public_ts
+  module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_master_detail_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_matrix_grid_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_missing_element_public_ts
   module_src_features_registry_ZORA_BASE_COMPONENT_REGISTRY_ts --> module_src_features_pagination_public_ts
@@ -1827,12 +1869,14 @@ graph LR
   module_src_features_time_picker_timePickerMeta_ts --> module_src_types_authoring_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_icon_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_icon_utils_resolveIconSize_ts
+  module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_image_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_layout_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_features_typography_public_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_types_theme_ts
   module_src_features_timeline_adapters_inbound_Timeline_tsx --> module_src_types_timeline_ts
+  module_src_features_timeline_meta_ts --> module_src_features_theme_colorModel_ts
   module_src_features_timeline_meta_ts --> module_src_types_authoring_ts
   module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_toast_adapters_inbound_Toast_tsx --> module_src_types_toast_ts
@@ -1954,6 +1998,7 @@ graph LR
   module_src_types_button_ts --> module_src_types_base_ts
   module_src_types_button_ts --> module_src_types_control_ts
   module_src_types_button_ts --> module_src_types_theme_ts
+  module_src_types_calendar_ts --> module_src_types_base_ts
   module_src_types_card_ts --> module_src_types_base_ts
   module_src_types_chat_ts --> module_src_types_avatar_ts
   module_src_types_chat_ts --> module_src_types_base_ts
@@ -1971,6 +2016,7 @@ graph LR
   module_src_types_content_rail_ts --> module_src_types_base_ts
   module_src_types_data_table_ts --> module_src_types_base_ts
   module_src_types_data_table_ts --> module_src_types_popover_menu_ts
+  module_src_types_data_table_ts --> module_src_types_text_ts
   module_src_types_date_picker_ts --> module_src_types_base_ts
   module_src_types_dialog_ts --> module_src_types_base_ts
   module_src_types_dialog_ts --> module_src_types_layout_ts
@@ -2004,6 +2050,7 @@ graph LR
   module_src_types_list_ts --> module_src_types_base_ts
   module_src_types_manifest_bottom_sheet_ts --> module_src_types_base_ts
   module_src_types_manifest_list_ts --> module_src_types_base_ts
+  module_src_types_master_detail_ts --> module_src_types_base_ts
   module_src_types_matrix_grid_ts --> module_src_types_base_ts
   module_src_types_matrix_grid_ts --> module_src_types_selection_ts
   module_src_types_media_card_ts --> module_src_types_base_ts
@@ -2053,6 +2100,7 @@ graph LR
   module_src_types_time_grid_ts --> module_src_types_base_ts
   module_src_types_time_picker_ts --> module_src_types_base_ts
   module_src_types_timeline_ts --> module_src_types_base_ts
+  module_src_types_timeline_ts --> module_src_types_image_ts
   module_src_types_timeline_ts --> module_src_types_theme_ts
   module_src_types_toast_ts --> module_src_types_base_ts
   module_src_types_toolbar_ts --> module_src_types_base_ts

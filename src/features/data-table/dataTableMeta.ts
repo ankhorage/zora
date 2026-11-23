@@ -15,6 +15,16 @@ export const dataTableMeta = {
         { path: 'direction', type: 'string' },
       ],
     },
+    selectionChange: {
+      label: 'Selection change',
+      eventType: 'dataTable.selectionChange',
+      payloadFields: [{ path: 'selectedRowIds', type: 'unknown', label: 'Selected row IDs' }],
+    },
+    rowActivate: {
+      label: 'Activate row',
+      eventType: 'dataTable.rowActivate',
+      payloadFields: [{ path: 'rowId', type: 'string', label: 'Row ID' }],
+    },
   },
   bindings: {
     props: {
@@ -27,6 +37,29 @@ export const dataTableMeta = {
           ],
         },
         acceptsFallback: true,
+      },
+      selectedRowIds: {
+        label: 'Selected row IDs',
+        description: 'Controlled stable row identities selected with the checkbox column.',
+        value: { type: 'array' },
+        acceptsFallback: true,
+        acceptsTransforms: true,
+      },
+    },
+    events: {
+      selectionChange: {
+        label: 'Selection change',
+        payload: {
+          eventType: 'dataTable.selectionChange',
+          fields: [{ path: 'selectedRowIds', type: 'unknown', label: 'Selected row IDs' }],
+        },
+      },
+      rowActivate: {
+        label: 'Activate row',
+        payload: {
+          eventType: 'dataTable.rowActivate',
+          fields: [{ path: 'rowId', type: 'string', label: 'Row ID' }],
+        },
       },
     },
   },
@@ -47,8 +80,17 @@ export const dataTableMeta = {
         { key: 'width', schema: { type: 'number', category: 'Layout' } },
         { key: 'minWidth', schema: { type: 'number', category: 'Layout' } },
         { key: 'sortable', schema: { type: 'boolean', category: 'Behavior' } },
+        {
+          key: 'cell',
+          schema: {
+            type: 'object',
+            category: 'Content',
+            label: 'Portable cell presentation',
+          },
+        },
       ],
     },
+    selectedRowIds: { type: 'array', category: 'Selection', label: 'Selected row IDs' },
     loading: { type: 'boolean', category: 'State' },
     loadingRows: { type: 'number', category: 'State' },
     emptyTitle: { type: 'string', category: 'Content' },

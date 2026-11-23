@@ -19,5 +19,6 @@ test('DatePicker keeps one manifest contract across native and web presentation 
   expect(nativeSource).toContain('useBottomSheet()');
   expect(webSource).toContain('<Popover');
   expect(webSource).not.toContain('useBottomSheet');
-  expect(contentSource).toContain('DatePickerCalendar');
+  expect(contentSource).toContain('<Calendar');
+  expect(contentSource).toContain('density="compact"');
 });
