@@ -63,6 +63,20 @@
     "CHANGELOG.md",
     "LICENSE"
   ],
+  "imports": {
+    "#zora/theme/*": {
+      "types": "./dist/features/theme/*.d.ts",
+      "react-native": "./src/features/theme/*.ts",
+      "browser": "./src/features/theme/*.ts",
+      "import": "./dist/features/theme/*.js",
+      "default": "./dist/features/theme/*.js"
+    },
+    "#zora/types/*": {
+      "types": "./dist/types/*.d.ts",
+      "import": "./dist/types/*.js",
+      "default": "./dist/types/*.js"
+    }
+  },
   "exports": {
     ".": {
       "react-native": "./src/index.ts",
