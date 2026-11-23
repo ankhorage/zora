@@ -61,4 +61,55 @@ button:focus-visible {outline:2px solid #7ce7f0;outline-offset:4px}
 @media(max-width:1060px){.settings {grid-template-columns:1fr 1fr}.settings__group--toggles {grid-column:1/-1}.scene__body {padding:0 77px;}.studio-bar>div:first-child {display:flex;flex-direction:column;gap:8px;}}
 @media(max-width:700px){.page {width:calc(100% - 30px);}.masthead {min-height:80px}.masthead__meta{display:none}.intro {padding:32px 0 25px;align-items:flex-start}.intro h1 {margin-top:11px}.intro p{font-size:13px;max-width:320px}.intro__counter {display:none}.carousel-frame {height:590px;border-radius:17px}.scene__top {padding:24px}.scene__eyebrow{font-size:9px}.scene__edition{display:none}.scene__body {padding:0 27px 70px}.scene h2 {font-size:clamp(46px,12vw,76px);max-width:440px}.scene__description{font-size:15px;line-height:1.55;max-width:430px;margin:23px 0}.scene__bottom{padding:22px;font-size:9px}.scene__bottom span:last-child{display:none}.studio-bar{padding:22px 0}.studio-bar>div:first-child span{font-size:12px}.active-story{display:none}.settings {gap:20px;grid-template-columns:1fr 1fr}.settings__group--toggles {grid-column:1/-1}.segmented button{min-width:44px;padding:9px}.footer{font-size:9px;line-height:1.5;}.footer span:last-child{display:none}}
 @media(max-width:380px){.settings {grid-template-columns:1fr}.settings__group--toggles{grid-column:1}.scene h2{font-size:43px}.scene__body {padding:0 24px 60px}.scene__cta{font-size:12px}.carousel-frame {height:560px}}
+
+/* Desktop: keep the showcase and its controls inside one viewport, with the
+   carousel taking the flexible remaining height instead of a fixed 660px. */
+@media (min-width: 1061px) {
+  .page {
+    min-height: 100dvh;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto auto minmax(320px, 1fr) auto auto auto;
+  }
+  .masthead { min-height: clamp(56px, 7.4dvh, 78px); }
+  .intro { padding: clamp(12px, 2.4dvh, 24px) 0 clamp(8px, 1.4dvh, 16px); }
+  .intro h1 { margin: 8px 0 7px; font-size: clamp(36px, 5.2dvh, 56px); }
+  .intro p { font-size: 14px; line-height: 1.45; }
+  .intro__counter strong { font-size: clamp(28px, 4dvh, 36px); }
+  .carousel-frame { height: 100%; min-height: 0; border-radius: 18px; }
+  .scene__top { padding: clamp(14px, 2.2dvh, 26px) 32px; }
+  .scene__bottom { padding: 12px 32px clamp(12px, 1.9dvh, 22px); }
+  .scene__body { padding: 0 clamp(64px, 6vw, 90px); }
+  .scene__number { font-size: 11px; margin-bottom: clamp(9px, 1.4dvh, 18px); }
+  .scene h2 { font-size: clamp(36px, 6.8dvh, 68px); }
+  .scene__description {
+    font-size: clamp(13px, 1.7dvh, 17px);
+    line-height: 1.4;
+    margin: clamp(10px, 1.8dvh, 21px) 0 clamp(12px, 2.1dvh, 24px);
+  }
+  .scene__cta { padding: 8px 12px 8px 20px; }
+  .scene__cta span { width: 28px; height: 28px; }
+  .studio-bar { padding: clamp(10px, 1.7dvh, 16px) 0; }
+  .settings { padding: clamp(12px, 1.8dvh, 18px) 0; gap: clamp(16px, 2.1vw, 30px); }
+  .settings__group { gap: 9px; }
+  .segmented button { padding: 7px 11px; }
+  .toggles { min-height: 36px; gap: 6px 14px; }
+  .footer { padding: clamp(8px, 1.3dvh, 13px) 0; }
+}
+/* Intermediate widths keep a natural document flow, but avoid oversized slides. */
+@media (min-width: 701px) and (max-width: 1060px) {
+  .masthead { min-height: 76px; }
+  .intro { padding: 28px 0 22px; }
+  .carousel-frame { height: clamp(390px, 56dvh, 590px); }
+  .studio-bar { padding: 18px 0; }
+  .settings { padding: 18px 0 24px; }
+  .footer { padding: 16px 0 24px; }
+}
+/* On phones, allow scrolling to preserve all content and accessible controls. */
+@media (max-width: 700px) {
+  .carousel-frame { height: clamp(420px, 65dvh, 590px); }
+}
+@media (max-width: 380px) {
+  .carousel-frame { height: clamp(410px, 65dvh, 560px); }
+}
 `;
