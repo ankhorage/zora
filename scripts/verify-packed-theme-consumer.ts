@@ -6,7 +6,6 @@ import { join, resolve } from 'node:path';
 const repositoryRoot = resolve(import.meta.dir, '..');
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'zora-packed-theme-consumer-'));
 const skipBuild = process.argv.includes('--skip-build');
-const nodeTypesVersion = readDevelopmentDependencyVersion('@types/node');
 const reactTypesVersion = readDevelopmentDependencyVersion('@types/react');
 const expoVersion = readInstalledPackageVersion('expo');
 const peerDependencies = readPeerDependencies();
@@ -75,7 +74,6 @@ function writeConsumer(consumerRoot: string, tarballPath: string): void {
         dependencies: { '@ankhorage/zora': `file:${tarballPath}` },
         devDependencies: {
           ...peerDependencies,
-          '@types/node': nodeTypesVersion,
           '@types/react': reactTypesVersion,
           expo: expoVersion,
           typescript: typescriptVersion,
