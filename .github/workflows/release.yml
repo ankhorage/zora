@@ -230,7 +230,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.12 validate . --enforce-repository-metadata
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.15 validate . --enforce-repository-metadata
           fi
 
       - name: Determine immutable pre-publish release intent
@@ -625,6 +625,36 @@ jobs:
                   done
                 fi
                 bun add "$artifact" --ignore-scripts
+                optional_platform_peer_dependencies="$(PACKAGE_NAME="$package_name" node - <<'NODE'
+          const { readFileSync } = require('node:fs');
+          const { join } = require('node:path');
+          const name = process.env.PACKAGE_NAME;
+          if (typeof name !== 'string' || name.length === 0) {
+            throw new Error('The packed package name is required for platform verification.');
+          }
+          const manifest = JSON.parse(
+            readFileSync(join('node_modules', ...name.split('/'), 'package.json'), 'utf8'),
+          );
+          const peers = manifest.peerDependencies ?? {};
+          const peerMetadata = manifest.peerDependenciesMeta ?? {};
+          const optionalPeers = Object.entries(peerMetadata)
+            .filter(([, metadata]) => metadata?.optional === true)
+            .map(([dependency]) => {
+              const version = peers[dependency];
+              if (typeof version !== 'string' || version.length === 0) {
+                throw new Error(`Optional peer ${dependency} must declare a peer dependency range.`);
+              }
+              return `${dependency}@${version}`;
+            })
+            .sort();
+          process.stdout.write(optionalPeers.join('\n'));
+          NODE
+                )"
+                if [ -n "$optional_platform_peer_dependencies" ]; then
+                  printf '%s\n' "$optional_platform_peer_dependencies" | while IFS= read -r dependency; do
+                    bun add "$dependency" --ignore-scripts
+                  done
+                fi
                 if node -e "const dependencies=JSON.parse(process.argv[1]); process.exit(typeof dependencies.expo === 'string' ? 0 : 1)" "$platform_toolchain_dependencies"; then
                   node -e 'const p=require("./package.json"); for (const name of ["expo", "react", "react-native", "@expo/metro-runtime"]) { const resolved=require(`./node_modules/${name}/package.json`).version; console.log(`Expo platform toolchain ${name}: declared ${p.dependencies[name]}, resolved ${resolved}`); }'
                   TMPDIR="$platform_temporary_directory" "$platform_dir/node_modules/.bin/expo" export --platform ios --output-dir "$platform_output_dir"
