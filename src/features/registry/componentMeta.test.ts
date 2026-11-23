@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import { CONTAINER_ALLOWED_CHILDREN } from '../../constants/authoring';
 import { ZORA_COLORS } from '../theme/colorModel';
 import type { BarcodeScannerViewProps, ZoraComponentEventPayloadKind } from '.';
 import { ZORA_COMPONENT_META } from '.';
@@ -301,6 +302,7 @@ describe('ZORA_COMPONENT_META invariants', () => {
       'GameOverlay',
       'Surface',
       'MediaCard',
+      'MasterDetail',
       'FlatList',
       'SectionList',
       'BottomSheet',
@@ -522,6 +524,20 @@ describe('ZORA_COMPONENT_META invariants', () => {
       keyboardVerticalOffset: 0,
     });
     expect(keyboardAvoidingView.props.behavior?.enum).toEqual(['height', 'position', 'padding']);
+  });
+
+  test('MasterDetail uses RuntimeRenderer children for its serializable pane content', () => {
+    const masterDetail = ZORA_COMPONENT_META.MasterDetail;
+    expect(masterDetail.directManifestNode).toBe(true);
+    expect(masterDetail.allowedChildren).toEqual(CONTAINER_ALLOWED_CHILDREN);
+    expect(masterDetail.props.activePane?.enum).toEqual(['master', 'detail']);
+    expect(masterDetail.props.masterWidth?.enum).toEqual([25, 30, 35, 40]);
+    expect(masterDetail.slots).toBeUndefined();
+    expect(masterDetail.bindings?.props?.activePane).toMatchObject({
+      acceptsFallback: true,
+      acceptsTransforms: true,
+      value: { type: 'string' },
+    });
   });
 
   test('Progress is a direct manifest leaf with serializable defaults', () => {

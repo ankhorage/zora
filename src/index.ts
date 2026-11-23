@@ -31,6 +31,13 @@ export type {
 } from './features/color/public';
 export { ColorHueScale, ColorPicker, ColorTone, ColorWheel } from './features/color/public';
 export type {
+  MasterDetailActivePane,
+  MasterDetailDesktopMode,
+  MasterDetailMasterWidth,
+  MasterDetailProps,
+} from './features/master-detail/public';
+export { MasterDetail } from './features/master-detail/public';
+export type {
   ReaderColorScheme,
   ReaderDocumentFormat,
   ReaderErrorCode,

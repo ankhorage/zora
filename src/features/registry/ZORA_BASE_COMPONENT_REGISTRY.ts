@@ -57,6 +57,7 @@ import { Image } from '../image/public';
 import { KeyboardAvoidingView } from '../keyboard-avoiding-view/public';
 import { AppShell, Divider, Grid, Screen, ScrollView, View } from '../layout/public';
 import { FlatList, List, ListItem, ListSection, SectionList } from '../list/public';
+import { MasterDetail } from '../master-detail/public';
 import { MatrixGrid } from '../matrix-grid/public';
 import { MissingElement } from '../missing-element/public';
 import { Pagination } from '../pagination/public';
@@ -207,6 +208,7 @@ const _ZORA_BASE_COMPONENT_REGISTRY = {
   TileGrid,
   TimeGrid,
   MatrixGrid,
+  MasterDetail,
   MediaExplorer,
   Hero,
   List,
