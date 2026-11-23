@@ -8684,7 +8684,7 @@
     "modulePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
     "sourceLocation": {
       "filePath": "src/features/data-table/adapters/inbound/DataTable.tsx",
-      "line": 29,
+      "line": 30,
       "column": 14
     },
     "exportPaths": [
@@ -8706,7 +8706,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 16,
+      "line": 47,
       "column": 1
     },
     "exportPaths": [
@@ -8749,6 +8749,28 @@
     "structuredRows": []
   },
   {
+    "name": "DataTableCellSpec",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/data-table.ts",
+    "sourceLocation": {
+      "filePath": "src/types/data-table.ts",
+      "line": 16,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "DataTableColumn",
     "title": null,
     "description": null,
@@ -8759,7 +8781,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 23,
+      "line": 54,
       "column": 1
     },
     "exportPaths": [
@@ -8767,6 +8789,7 @@
     ],
     "relatedSymbols": [
       "DataTableCellContext",
+      "DataTableCellSpec",
       "DataTableColumnAlign"
     ],
     "signatures": [],
@@ -8782,6 +8805,13 @@
         "name": "align",
         "kind": "property",
         "type": "DataTableColumnAlign | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "cell",
+        "kind": "property",
+        "type": "DataTableCellSpec<TRow> | undefined",
         "required": false,
         "description": null
       },
@@ -8841,7 +8871,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 7,
+      "line": 8,
       "column": 1
     },
     "exportPaths": [
@@ -8863,7 +8893,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 8,
+      "line": 9,
       "column": 1
     },
     "exportPaths": [
@@ -8885,7 +8915,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 44,
+      "line": 85,
       "column": 1
     },
     "exportPaths": [
@@ -8895,6 +8925,8 @@
       "DataTableColumn",
       "DataTableDensity",
       "DataTableRowAction",
+      "DataTableRowActivateEvent",
+      "DataTableSelectionChangeEvent",
       "DataTableSortState",
       "ZoraThemeMode"
     ],
@@ -8964,9 +8996,23 @@
         "description": null
       },
       {
+        "name": "onRowActivate",
+        "kind": "property",
+        "type": "((event: DataTableRowActivateEvent) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "onSelectedRowIdsChange",
         "kind": "property",
         "type": "((selectedRowIds: readonly string[]) => void) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onSelectionChange",
+        "kind": "property",
+        "type": "((event: DataTableSelectionChangeEvent) => void) | undefined",
         "required": false,
         "description": null
       },
@@ -9047,7 +9093,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 34,
+      "line": 75,
       "column": 1
     },
     "exportPaths": [
@@ -9111,6 +9157,88 @@
     "structuredRows": []
   },
   {
+    "name": "DataTableRowActivateEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/data-table.ts",
+    "sourceLocation": {
+      "filePath": "src/types/data-table.ts",
+      "line": 71,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "rowId",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "DataTableRowField",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "unknown",
+    "modulePath": "src/types/data-table.ts",
+    "sourceLocation": {
+      "filePath": "src/types/data-table.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "DataTableSelectionChangeEvent",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/data-table.ts",
+    "sourceLocation": {
+      "filePath": "src/types/data-table.ts",
+      "line": 67,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "selectedRowIds",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "DataTableSortDirection",
     "title": null,
     "description": null,
@@ -9121,7 +9249,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 9,
+      "line": 10,
       "column": 1
     },
     "exportPaths": [
@@ -9143,7 +9271,7 @@
     "modulePath": "src/types/data-table.ts",
     "sourceLocation": {
       "filePath": "src/types/data-table.ts",
-      "line": 11,
+      "line": 42,
       "column": 1
     },
     "exportPaths": [
@@ -31674,7 +31802,7 @@
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
       "filePath": "src/types/timeline.ts",
-      "line": 8,
+      "line": 26,
       "column": 1
     },
     "exportPaths": [
@@ -31753,6 +31881,117 @@
     "structuredRows": []
   },
   {
+    "name": "TimelineManifestItem",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/timeline.ts",
+    "sourceLocation": {
+      "filePath": "src/types/timeline.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "id",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "marker",
+        "kind": "property",
+        "type": "MediaAssetReference | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "markerAlt",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "meta",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "\"error\" | \"primary\" | \"secondary\" | \"tertiary\" | \"quaternary\" | \"neutral\" | \"success\" | \"warning\" | \"info\" | \"danger\" | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "title",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "TimelineManifestProps",
+    "title": null,
+    "description": null,
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/types/timeline.ts",
+    "sourceLocation": {
+      "filePath": "src/types/timeline.ts",
+      "line": 21,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "TimelineManifestItem"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "compact",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "items",
+        "kind": "property",
+        "type": "readonly TimelineManifestItem[]",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
     "name": "TimelineProps",
     "title": null,
     "description": null,
@@ -31763,7 +32002,7 @@
     "modulePath": "src/types/timeline.ts",
     "sourceLocation": {
       "filePath": "src/types/timeline.ts",
-      "line": 20,
+      "line": 38,
       "column": 1
     },
     "exportPaths": [
@@ -34395,7 +34634,7 @@
     "modulePath": "src/constants/authoring.ts",
     "sourceLocation": {
       "filePath": "src/constants/authoring.ts",
-      "line": 163,
+      "line": 165,
       "column": 14
     },
     "exportPaths": [
@@ -34477,7 +34716,7 @@
     "modulePath": "src/features/registry/bindableComponentMeta.ts",
     "sourceLocation": {
       "filePath": "src/features/registry/bindableComponentMeta.ts",
-      "line": 463,
+      "line": 480,
       "column": 1
     },
     "exportPaths": [

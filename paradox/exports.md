@@ -2127,7 +2127,7 @@ Convert the concise ZORA design seed into canonical persisted theme source.
 
 Kind: `value`
 Module: `src/features/data-table/adapters/inbound/DataTable.tsx`
-Source: `src/features/data-table/adapters/inbound/DataTable.tsx:29:14`
+Source: `src/features/data-table/adapters/inbound/DataTable.tsx:30:14`
 
 Displays structured tabular data with responsive columns and optional controlled row selection.
 
@@ -2135,7 +2135,7 @@ Displays structured tabular data with responsive columns and optional controlled
 
 Kind: `type`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:16:1`
+Source: `src/types/data-table.ts:47:1`
 
 ### Members
 
@@ -2146,11 +2146,17 @@ Source: `src/types/data-table.ts:16:1`
 | rowIndex | property | `number` | yes |  |
 | value | property | `unknown` | yes |  |
 
+## DataTableCellSpec
+
+Kind: `unknown`
+Module: `src/types/data-table.ts`
+Source: `src/types/data-table.ts:16:1`
+
 ## DataTableColumn
 
 Kind: `type`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:23:1`
+Source: `src/types/data-table.ts:54:1`
 
 ### Members
 
@@ -2158,6 +2164,7 @@ Source: `src/types/data-table.ts:23:1`
 | --- | --- | --- | --- | --- |
 | accessor | property | `keyof TRow \| undefined` | no |  |
 | align | property | `DataTableColumnAlign \| undefined` | no |  |
+| cell | property | `DataTableCellSpec<TRow> \| undefined` | no |  |
 | header | property | `React.ReactNode` | yes |  |
 | id | property | `string` | yes |  |
 | minWidth | property | `number \| undefined` | no |  |
@@ -2169,19 +2176,19 @@ Source: `src/types/data-table.ts:23:1`
 
 Kind: `unknown`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:7:1`
+Source: `src/types/data-table.ts:8:1`
 
 ## DataTableDensity
 
 Kind: `unknown`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:8:1`
+Source: `src/types/data-table.ts:9:1`
 
 ## DataTableProps
 
 Kind: `type`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:44:1`
+Source: `src/types/data-table.ts:85:1`
 
 ### Members
 
@@ -2196,7 +2203,9 @@ Source: `src/types/data-table.ts:44:1`
 | loading | property | `boolean \| undefined` | no |  |
 | loadingRows | property | `number \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onRowActivate | property | `((event: DataTableRowActivateEvent) => void) \| undefined` | no |  |
 | onSelectedRowIdsChange | property | `((selectedRowIds: readonly string[]) => void) \| undefined` | no |  |
+| onSelectionChange | property | `((event: DataTableSelectionChangeEvent) => void) \| undefined` | no |  |
 | onSortChange | property | `((sort: DataTableSortState) => void) \| undefined` | no |  |
 | rowActions | property | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no |  |
 | rowId | property | `((row: TRow, index: number) => string) \| undefined` | no |  |
@@ -2211,7 +2220,7 @@ Source: `src/types/data-table.ts:44:1`
 
 Kind: `type`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:34:1`
+Source: `src/types/data-table.ts:75:1`
 
 ### Members
 
@@ -2225,17 +2234,47 @@ Source: `src/types/data-table.ts:34:1`
 | onPress | property | `((row: TRow) => void) \| undefined` | no |  |
 | title | property | `React.ReactNode` | yes |  |
 
+## DataTableRowActivateEvent
+
+Kind: `type`
+Module: `src/types/data-table.ts`
+Source: `src/types/data-table.ts:71:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| rowId | property | `string` | yes |  |
+
+## DataTableRowField
+
+Kind: `unknown`
+Module: `src/types/data-table.ts`
+Source: `src/types/data-table.ts:13:1`
+
+## DataTableSelectionChangeEvent
+
+Kind: `type`
+Module: `src/types/data-table.ts`
+Source: `src/types/data-table.ts:67:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| selectedRowIds | property | `readonly string[]` | yes |  |
+
 ## DataTableSortDirection
 
 Kind: `unknown`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:9:1`
+Source: `src/types/data-table.ts:10:1`
 
 ## DataTableSortState
 
 Kind: `type`
 Module: `src/types/data-table.ts`
-Source: `src/types/data-table.ts:11:1`
+Source: `src/types/data-table.ts:42:1`
 
 ### Members
 
@@ -7509,7 +7548,7 @@ Timeline pattern for displaying a sequence of events.
 
 Kind: `type`
 Module: `src/types/timeline.ts`
-Source: `src/types/timeline.ts:8:1`
+Source: `src/types/timeline.ts:26:1`
 
 ### Members
 
@@ -7525,11 +7564,42 @@ Source: `src/types/timeline.ts:8:1`
 | testID | property | `string \| undefined` | no |  |
 | title | property | `React.ReactNode` | yes |  |
 
+## TimelineManifestItem
+
+Kind: `type`
+Module: `src/types/timeline.ts`
+Source: `src/types/timeline.ts:10:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| description | property | `string \| undefined` | no |  |
+| id | property | `string` | yes |  |
+| marker | property | `MediaAssetReference \| undefined` | no |  |
+| markerAlt | property | `string \| undefined` | no |  |
+| meta | property | `string \| undefined` | no |  |
+| status | property | `"error" \| "primary" \| "secondary" \| "tertiary" \| "quaternary" \| "neutral" \| "success" \| "warning" \| "info" \| "danger" \| undefined` | no |  |
+| title | property | `string` | yes |  |
+
+## TimelineManifestProps
+
+Kind: `type`
+Module: `src/types/timeline.ts`
+Source: `src/types/timeline.ts:21:1`
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| compact | property | `boolean \| undefined` | no |  |
+| items | property | `readonly TimelineManifestItem[]` | yes |  |
+
 ## TimelineProps
 
 Kind: `type`
 Module: `src/types/timeline.ts`
-Source: `src/types/timeline.ts:20:1`
+Source: `src/types/timeline.ts:38:1`
 
 ### Members
 
@@ -8209,7 +8279,7 @@ Source: `src/features/registry/themeRecipeMeta.ts:8:14`
 
 Kind: `value`
 Module: `src/constants/authoring.ts`
-Source: `src/constants/authoring.ts:163:14`
+Source: `src/constants/authoring.ts:165:14`
 
 ## ZoraBaseProps
 
@@ -8231,7 +8301,7 @@ Source: `src/types/base.ts:5:1`
 
 Kind: `unknown`
 Module: `src/features/registry/bindableComponentMeta.ts`
-Source: `src/features/registry/bindableComponentMeta.ts:463:1`
+Source: `src/features/registry/bindableComponentMeta.ts:480:1`
 
 ## ZoraColor
 

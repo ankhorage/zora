@@ -1274,7 +1274,7 @@ Export paths: `src/index.ts`
 
 ## DataTable
 
-Source: `src/features/data-table/adapters/inbound/DataTable.tsx:29:14`
+Source: `src/features/data-table/adapters/inbound/DataTable.tsx:30:14`
 
 Displays structured tabular data with responsive columns and optional controlled row selection.
 
@@ -1291,7 +1291,9 @@ Export paths: `src/index.ts`
 | loading | `boolean \| undefined` | no | — |  |
 | loadingRows | `number \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onRowActivate | `((event: DataTableRowActivateEvent) => void) \| undefined` | no | — |  |
 | onSelectedRowIdsChange | `((selectedRowIds: readonly string[]) => void) \| undefined` | no | — |  |
+| onSelectionChange | `((event: DataTableSelectionChangeEvent) => void) \| undefined` | no | — |  |
 | onSortChange | `((sort: DataTableSortState) => void) \| undefined` | no | — |  |
 | rowActions | `((row: TRow, index: number) => readonly DataTableRowAction<TRow>[]) \| undefined` | no | — |  |
 | rowId | `((row: TRow, index: number) => string) \| undefined` | no | — |  |

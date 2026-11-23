@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.7.0
+
+### Minor Changes
+
+- 3df7c3f: Add portable DataTable rich-cell descriptors, controlled selection events, and row activation events for AppManifest consumers.
+- a9ae155: Expose Timeline as a serializable AppManifest component with portable event items and media markers.
+
 ## 27.6.1
 
 ### Patch Changes

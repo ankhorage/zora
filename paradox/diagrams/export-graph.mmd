@@ -1019,9 +1019,12 @@ graph LR
   export_DataTableCellContext["DataTableCellContext"]
   module_src_types_data_table_ts --> export_DataTableCellContext
   export_DataTableCellContext -.-> export_DataTableColumn
+  export_DataTableCellSpec["DataTableCellSpec"]
+  module_src_types_data_table_ts --> export_DataTableCellSpec
   export_DataTableColumn["DataTableColumn"]
   module_src_types_data_table_ts --> export_DataTableColumn
   export_DataTableColumn -.-> export_DataTableCellContext
+  export_DataTableColumn -.-> export_DataTableCellSpec
   export_DataTableColumn -.-> export_DataTableColumnAlign
   export_DataTableColumnAlign["DataTableColumnAlign"]
   module_src_types_data_table_ts --> export_DataTableColumnAlign
@@ -1032,11 +1035,19 @@ graph LR
   export_DataTableProps -.-> export_DataTableColumn
   export_DataTableProps -.-> export_DataTableDensity
   export_DataTableProps -.-> export_DataTableRowAction
+  export_DataTableProps -.-> export_DataTableRowActivateEvent
+  export_DataTableProps -.-> export_DataTableSelectionChangeEvent
   export_DataTableProps -.-> export_DataTableSortState
   export_DataTableProps -.-> export_ZoraThemeMode
   export_DataTableRowAction["DataTableRowAction"]
   module_src_types_data_table_ts --> export_DataTableRowAction
   export_DataTableRowAction -.-> export_PopoverMenuActionIntent
+  export_DataTableRowActivateEvent["DataTableRowActivateEvent"]
+  module_src_types_data_table_ts --> export_DataTableRowActivateEvent
+  export_DataTableRowField["DataTableRowField"]
+  module_src_types_data_table_ts --> export_DataTableRowField
+  export_DataTableSelectionChangeEvent["DataTableSelectionChangeEvent"]
+  module_src_types_data_table_ts --> export_DataTableSelectionChangeEvent
   export_DataTableSortDirection["DataTableSortDirection"]
   module_src_types_data_table_ts --> export_DataTableSortDirection
   export_DataTableSortState["DataTableSortState"]
@@ -1939,6 +1950,11 @@ graph LR
   module_src_types_timeline_ts --> export_TimelineItem
   export_TimelineItem -.-> export_SurfaceImageSource
   export_TimelineItem -.-> export_UploadAsset
+  export_TimelineManifestItem["TimelineManifestItem"]
+  module_src_types_timeline_ts --> export_TimelineManifestItem
+  export_TimelineManifestProps["TimelineManifestProps"]
+  module_src_types_timeline_ts --> export_TimelineManifestProps
+  export_TimelineManifestProps -.-> export_TimelineManifestItem
   export_TimelineProps["TimelineProps"]
   module_src_types_timeline_ts --> export_TimelineProps
   export_TimelineProps -.-> export_TimelineItem
