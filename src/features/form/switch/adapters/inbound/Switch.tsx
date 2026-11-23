@@ -1,4 +1,4 @@
-import { Switch as SurfaceSwitch } from '@ankhorage/surface';
+import { Switch as SurfaceSwitch } from '@ankhorage/surface/authoring-controls';
 import React from 'react';
 
 import type { SwitchProps } from '../../../../../types/switch';

@@ -1,5 +1,6 @@
+import { Button } from '@ankhorage/surface/authoring-controls';
+
 import type { SelectProps } from '../../../../types/select';
-import { Button } from '../../../button/public';
 
 const SELECT_CHEVRON_ICON = { name: 'chevron-down' } as const;
 

@@ -1,4 +1,4 @@
-import { ThemeScope } from '@ankhorage/surface';
+import { ThemeScope } from '@ankhorage/surface/authoring-controls';
 import React, { useMemo } from 'react';
 
 import type { ZoraThemeId, ZoraThemeMode } from '../../../../types/theme';

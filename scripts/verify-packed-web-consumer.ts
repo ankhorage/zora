@@ -44,7 +44,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
         type: 'module',
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
-          '@ankhorage/surface': '9.5.10',
+          '@ankhorage/surface': '^9.6.0',
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
@@ -114,6 +114,33 @@ function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
   }
 }
 
+/*** Verify the packed consumer resolves ZORA and Surface through one compatible installed boundary. */
+function verifyPackedSurfaceBoundary(consumerRoot: string): void {
+  const zoraPackageRoot = join(consumerRoot, 'node_modules', '@ankhorage', 'zora');
+  const zoraPackage = JSON.parse(readFileSync(join(zoraPackageRoot, 'package.json'), 'utf8')) as {
+    readonly dependencies?: Readonly<Record<string, string>>;
+  };
+  const surfaceRange = zoraPackage.dependencies?.['@ankhorage/surface'];
+  const surfacePackage = JSON.parse(
+    readFileSync(
+      join(consumerRoot, 'node_modules', '@ankhorage', 'surface', 'package.json'),
+      'utf8',
+    ),
+  ) as { readonly version?: string };
+
+  assert.equal(surfaceRange, '^9.6.0');
+  assert.ok(
+    surfacePackage.version !== undefined &&
+      Bun.semver.satisfies(surfacePackage.version, surfaceRange),
+    `Resolved Surface ${surfacePackage.version ?? 'version'} is outside ZORA's published ${surfaceRange} range.`,
+  );
+  assert.equal(
+    existsSync(join(zoraPackageRoot, 'node_modules', '@ankhorage', 'surface', 'package.json')),
+    false,
+    'Packed consumer resolved a second Surface runtime below ZORA.',
+  );
+}
+
 /*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
 function writeAuthoringConsumerAcceptance(consumerRoot: string): void {
   mkdirSync(join(consumerRoot, 'src'));
@@ -149,11 +176,13 @@ import {
   Card,
   Field,
   Pressable,
+  Select,
   Text,
   TextInput,
   ThemeEditorAdapter,
   ThemeProvider,
   View,
+  Switch,
   useTheme,
 } from '@ankhorage/zora/authoring';
 
@@ -168,7 +197,9 @@ export function App() {
   const [containerSelectedScreenId, setContainerSelectedScreenId] = React.useState('first');
   const [containerSelectionNotifications, setContainerSelectionNotifications] = React.useState(0);
   const [disabledSelectionNotifications, setDisabledSelectionNotifications] = React.useState(0);
+  const [layout, setLayout] = React.useState('stack');
   const [name, setName] = React.useState('');
+  const [published, setPublished] = React.useState(false);
   return (
     <ThemeProvider>
       <View gap="m">
@@ -184,6 +215,18 @@ export function App() {
         <Pressable testID="authoring-pressable">
           <Text>Pressable authoring control</Text>
         </Pressable>
+        <Select
+          onValueChange={setLayout}
+          options={[
+            { label: 'Stack', value: 'stack' },
+            { label: 'Grid', value: 'grid' },
+          ]}
+          testID="authoring-layout"
+          value={layout}
+        />
+        <Switch checked={published} onCheckedChange={setPublished} testID="authoring-published">
+          Published
+        </Switch>
         <AuthoringSelectionAdapter
           getItemId={(screen) => screen.id}
           items={screens}
@@ -263,6 +306,8 @@ export const authoringApi = {
   Card,
   Field,
   Pressable,
+  Select,
+  Switch,
   Text,
   TextInput,
   ThemeEditorAdapter,
@@ -316,6 +361,8 @@ try {
     'Card',
     'Field',
     'Pressable',
+    'Select',
+    'Switch',
     'Text',
     'TextInput',
     'ThemeEditorAdapter',
@@ -324,7 +371,7 @@ try {
   ]) assert.equal(typeof authoringApi[name], 'function');
   const authoringDirectory = join(process.cwd(), 'node_modules', '@ankhorage', 'zora', 'web-dist', 'authoring');
   const declaration = readFileSync(join(authoringDirectory, 'index.d.ts'), 'utf8');
-  for (const name of ['FieldProps', 'PressableProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
+  for (const name of ['FieldProps', 'PressableProps', 'SelectOption', 'SelectProps', 'SwitchProps', 'ThemeEditorAdapterProps']) assert.match(declaration, new RegExp(name));
   const artifact = readFileSync(join(authoringDirectory, 'index.js'), 'utf8');
   for (const forbidden of ['AppBar', 'react-native-safe-area-context', 'react-native-gesture-handler', 'codegen']) assert.equal(artifact.includes(forbidden), false);
   const app = React.createElement(App);
@@ -370,6 +417,26 @@ try {
     browser.document.querySelector('[data-testid="authoring-disabled-selection-notifications"]')?.textContent,
     '0',
   );
+  await React.act(async () => {
+    browser.document.querySelector('[data-testid="authoring-layout-trigger"]')?.dispatchEvent(
+      new browser.MouseEvent('click', { bubbles: true }),
+    );
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  const layoutOption = browser.document.querySelector('[data-testid="authoring-layout-option-grid"]');
+  assert.notEqual(layoutOption, null);
+  await React.act(async () => {
+    layoutOption.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.match(browser.document.querySelector('[data-testid="authoring-layout-trigger"]')?.textContent ?? '', /Grid/);
+  const published = browser.document.querySelector('[data-testid="authoring-published"]');
+  assert.notEqual(published, null);
+  await React.act(async () => {
+    published.dispatchEvent(new browser.MouseEvent('click', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  });
+  assert.equal(published.getAttribute('aria-checked'), 'true');
   root.unmount();
 } finally {
   await vite.close();
@@ -602,6 +669,7 @@ try {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
+  verifyPackedSurfaceBoundary(consumerRoot);
   run(['bun', 'acceptance.mjs'], consumerRoot);
   if (!authoring) {
     verifyPackedWebDeclarationClosure(consumerRoot);
