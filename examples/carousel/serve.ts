@@ -17,6 +17,9 @@ const bundle = await Bun.build({
   outdir: resolve(import.meta.dir, '.cache'),
   target: 'browser',
   format: 'esm',
+  // React Native Animated references Node's global during animation teardown.
+  // Rewrite it at the browser bundle boundary without mutating window globals.
+  define: { global: 'globalThis' },
   jsx: { runtime: 'automatic', importSource: 'react' },
 });
 if (!bundle.success) {
