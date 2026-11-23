@@ -247,7 +247,7 @@ Read-only reviews report findings without creating commits.
 Run applicable mandatory validation:
 
 - `bun run build`
-- `bun run check-types`
+- `bun run typecheck`
 - `bun run lint`
 - `bun run knip:check`
 - Relevant unit tests and existing mandatory tests
