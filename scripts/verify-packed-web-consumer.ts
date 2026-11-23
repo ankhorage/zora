@@ -81,6 +81,10 @@ function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
     artifactRoot: join(webDistRoot, 'runtime'),
     file: 'runtime/ZoraProvider.d.ts',
   });
+  declarationFiles.push({
+    artifactRoot: webDistRoot,
+    file: 'index.d.ts',
+  });
 
   for (const { artifactRoot, file } of declarationFiles) {
     const declarationPath = resolve(webDistRoot, file);
@@ -390,12 +394,15 @@ import { Window } from 'happy-dom';
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
-import { ZoraProvider, useZoraTheme } from '@ankhorage/zora/web/runtime';
-import { ActivityIndicator } from '@ankhorage/zora/web/activity-indicator';
+import {
+  ActivityIndicator,
+  GraphView,
+  TreeView,
+  ZoraProvider,
+  useZoraTheme,
+} from '@ankhorage/zora/web';
 import { Button } from '@ankhorage/zora/web/button';
 import { Select } from '@ankhorage/zora/web/select';
-import { TreeView } from '@ankhorage/zora/web/tree-view';
-import { GraphView } from '@ankhorage/zora/web/graph-view';
 
 const browser = new Window();
 Object.assign(globalThis, {
@@ -540,6 +547,7 @@ function writeWebTypeConsumerAcceptance(consumerRoot: string): void {
   type GraphViewViewport,
   type ResolvedGraphViewProps,
 } from '@ankhorage/zora/web/graph-view';
+import { GraphView as WebGraphView } from '@ankhorage/zora/web';
 
 const graphProps: GraphViewProps = {
   ariaLabel: 'Dependency graph',
@@ -555,6 +563,7 @@ const canonicalGraphProps: GraphViewCanonicalGraphProps = {
   layout: 'circle',
 };
 const graphEvents: 'zora-graph-view-ready' = GraphView.events.ready;
+const webGraphView: typeof GraphView = WebGraphView;
 const props = {} as {
   graphController: GraphViewController;
   graphCanonicalEdge: GraphViewCanonicalEdgeData;
@@ -572,6 +581,7 @@ const props = {} as {
 void canonicalGraphProps;
 void graphEvents;
 void graphProps;
+void webGraphView;
 void props;
 `,
   );
