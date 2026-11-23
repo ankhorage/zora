@@ -44,7 +44,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
         type: 'module',
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
-          '@ankhorage/surface': '9.5.10',
+          '@ankhorage/surface': '^9.6.0',
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
@@ -107,6 +107,33 @@ function verifyPackedWebDeclarationClosure(consumerRoot: string): void {
       );
     }
   }
+}
+
+/*** Verify the packed consumer resolves ZORA and Surface through one compatible installed boundary. */
+function verifyPackedSurfaceBoundary(consumerRoot: string): void {
+  const zoraPackageRoot = join(consumerRoot, 'node_modules', '@ankhorage', 'zora');
+  const zoraPackage = JSON.parse(readFileSync(join(zoraPackageRoot, 'package.json'), 'utf8')) as {
+    readonly dependencies?: Readonly<Record<string, string>>;
+  };
+  const surfaceRange = zoraPackage.dependencies?.['@ankhorage/surface'];
+  const surfacePackage = JSON.parse(
+    readFileSync(
+      join(consumerRoot, 'node_modules', '@ankhorage', 'surface', 'package.json'),
+      'utf8',
+    ),
+  ) as { readonly version?: string };
+
+  assert.equal(surfaceRange, '^9.6.0');
+  assert.ok(
+    surfacePackage.version !== undefined &&
+      Bun.semver.satisfies(surfacePackage.version, surfaceRange),
+    `Resolved Surface ${surfacePackage.version ?? 'version'} is outside ZORA's published ${surfaceRange} range.`,
+  );
+  assert.equal(
+    existsSync(join(zoraPackageRoot, 'node_modules', '@ankhorage', 'surface', 'package.json')),
+    false,
+    'Packed consumer resolved a second Surface runtime below ZORA.',
+  );
 }
 
 /*** Exercise SSR, hydration, and an input event using only published ZORA web subpaths. */
@@ -670,6 +697,7 @@ try {
     BUN_INSTALL_CACHE_DIR: join(temporaryRoot, 'bun-cache'),
     TMPDIR: temporaryRoot,
   });
+  verifyPackedSurfaceBoundary(consumerRoot);
   run(['bun', 'acceptance.mjs'], consumerRoot);
   if (!authoring) {
     verifyPackedWebDeclarationClosure(consumerRoot);
