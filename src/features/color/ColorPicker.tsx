@@ -1,6 +1,8 @@
+import { Button } from '@ankhorage/surface';
 import React from 'react';
 
 import type { ColorPickerProps, ColorPickerTab, ColorPickerValue } from '../../types/color';
+import { View } from '../layout/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
 import { ColorHueScale } from './ColorHueScale';
@@ -19,6 +21,7 @@ function ColorPickerInner({
   value,
   onValueChange,
   onSelectionChange,
+  onDismiss,
   hideTabListWhenSingle = true,
   wheel,
   tone,
@@ -29,28 +32,56 @@ function ColorPickerInner({
   if (!tabs.includes(value.tab)) throw new Error('ColorPicker value must be configured in tabs.');
 
   return (
-    <Tabs
-      defaultValue={value.tab}
-      onValueChange={(nextValue) => {
-        if (isColorPickerTab(nextValue) && tabs.includes(nextValue))
-          onValueChange({ ...value, tab: nextValue });
-      }}
+    <View
+      bg="surfaceRaised"
+      borderColor="border"
+      borderWidth={1}
+      gap="sm"
+      p="md"
+      radius="lg"
       testID={testID}
-      value={value.tab}
     >
-      {tabs.length > 1 || !hideTabListWhenSingle ? (
-        <TabList fill>
-          {tabs.map((tab) => (
-            <Tab key={tab} label={tab} value={tab} />
-          ))}
-        </TabList>
-      ) : null}
-      {tabs.map((tab) => (
-        <TabPanel key={tab} value={tab}>
-          {resolveTabContent(tab, value, wheel, tone, hue, onValueChange, onSelectionChange)}
-        </TabPanel>
-      ))}
-    </Tabs>
+      <View align="center" direction="row" justify="space-between">
+        <View align="center" direction="row" gap="sm">
+          <View
+            bg={value.wheel.color}
+            borderColor="border"
+            borderWidth={1}
+            height={32}
+            radius="sm"
+            width={32}
+          />
+          <Button variant="ghost">Color</Button>
+        </View>
+        {onDismiss ? (
+          <Button onPress={onDismiss} variant="ghost">
+            Close
+          </Button>
+        ) : null}
+      </View>
+      <Tabs
+        defaultValue={value.tab}
+        onValueChange={(nextValue) => {
+          if (isColorPickerTab(nextValue) && tabs.includes(nextValue))
+            onValueChange({ ...value, tab: nextValue });
+        }}
+        testID={testID ? `${testID}-tabs` : undefined}
+        value={value.tab}
+      >
+        {tabs.length > 1 || !hideTabListWhenSingle ? (
+          <TabList fill>
+            {tabs.map((tab) => (
+              <Tab key={tab} label={tab} value={tab} />
+            ))}
+          </TabList>
+        ) : null}
+        {tabs.map((tab) => (
+          <TabPanel key={tab} value={tab}>
+            {resolveTabContent(tab, value, wheel, tone, hue, onValueChange, onSelectionChange)}
+          </TabPanel>
+        ))}
+      </Tabs>
+    </View>
   );
 }
 

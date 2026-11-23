@@ -68,6 +68,8 @@ export interface ColorPickerProps extends ZoraBaseProps {
   readonly value: ColorPickerValue;
   readonly onValueChange: (value: ColorPickerValue) => void;
   readonly onSelectionChange?: (selection: ColorPickerSelection) => void;
+  /** Requests dismissal from the owning Popover or BottomSheet presentation. */
+  readonly onDismiss?: () => void;
   readonly hideTabListWhenSingle?: boolean;
   readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value'>;
   readonly tone?: Omit<ColorToneProps, 'onChange' | 'value'>;

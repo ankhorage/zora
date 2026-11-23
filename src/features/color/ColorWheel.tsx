@@ -82,6 +82,10 @@ function ColorWheelInner({
             const { locationX, locationY } = event.nativeEvent;
             changeColorAt(locationX, locationY);
           }}
+          onResponderRelease={(event) => {
+            const { locationX, locationY } = event.nativeEvent;
+            changeColorAt(locationX, locationY);
+          }}
           onStartShouldSetResponder={() => interactionPolicy !== 'passive'}
           width={WHEEL_SIZE}
         >

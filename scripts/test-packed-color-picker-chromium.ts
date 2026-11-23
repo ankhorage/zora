@@ -51,11 +51,12 @@ async function testPackedColorPickerChromiumAsync() {
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     await browser.waitAsync(`window.colorAcceptance?.read().hydrated === true`);
+    await browser.clickAsync('svg', 0.2, 0.5);
     await browser.dragAsync('svg', 0.2, 0.5, 0.5, 0.2);
     await browser.keyAsync('[role="slider"]', 'ArrowRight');
     await browser.clickAsync('button', 0.5, 0.5, 'triadic');
     await browser.waitAsync(
-      `(() => { const state = window.colorAcceptance.read(); return state.wheelChanges >= 2 && document.querySelector('polygon') !== null; })()`,
+      `(() => { const state = window.colorAcceptance.read(); return state.wheelChanges >= 3 && document.querySelector('polygon') !== null; })()`,
     );
     await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'tone');
     await browser.clickAsync('[aria-label="Jewel"]');
@@ -71,7 +72,10 @@ async function testPackedColorPickerChromiumAsync() {
     await browser.clickAsync('[aria-label^="Use generated 950 preview"]');
     await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'wheel');
     const state = await browser.evaluateAsync(`window.colorAcceptance.read()`);
-    assert(state.wheelChanges >= 2, 'Wheel pointer and keyboard updates were not controlled.');
+    assert(
+      state.wheelChanges >= 3,
+      'Wheel click, pointer, and keyboard updates were not controlled.',
+    );
     assert.equal(
       await browser.evaluateAsync(`document.querySelector('polygon') !== null`),
       true,
