@@ -20,6 +20,17 @@ test('Select registers the optional leading icon as instance-owned media metadat
   });
 });
 
+test('Select registers optional trigger label emphasis as serializable metadata', () => {
+  expect(selectMeta.props.labelWeight).toEqual({
+    type: 'string',
+    category: 'Style',
+    label: 'Label weight',
+    enum: ['semiBold', 'bold'],
+    default: 'semiBold',
+    authoring: { authority: 'instance' },
+  });
+});
+
 test('Select is exported through its public component entrypoint', async () => {
   const publicEntry = await Bun.file('src/features/form/select/public.ts').text();
 
@@ -43,15 +54,20 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
 });
 
-test('Select exposes serializable Surface icon props and forwards bold trigger labels through Button', async () => {
+test('Select trigger preserves semiBold by default and forwards bold SVG icon combinations', async () => {
   const [selectTypes, selectTrigger] = await Promise.all([
     Bun.file('src/types/select.ts').text(),
     Bun.file('src/features/form/select/composition/SelectTrigger.tsx').text(),
   ]);
 
-  expect(selectTypes).toContain("import type { ButtonIconSpec } from '@ankhorage/surface';");
+  expect(selectTypes).toContain(
+    "import type { ButtonIconSpec, ButtonLabelWeight } from '@ankhorage/surface';",
+  );
   expect(selectTypes).toContain('leadingIcon?: ButtonIconSpec;');
+  expect(selectTypes).toContain('labelWeight?: ButtonLabelWeight;');
+  expect(selectTrigger).toContain("labelWeight={props.labelWeight ?? 'semiBold'}");
   expect(selectTrigger).toContain('leadingIcon={props.leadingIcon}');
-  expect(selectTrigger).toContain('labelWeight="bold"');
+  expect(selectMeta.props.labelWeight.enum).toEqual(['semiBold', 'bold']);
+  expect(selectMeta.props.leadingIcon.mediaKinds).toEqual(['image']);
   expect(selectTrigger).not.toContain('<Text');
 });

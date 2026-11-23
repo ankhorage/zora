@@ -129,6 +129,14 @@ export const selectMeta = {
       mediaKinds: ['image'],
       authoring: { authority: 'instance' },
     },
+    labelWeight: {
+      type: 'string',
+      category: 'Style',
+      label: 'Label weight',
+      enum: ['semiBold', 'bold'],
+      default: 'semiBold',
+      authoring: { authority: 'instance' },
+    },
     required: {
       type: 'boolean',
       category: 'State',
