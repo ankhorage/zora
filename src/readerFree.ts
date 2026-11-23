@@ -166,11 +166,15 @@ export type {
 export { ContentRail } from './features/content-rail/public';
 export type {
   DataTableCellContext,
+  DataTableCellSpec,
   DataTableColumn,
   DataTableColumnAlign,
   DataTableDensity,
   DataTableProps,
   DataTableRowAction,
+  DataTableRowActivateEvent,
+  DataTableRowField,
+  DataTableSelectionChangeEvent,
   DataTableSortDirection,
   DataTableSortState,
 } from './features/data-table/public';
