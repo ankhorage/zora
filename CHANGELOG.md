@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.10.4
+
+### Patch Changes
+
+- a53fde0: Update dependencies: `@ankhorage/surface`.
+
 ## 27.10.3
 
 ### Patch Changes
