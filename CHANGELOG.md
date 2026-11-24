@@ -1,5 +1,12 @@
 # Changelog
 
+## 27.10.5
+
+### Patch Changes
+
+- b8aaf87: Improve the controlled ColorPicker header and wheel press selection while consuming the viewport-safe Surface Popover release.
+- e0eb68b: Preserve retained GraphView positions when rich-node measurements arrive after a controlled topology update.
+
 ## 27.10.4
 
 ### Patch Changes

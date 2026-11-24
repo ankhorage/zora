@@ -1211,7 +1211,7 @@ Export paths: `src/index.ts`
 
 ## ColorHueScale
 
-Source: `src/features/color/ColorHueScale.tsx:10:14`
+Source: `src/features/color/ColorHueScale.tsx:15:14`
 
 Edits the 500 base color and previews its canonical 50-to-950 swatch.
 
@@ -1229,7 +1229,7 @@ Export paths: `src/index.ts`
 
 ## ColorPicker
 
-Source: `src/features/color/ColorPicker.tsx:11:14`
+Source: `src/features/color/ColorPicker.tsx:15:14`
 
 Composes independently usable color controls into an ordered, consumer-configured picker.
 
@@ -1242,6 +1242,7 @@ Export paths: `src/index.ts`
 | interactionPolicy | `InteractionPolicy \| undefined` | no | — |  |
 | inverted | `boolean \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
+| onDismiss | `(() => void) \| undefined` | no | — |  |
 | onSelectionChange | `((selection: ColorPickerSelection) => void) \| undefined` | no | — |  |
 | onValueChange | `(value: ColorPickerValue) => void` | yes | — |  |
 | tabs | `readonly ColorPickerTab[]` | yes | — |  |
@@ -1253,7 +1254,7 @@ Export paths: `src/index.ts`
 
 ## ColorTone
 
-Source: `src/features/color/ColorTone.tsx:14:14`
+Source: `src/features/color/ColorTone.tsx:24:14`
 
 Selects consumer-provided OKLCH tone targets while keeping hue adjustable.
 
@@ -1273,7 +1274,7 @@ Export paths: `src/index.ts`
 
 ## ColorWheel
 
-Source: `src/features/color/ColorWheel.tsx:22:14`
+Source: `src/features/color/ColorWheel.tsx:38:14`
 
 Selects an OKLCH hue and optionally visualizes the existing color-theory harmony.
 

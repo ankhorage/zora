@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.10.4",
+      "value": "v27.10.5",
       "color": "cb3837"
     },
     {
@@ -1653,11 +1653,57 @@
       ]
     },
     {
+      "path": "src/features/color/ColorHexField.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/icon/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/theme/composition/useZoraTheme.ts"
+      ],
+      "exports": [
+        "ColorHexField"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorHorizontalPointerProxy.native.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/color/ColorHorizontalPointerProxy.tsx"
+      ],
+      "exports": [
+        "ColorHorizontalPointerProxy"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorHorizontalPointerProxy.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ColorHorizontalPointerProxy",
+        "ColorHorizontalPointerProxyProps"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorHorizontalPointerProxy.web.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/color/ColorHorizontalPointerProxy.tsx"
+      ],
+      "exports": [
+        "ColorHorizontalPointerProxy"
+      ]
+    },
+    {
       "path": "src/features/color/ColorHueScale.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/color/ColorHexField.tsx",
+        "src/features/color/ColorSpectrumSlider.tsx",
+        "src/features/color/utils/resolveColorAtHue.ts",
+        "src/features/color/utils/resolveColorHue.ts",
         "src/features/layout/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts",
         "src/features/typography/public.ts",
         "src/types/color.ts"
       ],
@@ -1669,11 +1715,15 @@
       "path": "src/features/color/ColorPicker.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/button/public.ts",
         "src/features/color/ColorHueScale.tsx",
         "src/features/color/ColorTone.tsx",
         "src/features/color/ColorWheel.tsx",
+        "src/features/layout/public.ts",
         "src/features/tabs/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts",
         "src/types/color.ts"
       ],
       "exports": [
@@ -1681,14 +1731,33 @@
       ]
     },
     {
+      "path": "src/features/color/ColorSpectrumSlider.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "src/features/color/utils/resolveOklchColor.ts",
+        "src/features/layout/public.ts",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts"
+      ],
+      "exports": [
+        "ColorSpectrumSlider"
+      ]
+    },
+    {
       "path": "src/features/color/ColorTone.tsx",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/color/ColorWheel.tsx",
+        "src/features/color/ColorHexField.tsx",
+        "src/features/color/ColorSpectrumSlider.tsx",
+        "src/features/color/ColorWheelPointerProxy.tsx",
         "src/features/color/utils/resolveColorHue.ts",
         "src/features/color/utils/resolveOklchColor.ts",
+        "src/features/color/utils/resolveWheelColorComponents.ts",
         "src/features/layout/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts",
         "src/types/color.ts"
       ],
       "exports": [
@@ -1699,13 +1768,18 @@
       "path": "src/features/color/ColorWheel.tsx",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/color/ColorHexField.tsx",
+        "src/features/color/ColorHorizontalPointerProxy.tsx",
         "src/features/color/ColorWheelKeyboardProxy.tsx",
+        "src/features/color/ColorWheelPointerProxy.tsx",
         "src/features/color/utils/resolveColorHue.ts",
         "src/features/color/utils/resolveOklchColor.ts",
         "src/features/color/utils/resolveWheelColor.ts",
         "src/features/color/utils/resolveWheelColorComponents.ts",
         "src/features/layout/public.ts",
         "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts",
         "src/types/color.ts"
       ],
       "exports": [
@@ -1739,6 +1813,35 @@
       ],
       "exports": [
         "ColorWheelKeyboardProxy"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorWheelPointerProxy.native.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/color/ColorWheelPointerProxy.tsx"
+      ],
+      "exports": [
+        "ColorWheelPointerProxy"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorWheelPointerProxy.tsx",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ColorWheelPointerProxy",
+        "ColorWheelPointerProxyProps"
+      ]
+    },
+    {
+      "path": "src/features/color/ColorWheelPointerProxy.web.tsx",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/color/ColorWheelPointerProxy.tsx"
+      ],
+      "exports": [
+        "ColorWheelPointerProxy"
       ]
     },
     {
@@ -16925,7 +17028,7 @@
       "modulePath": "src/features/color/ColorHueScale.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorHueScale.tsx",
-        "line": 10,
+        "line": 15,
         "column": 14
       },
       "exportPaths": [
@@ -17021,7 +17124,7 @@
       "modulePath": "src/features/color/ColorPicker.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorPicker.tsx",
-        "line": 11,
+        "line": 15,
         "column": 14
       },
       "exportPaths": [
@@ -17092,6 +17195,13 @@
           "name": "mode",
           "kind": "property",
           "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDismiss",
+          "kind": "property",
+          "type": "(() => void) | undefined",
           "required": false,
           "description": null
         },
@@ -17264,7 +17374,7 @@
       "modulePath": "src/features/color/ColorTone.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorTone.tsx",
-        "line": 14,
+        "line": 24,
         "column": 14
       },
       "exportPaths": [
@@ -17496,7 +17606,7 @@
       "modulePath": "src/features/color/ColorWheel.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 22,
+        "line": 38,
         "column": 14
       },
       "exportPaths": [
@@ -52204,7 +52314,7 @@
       "modulePath": "src/features/color/ColorHueScale.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorHueScale.tsx",
-        "line": 10,
+        "line": 15,
         "column": 14
       },
       "exportPaths": [
@@ -52264,7 +52374,7 @@
       "modulePath": "src/features/color/ColorPicker.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorPicker.tsx",
-        "line": 11,
+        "line": 15,
         "column": 14
       },
       "exportPaths": [
@@ -52298,6 +52408,12 @@
         {
           "name": "mode",
           "type": "ZoraThemeMode | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "onDismiss",
+          "type": "(() => void) | undefined",
           "required": false,
           "description": null
         },
@@ -52360,7 +52476,7 @@
       "modulePath": "src/features/color/ColorTone.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorTone.tsx",
-        "line": 14,
+        "line": 24,
         "column": 14
       },
       "exportPaths": [
@@ -52432,7 +52548,7 @@
       "modulePath": "src/features/color/ColorWheel.tsx",
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 22,
+        "line": 38,
         "column": 14
       },
       "exportPaths": [
@@ -69434,13 +69550,57 @@
       }
     },
     {
+      "name": "ColorHexField",
+      "description": "Edits one controlled HEX color with the Studio-style swatch and copy affordance.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorHexField.tsx",
+        "line": 10,
+        "column": 1
+      }
+    },
+    {
+      "name": "ColorHorizontalPointerProxy",
+      "description": "Leaves native SVG responders in charge of horizontal slider gestures.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorHorizontalPointerProxy.native.tsx",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "ColorHorizontalPointerProxy",
+      "description": "Maps browser drag coordinates into an SVG slider's stable viewbox width.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "changeAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx",
+        "line": 13,
+        "column": 9
+      }
+    },
+    {
       "name": "ColorHueScaleInner",
       "description": "Maps generated previews to an explicitly editable 500 base without misreporting preview selection.",
       "see": [],
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorHueScale.tsx",
-        "line": 13,
+        "line": 18,
         "column": 1
       }
     },
@@ -69451,7 +69611,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorPicker.tsx",
-        "line": 14,
+        "line": 18,
         "column": 1
       }
     },
@@ -69462,7 +69622,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorPicker.tsx",
-        "line": 58,
+        "line": 105,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolvePickerPreviewColor",
+      "description": "Resolves the visible active-tab color without introducing a second picker state.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorPicker.tsx",
+        "line": 110,
         "column": 1
       }
     },
@@ -69473,8 +69644,30 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorPicker.tsx",
-        "line": 63,
+        "line": 117,
         "column": 1
+      }
+    },
+    {
+      "name": "ColorSpectrumSlider",
+      "description": "Selects a controlled hue across the same full-spectrum track used by Studio tabs.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorSpectrumSlider.tsx",
+        "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "changeAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorSpectrumSlider.tsx",
+        "line": 28,
+        "column": 9
       }
     },
     {
@@ -69484,7 +69677,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorTone.tsx",
-        "line": 17,
+        "line": 27,
         "column": 1
       }
     },
@@ -69495,7 +69688,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorTone.tsx",
-        "line": 37,
+        "line": 48,
+        "column": 9
+      }
+    },
+    {
+      "name": "ColorToneMap",
+      "description": "Renders the Studio-style saturation and lightness plane for the active catalog color.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorTone.tsx",
+        "line": 185,
+        "column": 1
+      }
+    },
+    {
+      "name": "changeAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorTone.tsx",
+        "line": 197,
         "column": 9
       }
     },
@@ -69506,7 +69721,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 25,
+        "line": 41,
         "column": 1
       }
     },
@@ -69517,7 +69732,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 42,
+        "line": 64,
         "column": 9
       }
     },
@@ -69528,7 +69743,29 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 49,
+        "line": 71,
+        "column": 9
+      }
+    },
+    {
+      "name": "ColorLightnessSlider",
+      "description": "Renders a continuous OKLCH lightness track without adding a second color persistence model.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorWheel.tsx",
+        "line": 211,
+        "column": 1
+      }
+    },
+    {
+      "name": "changeAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorWheel.tsx",
+        "line": 226,
         "column": 9
       }
     },
@@ -69539,7 +69776,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 167,
+        "line": 268,
         "column": 1
       }
     },
@@ -69550,7 +69787,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 183,
+        "line": 284,
         "column": 1
       }
     },
@@ -69561,7 +69798,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 190,
+        "line": 291,
         "column": 1
       }
     },
@@ -69572,7 +69809,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 202,
+        "line": 303,
         "column": 1
       }
     },
@@ -69583,18 +69820,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 227,
-        "column": 1
-      }
-    },
-    {
-      "name": "ColorHexInput",
-      "description": "Retains in-progress hexadecimal input while resetting for an externally controlled color.",
-      "see": [],
-      "security": [],
-      "sourceLocation": {
-        "filePath": "src/features/color/ColorWheel.tsx",
-        "line": 233,
+        "line": 329,
         "column": 1
       }
     },
@@ -69640,6 +69866,39 @@
         "filePath": "src/features/color/ColorWheelKeyboardProxy.web.tsx",
         "line": 45,
         "column": 1
+      }
+    },
+    {
+      "name": "ColorWheelPointerProxy",
+      "description": "Leaves native SVG responders in charge of direct color-wheel gestures.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorWheelPointerProxy.native.tsx",
+        "line": 4,
+        "column": 1
+      }
+    },
+    {
+      "name": "ColorWheelPointerProxy",
+      "description": "Maps browser pointer coordinates into the fixed SVG wheel viewport for click and drag selection.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorWheelPointerProxy.web.tsx",
+        "line": 6,
+        "column": 1
+      }
+    },
+    {
+      "name": "changeAt",
+      "description": null,
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/color/ColorWheelPointerProxy.web.tsx",
+        "line": 14,
+        "column": 9
       }
     },
     {
@@ -71893,7 +72152,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 76,
+        "line": 77,
         "column": 1
       }
     },
@@ -71904,7 +72163,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 104,
+        "line": 105,
         "column": 1
       }
     },
@@ -71915,7 +72174,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 176,
+        "line": 178,
         "column": 1
       }
     },
@@ -71926,7 +72185,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 242,
+        "line": 244,
         "column": 1
       }
     },
@@ -71937,7 +72196,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 259,
+        "line": 261,
         "column": 1
       }
     },
@@ -71948,7 +72207,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 277,
+        "line": 282,
         "column": 1
       }
     },
@@ -71959,7 +72218,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 295,
+        "line": 300,
         "column": 1
       }
     },
@@ -71970,7 +72229,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 304,
+        "line": 309,
         "column": 1
       }
     },
@@ -71981,7 +72240,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 318,
+        "line": 323,
         "column": 1
       }
     },
@@ -71992,7 +72251,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 339,
+        "line": 344,
         "column": 1
       }
     },
@@ -72003,7 +72262,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 380,
+        "line": 386,
         "column": 1
       }
     },
@@ -72014,7 +72273,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 406,
+        "line": 412,
         "column": 1
       }
     },
@@ -72025,7 +72284,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 414,
+        "line": 420,
         "column": 1
       }
     },
@@ -72036,7 +72295,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 438,
+        "line": 444,
         "column": 1
       }
     },
@@ -72047,7 +72306,18 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 452,
+        "line": 458,
+        "column": 1
+      }
+    },
+    {
+      "name": "preservesSettledTopology",
+      "description": "Retain a user-owned stable topology until the next layout generation settles.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
+        "line": 468,
         "column": 1
       }
     },
@@ -72058,7 +72328,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 462,
+        "line": 478,
         "column": 1
       }
     },
@@ -72069,7 +72339,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 467,
+        "line": 483,
         "column": 1
       }
     },
@@ -72080,7 +72350,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 477,
+        "line": 493,
         "column": 1
       }
     },
@@ -72091,7 +72361,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 490,
+        "line": 506,
         "column": 1
       }
     },
@@ -72102,7 +72372,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 502,
+        "line": 518,
         "column": 1
       }
     },
@@ -72113,7 +72383,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 511,
+        "line": 527,
         "column": 1
       }
     },
@@ -72124,7 +72394,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 525,
+        "line": 541,
         "column": 1
       }
     },
@@ -72135,7 +72405,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts",
-        "line": 530,
+        "line": 546,
         "column": 1
       }
     },
@@ -78711,6 +78981,36 @@
         "sourcePath": "src/features/collection-editor/public.ts"
       },
       {
+        "fromPath": "src/features/color/ColorHexField.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHexField.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHexField.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHorizontalPointerProxy.native.tsx",
+        "toPath": "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.native.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "toPath": "src/features/color/ColorHorizontalPointerProxy.native.tsx",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHorizontalPointerProxy.web.tsx",
+        "toPath": "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx"
+      },
+      {
         "fromPath": "src/features/color/ColorHueScale.tsx",
         "toPath": "src/types/color.ts",
         "sourcePath": "src/features/color/ColorHueScale.tsx"
@@ -78727,12 +79027,47 @@
       },
       {
         "fromPath": "src/features/color/ColorHueScale.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHueScale.tsx",
         "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHueScale.tsx",
+        "toPath": "src/features/color/ColorHexField.tsx",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHueScale.tsx",
+        "toPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHueScale.tsx",
+        "toPath": "src/features/color/utils/resolveColorAtHue.ts",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorHueScale.tsx",
+        "toPath": "src/features/color/utils/resolveColorHue.ts",
         "sourcePath": "src/features/color/ColorHueScale.tsx"
       },
       {
         "fromPath": "src/features/color/ColorPicker.tsx",
         "toPath": "src/types/color.ts",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorPicker.tsx",
+        "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorPicker.tsx",
+        "toPath": "src/features/layout/public.ts",
         "sourcePath": "src/features/color/ColorPicker.tsx"
       },
       {
@@ -78743,6 +79078,16 @@
       {
         "fromPath": "src/features/color/ColorPicker.tsx",
         "toPath": "src/features/theme/adapters/inbound/withZoraThemeScope.tsx",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorPicker.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorPicker.tsx",
+        "toPath": "src/features/typography/public.ts",
         "sourcePath": "src/features/color/ColorPicker.tsx"
       },
       {
@@ -78761,6 +79106,31 @@
         "sourcePath": "src/features/color/ColorPicker.tsx"
       },
       {
+        "fromPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "toPath": "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "toPath": "src/features/color/utils/resolveOklchColor.ts",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
         "fromPath": "src/features/color/ColorTone.tsx",
         "toPath": "src/types/color.ts",
         "sourcePath": "src/features/color/ColorTone.tsx"
@@ -78777,7 +79147,27 @@
       },
       {
         "fromPath": "src/features/color/ColorTone.tsx",
-        "toPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorTone.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorTone.tsx",
+        "toPath": "src/features/color/ColorHexField.tsx",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorTone.tsx",
+        "toPath": "src/features/color/ColorSpectrumSlider.tsx",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorTone.tsx",
+        "toPath": "src/features/color/ColorWheelPointerProxy.tsx",
         "sourcePath": "src/features/color/ColorTone.tsx"
       },
       {
@@ -78791,6 +79181,11 @@
         "sourcePath": "src/features/color/ColorTone.tsx"
       },
       {
+        "fromPath": "src/features/color/ColorTone.tsx",
+        "toPath": "src/features/color/utils/resolveWheelColorComponents.ts",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
         "fromPath": "src/features/color/ColorWheel.tsx",
         "toPath": "src/types/color.ts",
         "sourcePath": "src/features/color/ColorWheel.tsx"
@@ -78807,7 +79202,32 @@
       },
       {
         "fromPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/color/ColorHexField.tsx",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/color/ColorHorizontalPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheel.tsx",
         "toPath": "src/features/color/ColorWheelKeyboardProxy.tsx",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheel.tsx",
+        "toPath": "src/features/color/ColorWheelPointerProxy.tsx",
         "sourcePath": "src/features/color/ColorWheel.tsx"
       },
       {
@@ -78844,6 +79264,21 @@
         "fromPath": "src/features/color/ColorWheelKeyboardProxy.web.tsx",
         "toPath": "src/features/color/ColorWheelKeyboardProxy.tsx",
         "sourcePath": "src/features/color/ColorWheelKeyboardProxy.web.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheelPointerProxy.native.tsx",
+        "toPath": "src/features/color/ColorWheelPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.native.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheelPointerProxy.tsx",
+        "toPath": "src/features/color/ColorWheelPointerProxy.native.tsx",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.tsx"
+      },
+      {
+        "fromPath": "src/features/color/ColorWheelPointerProxy.web.tsx",
+        "toPath": "src/features/color/ColorWheelPointerProxy.tsx",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.web.tsx"
       },
       {
         "fromPath": "src/features/color/public.ts",
@@ -86236,9 +86671,57 @@
         "sourcePath": "src/features/carousel/useCarouselPlayback.ts"
       },
       {
+        "fromSymbol": "ColorHexField",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorHexField.tsx",
+        "toSymbol": "setInput",
+        "callExpression": "setInput",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorHexField.tsx",
+        "toSymbol": "isHexColor",
+        "callExpression": "isHexColor",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorHexField.tsx",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorHexField.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "getBoundingClientRect",
+        "callExpression": "target.getBoundingClientRect",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorHorizontalPointerProxy.web.tsx",
+        "toSymbol": "changeAt",
+        "callExpression": "changeAt",
+        "sourcePath": "src/features/color/ColorHorizontalPointerProxy.web.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorHueScale.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
+        "fromSymbol": "ColorHueScaleInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
         "sourcePath": "src/features/color/ColorHueScale.tsx"
       },
       {
@@ -86248,15 +86731,39 @@
         "sourcePath": "src/features/color/ColorHueScale.tsx"
       },
       {
+        "fromSymbol": "ColorHueScaleInner",
+        "toSymbol": "resolveColorHue",
+        "callExpression": "resolveColorHue",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorHueScale.tsx",
         "toSymbol": "onChange",
         "callExpression": "onChange",
         "sourcePath": "src/features/color/ColorHueScale.tsx"
       },
       {
+        "fromSymbol": "src/features/color/ColorHueScale.tsx",
+        "toSymbol": "resolveColorAtHue",
+        "callExpression": "resolveColorAtHue",
+        "sourcePath": "src/features/color/ColorHueScale.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorPicker.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromSymbol": "ColorPickerInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/color/ColorPicker.tsx"
+      },
+      {
+        "fromSymbol": "ColorPickerInner",
+        "toSymbol": "resolvePickerPreviewColor",
+        "callExpression": "resolvePickerPreviewColor",
         "sourcePath": "src/features/color/ColorPicker.tsx"
       },
       {
@@ -86284,9 +86791,45 @@
         "sourcePath": "src/features/color/ColorPicker.tsx"
       },
       {
+        "fromSymbol": "ColorSpectrumSlider",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorSpectrumSlider.tsx",
+        "toSymbol": "setTrackWidth",
+        "callExpression": "setTrackWidth",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorSpectrumSlider.tsx",
+        "toSymbol": "resolveOklchColor",
+        "callExpression": "resolveOklchColor",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorSpectrumSlider.tsx",
+        "toSymbol": "changeAt",
+        "callExpression": "changeAt",
+        "sourcePath": "src/features/color/ColorSpectrumSlider.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorTone.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "ColorToneInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
         "sourcePath": "src/features/color/ColorTone.tsx"
       },
       {
@@ -86327,12 +86870,6 @@
       },
       {
         "fromSymbol": "src/features/color/ColorTone.tsx",
-        "toSymbol": "setEditingColorIndex",
-        "callExpression": "setEditingColorIndex",
-        "sourcePath": "src/features/color/ColorTone.tsx"
-      },
-      {
-        "fromSymbol": "src/features/color/ColorTone.tsx",
         "toSymbol": "onChange",
         "callExpression": "onChange",
         "sourcePath": "src/features/color/ColorTone.tsx"
@@ -86344,9 +86881,57 @@
         "sourcePath": "src/features/color/ColorTone.tsx"
       },
       {
+        "fromSymbol": "src/features/color/ColorTone.tsx",
+        "toSymbol": "setEditingColorIndex",
+        "callExpression": "setEditingColorIndex",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "ColorToneInner",
+        "toSymbol": "resolveColorHue",
+        "callExpression": "resolveColorHue",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "ColorToneMap",
+        "toSymbol": "resolveColorHue",
+        "callExpression": "resolveColorHue",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "ColorToneMap",
+        "toSymbol": "resolveWheelColorComponents",
+        "callExpression": "resolveWheelColorComponents",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "ColorToneMap",
+        "toSymbol": "resolveOklchColor",
+        "callExpression": "resolveOklchColor",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorTone.tsx",
+        "toSymbol": "changeAt",
+        "callExpression": "changeAt",
+        "sourcePath": "src/features/color/ColorTone.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorWheel.tsx",
         "toSymbol": "withZoraThemeScope",
         "callExpression": "withZoraThemeScope",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromSymbol": "ColorWheelInner",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
         "sourcePath": "src/features/color/ColorWheel.tsx"
       },
       {
@@ -86440,9 +87025,21 @@
         "sourcePath": "src/features/color/ColorWheel.tsx"
       },
       {
+        "fromSymbol": "changeAt",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
+        "fromSymbol": "ColorLightnessSlider",
+        "toSymbol": "resolveOklchColor",
+        "callExpression": "resolveOklchColor",
+        "sourcePath": "src/features/color/ColorWheel.tsx"
+      },
+      {
         "fromSymbol": "src/features/color/ColorWheel.tsx",
-        "toSymbol": "changeLightness",
-        "callExpression": "changeLightness",
+        "toSymbol": "changeAt",
+        "callExpression": "changeAt",
         "sourcePath": "src/features/color/ColorWheel.tsx"
       },
       {
@@ -86461,18 +87058,6 @@
         "fromSymbol": "resolveWheelLightness",
         "toSymbol": "resolveWheelColorComponents",
         "callExpression": "resolveWheelColorComponents",
-        "sourcePath": "src/features/color/ColorWheel.tsx"
-      },
-      {
-        "fromSymbol": "src/features/color/ColorWheel.tsx",
-        "toSymbol": "setInput",
-        "callExpression": "setInput",
-        "sourcePath": "src/features/color/ColorWheel.tsx"
-      },
-      {
-        "fromSymbol": "src/features/color/ColorWheel.tsx",
-        "toSymbol": "isHexColor",
-        "callExpression": "isHexColor",
         "sourcePath": "src/features/color/ColorWheel.tsx"
       },
       {
@@ -86498,6 +87083,24 @@
         "toSymbol": "normalizeHue",
         "callExpression": "normalizeHue",
         "sourcePath": "src/features/color/ColorWheelKeyboardProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "getBoundingClientRect",
+        "callExpression": "target.getBoundingClientRect",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "changeAt",
+        "toSymbol": "onChange",
+        "callExpression": "onChange",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.web.tsx"
+      },
+      {
+        "fromSymbol": "src/features/color/ColorWheelPointerProxy.web.tsx",
+        "toSymbol": "changeAt",
+        "callExpression": "changeAt",
+        "sourcePath": "src/features/color/ColorWheelPointerProxy.web.tsx"
       },
       {
         "fromSymbol": "src/features/form/useFormController.ts",
@@ -93739,6 +94342,12 @@
         "fromSymbol": "setNodeSize",
         "toSymbol": "applyNodeSize",
         "callExpression": "applyNodeSize",
+        "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
+      },
+      {
+        "fromSymbol": "setNodeSize",
+        "toSymbol": "preservesSettledTopology",
+        "callExpression": "preservesSettledTopology",
         "sourcePath": "src/features/graph-view/adapters/inbound/web-artifact/createGraphRuntime.ts"
       },
       {

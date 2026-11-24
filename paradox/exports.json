@@ -7537,7 +7537,7 @@
     "modulePath": "src/features/color/ColorHueScale.tsx",
     "sourceLocation": {
       "filePath": "src/features/color/ColorHueScale.tsx",
-      "line": 10,
+      "line": 15,
       "column": 14
     },
     "exportPaths": [
@@ -7633,7 +7633,7 @@
     "modulePath": "src/features/color/ColorPicker.tsx",
     "sourceLocation": {
       "filePath": "src/features/color/ColorPicker.tsx",
-      "line": 11,
+      "line": 15,
       "column": 14
     },
     "exportPaths": [
@@ -7704,6 +7704,13 @@
         "name": "mode",
         "kind": "property",
         "type": "ZoraThemeMode | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "onDismiss",
+        "kind": "property",
+        "type": "(() => void) | undefined",
         "required": false,
         "description": null
       },
@@ -7876,7 +7883,7 @@
     "modulePath": "src/features/color/ColorTone.tsx",
     "sourceLocation": {
       "filePath": "src/features/color/ColorTone.tsx",
-      "line": 14,
+      "line": 24,
       "column": 14
     },
     "exportPaths": [
@@ -8108,7 +8115,7 @@
     "modulePath": "src/features/color/ColorWheel.tsx",
     "sourceLocation": {
       "filePath": "src/features/color/ColorWheel.tsx",
-      "line": 22,
+      "line": 38,
       "column": 14
     },
     "exportPaths": [

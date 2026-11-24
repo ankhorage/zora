@@ -108,13 +108,21 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx["src/features/collection-editor/adapters/inbound/CollectionEditor.tsx"]
   module_src_features_collection_editor_meta_ts["src/features/collection-editor/meta.ts"]
   module_src_features_collection_editor_public_ts["src/features/collection-editor/public.ts"]
+  module_src_features_color_ColorHexField_tsx["src/features/color/ColorHexField.tsx"]
+  module_src_features_color_ColorHorizontalPointerProxy_native_tsx["src/features/color/ColorHorizontalPointerProxy.native.tsx"]
+  module_src_features_color_ColorHorizontalPointerProxy_tsx["src/features/color/ColorHorizontalPointerProxy.tsx"]
+  module_src_features_color_ColorHorizontalPointerProxy_web_tsx["src/features/color/ColorHorizontalPointerProxy.web.tsx"]
   module_src_features_color_ColorHueScale_tsx["src/features/color/ColorHueScale.tsx"]
   module_src_features_color_ColorPicker_tsx["src/features/color/ColorPicker.tsx"]
+  module_src_features_color_ColorSpectrumSlider_tsx["src/features/color/ColorSpectrumSlider.tsx"]
   module_src_features_color_ColorTone_tsx["src/features/color/ColorTone.tsx"]
   module_src_features_color_ColorWheel_tsx["src/features/color/ColorWheel.tsx"]
   module_src_features_color_ColorWheelKeyboardProxy_native_tsx["src/features/color/ColorWheelKeyboardProxy.native.tsx"]
   module_src_features_color_ColorWheelKeyboardProxy_tsx["src/features/color/ColorWheelKeyboardProxy.tsx"]
   module_src_features_color_ColorWheelKeyboardProxy_web_tsx["src/features/color/ColorWheelKeyboardProxy.web.tsx"]
+  module_src_features_color_ColorWheelPointerProxy_native_tsx["src/features/color/ColorWheelPointerProxy.native.tsx"]
+  module_src_features_color_ColorWheelPointerProxy_tsx["src/features/color/ColorWheelPointerProxy.tsx"]
+  module_src_features_color_ColorWheelPointerProxy_web_tsx["src/features/color/ColorWheelPointerProxy.web.tsx"]
   module_src_features_color_public_ts["src/features/color/public.ts"]
   module_src_features_color_utils_resolveColorAtHue_ts["src/features/color/utils/resolveColorAtHue.ts"]
   module_src_features_color_utils_resolveColorHue_ts["src/features/color/utils/resolveColorHue.ts"]
@@ -918,32 +926,63 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_features_typography_public_ts
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_types_collection_editor_ts
   module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
+  module_src_features_color_ColorHexField_tsx --> module_src_features_icon_public_ts
+  module_src_features_color_ColorHexField_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorHexField_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_color_ColorHorizontalPointerProxy_native_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
+  module_src_features_color_ColorHorizontalPointerProxy_web_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_color_ColorHexField_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_color_ColorSpectrumSlider_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_color_utils_resolveColorAtHue_ts
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_color_utils_resolveColorHue_ts
   module_src_features_color_ColorHueScale_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorHueScale_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorHueScale_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_color_ColorHueScale_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorHueScale_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_button_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHueScale_tsx
   module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorTone_tsx
   module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_tabs_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_types_color_ts
-  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorSpectrumSlider_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
+  module_src_features_color_ColorSpectrumSlider_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorSpectrumSlider_tsx --> module_src_features_layout_public_ts
+  module_src_features_color_ColorSpectrumSlider_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_color_ColorSpectrumSlider_tsx --> module_src_features_typography_public_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorHexField_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorSpectrumSlider_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_ColorWheelPointerProxy_tsx
   module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveColorHue_ts
   module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
   module_src_features_color_ColorTone_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorTone_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorTone_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_color_ColorTone_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorTone_tsx --> module_src_types_color_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorHexField_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelPointerProxy_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveColorHue_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveOklchColor_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColor_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
+  module_src_features_color_ColorWheel_tsx --> module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_color_ColorWheel_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorWheel_tsx --> module_src_types_color_ts
   module_src_features_color_ColorWheelKeyboardProxy_native_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
   module_src_features_color_ColorWheelKeyboardProxy_web_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
+  module_src_features_color_ColorWheelPointerProxy_native_tsx --> module_src_features_color_ColorWheelPointerProxy_tsx
+  module_src_features_color_ColorWheelPointerProxy_web_tsx --> module_src_features_color_ColorWheelPointerProxy_tsx
   module_src_features_color_utils_resolveOklchColor_ts --> module_src_types_color_ts
   module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveOklchColor_ts
   module_src_features_color_utils_resolveWheelColor_ts --> module_src_features_color_utils_resolveWheelColorComponents_ts

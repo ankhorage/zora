@@ -1809,7 +1809,7 @@ Source: `src/types/collection-editor.ts:5:1`
 
 Kind: `value`
 Module: `src/features/color/ColorHueScale.tsx`
-Source: `src/features/color/ColorHueScale.tsx:10:14`
+Source: `src/features/color/ColorHueScale.tsx:15:14`
 
 Edits the 500 base color and previews its canonical 50-to-950 swatch.
 
@@ -1835,7 +1835,7 @@ Source: `src/types/color.ts:61:1`
 
 Kind: `value`
 Module: `src/features/color/ColorPicker.tsx`
-Source: `src/features/color/ColorPicker.tsx:11:14`
+Source: `src/features/color/ColorPicker.tsx:15:14`
 
 Composes independently usable color controls into an ordered, consumer-configured picker.
 
@@ -1854,6 +1854,7 @@ Source: `src/types/color.ts:66:1`
 | interactionPolicy | property | `InteractionPolicy \| undefined` | no |  |
 | inverted | property | `boolean \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
+| onDismiss | property | `(() => void) \| undefined` | no |  |
 | onSelectionChange | property | `((selection: ColorPickerSelection) => void) \| undefined` | no |  |
 | onValueChange | property | `(value: ColorPickerValue) => void` | yes |  |
 | tabs | property | `readonly ColorPickerTab[]` | yes |  |
@@ -1894,7 +1895,7 @@ Source: `src/types/color.ts:34:1`
 
 Kind: `value`
 Module: `src/features/color/ColorTone.tsx`
-Source: `src/features/color/ColorTone.tsx:14:14`
+Source: `src/features/color/ColorTone.tsx:24:14`
 
 Selects consumer-provided OKLCH tone targets while keeping hue adjustable.
 
@@ -1962,7 +1963,7 @@ Source: `src/types/color.ts:8:1`
 
 Kind: `value`
 Module: `src/features/color/ColorWheel.tsx`
-Source: `src/features/color/ColorWheel.tsx:22:14`
+Source: `src/features/color/ColorWheel.tsx:38:14`
 
 Selects an OKLCH hue and optionally visualizes the existing color-theory harmony.
 
