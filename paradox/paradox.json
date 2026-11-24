@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.10.5",
+      "value": "v27.10.6",
       "color": "cb3837"
     },
     {
@@ -69072,7 +69072,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/carousel/useCarouselPlayback.ts",
-        "line": 89,
+        "line": 90,
         "column": 1
       }
     },
@@ -69083,7 +69083,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/carousel/useCarouselPlayback.ts",
-        "line": 95,
+        "line": 96,
         "column": 1
       }
     },

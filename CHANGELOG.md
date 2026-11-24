@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.10.6
+
+### Patch Changes
+
+- d9e3eb6: Animate Carousel autoplay progress using a native-capable scale transform instead of layout width changes, without blocking interactions.
+
 ## 27.10.5
 
 ### Patch Changes
