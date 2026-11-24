@@ -59,6 +59,7 @@ test('renders configurable accessible arrows, indicators and progress', () => {
   expect(html).toContain('carousel-indicator-0');
   expect(html).toContain('carousel-indicator-1');
   expect(html).toContain('carousel-progress');
+  expect(html).toContain('transform-origin:left center');
   expect(html).toContain('Go to slide 1 of 2');
   const minimal = renderCarousel({ slides, showProgress: false });
   expect(minimal).not.toContain('progress');

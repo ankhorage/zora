@@ -427,7 +427,9 @@ function CarouselProgress({
         style={[
           {
             height: '100%',
-            width: progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }),
+            width: '100%',
+            transformOrigin: 'left center',
+            transform: [{ scaleX: progress }],
             backgroundColor: indicatorColor,
           },
           indicatorStyle,
