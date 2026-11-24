@@ -5,6 +5,7 @@ import { IconButton } from '../button/public';
 import { View } from '../layout/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../theme/composition/useZoraTheme';
 import { Text } from '../typography/public';
 import { ColorHueScale } from './ColorHueScale';
 import { ColorTone } from './ColorTone';
@@ -29,6 +30,7 @@ function ColorPickerInner({
   hue,
   testID,
 }: ColorPickerProps) {
+  const { theme } = useZoraTheme();
   if (tabs.length === 0) throw new Error('ColorPicker requires at least one tab.');
   if (!tabs.includes(value.tab)) throw new Error('ColorPicker value must be configured in tabs.');
   const previewColor = resolvePickerPreviewColor(value);
@@ -36,34 +38,34 @@ function ColorPickerInner({
   return (
     <View
       alignSelf="center"
-      bg="surfaceRaised"
-      borderColor="border"
+      bg={theme.semantics.surface.raised}
+      borderColor={theme.semantics.border.default}
       borderWidth={1}
       flexShrink={1}
-      gap="sm"
+      gap="s"
       maxWidth={400}
-      p="md"
-      radius="lg"
+      p="m"
+      radius="l"
       testID={testID}
       width="100%"
     >
       <View align="center" direction="row" justify="space-between">
-        <View align="center" direction="row" gap="sm">
-          <Text variant="lead" weight="semiBold">
-            Color
-          </Text>
+        <Text variant="lead" weight="semiBold">
+          Color
+        </Text>
+        <View align="center" direction="row" gap="s">
           <View
             bg={previewColor}
-            borderColor="border"
+            borderColor={theme.semantics.border.default}
             borderWidth={1}
             height={38}
-            radius="sm"
+            radius="s"
             width={38}
           />
+          {onDismiss ? (
+            <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
+          ) : null}
         </View>
-        {onDismiss ? (
-          <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
-        ) : null}
       </View>
       <Tabs
         defaultValue={value.tab}
@@ -73,13 +75,21 @@ function ColorPickerInner({
         }}
         testID={testID ? `${testID}-tabs` : undefined}
         value={value.tab}
+        variant="attached"
       >
         {tabs.length > 1 || !hideTabListWhenSingle ? (
-          <TabList fill>
-            {tabs.map((tab) => (
-              <Tab key={tab} label={tab} value={tab} />
-            ))}
-          </TabList>
+          <View
+            borderColor={theme.semantics.border.default}
+            borderWidth={1}
+            overflow="hidden"
+            radius="m"
+          >
+            <TabList fill>
+              {tabs.map((tab) => (
+                <Tab key={tab} label={tab} value={tab} />
+              ))}
+            </TabList>
+          </View>
         ) : null}
         {tabs.map((tab) => (
           <TabPanel key={tab} value={tab}>

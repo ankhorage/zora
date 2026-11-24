@@ -1,3 +1,4 @@
+import { type HexColor } from '@ankhorage/color-theory';
 import { Button, Pressable } from '@ankhorage/surface';
 import React from 'react';
 import { Circle, Defs, LinearGradient, Rect, Stop, Svg } from 'react-native-svg';
@@ -5,11 +6,19 @@ import { Circle, Defs, LinearGradient, Rect, Stop, Svg } from 'react-native-svg'
 import type { ColorToneProps } from '../../types/color';
 import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../theme/composition/useZoraTheme';
 import { Text } from '../typography/public';
+import { ColorHexField } from './ColorHexField';
+import { ColorSpectrumSlider } from './ColorSpectrumSlider';
+import { ColorWheelPointerProxy } from './ColorWheelPointerProxy';
 import { resolveColorHue } from './utils/resolveColorHue';
 import { resolveOklchColor } from './utils/resolveOklchColor';
+import { resolveWheelColorComponents } from './utils/resolveWheelColorComponents';
 
 const MAX_TONE_COLORS = 4;
+const TONE_MAP_WIDTH = 280;
+const TONE_MAP_HEIGHT = 220;
+const TONE_MAX_CHROMA = 0.2;
 
 /*** Selects consumer-provided OKLCH tone targets while keeping hue adjustable. */
 export const ColorTone = withZoraThemeScope(ColorToneInner);
@@ -26,6 +35,7 @@ function ColorToneInner({
   onChange,
   testID,
 }: ColorToneProps) {
+  const { theme } = useZoraTheme();
   const [editingColorIndex, setEditingColorIndex] = React.useState(0);
   const selectedTone = tones.find((tone) => tone.id === value?.toneId);
   const colors = value
@@ -42,9 +52,14 @@ function ColorToneInner({
   };
 
   return (
-    <View bg="surfaceRaised" gap="sm" p="sm" radius="md" testID={testID}>
-      <Text variant="label">Tone</Text>
-      <View direction="row" wrap="wrap" gap="sm">
+    <View gap="m" testID={testID}>
+      <View gap="xs">
+        <Text variant="label">Tone</Text>
+        <Text emphasis="muted" variant="caption">
+          Choose a catalog tone
+        </Text>
+      </View>
+      <View direction="row" gap="s" wrap="wrap">
         {tones.map((tone) => {
           const selected = value?.toneId === tone.id;
           const color =
@@ -56,19 +71,37 @@ function ColorToneInner({
               accessibilityRole="radio"
               accessibilityState={{ checked: selected }}
               bg={color}
-              borderColor="border"
+              borderColor={theme.semantics.border.default}
               borderWidth={selected ? 3 : 1}
               disabled={interactionPolicy === 'passive'}
-              height={44}
+              height={56}
               onPress={() => selectTone(tone)}
-              radius="md"
-              width={44}
-            />
+              radius="m"
+              width={56}
+            >
+              <Text align="center" variant="caption">
+                {tone.accent}
+              </Text>
+            </Pressable>
           );
         })}
       </View>
       {selectedTone && selectedColor && value ? (
         <>
+          <ColorToneMap
+            color={selectedColor}
+            disabled={interactionPolicy === 'passive'}
+            onChange={(lightness, chroma) =>
+              onChange({
+                toneId: selectedTone.id,
+                colors: colors.map((entry, index) =>
+                  index === currentEditingColorIndex
+                    ? resolveOklchColor({ chroma, lightness }, resolveColorHue(entry))
+                    : entry,
+                ),
+              })
+            }
+          />
           <View direction="row" gap="xs" wrap="wrap">
             {colors.map((color, index) => (
               <Pressable
@@ -77,12 +110,12 @@ function ColorToneInner({
                 accessibilityRole="radio"
                 accessibilityState={{ checked: currentEditingColorIndex === index }}
                 bg={color}
-                borderColor="border"
+                borderColor={theme.semantics.border.default}
                 borderWidth={currentEditingColorIndex === index ? 3 : 1}
                 disabled={interactionPolicy === 'passive'}
                 height={44}
                 onPress={() => setEditingColorIndex(index)}
-                radius="md"
+                radius="m"
                 width={44}
               />
             ))}
@@ -115,7 +148,7 @@ function ColorToneInner({
               </Button>
             ) : null}
           </View>
-          <ToneHueSlider
+          <ColorSpectrumSlider
             disabled={interactionPolicy === 'passive'}
             hue={resolveColorHue(selectedColor)}
             onChange={(nextHue) =>
@@ -129,70 +162,93 @@ function ColorToneInner({
               })
             }
           />
+          <ColorHexField
+            disabled={interactionPolicy === 'passive'}
+            key={selectedColor}
+            onChange={(color) =>
+              onChange({
+                toneId: selectedTone.id,
+                colors: colors.map((entry, index) =>
+                  index === currentEditingColorIndex ? color : entry,
+                ),
+              })
+            }
+            value={selectedColor}
+          />
         </>
       ) : null}
     </View>
   );
 }
 
-/*** Adjusts only the hue of the active catalog tone, preserving its supplied target semantics. */
-function ToneHueSlider({
+/*** Renders the Studio-style saturation and lightness plane for the active catalog color. */
+function ColorToneMap({
+  color,
   disabled,
-  hue,
   onChange,
 }: {
+  readonly color: HexColor;
   readonly disabled: boolean;
-  readonly hue: number;
-  readonly onChange: (hue: number) => void;
+  readonly onChange: (lightness: number, chroma: number) => void;
 }) {
-  const [trackWidth, setTrackWidth] = React.useState(240);
-  const changeAt = (locationX: number) => {
-    if (!disabled) onChange(Math.max(0, Math.min(360, (locationX / trackWidth) * 360)));
+  const hue = resolveColorHue(color);
+  const { chroma, lightness } = resolveWheelColorComponents(color);
+  const gradientId = `color-tone-${React.useId().replaceAll(':', '')}`;
+  const changeAt = (x: number, y: number) => {
+    if (disabled) return;
+    onChange(
+      Math.max(0, Math.min(1, 1 - y / TONE_MAP_HEIGHT)),
+      Math.max(0, Math.min(TONE_MAX_CHROMA, (x / TONE_MAP_WIDTH) * TONE_MAX_CHROMA)),
+    );
   };
+
   return (
-    <View gap="xxs" width="100%">
-      <View direction="row" justify="space-between">
-        <Text variant="label">Hue</Text>
-        <Text variant="label">{`${Math.round(hue)}°`}</Text>
-      </View>
-      <Svg
-        accessibilityLabel="Tone hue"
-        height={36}
-        onLayout={(event) => setTrackWidth(Math.max(1, event.nativeEvent.layout.width))}
-        width="100%"
-        viewBox="0 0 240 36"
-      >
+    <ColorWheelPointerProxy
+      disabled={disabled}
+      height={TONE_MAP_HEIGHT}
+      onChange={changeAt}
+      width={TONE_MAP_WIDTH}
+    >
+      <Svg accessibilityLabel="Tone color plane" height={TONE_MAP_HEIGHT} width={TONE_MAP_WIDTH}>
         <Defs>
-          <LinearGradient id="tone-hue" x1="0" x2="1" y1="0" y2="0">
-            {HUE_STOPS.map(({ color, offset }) => (
-              <Stop key={offset} offset={offset} stopColor={color} />
-            ))}
+          <LinearGradient id={`${gradientId}-white`} x1="0" x2="1" y1="0" y2="0">
+            <Stop offset="0" stopColor="white" />
+            <Stop
+              offset="1"
+              stopColor={resolveOklchColor({ chroma: TONE_MAX_CHROMA, lightness: 0.65 }, hue)}
+            />
+          </LinearGradient>
+          <LinearGradient id={`${gradientId}-black`} x1="0" x2="0" y1="0" y2="1">
+            <Stop offset="0" stopColor="transparent" />
+            <Stop offset="1" stopColor="black" />
           </LinearGradient>
         </Defs>
-        <Rect fill="url(#tone-hue)" height={12} rx={6} width={240} y={12} />
+        <Rect fill={`url(#${gradientId}-white)`} height={TONE_MAP_HEIGHT} width={TONE_MAP_WIDTH} />
+        <Rect fill={`url(#${gradientId}-black)`} height={TONE_MAP_HEIGHT} width={TONE_MAP_WIDTH} />
         <Circle
-          cx={(hue / 360) * 240}
-          cy={18}
-          fill="white"
+          cx={(chroma / TONE_MAX_CHROMA) * TONE_MAP_WIDTH}
+          cy={(1 - lightness) * TONE_MAP_HEIGHT}
+          fill="none"
           r={10}
-          stroke="currentColor"
-          strokeWidth={2}
+          stroke="white"
+          strokeWidth={3}
         />
         <Rect
           fill="transparent"
-          height={36}
-          onResponderGrant={(event) => changeAt(event.nativeEvent.locationX)}
-          onResponderMove={(event) => changeAt(event.nativeEvent.locationX)}
-          onResponderRelease={(event) => changeAt(event.nativeEvent.locationX)}
+          height={TONE_MAP_HEIGHT}
+          onResponderGrant={(event) =>
+            changeAt(event.nativeEvent.locationX, event.nativeEvent.locationY)
+          }
+          onResponderMove={(event) =>
+            changeAt(event.nativeEvent.locationX, event.nativeEvent.locationY)
+          }
+          onResponderRelease={(event) =>
+            changeAt(event.nativeEvent.locationX, event.nativeEvent.locationY)
+          }
           onStartShouldSetResponder={() => !disabled}
-          width={240}
+          width={TONE_MAP_WIDTH}
         />
       </Svg>
-    </View>
+    </ColorWheelPointerProxy>
   );
 }
-
-const HUE_STOPS = [0, 60, 120, 180, 240, 300, 360].map((hue, index, hues) => ({
-  color: resolveOklchColor({ lightness: 0.65, chroma: 0.2 }, hue),
-  offset: String(index / (hues.length - 1)),
-}));

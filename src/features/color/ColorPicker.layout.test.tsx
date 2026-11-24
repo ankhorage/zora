@@ -59,6 +59,7 @@ test('keeps the selected hue grid inside the responsive picker surface in both t
       expect(picker?.getAttribute('style')).toContain('width:100%');
       expect(picker?.getAttribute('style')).toContain('max-width:400px');
       expect(browser.document.querySelector('[aria-label="Close color picker"]')).not.toBeNull();
+      expect(browser.document.querySelectorAll('[aria-label="Color hex value"]')).toHaveLength(1);
       expect(scale?.getAttribute('style')).toContain('flex-wrap:wrap');
       expect(swatches).toHaveLength(11);
       expect(

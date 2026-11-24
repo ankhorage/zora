@@ -51,15 +51,18 @@ async function testPackedColorPickerChromiumAsync() {
   try {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     await browser.waitAsync(`window.colorAcceptance?.read().hydrated === true`);
-    await browser.clickAsync('svg', 0.2, 0.5);
-    await browser.dragAsync('svg', 0.2, 0.5, 0.5, 0.2);
+    await browser.captureScreenshotAsync(process.env.COLOR_PICKER_SCREENSHOT_PATH);
+    await browser.clickAsync('svg[aria-label="Color wheel"]', 0.2, 0.5);
+    await browser.dragAsync('svg[aria-label="Color wheel"]', 0.2, 0.5, 0.5, 0.2);
     await browser.keyAsync('[role="slider"]', 'ArrowRight');
-    await browser.clickAsync('button', 0.5, 0.5, 'triadic');
-    await browser.waitAsync(
-      `(() => { const state = window.colorAcceptance.read(); return state.wheelChanges >= 3 && document.querySelector('polygon') !== null; })()`,
-    );
+    await browser.waitAsync(`window.colorAcceptance.read().wheelChanges >= 3`);
+    await browser.keyAsync('button', 'Enter', 'triadic');
+    await browser.waitAsync(`document.querySelector('polygon') !== null`);
     await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'tone');
     await browser.clickAsync('[aria-label="Jewel"]');
+    await browser.clickAsync('svg[aria-label="Tone color plane"]', 0.7, 0.3);
+    await browser.dragAsync('svg[aria-label="Tone color plane"]', 0.7, 0.3, 0.4, 0.6);
+    await browser.waitAsync(`window.colorAcceptance.read().toneChanges >= 3`);
     await browser.clickAsync('button', 0.5, 0.5, 'Add color');
     await browser.clickAsync('button', 0.5, 0.5, 'Add color');
     await browser.clickAsync('button', 0.5, 0.5, 'Add color');
@@ -88,6 +91,7 @@ async function testPackedColorPickerChromiumAsync() {
       'Hue 950 preview did not become the controlled 500 base.',
     );
     assert.equal(state.errors.length, 0, state.errors.join('\n'));
+    await browser.captureScreenshotAsync(process.env.COLOR_PICKER_SCREENSHOT_PATH);
     console.log(
       'Packed ColorPicker Chromium acceptance passed: wheel drag/keyboard, triadic triangle, bounded tone single/multi, external removal, hue 500 promotion, and tab persistence.',
     );
@@ -151,7 +155,7 @@ function writeConsumer(root: string, tarball: string): void {
   );
   writeFileSync(
     join(root, 'app.tsx'),
-    `import React from 'react'; import { createRoot } from 'react-dom/client'; import { ColorPicker } from '@ankhorage/zora/web/color-picker'; import { ZoraProvider } from '@ankhorage/zora/web/runtime'; const initial={tab:'wheel',wheel:{color:'#2563eb',harmony:null},tone:null,hue:'#2563eb'}; function App(){const [value,setValue]=React.useState(initial);const [wheelChanges,setWheelChanges]=React.useState(0);return <ZoraProvider><ColorPicker tabs={['wheel','tone','hue']} value={value} onValueChange={setValue} onSelectionChange={(event)=>{if(event.mode==='wheel')setWheelChanges((count)=>count+1)}} wheel={{harmonies:['triadic']}} tone={{tones:[{id:'jewel',accent:'Jewel',accentTarget:{lightness:.53,chroma:.18}}],selectionMode:'multiple'}} hue={{}}/><button data-testid="external-tone" onClick={()=>setValue((current)=>({...current,tone:{toneId:'jewel',colors:['#2563eb']}}))}>External tone</button><output data-testid="state">{JSON.stringify({hue:value.hue,toneColors:value.tone?.colors.length??0,wheelChanges,triangle:document.querySelector('polygon')!==null})}</output></ZoraProvider>} const errors=[]; window.addEventListener('error',(event)=>errors.push(String(event.error))); createRoot(document.getElementById('root')).render(<App/>); window.colorAcceptance={read:()=>({...JSON.parse(document.querySelector('[data-testid="state"]')?.textContent??'{}'),errors,hydrated:true})};`,
+    `import React from 'react'; import { createRoot } from 'react-dom/client'; import { ColorPicker } from '@ankhorage/zora/web/color-picker'; import { ZoraProvider } from '@ankhorage/zora/web/runtime'; const initial={tab:'wheel',wheel:{color:'#2563eb',harmony:null},tone:null,hue:'#2563eb'}; function App(){const [value,setValue]=React.useState(initial);const [wheelChanges,setWheelChanges]=React.useState(0);const [toneChanges,setToneChanges]=React.useState(0);return <ZoraProvider mode="dark"><ColorPicker onDismiss={()=>undefined} tabs={['wheel','tone','hue']} value={value} onValueChange={setValue} onSelectionChange={(event)=>{if(event.mode==='wheel')setWheelChanges((count)=>count+1);if(event.mode==='tone')setToneChanges((count)=>count+1)}} wheel={{harmonies:['triadic']}} tone={{tones:[{id:'jewel',accent:'Jewel',accentTarget:{lightness:.53,chroma:.18}}],selectionMode:'multiple'}} hue={{}}/><button data-testid="external-tone" onClick={()=>setValue((current)=>({...current,tone:{toneId:'jewel',colors:['#2563eb']}}))}>External tone</button><output data-testid="state">{JSON.stringify({hue:value.hue,toneColors:value.tone?.colors.length??0,wheelChanges,toneChanges,triangle:document.querySelector('polygon')!==null})}</output></ZoraProvider>} const errors=[]; window.addEventListener('error',(event)=>errors.push(String(event.error))); createRoot(document.getElementById('root')).render(<App/>); window.colorAcceptance={read:()=>({...JSON.parse(document.querySelector('[data-testid="state"]')?.textContent??'{}'),errors,hydrated:true})};`,
   );
 }
 
@@ -221,7 +225,9 @@ class Chrome {
         x: rect.x,
         y: rect.y,
         button: 'left',
+        buttons: type === 'mousePressed' ? 1 : 0,
         clickCount: 1,
+        pointerType: 'mouse',
       });
   }
   async dragAsync(selector: string, startX: number, startY: number, endX: number, endY: number) {
@@ -250,10 +256,23 @@ class Chrome {
       clickCount: 1,
     });
   }
-  async keyAsync(selector: string, key: string) {
-    await this.evaluateAsync(`document.querySelector(${JSON.stringify(selector)})?.focus()`);
+  async keyAsync(selector: string, key: string, text?: string) {
+    const point = await this.resolvePointAsync(selector, 0.5, 0.5, text);
+    await this.sendAsync('Input.dispatchMouseEvent', {
+      type: 'mouseMoved',
+      x: point.x,
+      y: point.y,
+    });
+    await this.evaluateAsync(
+      `(()=>{const candidates=[...document.querySelectorAll(${JSON.stringify(selector)})];const element=${text ? `candidates.find((node)=>node.textContent?.trim()===${JSON.stringify(text)})` : 'candidates[0]'};element?.focus()})()`,
+    );
     await this.sendAsync('Input.dispatchKeyEvent', { type: 'keyDown', key, code: key });
     await this.sendAsync('Input.dispatchKeyEvent', { type: 'keyUp', key, code: key });
+  }
+  async captureScreenshotAsync(path: string | undefined) {
+    if (!path) return;
+    const screenshot = await this.sendAsync('Page.captureScreenshot', { format: 'png' });
+    writeFileSync(path, Buffer.from(screenshot.data, 'base64'));
   }
   private async resolvePointAsync(
     selector: string,
