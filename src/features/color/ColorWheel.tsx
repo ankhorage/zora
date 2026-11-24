@@ -1,21 +1,37 @@
-import { generateHarmonyRoleColors, type HexColor, isHexColor } from '@ankhorage/color-theory';
-import { Button, TextInput } from '@ankhorage/surface';
+import { generateHarmonyRoleColors, type HexColor } from '@ankhorage/color-theory';
+import { Button } from '@ankhorage/surface';
 import React from 'react';
-import { Circle, Line, Path, Polygon, Svg } from 'react-native-svg';
+import {
+  Circle,
+  Defs,
+  Line,
+  LinearGradient,
+  Path,
+  Polygon,
+  RadialGradient,
+  Rect,
+  Stop,
+  Svg,
+} from 'react-native-svg';
 
 import type { ColorWheelProps } from '../../types/color';
 import { View } from '../layout/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../theme/composition/useZoraTheme';
+import { Text } from '../typography/public';
+import { ColorHexField } from './ColorHexField';
+import { ColorHorizontalPointerProxy } from './ColorHorizontalPointerProxy';
 import { ColorWheelKeyboardProxy } from './ColorWheelKeyboardProxy';
+import { ColorWheelPointerProxy } from './ColorWheelPointerProxy';
 import { resolveColorHue } from './utils/resolveColorHue';
 import { resolveOklchColor } from './utils/resolveOklchColor';
 import { resolveWheelColor } from './utils/resolveWheelColor';
 import { resolveWheelColorComponents } from './utils/resolveWheelColorComponents';
 
-const WHEEL_SIZE = 240;
+const WHEEL_SIZE = 280;
 const WHEEL_CENTER = WHEEL_SIZE / 2;
-const WHEEL_RADIUS = 104;
-const WHEEL_SEGMENT_COUNT = 36;
+const WHEEL_RADIUS = 128;
+const WHEEL_SEGMENT_COUNT = 72;
 const WHEEL_MAX_CHROMA = 0.2;
 
 /*** Selects an OKLCH hue and optionally visualizes the existing color-theory harmony. */
@@ -33,12 +49,18 @@ function ColorWheelInner({
   onChange,
   testID,
 }: ColorWheelProps) {
+  const { theme } = useZoraTheme();
   const hue = resolveColorHue(value);
   const { chroma, lightness } = resolveWheelColorComponents(value);
   const harmonyColors = harmony ? generateHarmonyRoleColors(value, harmony).colors : [];
   const selectedPoint = resolveWheelPoint(hue, Math.min(1, chroma / WHEEL_MAX_CHROMA));
   const harmonyPoints = harmonyColors.map((color) => resolveWheelPoint(color.hueDegrees));
-  const harmonyLines = resolveHarmonyLines(harmonyPoints, selectedPoint);
+  const harmonyLines = resolveHarmonyLines(
+    harmonyPoints,
+    selectedPoint,
+    theme.semantics.content.default,
+  );
+  const wheelGradientId = `color-wheel-${React.useId().replaceAll(':', '')}`;
   const changeColorAt = (x: number, y: number) => {
     if (interactionPolicy === 'passive') return;
     onChange({
@@ -46,17 +68,14 @@ function ColorWheelInner({
       harmony,
     });
   };
-  const changeLightness = (offset: number) =>
+  const changeLightness = (nextLightness: number) =>
     onChange({
-      color: resolveOklchColor(
-        { chroma, lightness: Math.max(0, Math.min(1, lightness + offset)) },
-        hue,
-      ),
+      color: resolveOklchColor({ chroma, lightness: Math.max(0, Math.min(1, nextLightness)) }, hue),
       harmony,
     });
 
   return (
-    <View align="center" gap="sm" testID={testID}>
+    <View align="center" gap="s" testID={testID}>
       <ColorWheelKeyboardProxy
         chroma={chroma}
         disabled={interactionPolicy === 'passive'}
@@ -71,71 +90,96 @@ function ColorWheelInner({
           })
         }
       >
-        <Svg
-          accessibilityLabel="Color wheel"
+        <ColorWheelPointerProxy
+          disabled={interactionPolicy === 'passive'}
           height={WHEEL_SIZE}
-          onResponderGrant={(event) => {
-            const { locationX, locationY } = event.nativeEvent;
-            changeColorAt(locationX, locationY);
-          }}
-          onResponderMove={(event) => {
-            const { locationX, locationY } = event.nativeEvent;
-            changeColorAt(locationX, locationY);
-          }}
-          onStartShouldSetResponder={() => interactionPolicy !== 'passive'}
+          onChange={changeColorAt}
           width={WHEEL_SIZE}
         >
-          {resolveWheelSegments().map((segment) => (
-            <Path d={segment.path} fill={segment.color} key={segment.hue} />
-          ))}
-          {harmony === 'triadic' && harmonyPoints.length === 3 ? (
-            <Polygon
-              fill="none"
-              points={harmonyPoints.map((point) => `${point.x},${point.y}`).join(' ')}
-              stroke="currentColor"
-              strokeWidth={2}
-            />
-          ) : (
-            harmonyLines
-          )}
-          {harmonyPoints.map((point) => (
+          <Svg
+            accessibilityLabel="Color wheel"
+            height={WHEEL_SIZE}
+            onResponderGrant={(event) => {
+              const { locationX, locationY } = event.nativeEvent;
+              changeColorAt(locationX, locationY);
+            }}
+            onResponderMove={(event) => {
+              const { locationX, locationY } = event.nativeEvent;
+              changeColorAt(locationX, locationY);
+            }}
+            onResponderRelease={(event) => {
+              const { locationX, locationY } = event.nativeEvent;
+              changeColorAt(locationX, locationY);
+            }}
+            onStartShouldSetResponder={() => interactionPolicy !== 'passive'}
+            width={WHEEL_SIZE}
+          >
+            <Defs>
+              {resolveWheelSegments().map((segment) => (
+                <RadialGradient
+                  cx={WHEEL_CENTER}
+                  cy={WHEEL_CENTER}
+                  id={`${wheelGradientId}-${segment.hue}`}
+                  key={segment.hue}
+                  r={WHEEL_RADIUS}
+                >
+                  <Stop
+                    offset="0"
+                    stopColor={resolveOklchColor({ lightness: 0.65, chroma: 0 }, segment.hue)}
+                  />
+                  <Stop offset="1" stopColor={segment.color} />
+                </RadialGradient>
+              ))}
+            </Defs>
+            {resolveWheelSegments().map((segment) => (
+              <Path
+                d={segment.path}
+                fill={`url(#${wheelGradientId}-${segment.hue})`}
+                key={segment.hue}
+              />
+            ))}
+            {harmony === 'triadic' && harmonyPoints.length === 3 ? (
+              <Polygon
+                fill="none"
+                points={harmonyPoints.map((point) => `${point.x},${point.y}`).join(' ')}
+                stroke={theme.semantics.content.default}
+                strokeWidth={2}
+              />
+            ) : (
+              harmonyLines
+            )}
+            {harmonyPoints.map((point) => (
+              <Circle
+                cx={point.x}
+                cy={point.y}
+                fill={theme.semantics.content.default}
+                key={`${point.x}-${point.y}`}
+                r={5}
+              />
+            ))}
             <Circle
-              cx={point.x}
-              cy={point.y}
-              fill="currentColor"
-              key={`${point.x}-${point.y}`}
-              r={5}
+              cx={selectedPoint.x}
+              cy={selectedPoint.y}
+              fill="none"
+              r={9}
+              stroke={theme.semantics.content.default}
+              strokeWidth={3}
             />
-          ))}
-          <Circle
-            cx={selectedPoint.x}
-            cy={selectedPoint.y}
-            fill="none"
-            r={9}
-            stroke="currentColor"
-            strokeWidth={3}
-          />
-        </Svg>
+          </Svg>
+        </ColorWheelPointerProxy>
       </ColorWheelKeyboardProxy>
-      <View direction="row" gap="xs" wrap="wrap">
-        <Button
-          disabled={interactionPolicy === 'passive' || lightness <= 0}
-          onPress={() => changeLightness(-0.05)}
-        >
-          Lightness -
-        </Button>
-        <Button
-          disabled={interactionPolicy === 'passive' || lightness >= 1}
-          onPress={() => changeLightness(0.05)}
-        >
-          Lightness +
-        </Button>
-      </View>
-      <ColorHexInput
+      <ColorLightnessSlider
+        chroma={chroma}
         disabled={interactionPolicy === 'passive'}
-        harmony={harmony}
+        hue={hue}
+        lightness={lightness}
+        onChange={changeLightness}
+        selectionBorderColor={theme.semantics.content.default}
+      />
+      <ColorHexField
+        disabled={interactionPolicy === 'passive'}
         key={value}
-        onChange={onChange}
+        onChange={(color) => onChange({ color, harmony })}
         value={value}
       />
       {harmonies ? (
@@ -159,6 +203,63 @@ function ColorWheelInner({
           ))}
         </View>
       ) : null}
+    </View>
+  );
+}
+
+/*** Renders a continuous OKLCH lightness track without adding a second color persistence model. */
+function ColorLightnessSlider({
+  chroma,
+  disabled,
+  hue,
+  lightness,
+  onChange,
+  selectionBorderColor,
+}: {
+  readonly chroma: number;
+  readonly disabled: boolean;
+  readonly hue: number;
+  readonly lightness: number;
+  readonly onChange: (lightness: number) => void;
+  readonly selectionBorderColor: string;
+}) {
+  const changeAt = (locationX: number) => {
+    if (!disabled) onChange(Math.max(0, Math.min(1, locationX / WHEEL_SIZE)));
+  };
+  return (
+    <View gap="xxs" width={WHEEL_SIZE}>
+      <View direction="row" justify="space-between">
+        <Text variant="label">Lightness</Text>
+        <Text variant="label">{`${Math.round(lightness * 100)}%`}</Text>
+      </View>
+      <ColorHorizontalPointerProxy disabled={disabled} onChange={changeAt} width={WHEEL_SIZE}>
+        <Svg accessibilityLabel="Color lightness" height={36} width={WHEEL_SIZE}>
+          <Defs>
+            <LinearGradient id="color-lightness" x1="0" x2="1" y1="0" y2="0">
+              <Stop offset="0" stopColor={resolveOklchColor({ chroma, lightness: 0 }, hue)} />
+              <Stop offset="1" stopColor={resolveOklchColor({ chroma, lightness: 1 }, hue)} />
+            </LinearGradient>
+          </Defs>
+          <Rect fill="url(#color-lightness)" height={10} rx={5} y={13} width={WHEEL_SIZE} />
+          <Circle
+            cx={lightness * WHEEL_SIZE}
+            cy={18}
+            fill="white"
+            r={10}
+            stroke={selectionBorderColor}
+            strokeWidth={2}
+          />
+          <Rect
+            fill="transparent"
+            height={36}
+            onResponderGrant={(event) => changeAt(event.nativeEvent.locationX)}
+            onResponderMove={(event) => changeAt(event.nativeEvent.locationX)}
+            onResponderRelease={(event) => changeAt(event.nativeEvent.locationX)}
+            onStartShouldSetResponder={() => !disabled}
+            width={WHEEL_SIZE}
+          />
+        </Svg>
+      </ColorHorizontalPointerProxy>
     </View>
   );
 }
@@ -202,6 +303,7 @@ function resolveWheelPoint(
 function resolveHarmonyLines(
   points: readonly { readonly x: number; readonly y: number }[],
   selectedPoint: { readonly x: number; readonly y: number },
+  stroke: string,
 ) {
   return points.slice(1).reduce(
     ({ lines, previous }, point) => ({
@@ -209,7 +311,7 @@ function resolveHarmonyLines(
         ...lines,
         <Line
           key={`${previous.x}-${previous.y}-${point.x}-${point.y}`}
-          stroke="currentColor"
+          stroke={stroke}
           strokeWidth={2}
           x1={previous.x}
           x2={point.x}
@@ -227,25 +329,4 @@ function resolveHarmonyLines(
 function resolveWheelLightness(color: HexColor): number {
   const { lightness } = resolveWheelColorComponents(color);
   return lightness;
-}
-
-/*** Retains in-progress hexadecimal input while resetting for an externally controlled color. */
-function ColorHexInput({
-  disabled,
-  harmony,
-  onChange,
-  value,
-}: Pick<ColorWheelProps, 'harmony' | 'onChange' | 'value'> & { readonly disabled: boolean }) {
-  const [input, setInput] = React.useState<string>(value);
-  return (
-    <TextInput
-      accessibilityLabel="Color hex value"
-      disabled={disabled}
-      onChangeText={(nextValue) => {
-        setInput(nextValue);
-        if (isHexColor(nextValue)) onChange({ color: nextValue, harmony: harmony ?? null });
-      }}
-      value={input}
-    />
-  );
 }

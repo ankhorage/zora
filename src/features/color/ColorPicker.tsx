@@ -1,8 +1,12 @@
 import React from 'react';
 
 import type { ColorPickerProps, ColorPickerTab, ColorPickerValue } from '../../types/color';
+import { IconButton } from '../button/public';
+import { View } from '../layout/public';
 import { Tab, TabList, TabPanel, Tabs } from '../tabs/public';
 import { withZoraThemeScope } from '../theme/adapters/inbound/withZoraThemeScope';
+import { useZoraTheme } from '../theme/composition/useZoraTheme';
+import { Text } from '../typography/public';
 import { ColorHueScale } from './ColorHueScale';
 import { ColorTone } from './ColorTone';
 import { ColorWheel } from './ColorWheel';
@@ -19,44 +23,94 @@ function ColorPickerInner({
   value,
   onValueChange,
   onSelectionChange,
+  onDismiss,
   hideTabListWhenSingle = true,
   wheel,
   tone,
   hue,
   testID,
 }: ColorPickerProps) {
+  const { theme } = useZoraTheme();
   if (tabs.length === 0) throw new Error('ColorPicker requires at least one tab.');
   if (!tabs.includes(value.tab)) throw new Error('ColorPicker value must be configured in tabs.');
+  const previewColor = resolvePickerPreviewColor(value);
 
   return (
-    <Tabs
-      defaultValue={value.tab}
-      onValueChange={(nextValue) => {
-        if (isColorPickerTab(nextValue) && tabs.includes(nextValue))
-          onValueChange({ ...value, tab: nextValue });
-      }}
+    <View
+      alignSelf="center"
+      bg={theme.semantics.surface.raised}
+      borderColor={theme.semantics.border.default}
+      borderWidth={1}
+      flexShrink={1}
+      gap="s"
+      maxWidth={400}
+      p="m"
+      radius="l"
       testID={testID}
-      value={value.tab}
+      width="100%"
     >
-      {tabs.length > 1 || !hideTabListWhenSingle ? (
-        <TabList fill>
-          {tabs.map((tab) => (
-            <Tab key={tab} label={tab} value={tab} />
-          ))}
-        </TabList>
-      ) : null}
-      {tabs.map((tab) => (
-        <TabPanel key={tab} value={tab}>
-          {resolveTabContent(tab, value, wheel, tone, hue, onValueChange, onSelectionChange)}
-        </TabPanel>
-      ))}
-    </Tabs>
+      <View align="center" direction="row" justify="space-between">
+        <Text variant="lead" weight="semiBold">
+          Color
+        </Text>
+        <View align="center" direction="row" gap="s">
+          <View
+            bg={previewColor}
+            borderColor={theme.semantics.border.default}
+            borderWidth={1}
+            height={38}
+            radius="s"
+            width={38}
+          />
+          {onDismiss ? (
+            <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
+          ) : null}
+        </View>
+      </View>
+      <Tabs
+        defaultValue={value.tab}
+        onValueChange={(nextValue) => {
+          if (isColorPickerTab(nextValue) && tabs.includes(nextValue))
+            onValueChange({ ...value, tab: nextValue });
+        }}
+        testID={testID ? `${testID}-tabs` : undefined}
+        value={value.tab}
+        variant="attached"
+      >
+        {tabs.length > 1 || !hideTabListWhenSingle ? (
+          <View
+            borderColor={theme.semantics.border.default}
+            borderWidth={1}
+            overflow="hidden"
+            radius="m"
+          >
+            <TabList fill>
+              {tabs.map((tab) => (
+                <Tab key={tab} label={tab} value={tab} />
+              ))}
+            </TabList>
+          </View>
+        ) : null}
+        {tabs.map((tab) => (
+          <TabPanel key={tab} value={tab}>
+            {resolveTabContent(tab, value, wheel, tone, hue, onValueChange, onSelectionChange)}
+          </TabPanel>
+        ))}
+      </Tabs>
+    </View>
   );
 }
 
 /*** Check whether a Surface tab value belongs to the configured picker vocabulary. */
 function isColorPickerTab(value: string): value is ColorPickerTab {
   return value === 'wheel' || value === 'tone' || value === 'hue';
+}
+
+/*** Resolves the visible active-tab color without introducing a second picker state. */
+function resolvePickerPreviewColor(value: ColorPickerValue) {
+  if (value.tab === 'hue') return value.hue;
+  if (value.tab === 'tone') return value.tone?.colors.at(0) ?? value.wheel.color;
+  return value.wheel.color;
 }
 
 /*** Resolve the configured control for one picker tab without adding fallback feature modes. */
