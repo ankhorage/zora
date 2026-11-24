@@ -3639,6 +3639,13 @@
         "description": null
       },
       {
+        "name": "labelWeight",
+        "kind": "property",
+        "type": "ButtonLabelWeight | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "leadingIcon",
         "kind": "property",
         "type": "import(\"@ankhorage/surface\").IconSource | undefined",
@@ -7047,7 +7054,7 @@
       {
         "name": "color",
         "kind": "property",
-        "type": "\"white\" | \"black\"",
+        "type": "\"black\" | \"white\"",
         "required": true,
         "description": null
       },
@@ -24584,7 +24591,7 @@
       {
         "name": "indicatorStyle",
         "kind": "property",
-        "type": "\"default\" | \"white\" | \"black\" | undefined",
+        "type": "\"black\" | \"default\" | \"white\" | undefined",
         "required": false,
         "description": null
       },
@@ -26169,7 +26176,7 @@
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
       "filePath": "src/types/select.ts",
-      "line": 3,
+      "line": 5,
       "column": 1
     },
     "exportPaths": [
@@ -26213,7 +26220,7 @@
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
       "filePath": "src/types/select.ts",
-      "line": 9,
+      "line": 11,
       "column": 1
     },
     "exportPaths": [
@@ -26278,6 +26285,20 @@
         "name": "label",
         "kind": "property",
         "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "labelWeight",
+        "kind": "property",
+        "type": "ButtonLabelWeight | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "leadingIcon",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").IconSource | undefined",
         "required": false,
         "description": null
       },

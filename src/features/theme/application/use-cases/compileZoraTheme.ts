@@ -12,7 +12,7 @@ import type {
   ZoraThemeProvenanceEntry,
   ZoraThemeSelectionResult,
   ZoraThemeSelectionTarget,
-} from '../../../../types/theme.js';
+} from '#zora/types/theme';
 
 const CONTRACTS_OWNER = '@ankhorage/contracts';
 const COLOR_THEORY_OWNER = '@ankhorage/color-theory';

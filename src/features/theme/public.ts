@@ -1,3 +1,6 @@
+export { compileZoraTheme } from '#zora/theme/application/use-cases/compileZoraTheme';
+export { createZoraThemeConfig } from '#zora/theme/application/use-cases/createZoraThemeConfig';
+export { zoraDefaultTheme } from '#zora/theme/zoraDefaultTheme';
 export type {
   ZoraComputedTheme,
   ZoraComputedThemeMode,
@@ -12,7 +15,4 @@ export type {
   ZoraThemeSelectionTarget,
   ZoraThemeSwatchRole,
   ZoraThemeValueOrigin,
-} from '../../types/theme.js';
-export { compileZoraTheme } from './application/use-cases/compileZoraTheme.js';
-export { createZoraThemeConfig } from './application/use-cases/createZoraThemeConfig.js';
-export { zoraDefaultTheme } from './zoraDefaultTheme.js';
+} from '#zora/types/theme';

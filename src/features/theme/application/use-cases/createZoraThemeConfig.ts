@@ -1,8 +1,8 @@
 import { parseHexColorOrThrow } from '@ankhorage/color-theory';
 import type { ThemeConfig } from '@ankhorage/contracts';
 
-import type { ZoraTheme } from '../../../../types/theme.js';
-import { zoraDefaultTheme } from '../../zoraDefaultTheme.js';
+import { zoraDefaultTheme } from '#zora/theme/zoraDefaultTheme';
+import type { ZoraTheme } from '#zora/types/theme';
 
 /*** Convert the concise ZORA design seed into canonical persisted theme source. */
 export function createZoraThemeConfig(theme: ZoraTheme = zoraDefaultTheme): ThemeConfig {
