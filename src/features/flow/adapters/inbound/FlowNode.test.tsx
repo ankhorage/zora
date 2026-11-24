@@ -31,6 +31,7 @@ describe('FlowNode presentation', () => {
       expect(
         browserWindow.document.querySelector('[data-testid="flow-node-node-status"]'),
       ).not.toBeNull();
+      expect(statusHasTintFilter(browserWindow)).toBe(false);
     } finally {
       browserWindow.close();
     }
@@ -46,6 +47,7 @@ describe('FlowNode presentation', () => {
       expect(
         browserWindow.document.querySelector('[data-testid="flow-node-node-status"]'),
       ).not.toBeNull();
+      expect(statusHasTintFilter(browserWindow)).toBe(false);
     } finally {
       browserWindow.close();
     }
@@ -170,6 +172,12 @@ function iconAssetSource(browserWindow: Window): string | null {
       ?.getAttribute('style')
       ?.match(/background-image:url\(&quot;([^&]+)&quot;\)/u)?.[1] ?? null
   );
+}
+
+/*** Detect whether the web SVG fallback applies a single-color alpha mask to a status badge. */
+function statusHasTintFilter(browserWindow: Window): boolean {
+  const status = browserWindow.document.querySelector('[data-testid="flow-node-node-status"]');
+  return status?.querySelector('[style*="filter:url"]') !== null;
 }
 
 type FlowNodeOverrides = Partial<FlowNodeData> & {

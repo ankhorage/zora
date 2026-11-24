@@ -205,6 +205,7 @@ function FlowNodeInner(props: FlowNodeProps) {
               </View>
               {props.node.presentation?.status ? (
                 <Icon
+                  colorMode="intrinsic"
                   size={16}
                   source={resolveFlowNodeStatusSource(props.node.presentation.status)}
                   testID={`flow-node-${props.node.id}-status`}
