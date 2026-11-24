@@ -1,11 +1,11 @@
 appId: dev.ankhorage.zora.flowacceptance
 ---
-# Drag from the source header; then pan from the empty upper-right canvas, above the moved source node.
+# Drag from the source header; then pan diagonally through the empty canvas to reveal the target port.
 - launchApp:
     clearState: false
-- assertVisible: 'Source task'
-- assertVisible: 'Target task'
-- tapOn: 'Source task'
+- assertVisible: 'Source task. Completed'
+- assertVisible: 'Target task. Waiting for review'
+- tapOn: 'Source task. Completed'
 - assertVisible: 'selection=source'
 - swipe:
     start: '45%, 74%'
@@ -15,18 +15,12 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'viewport=0,0,1'
 - tapOn: 'Source task: Output'
 - swipe:
-    start: '95%, 60%'
-    end: '20%, 60%'
+    start: '20%, 78%'
+    end: '45%, 55%'
     duration: 500
 - assertVisible: 'event=viewport'
 - assertVisible: 'viewport-panned=true'
 - assertVisible: 'source-unchanged-on-viewport-change=true'
-# The first horizontal pan clips the target input below the viewport. Pan the real empty
-# right edge upward before connecting, so the port is genuinely visible and tappable.
-- swipe:
-    start: '95%, 85%'
-    end: '95%, 55%'
-    duration: 500
 - assertVisible: 'Target task: Input'
 - tapOn: 'Target task: Input'
 - assertVisible: 'event=connect'
@@ -51,5 +45,5 @@ appId: dev.ankhorage.zora.flowacceptance
 - assertVisible: 'redo-count=1'
 - tapOn: 'Delete selected nodes'
 - assertVisible: 'event=delete'
-- assertNotVisible: 'Source task'
+- assertNotVisible: 'Source task. Completed'
 - takeScreenshot: flow-canvas-native

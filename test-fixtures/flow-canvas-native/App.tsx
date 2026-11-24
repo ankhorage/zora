@@ -2,19 +2,24 @@ import { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ZoraProvider } from '@ankhorage/zora/reader-free';
 import { FlowCanvas } from '@ankhorage/zora/flow';
+
+import { flowTheme } from './flowTheme';
 
 const initialNodes = [
   {
     id: 'source',
+    presentation: { nodeKind: 'trigger' as const, status: 'completed' as const },
     ports: [{ direction: 'output' as const, id: 'out', label: 'Output' }],
     position: { x: 32, y: 120 },
     title: 'Source task',
   },
   {
     id: 'target',
+    presentation: { nodeKind: 'approval' as const, status: 'waiting' as const },
     ports: [{ direction: 'input' as const, id: 'in', label: 'Input' }],
-    position: { x: 300, y: 220 },
+    position: { x: 64, y: 220 },
     title: 'Target task',
   },
 ];
@@ -41,88 +46,90 @@ export default function App() {
   const observedEvents = history.filter((event, index) => history.indexOf(event) === index);
 
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-      <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
-        <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>
-        <Text testID="flow-node-state">
-          source-position={source?.position.x ?? 'deleted'},{source?.position.y ?? 'deleted'}
-        </Text>
-        <Text testID="flow-node-moved-state">
-          source-moved=
-          {String(source === undefined || source.position.x !== 32 || source.position.y !== 120)}
-        </Text>
-        <Text testID="flow-viewport-state">
-          viewport={viewport.pan.x},{viewport.pan.y},{viewport.zoom}
-        </Text>
-        <Text testID="flow-viewport-pan-state">
-          viewport-panned={String(viewport.pan.x !== 0 || viewport.pan.y !== 0)}
-        </Text>
-        <Text testID="flow-node-viewport-state">
-          source-unchanged-on-viewport-change={String(sourceUnchangedOnViewportChange)}
-        </Text>
-        <Text testID="flow-connection-state">connections={connections.length}</Text>
-        <Text testID="flow-undo-state">undo-count={undoCount}</Text>
-        <Text testID="flow-redo-state">redo-count={redoCount}</Text>
-        {observedEvents.map((event, index) => (
-          <Text key={`${event}-${index}`}>event={event}</Text>
-        ))}
-      </View>
-      <FlowCanvas
-        canRedo
-        canUndo
-        connections={connections}
-        nodes={nodes}
-        paletteItems={[{ id: 'task', title: 'Insert task' }]}
-        selectedNodeIds={selectedNodeIds}
-        testID="flow-canvas"
-        viewport={viewport}
-        onConnect={(source, target) => {
-          setConnections([{ id: 'source-target', source, target }]);
-          record('connect');
-        }}
-        onDisconnect={(id) => {
-          setConnections((current) => current.filter((connection) => connection.id !== id));
-          record('disconnect');
-        }}
-        onInsert={(id) => record(`insert:${id}`)}
-        onNodesDelete={(nodeIds) => {
-          setConnections((current) =>
-            current.filter(
-              (connection) =>
-                !nodeIds.includes(connection.source.nodeId) &&
-                !nodeIds.includes(connection.target.nodeId),
-            ),
-          );
-          setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
-          setSelectedNodeIds([]);
-          record('delete');
-        }}
-        onNodeSelectionChange={(nodeIds) => {
-          setSelectedNodeIds(nodeIds);
-          record(`select:${nodeIds.join(',')}`);
-        }}
-        onNodesMove={(next) => {
-          setNodes(next);
-          sourcePositionRef.current = next.find((node) => node.id === 'source')!.position;
-          record('move');
-        }}
-        onRedo={() => {
-          setRedoCount((current) => current + 1);
-          record('redo');
-        }}
-        onUndo={() => {
-          setUndoCount((current) => current + 1);
-          record('undo');
-        }}
-        onViewportChange={(next) => {
-          setSourceUnchangedOnViewportChange(
-            source?.position.x === sourcePositionRef.current.x &&
-              source?.position.y === sourcePositionRef.current.y,
-          );
-          setViewport(next);
-          record('viewport');
-        }}
-      />
-    </SafeAreaView>
+    <ZoraProvider theme={flowTheme}>
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        <View accessibilityLabel="Flow acceptance state" testID="flow-acceptance-state">
+          <Text testID="flow-selection-state">selection={selectedNodeIds.join(',') || 'none'}</Text>
+          <Text testID="flow-node-state">
+            source-position={source?.position.x ?? 'deleted'},{source?.position.y ?? 'deleted'}
+          </Text>
+          <Text testID="flow-node-moved-state">
+            source-moved=
+            {String(source === undefined || source.position.x !== 32 || source.position.y !== 120)}
+          </Text>
+          <Text testID="flow-viewport-state">
+            viewport={viewport.pan.x},{viewport.pan.y},{viewport.zoom}
+          </Text>
+          <Text testID="flow-viewport-pan-state">
+            viewport-panned={String(viewport.pan.x !== 0 || viewport.pan.y !== 0)}
+          </Text>
+          <Text testID="flow-node-viewport-state">
+            source-unchanged-on-viewport-change={String(sourceUnchangedOnViewportChange)}
+          </Text>
+          <Text testID="flow-connection-state">connections={connections.length}</Text>
+          <Text testID="flow-undo-state">undo-count={undoCount}</Text>
+          <Text testID="flow-redo-state">redo-count={redoCount}</Text>
+          {observedEvents.map((event, index) => (
+            <Text key={`${event}-${index}`}>event={event}</Text>
+          ))}
+        </View>
+        <FlowCanvas
+          canRedo
+          canUndo
+          connections={connections}
+          nodes={nodes}
+          paletteItems={[{ id: 'task', title: 'Insert task' }]}
+          selectedNodeIds={selectedNodeIds}
+          testID="flow-canvas"
+          viewport={viewport}
+          onConnect={(source, target) => {
+            setConnections([{ id: 'source-target', source, target }]);
+            record('connect');
+          }}
+          onDisconnect={(id) => {
+            setConnections((current) => current.filter((connection) => connection.id !== id));
+            record('disconnect');
+          }}
+          onInsert={(id) => record(`insert:${id}`)}
+          onNodesDelete={(nodeIds) => {
+            setConnections((current) =>
+              current.filter(
+                (connection) =>
+                  !nodeIds.includes(connection.source.nodeId) &&
+                  !nodeIds.includes(connection.target.nodeId),
+              ),
+            );
+            setNodes((current) => current.filter((node) => !nodeIds.includes(node.id)));
+            setSelectedNodeIds([]);
+            record('delete');
+          }}
+          onNodeSelectionChange={(nodeIds) => {
+            setSelectedNodeIds(nodeIds);
+            record(`select:${nodeIds.join(',')}`);
+          }}
+          onNodesMove={(next) => {
+            setNodes(next);
+            sourcePositionRef.current = next.find((node) => node.id === 'source')!.position;
+            record('move');
+          }}
+          onRedo={() => {
+            setRedoCount((current) => current + 1);
+            record('redo');
+          }}
+          onUndo={() => {
+            setUndoCount((current) => current + 1);
+            record('undo');
+          }}
+          onViewportChange={(next) => {
+            setSourceUnchangedOnViewportChange(
+              source?.position.x === sourcePositionRef.current.x &&
+                source?.position.y === sourcePositionRef.current.y,
+            );
+            setViewport(next);
+            record('viewport');
+          }}
+        />
+      </SafeAreaView>
+    </ZoraProvider>
   );
 }

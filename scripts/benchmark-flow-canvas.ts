@@ -60,12 +60,16 @@ async function benchmarkFlowCanvasAsync() {
   const build = await Bun.build({
     entrypoints: [join(repositoryRoot, 'test-fixtures', 'flowCanvasBenchmark.tsx')],
     format: 'esm',
+    loader: { '.svg': 'dataurl' },
     naming: 'benchmark.js',
     outdir: temporaryRoot,
     plugins: [
       {
         name: 'react-native-web',
         setup(build) {
+          build.onResolve({ filter: /^@ankhorage\/zora$/ }, () => ({
+            path: join(repositoryRoot, 'src/features/theme/runtime.ts'),
+          }));
           build.onResolve({ filter: /^react-native$/ }, () => ({ path: reactNativeWebEntry }));
           build.onResolve({ filter: /^react-native-svg$/ }, () => ({
             path: reactNativeSvgWebEntry,
@@ -119,7 +123,7 @@ async function benchmarkFlowCanvasAsync() {
     mkdirSync(artifactDirectory, { recursive: true });
     writeFileSync(
       join(artifactDirectory, 'flow-canvas-benchmark-failure.json'),
-      JSON.stringify({ error: String(error) }, null, 2),
+      JSON.stringify({ error: String(error), ...(browser?.diagnostics() ?? {}) }, null, 2),
     );
     throw error;
   } finally {
@@ -180,6 +184,9 @@ function percentile(values: readonly number[], percentile: number): number {
 
 /** Drive Chromium through CDP so timing covers actual browser rendering and input dispatch. */
 class BenchmarkBrowser {
+  private readonly consoleErrors: string[] = [];
+  private readonly exceptions: string[] = [];
+  private readonly networkFailures: string[] = [];
   private nextId = 1;
   private readonly pending = new Map<
     number,
@@ -212,8 +219,8 @@ class BenchmarkBrowser {
     });
     const browser = new BenchmarkBrowser(process, socket);
     await Promise.all(
-      ['Page.enable', 'Performance.enable', 'Runtime.enable'].map((method) =>
-        browser.sendAsync(method),
+      ['Log.enable', 'Network.enable', 'Page.enable', 'Performance.enable', 'Runtime.enable'].map(
+        (method) => browser.sendAsync(method),
       ),
     );
     return browser;
@@ -237,7 +244,7 @@ class BenchmarkBrowser {
     const beforePan = await this.readStateAsync();
     const background = await this.backgroundPointAsync('[data-testid="flow-benchmark-viewport"]');
     const panStart = performance.now();
-    await this.dragFromAsync(background.x, background.y, 24, 16);
+    await this.dragFromAsync(background.x, background.y, 32, -24);
     try {
       await this.waitForStateAsync(
         (state) =>
@@ -289,6 +296,14 @@ class BenchmarkBrowser {
     const version = (await this.sendAsync('Browser.getVersion')) as { product?: string };
     return version.product ?? 'unknown';
   }
+  /*** Retain browser failures whenever a benchmark fixture cannot establish its host state. */
+  diagnostics() {
+    return {
+      consoleErrors: this.consoleErrors,
+      exceptions: this.exceptions,
+      networkFailures: this.networkFailures,
+    };
+  }
   /*** Find unoccupied canvas space and prove its real pointer drag changes only the controlled viewport. */
   private async backgroundPointAsync(viewportSelector: string) {
     const diagnostic = await this.evaluateAsync<InteractionDiagnostic & { x?: number; y?: number }>(
@@ -301,7 +316,7 @@ class BenchmarkBrowser {
         for (const type of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(type, listener, true);
         const offsets = [24, 48, 72, 96, 128];
         const points = offsets.flatMap((y) =>
-          offsets.map((x) => ({ x: rect.x + rect.width - x, y: rect.y + rect.height - y })),
+          offsets.map((x) => ({ x: rect.x + x, y: rect.y + rect.height - y })),
         );
         const point = points.find(({ x, y }) => {
           const target = document.elementFromPoint(x, y);
@@ -401,7 +416,24 @@ class BenchmarkBrowser {
     return new Promise((resolve, reject) => this.pending.set(id, { reject, resolve }));
   }
   private onMessage(data: unknown) {
-    const message = JSON.parse(String(data)) as { id?: number; error?: unknown; result?: unknown };
+    const message = JSON.parse(String(data)) as {
+      id?: number;
+      error?: unknown;
+      method?: string;
+      params?: unknown;
+      result?: unknown;
+    };
+    if (message.method === 'Runtime.exceptionThrown')
+      this.exceptions.push(JSON.stringify(message.params));
+    if (message.method === 'Network.loadingFailed')
+      this.networkFailures.push(JSON.stringify(message.params));
+    if (
+      message.method === 'Log.entryAdded' &&
+      typeof message.params === 'object' &&
+      message.params !== null &&
+      'entry' in message.params
+    )
+      this.consoleErrors.push(JSON.stringify(message.params.entry));
     if (message.id === undefined) return;
     const pending = this.pending.get(message.id);
     if (!pending) return;
