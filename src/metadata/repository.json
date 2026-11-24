@@ -38,35 +38,5 @@
       "Consumers must provide the declared React Native peer dependencies required by the entrypoints they use.",
       "Platform-native behavior is available only where the underlying declared React Native or Expo dependency supports it."
     ]
-  },
-  "build": {
-    "targets": {
-      "native": {
-        "language": "typescript",
-        "framework": "react-native",
-        "platforms": ["ios", "android", "web"],
-        "entry": ".",
-        "outDir": "dist",
-        "sources": {
-          "include": ["src/**/*.ts", "src/**/*.tsx"]
-        },
-        "builder": {
-          "script": "build"
-        }
-      },
-      "web": {
-        "language": "typescript",
-        "framework": "react",
-        "platforms": ["web"],
-        "entry": "./web/*",
-        "outDir": "web-dist",
-        "sources": {
-          "include": ["src/features/**/public.ts", "src/authoring.browser.ts"]
-        },
-        "builder": {
-          "script": "build"
-        }
-      }
-    }
   }
 }
