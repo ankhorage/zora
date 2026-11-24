@@ -62,6 +62,7 @@ interface GraphRuntimeState {
   readonly labelSizedNodeIds: Set<string>;
   readonly loopSizer: ReturnType<typeof createGraphLoopSizer>;
   readonly pendingInitialFitRef: { current: boolean };
+  readonly preservedTopologyRef: { current: boolean };
   readonly preservedTopologyMeasurementRef: { current: boolean };
   readonly readyRef: { current: boolean };
   readonly settledLayoutRef: { current: GraphRuntimeUpdate['layout'] | null };
@@ -134,6 +135,7 @@ function createRuntimeState(
     labelSizedNodeIds: new Set<string>(),
     loopSizer: createGraphLoopSizer(cy),
     pendingInitialFitRef: { current: false },
+    preservedTopologyRef: { current: false },
     preservedTopologyMeasurementRef: { current: false },
     readyRef,
     settledLayoutRef: { current: null as GraphRuntimeUpdate['layout'] | null },
@@ -266,7 +268,10 @@ function beginPreservedTopologyMeasurementWindow(
     previous !== null &&
     getGraphTopologyKey(previous.nodes, previous.edges) !==
       getGraphTopologyKey(input.nodes, input.edges);
-  state.preservedTopologyMeasurementRef.current = preservesTopology && topologyChanged;
+  const preservedTopology = preservesTopology && topologyChanged;
+  state.preservedTopologyRef.current =
+    preservesTopology && (state.preservedTopologyRef.current || topologyChanged);
+  state.preservedTopologyMeasurementRef.current = preservedTopology;
   if (!state.preservedTopologyMeasurementRef.current) return;
   scheduleGraphFrame(() => {
     state.preservedTopologyMeasurementRef.current = false;
@@ -360,6 +365,7 @@ function completeCurrentLayout(state: GraphRuntimeState, generation: number) {
     state.viewport.settle(shouldFit);
     state.settledLayoutRef.current = input.layout;
     state.settledTopologyRef.current = topology;
+    state.preservedTopologyRef.current = false;
     const fitRequest = state.fitRequestRef.current;
     state.fitRequestRef.current = null;
     if (fitRequest) requestOptimizedFit(state, fitRequest);
@@ -454,8 +460,18 @@ function setNodeSize(state: GraphRuntimeState, id: string, size: GraphViewSize) 
   if (previous?.width === size.width && previous.height === size.height) return;
   state.nodeSizes.set(id, size);
   applyNodeSize(state.cy, id, size);
-  if (state.preservedTopologyMeasurementRef.current) return;
+  if (preservesSettledTopology(state)) return;
   scheduleMeasuredNodeRelayout(state);
+}
+
+/*** Retain a user-owned stable topology until the next layout generation settles. */
+function preservesSettledTopology(state: GraphRuntimeState): boolean {
+  return (
+    state.readyRef.current &&
+    !state.pendingInitialFitRef.current &&
+    state.preservedTopologyRef.current &&
+    state.latestUpdateRef.current?.topologyUpdatePolicy === 'preserve-positions'
+  );
 }
 
 /*** Apply every known rich-node size after Cytoscape elements are replaced. */
