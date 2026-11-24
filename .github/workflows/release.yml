@@ -91,7 +91,8 @@ jobs:
       - name: Install declared Playwright Chromium
         run: |
           if node -e "const p=require('./package.json'); const sections=['dependencies','devDependencies','optionalDependencies']; process.exit(sections.some((section) => typeof p[section]?.['playwright-core'] === 'string') ? 0 : 1)"; then
-            playwright_cli="$(node -p "require.resolve('playwright-core/cli')")"
+            playwright_package="$(node -p "require.resolve('playwright-core/package.json')")"
+            playwright_cli="$(dirname "$playwright_package")/cli.js"
             bun "$playwright_cli" install chromium
           else
             echo "No Playwright Core dependency declared; skipping Chromium installation."
