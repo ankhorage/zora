@@ -1,0 +1,13 @@
+// Managed by @ankhorage/devtools.
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": false,
+    "strict": true,
+    "target": "ES2022"
+  }
+}
