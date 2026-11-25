@@ -3490,6 +3490,7 @@ Export paths: `src/index.ts`
 | label | `string \| undefined` | no | — |  |
 | labelWeight | `ButtonLabelWeight \| undefined` | no | — |  |
 | leadingIcon | `import("@ankhorage/surface").IconSource \| undefined` | no | — |  |
+| leadingMedia | `import("@ankhorage/surface").SurfaceImageSource \| import("./upload").UploadAsset \| null \| undefined` | no | — |  |
 | mode | `ZoraThemeMode \| undefined` | no | — |  |
 | onValueChange | `((value: TValue) => void) \| undefined` | no | — |  |
 | options | `readonly SelectOption<TValue>[]` | yes | — |  |

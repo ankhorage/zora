@@ -3003,15 +3003,15 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/select.ts</code></p>
     <p><strong>Exports:</strong> <code>SelectField</code></p>
-  </article><article class="item" data-search="src/features/form/select/composition/SelectOptionRow.tsx src/features/button/public.ts src/types/select.ts SelectOptionRow">
+  </article><article class="item" data-search="src/features/form/select/composition/SelectOptionRow.tsx src/features/button/public.ts src/features/icon/public.ts src/features/image/public.ts src/features/layout/public.ts src/features/theme/composition/useZoraTheme.ts src/features/typography/public.ts src/types/select.ts SelectOptionRow">
     <h3>src/features/form/select/composition/SelectOptionRow.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/button/public.ts</code>, <code>src/types/select.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/button/public.ts</code>, <code>src/features/icon/public.ts</code>, <code>src/features/image/public.ts</code>, <code>src/features/layout/public.ts</code>, <code>src/features/theme/composition/useZoraTheme.ts</code>, <code>src/features/typography/public.ts</code>, <code>src/types/select.ts</code></p>
     <p><strong>Exports:</strong> <code>SelectOptionRow</code></p>
-  </article><article class="item" data-search="src/features/form/select/composition/SelectTrigger.tsx src/features/button/public.ts src/types/select.ts SelectTrigger">
+  </article><article class="item" data-search="src/features/form/select/composition/SelectTrigger.tsx src/features/button/public.ts src/features/icon/public.ts src/features/image/public.ts src/features/layout/public.ts src/features/theme/composition/useZoraTheme.ts src/features/typography/public.ts src/types/select.ts SelectTrigger">
     <h3>src/features/form/select/composition/SelectTrigger.tsx</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/features/button/public.ts</code>, <code>src/types/select.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/features/button/public.ts</code>, <code>src/features/icon/public.ts</code>, <code>src/features/image/public.ts</code>, <code>src/features/layout/public.ts</code>, <code>src/features/theme/composition/useZoraTheme.ts</code>, <code>src/features/typography/public.ts</code>, <code>src/types/select.ts</code></p>
     <p><strong>Exports:</strong> <code>SelectTrigger</code></p>
   </article><article class="item" data-search="src/features/form/select/composition/useSelectController.ts src/types/select.ts useSelectController">
     <h3>src/features/form/select/composition/useSelectController.ts</h3>
@@ -5098,10 +5098,10 @@ their platform adapters use Popover instead.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/types/base.ts</code></p>
     <p><strong>Exports:</strong> <code>ScreenSectionProps</code>, <code>SectionHeaderProps</code></p>
-  </article><article class="item" data-search="src/types/select.ts src/types/base.ts SelectOption SelectProps">
+  </article><article class="item" data-search="src/types/select.ts src/types/base.ts src/types/image.ts SelectOption SelectProps">
     <h3>src/types/select.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/types/base.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/types/base.ts</code>, <code>src/types/image.ts</code></p>
     <p><strong>Exports:</strong> <code>SelectOption</code>, <code>SelectProps</code></p>
   </article><article class="item" data-search="src/types/selection.ts src/types/base.ts SelectableItemProps SelectableItemState SelectionMode SelectionProviderProps SelectionTrigger UseSelectionResult">
     <h3>src/types/selection.ts</h3>
@@ -27661,14 +27661,14 @@ consumers do not need to import lower-level Surface typography directly.</p>
             </section>
             <section>
               <h3>src/types/select.ts</h3>
-              <article class="item" id="symbol-selectoption" data-search="SelectOption  type src/types/select.ts ">
+              <article class="item" id="symbol-selectoption" data-search="SelectOption  type src/types/select.ts  SurfaceImageSource UploadAsset">
     <h4>SelectOption</h4>
     
-    <p class="muted">type • <code>src/types/select.ts:5:1</code></p>
+    <p class="muted">type • <code>src/types/select.ts:6:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SurfaceImageSource</li><li class="chip">UploadAsset</li></ul></div>
     
     <table>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
@@ -27686,6 +27686,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td>yes</td>
             <td></td>
           </tr><tr>
+            <td><code>leadingMedia</code></td>
+            <td>property</td>
+            <td><code>import(&quot;@ankhorage/surface&quot;).SurfaceImageSource | import(&quot;./upload&quot;).UploadAsset | null | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
             <td><code>value</code></td>
             <td>property</td>
             <td><code>TValue</code></td>
@@ -27694,14 +27700,14 @@ consumers do not need to import lower-level Surface typography directly.</p>
           </tr>
     </tbody>
   </table>
-  </article><article class="item" id="symbol-selectprops" data-search="SelectProps  type src/types/select.ts  SelectOption ZoraThemeMode">
+  </article><article class="item" id="symbol-selectprops" data-search="SelectProps  type src/types/select.ts  SelectOption SurfaceImageSource UploadAsset ZoraThemeMode">
     <h4>SelectProps</h4>
     
-    <p class="muted">type • <code>src/types/select.ts:11:1</code></p>
+    <p class="muted">type • <code>src/types/select.ts:14:1</code></p>
     
     
     <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SelectOption</li><li class="chip">ZoraThemeMode</li></ul></div>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SelectOption</li><li class="chip">SurfaceImageSource</li><li class="chip">UploadAsset</li><li class="chip">ZoraThemeMode</li></ul></div>
     
     <table>
     <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
@@ -27764,6 +27770,12 @@ consumers do not need to import lower-level Surface typography directly.</p>
             <td><code>leadingIcon</code></td>
             <td>property</td>
             <td><code>import(&quot;@ankhorage/surface&quot;).IconSource | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>leadingMedia</code></td>
+            <td>property</td>
+            <td><code>import(&quot;@ankhorage/surface&quot;).SurfaceImageSource | import(&quot;./upload&quot;).UploadAsset | null | undefined</code></td>
             <td>no</td>
             <td></td>
           </tr><tr>
@@ -46765,7 +46777,7 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr>
       </tbody>
     </table>
-  </article><article class="item" id="component-select" data-search="Select src/features/form/select/adapters/inbound/Select.web.tsx Renders Select with anchored Popover presentation on web. defaultValue TValue | undefined disabled boolean | undefined errorText string | undefined helperText string | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined inverted boolean | undefined label string | undefined labelWeight ButtonLabelWeight | undefined leadingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined mode ZoraThemeMode | undefined onValueChange ((value: TValue) =&gt; void) | undefined options readonly SelectOption&lt;TValue&gt;[] placeholder string | undefined readOnly boolean | undefined required boolean | undefined testID string | undefined themeId string | undefined value TValue | undefined">
+  </article><article class="item" id="component-select" data-search="Select src/features/form/select/adapters/inbound/Select.web.tsx Renders Select with anchored Popover presentation on web. defaultValue TValue | undefined disabled boolean | undefined errorText string | undefined helperText string | undefined interactionPolicy InteractionPolicy | undefined invalid boolean | undefined inverted boolean | undefined label string | undefined labelWeight ButtonLabelWeight | undefined leadingIcon import(&quot;@ankhorage/surface&quot;).IconSource | undefined leadingMedia import(&quot;@ankhorage/surface&quot;).SurfaceImageSource | import(&quot;./upload&quot;).UploadAsset | null | undefined mode ZoraThemeMode | undefined onValueChange ((value: TValue) =&gt; void) | undefined options readonly SelectOption&lt;TValue&gt;[] placeholder string | undefined readOnly boolean | undefined required boolean | undefined testID string | undefined themeId string | undefined value TValue | undefined">
     <h3>Select</h3>
     <p class="muted"><code>src/features/form/select/adapters/inbound/Select.web.tsx:14:14</code></p>
     <p>Renders Select with anchored Popover presentation on web.</p>
@@ -46822,6 +46834,11 @@ capability separately while ZORA owns the visible scan affordance.</p>
             </tr><tr>
               <td><code>leadingIcon</code></td>
               <td><code>import(&quot;@ankhorage/surface&quot;).IconSource | undefined</code></td>
+              <td>no</td>
+              <td></td>
+            </tr><tr>
+              <td><code>leadingMedia</code></td>
+              <td><code>import(&quot;@ankhorage/surface&quot;).SurfaceImageSource | import(&quot;./upload&quot;).UploadAsset | null | undefined</code></td>
               <td>no</td>
               <td></td>
             </tr><tr>
@@ -52101,10 +52118,20 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_form_select_composition_SelectOptionRow_tsx[&quot;src/features/form/select/composition/SelectOptionRow.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_SelectOptionRow_tsx
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectTrigger_tsx[&quot;src/features/form/select/composition/SelectTrigger.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_SelectTrigger_tsx
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_useSelectController_ts[&quot;src/features/form/select/composition/useSelectController.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_useSelectController_ts
@@ -53907,6 +53934,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_select_ts[&quot;src/types/select.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_select_ts
   module_src_types_select_ts --&gt; module_src_types_base_ts
+  module_src_types_select_ts --&gt; module_src_types_image_ts
   module_src_types_selection_ts[&quot;src/types/selection.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_selection_ts
   module_src_types_selection_ts --&gt; module_src_types_base_ts
@@ -54897,10 +54925,20 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_form_select_composition_SelectOptionRow_tsx[&quot;src/features/form/select/composition/SelectOptionRow.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_SelectOptionRow_tsx
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectTrigger_tsx[&quot;src/features/form/select/composition/SelectTrigger.tsx&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_SelectTrigger_tsx
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_useSelectController_ts[&quot;src/features/form/select/composition/useSelectController.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_features_form_select_composition_useSelectController_ts
@@ -56703,6 +56741,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_select_ts[&quot;src/types/select.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_select_ts
   module_src_types_select_ts --&gt; module_src_types_base_ts
+  module_src_types_select_ts --&gt; module_src_types_image_ts
   module_src_types_selection_ts[&quot;src/types/selection.ts&quot;]
   package__ankhorage_zora -.-&gt; module_src_types_selection_ts
   module_src_types_selection_ts --&gt; module_src_types_base_ts
@@ -57927,8 +57966,18 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_form_select_adapters_inbound_Select_web_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectField_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_useSelectController_ts --&gt; module_src_types_select_ts
   module_src_features_form_select_selectMeta_ts --&gt; module_src_types_authoring_ts
@@ -58896,6 +58945,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_search_input_ts --&gt; module_src_types_control_ts
   module_src_types_section_ts --&gt; module_src_types_base_ts
   module_src_types_select_ts --&gt; module_src_types_base_ts
+  module_src_types_select_ts --&gt; module_src_types_image_ts
   module_src_types_selection_ts --&gt; module_src_types_base_ts
   module_src_types_skeleton_ts --&gt; module_src_types_base_ts
   module_src_types_skeleton_ts --&gt; module_src_types_layout_ts
@@ -60078,8 +60128,18 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_features_form_select_adapters_inbound_Select_web_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectField_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectOptionRow_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_button_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_icon_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_image_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_layout_public_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_theme_composition_useZoraTheme_ts
+  module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_features_typography_public_ts
   module_src_features_form_select_composition_SelectTrigger_tsx --&gt; module_src_types_select_ts
   module_src_features_form_select_composition_useSelectController_ts --&gt; module_src_types_select_ts
   module_src_features_form_select_selectMeta_ts --&gt; module_src_types_authoring_ts
@@ -61047,6 +61107,7 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_search_input_ts --&gt; module_src_types_control_ts
   module_src_types_section_ts --&gt; module_src_types_base_ts
   module_src_types_select_ts --&gt; module_src_types_base_ts
+  module_src_types_select_ts --&gt; module_src_types_image_ts
   module_src_types_selection_ts --&gt; module_src_types_base_ts
   module_src_types_skeleton_ts --&gt; module_src_types_base_ts
   module_src_types_skeleton_ts --&gt; module_src_types_layout_ts
@@ -62809,9 +62870,13 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_selection_ts --&gt; export_SelectionTrigger
   export_SelectOption[&quot;SelectOption&quot;]
   module_src_types_select_ts --&gt; export_SelectOption
+  export_SelectOption -.-&gt; export_SurfaceImageSource
+  export_SelectOption -.-&gt; export_UploadAsset
   export_SelectProps[&quot;SelectProps&quot;]
   module_src_types_select_ts --&gt; export_SelectProps
   export_SelectProps -.-&gt; export_SelectOption
+  export_SelectProps -.-&gt; export_SurfaceImageSource
+  export_SelectProps -.-&gt; export_UploadAsset
   export_SelectProps -.-&gt; export_ZoraThemeMode
   export_SignInForm[&quot;SignInForm&quot;]
   module_src_features_auth_adapters_inbound_SignInForm_tsx --&gt; export_SignInForm
@@ -65089,9 +65154,13 @@ Expansion controls are separate from row selection, including when rendering cus
   module_src_types_selection_ts --&gt; export_SelectionTrigger
   export_SelectOption[&quot;SelectOption&quot;]
   module_src_types_select_ts --&gt; export_SelectOption
+  export_SelectOption -.-&gt; export_SurfaceImageSource
+  export_SelectOption -.-&gt; export_UploadAsset
   export_SelectProps[&quot;SelectProps&quot;]
   module_src_types_select_ts --&gt; export_SelectProps
   export_SelectProps -.-&gt; export_SelectOption
+  export_SelectProps -.-&gt; export_SurfaceImageSource
+  export_SelectProps -.-&gt; export_UploadAsset
   export_SelectProps -.-&gt; export_ZoraThemeMode
   export_SignInForm[&quot;SignInForm&quot;]
   module_src_features_auth_adapters_inbound_SignInForm_tsx --&gt; export_SignInForm
@@ -67847,7 +67916,7 @@ Range may replace or extend a multi-selection, but never affects the underlying 
       <h2>src/features/form/select/composition/SelectOptionRow.tsx</h2>
       <article class="item" data-search="SelectOptionRow src/features/form/select/composition/SelectOptionRow.tsx Renders one Select option with shared web/native selection semantics.">
     <h3>SelectOptionRow</h3>
-    <p class="muted"><code>src/features/form/select/composition/SelectOptionRow.tsx:7:1</code></p>
+    <p class="muted"><code>src/features/form/select/composition/SelectOptionRow.tsx:14:1</code></p>
     <p>Renders one Select option with shared web/native selection semantics.</p>
 </article>
     </section>
@@ -67856,7 +67925,7 @@ Range may replace or extend a multi-selection, but never affects the underlying 
       <h2>src/features/form/select/composition/SelectTrigger.tsx</h2>
       <article class="item" data-search="SelectTrigger src/features/form/select/composition/SelectTrigger.tsx Renders the shared Select trigger with the resolved option label or placeholder.">
     <h3>SelectTrigger</h3>
-    <p class="muted"><code>src/features/form/select/composition/SelectTrigger.tsx:7:1</code></p>
+    <p class="muted"><code>src/features/form/select/composition/SelectTrigger.tsx:14:1</code></p>
     <p>Renders the shared Select trigger with the resolved option label or placeholder.</p>
 </article>
     </section>

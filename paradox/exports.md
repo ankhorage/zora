@@ -6229,7 +6229,7 @@ Source: `src/types/selection.ts:9:1`
 
 Kind: `type`
 Module: `src/types/select.ts`
-Source: `src/types/select.ts:5:1`
+Source: `src/types/select.ts:6:1`
 
 ### Members
 
@@ -6237,13 +6237,14 @@ Source: `src/types/select.ts:5:1`
 | --- | --- | --- | --- | --- |
 | disabled | property | `boolean \| undefined` | no |  |
 | label | property | `string` | yes |  |
+| leadingMedia | property | `import("@ankhorage/surface").SurfaceImageSource \| import("./upload").UploadAsset \| null \| undefined` | no |  |
 | value | property | `TValue` | yes |  |
 
 ## SelectProps
 
 Kind: `type`
 Module: `src/types/select.ts`
-Source: `src/types/select.ts:11:1`
+Source: `src/types/select.ts:14:1`
 
 ### Members
 
@@ -6259,6 +6260,7 @@ Source: `src/types/select.ts:11:1`
 | label | property | `string \| undefined` | no |  |
 | labelWeight | property | `ButtonLabelWeight \| undefined` | no |  |
 | leadingIcon | property | `import("@ankhorage/surface").IconSource \| undefined` | no |  |
+| leadingMedia | property | `import("@ankhorage/surface").SurfaceImageSource \| import("./upload").UploadAsset \| null \| undefined` | no |  |
 | mode | property | `ZoraThemeMode \| undefined` | no |  |
 | onValueChange | property | `((value: TValue) => void) \| undefined` | no |  |
 | options | property | `readonly SelectOption<TValue>[]` | yes |  |

@@ -18,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v27.10.6",
+      "value": "v27.11.0",
       "color": "cb3837"
     },
     {
@@ -2787,6 +2787,11 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/button/public.ts",
+        "src/features/icon/public.ts",
+        "src/features/image/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts",
         "src/types/select.ts"
       ],
       "exports": [
@@ -2798,6 +2803,11 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/features/button/public.ts",
+        "src/features/icon/public.ts",
+        "src/features/image/public.ts",
+        "src/features/layout/public.ts",
+        "src/features/theme/composition/useZoraTheme.ts",
+        "src/features/typography/public.ts",
         "src/types/select.ts"
       ],
       "exports": [
@@ -9176,7 +9186,8 @@
       "path": "src/types/select.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/types/base.ts"
+        "src/types/base.ts",
+        "src/types/image.ts"
       ],
       "exports": [
         "SelectOption",
@@ -35674,13 +35685,16 @@
       "modulePath": "src/types/select.ts",
       "sourceLocation": {
         "filePath": "src/types/select.ts",
-        "line": 5,
+        "line": 6,
         "column": 1
       },
       "exportPaths": [
         "src/index.ts"
       ],
-      "relatedSymbols": [],
+      "relatedSymbols": [
+        "SurfaceImageSource",
+        "UploadAsset"
+      ],
       "signatures": [],
       "members": [
         {
@@ -35695,6 +35709,13 @@
           "kind": "property",
           "type": "string",
           "required": true,
+          "description": null
+        },
+        {
+          "name": "leadingMedia",
+          "kind": "property",
+          "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
+          "required": false,
           "description": null
         },
         {
@@ -35718,7 +35739,7 @@
       "modulePath": "src/types/select.ts",
       "sourceLocation": {
         "filePath": "src/types/select.ts",
-        "line": 11,
+        "line": 14,
         "column": 1
       },
       "exportPaths": [
@@ -35726,6 +35747,8 @@
       ],
       "relatedSymbols": [
         "SelectOption",
+        "SurfaceImageSource",
+        "UploadAsset",
         "ZoraThemeMode"
       ],
       "signatures": [],
@@ -35797,6 +35820,13 @@
           "name": "leadingIcon",
           "kind": "property",
           "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "leadingMedia",
+          "kind": "property",
+          "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
           "required": false,
           "description": null
         },
@@ -62430,6 +62460,12 @@
           "description": null
         },
         {
+          "name": "leadingMedia",
+          "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "mode",
           "type": "ZoraThemeMode | undefined",
           "required": false,
@@ -70997,7 +71033,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/select/composition/SelectOptionRow.tsx",
-        "line": 7,
+        "line": 14,
         "column": 1
       }
     },
@@ -71008,7 +71044,7 @@
       "security": [],
       "sourceLocation": {
         "filePath": "src/features/form/select/composition/SelectTrigger.tsx",
-        "line": 7,
+        "line": 14,
         "column": 1
       }
     },
@@ -78291,6 +78327,11 @@
         "sourcePath": "src/types/select.ts"
       },
       {
+        "fromPath": "src/types/select.ts",
+        "toPath": "src/types/image.ts",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
         "fromPath": "src/types/selection.ts",
         "toPath": "src/types/base.ts",
         "sourcePath": "src/types/selection.ts"
@@ -83936,6 +83977,31 @@
         "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
       },
       {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/image/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectOptionRow.tsx",
+        "toPath": "src/features/typography/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
         "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
         "toPath": "src/types/select.ts",
         "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
@@ -83943,6 +84009,31 @@
       {
         "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
         "toPath": "src/features/button/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/icon/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/image/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/layout/public.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/theme/composition/useZoraTheme.ts",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
+      },
+      {
+        "fromPath": "src/features/form/select/composition/SelectTrigger.tsx",
+        "toPath": "src/features/typography/public.ts",
         "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
       },
       {
@@ -90613,10 +90704,22 @@
         "sourcePath": "src/features/form/radio/utils/resolveRadioGroupThemeRecipe.ts"
       },
       {
+        "fromSymbol": "SelectOptionRow",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
         "fromSymbol": "src/features/form/select/composition/SelectOptionRow.tsx",
         "toSymbol": "onSelect",
         "callExpression": "onSelect",
         "sourcePath": "src/features/form/select/composition/SelectOptionRow.tsx"
+      },
+      {
+        "fromSymbol": "SelectTrigger",
+        "toSymbol": "useZoraTheme",
+        "callExpression": "useZoraTheme",
+        "sourcePath": "src/features/form/select/composition/SelectTrigger.tsx"
       },
       {
         "fromSymbol": "src/features/form/select/composition/useSelectController.ts",
@@ -97731,7 +97834,17 @@
       },
       {
         "fromSymbol": "SelectOption",
+        "toType": "SurfaceImageSource",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectOption",
         "toType": "TValue",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectOption",
+        "toType": "UploadAsset",
         "sourcePath": "src/types/select.ts"
       },
       {
@@ -97756,7 +97869,17 @@
       },
       {
         "fromSymbol": "SelectProps",
+        "toType": "SurfaceImageSource",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
         "toType": "TValue",
+        "sourcePath": "src/types/select.ts"
+      },
+      {
+        "fromSymbol": "SelectProps",
+        "toType": "UploadAsset",
         "sourcePath": "src/types/select.ts"
       },
       {

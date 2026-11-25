@@ -26183,13 +26183,16 @@
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
       "filePath": "src/types/select.ts",
-      "line": 5,
+      "line": 6,
       "column": 1
     },
     "exportPaths": [
       "src/index.ts"
     ],
-    "relatedSymbols": [],
+    "relatedSymbols": [
+      "SurfaceImageSource",
+      "UploadAsset"
+    ],
     "signatures": [],
     "members": [
       {
@@ -26204,6 +26207,13 @@
         "kind": "property",
         "type": "string",
         "required": true,
+        "description": null
+      },
+      {
+        "name": "leadingMedia",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
+        "required": false,
         "description": null
       },
       {
@@ -26227,7 +26237,7 @@
     "modulePath": "src/types/select.ts",
     "sourceLocation": {
       "filePath": "src/types/select.ts",
-      "line": 11,
+      "line": 14,
       "column": 1
     },
     "exportPaths": [
@@ -26235,6 +26245,8 @@
     ],
     "relatedSymbols": [
       "SelectOption",
+      "SurfaceImageSource",
+      "UploadAsset",
       "ZoraThemeMode"
     ],
     "signatures": [],
@@ -26306,6 +26318,13 @@
         "name": "leadingIcon",
         "kind": "property",
         "type": "import(\"@ankhorage/surface\").IconSource | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "leadingMedia",
+        "kind": "property",
+        "type": "import(\"@ankhorage/surface\").SurfaceImageSource | import(\"./upload\").UploadAsset | null | undefined",
         "required": false,
         "description": null
       },

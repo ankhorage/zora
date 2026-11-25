@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.11.0
+
+### Minor Changes
+
+- acf0ab6: Add the `@ankhorage/zora/web` browser-only package facade.
+
 ## 27.10.6
 
 ### Patch Changes

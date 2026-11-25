@@ -1731,9 +1731,13 @@ graph LR
   module_src_types_selection_ts --> export_SelectionTrigger
   export_SelectOption["SelectOption"]
   module_src_types_select_ts --> export_SelectOption
+  export_SelectOption -.-> export_SurfaceImageSource
+  export_SelectOption -.-> export_UploadAsset
   export_SelectProps["SelectProps"]
   module_src_types_select_ts --> export_SelectProps
   export_SelectProps -.-> export_SelectOption
+  export_SelectProps -.-> export_SurfaceImageSource
+  export_SelectProps -.-> export_UploadAsset
   export_SelectProps -.-> export_ZoraThemeMode
   export_SignInForm["SignInForm"]
   module_src_features_auth_adapters_inbound_SignInForm_tsx --> export_SignInForm
