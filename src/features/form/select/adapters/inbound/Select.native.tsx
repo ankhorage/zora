@@ -66,7 +66,12 @@ function SelectInner<TValue extends string = string>({
 
   return (
     <SelectField props={props}>
-      <SelectTrigger displayLabel={selectedOption?.label} onPress={openSelect} props={props} />
+      <SelectTrigger
+        displayLabel={selectedOption?.label}
+        leadingMedia={selectedOption?.leadingMedia}
+        onPress={openSelect}
+        props={props}
+      />
     </SelectField>
   );
 }

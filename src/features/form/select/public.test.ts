@@ -21,6 +21,25 @@ test('Select registers the optional leading icon as instance-owned media metadat
   });
 });
 
+test('Select registers leading images for the trigger and individual options', () => {
+  expect(selectMeta.props.leadingMedia).toEqual({
+    type: 'media',
+    category: 'Content',
+    label: 'Leading image',
+    mediaKinds: ['image'],
+    authoring: { authority: 'instance' },
+  });
+  expect(selectMeta.props.options.itemSchema).toContainEqual({
+    key: 'leadingMedia',
+    schema: {
+      type: 'media',
+      category: 'Content',
+      label: 'Leading image',
+      mediaKinds: ['image'],
+    },
+  });
+});
+
 test('Select registers optional trigger label emphasis as serializable metadata', () => {
   expect(selectMeta.props.labelWeight).toEqual({
     type: 'string',
@@ -52,10 +71,12 @@ test('Select uses web Popover and native BottomSheetFlatList presentation', asyn
   expect(web).toContain("import { Popover } from '@ankhorage/surface';");
   expect(native).toContain('<BottomSheetFlatList');
   expect(native).toContain("contentMode: 'direct'");
+  expect(web).toContain('leadingMedia={selectedOption?.leadingMedia}');
+  expect(native).toContain('leadingMedia={selectedOption?.leadingMedia}');
   expect(`${neutral}\n${web}\n${native}`).not.toContain('@react-native-picker/picker');
 });
 
-test('Select supports default weight, bold emphasis, SVG icons, and their combination', async () => {
+test('Select supports label emphasis, SVG icons, and leading images', async () => {
   const props: SelectProps = {
     options: [{ label: 'Workspace', value: 'workspace' }],
   };
@@ -69,11 +90,22 @@ test('Select supports default weight, bold emphasis, SVG icons, and their combin
     { ...props, leadingIcon: svgIcon },
     { ...props, labelWeight: 'bold', leadingIcon: svgIcon },
   ] satisfies readonly SelectProps[];
+  const imageSource = { uri: 'https://cdn.example.test/atlas-option.png' } as const;
+  const mediaConfigurations = [
+    { ...props, leadingMedia: imageSource },
+    { ...props, options: [{ label: 'Workspace', value: 'workspace', leadingMedia: imageSource }] },
+  ] satisfies readonly SelectProps[];
   const selectTrigger = await Bun.file(
     'src/features/form/select/composition/SelectTrigger.tsx',
   ).text();
+  const selectOptionRow = await Bun.file(
+    'src/features/form/select/composition/SelectOptionRow.tsx',
+  ).text();
 
   expect(configurations).toHaveLength(4);
+  expect(mediaConfigurations).toHaveLength(2);
   expect(selectTrigger).toContain("labelWeight={props.labelWeight ?? 'semiBold'}");
   expect(selectTrigger).toContain('leadingIcon={props.leadingIcon}');
+  expect(selectTrigger).toContain('source={media}');
+  expect(selectOptionRow).toContain('source={option.leadingMedia}');
 });

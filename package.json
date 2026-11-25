@@ -140,6 +140,11 @@
       "import": "./dist/authoring.js",
       "default": "./dist/authoring.js"
     },
+    "./web": {
+      "types": "./web-dist/index.d.ts",
+      "import": "./web-dist/index.js",
+      "default": "./web-dist/index.js"
+    },
     "./web/runtime": {
       "types": "./web-dist/runtime/ZoraProvider.d.ts",
       "import": "./web-dist/runtime/ZoraProvider.js",

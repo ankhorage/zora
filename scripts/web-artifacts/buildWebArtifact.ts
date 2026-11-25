@@ -69,6 +69,7 @@ export async function buildWebArtifact(
     createProviderDeclaration(),
     'utf8',
   );
+  await writePackageFacade(targets, paths.webDistRoot);
   return {
     schemaVersion: 2,
     runtime: {
@@ -81,6 +82,27 @@ export async function buildWebArtifact(
     },
     artifacts,
   };
+}
+
+/*** Write the explicit browser-only package facade from the generated component artifacts. */
+async function writePackageFacade(
+  targets: readonly WebArtifactTarget[],
+  webDistRoot: string,
+): Promise<void> {
+  const source = [
+    "export { ZoraProvider, useZoraTheme } from './runtime/ZoraProvider.js';",
+    ...targets
+      .filter(({ sourceKind }) => sourceKind === 'web-artifact')
+      .map(
+        ({ component, exportName }) =>
+          `export { ${exportName} } from './components/${component}/index.js';`,
+      ),
+    '',
+  ].join('\n');
+  await Promise.all([
+    writeFile(join(webDistRoot, 'index.js'), source, 'utf8'),
+    writeFile(join(webDistRoot, 'index.d.ts'), source, 'utf8'),
+  ]);
 }
 
 /*** Give each selected component one stable directory import and type entry. */

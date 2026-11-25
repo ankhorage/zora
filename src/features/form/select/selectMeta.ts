@@ -86,6 +86,15 @@ export const selectMeta = {
           schema: { type: 'string', category: 'Content', label: 'Label' },
         },
         {
+          key: 'leadingMedia',
+          schema: {
+            type: 'media',
+            category: 'Content',
+            label: 'Leading image',
+            mediaKinds: ['image'],
+          },
+        },
+        {
           key: 'disabled',
           schema: {
             type: 'boolean',
@@ -126,6 +135,13 @@ export const selectMeta = {
       type: 'media',
       category: 'Content',
       label: 'Leading SVG icon',
+      mediaKinds: ['image'],
+      authoring: { authority: 'instance' },
+    },
+    leadingMedia: {
+      type: 'media',
+      category: 'Content',
+      label: 'Leading image',
       mediaKinds: ['image'],
       authoring: { authority: 'instance' },
     },

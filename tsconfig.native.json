@@ -1,0 +1,10 @@
+// Managed by @ankhorage/devtools.
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "outDir": "dist"
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

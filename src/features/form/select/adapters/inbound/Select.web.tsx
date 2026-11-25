@@ -35,7 +35,12 @@ function SelectInner<TValue extends string = string>({
     <SelectField props={props}>
       <Popover
         anchor={({ toggle }) => (
-          <SelectTrigger displayLabel={selectedOption?.label} onPress={toggle} props={props} />
+          <SelectTrigger
+            displayLabel={selectedOption?.label}
+            leadingMedia={selectedOption?.leadingMedia}
+            onPress={toggle}
+            props={props}
+          />
         )}
         interactionPolicy={props.interactionPolicy}
         onOpenChange={setOpen}

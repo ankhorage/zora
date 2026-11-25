@@ -1,0 +1,10 @@
+// Managed by @ankhorage/devtools.
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "web-dist"
+  },
+  "exclude": ["node_modules", "web-dist"],
+  "include": ["src/features/**/public.ts", "src/authoring.browser.ts"]
+}

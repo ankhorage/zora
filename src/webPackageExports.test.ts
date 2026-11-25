@@ -28,8 +28,36 @@ interface WebArtifactManifest {
     readonly component: string;
     readonly exportName: string;
     readonly files: readonly string[];
+    readonly sourceKind: 'public' | 'web-artifact';
   }[];
 }
+
+/** Verifies that the web facade is generated from the canonical web-only artifact catalog. */
+test('publishes every generated web-only artifact through the web package facade', async () => {
+  const manifest = (await Bun.file('web-dist/manifest.json').json()) as WebArtifactManifest;
+  const packageJson = (await Bun.file('package.json').json()) as {
+    readonly exports: Record<string, unknown>;
+  };
+  const facade = await Bun.file('web-dist/index.js').text();
+  const artifact = (await import('@ankhorage/zora/web')) as Record<string, unknown>;
+
+  expect(packageJson.exports['./web']).toEqual({
+    types: './web-dist/index.d.ts',
+    import: './web-dist/index.js',
+    default: './web-dist/index.js',
+  });
+  expect(Object.keys(artifact).sort()).toEqual(
+    [
+      'ZoraProvider',
+      'useZoraTheme',
+      ...manifest.artifacts
+        .filter(({ sourceKind }) => sourceKind === 'web-artifact')
+        .map(({ exportName }) => exportName),
+    ].sort(),
+  );
+  expect(facade).not.toContain('/src/');
+  expect(facade).not.toContain('@ankhorage/surface');
+});
 
 /** Verifies that each generated package subpath exposes exactly its discovered component contract. */
 test('isolates every generated component web runtime and declaration entrypoint', async () => {
