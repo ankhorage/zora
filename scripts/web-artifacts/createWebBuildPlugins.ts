@@ -9,24 +9,30 @@ const safeAreaPackage = require('react-native-safe-area-context/package.json') a
   readonly module?: string;
 };
 const safeAreaEntry = join(safeAreaPackageRoot, safeAreaPackage.module ?? 'lib/module/index.js');
-const SURFACE_WEB_IMPORTS = new Set([
+const SURFACE_WEB_SPECIFIER = '@ankhorage/surface/web';
+const SURFACE_WEB_IMPORTS = [
   '@ankhorage/surface',
   '@ankhorage/surface/authoring-controls',
   '@ankhorage/surface/bottom-sheet',
   '@ankhorage/surface/color',
   '@ankhorage/surface/theme',
-]);
+];
 
 /*** Resolve Surface's root and browser-adjacent public boundaries to its single web contract. */
 function resolveSurfaceWebSpecifier(specifier: string): string | undefined {
-  return SURFACE_WEB_IMPORTS.has(specifier) ? '@ankhorage/surface/web' : undefined;
+  return specifier === SURFACE_WEB_SPECIFIER || SURFACE_WEB_IMPORTS.includes(specifier)
+    ? SURFACE_WEB_SPECIFIER
+    : undefined;
 }
 
 /*** Rewrite only the declared Surface browser boundaries without affecting unrelated package imports. */
 export function rewriteSurfaceWebSpecifiers(source: string): string {
-  return source.replaceAll(
-    /@ankhorage\/surface(?:\/(?:authoring-controls|bottom-sheet|color|theme))?/gu,
-    (specifier) => resolveSurfaceWebSpecifier(specifier) ?? specifier,
+  return SURFACE_WEB_IMPORTS.reduce(
+    (declaration, specifier) =>
+      declaration
+        .replaceAll(`'${specifier}'`, `'${SURFACE_WEB_SPECIFIER}'`)
+        .replaceAll(`"${specifier}"`, `"${SURFACE_WEB_SPECIFIER}"`),
+    source,
   );
 }
 

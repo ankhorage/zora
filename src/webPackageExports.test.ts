@@ -6,6 +6,8 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import * as ts from 'typescript';
 
+import { rewriteSurfaceWebSpecifiers } from '../scripts/web-artifacts/createWebBuildPlugins';
+
 const forbiddenWebDependencies = [
   'expo-document-picker',
   'expo-image-picker',
@@ -68,9 +70,27 @@ test('routes generated web artifacts through the published Surface web contract'
 
   for (const file of files) {
     const source = await Bun.file(file).text();
-    expect(source, file).not.toMatch(/@ankhorage\/surface(?!\/web)/u);
+    expect(source, file).not.toMatch(/(['"])@ankhorage\/surface(?=[/'"])(?!\/web\1)/u);
     expect(source, file).not.toContain('node_modules/@ankhorage/surface');
   }
+});
+
+test('rewrites complete Surface specifiers without changing existing web or unrelated imports', () => {
+  const declarations = [
+    "export { Button } from '@ankhorage/surface';",
+    'export type { Theme } from "@ankhorage/surface/theme";',
+    "export { View } from '@ankhorage/surface/web';",
+    "export { Other } from '@ankhorage/surface/theme/other';",
+    "export { Another } from '@ankhorage/surface-other';",
+  ];
+
+  expect(rewriteSurfaceWebSpecifiers(declarations.join('\n'))).toBe(
+    [
+      "export { Button } from '@ankhorage/surface/web';",
+      'export type { Theme } from "@ankhorage/surface/web";',
+      ...declarations.slice(2),
+    ].join('\n'),
+  );
 });
 
 /** Verifies that each generated package subpath exposes exactly its discovered component contract. */
