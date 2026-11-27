@@ -143,20 +143,6 @@ async function resolveWebPlatformPath(
   return undefined;
 }
 
-/*** Resolve the Bun loader for a rewritten TypeScript/JavaScript source file. */
-function resolveBunLoader(path: string): 'js' | 'jsx' | 'ts' | 'tsx' {
-  if (path.endsWith('.tsx')) return 'tsx';
-  if (path.endsWith('.ts')) return 'ts';
-  if (path.endsWith('.jsx')) return 'jsx';
-  return 'js';
-}
-
-/*** Convert a relative filesystem path into a portable ESM module specifier. */
-function toModuleSpecifier(path: string): string {
-  const normalized = toPortablePath(path);
-  return normalized.startsWith('.') ? normalized : `./${normalized}`;
-}
-
 /*** Check a platform candidate without leaking filesystem errors. */
 async function pathExists(path: string): Promise<boolean> {
   try {
