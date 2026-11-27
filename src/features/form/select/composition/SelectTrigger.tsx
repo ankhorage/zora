@@ -37,7 +37,7 @@ export function SelectTrigger<TValue extends string>({
           borderWidth={1}
           direction="row"
           gap="s"
-          minHeight={44}
+          minHeight={props.compact ? 36 : 44}
           px="m"
           radius="m"
         >
@@ -67,6 +67,7 @@ export function SelectTrigger<TValue extends string>({
       leadingIcon={props.leadingIcon}
       labelWeight={props.labelWeight ?? 'semiBold'}
       onPress={props.readOnly ? undefined : onPress}
+      size={props.compact ? 's' : undefined}
       testID={props.testID ? `${props.testID}-trigger` : undefined}
       trailingIcon={SELECT_CHEVRON_ICON}
       variant="outline"

@@ -10,6 +10,7 @@ import { View as NativeView } from 'react-native';
 
 import type { ColorPickerProps, ColorPickerTab, ColorToneDefinition } from '../../types/color';
 import { IconButton } from '../button/public';
+import { Card } from '../card/public';
 import { Select } from '../form/select/public';
 import { Gradient } from '../gradient/public';
 import { Icon } from '../icon/public';
@@ -277,6 +278,7 @@ function PickerRow({
           onClear={tone ? () => onToneChange(undefined) : undefined}
         >
           <Select
+            compact
             interactionPolicy={interactionPolicy}
             onValueChange={onToneChange}
             options={tones.map((entry) => ({ label: entry.accent, value: entry.id }))}
@@ -292,6 +294,7 @@ function PickerRow({
           onClear={harmony ? () => onHarmonyChange(undefined) : undefined}
         >
           <Select
+            compact
             interactionPolicy={interactionPolicy}
             onValueChange={onHarmonyChange}
             options={COLOR_HARMONY_CATALOG.map((entry) => ({
@@ -324,17 +327,8 @@ function SettingCard({
   readonly label: string;
   readonly onClear?: () => void;
 }) {
-  const { theme } = useZoraTheme();
   return (
-    <View
-      bg={theme.semantics.neutral.surface}
-      borderColor={theme.semantics.border.default}
-      borderWidth={1}
-      gap={geometry.footerGap}
-      minHeight={geometry.cardHeight}
-      p="s"
-      radius="m"
-    >
+    <Card compact minHeight={geometry.cardHeight} padding="s" radius="m" tone="subtle">
       <View align="center" direction="row" gap="xs" justify="space-between">
         <View align="center" direction="row" gap="xs">
           <Icon name={icon} size={20 * geometry.scale} />
@@ -353,7 +347,7 @@ function SettingCard({
         ) : null}
       </View>
       {children}
-    </View>
+    </Card>
   );
 }
 
