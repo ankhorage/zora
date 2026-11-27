@@ -59,6 +59,20 @@ test('publishes every generated web-only artifact through the web package facade
   expect(facade).not.toContain('@ankhorage/surface');
 });
 
+/** Verifies that every emitted web artifact consumes only Surface's browser-safe public contract. */
+test('routes generated web artifacts through the published Surface web contract', async () => {
+  const files = [
+    ...(await Array.fromAsync(new Bun.Glob('web-dist/**/*.js').scan())),
+    ...(await Array.fromAsync(new Bun.Glob('web-dist/**/*.d.ts').scan())),
+  ];
+
+  for (const file of files) {
+    const source = await Bun.file(file).text();
+    expect(source, file).not.toMatch(/@ankhorage\/surface(?!\/web)/u);
+    expect(source, file).not.toContain('node_modules/@ankhorage/surface');
+  }
+});
+
 /** Verifies that each generated package subpath exposes exactly its discovered component contract. */
 test('isolates every generated component web runtime and declaration entrypoint', async () => {
   const manifest = (await Bun.file('web-dist/manifest.json').json()) as WebArtifactManifest;

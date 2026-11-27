@@ -4,13 +4,12 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 import { toPortablePath } from '@ankhorage/utility/node/path';
 import * as ts from 'typescript';
 
-import { createWebBuildPlugins } from './createWebBuildPlugins';
+import { createWebBuildPlugins, rewriteSurfaceWebSpecifiers } from './createWebBuildPlugins';
 import type { WebArtifactManifestEntry, WebArtifactTarget } from './types';
 
 interface BuildWebArtifactPaths {
   readonly cacheRoot: string;
   readonly sourceRoot: string;
-  readonly surfacePackageRoot: string;
   readonly webDistRoot: string;
 }
 
@@ -188,10 +187,7 @@ async function bundleWebArtifactsAsync(
     },
     conditions: ['browser', 'import', 'default'],
     external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
-    plugins: createWebBuildPlugins({
-      sourceRoot: paths.sourceRoot,
-      surfacePackageRoot: paths.surfacePackageRoot,
-    }),
+    plugins: createWebBuildPlugins(),
     jsx: {
       development: false,
       factory: 'React.createElement',
@@ -240,7 +236,7 @@ async function normalizeClientDirective(bundlePath: string): Promise<void> {
   await writeFile(bundlePath, `'use client';\n${normalized}`, 'utf8');
 }
 
-/*** Reject development JSX and package imports outside the portable React runtime. */
+/*** Reject development JSX and package imports outside the portable React and Surface web boundaries. */
 async function validateBundle(bundlePath: string): Promise<void> {
   const source = await readFile(bundlePath, 'utf8');
   if (source.includes('jsxDEV') || source.includes('react/jsx-dev-runtime')) {
@@ -254,15 +250,21 @@ async function validateBundle(bundlePath: string): Promise<void> {
     ts.ScriptKind.JS,
   );
   for (const specifier of collectRuntimeImports(javascript)) {
-    if (
-      specifier !== 'react' &&
-      !specifier.startsWith('react/') &&
-      specifier !== 'react-dom' &&
-      !specifier.startsWith('react-dom/')
-    ) {
+    if (!isAllowedRuntimeImport(specifier)) {
       throw new Error(`ZORA web output leaked runtime dependency "${specifier}" in ${bundlePath}.`);
     }
   }
+}
+
+/*** Permit only React and the published browser-safe Surface web contract in emitted artifacts. */
+function isAllowedRuntimeImport(specifier: string): boolean {
+  return (
+    specifier === 'react' ||
+    specifier.startsWith('react/') ||
+    specifier === 'react-dom' ||
+    specifier.startsWith('react-dom/') ||
+    specifier === '@ankhorage/surface/web'
+  );
 }
 
 /*** Inspect executable imports rather than matching import-looking text inside bundled strings. */
@@ -388,8 +390,9 @@ class DeclarationDependencies {
       (current, [from, to]) => replaceDeclarationSpecifierIfPresent(current, from, to),
       surface,
     );
-    assertStandaloneDeclaration(rewritten, sourcePath, [...localReplacements.values()]);
-    return rewritten;
+    const webBoundary = rewriteSurfaceWebSpecifiers(rewritten);
+    assertStandaloneDeclaration(webBoundary, sourcePath, [...localReplacements.values()]);
+    return webBoundary;
   }
 
   /*** Assign and write the local declaration module needed by one relative import. */

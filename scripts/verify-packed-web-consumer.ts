@@ -44,7 +44,7 @@ function writeConsumerPackage(consumerRoot: string, tarballPath: string): void {
         type: 'module',
         dependencies: {
           '@ankhorage/zora': `file:${tarballPath}`,
-          '@ankhorage/surface': '9.5.10',
+          '@ankhorage/surface': '9.8.0',
           'happy-dom': '21.0.4',
           react: '19.2.3',
           'react-dom': '19.2.3',
