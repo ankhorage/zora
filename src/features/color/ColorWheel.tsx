@@ -73,30 +73,12 @@ function ColorWheelInner({
         disabled={interactionPolicy === 'passive'}
         height={VIEWBOX}
         onChange={changeAt}
+        renderedSize={size}
         width={VIEWBOX}
       >
         <Svg
           accessibilityLabel="Color wheel"
           height={size}
-          onResponderGrant={(event) =>
-            changeAt(
-              (event.nativeEvent.locationX / size) * VIEWBOX,
-              (event.nativeEvent.locationY / size) * VIEWBOX,
-            )
-          }
-          onResponderMove={(event) =>
-            changeAt(
-              (event.nativeEvent.locationX / size) * VIEWBOX,
-              (event.nativeEvent.locationY / size) * VIEWBOX,
-            )
-          }
-          onResponderRelease={(event) =>
-            changeAt(
-              (event.nativeEvent.locationX / size) * VIEWBOX,
-              (event.nativeEvent.locationY / size) * VIEWBOX,
-            )
-          }
-          onStartShouldSetResponder={() => interactionPolicy !== 'passive'}
           testID={testID}
           viewBox={`0 0 ${VIEWBOX} ${VIEWBOX}`}
           width={size}

@@ -7,5 +7,6 @@ export interface ColorWheelPointerProxyProps {
   readonly disabled: boolean;
   readonly height: number;
   readonly onChange: (x: number, y: number) => void;
+  readonly renderedSize?: number;
   readonly width: number;
 }

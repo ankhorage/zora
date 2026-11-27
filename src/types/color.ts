@@ -70,6 +70,8 @@ export interface ColorPickerProps extends ZoraBaseProps {
   readonly height?: number;
   /** Receives whether the host must provide a larger or full-screen presentation. */
   readonly onInsufficientSpaceChange?: (insufficient: boolean) => void;
+  /** Optional one-line contextual information rendered above the footer. */
+  readonly infoLine?: string;
   /** Controlled active presentation. */
   readonly activeTab?: ColorPickerTab;
   /** Emits one canonical controlled selection payload. */
