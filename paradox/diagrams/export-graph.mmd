@@ -941,22 +941,12 @@ graph LR
   module_src_features_color_ColorPicker_tsx --> export_ColorPicker
   export_ColorPickerProps["ColorPickerProps"]
   module_src_types_color_ts --> export_ColorPickerProps
-  export_ColorPickerProps -.-> export_ColorHueScaleProps
-  export_ColorPickerProps -.-> export_ColorPickerSelection
   export_ColorPickerProps -.-> export_ColorPickerTab
-  export_ColorPickerProps -.-> export_ColorPickerValue
-  export_ColorPickerProps -.-> export_ColorToneProps
+  export_ColorPickerProps -.-> export_ColorToneDefinition
   export_ColorPickerProps -.-> export_ColorWheelProps
   export_ColorPickerProps -.-> export_ZoraThemeMode
-  export_ColorPickerSelection["ColorPickerSelection"]
-  module_src_types_color_ts --> export_ColorPickerSelection
   export_ColorPickerTab["ColorPickerTab"]
   module_src_types_color_ts --> export_ColorPickerTab
-  export_ColorPickerValue["ColorPickerValue"]
-  module_src_types_color_ts --> export_ColorPickerValue
-  export_ColorPickerValue -.-> export_ColorPickerTab
-  export_ColorPickerValue -.-> export_ColorToneSelection
-  export_ColorPickerValue -.-> export_ColorWheelSelection
   export_ColorTone["ColorTone"]
   module_src_features_color_ColorTone_tsx --> export_ColorTone
   export_ColorToneDefinition["ColorToneDefinition"]

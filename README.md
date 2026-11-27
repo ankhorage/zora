@@ -3,7 +3,7 @@
 
 # ZORA
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v27.11.3](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: configured](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v28.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: configured](././paradox/badges/tests.svg) ![paradox: warnings](././paradox/badges/docs.svg)
 
 Provides opinionated React Native and React Native Web UI components, theme primitives, registries, and reader surfaces built on @ankhorage/surface.
 
@@ -50,8 +50,9 @@ Open `./paradox/index.html` locally in your browser to browse the complete docum
 
 ## Contributors
 
-<!-- readme: contributors -start -->
-<!-- readme: contributors -end -->
+<a href="https://github.com/artiphishle"><img src="https://avatars.githubusercontent.com/u/137318798?s=64" width="40" height="40" alt="artiphishle" /></a>
+<a href="https://github.com/faeb187"><img src="https://avatars.githubusercontent.com/u/389333?s=64" width="40" height="40" alt="faeb187" /></a>
+<a href="https://github.com/artiphishle-agent"><img src="https://avatars.githubusercontent.com/u/341682830?s=64" width="40" height="40" alt="artiphishle-agent" /></a>
 
 ## Donation
 

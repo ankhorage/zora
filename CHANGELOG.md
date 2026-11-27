@@ -1,5 +1,11 @@
 # Changelog
 
+## 28.0.0
+
+### Major Changes
+
+- fc1cdd9: Replace ColorPicker's Wheel/Tone/Hue controlled value contract with the Grid/Wheel primaryColor, harmony and tone contract.
+
 ## 27.11.3
 
 ### Patch Changes

@@ -926,7 +926,6 @@ graph LR
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_features_typography_public_ts
   module_src_features_collection_editor_adapters_inbound_CollectionEditor_tsx --> module_src_types_collection_editor_ts
   module_src_features_collection_editor_meta_ts --> module_src_types_authoring_ts
-  module_src_features_color_ColorHexField_tsx --> module_src_features_icon_public_ts
   module_src_features_color_ColorHexField_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorHexField_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_color_ColorHorizontalPointerProxy_native_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
@@ -941,9 +940,11 @@ graph LR
   module_src_features_color_ColorHueScale_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorHueScale_tsx --> module_src_types_color_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_button_public_ts
-  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHueScale_tsx
-  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorTone_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_card_public_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorHexField_tsx
   module_src_features_color_ColorPicker_tsx --> module_src_features_color_ColorWheel_tsx
+  module_src_features_color_ColorPicker_tsx --> module_src_features_color_utils_resolveOklchColor_ts
+  module_src_features_color_ColorPicker_tsx --> module_src_features_form_select_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_tabs_public_ts
   module_src_features_color_ColorPicker_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
@@ -966,18 +967,14 @@ graph LR
   module_src_features_color_ColorTone_tsx --> module_src_features_theme_composition_useZoraTheme_ts
   module_src_features_color_ColorTone_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorTone_tsx --> module_src_types_color_ts
-  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorHexField_tsx
-  module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorHorizontalPointerProxy_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_ColorWheelPointerProxy_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveColorHue_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveOklchColor_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColor_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_color_utils_resolveWheelColorComponents_ts
-  module_src_features_color_ColorWheel_tsx --> module_src_features_layout_public_ts
   module_src_features_color_ColorWheel_tsx --> module_src_features_theme_adapters_inbound_withZoraThemeScope_tsx
   module_src_features_color_ColorWheel_tsx --> module_src_features_theme_composition_useZoraTheme_ts
-  module_src_features_color_ColorWheel_tsx --> module_src_features_typography_public_ts
   module_src_features_color_ColorWheel_tsx --> module_src_types_color_ts
   module_src_features_color_ColorWheelKeyboardProxy_native_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
   module_src_features_color_ColorWheelKeyboardProxy_web_tsx --> module_src_features_color_ColorWheelKeyboardProxy_tsx
