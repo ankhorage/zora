@@ -52,48 +52,27 @@ async function testPackedColorPickerChromiumAsync() {
     await browser.navigateAsync(`http://127.0.0.1:${server.port}`);
     await browser.waitAsync(`window.colorAcceptance?.read().hydrated === true`);
     await browser.captureScreenshotAsync(process.env.COLOR_PICKER_SCREENSHOT_PATH);
+    await browser.clickAsync('[aria-label^="Select #"]');
+    await browser.waitAsync(`window.colorAcceptance.read().gridChanges >= 1`);
+    await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'Wheel');
     await browser.clickAsync('svg[aria-label="Color wheel"]', 0.2, 0.5);
     await browser.dragAsync('svg[aria-label="Color wheel"]', 0.2, 0.5, 0.5, 0.2);
     await browser.keyAsync('[role="slider"]', 'ArrowRight');
     await browser.waitAsync(`window.colorAcceptance.read().wheelChanges >= 3`);
-    await browser.keyAsync('button', 'Enter', 'triadic');
-    await browser.waitAsync(`document.querySelector('polygon') !== null`);
-    await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'tone');
-    await browser.clickAsync('[aria-label="Jewel"]');
-    await browser.clickAsync('svg[aria-label="Tone color plane"]', 0.7, 0.3);
-    await browser.dragAsync('svg[aria-label="Tone color plane"]', 0.7, 0.3, 0.4, 0.6);
-    await browser.waitAsync(`window.colorAcceptance.read().toneChanges >= 3`);
-    await browser.clickAsync('button', 0.5, 0.5, 'Add color');
-    await browser.clickAsync('button', 0.5, 0.5, 'Add color');
-    await browser.clickAsync('button', 0.5, 0.5, 'Add color');
-    await browser.waitAsync(`window.colorAcceptance.read().toneColors === 4`);
-    await browser.clickAsync('button', 0.5, 0.5, 'Remove color');
-    await browser.clickAsync('[data-testid="external-tone"]');
-    await browser.keyAsync('[role="slider"]', 'ArrowUp');
-    await browser.waitAsync(`window.colorAcceptance.read().toneColors === 1`);
-    await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'hue');
-    await browser.clickAsync('[aria-label^="Use generated 950 preview"]');
-    await browser.clickAsync('[role="tab"]', 0.5, 0.5, 'wheel');
     const state = await browser.evaluateAsync(`window.colorAcceptance.read()`);
     assert(
-      state.wheelChanges >= 3,
-      'Wheel click, pointer, and keyboard updates were not controlled.',
+      state.gridChanges >= 1 && state.wheelChanges >= 3,
+      'Grid and Wheel actions were not controlled.',
     );
     assert.equal(
       await browser.evaluateAsync(`document.querySelector('polygon') !== null`),
       true,
       'Triadic harmony did not render its triangle.',
     );
-    assert.equal(state.toneColors, 1, 'External controlled removal left a stale tone edit index.');
-    assert.notEqual(
-      state.hue,
-      '#2563eb',
-      'Hue 950 preview did not become the controlled 500 base.',
-    );
     assert.equal(state.errors.length, 0, state.errors.join('\n'));
     await browser.captureScreenshotAsync(process.env.COLOR_PICKER_SCREENSHOT_PATH);
     console.log(
-      'Packed ColorPicker Chromium acceptance passed: wheel drag/keyboard, triadic triangle, bounded tone single/multi, external removal, hue 500 promotion, and tab persistence.',
+      'Packed ColorPicker Chromium acceptance passed: controlled Grid selection, Wheel pointer/keyboard input, triadic overlay, and tab persistence.',
     );
   } finally {
     browser.close();
@@ -155,7 +134,7 @@ function writeConsumer(root: string, tarball: string): void {
   );
   writeFileSync(
     join(root, 'app.tsx'),
-    `import React from 'react'; import { createRoot } from 'react-dom/client'; import { ColorPicker } from '@ankhorage/zora/web/color-picker'; import { ZoraProvider } from '@ankhorage/zora/web/runtime'; const initial={tab:'wheel',wheel:{color:'#2563eb',harmony:null},tone:null,hue:'#2563eb'}; function App(){const [value,setValue]=React.useState(initial);const [wheelChanges,setWheelChanges]=React.useState(0);const [toneChanges,setToneChanges]=React.useState(0);return <ZoraProvider mode="dark"><ColorPicker onDismiss={()=>undefined} tabs={['wheel','tone','hue']} value={value} onValueChange={setValue} onSelectionChange={(event)=>{if(event.mode==='wheel')setWheelChanges((count)=>count+1);if(event.mode==='tone')setToneChanges((count)=>count+1)}} wheel={{harmonies:['triadic']}} tone={{tones:[{id:'jewel',accent:'Jewel',accentTarget:{lightness:.53,chroma:.18}}],selectionMode:'multiple'}} hue={{}}/><button data-testid="external-tone" onClick={()=>setValue((current)=>({...current,tone:{toneId:'jewel',colors:['#2563eb']}}))}>External tone</button><output data-testid="state">{JSON.stringify({hue:value.hue,toneColors:value.tone?.colors.length??0,wheelChanges,toneChanges,triangle:document.querySelector('polygon')!==null})}</output></ZoraProvider>} const errors=[]; window.addEventListener('error',(event)=>errors.push(String(event.error))); createRoot(document.getElementById('root')).render(<App/>); window.colorAcceptance={read:()=>({...JSON.parse(document.querySelector('[data-testid="state"]')?.textContent??'{}'),errors,hydrated:true})};`,
+    `import React from 'react'; import { createRoot } from 'react-dom/client'; import { ColorPicker } from '@ankhorage/zora/web/color-picker'; import { ZoraProvider } from '@ankhorage/zora/web/runtime'; function App(){const [value,setValue]=React.useState({primaryColor:'#2563eb',harmony:'triadic',tone:'jewel'});const [activeTab,setActiveTab]=React.useState('grid');const [gridChanges,setGridChanges]=React.useState(0);const [wheelChanges,setWheelChanges]=React.useState(0);return <ZoraProvider mode="dark"><ColorPicker activeTab={activeTab} onActiveTabChange={setActiveTab} onDismiss={()=>undefined} onValueChange={(next)=>{setValue(next);setGridChanges((count)=>activeTab==='grid'?count+1:count);setWheelChanges((count)=>activeTab==='wheel'?count+1:count)}} primaryColor={value.primaryColor} harmony={value.harmony} tone={value.tone} tones={[{id:'jewel',accent:'Jewel',accentTarget:{lightness:.53,chroma:.18}}]} tabs={['grid','wheel']} width={560}/><output data-testid="state">{JSON.stringify({gridChanges,wheelChanges,triangle:document.querySelector('polygon')!==null})}</output></ZoraProvider>} const errors=[]; window.addEventListener('error',(event)=>errors.push(String(event.error))); createRoot(document.getElementById('root')).render(<App/>); window.colorAcceptance={read:()=>({...JSON.parse(document.querySelector('[data-testid="state"]')?.textContent??'{}'),errors,hydrated:true})};`,
   );
 }
 

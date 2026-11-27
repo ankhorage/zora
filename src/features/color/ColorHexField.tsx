@@ -2,11 +2,10 @@ import { type HexColor, isHexColor } from '@ankhorage/color-theory';
 import { TextInput } from '@ankhorage/surface';
 import React from 'react';
 
-import { Icon } from '../icon/public';
 import { View } from '../layout/public';
 import { useZoraTheme } from '../theme/composition/useZoraTheme';
 
-/*** Edits one controlled HEX color with the Studio-style swatch and copy affordance. */
+/*** Edits one controlled HEX color until the host-backed clipboard capability is available. */
 export function ColorHexField({
   disabled,
   onChange,
@@ -38,7 +37,6 @@ export function ColorHexField({
         setInput(nextValue);
         if (isHexColor(nextValue)) onChange(nextValue);
       }}
-      trailingAccessory={<Icon color="textMuted" name="copy-outline" size="m" />}
       value={input}
     />
   );

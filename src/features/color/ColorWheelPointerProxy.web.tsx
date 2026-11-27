@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { ColorWheelPointerProxyProps } from './ColorWheelPointerProxy';
 
-/*** Maps browser pointer coordinates into the fixed SVG wheel viewport for click and drag selection. */
+/*** Maps mouse, pen and touch coordinates into the wheel viewBox for click and drag selection. */
 export function ColorWheelPointerProxy({
   children,
   disabled,
@@ -11,7 +11,7 @@ export function ColorWheelPointerProxy({
   width,
 }: ColorWheelPointerProxyProps) {
   const dragging = React.useRef(false);
-  const changeAt = (event: React.MouseEvent<HTMLDivElement>) => {
+  const changeAt = (event: React.PointerEvent<HTMLDivElement>) => {
     const target = event.currentTarget as unknown as BrowserPointerTarget;
     const rect = target.getBoundingClientRect();
     onChange(
@@ -22,16 +22,22 @@ export function ColorWheelPointerProxy({
 
   return (
     <div
-      onMouseDown={(event) => {
+      onPointerDown={(event) => {
         if (disabled) return;
         dragging.current = true;
+        (
+          event.currentTarget as unknown as { setPointerCapture: (pointerId: number) => void }
+        ).setPointerCapture(event.pointerId);
         changeAt(event);
       }}
-      onMouseMove={(event) => {
+      onPointerMove={(event) => {
         if (!disabled && dragging.current) changeAt(event);
       }}
-      onMouseUp={(event) => {
+      onPointerUp={(event) => {
         if (!disabled && dragging.current) changeAt(event);
+        dragging.current = false;
+      }}
+      onPointerCancel={() => {
         dragging.current = false;
       }}
       style={{ touchAction: 'none' }}

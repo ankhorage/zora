@@ -2,7 +2,7 @@ import type { ColorHarmony, HexColor } from '@ankhorage/color-theory';
 
 import type { ZoraBaseProps } from './base';
 
-export type ColorPickerTab = 'wheel' | 'tone' | 'hue';
+export type ColorPickerTab = 'grid' | 'wheel';
 
 /** A consumer-owned OKLCH target from the published Templates tone catalog. */
 export interface ColorToneTarget {
@@ -30,22 +30,10 @@ export interface ColorToneSelection {
   readonly colors: readonly HexColor[];
 }
 
-/** The persistent, controlled state for every independently selectable picker mode. */
-export interface ColorPickerValue {
-  readonly tab: ColorPickerTab;
-  readonly wheel: ColorWheelSelection;
-  readonly tone: ColorToneSelection | null;
-  readonly hue: HexColor;
-}
-
-/** A single mode-specific update emitted by the composed picker. */
-export type ColorPickerSelection =
-  | { readonly mode: 'wheel'; readonly value: ColorWheelSelection }
-  | { readonly mode: 'tone'; readonly value: ColorToneSelection }
-  | { readonly mode: 'hue'; readonly value: HexColor };
-
 export interface ColorWheelProps extends ZoraBaseProps {
   readonly value: HexColor;
+  /** Square stage side derived by the owning ColorPicker geometry. */
+  readonly size?: number;
   readonly harmony?: ColorHarmony | null;
   readonly harmonies?: readonly ColorHarmony[];
   readonly onChange: (selection: ColorWheelSelection) => void;
@@ -64,14 +52,30 @@ export interface ColorHueScaleProps extends ZoraBaseProps {
 }
 
 export interface ColorPickerProps extends ZoraBaseProps {
-  readonly tabs: readonly ColorPickerTab[];
-  readonly value: ColorPickerValue;
-  readonly onValueChange: (value: ColorPickerValue) => void;
-  readonly onSelectionChange?: (selection: ColorPickerSelection) => void;
+  /** Enabled presentations, in Grid then Wheel order by default. */
+  readonly tabs?: readonly ColorPickerTab[];
+  /** The one authoritative selected colour. */
+  readonly primaryColor: HexColor;
+  /** Optional owner-provided harmony applied to both presentations. */
+  readonly harmony?: ColorHarmony;
+  /** Optional consumer-owned tone-family id. */
+  readonly tone?: string;
+  /** Consumer-owned tone catalogue; ZORA deliberately does not copy it. */
+  readonly tones?: readonly ColorToneDefinition[];
+  /** Requested outer logical width; hosts must provide at least 360 logical pixels. */
+  readonly width?: number;
+  /** Controlled active presentation. */
+  readonly activeTab?: ColorPickerTab;
+  /** Emits one canonical controlled selection payload. */
+  readonly onValueChange: (value: {
+    readonly primaryColor: HexColor;
+    readonly harmony?: ColorHarmony;
+    readonly tone?: string;
+  }) => void;
+  /** Notifies a consumer that a controlled active presentation must change. */
+  readonly onActiveTabChange?: (tab: ColorPickerTab) => void;
   /** Requests dismissal from the owning Popover or BottomSheet presentation. */
   readonly onDismiss?: () => void;
   readonly hideTabListWhenSingle?: boolean;
-  readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value'>;
-  readonly tone?: Omit<ColorToneProps, 'onChange' | 'value'>;
-  readonly hue?: Omit<ColorHueScaleProps, 'onChange' | 'value'>;
+  readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value' | 'harmony'>;
 }
