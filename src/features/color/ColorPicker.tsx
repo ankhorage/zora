@@ -131,6 +131,7 @@ function ColorPickerInner({
               onChange={(next) =>
                 emit({ primaryColor: next.color, harmony: next.harmony ?? undefined })
               }
+              size={geometry.stage}
               value={primaryColor}
             />,
           )}

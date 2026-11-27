@@ -46,6 +46,8 @@ export type ColorPickerSelection =
 
 export interface ColorWheelProps extends ZoraBaseProps {
   readonly value: HexColor;
+  /** Square stage side derived by the owning ColorPicker geometry. */
+  readonly size?: number;
   readonly harmony?: ColorHarmony | null;
   readonly harmonies?: readonly ColorHarmony[];
   readonly onChange: (selection: ColorWheelSelection) => void;
