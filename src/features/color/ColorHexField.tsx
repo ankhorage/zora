@@ -16,13 +16,17 @@ export function ColorHexField({
   readonly value: HexColor;
 }) {
   const [input, setInput] = React.useState<string>(value);
+  const [previousValue, setPreviousValue] = React.useState(value);
   const { theme } = useZoraTheme();
+  if (value !== previousValue) {
+    setPreviousValue(value);
+    setInput(value);
+  }
 
   return (
     <TextInput
       accessibilityLabel="Color hex value"
       disabled={disabled}
-      key={value}
       leadingAccessory={
         <View
           bg={value}

@@ -15,7 +15,7 @@ import { resolveWheelColorComponents } from './utils/resolveWheelColorComponents
 const VIEWBOX = 1000;
 const CENTER = VIEWBOX / 2;
 const RADIUS = 480;
-const SEGMENTS = 96;
+const SEGMENTS = 360;
 const MAX_CHROMA = 0.2;
 
 /*** Renders a size-owned, filled OKLCH wheel with controlled primary and harmony points. */
@@ -29,6 +29,7 @@ function ColorWheelInner({
   interactionPolicy,
   value,
   harmony = null,
+  toneTarget,
   onChange,
   size = 340,
   testID,
@@ -36,22 +37,36 @@ function ColorWheelInner({
   const { theme } = useZoraTheme();
   const hue = resolveColorHue(value);
   const { chroma, lightness } = resolveWheelColorComponents(value);
-  const primaryPoint = pointFor(hue, Math.min(1, chroma / MAX_CHROMA));
-  const harmonyPoints = harmony
-    ? generateHarmonyRoleColors(value, harmony).colors.map((color) => pointFor(color.hueDegrees))
-    : [];
+  const targetLightness = toneTarget?.lightness ?? lightness;
+  const maximumChroma = toneTarget?.chroma ?? MAX_CHROMA;
+  const primaryPoint = pointFor(hue, Math.min(1, chroma / maximumChroma));
+  const harmonyRoles = harmony ? generateHarmonyRoleColors(value, harmony).colors : [];
+  const harmonyPoints = harmonyRoles.map((role) => ({
+    color: role.hex,
+    ...pointFor(
+      role.hueDegrees,
+      Math.min(1, resolveWheelColorComponents(role.hex).chroma / maximumChroma),
+    ),
+  }));
   const gradientId = `color-wheel-${React.useId().replaceAll(':', '')}`;
   const changeAt = (x: number, y: number) => {
     if (interactionPolicy !== 'passive')
-      onChange({ color: resolveWheelColor(value, x, y, CENTER, RADIUS, MAX_CHROMA), harmony });
+      onChange({
+        color: resolveWheelColor(value, x, y, CENTER, RADIUS, maximumChroma, targetLightness),
+        harmony,
+      });
   };
   return (
     <ColorWheelKeyboardProxy
       chroma={chroma}
       disabled={interactionPolicy === 'passive'}
       hue={hue}
+      maxChroma={maximumChroma}
       onChange={(nextHue, nextChroma) =>
-        onChange({ color: resolveOklchColor({ chroma: nextChroma, lightness }, nextHue), harmony })
+        onChange({
+          color: resolveOklchColor({ chroma: nextChroma, lightness: targetLightness }, nextHue),
+          harmony,
+        })
       }
     >
       <ColorWheelPointerProxy
@@ -87,7 +102,7 @@ function ColorWheelInner({
           width={size}
         >
           <Defs>
-            {segments().map((segment) => (
+            {segments(targetLightness, maximumChroma).map((segment) => (
               <RadialGradient
                 cx={CENTER}
                 cy={CENTER}
@@ -97,16 +112,19 @@ function ColorWheelInner({
               >
                 <Stop
                   offset="0"
-                  stopColor={resolveOklchColor({ chroma: 0, lightness: 0.72 }, segment.hue)}
+                  stopColor={resolveOklchColor(
+                    { chroma: 0, lightness: targetLightness },
+                    segment.hue,
+                  )}
                 />
                 <Stop offset="1" stopColor={segment.color} />
               </RadialGradient>
             ))}
           </Defs>
-          {segments().map((segment) => (
+          {segments(targetLightness, maximumChroma).map((segment) => (
             <Path d={segment.path} fill={`url(#${gradientId}-${segment.hue})`} key={segment.hue} />
           ))}
-          {harmonyPoints.length === 3 ? (
+          {harmonyPoints.length >= 3 ? (
             <Polygon
               fill="none"
               points={harmonyPoints.map((point) => `${point.x},${point.y}`).join(' ')}
@@ -116,15 +134,19 @@ function ColorWheelInner({
           ) : (
             linesFor(harmonyPoints, primaryPoint, theme.semantics.content.default)
           )}
-          {harmonyPoints.map((point) => (
-            <Circle
-              cx={point.x}
-              cy={point.y}
-              fill={theme.semantics.content.default}
-              key={`${point.x}-${point.y}`}
-              r={26}
-            />
-          ))}
+          {harmonyPoints
+            .filter((point) => point.color !== value)
+            .map((point) => (
+              <Circle
+                cx={point.x}
+                cy={point.y}
+                fill={point.color}
+                key={`${point.x}-${point.y}`}
+                stroke={theme.semantics.content.default}
+                strokeWidth={6}
+                r={26}
+              />
+            ))}
           <Circle
             cx={primaryPoint.x}
             cy={primaryPoint.y}
@@ -147,8 +169,11 @@ function ColorWheelInner({
   );
 }
 
-/*** Creates continuous-looking radial hue segments for the wheel viewBox. */
-function segments(): readonly {
+/*** Creates fine radial hue segments from the same OKLCH projection used for interaction. */
+function segments(
+  lightness: number,
+  maximumChroma: number,
+): readonly {
   readonly color: HexColor;
   readonly hue: number;
   readonly path: string;
@@ -156,7 +181,7 @@ function segments(): readonly {
   return Array.from({ length: SEGMENTS }, (_, index) => {
     const hue = (index * 360) / SEGMENTS;
     return {
-      color: resolveOklchColor({ chroma: MAX_CHROMA, lightness: 0.65 }, hue),
+      color: resolveOklchColor({ chroma: maximumChroma, lightness }, hue),
       hue,
       path: segmentPath(hue, hue + 360 / SEGMENTS),
     };

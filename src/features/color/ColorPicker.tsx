@@ -1,6 +1,7 @@
 import { COLOR_HARMONY_CATALOG, type ColorHarmony, type HexColor } from '@ankhorage/color-theory';
 import { Pressable } from '@ankhorage/surface';
 import React from 'react';
+import { View as NativeView } from 'react-native';
 
 import type { ColorPickerProps, ColorPickerTab, ColorToneDefinition } from '../../types/color';
 import { IconButton } from '../button/public';
@@ -14,6 +15,7 @@ import { Heading } from '../typography/public';
 import { ColorHexField } from './ColorHexField';
 import { ColorWheel } from './ColorWheel';
 import { resolveOklchColor } from './utils/resolveOklchColor';
+import { resolveColorPickerGeometry } from './resolveColorPickerGeometry';
 
 const DEFAULT_TABS: readonly ColorPickerTab[] = ['grid', 'wheel'];
 
@@ -31,6 +33,8 @@ function ColorPickerInner({
   tone,
   tones = [],
   width = 560,
+  height,
+  onInsufficientSpaceChange,
   activeTab,
   onValueChange,
   onActiveTabChange,
@@ -41,17 +45,31 @@ function ColorPickerInner({
   testID,
 }: ColorPickerProps) {
   const { theme } = useZoraTheme();
+  const [hostBounds, setHostBounds] = React.useState<{
+    readonly height: number;
+    readonly width: number;
+  }>();
   const enabledTabs = resolveEnabledTabs(tabs);
   const firstTab = enabledTabs.at(0);
   if (!firstTab) throw new Error('ColorPicker requires at least one tab.');
   const resolvedTab = activeTab && enabledTabs.includes(activeTab) ? activeTab : firstTab;
-  const geometry = resolveGeometry(width);
+  const geometry = resolveColorPickerGeometry({
+    height,
+    hostHeight: hostBounds?.height,
+    hostWidth: hostBounds?.width,
+    showTabs: enabledTabs.length > 1 || !hideTabListWhenSingle,
+    width,
+  });
   const selectedTone = tones.find((entry) => entry.id === tone);
-  const emit = (next: Partial<{ primaryColor: HexColor; harmony: ColorHarmony; tone: string }>) =>
+  const emit = (next: {
+    readonly harmony?: ColorHarmony;
+    readonly primaryColor?: HexColor;
+    readonly tone?: string;
+  }) =>
     onValueChange({
       primaryColor: next.primaryColor ?? primaryColor,
-      ...(next.harmony === undefined ? (harmony ? { harmony } : {}) : { harmony: next.harmony }),
-      ...(next.tone === undefined ? (tone ? { tone } : {}) : { tone: next.tone }),
+      ...(Object.hasOwn(next, 'harmony') ? { harmony: next.harmony } : harmony ? { harmony } : {}),
+      ...(Object.hasOwn(next, 'tone') ? { tone: next.tone } : tone ? { tone } : {}),
     });
   const settings = (children: React.ReactNode) => (
     <PickerRow
@@ -59,6 +77,7 @@ function ColorPickerInner({
       tone={tone}
       tones={tones}
       harmony={harmony}
+      interactionPolicy={interactionPolicy}
       onHarmonyChange={(next) => emit({ harmony: next })}
       onToneChange={(next) => emit({ tone: next })}
     >
@@ -68,92 +87,115 @@ function ColorPickerInner({
   React.useEffect(() => {
     if (activeTab && activeTab !== resolvedTab) onActiveTabChange?.(resolvedTab);
   }, [activeTab, onActiveTabChange, resolvedTab]);
+  React.useEffect(() => {
+    onInsufficientSpaceChange?.(geometry.insufficientSpace);
+  }, [geometry.insufficientSpace, onInsufficientSpaceChange]);
   return (
-    <View
-      alignSelf="center"
-      bg={theme.semantics.surface.raised}
-      borderColor={theme.semantics.border.default}
-      borderWidth={1}
-      gap="m"
-      maxWidth="100%"
-      p={geometry.padding}
-      radius="xl"
-      testID={testID}
-      width={geometry.width}
+    <NativeView
+      onLayout={(event) =>
+        setHostBounds({
+          height: event.nativeEvent.layout.height,
+          width: event.nativeEvent.layout.width,
+        })
+      }
+      style={{
+        alignSelf: 'stretch',
+        flexShrink: 1,
+        maxHeight: '100%',
+        maxWidth: '100%',
+        width: '100%',
+      }}
     >
-      <View align="center" direction="row" justify="space-between" minHeight={48}>
-        <Heading level={2}>Color</Heading>
-        <View align="center" direction="row" gap="s">
-          <View
-            bg={primaryColor}
-            borderColor={theme.semantics.border.default}
-            borderWidth={1}
-            height={36}
-            radius="s"
-            width={52}
-          />
-          {onDismiss ? (
-            <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
-          ) : null}
-        </View>
-      </View>
-      <Tabs
-        onValueChange={(next) => {
-          if (isColorPickerTab(next) && enabledTabs.includes(next)) onActiveTabChange?.(next);
-        }}
-        value={resolvedTab}
-        variant="attached"
-      >
-        {enabledTabs.length > 1 || !hideTabListWhenSingle ? (
-          <View
-            borderColor={theme.semantics.border.default}
-            borderWidth={1}
-            overflow="hidden"
-            radius="m"
-          >
-            <TabList fill>
-              {enabledTabs.map((tab) => (
-                <Tab key={tab} label={tab === 'grid' ? 'Grid' : 'Wheel'} value={tab} />
-              ))}
-            </TabList>
+      {!geometry.insufficientSpace ? (
+        <View
+          alignSelf="center"
+          bg={theme.semantics.surface.raised}
+          borderColor={theme.semantics.border.default}
+          borderWidth={1}
+          gap={geometry.footerGap}
+          p={geometry.padding}
+          radius="xl"
+          testID={testID}
+          width={geometry.width}
+        >
+          <View align="center" direction="row" justify="space-between" minHeight={48}>
+            <Heading level={2}>Color</Heading>
+            <View align="center" direction="row" gap="s">
+              <View
+                bg={primaryColor}
+                borderColor={theme.semantics.border.default}
+                borderWidth={1}
+                height={36}
+                radius="s"
+                width={52}
+              />
+              {onDismiss ? (
+                <IconButton iconName="close" label="Close color picker" onPress={onDismiss} />
+              ) : null}
+            </View>
           </View>
-        ) : null}
-        {enabledTabs.includes('grid') ? (
-          <TabPanel value="grid">
-            {settings(
-              <ColorGrid
-                onSelect={(color) => emit({ primaryColor: color })}
-                palette={resolvePalette(selectedTone)}
-                selectionBorderColor={theme.semantics.content.default}
-                selected={primaryColor}
-                size={geometry.stage}
-              />,
-            )}
-          </TabPanel>
-        ) : null}
-        {enabledTabs.includes('wheel') ? (
-          <TabPanel value="wheel">
-            {settings(
-              <ColorWheel
-                {...wheel}
-                harmony={harmony ?? null}
-                onChange={(next) =>
-                  emit({ primaryColor: next.color, harmony: next.harmony ?? undefined })
-                }
-                size={geometry.stage}
-                value={primaryColor}
-              />,
-            )}
-          </TabPanel>
-        ) : null}
-      </Tabs>
-      <Divider />
-      <ColorHexField
-        disabled={interactionPolicy === 'passive'}
-        onChange={(color) => emit({ primaryColor: color })}
-        value={primaryColor}
-      />
-    </View>
+          <Tabs
+            onValueChange={(next) => {
+              if (isColorPickerTab(next) && enabledTabs.includes(next)) onActiveTabChange?.(next);
+            }}
+            value={resolvedTab}
+            variant="attached"
+          >
+            {enabledTabs.length > 1 || !hideTabListWhenSingle ? (
+              <View
+                borderColor={theme.semantics.border.default}
+                borderWidth={1}
+                overflow="hidden"
+                radius="m"
+              >
+                <TabList fill>
+                  {enabledTabs.map((tab) => (
+                    <Tab key={tab} label={tab === 'grid' ? 'Grid' : 'Wheel'} value={tab} />
+                  ))}
+                </TabList>
+              </View>
+            ) : null}
+            {enabledTabs.includes('grid') ? (
+              <TabPanel value="grid">
+                {settings(
+                  <ColorGrid
+                    disabled={interactionPolicy === 'passive'}
+                    onSelect={(color) => emit({ primaryColor: color })}
+                    palette={resolvePalette(selectedTone)}
+                    selectionBorderColor={theme.semantics.content.default}
+                    selected={primaryColor}
+                    size={geometry.stage}
+                  />,
+                )}
+              </TabPanel>
+            ) : null}
+            {enabledTabs.includes('wheel') ? (
+              <TabPanel value="wheel">
+                {settings(
+                  <ColorWheel
+                    {...wheel}
+                    harmony={harmony ?? null}
+                    onChange={(next) =>
+                      emit({ primaryColor: next.color, harmony: next.harmony ?? undefined })
+                    }
+                    size={geometry.stage}
+                    toneTarget={selectedTone?.accentTarget}
+                    value={primaryColor}
+                  />,
+                )}
+              </TabPanel>
+            ) : null}
+          </Tabs>
+          <View height={20} />
+          <Divider />
+          <ColorHexField
+            disabled={interactionPolicy === 'passive'}
+            onChange={(color) => emit({ primaryColor: color })}
+            value={primaryColor}
+          />
+        </View>
+      ) : null}
+    </NativeView>
   );
 }
 
@@ -164,14 +206,16 @@ function PickerRow({
   tone,
   tones,
   harmony,
+  interactionPolicy,
   onToneChange,
   onHarmonyChange,
 }: {
   readonly children: React.ReactNode;
-  readonly geometry: ReturnType<typeof resolveGeometry>;
+  readonly geometry: ReturnType<typeof resolveColorPickerGeometry>;
   readonly tone?: string;
   readonly tones: readonly ColorToneDefinition[];
   readonly harmony?: ColorHarmony;
+  readonly interactionPolicy?: ColorPickerProps['interactionPolicy'];
   readonly onToneChange: (tone: string) => void;
   readonly onHarmonyChange: (harmony?: ColorHarmony) => void;
 }) {
@@ -180,6 +224,7 @@ function PickerRow({
       <View gap="m" width={geometry.rail}>
         <Card compact title="Tone">
           <Select
+            interactionPolicy={interactionPolicy}
             onValueChange={onToneChange}
             options={tones.map((entry) => ({ label: entry.accent, value: entry.id }))}
             placeholder="Any tone"
@@ -188,6 +233,7 @@ function PickerRow({
         </Card>
         <Card compact title="Harmony">
           <Select
+            interactionPolicy={interactionPolicy}
             onValueChange={onHarmonyChange}
             options={COLOR_HARMONY_CATALOG.map((entry) => ({
               label: entry.label,
@@ -210,12 +256,14 @@ function ColorGrid({
   selected,
   size,
   onSelect,
+  disabled = false,
 }: {
   readonly palette: readonly HexColor[];
   readonly selectionBorderColor: string;
   readonly selected: HexColor;
   readonly size: number;
   readonly onSelect: (color: HexColor) => void;
+  readonly disabled?: boolean;
 }) {
   const gap = Math.max(3, Math.round(size / 68));
   const cell = (size - 7 * gap) / 8;
@@ -227,6 +275,7 @@ function ColorGrid({
           bg={color}
           borderColor={color === selected ? selectionBorderColor : 'transparent'}
           borderWidth={color === selected ? 3 : 1}
+          disabled={disabled}
           height={cell}
           key={color}
           onPress={() => onSelect(color)}
@@ -250,23 +299,6 @@ function resolvePalette(tone?: ColorToneDefinition): readonly HexColor[] {
       (index * 137.508) % 360,
     ),
   );
-}
-
-/*** Resolves continuous width-owned rail and stage geometry from the specified picker width. */
-function resolveGeometry(requestedWidth: number) {
-  if (requestedWidth < 360)
-    throw new Error('ColorPicker requires a host width of at least 360 logical pixels.');
-  const scale = Math.max(0, (Math.min(requestedWidth, 560) - 360) / 200);
-  const padding = 12 + scale * 12;
-  const rail = 104 + scale * 46;
-  const gap = 12 + scale * 8;
-  return {
-    width: requestedWidth,
-    padding,
-    rail,
-    gap,
-    stage: requestedWidth - 2 - 2 * padding - rail - gap,
-  };
 }
 
 /*** Rejects empty and legacy tab configurations before they render focusable controls. */

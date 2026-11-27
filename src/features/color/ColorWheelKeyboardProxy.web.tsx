@@ -8,6 +8,7 @@ export function ColorWheelKeyboardProxy({
   chroma,
   disabled,
   hue,
+  maxChroma = 0.2,
   onChange,
 }: ColorWheelKeyboardProxyProps) {
   return (
@@ -19,7 +20,7 @@ export function ColorWheelKeyboardProxy({
       aria-valuetext={`Hue ${Math.round(hue)}, chroma ${chroma.toFixed(2)}`}
       aria-disabled={disabled}
       onKeyDown={(event) => {
-        const nextValue = resolveKeyboardWheelValue(event.key, hue, chroma);
+        const nextValue = resolveKeyboardWheelValue(event.key, hue, chroma, maxChroma);
         if (!nextValue || disabled) return;
         event.preventDefault();
         onChange(nextValue.hue, nextValue.chroma);
@@ -33,11 +34,11 @@ export function ColorWheelKeyboardProxy({
 }
 
 /*** Resolve portable arrow keys into bounded color-wheel increments. */
-function resolveKeyboardWheelValue(key: string, hue: number, chroma: number) {
+function resolveKeyboardWheelValue(key: string, hue: number, chroma: number, maxChroma: number) {
   if (key === 'ArrowLeft') return { chroma, hue: normalizeHue(hue - 5) };
   if (key === 'ArrowRight') return { chroma, hue: normalizeHue(hue + 5) };
   if (key === 'ArrowDown') return { chroma: Math.max(0, chroma - 0.02), hue };
-  if (key === 'ArrowUp') return { chroma: Math.min(0.2, chroma + 0.02), hue };
+  if (key === 'ArrowUp') return { chroma: Math.min(maxChroma, chroma + 0.02), hue };
   return undefined;
 }
 

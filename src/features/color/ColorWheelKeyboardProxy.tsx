@@ -7,5 +7,6 @@ export interface ColorWheelKeyboardProxyProps {
   readonly chroma: number;
   readonly disabled: boolean;
   readonly hue: number;
+  readonly maxChroma?: number;
   readonly onChange: (hue: number, chroma: number) => void;
 }
