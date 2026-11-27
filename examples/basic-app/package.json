@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.typecheck.json"
   },
   "dependencies": {
-    "@ankhorage/zora": "^27.11.2",
+    "@ankhorage/zora": "^27.11.3",
     "@react-native-picker/picker": "2.13.1",
     "@react-native-vector-icons/fontawesome": "^14.0.0",
     "@react-native-vector-icons/fontawesome5": "^14.0.0",
