@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "name": "ZORA FlowCanvas acceptance",
+    "slug": "zora-flow-canvas-acceptance",
+    "ios": { "bundleIdentifier": "dev.ankhorage.zora.flowacceptance" },
+    "android": { "package": "dev.ankhorage.zora.flowacceptance" }
+  }
+}

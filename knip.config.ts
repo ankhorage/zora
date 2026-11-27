@@ -4,6 +4,8 @@ export default createKnipConfig({
   entry: [
     '.agents/skills/**/scripts/**/*.ts',
     'scripts/scaffold-zora-example-app.ts',
+    'scripts/utils/createExpoNativeCommand.test.ts',
+    'scripts/utils/verifyExpoMetroBundle.test.ts',
     'examples/basic-app/App.tsx',
     'examples/carousel/main.tsx',
     'examples/carousel/serve.ts',
@@ -21,6 +23,9 @@ export default createKnipConfig({
     'test-fixtures/graphLayoutLifecycle.ts',
     'test-fixtures/graphViewChromiumAcceptance.tsx',
     'test-fixtures/chessChromiumAcceptance.tsx',
+    'test-fixtures/flowCanvasChromiumAcceptance.tsx',
+    'test-fixtures/flowCanvasBenchmark.tsx',
+    'test-fixtures/flow-canvas-native/App.tsx',
     'type-tests/**/*.ts',
   ],
   ignoreFiles: [
@@ -33,4 +38,6 @@ export default createKnipConfig({
     'paradox.config.ts',
     'prettier.local.config.js',
   ],
+  // The repository-local zora-designer skill dynamically loads this published owner API.
+  ignoreDependencies: ['@ankhorage/templates'],
 });
