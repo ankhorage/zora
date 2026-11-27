@@ -1,7 +1,7 @@
 import {
   COLOR_HARMONY_CATALOG,
-  generateHarmonyRoleColors,
   type ColorHarmony,
+  generateHarmonyRoleColors,
   type HexColor,
 } from '@ankhorage/color-theory';
 import { Pressable } from '@ankhorage/surface';
@@ -20,8 +20,8 @@ import { useZoraTheme } from '../theme/composition/useZoraTheme';
 import { Heading, Text } from '../typography/public';
 import { ColorHexField } from './ColorHexField';
 import { ColorWheel } from './ColorWheel';
-import { resolveOklchColor } from './utils/resolveOklchColor';
 import { resolveColorPickerGeometry } from './resolveColorPickerGeometry';
+import { resolveOklchColor } from './utils/resolveOklchColor';
 
 const DEFAULT_TABS: readonly ColorPickerTab[] = ['grid', 'wheel'];
 
