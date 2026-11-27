@@ -42,7 +42,9 @@ function ColorPickerInner({
 }: ColorPickerProps) {
   const { theme } = useZoraTheme();
   const enabledTabs = resolveEnabledTabs(tabs);
-  const resolvedTab = activeTab && enabledTabs.includes(activeTab) ? activeTab : enabledTabs[0];
+  const firstTab = enabledTabs.at(0);
+  if (!firstTab) throw new Error('ColorPicker requires at least one tab.');
+  const resolvedTab = activeTab && enabledTabs.includes(activeTab) ? activeTab : firstTab;
   const geometry = resolveGeometry(width);
   const selectedTone = tones.find((entry) => entry.id === tone);
   const emit = (next: Partial<{ primaryColor: HexColor; harmony: ColorHarmony; tone: string }>) =>
@@ -63,6 +65,9 @@ function ColorPickerInner({
       {children}
     </PickerRow>
   );
+  React.useEffect(() => {
+    if (activeTab && activeTab !== resolvedTab) onActiveTabChange?.(resolvedTab);
+  }, [activeTab, onActiveTabChange, resolvedTab]);
   return (
     <View
       alignSelf="center"
@@ -113,29 +118,33 @@ function ColorPickerInner({
             </TabList>
           </View>
         ) : null}
-        <TabPanel value="grid">
-          {settings(
-            <ColorGrid
-              onSelect={(color) => emit({ primaryColor: color })}
-              palette={resolvePalette(selectedTone)}
-              selected={primaryColor}
-              size={geometry.stage}
-            />,
-          )}
-        </TabPanel>
-        <TabPanel value="wheel">
-          {settings(
-            <ColorWheel
-              {...wheel}
-              harmony={harmony ?? null}
-              onChange={(next) =>
-                emit({ primaryColor: next.color, harmony: next.harmony ?? undefined })
-              }
-              size={geometry.stage}
-              value={primaryColor}
-            />,
-          )}
-        </TabPanel>
+        {enabledTabs.includes('grid') ? (
+          <TabPanel value="grid">
+            {settings(
+              <ColorGrid
+                onSelect={(color) => emit({ primaryColor: color })}
+                palette={resolvePalette(selectedTone)}
+                selected={primaryColor}
+                size={geometry.stage}
+              />,
+            )}
+          </TabPanel>
+        ) : null}
+        {enabledTabs.includes('wheel') ? (
+          <TabPanel value="wheel">
+            {settings(
+              <ColorWheel
+                {...wheel}
+                harmony={harmony ?? null}
+                onChange={(next) =>
+                  emit({ primaryColor: next.color, harmony: next.harmony ?? undefined })
+                }
+                size={geometry.stage}
+                value={primaryColor}
+              />,
+            )}
+          </TabPanel>
+        ) : null}
       </Tabs>
       <Divider />
       <ColorHexField
