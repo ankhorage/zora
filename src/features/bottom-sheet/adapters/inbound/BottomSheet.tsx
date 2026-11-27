@@ -61,7 +61,7 @@ function BottomSheetInner({
         dismissed.current = true;
         onDismiss?.();
       },
-      onIndexChange: (index) => onIndexChange?.({ index }),
+      onIndexChange: (index: number) => onIndexChange?.({ index }),
     });
   }, [
     active,

@@ -57,7 +57,7 @@ function SelectInner<TValue extends string = string>({
         <BottomSheetFlatList
           contentContainerStyle={styles.listContent}
           data={listData}
-          keyExtractor={(item) => item.value}
+          keyExtractor={(item: SelectOption<TValue>) => item.value}
           renderItem={renderOption}
         />
       ),
