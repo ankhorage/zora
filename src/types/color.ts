@@ -2,7 +2,7 @@ import type { ColorHarmony, HexColor } from '@ankhorage/color-theory';
 
 import type { ZoraBaseProps } from './base';
 
-export type ColorPickerTab = 'wheel' | 'tone' | 'hue';
+export type ColorPickerTab = 'grid' | 'wheel';
 
 /** A consumer-owned OKLCH target from the published Templates tone catalog. */
 export interface ColorToneTarget {
@@ -64,14 +64,30 @@ export interface ColorHueScaleProps extends ZoraBaseProps {
 }
 
 export interface ColorPickerProps extends ZoraBaseProps {
-  readonly tabs: readonly ColorPickerTab[];
-  readonly value: ColorPickerValue;
-  readonly onValueChange: (value: ColorPickerValue) => void;
-  readonly onSelectionChange?: (selection: ColorPickerSelection) => void;
+  /** Enabled presentations, in Grid then Wheel order by default. */
+  readonly tabs?: readonly ColorPickerTab[];
+  /** The one authoritative selected colour. */
+  readonly primaryColor: HexColor;
+  /** Optional owner-provided harmony applied to both presentations. */
+  readonly harmony?: ColorHarmony;
+  /** Optional consumer-owned tone-family id. */
+  readonly tone?: string;
+  /** Consumer-owned tone catalogue; ZORA deliberately does not copy it. */
+  readonly tones?: readonly ColorToneDefinition[];
+  /** Requested outer logical width; hosts must provide at least 360 logical pixels. */
+  readonly width?: number;
+  /** Controlled active presentation. */
+  readonly activeTab?: ColorPickerTab;
+  /** Emits one canonical controlled selection payload. */
+  readonly onValueChange: (value: {
+    readonly primaryColor: HexColor;
+    readonly harmony?: ColorHarmony;
+    readonly tone?: string;
+  }) => void;
+  /** Notifies a consumer that a controlled active presentation must change. */
+  readonly onActiveTabChange?: (tab: ColorPickerTab) => void;
   /** Requests dismissal from the owning Popover or BottomSheet presentation. */
   readonly onDismiss?: () => void;
   readonly hideTabListWhenSingle?: boolean;
-  readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value'>;
-  readonly tone?: Omit<ColorToneProps, 'onChange' | 'value'>;
-  readonly hue?: Omit<ColorHueScaleProps, 'onChange' | 'value'>;
+  readonly wheel?: Omit<ColorWheelProps, 'onChange' | 'value' | 'harmony'>;
 }

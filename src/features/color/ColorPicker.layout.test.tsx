@@ -15,7 +15,7 @@ function load(path: string) {
   return import(pathToFileURL(join(webDistRoot, path)).href);
 }
 
-test('keeps the selected hue grid inside the responsive picker surface in both theme modes', async () => {
+test('renders the same 8-by-8 Grid geometry in both inherited theme modes', async () => {
   const [{ ColorPicker }, { ZoraProvider }] = (await Promise.all([
     load('components/color-picker/index.js'),
     load('runtime/ZoraProvider.js'),
@@ -33,17 +33,11 @@ test('keeps the selected hue grid inside the responsive picker surface in both t
     renderToStaticMarkup(
       <ZoraProvider mode={mode}>
         <ColorPicker
-          hue={{}}
           onDismiss={() => undefined}
           onValueChange={() => undefined}
-          tabs={['wheel', 'tone', 'hue']}
+          primaryColor="#2563eb"
           testID={`picker-${mode}`}
-          value={{
-            hue: '#2563eb',
-            tab: 'hue',
-            tone: null,
-            wheel: { color: '#2563eb', harmony: null },
-          }}
+          width={560}
         />
       </ZoraProvider>,
     );
@@ -53,17 +47,18 @@ test('keeps the selected hue grid inside the responsive picker surface in both t
     browser.document.body.innerHTML = markupFor(mode);
     try {
       const picker = browser.document.querySelector(`[data-testid="picker-${mode}"]`);
-      const scale = browser.document.querySelector('[aria-label^="Color scale previews"]');
-      const swatches = scale?.querySelectorAll('[role="button"]') ?? [];
+      const grid = browser.document.querySelector('[aria-label="Color grid"]');
+      const swatches = grid?.querySelectorAll('[role="button"]') ?? [];
 
-      expect(picker?.getAttribute('style')).toContain('width:100%');
-      expect(picker?.getAttribute('style')).toContain('max-width:400px');
+      expect(picker?.getAttribute('style')).toContain('width:560px');
       expect(browser.document.querySelector('[aria-label="Close color picker"]')).not.toBeNull();
       expect(browser.document.querySelectorAll('[aria-label="Color hex value"]')).toHaveLength(1);
-      expect(scale?.getAttribute('style')).toContain('flex-wrap:wrap');
-      expect(swatches).toHaveLength(11);
+      expect(grid?.getAttribute('style')).toContain('flex-wrap:wrap');
+      expect(swatches).toHaveLength(64);
       expect(
-        Array.from(swatches).every((swatch) => swatch.getAttribute('style')?.includes('width:18%')),
+        Array.from(swatches).every((swatch) =>
+          swatch.getAttribute('style')?.includes('width:38.125px'),
+        ),
       ).toBe(true);
     } finally {
       browser.close();
