@@ -124,6 +124,7 @@ function ColorPickerInner({
               <ColorGrid
                 onSelect={(color) => emit({ primaryColor: color })}
                 palette={resolvePalette(selectedTone)}
+                selectionBorderColor={theme.semantics.content.default}
                 selected={primaryColor}
                 size={geometry.stage}
               />,
@@ -205,11 +206,13 @@ function PickerRow({
 /*** Renders all 64 deterministic OKLCH candidates without scrolling or virtualisation. */
 function ColorGrid({
   palette,
+  selectionBorderColor,
   selected,
   size,
   onSelect,
 }: {
   readonly palette: readonly HexColor[];
+  readonly selectionBorderColor: string;
   readonly selected: HexColor;
   readonly size: number;
   readonly onSelect: (color: HexColor) => void;
@@ -222,7 +225,7 @@ function ColorGrid({
         <Pressable
           accessibilityLabel={`Select ${color}`}
           bg={color}
-          borderColor={color === selected ? 'white' : 'transparent'}
+          borderColor={color === selected ? selectionBorderColor : 'transparent'}
           borderWidth={color === selected ? 3 : 1}
           height={cell}
           key={color}
