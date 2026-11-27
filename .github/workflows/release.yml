@@ -231,7 +231,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.16 validate . --enforce-repository-metadata
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.21 validate . --enforce-repository-metadata
           fi
 
       - name: Determine immutable pre-publish release intent
@@ -484,12 +484,17 @@ jobs:
               fi
             fi
 
-            PACKAGE_NAME="$package_name" node - <<'NODE' > runtime-entrypoints.txt
+            PACKAGE_NAME="$package_name" PLATFORM_TOOLCHAIN_DEPENDENCIES="$platform_toolchain_dependencies" node - <<'NODE' > runtime-entrypoints.txt
           const { readFileSync } = require('node:fs');
           const { join } = require('node:path');
           const name = process.env.PACKAGE_NAME;
           const packageDir = join(process.cwd(), 'node_modules', ...name.split('/'));
           const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
+          const platformToolchain = process.env.PLATFORM_TOOLCHAIN_DEPENDENCIES;
+          const hasPlatformToolchain =
+            typeof platformToolchain === 'string' &&
+            platformToolchain.length > 0 &&
+            Object.keys(JSON.parse(platformToolchain)).length > 0;
           const importConditions = new Set(['bun', 'default', 'import', 'node']);
           const requireConditions = new Set(['require']);
           const reactNativeConditions = new Set(['react-native']);
@@ -520,7 +525,10 @@ jobs:
           const isReactNativePlatformOnlyRuntimeTarget = (target) =>
             isPlatformOnlyRuntimeTarget(target) && declaresCondition(target, reactNativeConditions);
           const selectLoaders = (target) => {
-            if (isReactNativePlatformOnlyRuntimeTarget(target)) return ['react-native'];
+            if (isReactNativePlatformOnlyRuntimeTarget(target)) {
+              if (hasPlatformToolchain) return ['react-native'];
+              return supportsLoader(target, importConditions) ? ['import'] : [];
+            }
             if (isPlatformOnlyRuntimeTarget(target)) return [];
             return [
               ['import', importConditions],
