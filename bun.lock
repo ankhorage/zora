@@ -20,7 +20,7 @@
       },
       "devDependencies": {
         "@ankhorage/devtools": "^2.11.1",
-        "@ankhorage/paradox": "^0.6.0",
+        "@ankhorage/paradox": "^0.6.1",
         "@react-native-vector-icons/fontawesome": "^14.0.0",
         "@react-native-vector-icons/fontawesome5": "^14.0.0",
         "@react-native-vector-icons/fontawesome6": "^14.0.0",
@@ -86,7 +86,7 @@
 
     "@ankhorage/grid-view": ["@ankhorage/grid-view@0.5.0", "", {}, "sha512-xTfDJNBkWmkaVHQd6Oe6YiRSG4f6ZN1gPnl143AVhS7gZU/x7Tesc/WLaDQ66Z6qALhWzoFrNzKN4S3XuZ4QLQ=="],
 
-    "@ankhorage/paradox": ["@ankhorage/paradox@0.6.0", "", { "dependencies": { "@ankhorage/ankh": "^0.13.3", "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.11.1", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/rules-repository": "^0.4.1", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-5XXHefuOabqXG2AnJXhNTHXXIFy8eRcN0gjoyJ1H4HaAIwnwy5AKCTQ9J0RsQoiHEu+qf30r18GeCKvN09VrHg=="],
+    "@ankhorage/paradox": ["@ankhorage/paradox@0.6.1", "", { "dependencies": { "@ankhorage/ankh": "^0.13.3", "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.11.1", "@ankhorage/rules": "^0.2.0", "@ankhorage/rules-documentation": "^0.3.4", "@ankhorage/rules-repository": "^0.4.1", "@ankhorage/utility": "^1.9.63", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-rntvQu2x3tTkh3kV2MuImLltHnQcpxTupoYLEn7kvgEUAAOfwls0/ehablcBM1emCYS0Z4VCpRXFTRWVGFGiaA=="],
 
     "@ankhorage/project-detector": ["@ankhorage/project-detector@0.3.6", "", { "dependencies": { "@ankhorage/capability": "^0.2.1", "@ankhorage/contracts": "^26.0.0", "@ankhorage/utility": "^0.8.0", "minimatch": "^10.2.6", "yaml": "^2.9.1" }, "peerDependencies": { "@ankhorage/ankh": "^0.12.0" }, "optionalPeers": ["@ankhorage/ankh"], "bin": { "project-detector": "dist/cli/runAsync.js" } }, "sha512-REfNjd4BQDzvDMHCEKpzxt7lz42z2fzkJSfGk/E3xnoVQw3SVD9PbxiylOPWyR7w3+X8jPuBYy1zwb/CtqZOyw=="],
 
