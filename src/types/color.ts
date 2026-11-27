@@ -30,20 +30,6 @@ export interface ColorToneSelection {
   readonly colors: readonly HexColor[];
 }
 
-/** The persistent, controlled state for every independently selectable picker mode. */
-export interface ColorPickerValue {
-  readonly tab: ColorPickerTab;
-  readonly wheel: ColorWheelSelection;
-  readonly tone: ColorToneSelection | null;
-  readonly hue: HexColor;
-}
-
-/** A single mode-specific update emitted by the composed picker. */
-export type ColorPickerSelection =
-  | { readonly mode: 'wheel'; readonly value: ColorWheelSelection }
-  | { readonly mode: 'tone'; readonly value: ColorToneSelection }
-  | { readonly mode: 'hue'; readonly value: HexColor };
-
 export interface ColorWheelProps extends ZoraBaseProps {
   readonly value: HexColor;
   /** Square stage side derived by the owning ColorPicker geometry. */
