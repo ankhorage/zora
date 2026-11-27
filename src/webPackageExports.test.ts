@@ -6,6 +6,8 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import * as ts from 'typescript';
 
+import { rewriteSurfaceWebSpecifiers } from '../scripts/web-artifacts/createWebBuildPlugins';
+
 const forbiddenWebDependencies = [
   'expo-document-picker',
   'expo-image-picker',
@@ -57,6 +59,38 @@ test('publishes every generated web-only artifact through the web package facade
   );
   expect(facade).not.toContain('/src/');
   expect(facade).not.toContain('@ankhorage/surface');
+});
+
+/** Verifies that every emitted web artifact consumes only Surface's browser-safe public contract. */
+test('routes generated web artifacts through the published Surface web contract', async () => {
+  const files = [
+    ...(await Array.fromAsync(new Bun.Glob('web-dist/**/*.js').scan())),
+    ...(await Array.fromAsync(new Bun.Glob('web-dist/**/*.d.ts').scan())),
+  ];
+
+  for (const file of files) {
+    const source = await Bun.file(file).text();
+    expect(source, file).not.toMatch(/(['"])@ankhorage\/surface(?=[/'"])(?!\/web\1)/u);
+    expect(source, file).not.toContain('node_modules/@ankhorage/surface');
+  }
+});
+
+test('rewrites complete Surface specifiers without changing existing web or unrelated imports', () => {
+  const declarations = [
+    "export { Button } from '@ankhorage/surface';",
+    'export type { Theme } from "@ankhorage/surface/theme";',
+    "export { View } from '@ankhorage/surface/web';",
+    "export { Other } from '@ankhorage/surface/theme/other';",
+    "export { Another } from '@ankhorage/surface-other';",
+  ];
+
+  expect(rewriteSurfaceWebSpecifiers(declarations.join('\n'))).toBe(
+    [
+      "export { Button } from '@ankhorage/surface/web';",
+      'export type { Theme } from "@ankhorage/surface/web";',
+      ...declarations.slice(2),
+    ].join('\n'),
+  );
 });
 
 /** Verifies that each generated package subpath exposes exactly its discovered component contract. */

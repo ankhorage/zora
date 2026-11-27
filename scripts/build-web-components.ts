@@ -1,9 +1,11 @@
-import { copyFile, mkdir, rm, writeFile } from 'node:fs/promises';
-import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import { buildWebArtifact } from './web-artifacts/buildWebArtifact';
-import { createWebBuildPlugins } from './web-artifacts/createWebBuildPlugins';
+import {
+  createWebBuildPlugins,
+  rewriteSurfaceWebSpecifiers,
+} from './web-artifacts/createWebBuildPlugins';
 import { discoverWebArtifactTargets } from './web-artifacts/discoverWebArtifactTargets';
 
 const repositoryRoot = join(import.meta.dir, '..');
@@ -11,8 +13,6 @@ const sourceRoot = join(repositoryRoot, 'src');
 const featuresRoot = join(sourceRoot, 'features');
 const webDistRoot = join(repositoryRoot, 'web-dist');
 const cacheRoot = join(repositoryRoot, '.cache', 'zora-web-artifacts');
-const require = createRequire(import.meta.url);
-const surfacePackageRoot = dirname(require.resolve('@ankhorage/surface/package.json'));
 
 await rm(webDistRoot, { force: true, recursive: true });
 await rm(cacheRoot, { force: true, recursive: true });
@@ -27,7 +27,6 @@ try {
   const catalog = await buildWebArtifact(targets, {
     cacheRoot,
     sourceRoot,
-    surfacePackageRoot,
     webDistRoot,
   });
   await buildAuthoringArtifact();
@@ -52,19 +51,18 @@ async function buildAuthoringArtifact(): Promise<void> {
     format: 'esm',
     naming: 'index.js',
     conditions: ['browser', 'import', 'default'],
-    external: [
-      '@ankhorage/surface/authoring-controls',
-      'react',
-      'react/*',
-      'react-dom',
-      'react-dom/*',
-    ],
-    plugins: createWebBuildPlugins({ sourceRoot, surfacePackageRoot }),
+    external: ['react', 'react/*', 'react-dom', 'react-dom/*'],
+    plugins: createWebBuildPlugins(),
     jsx: { runtime: 'automatic', importSource: 'react' },
   });
   if (!result.success) throw new Error(`Could not build ZORA authoring artifact:\n${result.logs}`);
-  await copyFile(
+  const declaration = await readFile(
     join(repositoryRoot, 'dist', 'authoring.browser.d.ts'),
+    'utf8',
+  );
+  await writeFile(
     join(outputDirectory, 'index.d.ts'),
+    rewriteSurfaceWebSpecifiers(declaration),
+    'utf8',
   );
 }
