@@ -3,7 +3,7 @@ import type { HexColor } from '@ankhorage/color-theory';
 import { resolveOklchColor } from './resolveOklchColor';
 import { resolveWheelColorComponents } from './resolveWheelColorComponents';
 
-/*** Resolve a wheel coordinate into a bounded OKLCH color while retaining the selected lightness. */
+/*** Resolve a wheel coordinate into the same bounded OKLCH projection rendered by the wheel. */
 export function resolveWheelColor(
   color: HexColor,
   x: number,
@@ -11,9 +11,8 @@ export function resolveWheelColor(
   center: number,
   radius: number,
   maxChroma: number,
+  lightness = resolveWheelColorComponents(color).lightness,
 ): HexColor {
-  const { lightness } = resolveWheelColorComponents(color);
-
   const deltaX = x - center;
   const deltaY = y - center;
   const distance = Math.min(Math.hypot(deltaX, deltaY), radius);

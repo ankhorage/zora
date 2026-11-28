@@ -35,6 +35,8 @@ export interface ColorWheelProps extends ZoraBaseProps {
   /** Square stage side derived by the owning ColorPicker geometry. */
   readonly size?: number;
   readonly harmony?: ColorHarmony | null;
+  /** Optional consumer-provided target applied consistently to wheel rendering and selection. */
+  readonly toneTarget?: ColorToneTarget;
   readonly harmonies?: readonly ColorHarmony[];
   readonly onChange: (selection: ColorWheelSelection) => void;
 }
@@ -62,8 +64,14 @@ export interface ColorPickerProps extends ZoraBaseProps {
   readonly tone?: string;
   /** Consumer-owned tone catalogue; ZORA deliberately does not copy it. */
   readonly tones?: readonly ColorToneDefinition[];
-  /** Requested outer logical width; hosts must provide at least 360 logical pixels. */
+  /** Requested outer logical width; it is clamped to the measured host width. */
   readonly width?: number;
+  /** Requested outer logical height; it is clamped to the measured host height. */
+  readonly height?: number;
+  /** Receives whether the host must provide a larger or full-screen presentation. */
+  readonly onInsufficientSpaceChange?: (insufficient: boolean) => void;
+  /** Optional one-line contextual information rendered above the footer. */
+  readonly infoLine?: string;
   /** Controlled active presentation. */
   readonly activeTab?: ColorPickerTab;
   /** Emits one canonical controlled selection payload. */

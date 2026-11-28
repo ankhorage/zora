@@ -8,6 +8,7 @@ export function ColorWheelPointerProxy({
   disabled,
   height,
   onChange,
+  renderedSize: _renderedSize,
   width,
 }: ColorWheelPointerProxyProps) {
   const dragging = React.useRef(false);

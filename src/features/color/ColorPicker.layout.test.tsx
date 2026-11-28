@@ -16,11 +16,18 @@ function load(path: string) {
 }
 
 test('renders the same 8-by-8 Grid geometry in both inherited theme modes', async () => {
-  const [{ ColorPicker }, { ZoraProvider }] = (await Promise.all([
+  const [{ ColorPicker }, { GradientRendererProvider }, { ZoraProvider }] = (await Promise.all([
     load('components/color-picker/index.js'),
+    load('components/gradient-renderer-provider/index.js'),
     load('runtime/ZoraProvider.js'),
   ])) as [
     { ColorPicker: typeof ColorPickerComponent },
+    {
+      GradientRendererProvider: React.ComponentType<{
+        readonly children?: React.ReactNode;
+        readonly renderer: React.ComponentType<{ readonly children?: React.ReactNode }>;
+      }>;
+    },
     {
       ZoraProvider: React.ComponentType<{
         readonly children?: React.ReactNode;
@@ -31,15 +38,17 @@ test('renders the same 8-by-8 Grid geometry in both inherited theme modes', asyn
 
   const markupFor = (mode: 'dark' | 'light') =>
     renderToStaticMarkup(
-      <ZoraProvider mode={mode}>
-        <ColorPicker
-          onDismiss={() => undefined}
-          onValueChange={() => undefined}
-          primaryColor="#2563eb"
-          testID={`picker-${mode}`}
-          width={560}
-        />
-      </ZoraProvider>,
+      <GradientRendererProvider renderer={({ children }) => <div>{children}</div>}>
+        <ZoraProvider mode={mode}>
+          <ColorPicker
+            onDismiss={() => undefined}
+            onValueChange={() => undefined}
+            primaryColor="#2563eb"
+            testID={`picker-${mode}`}
+            width={560}
+          />
+        </ZoraProvider>
+      </GradientRendererProvider>,
     );
 
   for (const mode of ['dark', 'light'] as const) {

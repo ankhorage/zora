@@ -29,6 +29,8 @@ export interface SelectProps<TValue extends string = string> extends ZoraBasePro
   leadingMedia?: ImageProps['source'];
   /** Optional Surface Button label emphasis; defaults to semiBold. */
   labelWeight?: ButtonLabelWeight;
+  /** Uses the compact control height for dense settings surfaces. */
+  compact?: boolean;
   required?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
